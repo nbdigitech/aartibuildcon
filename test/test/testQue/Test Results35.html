@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=38822&test_id=298 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results35_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results35_files/calclayout.css">
+<script src="./Test Results35_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results35_files/jquery-ui.js.download"></script>
+<script src="./Test Results35_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results35_files/custom.js.download"></script>
+<script src="./Test Results35_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results35_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results35_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837326, 'I\'m sorry, the time available to complete the test is over!', false, 1486837326102);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=38822&amp;test_id=298#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 2</strong><br>
+Theory of Computation, Compiler Design&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-11 15:10:44&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-11 16:39:19&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:28:35&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+20.690 / 50.000 (41%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+15 / 33 (45%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which of the following relations is in Boyce-Codd Normal Form<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> R(ABCD) FD's: A → D ; C → A ; D → B ; AC → B</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> R(ABCD) FD's: AC → D ; D → A ; D → C ; D → B<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Checking for option (a):</span><br>Given relation R (ABCD) and FD’s:<br>	A → D<br>	C → A<br>	D → B <br>	AC → B<br>			<br><span style="text-decoration:underline;">Finding candidate key:</span><br>C is not there in right hand side of any FD. So, find (C)+<br>(C)+ = CADB. Therefore C is necessary and is sufficient to be the key. Therefore C is the only candidate key.<br>FD (1) A → D violates BCNF since LHS of FD i.e. A is not super key.<br>So, R is not in BCNF.<br><br><span style="text-decoration:underline;">Checking for option (b):</span><br>Given relation R (ABCD) and FD’s <br>AC → D → (1)<br>D → A → (2)<br>D → C → (3)<br>D → B → (4)<br>	<br><span style="text-decoration:underline;">Finding candidate key:</span><br>Candidate keys for the given relation are<br>	{D, AC}<br>Given relation R is in BCNF since LHS of all FD’s are super keys. <br>So, answer is option (b)<br><br><span style="text-decoration:underline;">Checking for option (c):</span><br>Given relation R (ABCD) and FD’s; <br>C →B → (1)<br>BC→ A → (2)<br>A → C → (3)<br>BD → A→ (4)<br><span style="text-decoration:underline;">Finding candidate key:</span><br>D is not present in right hand side of any FD. So, find (D) +. <br>(D) + = D. So, D is necessary but not sufficient to be the key. So, find closure of all 2 attribute combinations that include D such as DA, DB, DC. Since the classic of all combinations determines all attributes, {DA, DB, DC} are keys. Now find the closure of all 3 attribute combinations that include D but excluding A, B, C. We cannot find any such combination. So, the candidate keys for the given relation R are {DA, DB, DC}.<br>FD (1) violates BCNF since LHS of FD (1) i.e. C is not a super key.<br>So, option (c) is not correct answer.<br><br><span style="text-decoration:underline;">Checking for option (d):</span><br>Given relation R (ABCD) and FD’s; <br>BC → A → (1)<br>AD → C → (2)<br>CD → B → (3)<br>BD → C → (4)<br><span style="text-decoration:underline;">Finding candidate key:<br></span>D is not present in right hand side of any FD. So, find (D) +. <br>(D) + = D. So, D is necessary but not sufficient to be the key. So, find closure of all 2 attribute combinations that include D such as DA, DB, DC. Since all 2 attribute combinations closure determines all attributes, keys are {DA, DB, DC}. Find closure of all 3 attribute combinations that include D but excluding A, B, C. We cannot find any such combination. So, the candidate keys for the given relation are {DA, DB, DC}.<br>FD (1) violates BCNF since LHS of FD (1) i.e. BC is not a super key.<br>∴Given relation R is not in BCNF<br>So, option (d) is wrong answer.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> R(ABCD) FD's: C → B ; BC → A ; A → C ; BD → A</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> R(ABCD) FD's: BC → A ; AD → C ; CD → B ; BD →</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a disk has 101 cylinders, numbered 0 to 100. At some time the disk arm is at cylinder 50, and there is a queue of disk access requests for cylinders 20, 40, 450, 65, 95. If shortest seek time first is being used for scheduling the disk access, find the total number of head movements.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 105<br><span class="explanation">Explanation:</span><br>Total Head movements |50−45|+|45−40|+|40−20|+|65−20|+|95−65|=105
+</li>
+<li><img src="./Test Results35_files/wrong.png" width="16">&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 110</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 115</li>
+</ol>
+<br><br>
+</li>
+<li>
+A system uses FIFO policy for page replacement. It has 3 page frames with no pages loaded to begin with. The system first accesses 50 distinct pages in some order and then access the same 50 pages but now in reverse order. How many page faults will occur?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 98</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 97<br><span class="explanation">Explanation:</span><br>Given: No. of page frames = 3<br>Initially, No page is loaded. So for first 50 distinct pages we will get 50 page faults.<br>Later 3 pages are hit, so remaining 47 pages are page faults.<br>	Total no. of page faults = 50 + 47 = 97
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 94</li>
+</ol>
+<br><br>
+</li>
+<li>
+An operating system contains 4 user processes each requiring 3 resource units of resource type R. The minimum number of units of R such that No deadlock will arise is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/wrong.png" width="16">&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>Given, 4 processes and each process required 3 resource units.<br>Deadlock possible if each process allocate 2 resources and waiting for other resource.<br>∴ The minimum number of resources deadlock will never arise 4×2+1=9
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is a possible solution for dining philosphers problem?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> all philosphers pick up the left fork before the right fork</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> all philosphers pick up the right fork before the left fork</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> One philosopher pick left fork before right fork, remaining other will do reverse<br><span class="explanation">Explanation:</span><br>In Dining philosopher solution to avoid deadlock. 1 philosopher pick left fork, first and right fork next. All the other philosophers will pick first right fork later left fork will pick this phenomenon we will avoid deadlock.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+A counting semaphore was initialized to 12. Then 5 P(Wait) operations and 3 V(Signal) operations were completed on this semaphore. The resulting value of the semaphore is<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>Given initially, S = 12<br>Later 5 P and 3 V operations.<br>∴ Resulting semaphore value is 12 – 5 + 3 = 10
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 20</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of processes that need to be scheduled on a single CPU. All times are given in milliseconds.<br><img src="./Test Results35_files/10Qb.png" alt="image:MST2/10Qb.png" width="373" height="119" class="tcecode"><br>Using first serve scheduling algorithm find the average process waiting time.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 5.8<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/10Ea.png" alt="image:MST2/10Ea.png" width="445" height="225" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 5.5</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 6.5</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 6.8</li>
+</ol>
+<br><br>
+</li>
+<li>
+A process executes the following code:<br>fork();<br>fork();<br>fork();<br>fork();<br>Find the total number of processes created is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 16<br><span class="explanation">Explanation:</span><br>For n fork calls 2<sup class="tcecode">n</sup> processes will create. Here we have 4 fork calls.<br>So, 2<sup class="tcecode">n</sup>=16 Total processes created.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following schedule<br>S: w<sub class="tcecode">2</sub> (A), r<sub class="tcecode">1</sub> (B), r<sub class="tcecode">2</sub> (A) w<sub class="tcecode">2</sub> (B), r<sub class="tcecode">3</sub> (A), w<sub class="tcecode">1</sub> (B), w<sub class="tcecode">3</sub> (A), r<sub class="tcecode">2</sub> (B)<br>How many minimum number of moves (where a move consists of changing the position of one of the operations) are required to convert S into a conflict serializable schedule?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/8Ea.png" alt="image:MST2/8Ea.png" width="560" height="438" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let R represents an one to many relationship between entities E1 and E2 and the set A, B attributes represent the key of R (A is key for E1 and B is key for E2)  then which of the following statements is correct<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> The FD A→B will only holds</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> The FD B→A will only holds<br><span class="explanation">Explanation:</span><br>Since R represents one to many relationship, FD A→B does not hold since one value in attribute A can be mapped to more than one value in attribute B.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> (a) and (b) hold together</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Neither (a) nor (b) holds</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given enroll table as follows:  <br><img src="./Test Results35_files/5Qa.png" alt="image:MST2/5Qa.png" width="313" height="278" class="tcecode"><br>What is the number of tuples in the output of the following query?<br>Select Stud.Id FROM ENROLL WHERE grade  = ‘A’<br>UNION ALL<br>Select Stud.Id FROM ENROLL WHERE grade = ‘B’;<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/wrong.png" width="16">&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>(1, 2, 1, 3) UNION ALL (1, 1, 2, 4, 5, 1)<br>= (1, 2, 1, 3, 1, 1, 2, 4, 5, 1)
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Column B of a relation has the following list of values in the five rows of the table: 3, NULL, 2, 3, NULL, 5. Which of the following is the correct value of AVG(DISTINCT B)? (You may compute your answer to 2 decimal places)<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 5.20</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 3.33<br><span class="explanation">Explanation:</span><br>Given B values: 3, NULL, 2, 3, NULL, 5<br>AVG (DISTINCT B)<br>= AVG (3, NULL, 2, 5)<br>= (3+2+5)/3 = 10/3 = 3.33<br>So, answer is option (b).
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 2.50</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 3.25</li>
+</ol>
+<br><br>
+</li>
+<li>
+The latest scores from the Japanese Baseball League are in the table with schema<br>Scores (Team, Opponent, RunsFor, RunsAgainst). The data in this table is as follows:<br><img src="./Test Results35_files/14Qa.png" alt="image:MST2/14Qa.png" width="546" height="275" class="tcecode"><br>What is the result of executing the below query on this data:<br>SELECT S1.Team, S2.Team FROM Scores S1, Scores S2<br>WHERE S1.Team &lt; S2.Team <br>AND   (S1.RunsFor = S2.RunsFor   OR S1.RunsAgainst = S2.RunsAgainst)<br>Remember that when strings are compared, "&lt;" means "precedes in alphabetical order. Identify, in the list below, a row of the result.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> Bay Stars	Buffaloes<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/4Ea.png" alt="image:MST2/4Ea.png" width="588" height="279" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Lions	            Marines</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Bay Stars	Lions</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Tigers	            Hawks</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose relation R (A,B) has the tuples :<br><img src="./Test Results35_files/2Qa.png" alt="image:MST2/2Qa.png" width="500" height="259" class="tcecode"><br><br>Compute the outer join of R and S, where the condition is: R.A&gt;S.C AND R.B=S.D.  Which of the following tuples of R or S is dangling (and therefore needs to be padded in the outer join)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> (4,7,9) of S.<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/2ed.PNG" alt="image:MST2/2ed.PNG" width="250" height="297" class="tcecode"><br><img src="./Test Results35_files/2Eb.png" alt="image:MST2/2Eb.png" width="408" height="172" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> (5,6) of R.</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> There are no dangling tuples.</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> (4,6,8) of S.</li>
+</ol>
+<br><br>
+</li>
+<li>
+A bank has a database with accounts. For each account it records the (unique) account number and the current balance. The database also has information about depositors --- their name, (unique) social-security number, and their address. Finally, the bank also stores, for each account, the depositor or depositors (in the case of joint accounts), that own the account. Which of the following appears in the E/R diagram for this bank's database<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> A rectangle labeled account-number.</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> An oval labeled balance without an underline.<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Checking for option (a):</span><br>It is wrong since account number is an attribute but not entity type to be represented by rectangle. It should be represented by ellipse. <br><br><span style="text-decoration:underline;">Checking for option (b):</span><br>It is correct since given balance is attribute for entity type account but it is not a key. So, it should not be underlined. <br>So, answer is option (b).<br><br><span style="text-decoration:underline;">Checking for option (c):</span><br>Accounts are entity type and not an attribute therefore it should be represented by a rectangle not by an oval / ellipse.<br><br><span style="text-decoration:underline;">Checking for option (d):</span><br>Depositor name is an attribute of entity type depositor. It is not relationship. So depositor name should be represented by ellipse.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> An oval labeled Accounts</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> A diamond labeled depositor-name.</li>
+</ol>
+<br><br>
+</li>
+<li>
+The maximum possible size of a file in the indexed allocation scheme depends?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> It depends on the size of the blocks, the number of blocks used for the index, size of the address of the blocks<br><span class="explanation">Explanation:</span><br>In the indexed allocation scheme of blocks to a file, the max possible size of the file depends on the size of the blocks, the number of blocks used for the index, and the size of the address of the blocks.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> It depends upon the number of blocks used for the index, size of the blocks</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> It depends upon the size of the blocks, size of the address of the blocks</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let a, b and c be the number of entities in entity sets A, B, and C, respectively.  Let t be the maximum number of triples in the relationship set for R. Which of the following is a possible combination of values for a, b, c, and t<br><img src="./Test Results35_files/1Qa.png" alt="image:MST2/1Qa.png" width="221" height="119" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> a =100, b=10, c=1000, t=1000</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> a =1000, b=1, c=200, t=1200</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> a =5, b=3, c=4, t=20</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> a =100, b=10, c=20, t=100<br><span class="explanation">Explanation:</span><br>Given ER diagram:<br><img src="./Test Results35_files/1Qa.png" alt="image:MST2/1Qa.png" width="221" height="119" class="tcecode"><br>So, the cardinality ratio between A and B in R is N:1<br>The cardinality ratio between B and C is R is 1:1.<br><br><span style="text-decoration:underline;">Checking for option (a):</span><br>a = 100, b = 10, c = 1000, t = 1000<br>Since the cardinality ratio between A and B is N:1 in R.<br>The maximum number of triples in R with A and B values is 100. Since the cardinality ratio between B and C is 1:1 in R, for every distinct value of B, there should be one distinct value of C. since for every distinct 10 values of B as we can allocate 10 distinct values of c, maximum number of triplets in R is 100. But t is given as 1000. <br>So, option (a) is wrong.<br><br><span style="text-decoration:underline;">Checking for option (b):</span><br>a = 1000, b = 1, c = 200, t = 1200.<br>Since the cardinality ratio between A and B is N:1 in R.<br>The maximum number of triples in R with A and B values is 1000.<br>Since the cardinality ratio between B and c is 1:1 in r, for every distinct value of B, there should be one distinct value in C. Since, there is only one distinct value in B, and 200 distinct values in C, we can map this one distinct value of B to one distinct value in C. so, the maximum number of triplets in R is 1000. But, here t is given as 1200. <br>So, option (b) is wrong.<br><br><span style="text-decoration:underline;">Checking for option (c):</span><br>a = 5, b = 3, c = 4, t = 20.<br>In the same way as mentioned above, the maximum number of triplets in R will be 5. But here t is given as 20.<br>So, option (c) is wrong.<br><br><span style="text-decoration:underline;">Checking for option (d):<br></span>a = 100, b = 10, c = 20, t = 100.<br>In the same way as mentioned above, the maximum number of triplets in R will be 100. Here t is given as 100.<br>So, option (d) is correct answer.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results35_files/13Qa.png" alt="image:MST2/13Qa.png" width="479" height="171" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> System is deadlocked<br><span class="explanation">Explanation:</span><br>Only P<sub class="tcecode">0</sub> Need satisfies with available.<br>New avail = 1  4  2  2<br>Based on new avail, no other process is satisfied so system is deadlocked.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> System is deadlock free</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> The system is safe &amp; sequence is P<sub class="tcecode">0</sub>,P<sub class="tcecode">4</sub>,P<sub class="tcecode">2</sub>,P<sub class="tcecode">1</sub>,P<sub class="tcecode">3</sub></li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> The system is safe &amp; sequence is P<sub class="tcecode">0</sub>,P<sub class="tcecode">2</sub>,P<sub class="tcecode">4</sub>,P<sub class="tcecode">3</sub>,P<sub class="tcecode">1</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Exponential average formula used to predict the next CPU burst. If α=0.9 and T<sub class="tcecode">0</sub>=10ms previous runs are as follows 2, 4, 6. Find the value of T<sub class="tcecode">3</sub>.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 5.788<br><span class="explanation">Explanation:</span><br>T<sub class="tcecode">n+1</sub>=αt<sub class="tcecode">n</sub>+(1−α)T<sub class="tcecode">n</sub><br>           0.9(2)+0.1(10)<br>           1.8+1<br>           2.8 <br>T<sub class="tcecode">2</sub>=0.9(4)+0.1(2.8)<br>      3.6+.28<br>      3.88<br>T<sub class="tcecode">3</sub>=0.9(6)+0.1(3.88)<br>      5.4+.388<br>      =5.788
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8.7</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8.9</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8.1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results35_files/11Qa.png" alt="image:MST2/11Qa.png" width="561" height="269" class="tcecode"><br>What will be the minimum size of the partition required to load this program?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 11Kb<br><span class="explanation">Explanation:</span><br>The possible paths are<br><img src="./Test Results35_files/16Ea.png" alt="image:MST2/16Ea.png" width="416" height="198" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 7KB</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8KB</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 9KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+A FAT based file system is being used and the total overhead of each entry in FAT is 2 Bytes in size. Given a 50×10<sup class="tcecode">3</sup> bytes disk on which the file system is stored and data block size is 10<sup class="tcecode">2</sup> bytes, the maximum size of a file that can be stored on this disk in units of 10<sup class="tcecode">3 </sup>bytes is?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 50</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 49<br><span class="explanation">Explanation:</span><br>Totalno.ofblocks=(50×10<sup class="tcecode">3</sup>)/10<sup class="tcecode">2</sup>=500<br>∴FAT=2×500Bytes=10<sup class="tcecode">3</sup>bytes<br>∴ThemaxpossiblefileTotalspace−FAT<br>			              50×10<sup class="tcecode">3</sup>−10<sup class="tcecode">3	</sup><br>			              49×10<sup class="tcecode">3 </sup>
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 48</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 47</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A and B be two entities in an E- R diagram with no multivalued and composite attributes. R1 and R2 are two relationships between A and B, where R1 is one-to-one with total participation on A side and R2 is many-to-many. R1and R2 do not have any attributes of their own. What is the minimum number of tables required to represent their situation in the relational model?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 2</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>2 tables are required to represent 2 entities E<sub class="tcecode">1</sub>, E<sub class="tcecode">2</sub> respectively. Relationship R1 can be stored in A table (since the ratio between A and B is 1: 1 with total participation on A side).<br>Another table is required to represent relationship R2 which consists of primary keys of both A and B as the cardinality ratio between A and B in R2 is m: n.<br>So, the minimum number of tables required is 3.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a B tree of order 20 with 3 levels [root is at level 0]. The maximum possible no. of records which can be indexed in the above B tree is____.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8000</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 7999<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/9Ea.png" alt="image:MST2/9Ea.png" width="557" height="160" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 7891</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 8199</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given schedule S of two transactions are as follows<br>T1: R(x), T2: W(x), T1: W(x), T2: commit, T1: commit<br>Which of the following statement(s) is /are true about given schedule? <br>I.	Conflict serializable schedule<br>II.	View serializable schedule<br>III.	Recoverable schedule<br>IV.	Cascadeless schedule<br>V.	Strict schedule<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> I, II, III, IV &amp; V</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> III, IV, V</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> I, III, IV, &amp; V</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> None of the above<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/7Ea.png" alt="image:MST2/7Ea.png" width="611" height="490" class="tcecode"><br>Here T1 should happen before T2 because if T1 happens after T2, T1 should read the value of ‘x’ which was written by T2 but T1 should read the value of x from database. So, T2 should happen after T1. So, there is an arrow from T1 to T2 in polygraph.<br>Also, T1 should happen after T2 because in original schedule T1 is writing the value of ‘x’ into database lastly and if T2 happens after T1, T2 is writing the value of ‘x’ lastly into database. So, T1 should happen after T2. Therefore there is an arrow from T2 to T1 in polygraph.<br>Therefore given schedule is not view serializable as there is cycle in polygraph.<br><span style="text-decoration:underline;">Checking for recoverable schedule:</span><br>Here there is no write read dependency in given schedule. So, given schedule is recoverable schedule.<br><span style="text-decoration:underline;">Checking for cascadeless schedule:<br></span><br>As there is no write read dependency in given schedule, given schedule is cascadeless schedule.<br><span style="text-decoration:underline;">Checking for strict schedule:</span><br>Here there is write - write dependency in given schedule. The value which was written by T1 was over written by T2 without T1 being committed. So, given schedule is not strict schedule.<br>So only statements III &amp; IV are correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A block can hold either 7 records or 13 (search key, pointer) pairs. If database contains 50 records, then how many blocks are required to hold the data file and dense index?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 09</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 12<br><span class="explanation">Explanation:</span><br>Number of blocks required to hold data file = ceil(50/7) = 8<br>Number of blocks required to hold index file:<br>	Since sparse index is used, we should maintain index for every data record.<br>Number of index records = 50<br>One block can accommodate 13 index records<br>	Number of blocks required to accommodate 50 index records is ceil(50/13) = 4<br>∴Total number of blocks required for data file as well as index file = 4 + 8 = 12.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 14</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given relational schema Students (id, grade). Which of the following is the TRC expression for “find the id’s of all students who scored highest grade”?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> {s2. id / ∃ s1 ∈ students ^ (¬∃ s2 ∈ students ( s2. grade &gt; s1.grade) )}</li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> {s1. id / ∃ s1 ∈ students ^ (¬∃ s2 ∈ students ( s2. grade &gt; s1.grade) )}<br><span class="explanation">Explanation:</span><br>We will display all student id’s such that there should not exist at least one student such that, that student grade is greater than this student grade.
+</li>
+<li><img src="./Test Results35_files/wrong.png" width="16">&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> {s1. id / ∃ s1 ∈ students ^ ∃ s2 ∈ students ( s2. grade &lt; s1.grade) )}</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schema<br><br>Students (Sno, Sname, age, sex)<br>Course Info (courseNo, courseName, Instructor Name)<br>Enroll (Sno, courseNo, hours)<br><br>Which of the following queries is/are equivalent to this query in English? <br><br>“Find the names of all students who enrolled in all courses instructed by ‘Sindhu’.” <br><br>I.{S.sname/ Student(s) and ∀∁ ((courseInfo (C) and ∁.Instructor name = ‘Sindhu’)<br>→ (∃e) (enroll (e) and e. Sno = S.Sno  ^ e.courseNo = c.courseNo))}<br><br>II.Select Sname FROM STUDENTS S WHERE EXISTS<br>((SELECT courseNo FROM course Info<br>WHERE Instructor Name = ‘Sindhu’)<br>		EXCEPT<br>(Select courseNo FROM ENROLL e WHERE<br>		e. Sno = S.Sno));<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> I only<br><span class="explanation">Explanation:</span><br>I → This is a Tuple Relation Calculus (TRC) language expression. It is not a procedural language (i.e. it only tells “what to do”, not “how to do”). It just represents a declarative mathematical expression. Here we are displaying those student names such that they enrolled for all courses taught by instructor Name ‘Sindhu’. So, I is correct.<br>II → This is incorrect because in the given query, we retrieve the names of the students who enrolled for at least one course taught by sindhu. Since, we need to find the names of the students who enrolled for all the courses taught by sindhu, NOT EXISTS clause will best fit the context instead of EXISTS.<br>Therefore the answer is option (a).
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Both I &amp; II</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the maximum number of keys present in B tree of order m and height (h-1)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> m<sup class="tcecode">h-1 </sup></li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> m<sup class="tcecode">h</sup></li>
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> m<sup class="tcecode">h</sup> -1<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/6Ea.png" alt="image:MST2/6Ea.png" width="592" height="345" class="tcecode"><br>∴Maximum total number of keys present in B tree of order m is m<sup class="tcecode">h</sup>-1.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given two relational schemas r(A, B) and t(B, C). Which of the following expressions is equivalent to r ⟕ t using only basic relational algebra operators (∪, ∩, -, ρ,σ,π,×,⋈) according to the definition of ⟕<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> (r ⋈ t) ∪ ( ( t-π<sub class="tcecode">B,C</sub>  (r ⋈ t)) × {(NULL)} )</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> (r ⋈ t) ∪ ( ( r –π<sub class="tcecode">A,B</sub>   (r ⋈ t)) )</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> (r ⋈ t) ∪ ( ( r –π<sub class="tcecode">A,B</sub>   (r ⋈ t)) × {(NULL) } )<br><span class="explanation">Explanation:</span><br>We know that the left outer join is written as R ⟕ S where R and S are relations. The result of the left outer join is the set of all combinations of tuples in R and S that are equal on their common attribute names, in addition to tuples in R that have no matching tuples in S which will be concatenated with NULL values in the final result.<br>So, (r ⟕ t) can be written as <br>(r ⋈ t) ∪ ( ( r –π<sub class="tcecode">A,B</sub>   (r ⋈ t)) × {(NULL) })
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements.<br>If relation R is in 3NF and every key is simple, then R is in BCNF<br>If relation R is in 3NF and R has only one key, then R is in BCNF<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/correct.png" width="18"> Both 1 and 2 are true<br><span class="explanation">Explanation:</span><br>We know that in 3NF, for any non trivial FD X →Y either X should be a super key (or) Y – X should be prime attribute. <br>In BCNF, for any non trivial FD X→Y, X should be a super key. So, from 3NF to BCNF we lost one condition and if a relation is in 3NF but not in BCNF then this condition must hold i.e. for some non trivial FD, X→Y, X is not a super key and Y – X is a prime attribute.<br>If we take statement (1), it says every key is simple. So, any prime attribute is a candidate key. Thus any X→Y, we have X and it is not a super key, and Y- X is a candidate key. Now, if Y-X is a candidate key, Y must be a super key and from X→Y, X must also be a super key.<br>Consider statement (2), it says R has only one key. Suppose, there exists a non trivial FD X→Y, with X not being a super key and Y – X being a prime attribute. Now X must contain a prime attribute here, as otherwise it cannot determine any prime attribute. (Since Y-X is a prime attribute, replace it with X in the corresponding candidate key and so we get another candidate key). So, the only possibility is X and Y to be part of the same key, and then with X→Y, that key will be a super key and not a candidate key, to make it candidate key we have to remove Y from it. So, in both cases 3NF implies BCNF.<br>So, answer is option (a).
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 1 is true but 2 is false</li>
+<li><img src="./Test Results35_files/wrong.png" width="16">&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 1 is false and 2 is true</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> Both 1 and 2 are false</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a pseudo code:<br>Process P:<br><div class="tcecodepre">while&nbsp;(1)<br>{<br>&nbsp;&nbsp;p:&nbsp;print&nbsp;Singam;&nbsp;print&nbsp;1;&nbsp;q<br>}<br>Process&nbsp;Q:<br>{<br>&nbsp;&nbsp;r:&nbsp;print&nbsp;Dhoom;&nbsp;print&nbsp;2;&nbsp;s<br>}</div><br>Synchronization statements are placed at P, Q, R and S. X and Y are binary semaphores then which of the following synchronization mechanism will lead to generate following string “Singam 1 Dhoom 2 Singam 1”.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> P(x) at p, V(x) at q, P(y) at r, V(y) at s, x=1, y=1</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> P(x) at p, V(y) at q, P(y) at R, V(x) at s, x=1, y=0<br><span class="explanation">Explanation:</span><br>x=1y=0<br>P(x) at p    prints    Singam 1<br>V(y) at q    makes y = 1    then P(y) at R prints Dhoom 2, V(x) at s makes x = 1.<br>∴ It  prints Singam 1 Dhoom 2 Singam 1.
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> P(x) at p, V(y) at Q, p(y) at R, V(y) at s, x=0, y=1</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> p(x) at p, V(y) at q, p(y) at r, V(y) at s, x=1, y=0</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question Q32 &amp; Q33:</strong></span><br><br>A process has been allocated 4 page frames. Assume that none of the pages of the process are available in the memory initially. The process makes the following sequence of page reference string.<br> If optimal page replacement policy used how many page faults occur?<br>1,2,1,4,3,7,3,1,6<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results35_files/correct.png" width="18">&nbsp;<img src="./Test Results35_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results35_files/15Ea.png" alt="image:MST2/15Ea.png" width="170" height="131" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results35_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question Q32 &amp; Q33:</strong></span><br><br>A process has been allocated 4 page frames. Assume that none of the pages of the process are available in the memory initially. The process makes the following sequence of page reference string. 1,2,1,4,3,7,3,1,6<br><br>If LRU policy used how many page faults occur?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results35_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=19369&test_id=179 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results95_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results95_files/calclayout.css">
+<script src="./Test Results95_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results95_files/jquery-ui.js.download"></script>
+<script src="./Test Results95_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results95_files/custom.js.download"></script>
+<script src="./Test Results95_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results95_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results95_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920978, 'I\'m sorry, the time available to complete the test is over!', false, 1486920978244);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=19369&amp;test_id=179#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Algorithms Topic Test - 2 </strong><br>
+Searching, Hashing&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-01 04:46:44&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-01 05:30:25&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:43:41&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+2.360 / 25.000 (9%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+3 / 15 (20%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider a hash table of size ‘n’ and keys are range from 0 to n<sup class="tcecode">2</sup>-1. What is the maximum number of distinct keys can be accommodated in the hash table, considering the following collision techniques: Chaining, Linear probing and Quadratic probing, respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> n, n<sup class="tcecode">2</sup>, n</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> n<sup class="tcecode">2</sup>, n<sup class="tcecode">2</sup>, n<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> n<sup class="tcecode">2</sup>, n, n<br><span class="explanation">Explanation:</span><br>I.	Chaining: With chaining, we can insert as many keys as there are in the universe which, in this case, is n<sup class="tcecode">2</sup>. <br>II.	Linear probing: Linear probing can only store as many elements as the size of the table which is n.<br>III.	Quadratic probing: Similar to linear probing, quadratic probing can only store as many elements as the size of the table which is n.
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> n, n, n</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE? <br><br>I.The collision resolution techniques by chaining and open addressing may result in the worst case search time for one of the ‘n’ keys in the hash table is O(n).<br><br>II.A hash table always guarantees constant lookup time.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results95_files/correct.png" width="18">&nbsp;<img src="./Test Results95_files/correct.png" width="18"> Only I<br><span class="explanation">Explanation:</span><br>I. True. All of the keys could hash to the same bucket (chaining), or all of the keys could have the same probe sequence (open addressing), resulting in a worst-case time of O(n) for a search.<br><br>II. False: We cannot always guarantee a constant lookup time. If the collision resolution is done by chaining, then it may take linear time, O(n).
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Hash table contains ‘n’ keys and ‘k’ slots and the collision resolution is done by chaining. The chaining (set of keys which are hashing to the same slot), is implemented using AVL Tree instead of linked list. What is the worst time complexity of a key to insert in a hash table?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(1)</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> O(log n)<br><span class="explanation">Explanation:</span><br>Assume uniform hashing and use linked list, all the operations take O(1+ n) time, O(1) for applying hash function and access the slot, and O(n) is for inserting the linked list. Using AVL tree, we can reduce the term O(n) to O(log n). So, the overall time complexity is O(1+log n) = O(log n).
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n log n)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The binary search algorithm is implemented using recursion. Then the space complexity is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results95_files/wrong.png" width="16">&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(1)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> O(log n)<br><span class="explanation">Explanation:</span><br>The recurrence relation for binary search is <br>T(n) = T(n/2) + c<br>So, the time complexity is O(log n). Here we are using recursion, so, in built recursion uses stack. So, log n activation records are inserted into stack. <br>Therefore, overall space complexity is O(log n)
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n log n)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the average number of comparisons required to find an element in an array of n elements using linear search?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> n/2</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> (n-1)/2</li>
+<li><img src="./Test Results95_files/wrong.png" width="16">&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> n(n+1)/2</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> (n+1)/2<br><span class="explanation">Explanation:</span><br>Number of comparisons in best case is 1<br>Number of comparisons in worst case is n<br>So, the average number of comparisons required to find an element is  (n+1)/2.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using open addressing with linear probing, we sequentially insert three distinct keys k<sub class="tcecode">1</sub>, k<sub class="tcecode">2</sub> and k<sub class="tcecode">3</sub> into a hash table of size m. Assuming simple uniform hashing, what is the probability that we will need three probes, when inserting the third key, k<sub class="tcecode">3</sub>?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results95_files/wrong.png" width="16">&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 3/m</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 2/m<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> 3/m<sup class="tcecode">2</sup><br><span class="explanation">Explanation:</span><br>k<sub class="tcecode">1</sub> can go anywhere.<br><br>k<sub class="tcecode">2</sub> can either i) be placed immediately before or after k<sub class="tcecode">1</sub> (or) ii) it will hit k<sub class="tcecode">1</sub> on the first try and, thus by linear probing it will be placed immediately after k<sub class="tcecode">1</sub>. <br>These are the only possible ways to get the first two keys in two adjacent cells in the hash table. This happens with probability 3/m. The only way for k<sub class="tcecode">3</sub> to need three probes is when it hits the first of the two adjacent keys and this happens with probability 1/m. This gives us a total probability of 3/m<sup class="tcecode">2</sup>.
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 2/m</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A[n] be an array of ‘n’ elements and these elements are in the non-decreasing order. Where n∈(2<sup class="tcecode">k-1</sup>, 2<sup class="tcecode">k</sup>). The number of comparisions required for searching a key from the array using an efficient algorithm takes the complexity in the worst case.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> O(k)<br><span class="explanation">Explanation:</span><br>Given the value of n ranges from 2<sup class="tcecode">k-1</sup> to 2<sup class="tcecode">k</sup>.<br>Let suppose the n value is ranges from 16 to 32 then in the worst case number of comparisons are needed to find a element will be 5 using binary search  i.e  log2<sup class="tcecode">5</sup> = O(k) comparisons .
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an array ‘A’ with 2m elements. The elements in odd position are sorted in non-increasing  order that is A[1] &gt;= A[3] &gt;= A[5]......A[2m-1] The elements in even position are sorted in non-decreasing order, that is A[2]&lt;= A[4] &lt;= A[6].....A[2m]. Which of the following method is recommended for finding if a given number is in array?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Sort the given array using quick sort and then apply binary search on array.</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Merge the sorted lists and apply binary search.</li>
+<li><img src="./Test Results95_files/wrong.png" width="16">&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Apply binary search on the entire array.</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> Separately apply binary search on the odd position elements and even position elements<br><span class="explanation">Explanation:</span><br>Option (d) is correct:<br><br><strong class="tcecode">Algorithm:</strong><br>Calculate two mids m and m-1 respectively. <br>If target element is greater than A[m-1] [ non-increasing array] then move the right of array to m-3 otherwise move the left of the array to m+1.<br>If target element is greater than A[m] [ non-decreasing array] then move the left  of array to m+2 otherwise move the right of the array to m-2.<br>TC is O(logn).<br><br>Option (a): Sorting using quicksort will take O(n<sup class="tcecode">2</sup>) time in worst case<br>Option (b): Merging will take O(n) time and O(n) space and then applying search will takes O(logn) time<br>Option (c): Binary search only works on a sorted array
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following three versions of the binary search program. Assume that the elements of type T can be compared with each other. Also assume that the array ‘A’ is sorted.<br><img src="./Test Results95_files/Q9a.PNG" alt="image:Algo2/Q9a.PNG" width="304" height="493" class="tcecode"><br>A binary search program is called correct provided it terminates with A[k] = x whenever such an element exists, or it terminates with A[k] != x if there exists no array element with value x which of the following statements is correct.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Only program 1 and 2 is correct</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Only program 2 and 3 is correct</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> Only program 1 is correct</li>
+<li><img src="./Test Results95_files/correct.png" width="18">&nbsp;<img src="./Test Results95_files/correct.png" width="18"> All the three programs are wrong<br><span class="explanation">Explanation:</span><br>In all the above 3 programs, the condition while(i&gt;j) will never be satisfied.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a sorted array ‘A’ and a number ‘p’, Find the efficient time complexity that counts the occurences of ‘p’ in an array ‘A’.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results95_files/wrong.png" width="16">&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> O(logn)<br><span class="explanation">Explanation:</span><br>1) Use Binary search to get index of the first occurrence of p in A[]. Let the index of the first occurrence be i.<br>2) Use Binary search to get index of the last occurrence of x in A[]. Let the index of the last occurrence be j.<br>3) Return (j – i + 1);<br><br>Algorithm For finding first occurence:<br><img src="./Test Results95_files/E10a.PNG" alt="image:Algo2/E10a.PNG" width="450" height="595" class="tcecode"><br>Time complexity is O(logn)<br>So, Overall time complexity is O(logn) + O(logn) = O(logn)
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> O(nlogn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an array of 19 elements, Find the minimum number of comparisons required to find minimum and maximum elements in an array<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> 27<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Algorithm for finding minimum and maximum</strong><br><br>If n is odd then initialize min and max as first element.<br>If n is even then initialize min and max as minimum and maximum of the first two elements respectively.<br>For rest of the elements, pick them in pairs and compare their<br>maximum and minimum with max and min respectively.<br> <br>So, Answer is 3*(n-1)/2 = 3*18/2 = 27
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 29</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Question Q12 &amp; Q13:</span></strong><br>Consider the following keys that are hashed into the hash table in the order given using the hash function H(k).<br><br>int H(int k)<br>{<br>	int a = (k+7) * (k+7);<br>	a = a/16;<br>	a = a+k;<br>	a = a%11;<br>	return a;<br>}<br>43, 23, 1, 0, 15, 31, 4, 7, 11, 3<br>Assume hash table has locations from 0 to 10<br>Find the location of an element 15, if hash table uses linear probing to hash the given elements.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 3</li>
+<li><img src="./Test Results95_files/correct.png" width="18">&nbsp;<img src="./Test Results95_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Given keys are<br>43,23,1,0,15,31,4,7,11,3.<br><br>1. <span style="text-decoration:underline;">Key 43</span><br>a=50*50=2500<br>a=2500/16=156<br>a=156+43=199<br>a=199 % 11=1<br><br>2. <span style="text-decoration:underline;">Key 23</span><br>a=30*30=900<br>a=900/16=56<br>a=56+23=79<br>a=79 % 11=2<br><br>3.<span style="text-decoration:underline;"> Key 1</span><br>a=8*8=64<br>a=64/16=4<br>a=4+1=5<br>a=5 % 11=5<br><br>4. <span style="text-decoration:underline;">Key 0</span><br>a=7*7=49<br>a=49/16=3<br>a=3+0=3<br>a=3 % 11=3<br><br>5.<span style="text-decoration:underline;">Key 15</span><br>a=22*22=484<br>a=484/16=30<br>a=30+15=45<br>a=45 % 11=1<br><br>It collides with location 1, because of linear probing, sequentially checks for available slots.<br>Now, key 15 can be at location 4.<br><br>6. <span style="text-decoration:underline;">Key 31</span><br>a=38*38=1444<br>a=1444/16=90<br>a=90+31=121<br>a=121 % 11=0<br><br>7. <span style="text-decoration:underline;">Key 4</span><br>a=11*11=121<br>a=121/16=7<br>a=7+4=11<br>a=11 % 11=0<br>It collides with location 0,1,2,3,4,5 and placed at location 6.<br><br>8.<span style="text-decoration:underline;">Key 7</span><br>a=14*14=196<br>a=196/16=12<br>a=12+7=19<br>a=19 % 11=8<br><br>9. <span style="text-decoration:underline;">Key 11</span><br>a=18*18=324<br>a=324/16=20<br>a=20+11=31<br>a=31 % 11=9<br><br>10. <span style="text-decoration:underline;">Key 3</span><br>a=10*10=100<br>a=100/16=6<br>a=6+3=9<br>a=9 % 11=9<br>It collides with location ‘9’ and placed at location 10.<br>The final hash table after all insertions is <br><img src="./Test Results95_files/E12a.PNG" alt="image:Algo2/E12a.PNG" width="108" height="221" class="tcecode"><br>So, the key 15 is found at location 4.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Question Q12 &amp; Q13:</span></strong><br>Consider the following keys that are hashed into the hash table in the order given using the hash function H(k).<br><br>int H(int k)<br>{<br>	int a = (k+7) * (k+7);<br>	a = a/16;<br>	a = a+k;<br>	a = a%11;<br>	return a;<br>}<br>43, 23, 1, 0, 15, 31, 4, 7, 11, 3<br>Assume hash table has locations from 0 to 10<br>If the hash table uses chaining to handle the collisions, how many locations are left without hashing any element into it?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results95_files/E13a.PNG" alt="image:Algo2/E13a.PNG" width="226" height="214" class="tcecode"><br>There are ‘4’ locations are left without hashing.
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Answer Questions Q14 &amp; Q15</span></strong><br>Consider a Hash table containing ‘n’ keys and ‘k’ slots. Each key will hash into a slot in the given Hash table.  (Assume collisions are resolved by chaining).<br>What is the probability that the first slot of hash table will be empty?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 1-(1/k)</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 1/k<sup class="tcecode">n</sup></li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 1-(1/k<sup class="tcecode">n</sup>)</li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> ((k-1)/k)<sup class="tcecode">n</sup><br><span class="explanation">Explanation:</span><br>Independently, each key has a probability of 1/k  for hashing into the first slot (or) a probability of 1-  1/k for not hashing into the first slot. Thus, the probability that no key hashes into the first slot is (1-1/k)<sup class="tcecode">n</sup>=((k-1)/k)<sup class="tcecode">n</sup>.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Answer Questions Q14 &amp; Q15</span></strong><br>What is the expected number of slots that are being nonempty?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> 1-((k-1)/k)<sup class="tcecode">n</sup></li>
+<li>&nbsp;<img src="./Test Results95_files/correct.png" width="18"> k(1-((k-1)/k)<sup class="tcecode">n</sup> )<br><span class="explanation">Explanation:</span><br>From the solution of Q14, the probability of first slot being empty is ((k-1)/k)<sup class="tcecode">n</sup><br>So, the probability of first slot being nonempty is 1-((k-1)/k)<sup class="tcecode">n</sup> . <br>Given that there are k slots, so the expected number of nonempty slots is k(1-((k-1)/k)<sup class="tcecode">n</sup> ).
+</li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> ((k-1)/k)<sup class="tcecode">n</sup></li>
+<li>&nbsp;<img src="./Test Results95_files/wrong.png" width="16"> k(1-(1/k))<sup class="tcecode">n</sup></li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results95_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

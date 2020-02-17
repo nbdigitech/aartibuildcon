@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=25178&test_id=242 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results69_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results69_files/calclayout.css">
+<script src="./Test Results69_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results69_files/jquery-ui.js.download"></script>
+<script src="./Test Results69_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results69_files/custom.js.download"></script>
+<script src="./Test Results69_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results69_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results69_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838106, 'I\'m sorry, the time available to complete the test is over!', false, 1486838106782);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=25178&amp;test_id=242#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Subject Test - 2</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-17 22:53:52&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-18 00:07:10&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:13:18&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+14.390 / 50.000 (29%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+15 / 33 (45%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider a GBN protocol with individual acknowledgemtns.  Assume the timeout values for all three protocols are sufficiently long such that 5 consecutive data segments and their corresponding ACKs can be received (if not lost in the channel) by the receiving host (Host B) and the sending host (Host A) respectively. Suppose Host A sends 5 data segments to Host B, and the 2nd segment (sent from A) is lost. In the end, all 5 data segments have been correctly received by Host B. How many segments has Host A sent in total and how many ACKs has Host B sent in total? What are their sequence numbers?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 8, 5(1, 3, 4, 5, 2)</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 8, 8(1, 2, 2, 2, 2, 3, 4, 5)</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 9, 8(1, 1, 1, 1, 2, 3, 4, 5)<br><span class="explanation">Explanation:</span><br>A sends 9 segments in total. They are initially sent segments 1, 2, 3, 4, 5. It resends segments 2, 3, 4 and 5 when segment 2 is lost. <br>B sends 8 ACKs. They are 4 ACKS with sequence number 1, and 4 ACKS with<br>sequence numbers 2, 3, 4, and 5 respectively.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 8, 6(1, 2, 2, 3, 4, 5)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that the distance from earth to a planet is 9 * 10<sup class="tcecode">10</sup> m. What will be the channel utilization if stop and wait protocol is used for frame transmission on a 64 Mbps channel. Assume that each frame size is 32KB and speed is equal to speed of light.(3*10<sup class="tcecode">8</sup>m/s)<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 3.2 * 10<sup class="tcecode">-4</sup></li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 5.2 * 10<sup class="tcecode">-2</sup></li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 6.7 * 10<sup class="tcecode">-4</sup><br><span class="explanation">Explanation:</span><br>Link utilization = efficiency <br>(1/(1 + 2T<sub class="tcecode">p</sub>/T<sub class="tcecode">t</sub>))<br>		T<sub class="tcecode">t</sub>  = L/B = 32*10<sup class="tcecode">3</sup>*8/64*10<sup class="tcecode">6</sup>  = 4*10<sup class="tcecode">-3</sup> sec<br>		T<sub class="tcecode">p</sub> = d/v = 9 * 10<sup class="tcecode">10</sup> m/ 3*10<sup class="tcecode">8</sup>m/s = 3 * 10<sup class="tcecode">2</sup> sec<br>		⇒ 6.67 * 10<sup class="tcecode">-4</sup>
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 4.8 * 10-3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A bit string 0111101111110111110, needs to be transmitted at the data link layer. What is the string actually transmitted after bit stuffing? Assume ending delimiter is 011111.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 0111100111101101111010<br><span class="explanation">Explanation:</span><br>After it finds a 0 and then four consecutive 1 bits it stuffs with a 0. <br>	0111100111101101111010
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 01101100110110110011011010</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 01111011111100111110</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 0111100111101101111100</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following allows a user at one host to establish a connection to another host and then pass keystrokes from localhost to remote host?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> HTTP</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> FTP</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> telnet<br><span class="explanation">Explanation:</span><br>Telnet and ssh are protocols used to login into remote systems.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that everyone in a group of N members wants to communicate secretly with other N-1 members using symmetric key cryptographic system. The communication between any two persons shouldn’t be decodable by the others in the system has whole to satisfy the confidentiality requirement is?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> N(N-1)</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> N + (N-1)</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> N(N-1)/2<br><span class="explanation">Explanation:</span><br>In symmetric key cryptographic system same key is used as both the parties to perform encryption and decryption.<br>	<br>	If “N” people wants to communicate with N-1 others then number of keys required is <sup class="tcecode">N</sup>C<sub class="tcecode">2</sub><br>	 = N (N - 1) /2
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> N-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following?<br><div class="tcecodepre">1.DNS					a.&nbsp;Port&nbsp;20<br>2.POP3					b.&nbsp;Port&nbsp;25<br>3.FTP&nbsp;data				c.&nbsp;Port&nbsp;53<br>4.SMTP					d.&nbsp;Port&nbsp;110</div><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1-c, 2-d, 3-b, 4-a</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 1-c, 2-d, 3-a, 4-b</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1-d, 2-c, 3-b, 4-a</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1-d, 2-c, 3-a, 4-b</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following statements represents the Repudiation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Hacker keeps a copy of ongoing packet and send it after some time.</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Hacker modifies the ongoing information</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Hacker project himself as somebody else</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> The sender/receiver deny that he has send/receive the message.<br><span class="explanation">Explanation:</span><br>a : replaying attack<br>b: modification attack<br>c: masquerading attack<br>d: repudiation attack
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a network of having ID as 198.128.10.10/28. There is a wifi router connected to this network and 2 mobiles and a tablet are connected to this router. Apart from these devices, 2 more desktops with 2 interfaces where these desktops are part of 2 different networks and a laptop exist in this network. How many IP addresses are still available after all the specified devices connected?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Given 198.128.10.10/28 is Net ID.<br>	With this ID, 24 - 2 = 14 possible IP’s are available to allocate hosts.<br>	Here Total devices connected are = 2 mobiles + 1 tablet + 2 desktop systems + 1 laptop <br>      = 6<br>	Total IP’s remaining = 14 - 6 = 8<br>	Note: <br>		Even Though desktop has 2 interfaces, for one network, one IP will assign to one interface and some other IP of another network will be assigned to another interface, because these desktops are part of 2 different networks.<br>		Even though we are accessing through wifi, one IP will be assigned to a device.
+</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 12</li>
+</ol>
+<br><br>
+</li>
+<li>
+A bit stream 10011101 is transmitted using the standard CRC method. The generator polynomial is x<sup class="tcecode">3</sup> + 1. Suppose the third bit from the left is inverted during transmission. What will be the bit string at the receivers end.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1 0 1 1 0 1 0 1 1 0 0</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1 0 1 1 1 1 0 1 0 0 0</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1 0 0 1 1 1 0 1 1 0 0</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 1 0 1 1 1 1 0 1 1 0 0<br><span class="explanation">Explanation:</span><br>Our generator G(x) = x<sup class="tcecode">3</sup> + 1 encoded as 1001 because the generator polynomial is of the degree three we append three zeros to the lower end of the frame to be transmitted. Hence, after appending the 3 zeros the bit stream is 10011101000. On dividing the message by generator after appending three zeros to the frame we get a remainder of 100. We do modulo 2 subtraction thereafter of the remainder from the bit stream with the three zeros appended. The actual frame transmitted is 10011101100. See below. <br><img src="./Test Results69_files/Q8a.PNG" alt="image:CNS2/Q8a.PNG" width="254" height="202" class="tcecode"><br>Remainder = 100<br>Actual correct data = 1 0 0 1 1 1 0 1 1 0 0 <br>The third bit from the left is garbled and the frame is received as <br>1 0 1 1 1 1 0 1 1 0 0 .
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In IP-Sec protocol authentication header is attached to the packet coming from transport layer. In this authentication header length is 0x2B. Then what is the value stored in payload length field in authentication header?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>0x2B = 44 (in decimal)<br>	Payload length value in authentication header will be the factor 4.<br>Let p is the authentication header size, then (p/4) - 2 is the value to stored in payload field.<br>	Thus, p = 9
+</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 44</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+If all the links in the Internet were to provide reliable delivery service, the TCP reliable delivery service be redundant(TCP reliability is not necessary)<br>The above statement is True/ False : __________________________<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> True</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> False<br><span class="explanation">Explanation:</span><br>Although each link guarantees an IP datagram sent over the link will be received at the other end of the link without errors, it is not guaranteed IP datagrams will arrive at the ultimate destination in the proper order. With IP, datagrams in the same TCP connection can take different routes in the network, and therefore arrive out of order. TCP is still needed to provide the receiving end of the application the byte stream in the correct order. Also, IP can lose packets due to routing loops or equipment failures.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> depends on implementation</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider sending a large file from a host to another over a TCP connection that has no loss. Suppose TCP uses AIMD for its congestion control without slow start. Assuming  cwnd(congestion window) increases by 1 MSS every time a batch of ACKs is received and assuming approximately constant round-trip times, What is the average throughput (in terms of MSS and RTT) for this connection upto 6 RTT time? Assume initial window size is 5 MSS.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 7.5<br><span class="explanation">Explanation:</span><br>→ In the first RTT 5 MSS was sent.<br>→ In the second RTT 6 MSS was sent<br>→ In the third RTT 7 MSS was sent<br>→ In the fourth RTT 8 MSS was sent<br>→ In the fifth RTT, 9 MSS was sent<br>→ In the sixth RTT, 10 MSS was sent. <br>So, up to time 6 RTT, 5+6+7+8+9+10 = 45 MSS were sent (and acknowledged). <br>Therefore, average throughput  = (45 MSS)/(6 RTT) = 7.5 MSS/RTT.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 6.7</li>
+</ol>
+<br><br>
+</li>
+<li>
+The size of the option field of an IPv4 datagram is 160 bits. What is the value of HLEN in binary representation?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 1010<br><span class="explanation">Explanation:</span><br>If the size of the option field is 20 bytes, then the total length of the header is 40<br>bytes (20 byte base header plus 20 bytes of options). <br>The HLEN field will be the total number of bytes in the header divided by 4.<br>So, 40/4 = 10 = 1010(binary)
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 0101</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1100</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1001</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data questionsQ1, Q2, Q3:</strong><br>A TCP connection used by two hosts A and B. Host A sends 126 bytes successfully to Host B. Thereafter Host A sends 2 segments of each 80 and 40 bytes respectively. In these 2 segments, first segment has a source port number as 205 and data in the segment lets the host A login to the remote host B using secure shell protocol.  Host B sends an acknowledgment whenever it receives a segment from Host A. The first sequence number used in this scenario by sender is 127.<br>In the third segment sent from Host A to B, the sequence number of the third segment and the destination port number respectively are<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 333, 22<br><span class="explanation">Explanation:</span><br>Initial sequence number = 127<br>Total data sent at first packet = 126 <br>So the sequence number of third packet is 127 + 126 + 80 = 333, <br>Requesting ssh packet, thus, the destination port is 22.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 207, cannot say</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 208, 22</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 304, 80</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data questionsQ1, Q2, Q3:</strong><br>A TCP connection used by two hosts A and B. Host A sends 126 bytes successfully to Host B. Thereafter Host A sends 2 segments of each 80 and 40 bytes respectively. In these 2 segments, first segment has a source port number as 205 and data in the segment lets the host A login to the remote host B using secure shell protocol.  Host B sends an acknowledgment whenever it receives a segment from Host A. The first sequence number used in this scenario by sender is 127.<br>What is the acknowledgment number and the destination port number, in the acknowledgment of the second arriving segment. Assume second segment arrives before the third segment<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 207, 205</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 333, 205<br><span class="explanation">Explanation:</span><br>If the first segment arrives before the second, in the acknowledgment of the first<br>arriving segment, the acknowledgement number is 253. Likewise If the second segment arrives before the third, in the acknowledgment of the second arriving segment, the acknowledgement number is 333. <br>The source (host B) port number is 22 and the destination (host A) port number is 205.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 20, 22</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 373, 205</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data questionsQ1, Q2, Q3:</strong><br>A TCP connection used by two hosts A and B. Host A sends 126 bytes successfully to Host B. Thereafter Host A sends 2 segments of each 80 and 40 bytes respectively. In these 2 segments, first segment has a source port number as 205 and data in the segment lets the host A login to the remote host B using secure shell protocol.  Host B sends an acknowledgment whenever it receives a segment from Host A. The first sequence number used in this scenario by sender is 127.<br>If the third segment arrives before the second segment, what is the acknowledgment number in the acknowledgment of the third segment,?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 253<br><span class="explanation">Explanation:</span><br>If the third segment arrives before the first segment, in the acknowledgment of the<br>this segment, the acknowledgement number is 253, indicating it is still waiting for bytes 253 and onward.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 258</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 293</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 205</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the wrong statement below<br>1.With the SR protocol, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.<br>2.With GBN, it is possible for the sender to receive an ACK for a packet that falls outside of its current window.<br>3.The stop and wait  protocol is the same as the SR protocol with a sender and receiver window size of 1.<br>4.The stop and wait protocol is the same as the GBN protocol with a sender window size of 1.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1 and 2</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 2 and 3</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1, 3 and 4</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> All the above<br><span class="explanation">Explanation:</span><br>1.True. Suppose the sender has a window size of 3 and sends packets 1, 2, 3 at t0 . At t1 (t1 &gt; t0) the receiver ACKS 1, 2, 3. At t2 (t2 &gt; t1) the sender times out and resends 1, 2, 3. At t3 the receiver receives the duplicates and re-acknowledges 1, 2, 3. At t4 the sender receives the ACKs that the receiver sent at t1 and advances its window to 4, 5, 6. At t5 the sender receives the ACKs 1, 2, 3 the receiver sent at t2 . These ACKs are outside its window.<br>2.True. By essentially the same scenario as in (a).<br>3.True.<br>4.True. Note that with a window size of 1, SR, GBN, and the alternating bit protocol are functionally equivalent. The window size of 1 precludes the possibility of out-of-order packets (within the window). A cumulative ACK is just an ordinary ACK in this situation, since it can only refer to the single packet within the window.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A person watching the live cricket streaming in his desktop and no other job is running in that desktop. If he uses IPv6, what will be the possible next header field value of packets arrived to his desktop? Assume next field of next header is Transport layer header.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 00110</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 10001<br><span class="explanation">Explanation:</span><br>For live streaming, UDP will be used for fast communication. So the next field value will be 17. In binary 10001.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 00010</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a connection, the value of cwnd is 3000 and the value of rwnd is 5000. The host has<br>sent 2000 bytes which has not been acknowledged. How many more bytes can be sent?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 1000<br><span class="explanation">Explanation:</span><br>Sender window size = min(cwnd, rwnd) - sent data = 3000-2000 = 1000<br>	Even though the data sent is not been acknowledged, we can not assume that this is lost. May be the ack gets delayed, so we can send the remaining data based on the window size..
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 2000</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 3000</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> No data can be sent.</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the ratio of useful data to the entire packet for the smallest Ethernet frame and  the largest frame?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 68.8, 93.5</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 82.9, 90.2</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 71.9, 98.8<br><span class="explanation">Explanation:</span><br>The smallest Ethernet frame is 64 bytes and carries 46 bytes of data (and possible<br>padding). The largest Ethernet frame is 1518 bytes and carries 1500 bytes of data.<br>The ratio = (data size) / (frame size) %. <br><br>Smallest Frame Frame size = 64 Data size ≤ 46 Ratio ≤ 71.9%<br>Largest Frame Frame size =1518 Data size = 1500 Ratio = 98.8%
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 65, 95</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a congestion control mechanism used in virtual circuits internally is followed by a rule that all the routers are going to wait for acknowledging a packet till it knows the packet last transmission along the virtual circuit was received successfully and has a free buffer. For simplicity, assume that the routers use a stop-and-wait protocol and a that each virtual circuit has one buffer dedicated to it for each direction of traffic. If it takes T seconds to transmit a packet (data or acks) and there are n routers on the path, what is the rate at which packets are delivered to the destination host? Assume that transmission errors are rare, and the host router connection is infinitely fast.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 2(n-1)T<br><span class="explanation">Explanation:</span><br>Let time be slotted in units of T sec. In slot 1 the source router sends the first packet. At the start of slot 2, the second router has received the packet but cannot acknowledge it yet. At the start of slot 3, the third router has received the packet, but it cannot acknowledge it either, so all the routers behind it are still hanging. In this protocol, the first acknowledgement can only be sent when the destination host takes the packet from the destination router. Now the acknowledge begins to propagating back. It takes two full transits of the subnet, 2(n-1)T sec, before the source router can send the second packet. Thus the throughput is one packet every 2(n-1)T sec.
+</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 2nT</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 2(n<sup class="tcecode">2</sup>)T</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> (n-1)T</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that network shown in below diagram uses distance vector routing with forwarding tables at each node. If each node periodically announces their vectors to the neighbour using the split-horizon strategy, what is the distance vector routing advertised from A to B after stabilisation?<br><img src="./Test Results69_files/Q28a.PNG" alt="image:CNS2/Q28a.PNG" width="255" height="148" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 5, 4, 7</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> α,4,α<br><span class="explanation">Explanation:</span><br>In split horizon strategy, full distance vectors are going exchange with neighbours. if the destination node depends on neighbour node, then the sender replace the respective distance field with 0 before exchanging the vector to the neighbour.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 5, 4, 10</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 5, 4, α</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of these statements is true about Ethernet?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Ethernet has the capacity of either 11 or 54 Mbps.</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Since Ethernet is a standard for shared network, it is not possible to use switches in<br>Ethernet networks.</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> When purchasing network interface cards, you do not need to know if you use<br>Ethernet or other network standards. Network cards support all standards.</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Ethernet can combine multiple speeds on the same network.</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a public key system using RSA, what is the private key of the user if the following values are given p=17, q=31 and e=7?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 481</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 343<br><span class="explanation">Explanation:</span><br>⇒ P = 17, q = 31, n = p*q = 527<br>⇒ e = 7.<br>⇒ φ(n) = (p −1) × (q −1) = 16 * 30 = 480<br>⇒ We know that, e × d  = 1 mod φ(n) <br>⇒ We substitute the values of d in the above equation to find d. <br>⇒ d = 343
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 1441</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 2401</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following network.	With the indicated link costs,	use	Djikstra’s  shortest-path algorithm	to compute the shortest path from	A to all network nodes.<br><img src="./Test Results69_files/Q25a.PNG" alt="image:CNS2/Q25a.PNG" width="392" height="166" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> B  C  D  E  F  G H<br>    1   3   4   4  7  5  6<br><span class="explanation">Explanation:</span><br><img src="./Test Results69_files/E25a.PNG" alt="image:CNS2/E25a.PNG" width="671" height="411" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B  C  D  E  F  G H<br>    1   3   5   4  5  5  6</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B  C  D  E  F  G H<br>    1   3   4   2  6  5  6</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B  C  D  E  F  G H<br>    1   3   3   4  3  4  6</li>
+</ol>
+<br><br>
+</li>
+<li>
+An ISP is granted a block of addresses starting with 190.100.0.0/16. The ISP needs to distribute these addresses to three groups of customers as follows: <br>1. The first group has 64 customers; each needs 256 addresses. <br>2. The second group has 128 customers; each needs 128 addresses. <br>3. The third group has 128 customers; each needs 64 addresses. <br>Design the subblocks and give the CIDR notation for each subblock. Find out how many addresses are still available after these allocations.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 65536</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 24576<br><span class="explanation">Explanation:</span><br>Group-1 <br>For this group, each customer needs 256 addresses. This means the suffix length is 8 (28 = 256). The prefix length is then 32 − 8 = 24. <br>01: 190.100.0.0/24 → 90.100.0.255/24 <br>02: 190.100.1.0/24 → 90.100.1.255/24 <br>………………………………….. <br>64: 190.100.63.0/24 → 90.100.63.255/24 <br>Total = 64 × 256 = 16,384<br><br>	Group-2<br>	For this group, each customer needs 128 addresses. This means the suffix length is 7 (27 = 128). The prefix length is then 32 − 7 = 25. The addresses are: <br>001: 190.100.64.0/25 → 90.100.64.127/25 <br>002: 190.100.64.128/25 → 90.100.64.255/25 <br>003: 190.100.127.128/25 → 90.100.127.255/25 <br>Total = 128 × 128 = 16,384<br><br>	Group 3 <br>For this group, each customer needs 64 addresses. This means the suffix length is 6 (26 = 64). The prefix length is then 32 − 6 = 26. <br>001:190.100.128.0/26 → 90.100.128.63/26 <br>002:190.100.128.64/26 → 90.100.128.127/26 <br>………………………… <br>128:190.100.159.192/26 → 90.100.159.255/26 <br>Total = 128 × 64 = 8,192<br><br>Number of granted addresses: 65,536 <br>Number of allocated addresses: 40,960 <br>Number of available addresses: 24,576
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 32752</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 34576</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose TCP’s additive increase and multiplicative decrease algorithm is used as a congestion control algorithm. The slow start phase begins with 4 MSS and threshold at start of first transmission is 16 MSS. Assume that a time-out occurs during 6th transmission, what will be the congestion window at 10th transmission.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>Given threshold= 16 MSS.<br>The slow start phase starts with 4 MSS.<br>First transmission= 4MSS.<br>second transmission= 8MSS<br>third transmission= 16MSS<br>fourth transmission= 17MSS<br>fifth transmission= 18MSS<br>sixth transmission= 19MSS -&gt;Time out occurs<br>New threshold= 19/2 = 9MSS<br>seventh transmission= 4MSS<br>eighth transmission= 8MSS<br>ninth transmission= 9MSS<br>tenth transmission= 10MSS
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 9</li>
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose four active nodes—nodes A, B, C and D are competing for access to a channel using slotted ALOHA. Assume each node has an infinite number of packets to send. Each node attempts to transmit in each slot with probability p. The first slot is numbered slot 1, the second slot is numbered slot 2, and so on. What is the probability that the first success occurs in slot 3?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results69_files/wrong.png" width="16">&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> (1 - p(1-p)<sup class="tcecode">3</sup>) 4 p(1-p)<sup class="tcecode">3</sup></li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> (1 - 4 p(1-p)<sup class="tcecode">3</sup>)<sup class="tcecode">2</sup> 4 p(1-p)<sup class="tcecode">3</sup><br><span class="explanation">Explanation:</span><br>p(any node succeeds in a slot) = [P(A)+P(<span style="text-decoration:line-through;">B</span>)+P(<span style="text-decoration:line-through;">C</span>)+P(<span style="text-decoration:line-through;">D</span>)]<br>                               + [P(<span style="text-decoration:line-through;">A</span>)+P(B)+P(<span style="text-decoration:line-through;">C</span>)+P(<span style="text-decoration:line-through;">D</span>)]<br>                               + [P(<span style="text-decoration:line-through;">A</span>)+P(<span style="text-decoration:line-through;">B</span>)+P(C)+P(<span style="text-decoration:line-through;">D</span>)]<br>                               + [P(<span style="text-decoration:line-through;">A</span>)+P(<span style="text-decoration:line-through;">B</span>)+P(<span style="text-decoration:line-through;">C</span>)+P(D)]<br><br>= p(1-p)<sup class="tcecode">3</sup> + p(1-p)<sup class="tcecode">3</sup> + p(1-p)<sup class="tcecode">3</sup> + p(1-p)<sup class="tcecode">3</sup><br>= 4 p(1-p)<sup class="tcecode">3</sup><br>p(no node succeeds in a slot) = 1 - 4 p(1-p)<sup class="tcecode">3</sup><br>Hence, p(first success occurs in slot 3) = p(no node succeeds in first 2 slots) * p(any<br>node succeeds in 3rd slot) = (1 - 4 p(1-p)<sup class="tcecode">3</sup>)<sup class="tcecode">2</sup> 4 p(1-p)<sup class="tcecode">3</sup>
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> (1 - p(1-p)<sup class="tcecode">3</sup>)<sup class="tcecode">2</sup> 4 p(1-p)<sup class="tcecode">3</sup></li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> (1 - 4 p(1-p)<sup class="tcecode">3</sup>) 4 p(1-p)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the information portion of a packet contains 10 bytes consisting of the 8-bit binary representation of the numbers 1 through 10. Compute the Internet (IP) checksum for this data.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 11100110 11100001<br><span class="explanation">Explanation:</span><br>Here we need to find Internet(IP) checksum which means 16-bit checksum.<br>	This is another way of calculating checksum.<br>	Instead of XOR operation between a pair of binary numbers, we put all binary numbers at a time and take the result as 0 if number of 1’s are even and 1 as result if number of 1’s is odd.<br>00000001 00000010<br>00000011 00000100<br>00000101 00000110<br>00000111 00001000<br>00001001 00001010<br>-------------------------<br>00011001 00011110<br>The one's complement of the sum is 11100110 11100001.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 11100110 11101001</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 00011001 00010110</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 00011001 00011110</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider transferring an enormous file of L bytes from Host A to Host B. Assume an MSS of 536 bytes.  Find how long it takes to transmit the file. Assume that a total of 66 bytes of transport, network, and data-link header are added to each segment before the resulting packet is sent out over a 160 Mbps link. Ignore flow control and congestion control so A can pump<br>out the segments back to back and continuously.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 31</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> 242<br><span class="explanation">Explanation:</span><br>There are 2<sup class="tcecode">32</sup> possible sequence numbers.<br>The sequence number does not increment by one with each segment. Rather, it<br>increments by the number of bytes of data sent. So the size of the MSS is irrelevant --<br>the maximum size file that can be sent from A to B is simply the number of bytes<br>representable by 2<sup class="tcecode">32</sup> = 4.19 Gbytes<br>	The number of segments is = 2<sup class="tcecode">32</sup> / 536 = 8,012,999.<br>66 bytes of header get added to each segment giving a total of 528,857,934 bytes of header. The total number of bytes transmitted is 2<sup class="tcecode">32</sup> + 528,857,934 =  4.824*10<sup class="tcecode">9</sup> bytes.<br>Thus it would take 242 seconds to transmit the file over a 160 Mbps link.
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 249</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> 57</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true when describing a multicast address?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Packets addressed to a unicast address are delivered to a single interface.</li>
+<li><img src="./Test Results69_files/correct.png" width="18">&nbsp;<img src="./Test Results69_files/correct.png" width="18"> Packets are delivered to all interfaces identified by the address. This is also called a one-to-many address.<br><span class="explanation">Explanation:</span><br>Packets addressed to a multicast address are delivered to all interfaces identified by the multicast address, the same as in IPv4. It is also called a one-to-many address. You can always tell a multicast address in IPv6 because multicast addresses always start with FF
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> Identifies multiple interfaces and is only delivered to one address. This address can also be called one-to-one-of-many.</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> These addresses are meant for non routing purposes, but they are almost globally unique so it is unlikely they will have an address overlap.</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked answers Q6 &amp; Q7:</strong><br>Consider the diagram shown where number of LANs are connected by bridges.In order to avoid the loops, these bridges arrange themselves into a spanning tree. The root bridge identified as bridge with least serial number. Next each bridge identifies a port through which it can forward packets to root bridge. If Multiple ports are there, the one which have lower index have the high priority.If Multiple bridges are there to forward a packet to a LAN, the one which is near to root bridge will get prefered and in that the one which has lowest ID will gets prefered.<br><img src="./Test Results69_files/Q24a.PNG" alt="image:CNS2/Q24a.PNG" width="221" height="232" class="tcecode"><br>What is depth first traversal spanning tree of bridges?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> B1, B4, B2, B3, B5<br><span class="explanation">Explanation:</span><br>Spanning Tree algorithm:<br>		→ Select a root bridge among all the bridges.  <br>root bridge =  the lowest bridge ID.<br>→ Determine the root port for each bridge except the root bridge<br>root port = port with the least-cost path to the root bridge<br>→ Select a designated bridge for each LAN<br>designated bridge = bridge has least-cost path from the LAN to the root bridge. <br>designated port connects the LAN and the designated bridge <br>→ B1, B4, B2, B3, B5<br><img src="./Test Results69_files/E24a.PNG" alt="image:CNS2/E24a.PNG" width="202" height="208" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B1, B4, B5, B2, B3</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B1, B2, B4, B5, B3</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> B1, B2, B3, B5, B4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked answers Q6 &amp; Q7:</strong><br>If host from LAN-1 wants to send packet to a host in LAN-4, what will be the forwarding table at B3 bridge.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> LAN-1 -&gt; port-1, LAN-2 -&gt; port-2, LAN-3 -&gt; port-1, LAN-4 -&gt; port-1</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> LAN-1 -&gt; port-1, LAN-2 -&gt; port-1, LAN-3 -&gt; port-3, LAN-4 -&gt; port-2</li>
+<li>&nbsp;<img src="./Test Results69_files/correct.png" width="18"> LAN-1 -&gt; port-1, LAN-2 -&gt; port-1, LAN-3 -&gt; port-2, LAN-4 -&gt; port-3<br><span class="explanation">Explanation:</span><br>Spanning Tree algorithm:<br>		→ Select a root bridge among all the bridges.  <br>root bridge =  the lowest bridge ID.<br>→ Determine the root port for each bridge except the root bridge<br>root port = port with the least-cost path to the root bridge<br>→ Select a designated bridge for each LAN<br>designated bridge = bridge has least-cost path from the LAN to the root bridge. <br>designated port connects the LAN and the designated bridge<br><img src="./Test Results69_files/E24a.PNG" alt="image:CNS2/E24a.PNG" width="214" height="209" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results69_files/wrong.png" width="16"> LAN-1 -&gt; port-1, LAN-2 -&gt; port-2, LAN-3 -&gt; port-2, LAN-4 -&gt; port-3</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results69_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

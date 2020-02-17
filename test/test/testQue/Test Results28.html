@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91840&test_id=308 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results28_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results28_files/calclayout.css">
+<script src="./Test Results28_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results28_files/jquery-ui.js.download"></script>
+<script src="./Test Results28_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results28_files/custom.js.download"></script>
+<script src="./Test Results28_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results28_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results28_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837311, 'I\'m sorry, the time available to complete the test is over!', false, 1486837311291);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91840&amp;test_id=308#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 6</strong><br>
+Engineering Mathematics, General Aptitude&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:12:39&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results28_files/E2.JPG" alt="image:MST6/E2.JPG" width="610" height="68" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a2.JPG" alt="image:MST6/a2.JPG" width="414" height="445" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results28_files/e6.JPG" alt="image:MST6/e6.JPG" width="575" height="44" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 1/√2<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a6.JPG" alt="image:MST6/a6.JPG" width="383" height="235" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Choose the word that is opposite in meaning to the word:</strong> <br>OBSELETE<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Extinct</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> Up-to-date<br><span class="explanation">Explanation:</span><br>The word obsolete refers to “no longer produced or used, out of date”.<br>	Option (a):<br>Extinct means vanished or no longer existing.<br>	Option (b):<br>Up-to-date refers to incorporating the latest developments and trends.<br>	Option (c):<br>		Abolish refers to formally put an end to.<br>	Option (d):<br>		Ancient refers to belonging to the very distant past and no longer in existence.<br> From the given explanation, the word that is opposite in meaning to “obsolete” is “up-to-date”.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Abolished</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Ancient</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Fill in the blank with the appropriate word:</strong><br>Put this picture ________ the wall.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> at</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> on<br><span class="explanation">Explanation:</span><br>In the given sentence, we need a preposition that best fits the context and in English, we use the preposition on when we think of a place as a surface. So, the given sentence will be “Put this picture on the wall.”
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> with</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> over the</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the greatest 4 digit number which when divided by the numbers 12,15,18,20 leaves no remainder.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 9905</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 9906</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 9900<br><span class="explanation">Explanation:</span><br>First we have to take LCM of 12, 15, 18, 20.<br>LCM of 12, 15, 18, 20 =180<br>The greatest 4 digit number =9999<br>∴<br><img src="./Test Results28_files/E15a.PNG" alt="image:MST6/E15a.PNG" width="160" height="131" class="tcecode"><br><br><br>∴ When 9999 is divided by 180, remainder is =99<br>Finally we want that 4 digit number that leaves no remainder.<br>So, 9999 – 99 = 9900
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 9902</li>
+</ol>
+<br><br>
+</li>
+<li>
+Four players Harry, Ron, Hermione and Ginny are playing a card game. A deck of 52 cards are dealt out equally. If Hermione and Ginny have a total of 8 spades among them, what is the probability that Harry has 3 of the remaining 5 spades?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.669</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 0.339<br><span class="explanation">Explanation:</span><br>It is given that Harry and Ginny have a total of 8 spades among 26 cards.<br>∴ In the remaining 26 cards there are exactly 5 spades.<br>These 26 cards are distributed equally among Harry and Ron [13 each]<br><img src="./Test Results28_files/E5a.PNG" alt="image:MST6/E5a.PNG" width="387" height="61" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.331</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.661</li>
+</ol>
+<br><br>
+</li>
+<li>
+Hari is inferior _______ Ram in intelligence.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Of</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> At</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> To<br><span class="explanation">Explanation:</span><br>Inferior refers to a person lower than another in rank, status or ability.<br>	In the given sentence, the word inferior is an adjective which is comparing the intelligence of Ram and Hari. The comparitive degree is generally followed by ‘than’, but comparative adjectives ending in –or (inferior) are followed by the preposition to.<br>	 Hari is inferior to Ram in intelligence
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Than</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the group G={2,4,6,8} under multiplication modulo 10, the inverse of element 2 is __________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Let ‘a’ be any element belongs to the group G.<br>If a*e=a, then ‘e’ is an identity element.<br>The given group G={2,4,6,8} and the binary operation * is multiplication modulo 10.<br>⇒2⊗<sub class="tcecode">10</sub> 6=2<br>     4⊗<sub class="tcecode">10</sub> 6=2<br>     6⊗<sub class="tcecode">10</sub> 6=6<br>     8⊗<sub class="tcecode">10</sub> 6=8      <br>∴ 6 is an identity element.<br>Let a, b are the elements belong to group G.<br>If a*b=e then ‘b’ is the inverse of ‘a’.<br>⇒2⊗<sub class="tcecode">10</sub> b=6<br>∴b=8<br>So, inverse of element 2 is 8.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let D<sub class="tcecode">18</sub>={1,2,3,6,9,18} and let the relation I be a partial ordering on D<sub class="tcecode">18</sub>. The all lower bounds of 6 and 9 are<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1,2</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1,2,3</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 1,3<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/10a.JPG" alt="image:MST6/10a.JPG" width="421" height="350" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Looking at a portrait of a woman, Murali said, “Her mother is the wife of my father’s son. Brothers and sisters I have none”. At whose portrait was Murali looking?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> His uncle</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> His daughter<br><span class="explanation">Explanation:</span><br>Since Murali has no brother or sister, so he is the only son of his father.<br>So, wife of Murali’s father’s son if Murali’s wife. Thus, Murali’s wife is the mother of woman.<br>∴ The woman is Murali’s daughter.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> His nephew</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> His cousin</li>
+</ol>
+<br><br>
+</li>
+<li>
+Twice the speed downstream is equal to thrice the speed upstream.The ratio of speed in still water to the speed of the current is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1:5</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1:3</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 2:3</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 5:1<br><span class="explanation">Explanation:</span><br>Let, Speed in still water =x km/hr<br>Speed of current =y km/hr<br>Speed downstream =(x+y)km/hr<br>Speed upstream =(x-y)km/hr<br>∴2(x+y)=3(x-y)<br>∴x=5y<br>x/y = 5/1<br>∴x:y=5:1
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Two lines intersect at O, points A1, A2, …, An are taken on one of them and B1, B2, …, Bn on the other, the number of triangles that can be drawn with the help of these (2n+1) points is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> n</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> <img src="./Test Results28_files/O7b.PNG" alt="image:MST6/O7b.PNG" width="20" height="19" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> <img src="./Test Results28_files/O7c.PNG" alt="image:MST6/O7c.PNG" width="20" height="20" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E7a.PNG" alt="image:MST6/E7a.PNG" width="299" height="200" class="tcecode"><br><img src="./Test Results28_files/E7b.PNG" alt="image:MST6/E7b.PNG" width="405" height="58" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> <img src="./Test Results28_files/O7d.PNG" alt="image:MST6/O7d.PNG" width="15" height="24" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Two numbers are less than the third number by 50% and 54% respectively. By how much percent is the second number less than the first number?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 13%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 12%</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 8%<br><span class="explanation">Explanation:</span><br>Let third number =100<br>So, first number =50<br>Second number =54<br>∴ Required % =((54-50)/(50))×100=8%
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 10%</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the closest interpretation to this sentence?<br>There is little hope of his recovery.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> He may possibly recover</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> He will recover</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> He is not likely to recover<br><span class="explanation">Explanation:</span><br>In the given sentence, the adjective little is referring to “not much”, i.e., hardly any. Thus, the adjective little has a negative meaning and so the given sentence interprets that “He is not likely to recover”.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> He will surely recover</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following graphs have a Euler circuit?<br>i.	K4		ii.	K5		iii.K4,6 	iv. K3,5<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> i, iv</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> ii, iii<br><span class="explanation">Explanation:</span><br>A connected graph has an Euler circuit if and only if each of its vertices has even degree.<br>Assume the graph has an Euler circuit. Observe that every time the circuit passes through a vertex, it contributes 2 to the vertex’s degree, since the circuit enters via an edge incident with this vertex and leaves via another such edge.<br>Therefore, both K5 and K4, K6 have even degree for every vertex.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> i, iii</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> ii, iv</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following options is the closest in meaning to the word underlined in the sentence?<br>This was his <span style="text-decoration:underline;">maiden</span> performance.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> best</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> worst</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> first<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word maiden refers to being the first attempt or act of its kind.<br>		 Of all the given options, the word that is closest in meaning to maiden is first.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> mediocre</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results28_files/e5.JPG" alt="image:MST6/e5.JPG" width="601" height="72" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a5.JPG" alt="image:MST6/a5.JPG" width="500" height="427" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> -100</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results28_files/e7.JPG" alt="image:MST6/e7.JPG" width="431" height="49" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> a = 1,b = 1</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> a = 1,b = 2</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> a = 2,b = 1</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> a = 1,b ∈ R<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a7.JPG" alt="image:MST6/a7.JPG" width="262" height="480" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results28_files/q9.JPG" alt="image:MST6/q9.JPG" width="445" height="71" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> {0,π}</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> {π/2,π}</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> {π/2}</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> {π}<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/e9.JPG" alt="image:MST6/e9.JPG" width="391" height="495" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A point (x,y) is chosen from the circular region D={(x,y)│x<sup class="tcecode">2</sup>+y<sup class="tcecode">2</sup>≤1}, in such a way that the probability that the point is chosen from any region in D is proportional to its area. The conditional probability that x+y≥1 given that (x,y) lies inside the square &amp; given by <br>(-1)/√2≤x,y≤1/√2<br>P(x+y≥1│(x,y)in S)=?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 0.429<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E4a.PNG" alt="image:MST6/E4a.PNG" width="466" height="465" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.329</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.529</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0.229</li>
+</ol>
+<br><br>
+</li>
+<li>
+A sum of Rs.700 is lent in the beginning of a year at a certain rate of interest. After 8 months, a sum of Rs.300 more is lent but at the rate thrice the former. At the end of the year, Rs.30 is earned as interest from both the loans. What was the original rate of interest?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 3%<br><span class="explanation">Explanation:</span><br>Let the original rate be R%. Therefore, we get<br>((700×R×1)/100)+((300×3R×1)/(3×100))=30<br>7R+3R=30<br>10R=30<br>R=3%
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 5%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 3.5%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 5.5%</li>
+</ol>
+<br><br>
+</li>
+<li>
+According to recent reports, CEOs of large organizations are paid more than CEOs of small organizations. It does not seem fair that just because a CEO is heading a big organization she/he should be paid more. CEOs’ salary should be related to performance, especially growth in terms of sales and profits. Of course, big organizations are more complex than the small, but all CEOs require significant amount of energy and time in managing organizations. There is no proof that CEOs of big organizations are more stressed than CEOs of small organizations. All CEOs should be paid according to their performance.<br><br>A person seeking to oppose the argument might argue that<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> CEOs should be paid equally.</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> Managing big organization is more challenging than small.<br><span class="explanation">Explanation:</span><br>The given passage can be summarized as “Salary of the CEO of an organization should be purely based on his/her performance rather than the size of the organization”.  <br>Here, we need to find an argument that opposes the given summary.<br><strong class="tcecode">Option(a):</strong><br>This is incorrect because, the statement “CEOs should be paid equally” clearly supports the argument in the passage.<br><strong class="tcecode">Option (c) &amp; Option (d):</strong><br>Both these statements specify about the qualification of the CEOs and the performance of the organizations which is nowhere mentioned/given in the passage. Therefore, both these options are incorrect.<br><strong class="tcecode">Option (b):</strong><br>The statement “Managing big organization is more challenging than small” clearly opposes the argument <strong class="tcecode">(All CEOs require significant amount of energy and time in managing organizations)</strong> in the passage and hence this is the correct answer.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> If CEOs of small companies perform well, the company would become big and so would be CEOs’ salary.</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Highly qualified CEOs should be paid more because they have acquired difficult education.</li>
+</ol>
+<br><br>
+</li>
+<li>
+An n*n matrix with entries from {1, 2, 3, …, n} is called a latin square, if every element of {1,2, …, n} appears exactly once in each column and exactly once in each row. Let us consider a graph formed from latin square with vertices as matrix cells and edges between same element alike<br><img src="./Test Results28_files/Q1a.PNG" alt="image:MST6/Q1a.PNG" width="177" height="116" class="tcecode"><br>Then the chromatic number of χ(G) = _____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> n<br><span class="explanation">Explanation:</span><br>the graph will look like <br><img src="./Test Results28_files/E1a.PNG" alt="image:MST6/E1a.PNG" width="158" height="162" class="tcecode"><br>If you observe the graph, it is just set of independent complete graphs, the chromatic number a complete graph with n vertices is ‘n’
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> n+1</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> n-1</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> n/2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Balu, Subbu, Raghu enter into a partnership. Balu invests some amount at the beginning. Subbu invests double the amount after 6 months and Raghu invests thrice the amount invested by Balu after 8 months. They earned a profit of Rs.45,000 at the end of the year. What is Raghu’s share in the profit?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Rs.25,000</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> Rs.15,000<br><span class="explanation">Explanation:</span><br>Let the investment of Balu be Rs.x<br>Investment of Subbu = Rs.2x<br>And Investment of Raghu =Rs.3x<br>Ratio of their Investments =x*12:2x*6:3x*4<br>=12x:12x:12x<br>=1:1:1<br>∴ Raghu’s share in the profit=1/3*45,000=Rs.15,000
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Rs.12,000</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Rs.9000</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system of linear equations:<br>x+2x+z=4;2x+y+2z=5;x-y+z=k<br>The value of k for which the system has infinitely many solution is __________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a4.JPG" alt="image:MST6/a4.JPG" width="359" height="405" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the predicate logic for the following statement.<br>There are at most two cars.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> <img src="./Test Results28_files/o1.JPG" alt="image:MST6/o1.JPG" width="314" height="31" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> <img src="./Test Results28_files/o2.JPG" alt="image:MST6/o2.JPG" width="443" height="32" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> <img src="./Test Results28_files/o3.JPG" alt="image:MST6/o3.JPG" width="443" height="31" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/a8.JPG" alt="image:MST6/a8.JPG" width="636" height="186" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Of the adult population in a certain city, 45% of men and 25% of women are married. Assuming that no man married more than one woman, and vice versa, the percentage of total population of adults who are married is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 31.1%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 30%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 33.33%</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 32.14%<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E21a.PNG" alt="image:MST6/E21a.PNG" width="359" height="447" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair.<br><strong class="tcecode">ENTICE: ATTRACT</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Precise : Careless</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Notorious : Unknown</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> Fallible : Correct</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> Precis : Summary<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair:</strong> SYNIONYM VARIANT<br>	<strong class="tcecode">Entice</strong> is to <strong class="tcecode">attract</strong> (someone), usually to do something, by arousing hope, interest or desire.<br>	<strong class="tcecode">Option (a):</strong><br>Precise means exact, accurate, and careful about details (of a person).<br>		Thus, careless is an antonym for precise.<br>	<strong class="tcecode">Option (b):</strong><br>Notorious refers to famous or well known, typically for some bad quality or deed and so, unknown is an antonym for notorious.<br>	<strong class="tcecode">Option (c):</strong><br>Fallible means capable of making an error/mistakes and so, the word correct is an antonym for fallible.<br>	<strong class="tcecode">Option (d):</strong><br>		The word Precis means a summary or abstract of a text or speech.<br>	 From the given explanation, the pair that best expresses a relationship similar to that expressed for <strong class="tcecode">Entice: attract</strong> is <strong class="tcecode">Precis: Summary</strong>.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The line graph G'=(E,E') of  to be the graph whose vertex set is simply the edge set G and two vertices in G' are joined by an edge if their corresponding edges in G share a vertex<br><img src="./Test Results28_files/Q2a.PNG" alt="image:MST6/Q2a.PNG" width="292" height="172" class="tcecode"><br>The chromatic number of line graph of K<sub class="tcecode">4</sub> is _____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E2a.PNG" alt="image:MST6/E2a.PNG" width="585" height="239" class="tcecode"><br>Now you can color this graph with 3 colors.
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+The simple interest on a sum of money is 4/9 of the principal and the number of years is equal to the rate percent per annum. The rate per annum is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 5%</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> <img src="./Test Results28_files/O19b.PNG" alt="image:MST6/O19b.PNG" width="42" height="33" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E19a.PNG" alt="image:MST6/E19a.PNG" width="360" height="302" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 6%</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> <img src="./Test Results28_files/O19d.PNG" alt="image:MST6/O19d.PNG" width="46" height="29" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+There are four boxes. Each contains 2 balls the first box has a red and a white ball in it. The remaining three boxes each have two white balls in them. A ball is picked at random from box 1 and put in box 2. Then a ball is picked at random from box 2 and put into 3. Then a ball is picked from box 3 and put into box 4. Finally, a ball is picked from box 4.<br>The probability that the ball picked from box 2 is red, given that the final ball picked from box 4 is white is _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 8/53<br><span class="explanation">Explanation:</span><br><img src="./Test Results28_files/E6a.PNG" alt="image:MST6/E6a.PNG" width="559" height="452" class="tcecode"><br><img src="./Test Results28_files/E6b.PNG" alt="image:MST6/E6b.PNG" width="414" height="408" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 9/53</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 7/53</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 6/53</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">COMMON DATA QUESTION:</strong></span><br>Number of students (in hundreds) from two different schools who qualified in an exam in five different years.<br> <img src="./Test Results28_files/COMM.JPG" alt="image:MST6/COMM.JPG" width="580" height="314" class="tcecode"><br>If 60 percent of the total students who qualified in the exam from both the schools together over all the years are males, then what was the total number of females who qualified in the exams over all the years from both the schools together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 17,000</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 17,500</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 18,000<br><span class="explanation">Explanation:</span><br>Total number of students, who qualified in the exams over all the years from both the schools together<br>=(60+50+50+40+30+40+40+60+50+30)×100<br>=45000<br>∴required number of females =40% of (45000)<br>=40/100×45000<br>=18000
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 18,500</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">COMMON DATA QUESTION:</strong></span><br>Number of students (in hundreds) from two different schools who qualified in an exam in five different years.<br> <img src="./Test Results28_files/COMM.JPG" alt="image:MST6/COMM.JPG" width="580" height="314" class="tcecode"><br>What was the difference between the total number of students who qualified in the exam in the year 2011 from both the schools together and the total number of students from school-B who qualified in the exam over all the years together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 10,000</li>
+<li>&nbsp;<img src="./Test Results28_files/correct.png" width="18"> 11,000<br><span class="explanation">Explanation:</span><br>Students qualified in 2011 from both the school’s together =(60+50)×100<br>=11000<br>Total number of students qualified from school-B over all the years together <br>=(50+40+40+60+30)×100<br>=22000<br>Hence, required difference =22000-11000<br>=11000
+</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 12,000</li>
+<li>&nbsp;<img src="./Test Results28_files/wrong.png" width="16"> 13,000</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results28_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

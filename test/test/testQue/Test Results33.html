@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=42833&test_id=303 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results33_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results33_files/calclayout.css">
+<script src="./Test Results33_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results33_files/jquery-ui.js.download"></script>
+<script src="./Test Results33_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results33_files/custom.js.download"></script>
+<script src="./Test Results33_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results33_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results33_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837320, 'I\'m sorry, the time available to complete the test is over!', false, 1486837320827);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=42833&amp;test_id=303#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 3</strong><br>
+Algorithms, programming and data structures&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-16 23:15:10&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-17 00:43:29&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:28:19&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+19.700 / 50.000 (39%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+13 / 33 (39%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which of the following statements is FALSE regarding the worst case time complexity?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> Bubble sort is O(n)<br><span class="explanation">Explanation:</span><br>The time complexity of bubble sort is O(n2) in worst case. The best case time complexity of bubble sort is O(n) when the given array is already sorted.<br>The time complexity of Heap sort is O(nlogn) in all cases<br>The time complexity of binary search is O(logn).<br>The time complexity of Merge sort is O(nlogn) in all cases
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Heap sort is O(nlogn)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Binary Search is O(logn)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Merge Sort is O(n logn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C function:<br>int fun1(int n)<br>{<br>int s=1;<br>if((n==1)||(n==0) )<br>    		return 1;<br>s=s+fun1(n-1_+fun1(n-2);<br>return s;<br>}<br>The return value of fun1(5) is ________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/18Qa.png" alt="image:MST3/18Qa.png" width="430" height="461" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 25</li>
+</ol>
+<br><br>
+</li>
+<li>
+M is an array[-7…7] of elements. The starting location is 600. Each element occupies 4 memory cells. The location of element M[2] is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 516</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 536</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 616</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 636<br><span class="explanation">Explanation:</span><br>Loc A[i]=L<sub class="tcecode">0</sub>+(i-lb)*c<br>Loc M[2]=600+(2-(-7) )*4<br>=600+36<br>=636
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results33_files/16Qa.png" alt="image:MST3/16Qa.png" width="396" height="132" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 117</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 147</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 167</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 177<br><span class="explanation">Explanation:</span><br>Number of calls for evaluating is<br>f(n)=(2*f(n+1)-1)<br>f(10)=2*f(11)-1<br>=2*89-1<br>=177
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function:<br>int fun1(int p)<br>{<br>if(p==1)<br>return 1;<br>else<br>return(2*fun1(p-1)+1);<br>}<br>main ( )<br>{<br>int a=7, b;<br>b=fun(a);<br>printf("%d", b);<br>}<br>The output of the above program is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 31</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 63</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 127<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/15Ea.png" alt="image:MST3/15Ea.png" width="269" height="515" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 255</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program:<br>int fun(int p, int*q)<br>{<br>int n;<br>*q+=5;<br>n=*q;<br>p=p+n;<br>return(p+n);<br>}<br>main()<br>{<br>int i=0, *p, y;<br>p=&amp;i;<br>y=fun(i, p);<br>printf("%d", 4);<br>}<br>The output of the above program is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>first statement ,*q+=5 makes *q =5 which implies that i has become 5 now. <br>so,because p is the copy of 'i'.it should not be changed to 5,it should be 0 only.<br>now next statement p=p+n means p= 0 +5 = 5<br>now,return statement (p+n) returns (5+5) =10
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 20</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following program? \<br>int main()<br>{<br>int p=5, *q, *r;<br>q=&amp;p;<br>r=&amp;p;<br>p=p+5;<br>*r=*r+p;<br>*q=*r+p;<br>printf("%d%d%d", p,*q,*r);<br>}<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 10   10   10</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 10   20   20</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 40   40   40<br><span class="explanation">Explanation:</span><br>p=p+5=5+5=10<br>*r=10+10=20<br>*q=20+20=40<br>q &amp; r points to memory of p.<br>So output will be 40,40,40
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 10    20   40</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program:<br>main( )<br>{<br>    	int p=5, *q;<br>void*r;<br>q=&amp;p;<br>r=&amp;p;<br>r++;<br>print(“%v", r); <br>}<br>Assume address of p is 1000 and size of int is 4 bytes. What is the output of the program?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1004</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1000</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1008</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> Compiler error<br><span class="explanation">Explanation:</span><br>Cannot increment a void pointer.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results33_files/12Qa.png" alt="image:MST3/12Qa.png" width="444" height="113" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/13Qa.png" alt="image:MST3/13Qa.png" width="505" height="324" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+#include&lt;stdio.h&gt;<br>int fun(int n)<br>{<br>if (n == 3)<br>return n;<br>else return 2*fun(n+1);<br>}<br><br>int main()<br>{<br>printf("%d", fun(-1));<br>return 0;<br>}<br>The output of the above program is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 144</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 48<br><span class="explanation">Explanation:</span><br>fun(-1) → 48.<br>    |<br>2*fun(0) → 2*24 = 48<br>      |<br>    2*fun(1) --&gt; 2*12 = 24<br>	|<br>         2*fun(2) → 2*6 = 12<br>               |<br>	2*fun(3)--&gt; 6<br>                 |<br>	2*3<br>After the tree evaluation, we get 48.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+While inserting the elements 30,20,60,25,50,22,15,80,55,45,18,10,65,90,85 in an empty Binary Search Tree (BST) in the sequence shown, the height of the binary search tree is ______. Assume root is at height ‘0’<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/10Ea.png" alt="image:MST3/10Ea.png" width="571" height="344" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A be a two dimensional array declared as follows A:array[5…40][5…45]of integer; assuming that each integer takes one memory location the array is stored in column major order, and the first element of the array is stored at location 600. What is the address of the elementA[i][j]?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> i+41j+600</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> i+36j+390</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> i+36j+415<br><span class="explanation">Explanation:</span><br>Loc A[i,j]=Base address+ 1*[(j-5)*36+ (i-5)]<br>=600+(j-5)36+(i-5)<br>=i+36j+415
+</li>
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> i+40j+565</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement is/are FALSE? <br>I. Dijkstra’s single source shortest path algorithm may relax an edge more than once in a graph with cycle.<br>II. In a weighted directed graph G = (V, E, w) containing a negative weight cycle, running the Bellman-Ford algorithm from s will find a shortest acyclic path from s to a given destination vertex t.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> Both I and II<br><span class="explanation">Explanation:</span><br>I. False: Dijkstra’s algorithm always visits each node at most once; this is why it produces an incorrect result in the presence of negative-weight edges.<br><br>II. False: Bellman-Ford will terminate, and can detect the presence of that negative-weight cycle, but it can’t “route around it.”
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Solve the following recurrence relation <br><img src="./Test Results33_files/1Q.png" alt="image:MST3/1Q.png" width="274" height="74" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> <img src="./Test Results33_files/1Oa.png" alt="image:MST3/1Oa.png" width="55" height="40" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> <img src="./Test Results33_files/1Ob.png" alt="image:MST3/1Ob.png" width="88" height="42" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/1Ea.png" alt="image:MST3/1Ea.png" width="207" height="277" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n)</li>
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n log n)</li>
+</ol>
+<br><br>
+</li>
+<li>
+In, Quick sort algorithm if the pivot is the smallest element then it becomes<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Insertion sort</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Bubble sort</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> Selection sort<br><span class="explanation">Explanation:</span><br>Selection sort always selects either smallest or largest element.
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Counting sort</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following program? <br>int main ()<br>{<br>static int i=6;<br>if(--i)<br>{<br>main ();<br>printf("%d", i);<br>}<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 5    4    3    2    1</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1    2    3    4    5</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 0    0    0    0    0<br><span class="explanation">Explanation:</span><br>i becomes 0 before the printf ( )<br>So, o/p is 0    0    0    0    0.
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> Compiler error</li>
+</ol>
+<br><br>
+</li>
+<li>
+An array of size ‘n’ contains 0’s and 1’s. What is the worst case time complexity of best algorithm to find whether there are more number of 1’s or more number of 0’s.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(logn)</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>Algorithm:<br>1. Traverse the entire array<br>2. While traversing count number of 0’s and 1’s<br>3. Return either maximum number of 1’s and maximum number of 0’s based on count
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(nlogn)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C function:<br>int a=5;<br>main()<br>{<br>int a=10, i;<br>for(i=1;i≤5;i++)<br>a=a+fun(i); <br>printf("%d", a); <br>}<br>int fun(int x)<br>{<br>x=x+a;<br>a=a*2;<br>return x;<br>}<br>The output of the program is ________.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 150</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 160</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 170</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 180<br><span class="explanation">Explanation:</span><br>i=1<br>a=10+fun(1)=10+6=16<br>i=2<br>a=16+fun(2)=16+12=28<br>i=3<br>a=28+fun(3)=28+23=51<br>i=4<br>a=51+fun(4)=51+44=95<br>i=5<br>a=95+fun(5)=95+85=180
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the pre-order of the following binary tree if the given in-order and post-order as follows:<br>In-order:A   C   D   E   B   G   H   F<br>Post-order:A   D   E   C   H   F   G   B<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> B   C   A   E   D   G   H   F</li>
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> B   C   A   D   E   G   F   H</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> B   C   A   D   E   G   H   F</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> B   C   A   E   D   G   F   H<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/17Qa.png" alt="image:MST3/17Qa.png" width="458" height="369" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For the given integers in the set {15,21,24,11,14,8}. The root element of the AVL tree is __________.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 11</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 14<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/9Ea.png" alt="image:MST3/9Ea.png" width="704" height="489" class="tcecode"><br><img src="./Test Results33_files/9Eb.png" alt="image:MST3/9Eb.png" width="242" height="273" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 21</li>
+</ol>
+<br><br>
+</li>
+<li>
+A two dimensional array M[16][18] is stored in row major order with base address 4500. The address of M[9][9] is _________. No. of bytes per call = 4 bytes.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 4317</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 4327</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 5184<br><span class="explanation">Explanation:</span><br>Let us assume that M[16][18] is of type integer. The formula for row major form to calculate address is<br>Loc(a[i][j] )=base(a)+W(n[i-lbr)+(j-lbc) ]<br>Loc(M[9][9] )=4500+4[18(9-0)+(9-0) ]<br>=4500+4[162+9]<br>=4500+171*4<br>=5184
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 4627</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 12 element hash table for which f(k) = k mod 12 is used with integer keys. Assuming linear probing is used for collision resolution, at which location would the key 114 be inserted, if the keys 666, 188, 22 and 114 are inserted in that order?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 6</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/4Ea.png" alt="image:MST3/4Ea.png" width="283" height="369" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the efficient time complexity to find all duplicate characters in a given string?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/wrong.png" width="16">&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n2)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(nlogn)</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>Algorithm:<br>1. Construct character count array from the input string<br>	count[str[i]] += 1<br>2. Print all the indexes from the constructed array which have value greater than 0.<br><br>Time complexity is O(n)<br>Space complexity is O(k) where k is total number of characters(ASCII)  i.e 256
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(logn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given an array of n elements, what is the time complexity to find minimum difference between any pair in given array in optimal way?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(log n)</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> O(nlogn)<br><span class="explanation">Explanation:</span><br>1.First sort all the elements in the given array -&gt; It takes O(nlogn)<br>2.In this resultant array find the difference between the adjacent elements. The minimum among all these differences is the required answer.
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the efficient time complexity to find the third largest number in an array containing random elements?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(logn)</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>Algorithm:<br>We can find the third largest in one traversal only.<br>1. Initialize first = arr[0] and second = -INFINITY,  third = -INFINITY<br>2. Iterate the array and compare each element with first<br>	If arr[i] is greater than all first, second and third: <br>		third = second<br>		second = first<br>	 	first = arr[i]<br>	 Else compare arr[i] with second, if it is greater than second, then update <br>		third = second<br>		second = arr[i]. <br>	Else compare arr[i] with third, if it is greater than third, then update: third = arr[i]<br>3. Return third
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n log n)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following message: <br>	 ABBABCDDCCBCCDDA<br><br>What is the average length of bits required for encoding each letter using Huffman coding?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/3Ea.png" alt="image:MST3/3Ea.png" width="494" height="400" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1.965</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 2.068</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1.931</li>
+</ol>
+<br><br>
+</li>
+<li>
+The optimal solution generated by the job sequencing with deadlines with n = 7 <br>p1, p2, ... p7 = (8, 10, 25, 23, 6, 11, 35)<br>d1, d2, ..., d7 = (1, 3, 4, 3, 2, 1, 2) is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 78</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 79</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 93</li>
+<li>&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 94<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/2eA.png" alt="image:MST3/2eA.png" width="385" height="131" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following equalities is/are true<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> n! = O(2<sup class="tcecode">n</sup>)</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> log n! = O(nlogn)<br><span class="explanation">Explanation:</span><br>log(n!) = log(1*2*3*... *n)<br>	= log1 + log2 + log3 + ... + logn<br>	≤ logn + logn + ... + logn<br>	= nlogn<br>	= O(nlogn)
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 2<sup class="tcecode">n</sup> = O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> n<sup class="tcecode">2</sup> = O(n + logn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results33_files/20Qa.png" alt="image:MST3/20Qa.png" width="711" height="280" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/21Qa.png" alt="image:MST3/21Qa.png" width="712" height="275" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 40</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions Q29 &amp; Q30</strong></span><img src="./Test Results33_files/6Qa.png" alt="image:MST3/6Qa.png" width="613" height="301" class="tcecode"><br>The spanning tree has the maximum cost of<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 82</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 138<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/7Ea.png" alt="image:MST3/7Ea.png" width="591" height="240" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 84</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 140</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions Q29 &amp; Q30</strong></span><img src="./Test Results33_files/6Qa.png" alt="image:MST3/6Qa.png" width="613" height="301" class="tcecode"><br>How many maximum number of edges will be common in both minimum and maximum spanning tree?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/MST31.PNG" alt="image:MST3/MST31.PNG" width="685" height="509" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer Questions Q32 &amp; Q33</strong></span><img src="./Test Results33_files/5Qa.png" alt="image:MST3/5Qa.png" width="489" height="369" class="tcecode"><br>Find minimum cost of tour by visiting all the cities available in the graph from the city ①.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 53</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> 55<br><span class="explanation">Explanation:</span><br><img src="./Test Results33_files/5Ea.png" alt="image:MST3/5Ea.png" width="367" height="487" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 57</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> 60</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer Questions Q32 &amp; Q33</strong></span><br><img src="./Test Results33_files/5Qa.png" alt="image:MST3/5Qa.png" width="489" height="369" class="tcecode"><br> The tour of the travelling salesman is<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> &lt;1, 2, 3, 4, 1&gt;</li>
+<li><img src="./Test Results33_files/correct.png" width="18">&nbsp;<img src="./Test Results33_files/correct.png" width="18"> &lt;1, 2, 4, 3, 1&gt;<br><span class="explanation">Explanation:</span><br>From the solution of above question, the tour of the travelling salesman is &lt;1, 2, 4, 3, 1&gt;
+</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> &lt;1, 3, 4, 2, 1&gt;</li>
+<li>&nbsp;<img src="./Test Results33_files/wrong.png" width="16"> &lt;1, 4, 2, 3, 1&gt;</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results33_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

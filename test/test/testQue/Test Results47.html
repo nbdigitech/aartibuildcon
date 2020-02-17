@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92170&test_id=279 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results47_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results47_files/calclayout.css">
+<script src="./Test Results47_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results47_files/jquery-ui.js.download"></script>
+<script src="./Test Results47_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results47_files/custom.js.download"></script>
+<script src="./Test Results47_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results47_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results47_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837561, 'I\'m sorry, the time available to complete the test is over!', false, 1486837561373);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92170&amp;test_id=279#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 1</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:33:07&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Find the missing term in the series  1,1,2,3,5,8,13,?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 19</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 21<br><span class="explanation">Explanation:</span><br>The pattern is<br>                        Next number = sum of two previous numbers<br>Missing number =13+8<br>                          =21<br>Note: The given series is Fibonacci series.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 22</li>
+</ol>
+<br><br>
+</li>
+<li>
+If 2 sheep or 3 lambs finish eating grass in 15 days, in how many days will 6 sheep and 2 lambs finish the same amount of grass?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 3(1/11)</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 4(1/11)<br><span class="explanation">Explanation:</span><br>2 sheep or 3 lambs means the grass which 2 sheep can eat is equal to the grass which 3 lambs can eat.<br><br>2S =3L<br>So 6 sheep and 2 lambs =6S +2L<br>=9L +2L<br>=11L<br>3 lambs finish eating grass in 15 days <br>∴ 1 lamb can finish in 45 days.<br>11 lambs can finish in 45/11 days <br>=4(1/11) days.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 5(1/11)</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 6(1/11)</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Fill in the blank with the appropriate word:</strong><br>Here _____ the bus!<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Coming</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Came</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Is coming</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Comes<br><span class="explanation">Explanation:</span><br>The given sentence is an exclamatory sentence and in exclamatory sentences beginning with “here”, to express what is actually taking place in the present, we use simple present tense.<br>		Here <strong class="tcecode">comes</strong> the bus!
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following is closest in meaning to the word given below?<br><strong class="tcecode">CONTROVERT</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Explain</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Guide</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Contradict<br><span class="explanation">Explanation:</span><br>CONTROVERT means<br>(a)	To deny the truth of (something) i.e., to contradict<br>(b)	Argue about (something)<br>So, of all the given options, the word that is closest in meaning to the word controvert is <strong class="tcecode">contradict</strong>(denying something).
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Ignore</li>
+</ol>
+<br><br>
+</li>
+<li>
+I don’t think I ______ be able to go.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Can</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Should</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Could</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Shall<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong>Can<br>		Can is usually used to express an ability (or) capacity.<br>	<strong class="tcecode">Option (b):</strong>Should<br>		Should is used to express duty (or) obligation.<br>	<strong class="tcecode">Option (c):</strong>Could<br>Could is the post equivalent of can and is used to talk about ability and to indicate possibility.<br>	<strong class="tcecode">Option (d):</strong>Shall<br>		Shall is used to express pure future and to talk about future plans/state.<br>		 From the given explanation, the word that is more suitable in the above context is <strong class="tcecode">Shall</strong>.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Choose the most appropriate words to fill in the blanks from the options given below:</strong><br>I need your _______. Please _______ me on this issue.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Advise, Advise</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Advise, Advice</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Advice, Advice</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Advice, Advise<br><span class="explanation">Explanation:</span><br>•	The word <strong class="tcecode">advice</strong> is used for guidance (or) recommendations offered with regard to an action. So, in the first sentence, the word need is referring to some guidance and thus, advice is used.<br>•	Coming to the second sentence, it is referring to the best suggestions on the particular issue, i.e., <strong class="tcecode">advise</strong> (offer suggestions about the best course of action to someone).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair<br><strong class="tcecode">EXPEL: COLLEGE</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Ample : Insufficient</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Exile : Nation<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair:<br></strong>Expel is officially make (someone) leave a school or other organization, i.e., college in the given question. And a person expelled from college cannot reenter it.<br>	<strong class="tcecode">Option (a):<br></strong>Ample refers to a large, great size or fully sufficient to meet a need or purpose. Thus, Insufficient is an antonym for Ample<br>	<strong class="tcecode">Option (b):<br></strong>Exile refers to the condition or period of being forced to live away from one’s native country or home, especially as a punishment and a person exiled (banished legally) from a nation (Country) cannot reenter it.<br>	<strong class="tcecode">Option (c):<br></strong>A carnival is a festival or a travelling amusement show usually including rides, games.<br>	<strong class="tcecode">Option (d):</strong><br>		Deny is to decline to grant or allow, refuse. So grant is an antonym for deny.<br> From the given explanation, the pair that is best expressing a relationship similar to that expressed in the pair Expel: college is Exile: Nation.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Carnival : Festival</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Grant : Deny</li>
+</ol>
+<br><br>
+</li>
+<li>
+The market share by volume and the market share by value are given in the two pie charts given below. The two pie charts show the number of motor cycles sold and total sales of motor cycles of brands A,B,C and D sold during 2012.<br><img src="./Test Results47_files/13Qa.png" alt="image:APT1/13Qa.png" width="640" height="392" class="tcecode"><br><br>From the year 2012 to 2013, the total number of motor cycles sold increased by 25% and the total sales value of all motor cycles increased by 20%. What is the percentage decrease in the average price of motor cycle from 2012 to 2013?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>The total number of motor cycles sold in 2012= 25,200<br>Sales increased by 25% in 2013, so the total number of motor cycles sold in 2013<br>= 125% of 25,200<br>=125/100x25200<br>=31500<br>=&gt; The total sales value in 2012 =100.80crore<br>sales value increased by 20% in 2013<br><br>So, the total sales value in 2013=120% if 100.80<br>=120.96 crores.<br><br>=&gt;Average price of a motor cycle in 2012 =100.80crores/25,200<br>= Rs.40,000<br><br>=&gt;Average price of a motor cycle in 2013=120.96/31,400<br>=38,400<br>The percentage decrease in the average price of a motor cycle from 2012 to 2013<br><br>=(40,000-38,400)/40,000 x 100<br>=1600/40,000 x 100<br>=4%<br><br>Method 2:<br><br>Note: The question is dealing with the percentages, but not with the data given.Instead of solving the complex calculations, it’s easy to assume simple numbers in the calculation.<br><br>Assume in 2012, 100 motor cycles were sold and the total amount was Rs.100.<br>∴ Average price of a motorcycle  =100/100=1<br>In 2013, the number of motor cycles sold increases by 25%, i.e. 100 becomes 125<br>Total sale value increased by 20%, so the total sales value in 2013 = Rs.120<br>∴ Average price of motor cycle in 2013=120/125<br>=24/25<br>Percentage decrease =(1-24/25)/1 x 100<br>=1/25x100<br>=4%
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are 16 teachers who can teach physics(p), 11 who can teach chemistry(c), and 5 who can teach both physics and mathematics(m). There are   a total of  40 teachers , 6 cannot tech any of the three subjects. i.e  p, c or m. 6 can teach only chemistry , 4 can teach all 3 subjects , i.ep,c and m. 4 can teach physics and chemistry. How many can teach both chemistry and mathematics but not physics.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>Givenn(p)=16, n(c)=11,<br>n(p∩m)=5<br><br>total number of teachers =40<br>6 cannot teach any of the three subjects <br>n(p ̅∩c ̅∩m ̅) = 6.<br>6 can teach only chemistry<br>∴n(p ̅∩c∩m ̅) = 6.<br>4 can teach all the three subjects<br>n(p∩c∩m)=4<br>4 can teach physics and chemistry<br>n(p∩c)=4<br><img src="./Test Results47_files/E12a.png" alt="image:APT1/E12a.png" width="426" height="180" class="tcecode"><br>Total number of teachers=40
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are 3 temples in a village and a well in front of each temple. A pilgrim came to the village with certain number of flowers. He washed all the flowers he had with the water of well in front of first temple. To his surprise flowers doubled. He devoted few flowers to the god in the first temple and moved to the second temple. He again washed the remaining flowers and again became doubled. He devoted few flowers to the god in the second temple and moved to the third temple.Here also his flowers doubled after washing them with water. He devoted few flowers to the god in third temple.<br>There were no flowers left when pilgrim came out of the third temple and he offered same number of flowers to the god in all three temples. What is the minimum number of flowers the pilgrim had initially?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>Explanation:<br>Let 'x' be the number of flowers the pilgrim had initially<br>Let 'y' be the number of flowers devoted at each temple<br><br>At temple 1:<br>Let 'p' be the number of flowers left <br>Thus<br>2x - y= p-----------1<br>At temple 2:<br>Number of flowers the pilgrim has after devoting at temple 1 =p<br>Let 'q' be the number of flowers left<br> Thus <br>2p-y=q ------------------2<br><br>At temple 3:<br>Number of flower the pilgrim has after devoting at temple 2 =q<br><br>After devoting at temple3 he doesn't have any flower.<br>2q-y=0  -------------3<br>=&gt; q=y/2<br>Substitute the value of 'q' in ---2<br>=&gt; 2p-y =q<br>=&gt; 2p-y =y/2<br>=&gt;2p=3y/2 =&gt; p=3y/4<br>Substitute the value of 'p' in -----1<br>2x-y=3y/4<br>=&gt;2x=7y/4<br>=&gt; x= 7y/8<br>=&gt; 8x=7y, and <br>The least possible solution for this is x=7 &amp; y=8<br>So initially pilgrim has 7 flowers and devoted 8 flowers at each temple.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Read the following information carefully to answer the question.<br>(i) 'A$B' means 'A is mother of B'.<br>(ii) 'A # B' means 'A is father of B'.<br>(iii) 'A @ B ' means 'A is husband of B'.<br>(iv) 'A % B' means 'A is daughter of B'.<br><br>Which of the following expression indicates 'H' is the brother of 'N'?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> H#R$D$N</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> N%F@D$H</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> N%F@D$H#R<br><span class="explanation">Explanation:</span><br><img src="./Test Results47_files/10Ea.png" alt="image:APT1/10Ea.png" width="237" height="496" class="tcecode"><br><img src="./Test Results47_files/10Eb.png" alt="image:APT1/10Eb.png" width="312" height="518" class="tcecode"><br><img src="./Test Results47_files/10Ec.png" alt="image:APT1/10Ec.png" width="665" height="285" class="tcecode"><br><img src="./Test Results47_files/10Ed.png" alt="image:APT1/10Ed.png" width="330" height="522" class="tcecode"><br>Clearly, H is brother of N.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are n points in a plane of which no three are in a straight line except 'm' which are all in a straight line. Then the number of different quadrilaterals that can be formed with the given points as vertices is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">4</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">3</sub>.n-<sup class="tcecode">m</sup>C<sub class="tcecode">1</sub>+<sup class="tcecode">m</sup><sub class="tcecode">C4</sub></li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">4</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">3</sub>.<sup class="tcecode">n-m+1</sup>C<sub class="tcecode">1</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">4</sub></li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> <sup class="tcecode">n</sup>C<sub class="tcecode">4</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">3</sub>.<sup class="tcecode">n-m</sup>C<sub class="tcecode">1</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">4</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results47_files/9Ea.png" alt="image:APT1/9Ea.png" width="677" height="320" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">4</sub>+ <sup class="tcecode">n</sup>C<sub class="tcecode">3</sub>.<sup class="tcecode">m</sup>C<sub class="tcecode">1</sub>-<sup class="tcecode">m</sup>C<sub class="tcecode">4</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+Based on given statements, select the most appropriate option to solve the given question. The towns A, B, C are in a straight line. Town C is between A and B. The distance from A to B is 100Km. How far is A from C?<br>Statements:<br>I) The distance from A to B is 25% more than the distance from C to B.<br>II) The distance from A to C is 1/4  of the distance from C to B.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Statement I alone is sufficient, but statement II alone is not sufficient.</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Statement II alone is sufficient, but statement I alone is not sufficient</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> Either statement I or statement II alone is sufficient.<br><span class="explanation">Explanation:</span><br><img src="./Test Results47_files/8Ea.png" alt="image:APT1/8Ea.png" width="222" height="63" class="tcecode"><br>Let AC = xKM<br>CB =(100-x) KM<br><br>Statement I:<br> The distance of AB =125% of distance CB<br>=&gt; 100= 125/100 X (100-x)<br>=&gt; 100-x = (100x-100)/125<br>=&gt; 100-x =80<br>=&gt; x= 20KM<br>The distance from A to C = x = 20KM<br>Thus,<br>Statement I alone is sufficient to answer the question.<br><br>Statement II:<br>The distance from A to C =1/4 of the distance from C to B<br>AC =1/4 CB<br>x= 1/4(100-x)<br>5x=100<br>x=20KM<br>∴The distance from A to C = x=20KM<br>Thus,<br>Statement II alone is sufficient to answer the question.<br>∴So, either statement I or statement II alone is sufficient.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> Both statements together are sufficient, but neither statement alone is sufficient.</li>
+</ol>
+<br><br>
+</li>
+<li>
+At a certain party, first the ratio of boys to girls was 9:7. If after 20 boys left, the ratio becomes 1:1, how many people were originally at the party?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 80</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 112</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> 144</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> 160<br><span class="explanation">Explanation:</span><br>Explanation: <br>The ratio of boys to girls is 9:7<br>That means, <br>                        Number of boys= 9x<br> Number of girls =7x<br>Total number of people = 9x+7x<br>			  =16x<br>If 20 boys left, then the ratio becomes 1:1<br>i.e. (9x-20)/7x  =1/1<br>9x-20=7x<br>9x-7x=20<br>2x=20<br>x=10<br>∴Total number of people who were originally at the party = 16x<br>							=16 x 10 =160
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Discussions on drug addiction should also be concerned with the vast majority of people who are not drug addicts. Their homes and lives are insecure because our narcotic laws drive such people to crime. The drug addict is almost never dangerous when is under the influence of drugs. What makes him dangerous is the desperate need for money to buy the next dose. Drugs are available only in an illegal market. The costs are stupendous, and this is what drives the addict to steal, rob and even kill.<br><br>Which of the following cannot be inferred from the above passage?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> The cost of the drugs is very high</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> The buying of drugs is illegal</li>
+<li>&nbsp;<img src="./Test Results47_files/correct.png" width="18"> The discussions of drug addiction are generally concerned with non-addicts<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):  </strong><br>In the passage, the given statement can be inferred from “The costs are stupendous” which means massive, very high and astounding.<br><br><strong class="tcecode">Option (b): <br></strong><br>Given statement “The buying of drugs is illegal” can be inferred from “Drugs are available only in an illegal market” in the passage.<br><br><strong class="tcecode">Option (c):<br></strong><br>According to the passage, Discussions on drug addiction should also be concerned with the vast majority of people who are not drug addicts. Thus, this statement contradicts to what is given in the passage and so, it cannot be inferred.<br><br><strong class="tcecode">Option (d): </strong><br><br>The given statement “The drug addict is more dangerous when they are in the need for money to buy the next dose than under the influence of drugs.” can be inferred directly from the passage.
+</li>
+<li>&nbsp;<img src="./Test Results47_files/wrong.png" width="16"> The drug addict is more dangerous when they are in the need for money to buy the next dose than under the influence of drugs.</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results47_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92298&test_id=129 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results115_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results115_files/calclayout.css">
+<script src="./Test Results115_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results115_files/jquery-ui.js.download"></script>
+<script src="./Test Results115_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results115_files/custom.js.download"></script>
+<script src="./Test Results115_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results115_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results115_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921231, 'I\'m sorry, the time available to complete the test is over!', false, 1486921231418);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92298&amp;test_id=129#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Subject Test - 2.</strong><br>
+Databases Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:38:02&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the entities ‘Item’ and ‘Person’ with a many to many relationship ‘order’ as shown:<br><img src="./Test Results115_files/Q11.PNG" alt="image:Database Subject Test - 2/Q11.PNG" width="358" height="77" class="tcecode"> <br>If we wish to store information about the quantity of item(s) ordered by Person, then this information should appear as an attribute of<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Person</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Item</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Order<br><span class="explanation">Explanation:</span><br>Given entities participate in M:N relationship. For these kinds of relationships, we create separate tables for both entities and relationship also. Here quantity is something describing   the order. So, we will place quantity as an attribute in order relation.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>S1: Secondary index is created on an attribute such that table is sorted based on it<br>S2: Secondary index is dense index<br>Which of the following statement(s) is / are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> S1 is correct and S2 is correct and S2 is correct reason for S1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> S1 is correct and S2 is correct and S2 is not correct reason for S1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> S1 is correct but S2 is wrong</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> S1 is wrong but S2 is correct<br><span class="explanation">Explanation:</span><br>Secondary index is based on key/non-key unordered field. So, S1 is wrong.<br>Secondary index is dense index since for every data record, we maintain one index record. So, it is dense index. So, S2 is correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 2 relations R1(A, B, C) and R2(C, D, E) with primary key A and C respectively. The relation R1 contains 300 tuples and R2 contains 500 tuples then the maximum size of the left outer join r<sub class="tcecode">1</sub>⟕r<sub class="tcecode">2</sub> is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 150000</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 300<br><span class="explanation">Explanation:</span><br>Here every tuple in left hand side relation R1 can be matched to atmost one tuple on right hand side, as well as all the tuples on the left hand side should present in the output. So, the maximum number of tuples in output will be 300.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 500</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 0</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the relational schema emp(emp_id, emp_name, sal, dept_id); with primary key as underlined.<br>What does the following SQL query returns?<br>	SELECT emp_name from GROUP BY dept_id;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> All employee names are displayed</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> It will throw an error<br><span class="explanation">Explanation:</span><br>Given query throws an error, because every column that is specified in group by clause should also present in SELECT clause. Here dept_id which is there in GROUP BY clause is not present in select clause, therefore it throws an error.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> All employee names department wise are displayed</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>A: The number of keys that can be stored in a node of B-tree is less compared to B+ tree.<br>R: B-tree node stores keys and record pointer associated with it where as in B+ tree node stores only key.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A is true but R is wrong</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A is wrong but R is true</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> A is true and R is correct reason for A<br><span class="explanation">Explanation:</span><br>2M
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A is true and R is not correct reason for A</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following B tree with order 3<br><img src="./Test Results115_files/Q30.PNG" alt="image:Database Subject Test - 2/Q30.PNG" width="219" height="78" class="tcecode"><br>By deletion of key 21, how many nodes should be deleted?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>Given: B tree of order 3<br>∴ Min no. of keys in root node = 1<br>Max no. of keys in leaf/ intermediate =⌈3/2⌉-1=1<br>Given B tree:<br><img src="./Test Results115_files/Q30_exp1.PNG" alt="image:Database Subject Test - 2/Q30_exp1.PNG" width="249" height="97" class="tcecode"><br>Delete 21:<br><img src="./Test Results115_files/Q30exp2.PNG" alt="image:Database Subject Test - 2/Q30exp2.PNG" width="169" height="87" class="tcecode"><br>∴ Number of nodes to be deleted is zero.<br>1M
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation R(A, B, C) and FD set’s f and g as follows:<br>f={A→BC,B→A,C→A}<br>g={A→B,B→C,C→A}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> f covers g</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> g covers f</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> f and g are equivalent<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Check whether f covers g:<br></span><img src="./Test Results115_files/Q23_exp_1.PNG" alt="image:Database Subject Test - 2/Q23_exp_1.PNG" width="158" height="88" class="tcecode"><br><span style="text-decoration:underline;">Check whether f covers ① </span>:<br>find(A)<sup class="tcecode">+</sup> in f<br>(A)<sup class="tcecode">+</sup>=ABC<br>∴f covers ①<br><span style="text-decoration:underline;">Check whether f covers ② :</span><br>find(B)<sup class="tcecode">+</sup> in f<br>(B)<sup class="tcecode">+</sup>=BCA<br>∴f covers ②<br><span style="text-decoration:underline;">Check whether f covers ② :</span><br>find(C)<sup class="tcecode">+</sup> in f<br>(C)<sup class="tcecode">+</sup>=CAB<br>∴f covers ②<br>⟹f covers g<br><span style="text-decoration:underline;">Check whether g covers f:</span><br><img src="./Test Results115_files/Q23_exp_2.PNG" alt="image:Database Subject Test - 2/Q23_exp_2.PNG" width="194" height="86" class="tcecode"><br><span style="text-decoration:underline;">Check whether g covers ④ :</span><br>find(A)<sup class="tcecode">+</sup> in g<br>(A)<sup class="tcecode">+</sup>=ABC<br>∴g covers ④<br><span style="text-decoration:underline;">Check whether g covers ⑤ :</span><br>find(B)<sup class="tcecode">+</sup> in g<br>(B)<sup class="tcecode">+</sup>=BCA<br>∴g covers ⑤<br><span style="text-decoration:underline;">Check whether g covers ⑥ :</span><br>find(C)<sup class="tcecode">+</sup> in g<br>(C)<sup class="tcecode">+</sup>=CAB<br>∴g covers ⑥<br>⟹g covers f<br>∴f and g are equivalent.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of functional dependencies F on schema (A, B, C)<br>F = {A → BC, B → C, A → B, AB → C}<br>	The canonical cover of this table is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A → BC and B → C</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A → BC and AB → C</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> A → BC and A → B</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> A → B and B → C<br><span class="explanation">Explanation:</span><br>Given relation R(A, B, C) and FD set:<br>			{A → BC, B → C, A → B, AB → C}<br>	<span style="text-decoration:underline;">Step 1:</span><br>		Split the FD’s such that RHS contains single attribute<br>			A → B<br>			A → C<br>			B → C<br>			A → B			<br>                                   AB → C<br>	<span style="text-decoration:underline;">Step 2:</span><br>		Find the redundant FD’s and deduce then from the set<br>			A → B<br>			B → C<br>	<span style="text-decoration:underline;">Step 3:</span><br>		Find the redundant attributes on LHS and delete them if they are not needed<br>	            No need of this step<br>		So, canonical cover of given FD set is<br>			{A → B, B → C}
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given relation R(ABCD) and FD’s under this relation is {A → B, B → C} the decomposition of the above relation R into BCNF is<br>I. Lossless decomposition<br>II. Dependency preserving<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Both I &amp; II<br><span class="explanation">Explanation:</span><br>Given relation R(ABCD) and FD’s under it<br>			{A → B, B → C}<br>	Finding candidate key:<br>A, D are not present in right hand side of any FD. Therefore AD is necessary in every candidate key. <br>(AD)<sup class="tcecode">+</sup> = ADBC<br>AD is the only candidate key of R<br>Given FD’s<br>	A → B  	----- (1)<br>	B → C		----- (2)<br>(1) is not in BCNF since left hand side of FD (1) i.e., A is not super key/ Find (A)<sup class="tcecode">+</sup><br>	(A)<sup class="tcecode">+</sup> = ABC<br> 	<img src="./Test Results115_files/Q21_exp.PNG" alt="image:Database Subject Test - 2/Q21_exp.PNG" width="269" height="210" class="tcecode"><br>The above decomposition is lossless since the common attribute of ABC &amp; AD which is A is candidate key in ABC.<br>The above decomposition is FD preserving, since original FD set has been covered by new FD set after decomposition.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given relation R(<span style="text-decoration:underline;">beer</span>, brewery, strength, city, region, <span style="text-decoration:underline;">warehouse</span>, quantity) and FD’s {beer → brewery, strength, brewery → city, city → region, beer, warehouse → quantity}. How many tables will be formed if we decompose relation R into 2NF?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Given relation R (beer, brewery, strength, city, region, warehouse, quantity) and FD’s under it<br><img src="./Test Results115_files/Q10_exp_1.PNG" alt="image:Database Subject Test - 2/Q10_exp_1.PNG" width="271" height="79" class="tcecode"><br>Finding candidate key:<br>{beer, warehouse} are not there in the right hand side of any FD. <br>So, find {beer, warehouse}<sup class="tcecode">+</sup><br>∴ {beer, warehouse}<sup class="tcecode">+</sup> = {beer, warehouse, brewery, strength, city, region, quantity}<br>∴ Candidate key = {beer warehouse} <br>Assume beer as ‘A’, brewery as ‘B’, strength as ‘C’, city as ‘D’, region as ‘E’, warehouse as ‘F’ and quantity as ‘G’. <br>Candidate key {AF}<br>FD’s are<br>A ⟶ BC ⟶ ①<br>B ⟶ DEA ⟶ ②<br>F ⟶ G ⟶ ③<br>FD ① violates 2NF.<br>∴ (A)<sup class="tcecode">+</sup> = ABCDE<br>FD② &amp; FD③ does not violate 2NF.<br>∴ Given table can be decomposed as<br> <img src="./Test Results115_files/Q10_exp_2.PNG" alt="image:Database Subject Test - 2/Q10_exp_2.PNG" width="294" height="223" class="tcecode"><br>∴ Total no. of tables formed after decomposition into 2NF is 3.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+How can we avoid cascading rollbacks?<br>I.Using strict two phase locking protocol<br>II.Using rigorous two phase protocol<br>III.Using basic two phase locking protocol<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I only</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> I and II only<br><span class="explanation">Explanation:</span><br>We can avoid cascading rollbacks in strict schedules. In these schedules, transactions can neither read nor write an item X until the last transaction that wrote X has committed (or aborted). We know that strict 2PL and rigorous 2PL ensures strict schedules. Since, in strict 2PL, the transaction does not release any of its exclusive (write) locks until after it commits or aborts, and in rigorous 2PL, the transaction does not release any of its exclusive (write) locks or share (read) locks until after it commits or aborts.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> II and III only</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I, II and III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 2 statements:<br>I. Every Binary relation is in BCNF<br>II. A relation R is in 3NF if every non-prime attribute of R is fully functionally dependent on every key of R<br>Which of the above statement (s) is wrong?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> only I</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> only II<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Statement I:</span><br>It is correct because every relation having 2 attributes is in BCNF.<br>Consider a relation R(AB), the possible non-trivial Fd’s under this is<br><img src="./Test Results115_files/Q9_exp.PNG" alt="image:Database Subject Test - 2/Q9_exp.PNG" width="366" height="130" class="tcecode"><br>∴ Statement I is correct.<br><span style="text-decoration:underline;">Statement II:</span><br>Every non-prime attribute is fully functionally dependent on key in 2NF not in 3NF.<br>In 3NF, every prime attribute is non-transitively dependent on primary key.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both I &amp; II</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let there be two transactions:<br>        T<sub class="tcecode">1</sub>: r<sub class="tcecode">1</sub>(A), r<sub class="tcecode">1</sub>(B);<br>              T<sub class="tcecode">2</sub>: w<sub class="tcecode">2</sub>(A), w<sub class="tcecode">2</sub>(B)<br>Find the number of non-serial schedules which are not conflict serializable schedules?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>Total number of concurrent schedules possible =  <br>							   =  <br>							   = 6<br>	Number of serial schedules = 2! = 2<br>	∴ Number of non-serial schedules = 6 – 2 = 4.<br><span style="text-decoration:underline;">Possible conflict serializable schedules</span>:<br><img src="./Test Results115_files/Q15_exp.PNG" alt="image:Database Subject Test - 2/Q15_exp.PNG" width="187" height="303" class="tcecode"><br>Number of non-serial conflict serializable schedules = 2<br><br>∴ Number of non-serial schedules that are not conflict serializable = 4 – 2 = 2
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results115_files/Q5.PNG" alt="image:Database Subject Test - 2/Q5.PNG" width="379" height="152" class="tcecode"><br>What is the output of the following SQL query?<br>Select count (*)<br>    FROM ((SELECT Customer_name, shop_name FROM Purchase_records) AS S<br>        NATURAL LEFT (Select Shop_name, Total_amount FROM Purchase_records) AS T);<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>The temporary table S is as follows:<br><img src="./Test Results115_files/Q5_exp_1.PNG" alt="image:Database Subject Test - 2/Q5_exp_1.PNG" width="259" height="105" class="tcecode"><br>The temporary table T is as follows:<br><img src="./Test Results115_files/Q5_exp_2.PNG" alt="image:Database Subject Test - 2/Q5_exp_2.PNG" width="250" height="145" class="tcecode"><br>S NATURAL LEFT JOIN T means join is on common column name “Shop_name” and all left table rows will be retained in output even though if they are not matched right hand side table tuples/ rows.<br>So, the result of query is<br><img src="./Test Results115_files/Q5_exp_3.PNG" alt="image:Database Subject Test - 2/Q5_exp_3.PNG" width="363" height="140" class="tcecode"><br>The no. of rows in the resultant above table is 6.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given two tables A and B as follows:<br><img src="./Test Results115_files/Q4.PNG" alt="image:Database Subject Test - 2/Q4.PNG" width="195" height="301" class="tcecode"><br>How many tuples does the result of the following query contains?<br>Select Student.id from Student where Student.age&gt; ALL<br>        (Select Teacher.age FROM Teacher where Teacher.id = 5)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Here subquery returns the empty set. So, the condition with ALL satisfies for all tuples produced by outer query.<br>Therefore, No. of rows produced = 4.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the time complexity of inserting a key into B tree with n keys and order k?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> log⁡<sub class="tcecode">k</sub><sup class="tcecode">n</sup><br><span class="explanation">Explanation:</span><br>Time complexity of inserting a key into B tree with n keys and order k is height of B tree i.e  log<sub class="tcecode">k</sub>⁡<sup class="tcecode">n</sup>
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> log<sub class="tcecode">n</sub>⁡<sup class="tcecode">k</sup></li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> log<sub class="tcecode">2</sub><sup class="tcecode">nk</sup></li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> nlog⁡<sub class="tcecode">k</sub><sup class="tcecode">n</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+Given two tables RUNNERS and RACES as follows:<br><img src="./Test Results115_files/Q1.PNG" alt="image:Database Subject Test - 2/Q1.PNG" width="267" height="331" class="tcecode"><br>What will be the result of query:<br>“Select * from RUNNERS where id NOT IN (Select winner_id from RACES)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> <img src="./Test Results115_files/Q1_opt_A.PNG" alt="image:Database Subject Test - 2/Q1_opt_A.PNG" width="119" height="90" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Empty Set<br><span class="explanation">Explanation:</span><br>Surprisingly for the given data, the result of the query will be an empty set. The reason for this is as follows:<br>If the set being evaluated by the SQL NOT IN condition contains any values that are NULL, then the order query here will return an empty set, even if there are many runner_ids that match winner_id’s in the races table.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> <img src="./Test Results115_files/Q1_opt_C.PNG" alt="image:Database Subject Test - 2/Q1_opt_C.PNG" width="118" height="124" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> <img src="./Test Results115_files/Q1_opt_D.PNG" alt="image:Database Subject Test - 2/Q1_opt_D.PNG" width="110" height="66" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a join (relation algebra) between relation p(P) and q(Q) using nested loop method. They are 3 buffers each of size equal to the disk block size, out of which one buffer is reserved for intermediate results. Assuming size (p(P))&lt;size(q(Q)) and the size(p(P)) and size(q(Q)) are greater than size of disk block, the join will have fewer number of disk block accesses if<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> relation p(P) is in the outer loop<br><span class="explanation">Explanation:</span><br>size (p(P)) &lt; size(q(Q))<br>Lets say <br>size (p(P)) be 20 records and<br>size(q(Q)) be 100 records<br>Lets take buffer size or disk block size as 10 records.<br>Here, we are performing join through nested loop method.<br>Nested loop method means, for every record in one relation, we should compare it with all records in second relation.<br><span style="text-decoration:underline;">If P is in outer loop and Q is in inner loop:</span><br>For every record in relation P, we should compare it with all 100 records of Q. So for 1 record in P the number of disk block accesses will be 10. For 20 records, the number of disk block accesses will be 200. To keep this relation P into buffers, we need two disk block access. So, the total number of disk block accesses will be 202 in this case.<br><span style="text-decoration:underline;">If Q is in outer loop and P is in inner loop:</span><br>For every record in relation Q we should compare it with all 20 records in P. So for 1 record in Q the number of disk block accesses will be 2. For 100 records, the number of disk block accesses will be 200. And to put this relation Q into buffer, we need 10 disk block accesses. So, the total number of disk block accesses here will be 210. <br><br>Therefore total number of  disk block accesses will be less if P is in outer loop and Q is in inner loop<br><span style="text-decoration:underline;">Algorithm for Nested loop join:</span><br>For each tuple p in P do<br>	For each tuple q in Q do<br>		if p and q satisfy the join condition<br>			then output the tuple &lt;p, q&gt;
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> relationq(Q) is in the outer loop</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> join selection factor between p(P) and q(Q) is more than 0.5</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> join selection factor between p(P) and q(Q) is less than 0.5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two relations with three attributes each as R1 (A, B, C) and R2 (D, E, F). R1(C) references R2(D). <br>R2 is self-referential. R2 (F) references R2 (D) (On deletion cascade deletion is applied on both the referential integrity constraints).<br><img src="./Test Results115_files/Image1.JPG" alt="image:Database Subject Test - 2/Image1.JPG" width="134" height="109" class="tcecode"><br><img src="./Test Results115_files/image2.JPG" alt="image:Database Subject Test - 2/image2.JPG" width="123" height="121" class="tcecode"><br>delete FROM R2 where D=3;<br>How many rows will be deleted in relations R1 and R2 upon executing the above SQL query?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>If we delete R2 (D) = 3 then initially first tuple (3,H,5) will be deleted from R2.<br>And due to self-referential integrity  R2 (D), = 5 will also be deleted from relation R2, so delete the second tuple also (5, J, 3).<br>And R1 all tuples having R1 (A) = 3&amp; 5 will be deleted<br>So, in R1 3 tuples will be deleted.<br>Total 5 tuples will be deleted.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two query results:<br>SELECT Count (*) As total FROM orders<br><img src="./Test Results115_files/Q24.PNG" alt="image:Database Subject Test - 2/Q24.PNG" width="568" height="167" class="tcecode"><br>Given the above query results, what will be the result of the query below? (Assume one value of customer_id is NULL)<br>SELECT count (*) As cust_not_123_total<br>FROM orders WHERE customer_id&lt;&gt; ‘123’;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 80</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 79<br><span class="explanation">Explanation:</span><br>Given total no. of rows in orders is 100. (It may include NULL values also since count (*) does not ignore NULL values)<br>Given, no. of customers having customer_id = ‘123’ is 20<br>∴ No. of customers having customer_id&lt;&gt; 20 <br>				=(100-20-1)<br>				     (Since one customer_id has NULL value)<br>				=79
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many new nodes will be formed if we insert a key “i” into below B tree of order “3”?<br><img src="./Test Results115_files/Q29.PNG" alt="image:Database Subject Test - 2/Q29.PNG" width="159" height="89" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3<br><span class="explanation">Explanation:</span><br>Given:  B tree of order 3<br>∴ Max no. of keys that can be present in leaf/ non-leaf node is (3 – 1) = 2<br>insert “i”<br><img src="./Test Results115_files/Q29_exp.PNG" alt="image:Database Subject Test - 2/Q29_exp.PNG" width="304" height="236" class="tcecode"><br><img src="./Test Results115_files/Q29_exp1.PNG" alt="image:Database Subject Test - 2/Q29_exp1.PNG" width="209" height="167" class="tcecode"><br>∴ No. of new nodes formed = 3<br>1M
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following transactions with data items A and B initialized to zero?<br>T<sub class="tcecode">1</sub>: read (A);<br>     read (B);<br>     if A = 0 then A:= A + 1;<br>     write (A);<br>T<sub class="tcecode">2</sub>: read (B);<br>     read (A);<br>     if B = 0 then B:= B + 2;<br>     write (B);<br><br>Consider the following statements<br>I.Any non-serial interleaving of T<sub class="tcecode">1</sub> and T<sub class="tcecode">2</sub> for concurrent execution leads to a conflict serializable schedule.<br>II.Any non-serial interleaving of T<sub class="tcecode">1</sub> and T<sub class="tcecode">2</sub> for concurrent execution leads to a schedule that is not conflict serializable.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Only I is correct</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Only II is correct</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> None of the above<br><span class="explanation">Explanation:</span><br>Some combinations of non-serial interleaving of T1 and T2 leads to a schedule that is not conflict serializable and some combination leads to a schedule that is conflict serializable.	<br>For example consider a interleaving schedule of T<sub class="tcecode">1</sub> and T<sub class="tcecode">2</sub> as follows:<br><img src="./Test Results115_files/Q18_exp1.PNG" alt="image:Database Subject Test - 2/Q18_exp1.PNG" width="281" height="367" class="tcecode"><br>It contains cycle, so the above interleaving schedule is not conflict serializable.<br><br>Consider another interleaving schedule of T<sub class="tcecode">1</sub> and T<sub class="tcecode">2</sub> as follows:<br><br><img src="./Test Results115_files/Q18_exp2.PNG" alt="image:Database Subject Test - 2/Q18_exp2.PNG" width="262" height="351" class="tcecode"><br><br>It do not have any cycle, therefore given schedule is conflict equivalent to T2, T1.<br>So, some interleaving schedules lead to conflict serializable and some interleaving schedules lead to non-conflict serializable.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following sequence of actions:<br>r<sub class="tcecode">1</sub>(A); r<sub class="tcecode">2</sub>(B), w<sub class="tcecode">1</sub>(C); w<sub class="tcecode">3</sub>(B); r<sub class="tcecode">3</sub>(C); w<sub class="tcecode">2</sub>(B); w<sub class="tcecode">3</sub>(A)<br>Assume that the read and write timestamps of A, B and C are each 0 prior to execution of these actions. For which of the initial time stamps of the transactions T<sub class="tcecode">1</sub>, T<sub class="tcecode">2</sub> and T<sub class="tcecode">3</sub> there are no transaction aborts using Time stamp protocol with Thomas write rule?<br>I. TS(T<sub class="tcecode">1</sub>)=200  TS(T<sub class="tcecode">2</sub>)=400  TS(T<sub class="tcecode">3</sub>)=300<br>II.TS(T<sub class="tcecode">1</sub>)=300  TS(T<sub class="tcecode">2</sub>)=200  TS(T<sub class="tcecode">3</sub>)=400<br>III.TS(T<sub class="tcecode">1</sub>)=200  TS(T<sub class="tcecode">2</sub>)=300  TS(T<sub class="tcecode">3</sub>)=400<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I, II &amp; III</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> only I &amp; II</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> only III</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> only II &amp; III<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Checking for (I)</span>:<br>	TS(T<sub class="tcecode">1</sub>) = 200, TS(T<sub class="tcecode">2</sub>) = 400, TS(T<sub class="tcecode">3</sub>) = 300<br>Given schedule can be written as<br><img src="./Test Results115_files/Q16_exp1.PNG" alt="image:Database Subject Test - 2/Q16_exp1.PNG" width="412" height="170" class="tcecode"><br>So, the above schedule T<sub class="tcecode">3</sub> will abort under timestamp protocol with thomas write rule.<br><br><span style="text-decoration:underline;">Checking for (II)</span>:<br>	TS(T<sub class="tcecode">1</sub>) = 300, TS(T<sub class="tcecode">2</sub>) = 200, TS(T<sub class="tcecode">3</sub>) = 400<br>Given schedule can be written as<br><img src="./Test Results115_files/Q16_exp2.PNG" alt="image:Database Subject Test - 2/Q16_exp2.PNG" width="510" height="266" class="tcecode"><br><br><span style="text-decoration:underline;">Checking for Option (III)</span>:<br>	TS(T<sub class="tcecode">1</sub>) = 200, TS(T<sub class="tcecode">2</sub>) = 300, TS(T<sub class="tcecode">3</sub>) = 400<br>Given schedule can be written as<br><img src="./Test Results115_files/Q16_exp3.PNG" alt="image:Database Subject Test - 2/Q16_exp3.PNG" width="418" height="205" class="tcecode"><br>So, both II &amp; III are correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume 2 relational schemas R1(ABCDEF) and R2(ABC) with following FD’s<br>{AB→C,C→ABDE,DAE→F}<br>Which of the following statements is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both R1 and R2 are in BCNF</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both R1 and R2 are in 3NF only</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> R1 is in 2NF and R2 in 3NF<br><span class="explanation">Explanation:</span><br>Given R1 (ABCDEF) and R2(ABC)<br>For under R1 will be <br>AB ⟶ C ⟶ ①<br>C ⟶ ABDE ⟶ ②<br>DAE ⟶ F ⟶ ③<br>∴ <span style="text-decoration:underline;">Finding candidate key for R1:</span><br>Candidate keys for R1 is {AB, C}<br>Prime attributes = {A, B, C}<br><span style="text-decoration:underline;">Checking for 2NF:</span><br>① satisfies 2NF since ① is not partial dependency.<br>② satisfies 2NF since ② is not partial dependency.<br>③ satisfies 2NF since ③ is not partial dependency.<br><span style="text-decoration:underline;">Checking for 3NF:</span><br>① satisfies 3NF since LHS of FD① i.e. AB is super key.<br>② satisfies 3NF since LHS of FD② i.e. C is super key.<br>③ does not satisfy3NF since LHS of FD③i.e. DAE is not superkey&amp; RHS of FD③ i.e. F is not prime attribute.<br>∴Highest normal form R1 satisfies is 2NF.<br><span style="text-decoration:underline;">Candidate key for R2:</span><br>FD’s under R2 will be<br>AB ⟶ C ⟶ ①<br>C ⟶ AB ⟶ ②<br>Keys for R2 is {AB, C}<br>FD ① &amp; FD ② satisfies BCNF since LHS of FD ① and FD ②<br>i.e. AB &amp; C respectively are super keys.<br>∴ R2 is in BCNF. This implies R2 is in 3NF.<br>Among given options, (c) is correct.<br>R1 is in 2NF, R2 is in 3NF
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both R1 and R2 are in 2NF only</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schemas<br>Student (<span style="text-decoration:underline;">StudId</span>, Fname, age, Sex, deptNo) and <br>Enroll (<span style="text-decoration:underline;">StudId, courseId</span>, Marks) with primary keys as underlined. Which of the following query/ (ies) produce same output as the English sentence.<br>“Names of all students who scored marks more than 80 in all subjects they have enrolled”<br><em class="tcecode">I. {S.Fame|Student(S)∧ ∀e((enroll(e)∧(e.StudId=S.StudId))→e.marks&gt;80}<br>II.{&lt;F&gt;|∃I,A,Se,d (&lt;I,F,A,Se,d&gt;∈ Student ∧ ∃(&lt;I,Ce,Me&gt;∈ Enroll→Me&gt;80))}<br>III.Select Fname from student where NOT EXISTS ((Select StudId from enroll e where e.StudId=StudId)EXCEPT ALL(Select StudId from enroll e where (e.StudId=StudId and marks&gt;80)));</em><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both II &amp; III</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Both I &amp; III<br><span class="explanation">Explanation:</span><br>Statement I is correct.<br>	It checks for all courses that given student is enrolled, he/she should score marks greater than 80 then display the student name in output.<br>Statement II is wrong.<br>Correct DRC query is<br>{&lt;F&gt;|∃I,A,Se,d((&lt;I,F,A,Se,d&gt;ϵ Student)∧∀(&lt;I,Ce,Me&gt;∈Enroll→Me&gt;80))}<br>Statement III is correct.<br>③ Select Fname from student where NOT EXISTS<br><img src="./Test Results115_files/Q6_exp_1.PNG" alt="image:Database Subject Test - 2/Q6_exp_1.PNG" width="463" height="105" class="tcecode"><br>① gives Sid’s of all students who enrolled for courses.<br>② gives Sid’s of all students who scored more than 80 marks in the courses they enrolled.<br>③ gives names of all students who scored marks &gt; 80 in all courses they enrolled (Since output of ①&amp;② can be duplicates in order to get correct answer we use EXCEPT ALL instead of EXCEPT.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I, II &amp; III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following schedules are allowed by Strict 2PL protocol?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> r<sub class="tcecode">1</sub>(A); r<sub class="tcecode">2</sub>(B); r<sub class="tcecode">3</sub>(C); w<sub class="tcecode">1</sub>(B); C<sub class="tcecode">1</sub>; w<sub class="tcecode">2</sub>(C); C<sub class="tcecode">2</sub>; w<sub class="tcecode">3</sub>(D); C<sub class="tcecode">3</sub></li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> r<sub class="tcecode">1</sub>(A); r<sub class="tcecode">2</sub>(B); r<sub class="tcecode">3</sub>(C); w<sub class="tcecode">1</sub>(B); w<sub class="tcecode">2</sub>(C); w<sub class="tcecode">3</sub>(A); C<sub class="tcecode">1</sub>; C<sub class="tcecode">2</sub>; C<sub class="tcecode">3</sub></li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> r<sub class="tcecode">1</sub>(A); r<sub class="tcecode">2</sub>(B); r<sub class="tcecode">3</sub>(C); r<sub class="tcecode">1</sub>(B); r<sub class="tcecode">2</sub>(C); r<sub class="tcecode">3</sub>(D); C<sub class="tcecode">3</sub>; w<sub class="tcecode">1</sub>(C); C<sub class="tcecode">1</sub>; w<sub class="tcecode">2</sub>(D); C<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> r<sub class="tcecode">1</sub>(A); r<sub class="tcecode">2</sub>(B); r<sub class="tcecode">3</sub>(C); w<sub class="tcecode">1</sub>(B); C<sub class="tcecode">1</sub>; w<sub class="tcecode">2</sub>(C); C<sub class="tcecode">2</sub>; w<sub class="tcecode">3</sub>(D); C<sub class="tcecode">3</sub><br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Checking for Option (a)</span>:<br><br>		Given schedule is	<br><img src="./Test Results115_files/Q14_exp1.PNG" alt="image:Database Subject Test - 2/Q14_exp1.PNG" width="210" height="168" class="tcecode"><br>                      <br>  We will check whether the above schedule satisfies strict 2PL or not.<br>Strict 2PL means all exclusive locks are unlocked only after the transaction is either committed or aborted.<br><br><img src="./Test Results115_files/Q14_exp2.PNG" alt="image:Database Subject Test - 2/Q14_exp2.PNG" width="238" height="215" class="tcecode"><br><br>Exclusive cannot be given on B by t1 since already T2 holds shared lock on B and it cannot release that lock since it has to acquire another exclusive lock on “C”.<br> ∴ The above schedule does not satisfy strict 2PL<br><br><span style="text-decoration:underline;">Checking for Option (b)</span>:<br><br>	Given schedule is<br><img src="./Test Results115_files/Q14_exp3.PNG" alt="image:Database Subject Test - 2/Q14_exp3.PNG" width="211" height="215" class="tcecode"><br>We will check whether the above schedule satisfies strict 2PL or not<br><br><img src="./Test Results115_files/Q14_exp4.PNG" alt="image:Database Subject Test - 2/Q14_exp4.PNG" width="226" height="225" class="tcecode"><br><br>Exclusive lock cannot be given on B T1 since already T2 holds shared lock on B and it cannot release that lock since it has to acquire another exclusive lock on “C”.<br>∴ The above schedule does not satisfy strict 2PL<br><br><span style="text-decoration:underline;">Checking for Option (c)</span>:<br><br>		Given schedule is<br><img src="./Test Results115_files/Q14_exp5.PNG" alt="image:Database Subject Test - 2/Q14_exp5.PNG" width="211" height="247" class="tcecode"><br><br>We will check whether the above schedule satisfies strict 2PL or not<br><br><img src="./Test Results115_files/Q14_exp6.PNG" alt="image:Database Subject Test - 2/Q14_exp6.PNG" width="236" height="380" class="tcecode"><br><br>	<br>Exclusive lock cannot be given on C T1 since already T2 holds shared lock on “C” and it cannot release that lock since it has to acquire another exclusive lock on “D”.<br>∴ The above schedule does not satisfy strict 2PL<br><br><span style="text-decoration:underline;">Checking for Option (d)</span>:<br><br>	Given schedule is<br><img src="./Test Results115_files/Q14_exp7.PNG" alt="image:Database Subject Test - 2/Q14_exp7.PNG" width="145" height="172" class="tcecode"><br><br>We will check whether the above schedule can be satisfied by strict 2PL or not<br><br><img src="./Test Results115_files/Q14_exp8.PNG" alt="image:Database Subject Test - 2/Q14_exp8.PNG" width="161" height="305" class="tcecode"><br><br>Therefore, above schedule is satisfied by strict 2PL
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given two tables <br>Employee (<span style="text-decoration:underline;">eid</span>, ename, age, dno) and <br>Department (Dno, Dname, Mgr_ssn) with primary keys as underlined are as below:<br><img src="./Test Results115_files/Q3_1.PNG" alt="image:Database Subject Test - 2/Q3_1.PNG" width="222" height="209" class="tcecode"><br><img src="./Test Results115_files/Q3_2.PNG" alt="image:Database Subject Test - 2/Q3_2.PNG" width="222" height="157" class="tcecode"><br>Consider the following 4 queries<br>Q.1 (Select dno from employee) UNION (Select dno from Department);<br>Q.2 (Select dno from employee) UNION ALL (Select dno from Department);<br>Q.3 (Select dno from employee) INTERSECT (Select dno from Department);<br>Q.4 (Select dno from employee) INTERSECT ALL (Select dno from Department);<br> Consider the following statements. Which of the following statement(s) is/ are<br>I. The difference in no. of tuples produced by Q2 and Q1 is 0.<br>II. The difference in no. of tuples produced by Q3 and Q4 is 0.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Only I is correct</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Only II is correct<br><span class="explanation">Explanation:</span><br><img src="./Test Results115_files/Q3_exp_1.PNG" alt="image:Database Subject Test - 2/Q3_exp_1.PNG" width="269" height="183" class="tcecode"><br><img src="./Test Results115_files/Q3_exp_2.PNG" alt="image:Database Subject Test - 2/Q3_exp_2.PNG" width="276" height="333" class="tcecode"><br><img src="./Test Results115_files/Q3_exp_3.PNG" alt="image:Database Subject Test - 2/Q3_exp_3.PNG" width="281" height="216" class="tcecode"><br><img src="./Test Results115_files/Q3_exp_4.PNG" alt="image:Database Subject Test - 2/Q3_exp_4.PNG" width="401" height="261" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Both I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Neither I nor II is correct</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the relational schemas:<br>Student (<span style="text-decoration:underline;">Sid</span>, Sname, age, Sex)<br>andCourseInfo(<span style="text-decoration:underline;">eid</span>, instructorName, duration) and <br>enroll (<span style="text-decoration:underline;">Sid, eid</span>, marks) with primary keys as Underlined.  <br><br>Write the SQL query to retrieve all the “Student names who enrolled for all courses taught by Sindhu”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> SELECT Sname FROM STUDENT WHERE NOT EXISTS (<br>     (SELECT Cid FROM CourseInfo WHERE instructorName = ‘Sindhu’)<br>UNION<br>    (SELECT Cid FROM ENROLL e WHERE e.Sid = Sid));</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Select Sname FROM STUDENT WHERE NOT EXISTS (<br>	(Select cid FROM courseInfo WHERE instructorName = ‘Sindhu’)<br>EXCEPT<br>(Select cid from Enroll e WHERE e.Sid = Sid));<br><span class="explanation">Explanation:</span><br><img src="./Test Results115_files/Q2_exp.PNG" alt="image:Database Subject Test - 2/Q2_exp.PNG" width="579" height="93" class="tcecode"><br>① gives output as all course id’s (Cid’s) taught by instructor “Sindhu”.<br>②gives output as all course id’s (Cid’s) enrolled by given student.<br>If ①-② is empty set for a given student, it means the given student has enrolled for all courses that are taught by instructor ‘Sindhu’. We will display all those student names.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> Select Sname FROM STUDENT WHERE EXISTS (<br>	(Select cid from courseInfo WHERE instructorName = ‘Sindhu’)<br>EXCEPT <br>	(Select cid from ENROLL e WHERE e.Sid = Sid));</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schemas<br>Student (<span style="text-decoration:underline;">Sid</span>, Fname, age, Sex, deptNo) and <br>Enroll (<span style="text-decoration:underline;">Sid, courseId</span>, Marks) with primary keys underlined. Which of the following queries produce same output as the English sentence.<br><br>Find the names of students who enrolled for atleast 2 courses.<br>I.<em class="tcecode">{&lt;F&gt;|∃I,A,Se,d(&lt;F,I,A,Se,d&gt; ∈Student∧∃CE_(1 ),CE_2,SM_1,SM_2 ((&lt;I,CE_(1 ),SM_1&gt;Enroll ∧ &lt;I,CE_2,SM_2&gt; ∈Enroll∧CE_(1 )≠CE_2 )))}<br>II.Select Sid From Enroll group by sid having Count(*)≥2 As S;<br>Select Fname from student NATURAL JOIN S;<br></em><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> I only</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> Both I&amp;II<br><span class="explanation">Explanation:</span><br>Statement 1: DRC query retrieves all student names who enrolled for at least two courses.<br>Statement II: Group the enroll table by sid and having count(*) &gt; 2. This retrieves the sids of all students who enrolled for atleast two courses. Join this table with STUDENT to retrieve the student names.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q30 &amp; Q31:</strong><br>Consider a schedule<br>		S: r<sub class="tcecode">1</sub>(A); W<sub class="tcecode">1</sub>(B); W<sub class="tcecode">1</sub>(C); r<sub class="tcecode">2</sub>(A); W<sub class="tcecode">2</sub>(B); W<sub class="tcecode">2</sub>(C); abort<sub class="tcecode">2</sub>; r<sub class="tcecode">3</sub>(A); W<sub class="tcecode">3</sub>(B); W<sub class="tcecode">3</sub>(C); C<sub class="tcecode">1</sub>; C<sub class="tcecode">3</sub> <br><br>How many conflict equivalent serial schedules are possible for the given schedule  ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br><img src="./Test Results115_files/Q19_exp.PNG" alt="image:Database Subject Test - 2/Q19_exp.PNG" width="323" height="491" class="tcecode"><br><br>∴ Topological ordering of the above graph is<br>			T<sub class="tcecode">1</sub> – T<sub class="tcecode">3</sub> – T<sub class="tcecode">2</sub><br>			T<sub class="tcecode">2</sub> – T<sub class="tcecode">1</sub> – T<sub class="tcecode">3</sub><br>			T<sub class="tcecode">1</sub> – T<sub class="tcecode">2</sub> – T<sub class="tcecode">3</sub><br>	Number of conflict equivalent serial schedules for the given schedule is 3.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q30 &amp; Q31:</strong><br>Consider a schedule<br>		S: r<sub class="tcecode">1</sub>(A); W<sub class="tcecode">1</sub>(B); W<sub class="tcecode">1</sub>(C); r<sub class="tcecode">2</sub>(A); W<sub class="tcecode">2</sub>(B); W<sub class="tcecode">2</sub>(C); abort<sub class="tcecode">2</sub>; r<sub class="tcecode">3</sub>(A); W<sub class="tcecode">3</sub>(B); W<sub class="tcecode">3</sub>(C); C<sub class="tcecode">1</sub>; C<sub class="tcecode">3</sub><br><br>How many view equivalent serial schedules are possible for the given schedule ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Polygraph for the given schedule is<br><img src="./Test Results115_files/Q20_exp.PNG" alt="image:Database Subject Test - 2/Q20_exp.PNG" width="180" height="133" class="tcecode">		 <br>Topological ordering of the above graph is<br>	T<sub class="tcecode">1</sub> – T<sub class="tcecode">3</sub> – T<sub class="tcecode">2</sub><br>	T<sub class="tcecode">1</sub> – T<sub class="tcecode">2</sub> – T<sub class="tcecode">3</sub><br>	T<sub class="tcecode">2</sub> – T<sub class="tcecode">1</sub> – T<sub class="tcecode">3</sub><br>∴ Number of view equivalent serial schedules for the given graph is 3.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Q32 &amp; Q33:</strong><br>A relation R<br><img src="./Test Results115_files/DBMS_SUB.JPG" alt="image:Database Subject Test - 2/DBMS_SUB.JPG" width="325" height="128" class="tcecode"><br>What is the normal form of the above relation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 1NF<br><span class="explanation">Explanation:</span><br>Given relation R<br><img src="./Test Results115_files/DBMS_SUB.JPG" alt="image:Database Subject Test - 2/DBMS_SUB.JPG" width="325" height="128" class="tcecode"><br>FD’s that can be derived on R from given table are<br>Student ⟶ Age ⟶ ①<br>Candidate key for R:<br>Student, Subjects_enrolled are not there in right hand side of any FD. <br>So find {Student, Subjects.enrolled}<sup class="tcecode">+</sup><br>{Student, Subjects.enrolled}<sup class="tcecode">+</sup> = Student, Subjects_enrolled, Age<br>      ∴ {Student, Subjects.enrolled} is Candidate key.<br>FD ① violates 2NF, since LHS of FD ① i.e. Student is part of key determining non-prime attribute Age. So, the highest normal form that R satisfies is 1NF.
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 2NF</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3NF</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Q32 &amp; Q33:</strong><br>A relation R<br><img src="./Test Results115_files/DBMS_SUB.JPG" alt="image:Database Subject Test - 2/DBMS_SUB.JPG" width="325" height="128" class="tcecode"><br><br>If the above relation is converted into 2NF, what will be the number of tables in the resulting relation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results115_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>FD ① violates 2NF, so find<br>(Student)<sup class="tcecode">+</sup> = Student . Age<br>Given table can be decomposed as<br><img src="./Test Results115_files/Q13_exp.PNG" alt="image:Database Subject Test - 2/Q13_exp.PNG" width="300" height="117" class="tcecode"><br> <br>∴ No. of tables = 2
+</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results115_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results115_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

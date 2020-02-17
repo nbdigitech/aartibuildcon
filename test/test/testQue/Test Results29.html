@@ -1,0 +1,1059 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=44068&test_id=307 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results29_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results29_files/calclayout.css">
+<script src="./Test Results29_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results29_files/jquery-ui.js.download"></script>
+<script src="./Test Results29_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results29_files/custom.js.download"></script>
+<script src="./Test Results29_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results29_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results29_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837312, 'I\'m sorry, the time available to complete the test is over!', false, 1486837312688);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=44068&amp;test_id=307#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Advanced Grand Test - 3</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-18 11:01:52&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-18 13:55:18&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+02:53:26&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+24.740 / 100.000 (25%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+19 / 65 (29%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<strong class="tcecode">Choose the most appropriate word from the options given below to complete the following sentence:</strong><br>The boy and his dog _______ had trespassed on the club premises were turned out.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> which</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> that<br><span class="explanation">Explanation:</span><br>In the given sentence, we have two antecedents (boy, dog). Antecedents are the nouns/words that a pronoun refers to or replaces. In this sentence, the pronoun <strong class="tcecode">his</strong> is referring to the boy and when there are two antecedents, one denoting a <strong class="tcecode">person</strong> and the other denoting <strong class="tcecode">an animal</strong> or thing, the pronoun “<strong class="tcecode">that</strong>” is used in preference to who or which.<br>Therefore, the boy and his dog <strong class="tcecode">that </strong>had trespassed on the club premises were turned out.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> who</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> whom</li>
+</ol>
+<br><br>
+</li>
+<li>
+How is my father’s brother’s sister’s husband’s son related to me?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Nephew</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Brother</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Brother-in-law</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Cousin<br><span class="explanation">Explanation:</span><br>Father’s brother’s sister ⇒ Father’s sister<br>Sister’s husband’s son ⇒ Sister’s son<br>The statement can now be converted to My father’s sister’s son.<br>The relation between him and me would be “Cousin”.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Sagar starting from a point P walks 8 Km North, then turns right and travels 4 Km and then turns left and travels 4 Km, then turns left and travels 20 Km. How far is he from the starting point P?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 20 Km<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/19Qa.png" alt="image:AGT3/19Qa.png" width="344" height="400" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 25 Km</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 30 Km</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 40 Km</li>
+</ol>
+<br><br>
+</li>
+<li>
+She works hard not because of the ______, but because of her inner urge.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> desire</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> energy</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> motivation</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> incentive<br><span class="explanation">Explanation:</span><br>Explanation:<br>To figure out what the missing word is, we have to predict its definition by using keywords from the given content. The missing word’s keyword here is inner urge, and inner urge is nothing but the desire, motivation or zeal to do something. If we notice, of all the four options, three words, i.e. desire, energy and motivation are synonyms for inner urge and since we have another keyword ‘not’ in the content, the only word that is left and fits in the content is <strong class="tcecode">“incentive”.</strong><br>Therefore, she works hard not because of the <strong class="tcecode">incentive</strong>, but because of her inner urge.<br>(It says that, she is not working for an i<span style="text-decoration:underline;">ncentive</span> or for money or some reward, but because of her inner urge or motivation.)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is closest in meaning to the word given below?<br>Mellifluous<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Loud</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Melodic<br><span class="explanation">Explanation:</span><br>The word Mellifluous means having a pleasant and fluid sound, i.e., harmonious, melodic and smooth. So, the word that is closest in meaning to the word Mellifluous is <strong class="tcecode">melodic.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Passive</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Circuitous</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/1Qa.png" alt="image:AGT3/1Qa.png" width="517" height="221" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Parts(<span style="text-decoration:underline;">Pid</span>,Supplies)</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Parts(Pid,( <span style="text-decoration:underline;">Sname</span>))</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Parts(<span style="text-decoration:underline;">Pid</span>,Sname)<br><span class="explanation">Explanation:</span><br>ere the cardinality ratio between Parts and Supplier in supplies relationship is N:1. So, inorder to represent the “Supplies” relationship, we have to include primary key of relation participating in one side i.e., “Supplier” relation primary key (Sname) as foreign key to relation representing parts entity. So, the relations formed from the above ER diagram are <br>Parts(<span style="text-decoration:underline;">Pid</span>,Sname),Supplier(<span style="text-decoration:underline;">Sname</span>).Therefore, answer is Option (c).
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/24Qa.png" alt="image:AGT3/24Qa.png" width="362" height="85" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 9</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/25Qa.png" alt="image:AGT3/25Qa.png" width="582" height="242" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/36Qa.png" alt="image:AGT3/36Qa.png" width="665" height="172" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Total profit 200</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> All jobs will complete</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> J<sub class="tcecode">2</sub>will be left out</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Both (a) and (c)<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/37Qa.png" alt="image:AGT3/37Qa.png" width="490" height="132" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A max heap has following elements in it<br>110  60  80  30  40  50  70  20<br>After deleting 110, what is the new heap?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 80  70  60  30  40  50  20</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 80  70  60  50  40  30  20</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 80  60  70  30  40  50  20<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/40Qa.png" alt="image:AGT3/40Qa.png" width="623" height="448" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 80  60  70  30  50  40  20</li>
+</ol>
+<br><br>
+</li>
+<li>
+Box 1 contains 1 red ball and 2 white balls. Box 2 contains 2 red balls and 1 white balls. One ball is drawn randomly from box 1 and transferred to box 2.<br>Then a ball is drawn randomly from box 2 and it is red. What is the probability that the transferred ball was white?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 7/12</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3/4</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 4/7<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/28Qa.png" alt="image:AGT3/28Qa.png" width="389" height="414" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1/2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a data cache with a 92% hit rate and a 2-cycle hit latency, calculate the average memory access latency. Assume that latency to memory and the cache miss penalty together is 124 cycles. And also assume the cache must be accessed after memory returns the data<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 11.92<br><span class="explanation">Explanation:</span><br>AMAT (Average memory access time)  <br>= hit time + miss rate * miss latency<br>= 2 + 0.08*124 = 11.92 cycles
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 13.42</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 18.9</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 18</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a queue which has maximum size = 5. Following operations are performed on empty queue.<br>Enqueue(6),Enqueue(7),Enqueue(8),Enqueue(9),Dequeue(), <br>Enqueue(6),Enqueue(10),Enqueue(11),Enqueue(21),Dequeue(),  <br>Dequeue(  ),Enqueue(21),Enqueue(26),Enqueue(36).<br>How many times Enqueue(  ) operation fail?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Enqueue(11)→fails<br>Enqueue(21)→fails<br>Enqueue(36)→fails
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a singly linear linked list with 3 nodes. What happens with the execution of below code fragment if head points to the first node of the list.<br>P=head→next;<br>q=head;<br>head→next=q→next→next;<br>head=q;<br>free(p);<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> deletes front node</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> deletes last node</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> deletes middle node<br><span class="explanation">Explanation:</span><br>P=head→next;means p points to middle node<br>q=head;q points to 1st node<br>head→next=q→next→next;means next of first node points to 3rd node  <br>head=q;means head points to 1st node<br>free(p);means deletes middle node
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> error</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system TLB lookup takes 20ns and main memory takes 300ns what will be the hit rate if effective memory access time is 350 ns?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 90%<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/11Qa.png" alt="image:AGT3/11Qa.png" width="311" height="195" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 85%</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 80%</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 95%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statement:<br>S1: “The PDA complement of a CFL L accepted can be constructed by making the final state, as non-accepting state and vice-versa of the PDA accepting L”.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> S1 is false</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> S1 is true only in case of DCFL<br><span class="explanation">Explanation:</span><br>The class of DCFL’s is closed under complement, while the class of non-deterministic CFL are not closed under complement. So let us assume that there is an arbitrary DPDA D that recognizes the complement of the language, we have to modify D to yield a new machine D’ where D’ is obtained by converting the non-accepting states of D to accepting states in D’ and vice-versa.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> S1 is true only in case of non-deterministic CFL</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: Every CSL over the alphabet with single symbol is CFL.<br>S2: Every CFL over the alphabet with single symbol isregular.<br>Choose the correct statement.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Only S2 is true<br><span class="explanation">Explanation:</span><br>S1 is not correct.<br>Consider the language L={0<sup class="tcecode">n</sup><sup class="tcecode">2</sup> ) ┤|n≥1}  is a CSL but not CFL, eventhough it is over a single symbol alphabet {0}.<br>S2 is correct.<br>According to Parikh’s theorem we have, that a context-free language over a singleton alphabet must be regular.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Neither S1 nor S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the graph G whose vertices are the 4-element subsets of the set {1, 2, ..., 10} with two vertices are adjacent if and only if their intersection is empty. then the graph G is a:<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Regular<br><span class="explanation">Explanation:</span><br>Every subset will have an edge to (6¦4) subsets. There are (10¦4) subsets <br>Therefore, every vertex is having equal degree, and hence it is regular graph. And the graph doesn’t need to have exactly two independent sets so we can’t say it’s a bipartite graph.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Bipartite</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both regular and bipartite</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two transactions T<sub class="tcecode">1</sub>and T<sub class="tcecode">2</sub>. Transaction T<sub class="tcecode">1</sub> has 7 operations and transaction T<sub class="tcecode">2</sub>  has 2 operations. Find the number of concurrent schedules that are possible with given 2 transactions.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3, 62, 880</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 34<br><span class="explanation">Explanation:</span><br>Given <br>transactionT_1 has 7 operations<br>transactionT_2 has 2 operations<br>∴ Number of concurrent schedules possible with these 2 transactions are <br>((7+2)!/(7!×2!)) - 2!<br>=(9!/(7!×2!)) - 2!<br>=((9×8)/2!) - 2!<br>=36 -2<br>=34
+</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Construct binary search tree for the elements whose preorder traversal is given below:<br>17,9,5,25,21,19,23,29,31,30.<br>The height of the constructed Binary Search Tree (root is at level 0) is ______.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/39Qa.png" alt="image:AGT3/39Qa.png" width="593" height="359" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the total number of disk head movements using SSTF algorithm.Disk requests are 93,10,20,35,32,50,55,73,75 and disk head at position 63.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 136<br><span class="explanation">Explanation:</span><br>Using SSTF the head movement will be: (63-55)+(55-50)+(50-35)+(35-32)+(32-20)+(20-10)+(73-10)+(75-73)+(93-75) = 8+5+15+3+12+10+63+2+18 = 136
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 147</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 145</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 143</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let L be the language of all binary strings in which the third symbol from the right is a 1. If we construct a non-deterministic finite automaton that recognizes L, then how many states does the minimized equivalent DFA have?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/5Qa.png" alt="image:AGT3/5Qa.png" width="625" height="507" class="tcecode"><br>So we see that there are total 8 states.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Statement: “Salary of an employee should be positive integer”.<br>Above statement corresponds to which of the following DBMS constraints?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Entity Integrity Constraint</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Domain Constraint<br><span class="explanation">Explanation:</span><br>It comes under domain constraint since here the condition will be applied on the definition of domain in table schema.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Key Constraint</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Referential Integrity Constraint</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that everyone in a group of N members wants to communicate secretly with N-1 others using symmetric key cryptographic system. The communication between any two persons shouldn’t be decodable by the others in the system has whole to satisfy the confidentiality requirement is?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> N(N-1)</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> N + (N-1)</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> N(N-1)/2<br><span class="explanation">Explanation:</span><br>In symmetric key cryptographic system same key is used as both the parties to perform encryption and decryption.<br>	<br>	If “N” people wants to communicate with N-1 others then number of keys required is NC2<br>	 = N (N - 1) /2
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> N-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many maximum number of representations can some number have in signed magnitude representation, given n bits are used?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>0 (zero) has 2 representations in signed magnitude representation.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2<sup class="tcecode">n</sup></li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> n</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are anti-symmetric relations?<br>I. “⊂ (Proper subset)” on a collection of sets.<br>II. The relation ‘is a divisor of’ denotes as ‘/’  ’ is an antisymmetricon any set of +ve real numbers.<br>III. “≠ (not equal to)” on a set of integers.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> I only</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> I, II only<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/22Qa.png" alt="image:AGT3/22Qa.png" width="577" height="350" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> I, III only</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> II, III only</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following grammars can be converted as an operator grammar?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> (E→EAE|ϵ<br>A→Ea|a)</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> (E→EA|b<br>A→Aa|a)<br><span class="explanation">Explanation:</span><br>A→Aa|acan be written as A→aA|a.<br>Hence (b) can be written as <br>S→SaA|Sa|b,<br>A→aA|a <br>The above is an operator grammar since it does not have ϵ-production and also no two consecutive non-terminals on RHS of productions.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> E→EEA|ϵ,A→Aa|a</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following languages is/are inherently ambiguous?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> The setof all strings of the form {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup>,n&gt;0}</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">m</sup>│n,m≥0}</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">m</sup>│n&gt;0,m&gt;0}∪{a<sup class="tcecode">n</sup> b<sup class="tcecode">m</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">n</sup>│n&gt;0,m&gt;0}<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/8Qa.png" alt="image:AGT3/8Qa.png" width="652" height="309" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both (b) and (c)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following set of vectors are linearly independent<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> [2,1,1],[3,1,2],[0,1,-1]</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> [1,2,1],[2,1,-1],[1,2,1]</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> [0,2,3],[4,0,2],[3,-1,0]</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/21Qa.png" alt="image:AGT3/21Qa.png" width="583" height="426" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is not true about caches<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Caches do not have to be as big as the data the program needs to access</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> It takes longer to access a cache if it is full<br><span class="explanation">Explanation:</span><br>If an application is not reusing data over time, then it does not matter if it is in the cache, since it will be bringing the required data  from RAM anyways. Performance of caches does not decrease if they are full.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Cache memories are faster than RAM</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Caches only help if the application reuses its data</li>
+</ol>
+<br><br>
+</li>
+<li>
+Will a host update its ARP cache upon receiving any ARP request?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Updated for all requests.</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Only if the ARP request is to host.<br><span class="explanation">Explanation:</span><br>A host will update its ARP cache, only if the ARP request is for its IP address. Otherwise, it will discard the ARP request.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Only if the ARP request is in host subnet.</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+A trader purchases 2 variety of sugars at 50/-, 38/- per kilo. In what proportion he has to mix them to sell the mixture value at 54/- per kilo and in order to get a profit of 20%?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 5:7<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/20Qa.png" alt="image:AGT3/20Qa.png" width="607" height="448" class="tcecode"><br><img src="./Test Results29_files/20Qb.png" alt="image:AGT3/20Qb.png" width="284" height="270" class="tcecode">
+</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 7:5</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2:3</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3:2</li>
+</ol>
+<br><br>
+</li>
+<li>
+An urn contains 3 red, 6 blue, 2 green and 4 yellow balls. If two marbles are picked randomly then the probability that either both are red or both are green is<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3/5</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2/7</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 4/105<br><span class="explanation">Explanation:</span><br>Total number of balls =15<br>Probability of getting both balls are red = <sup class="tcecode">3</sup>C<sub class="tcecode">2</sub><br>Probability of getting both balls are green = <sup class="tcecode">2</sup>C<sub class="tcecode">2</sub><br>∴P(E)= (<sup class="tcecode">3</sup>C<sub class="tcecode">2</sub> + <sup class="tcecode">2</sup>C<sub class="tcecode">2</sub>)/ <sup class="tcecode">15</sup>C<sub class="tcecode">2</sub>=4/105
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 5/91</li>
+</ol>
+<br><br>
+</li>
+<li>
+Everyone constantly face challenges-at home with our spouse, children and other family members, at work with our peers and bosses. Sometimes life itself becomes a challenge because it throws up so many relationships based and situational challenges. But the biggest challenge of them all is one’s mind. Often, it is possible to control everything else but one’s mind. Being master of the mind is no less than mastery of the world. The Bhagwad Gita says, ‘Our mind is our best friend and our worst enemy. If we know how to manage our mind, we can manage our time, our relationships, our life, everything. This is where spirituality comes in. It is the path to a mentally de-cluttered, value-based life. Spirituality teaches us to control our thoughts, emotions and desires. It is actually the science of managing one’s mind.<br>“It is possible to control everything else but one’s mind” means<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> It is possible to control one’s mind more than anything else.</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Everything else is useless unless one controls one’s mind.</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Everything else is achievable if one controls one’s mind.</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> It is possible to control everything else except one’s mind.<br><span class="explanation">Explanation:</span><br>In the given question, we need to find out an option whose meaning is equivalent to the meaning of the given phrase, i.e. “It is possible to control everything else but one’s mind.”<br>	By using the key word ‘but’ the given statement can be interpreted as “you can control everything <strong class="tcecode">but </strong>not your mind.”<br><strong class="tcecode">Option (a):</strong><br>This statement “It is possible to control one’s mind more than anything else” can be interpreted as “You can control your mind more than anything else.”<br><strong class="tcecode">Option (b):</strong><br>	The statement “Everything else is useless unless one controls one’s mind.” can be interpreted as “Everything you do is useless unless you control your mind.”<br><strong class="tcecode">Option (c):</strong><br>	“Everything else is achievable if one control’s one’s mind.” can be interpreted as “You can achieve everything if you control your mind.”<br><br><br><strong class="tcecode"> Option (d):<br></strong>	The statement “It is possible to control everything else except one’s mind.” can be interpreted as “You can control everything except your mind.”<br>Therefore, from the given explanation the statement whose meaning is similar to the given phrase is <strong class="tcecode">“It is possible to control everything else except one’s mind.”</strong>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a one-day cricket match the captain of one of the teams scored 20 runs more than the average runs scored by the remaining six batsman of that team who batted in the match. If the total runs scored by all the batsman of that team were 300, how many runs did the captain score?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 50</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 60<br><span class="explanation">Explanation:</span><br>Let the average of runs made by other 6 batsman be x.<br>∴Runs made by Captain =x+20<br>∴x+20+6x=300<br>7x=280<br>x=280/7=40<br>∴ Number of runs scored by the Captain =40+20=60
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> cannot be determined</li>
+</ol>
+<br><br>
+</li>
+<li>
+Two numbers are in the ratio 3:4 and their HCF and LCF are in the ratio1:12. The difference between LCM and HCF is 44. Find the sum of the two numbers?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 28<br><span class="explanation">Explanation:</span><br>Solution:<br>A:B=3:4<br>HCM and LCM = x and 12x<br>12x-x=44<br>x=44/11=4<br>∴HCF and LCM=4 and 48<br>∴A:B=3x:4x<br>3×4:4×4<br>A and B=12 and 16<br>∴ Sum =12+16=28
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 32</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/23Qa.png" alt="image:AGT3/23Qa.png" width="467" height="46" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> a,b,c are in AP</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> a,b,c are in GP</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> a,b,c are in HP</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/23Ea.png" alt="image:AGT3/23Ea.png" width="478" height="478" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/26Qa.png" alt="image:AGT3/26Qa.png" width="500" height="67" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1, 1, 2</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1, 4, 2</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1, 4, 4</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 2, 2, 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/27Qa.png" alt="image:AGT3/27Qa.png" width="680" height="125" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/29Qa.png" alt="image:AGT3/29Qa.png" width="452" height="182" class="tcecode"><br>A bee wants to get to the cell containing honey. Each time, he only takes a step to a neighboring cell that moves him to the right. How many ways does he have of reaching the honey in the last cell?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 144<br><span class="explanation">Explanation:</span><br>Let the number of ways to get to the nth leftmost hexagon be F<sub class="tcecode">n</sub>. Thus, we want to find the value of F<sub class="tcecode">12</sub>. <br>Note that F<sub class="tcecode">1</sub> =1, also F<sub class="tcecode">2</sub>=1. Now, to get to F<sub class="tcecode">3</sub>, B can arrive through F<sub class="tcecode">1</sub> and F<sub class="tcecode">2</sub>. Thus, <br>In general, to arrive on F<sub class="tcecode">n</sub> B can choose either to arrive from Fn-1 and F<sub class="tcecode">n-2</sub>. Thus <br>F<sub class="tcecode">n</sub>=F<sub class="tcecode">n-1</sub> + F<sub class="tcecode">n-2</sub><br><br>F<sub class="tcecode">3</sub> = F<sub class="tcecode">1</sub> + F<sub class="tcecode">2</sub> = 2.<br>But this is a sequence we recognize: Fibonacci sequence <br>The 12th Fibonacci number is 144.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 128</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 132</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 121</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results29_files/30Qa.png" alt="image:AGT3/30Qa.png" width="432" height="232" class="tcecode"><br>If S<sub class="tcecode">1</sub>and S<sub class="tcecode">2</sub> be the Minimal spanning tree’s obtained by running kruskal’s and prim’s algorithm starting at vertex a respectively on the given graph, then which of the following is always true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> S<sub class="tcecode">1</sub>=S<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/31Qa.png" alt="image:AGT3/31Qa.png" width="468" height="343" class="tcecode"><br><img src="./Test Results29_files/31Qb.png" alt="image:AGT3/31Qb.png" width="522" height="244" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> S<sub class="tcecode">1</sub> !=S<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> weight of S<sub class="tcecode">1</sub> is less than weight of S<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A non pipelined system takes 300ns to process a task. The same task can be processed in a 5-segment pipeline with a clock cycle of 60ns. Determine the speedup ratio of the pipeline for 100 tasks?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 4.8<br><span class="explanation">Explanation:</span><br>SpeedUp = (300ns x 100)/((5+100-1)(60ns))<br>    = 30000/6240 <br>    = 4.8
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3.5</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+A random permutation π of set [n] = {1, 2, …, n} → {1, 2,3, …, n} can be represented as a set of cycles as follows. Assign one vertex to each number I = 1, 2, …, n. if the permutation maps i to π(1), then a directed arc is drawn from vertex I to vertex π(i). this leads to a graph that is a set of disjoint cycles.Note that if the permutation mapsi to i, then the cycle is a self-loop from i to i.<br>The expected number of cycles for n = 3;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3/2</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 11/6<br><span class="explanation">Explanation:</span><br>Let (i1i2i3 … ik) denote a cycle of length k. for n=3 possible permutations are <br>{(123), (132), (12)(3), (12)(3), (13)(2), (23)(1), (1)(2)(3)} <br><br>Expected number of cycles E(C) = expected number of cycles with length 3 + expected number of cycles with length 2 + expected number of cycles with length 1<br>Therefore E(C) = 1*(2/6) + 2*(3/6) + 3*(1/6)<br>		        = 11/6
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+A TCP machine is sending full windows of 65,535 bytes over a 1-Gbps channel that<br>has a 10-msec one-way delay. What is the maximum throughput achievable? What is<br>the line efficiency?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2.6<br><span class="explanation">Explanation:</span><br>One window can be sent every 20 msec. This gives 50 windows/sec, for a maximum data rate of about 3.3 million bytes/sec. The line efficiency is then 26.4 Mbps/1000 Mbps or 2.6 percent.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3.6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a calculator modeled by the grammar:<br>〈accumulated_sum 〉⟶〈accumulated_sum 〉+number|<br>〈accumulated_sum 〉*number|number<br>For an input "number+number*number" the handles in the reverse of a right most derivation are<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> number,〈accumulated_sum 〉+number,〈accumulated_sum 〉+number*number</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> number,〈accumulated_sum 〉+number,〈accumulated_sum 〉*number<br><span class="explanation">Explanation:</span><br>A “handle” of a string is a substring that matches the RHS of a production and whose reduction to the non-terminal (on the LHS of the production) represents one step along the reverse of a rightmost derivation toward reducing to start symbol.<br>Parse tree for deriving the string "number+number*number" :<br><img src="./Test Results29_files/9Qa.png" alt="image:AGT3/9Qa.png" width="509" height="256" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> number,number+number,number+number*number</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a processor with an ideal CPI without memory stalls for each instruction type as follows:<br>ALU=1, <br>Load/Store=1.5, <br>Branch=1.5, <br>Jump=1.<br>And consider a program which consist 40% ALU operations, 30% load and store, 20% branch and 10% jump instructions. Assume 2-way set associative Level-1 separate cache for data and instruction. Data cache and instruction cache miss rate are 20%, 10% respectively. Miss Penalty  for data cache and instruction cache is 50 cycles,  then calculate the effective CPU time?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 8.25</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 9.25<br><span class="explanation">Explanation:</span><br>First compute CPIideal without memory stalls:<br>CPIideal   =  (0.4*1)+(0.3*1.5)+(0.2*1.5)+(0.1*1) <br>    = 1.25<br>The effective CPI (CPIactual), including  the memory stalls.<br>	CPIactual = CPIideal + Memory Stalls per instruction<br>The Memory stalls per instruction(Stalls/Inst)  is given by <br>Stalls/Inst= (stalls due to data access per instruction )+(stalls due to instruction access/inst)<br>stalls due to data access/instruction = (data miss rate * data miss-penalty) * data accesses/inst  <br>						= (0.2*50)*0.3<br>						= 3<br>Stalls due to instruction access/instruction = (instruction Miss rate * miss penalty) * instruction accesses/inst <br>					= (0.1*50)*1<br>					= 5<br>Memory stalls per instruction = 3 + 5 = 8<br>CPIactual = 1.25 + 8<br>   = 9.25
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 10.34</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 9.34</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br>W→ER<br>R→*E;R|ϵ<br>E→F+E|F<br>F→W|id<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> It is LR(0)but notSLR(1)</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> It is SLR(1)but not CLR(1)</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> It is LR(0),SLR(1)and CLR(1)</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>W→ER<br>R→*E;R|ϵ<br>E→F+E|F<br>F→W|id<br>The cannonical collection of LR(0) items(it is partially complete):<br><img src="./Test Results29_files/10Qa.png" alt="image:AGT3/10Qa.png" width="557" height="419" class="tcecode"><br><img src="./Test Results29_files/10Qb.png" alt="image:AGT3/10Qb.png" width="536" height="256" class="tcecode"><br><img src="./Test Results29_files/10Qc.png" alt="image:AGT3/10Qc.png" width="593" height="381" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: Every recognizable language can be recognized by a TM that either accepts or loops, but never rejects.<br>S2: If a language is decidable, then every proper subset of that language is decidable.<br>Which of the above statement/s is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Justification for S1:</span><br>For any recognizable language L, we have a TM M that recognizes it. We can construct a new TM M’ that also recognizes L but never rejects:<br>On input W:<br>1. Run M on W<br>2. If M accepts then accept.<br>3. If M rejects then loop.<br>This TM recognizes the same language as M because it accepts iff M accepts. It never rejects because instead of rejecting it loops.<br><span style="text-decoration:underline;">Justification for statement S2:</span><br>S2 is false.<br>Counter example: We know that A_TM is undecidable.<br>Let Σ be the alphabet that A_TM is defined over.<br>A_TM⊂Σ^*  and Σ^*is regular and therefore decidable.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: If there are m variables in a grammar then the number of productions after removal of unit production in worst case is given by O(m<sup class="tcecode">2</sup>)<br>S2: If there are n productions in a grammar then the number of production when the grammar is converted to Chomsky Normal form is of the order O(n)<br>Which of the above statement/s is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> S1 is true<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/7Qa.png" alt="image:AGT3/7Qa.png" width="667" height="407" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> S2 is true</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Neither S1 nor S2 true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the language:<br>L={a<sup class="tcecode">p</sup> b<sup class="tcecode">q</sup> c<sup class="tcecode">r</sup> |p!=q or q!=r}<br>The context free grammar for the above language is given as:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> <img src="./Test Results29_files/6oa.png" alt="image:AGT3/6oa.png" width="246" height="208" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> <img src="./Test Results29_files/6Ob.png" alt="image:AGT3/6Ob.png" width="145" height="227" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/6Ea.png" alt="image:AGT3/6Ea.png" width="529" height="346" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Not a CFL</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the minimum number of multiplication required to multiply following matrices.<br>A<sub class="tcecode">(3×5)</sub>,B<sub class="tcecode">(5×6)</sub>,C<sub class="tcecode">(6×10)</sub>,D<sub class="tcecode">(10×6)</sub>,E<sub class="tcecode">(6×3)</sub><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 450</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 495<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/34Qa.png" alt="image:AGT3/34Qa.png" width="557" height="299" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 540</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 595</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given <br>keys (x):  8,28,6,5,20,36,9,12,16,48<br>M(Hash table size)=11<br>and initially hash table is empty.<br>Find the number of collisions occurred in hash table if x mod M has function is used to map the given keys.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/35Qa.png" alt="image:AGT3/35Qa.png" width="218" height="276" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many minimal SOP forms do exist for the function represented by the given K-map? <br><img src="./Test Results29_files/14Qa.png" alt="image:AGT3/14Qa.png" width="290" height="220" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/15Qa.png" alt="image:AGT3/15Qa.png" width="326" height="408" class="tcecode"><br><img src="./Test Results29_files/15Qb.png" alt="image:AGT3/15Qb.png" width="435" height="471" class="tcecode"><br><img src="./Test Results29_files/15Qc.png" alt="image:AGT3/15Qc.png" width="523" height="70" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+ow many minimum number of tables will be formed if the relation R(A,B,C,D,E,F) with<br>FD{A→BF,CD→E,B→D,E→A}is decomposed into BCNF?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Finding Candidate key for the given relation:<br>“C” is not present in the right hand side of any FD. So, C is necessary in every Candidate key. See whether “C” can alone be sufficient to be Candidate key. So, find C<sup class="tcecode">+</sup> in R. C<sup class="tcecode">+</sup>=C. Since C alone cannot determine all attributes, C is not sufficient to be Candidate key.<br>Try all combinations of 2 attributes that include C such as CA,CB,CD,CE. Since 〖(CA)〗<sup class="tcecode">+</sup>,〖(CB)〗<sup class="tcecode">+</sup>,〖(CD)〗<sup class="tcecode">+</sup>,〖(CE)〗<sup class="tcecode">+</sup>determines all attributes in relation R(ABCDE), Candidate keys are {CA,CB,CD,CE}.<br><br>Given FDs are<br>A→BF⟶ (1)<br>CD→E⟶②<br>B→D⟶③<br>E→A⟶④<br>We know that an FD  X→Y in R is in BCNF, only if X is a superkey in R.<br>Here, FD① violates BCNF since LHS of FD① i.e., A is not superkey. So find 〖(A)〗<sup class="tcecode">+</sup><br>〖(A)〗<sup class="tcecode">+</sup>=ABFD. So, R can be decomposed as<br><img src="./Test Results29_files/2Qa.png" alt="image:AGT3/2Qa.png" width="579" height="258" class="tcecode"><br>∴ No. of tables required to decompose given table into BCNF is 4 (<span style="text-decoration:underline;">B</span>D, <span style="text-decoration:underline;">A</span>BF, <span style="text-decoration:underline;">E</span>A, <span style="text-decoration:underline;">CE</span>).
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+The sequential circuit is connected as depicted in the figure. And the following state transitions, 0 to 0, 1 to 2 to 0, 3 to 3. Then what gate is X? Gate is Q<sub class="tcecode">1</sub> Q<sub class="tcecode">0</sub>.<br><img src="./Test Results29_files/16Qa.png" alt="image:AGT3/16Qa.png" width="459" height="172" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> AND<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/17Qa.png" alt="image:AGT3/17Qa.png" width="335" height="336" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> NAND</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> NOR</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> OR</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are valid arguments?<br>A<sub class="tcecode">1</sub>: If Murali has completed M.Tech. Computer Science or MBA, then he is assured of a good job. If Murali is assured of a good job, he is happy. Murali is not happy. So, Murali has not completed M.Tech. Computer Science.<br>A<sub class="tcecode">2</sub>: [A→B,A→C,~(B∨C),(D∨A) ]⇒D<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> A<sub class="tcecode">1</sub> is valid and A<sub class="tcecode">2</sub> is invalid</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> A<sub class="tcecode">1</sub>is invalid and A<sub class="tcecode">2</sub> is valid</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> Both A<sub class="tcecode">1</sub>and A<sub class="tcecode">2</sub> are valid<br><span class="explanation">Explanation:</span><br>Argument 1: The propositions can be named in the following ways:<br>A denotes “Murali has completed M.Tech. Computer Science”.<br>B denotes “Murali has completed MBA”.<br>C denotes “Murali is assured of a good job”.<br>D denotes “Murali is happy”.<br>The given premises are:<br>I. (A∨B)→C<br>II. C→D<br>III. ~D<br>The conclusion is ~A.<br>1.(A∨B)→C<br>2.C→D<br>3.(A∨B)→D (from ①&amp;②, Transitive) <br>4.~D<br>5.~(A∨B)	         (from③&amp;④, Modus tollens)	<br>6.~A∧~B	         (De-Morgan’s law)<br>7.~A		         (from⑥, Simplification rule)<br>∴The argument A<sub class="tcecode">1</sub>is valid.<br><br>Argument 2: The given premises are<br>(i)  A→B<br>(ii)  A→C<br>(iii)  ~(B∨C)<br>(iv)  D∨A<br>1.A→B               Premise (i)<br>2.A→C               Premise (ii) <br>3.A→(B∨C)    (from①&amp;②)   <br>4.~(B∨C)         Premise (iii) <br>5.~A                   (from③&amp;④, Modus tollens)<br>6.D∨A	Premise (iv)<br>7.D		(from⑤, ⑥ Disjunction syllogism)<br>∴The argument A<sub class="tcecode">2</sub>is valid.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> Both A<sub class="tcecode">1</sub>and A<sub class="tcecode">2</sub> are invalid</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the height factor values force to perform two rotations in balancing AVL tree?<br>(i)-2,-1<br>(ii)  2,1<br>(iii)  2,-1<br>(iv)-2,1<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> i (or)  ii only</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> ii (or)  iii only</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> iii (or)  iv only<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/38Qa.png" alt="image:AGT3/38Qa.png" width="497" height="398" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> i (or)  iv only</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Consider a B-tree of order “P”.<br>Find the maximum number of keys in a B-tree of height h.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> P<sup class="tcecode">h</sup>-1</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> P<sup class="tcecode">(h+1)</sup>-1<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/4Qa.png" alt="image:AGT3/4Qa.png" width="691" height="389" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> P<sup class="tcecode">(h+1)</sup></li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> P<sup class="tcecode">h</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Consider a B-tree of order “P”.<br>The minimum number of keys in a B-tree of height h is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2(⌈P⁄2⌉ )<sup class="tcecode">(h-1)</sup> (⌈P⁄2⌉-1)</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 2(⌈P⁄2⌉ )<sup class="tcecode">h</sup>-1<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/3Qa.png" alt="image:AGT3/3Qa.png" width="709" height="469" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2(⌈P⁄2⌉ )<sup class="tcecode">(h-1)</sup> (⌈P⁄2⌉ )</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question:</strong><br>Let S be the binary semaphore variable and S = 2 initially. Assume that there are no blocked processes in the system if the following operations performed in the given order.<br>5V,7P,10V,7V,9P,14V,12P,3P,8P<br>Find the total no. of blocked processes?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 0</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>Given S = 2<br>Final S after performing operations<br>2+5-7+10+7-9+14-12-3-8<br>=1
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question:</strong><br>Let S be the binary semaphore variable and S = 2 initially. Assume that there are no blocked processes in the system if the following operations performed in the given order.<br>5V,7P,10V,7V,9P,14V,12P,3P,8P<br>Find the total no. of processes successfully entered in critical section.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 37</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 38<br><span class="explanation">Explanation:</span><br>Given S = 2<br>Total up operations from given data = 5 + 10 + 7 + 14 = 36<br>Total down operations from given data = 7 + 9 + 12 + 3 + 8 = 39<br>Out of 39, 1 process is blocked.<br>∴ 38 successful down operations.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 39</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question</strong><br>Consider a TCP session from a client A to a server B. Suppose that the first packet from A, following the “SYN packet” has a sequence number of 200. Suppose that some later packet from A has a sequence number of 700, a total IP packet length of 500 bytes and no IP or TCP options. Assume that no packets are lost.<br>How many bytes have been sent from A so far (including the “current packet”)?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1179 bytes</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 980 bytes<br><span class="explanation">Explanation:</span><br>980 bytes. The first data packet has a sequence number of 200. This would be the ‘random’ sequence number chosen. The later packet with sequence number 700 and IP payload length 500 would include the TCP header in the 500 bytes, so there are 480 bytes of TCP data including bytes numbered 700 through 1179. So, including this later packet, A would end up sending bytes numbered 200 through 1179 for a total of 980 bytes
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 920 bytes</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1024 bytes</li>
+</ol>
+<br><br>
+</li>
+<li>
+980 bytes. The first data packet has a sequence number of 200. This would be the ‘random’ sequence number chosen. The later packet with sequence number 700 and IP payload length 500 would include the TCP header in the 500 bytes, so there are 480 bytes of TCP data including bytes numbered 700 through 1179. So, including this later packet, A would end up sending bytes numbered 200 through 1179 for a total of 980 bytes<br>What sequence number would you expect in the next packet from A?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 1179</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 981</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 1180<br><span class="explanation">Explanation:</span><br>Till now the data sent from A is 1179 bytes. So next expected packet from A is 1180.
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 979</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer system uses 32 bit virtual address, and 32-bit physical address. The physical memory is byte addressable, page size is 4 kbytes. If the page table entry is 4 bytes.<br>Find the total no. of bits required to represent frame number?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 20<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/13Qa.png" alt="image:AGT3/13Qa.png" width="456" height="169" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 18</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 24</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer system uses 32 bit virtual address, and 32-bit physical address. The physical memory is byte addressable, page size is 4 kbytes. If the page table entry is 4 bytes.<br>Find the total number of bits required to storing protection bits?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 14</li>
+<li><img src="./Test Results29_files/correct.png" width="18">&nbsp;<img src="./Test Results29_files/correct.png" width="18"> 12<br><span class="explanation">Explanation:</span><br>Page table entry = Frame number + protection bits<br>∴Protection bits = 12
+</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions</strong><br><img src="./Test Results29_files/32Qa.png" alt="image:AGT3/32Qa.png" width="372" height="106" class="tcecode"><br>What is the space complexity of the given recurrence relation. Solve using dynamic programming top down approach.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(1)</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(logn)</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>From the solution of above problem we need extra array to solve the given recurrence relation using dynamic programming top down approach.<br>Space complexity is O(n).
+</li>
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup> )</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions</strong><br><img src="./Test Results29_files/32Qa.png" alt="image:AGT3/32Qa.png" width="372" height="106" class="tcecode"><br>What is the time complexity of the above recurrence relation if dynamic programming and top-down approach is used to solve recurrence?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results29_files/wrong.png" width="16">&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(2<sup class="tcecode">n</sup> )</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup> )</li>
+<li>&nbsp;<img src="./Test Results29_files/wrong.png" width="16"> O(nlogn)</li>
+<li>&nbsp;<img src="./Test Results29_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br><img src="./Test Results29_files/33Qa.png" alt="image:AGT3/33Qa.png" width="510" height="411" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results29_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

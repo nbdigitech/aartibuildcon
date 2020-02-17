@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=21625&test_id=69 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results118_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results118_files/calclayout.css">
+<script src="./Test Results118_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results118_files/jquery-ui.js.download"></script>
+<script src="./Test Results118_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results118_files/custom.js.download"></script>
+<script src="./Test Results118_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results118_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results118_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921369, 'I\'m sorry, the time available to complete the test is over!', false, 1486921369546);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=21625&amp;test_id=69#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 4</strong><br>
+SQL&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-07 23:05:06&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-07 23:49:27&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:21&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+3.710 / 25.000 (15%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+5 / 15 (33%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following relational schema<br>Employee(<span style="text-decoration:underline;">Emp_Id</span>, Emp_name, salary) with primary key as underlined<br>Which one of the following query finds the employee id’s with their names having letter ‘A’ in the second position and ‘E’ in their name (or) employee with 5 letter name that starts with ‘S’ and ends with ‘A’?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Select Emp_id from Employee where<br>Emp_name like ‘_A_ _E’ OR ‘S%A’;</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Select Emp_id from Employee where<br>(Emp_name like ‘_A%’ AND Emp_name LIKE ‘%E%’) OR Emp_name like ‘S_ _ _ A’;<br><span class="explanation">Explanation:</span><br>Given, employee names should have letter ‘A’ in the second position and ‘E’ in their name<br>	So, Emp_name like ‘_ A%’ AND Emp_name LIKE ‘%E%’<br>		(% rep[resents 0 or more characters)<br>(or) Employee names should consists of 5 letters and name should start with ‘S’ and ends with ‘A’<br>	So, emp_name like ‘S_ _ _ A’
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Select Emp_id from Employee where<br>Emp_name like ‘_A_ _%E’ OR ‘S_ _%A’;</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Relation Shooting_game(<span style="text-decoration:underline;">Player_Id</span>, Player_Name, Score) where Player_Id is the primary key and there are no null values in the table. Find the names of the players who had scored more than the score of any other player<br>	Q1: Select G.Player_name from<br>		Shooting_game G<br>	where<br>		G.Score&gt;Any(Select G1.Score from<br>					Shooting_game G1);<br>	Q2: Select G.Player_name from<br>		Shooting_game G<br>	where<br>		G.Score&gt;All(Select G1.Score from<br>					Shooting_game G1);<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Query 1 is the correct implementation of the specification but query 2 is not</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Both Query 1 and Query 2 are correct implementations of the specification</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Query 2 is the correct implementation of the specification but Query 1 is not</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Neither Query 1 nor Query 2 is a correct implementation of the specification.<br><span class="explanation">Explanation:</span><br>We have to find the names of players who scored more than any other player means we have to find the names of the players who scored maximum.<br>So, clearly Q1 is not a correct implementation of given specification as it displays the player names who scored more than atleast one player.<br>Q2 is also not correct implementation of given specification as it displays no player names. In the query ‘&gt;=’ should be there before ALL but not ‘&gt;’. So, Q2 is also not correct implementation of given specification.<br>		So, answer is (d)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+On update SET CASCADE ____<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Specifies that the column should be set to NULL when the referenced column is updated</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Specifies that the column should be updated, when the referenced column is updated<br><span class="explanation">Explanation:</span><br>On update SET CASCADE specifies that the column should be updated when the referential column is updated.<br>	For example if we create EMPLOYEE table as<br>	CREATE TABLE EMPLOYEE<br>		(. . . . ., <br>			PRIMARY KEY(SSN),<br>			FOREIGN KEY(SUPERSSN) REFERENCES EMPLOYEE(SSN)<br>				ON DELETE SET NULL ON UPDATE CASCADE):<br>	This means whenever SSN value for a supervising employee is updated, the new value is cascaded to SUPERSSN for all employee tuples referencing the updated employee tuple
+</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Specifies that the rows should be deleted when the referenced rows are deleted.</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Referential Integrity constraint is related to which of the following:<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Primary key</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> NOT NULL</li>
+<li><img src="./Test Results118_files/correct.png" width="18">&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Foreign Key<br><span class="explanation">Explanation:</span><br>Referential integrity constraint states that any field in a table that is declared as a foreign key can contain either a null value or only values from a parent table’s primary or candidate key.<br>	Therefore referential integrity constraint is related to foreign key.
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Unique</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is TRUE in aggregation with NULL values in SQL:<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> All Aggregate functions ignore NULL values in their input collection.</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> All Aggregate functions ignore NULL values except Count( ) function</li>
+<li><img src="./Test Results118_files/correct.png" width="18">&nbsp;<img src="./Test Results118_files/correct.png" width="18"> All Aggregate functions ignore NULL values except Count(*)<br><span class="explanation">Explanation:</span><br>All aggregate functions except Count(*) ignore null values<br>	For example consider the below table<br><img src="./Test Results118_files/Q11_exp.PNG" alt="image:Database Topic Test - 4/Q11_exp.PNG" width="152" height="143" class="tcecode"><br>⇒Count(A) = 4<br>		Count(B) = 3<br>	Count(*) = 4
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> All Aggregate functions ignore NULL values except Count(distinct Column_name)</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results118_files/Q5.PNG" alt="image:Database Topic Test - 4/Q5.PNG" width="410" height="161" class="tcecode"><br>How many tuples are there in the result of the following queries?<br>(A)	SELECT A.Id, B.Id from B LEFT OUTER JOIN A ON A.Id = B.Id;<br>(B)	SELECT A.Id, B.Id from A FULL OUTER JOIN B ON A.Id = B.Id;<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> 8, 8<br><span class="explanation">Explanation:</span><br>The result of a left outer join (or simply left join) for tables A and B always contains all rows of the "left" table (A), even if the join-condition does not find any matching row in the "right" table (B). This means that if the ON clause matches 0 (zero) rows in B (for a given row in A), the join will still return a row in the result (for that row)—but with NULL in each column from B. A left outer join returns all the values from an inner join plus all values in the left table that do not match to the right table, including rows with NULL (empty) values in the link column.<br><img src="./Test Results118_files/Q5_exp.PNG" alt="image:Database Topic Test - 4/Q5_exp.PNG" width="298" height="217" class="tcecode"><br><br>So the number of tuples in result of query(a) is 8<br>A  full outer join combines the effect of applying both left and right outer joins. Where rows in the FULL OUTER JOIN ed tables do not match, the result set will have NULL values for every column of the table that lacks a matching row. For those rows that do match, a single row will be produced in the result set (containing columns populated from both tables).<br><img src="./Test Results118_files/Q5_exp_2.PNG" alt="image:Database Topic Test - 4/Q5_exp_2.PNG" width="291" height="220" class="tcecode"><br>So, the number of tuples in result of query(b) is 8
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 2, 4</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 4, 2</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 4, 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results118_files/Q7.PNG" alt="image:Database Topic Test - 4/Q7.PNG" width="458" height="211" class="tcecode"><br>Consider the above table A. How many tuples does the result of the following SQL queries contain ?<br>	Q1: select Location from A where AreaCode in (101, 103);<br>	Q2: Select Location from A where AreaCode = 101<br>		UNION<br>	       Select Location from A where AreaCode = 103;<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 4, 6</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 4, 4</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 5, 5</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> 6, 4<br><span class="explanation">Explanation:</span><br>Q1: We have to select location where Areacode is either 101 or 103<br>		Output of the query is Hyderabad<br>				           NULL<br>					Kolkata<br>					Chennai<br>					Hyderabad <br>					NULL<br>		∴ The above query output contains 6 tuples<br><img src="./Test Results118_files/Q7_exp_1.PNG" alt="image:Database Topic Test - 4/Q7_exp_1.PNG" width="356" height="112" class="tcecode"><br><img src="./Test Results118_files/Q7_exp_2.PNG" alt="image:Database Topic Test - 4/Q7_exp_2.PNG" width="340" height="217" class="tcecode"><br>(We know that UNION operation considers two NULL values as same and so it eliminates duplicates in the final result)<br>So, Q2 output consists of 4 tuples.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following Relational Schema and the SQL Query that follows:<br>R(A, B, C)<br>SELECT A, B, C<br>      From R<br>ORDER BY C DESC, B ASC, A;<br>What condition must a tuple t satisfy so that t necessarily precedes the tuple (7, 7, 7)? Identify one such tuple from the list below.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> (5, 9, 7)</li>
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> (5, 8, 5)</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> (9, 7, 7)</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> (3, 7, 7)<br><span class="explanation">Explanation:</span><br>In the given query they have mentioned that we have to order the output by ‘C’ in descending order and if ‘C’ values are equal then we have to order the output by B in ascending order.<br>Given that t should precedes the tuple (7, 7, 7)<br>Here C is in descending order. So, the value of ‘C’ in t ≥ 7. So, among the given options, only (a), (c) &amp; (d) satisfies. If C value is same then we have to order the output by B in ascending order. Therefore the value of ‘B’ in t should be less than or equal to 7. Among the options (a), (c) &amp; (d) only (c) &amp; (d) satisfies. By default A is in ascending order, so A&lt;=7, so option(d) satisfies.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schema:<br>Employee(<span style="text-decoration:underline;">employee_id</span>, Emp_name, salary, dept_id)<br>Department(Dept_id, Dept_name) with primary keys as underlined. Dept_id in the relation Employee is the foreign key referring to Dept_id of the Department table. Assume that relations corresponding to the above schema are not empty. What does the following query return?<br>Select  E.Emp_name, E.dept_id FROM EMPLOYEE E<br>		WHERE E.salary&gt;<br>	(SELECT MIN(M.SALARY) from EMPLOYEE M WHERE<br>		M.Dept_id IN<br>	(SELECT D.Dept_id FROM DEPARTMENT D WHERE<br>		E.dept_id = D.Dept_id));<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> The names and department id’s of the employees whose salary is greater than minimum salary of all the employees.</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> The names and department id’s of the employees whose salary is greater than minimum salary of all the employees in their department respectively.<br><span class="explanation">Explanation:</span><br>Given query is a correlated subquery<br>	For every employee we check whether his/her salary is greater than minimum salary of all the employees working in his/her department respectively. If the condition satisfies, we display that employee name and corresponding department id.<br>	For example consider the below employee and department tables:<br><span style="text-decoration:underline;">EMPLOYEE</span><br><img src="./Test Results118_files/Q1_exp_1.PNG" alt="image:Database Topic Test - 4/Q1_exp_1.PNG" width="601" height="138" class="tcecode"><br><img src="./Test Results118_files/Q1_exp_2.PNG" alt="image:Database Topic Test - 4/Q1_exp_2.PNG" width="290" height="260" class="tcecode"><br>Because, the minimum salary in department 1 is 5000, Sowmya’s and Srinu’s salary is greater than 5000, so their names and dept_id’s are displayed. The minimum salary in department 2 is 30,000 but no other employee in dept 2 has a salary greater than 30,000.So, no employee from dept id “2” will be displayed. In the same way in dept id “3” also no employee name will be displayed.
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> The names and department id’s of all employees who get minimum salary in their department respectively.</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schema:<br>Students(<span style="text-decoration:underline;">StudId</span>, StuName, Score) with primary key as underlined. Assuming that the attribute score values can be repeated and cannot contain NULL values. What is the output of the following SQL query?<br>	SELECT S1.Score FROM Students S1 where<br>		((SELECT COUNT(DISTINCT S2.Score) FROM Students S2<br>			Where S2.Score ≤ S1.Score) ≤ 3);<br>Consider the students table as follows:<br>Students:<br><img src="./Test Results118_files/Q2.PNG" alt="image:Database Topic Test - 4/Q2.PNG" width="458" height="145" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 80, 80, 70</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> 90, 80, 70,80<br><span class="explanation">Explanation:</span><br>Given query is a correlated sub query<br>Hence for each tuple in Student S1, we compare the score of the specific student with the scores in Student S2 and check whether the score(S1) is greater than or equal to at most 3 distinct scores in Student S2 table. If this condition returns TRUE, the corresponding  score from Student S1 table is displayed. In such a way, the above query returns least 3 scores from the given STUDENT table.<br>	Given STUDENT table as follows:<br><img src="./Test Results118_files/Q2_exp.PNG" alt="image:Database Topic Test - 4/Q2_exp.PNG" width="481" height="348" class="tcecode"><br>Above query returns the least 3 scores.
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 100, 90, 80,80</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> 100, 100, 90,80</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table Employee:<br><img src="./Test Results118_files/Q13.PNG" alt="image:Database Topic Test - 4/Q13.PNG" width="381" height="184" class="tcecode"><br>Consider the above Employee. What will be the output of the following SQL query?<br>		SELECT Dept_Id, AVG(Salary) AS “Average_Salary”<br>			FROM Employee<br>			GROUP BY dept_id;<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> <img src="./Test Results118_files/Q13_opt_A.PNG" alt="image:Database Topic Test - 4/Q13_opt_A.PNG" width="204" height="90" class="tcecode"></li>
+<li><img src="./Test Results118_files/correct.png" width="18">&nbsp;<img src="./Test Results118_files/correct.png" width="18"> <img src="./Test Results118_files/Q13_opt_B.PNG" alt="image:Database Topic Test - 4/Q13_opt_B.PNG" width="198" height="86" class="tcecode"><br><span class="explanation">Explanation:</span><br>We know that aggregate functions except count(*) ignores NULL values.<br><img src="./Test Results118_files/Q13_exp_1.PNG" alt="image:Database Topic Test - 4/Q13_exp_1.PNG" width="469" height="234" class="tcecode"><br>Output of given query for given table is<br><img src="./Test Results118_files/Q13_exp_2.PNG" alt="image:Database Topic Test - 4/Q13_exp_2.PNG" width="189" height="102" class="tcecode"><br>So, answer is (b)
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> <img src="./Test Results118_files/Q13_opt_C.PNG" alt="image:Database Topic Test - 4/Q13_opt_C.PNG" width="198" height="90" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> <img src="./Test Results118_files/Q13_opt_D.PNG" alt="image:Database Topic Test - 4/Q13_opt_D.PNG" width="191" height="87" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the relational schemas:<br>StudentInfo(<span style="text-decoration:underline;">StudentId</span>, StudentName, Age, Sex)<br>CourseInfo(<span style="text-decoration:underline;">CourseId</span>, semester, Year)<br>Enroll(<span style="text-decoration:underline;">StudentId, Course_Id</span>, Section_Id)<br>Which one of the following query finds the section(s) and their corresponding courses that has maximum enrollment among all sections in all courses in 4th semester 2016.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> with sec_enroll as(<br>select  E.Course_id, E.Section_id, Count(E.StudentId) as TotStudents<br>	from Enroll E, CourseInfo C<br>	where E.Course_Id = C.CourseId<br>AND C.Semester = 4 and C.year = 2016<br>	        Group by E.Course_id, E.Section_id)<br>Select Course_id, Section_id<br>	From Sec_enroll<br>	Where TotStudents = (select max(totstudents) from sec_enroll);<br><span class="explanation">Explanation:</span><br>In query(a)<br>	First part of query Sec_enroll consists of all the courses and corresponding sections in that course ,total number of students enrolled for that particular course and particular section, for semester 4 and year 2016.<br>	Second part of the query displays all the courses and their corresponding sections that has maximum enrollment of students among all sections and courses(which was asked in question) for semester 4 and year 2016.<br>	So, option (a) is correct answer.
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> with sec_enroll as( <br>select  E.Course_id, E.Section_id, Count(E.StudentId) as TotStudents<br>	from Enroll E, CourseInfo C<br>	where E.Course_Id = C.CourseId<br>AND C.Semester = 4 and C.year = 2016<br>	        Group by E.Course_id, E.Section_id)<br>select  Course_id, Section_id<br>from Sec_enroll;</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> with sec_enroll as(<br>select  E.Course_id, E.Section_id, Count(E.StudentId) as TotStudents<br>	from Enroll E, CourseInfo C<br>	where E.Course_Id = C.CourseId<br>AND C.Semester = 4 and C.year = 2016<br>	        Group by E.Course_id, E.Section_id)<br>Select Course_id, Section_id<br>	from Enroll<br>	where<br>		Count(StudentId) = (select max(totstudents) from Sec_enroll);</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+For what values of x, y and z, including NULL, does the Boolean expression<br>Y ≤ 6 AND NOT(X&gt;= 4 or Z = 8)<br>	have the Truth value unknown? Identify one of those values from the list below<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results118_files/wrong.png" width="16">&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> X = NULL, Y = NULL, Z = 8</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> X = 0, Y = 6, Z = 10</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> X = 5, Y = NULL, Z = 8</li>
+<li>&nbsp;<img src="./Test Results118_files/correct.png" width="18"> X = 0, Y = NULL, Z = 7<br><span class="explanation">Explanation:</span><br>Given Boolean expression ‘Y ≤ 6 AND NOT(X &gt;= 4 OR Z = 8)<br>	Checking for Option ‘a’:<br>		X = NULL, Y = NULL, Z = 8<br>		‘NULL ≤ 6 AND NOT(NULL &gt;= 4 OR 8 = 8) (Since Comparision of any value with NULL is UNKNOWN)<br>		UNKNOWN AND NOT(UNKNOWN OR TRUE)<br>		UNKNOWN AND NOT(TRUE)<br>		UNKNOWN AND FALSE<br>		= FALSE<br>		So, option (a) is not correct<br>	Checking for Option ‘b’:<br>		X = 0, Y = 6, Z =10<br>                       ‘6 &lt;= 6 AND NOT(0 &gt;= 4 OR 10 = 8)<br>                        TRUE AND NOT(FALSE OR FALSE)<br>		TRUE AND NOT(FALSE)<br>		TRUE AND TRUE<br>		= TRUE<br>		So, option (b) is not correct answer<br>	Checking for Option ‘c’:<br>		X = 5, Y = NULL, Z = 8<br>		‘NULL ≤ 6 AND NOT(5 &gt;= 4 OR 8 = 8)<br>                        TRUE AND NOT(TRUE OR TRUE)<br>		TRUE AND NOT(TRUE)<br>		TRUE AND FALSE<br>		= FALSE<br>		So, option (c) is not correct answer<br>	Checking for Option ‘d’:<br>		X = 0, Y = NULL, Z = 7<br>		‘NULL &lt;= 6 AND NOT(0 &gt;= 4 OR 7 = 8)<br>		UNKNOWN AND NOT(TRUE OR FALSE) (Since Comparision of any value with NULL is UNKNOWN)<br>                        UNKNOWN AND NOT(FALSE)<br>		UNKNOWN AND TRUE<br>		= UNKNOWN<br>		So, option (d) is correct answer
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common data question 14&amp;15:</span></strong><br>Consider the following schema<br>		Concerts(Concert_Name, Location)<br>Artists (Artist_Name, Concert_Name) with primary keys are underlined. Concert_Name in Artists is the foreign key referring to Concert_Name of the Conserts table. What does the following SQL queries return?<br> [Assuming that each Artist performed in at least one of the concerts]<br>Select distinct A.Artist_Name<br>	from<br>		Artists A<br>			WHERE EXISTS(Select * from <br>       Concerts C<br>where<br>      A.Concert_Name = C.Concert_Name<br>      And C.Location = ‘Kolkata’);<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Names of the Artists who performed in all the concerts held in Kolkata</li>
+<li><img src="./Test Results118_files/correct.png" width="18">&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Names of the Artists who performed in at least one of the concerts held in Kolkata<br><span class="explanation">Explanation:</span><br>Given query displays the distinct artist names performed in at least one of the concerts held in Kolkata<br>		It is a correlated sub query using EXISTS keyword. EXISTS will return TRUE if the given artist performed in at least one of the concerts held in Kolkata and the corresponding artist name will be displayed.
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Names of the Artists who performed in all the Concerts</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Names of the Artists who did not perform in any of the Concerts held in Kolkata</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common data question 14&amp;15:</span></strong><br>Consider the following schema<br>		Concerts(Concert_Name, Location)<br>Artists (Artist_Name, Concert_Name) with primary keys are underlined. Concert_Name in Artists is the foreign key referring to Concert_Name of the Conserts table. What does the following SQL queries return?<br> [Assuming that each Artist performed in at least one of the concerts]<br>SELECT DISTINCT A.Artist_Name<br>FROM<br>	Artists A, Concerts C<br>	Where A.Concert_Name = C.Concert_Name<br>		AND(C.Location = ‘Hyderabad’ or C.Location = ‘Delhi’)<br>	EXCEPT<br>	SELECT DISTINCT A.Artist_Name<br>	FROM<br>		Artists A, Concerts C<br>		Where A.Concert_Name = C.Concert_Name<br>		AND C.Location = ‘Chennai’;<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Names of the artists who performed in any of the concerts that are held in Hyderabad, Delhi and Chennai</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> Names of the artists who performed in any of the concerts that are held in Hyderabad and Delhi but not in Chennai</li>
+<li><img src="./Test Results118_files/correct.png" width="18">&nbsp;<img src="./Test Results118_files/correct.png" width="18"> Names of the artists who performed in any of the concerts that are held in either Hyderabad or Delhi, but not in Chennai<br><span class="explanation">Explanation:</span><br>Given query displays distinct artist names who performed in any of the concerts that are held in either Hyderabad or Delhi but not in Chennai. So answer is (c)
+</li>
+<li>&nbsp;<img src="./Test Results118_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results118_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

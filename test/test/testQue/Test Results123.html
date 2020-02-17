@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=66967&test_id=55 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results123_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results123_files/calclayout.css">
+<script src="./Test Results123_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results123_files/jquery-ui.js.download"></script>
+<script src="./Test Results123_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results123_files/custom.js.download"></script>
+<script src="./Test Results123_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results123_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results123_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921377, 'I\'m sorry, the time available to complete the test is over!', false, 1486921377874);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=66967&amp;test_id=55#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CD Subject Test 2</strong><br>
+Compiler Design Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-05 16:06:58&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-02-05 17:34:52&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:27:54&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+18.040 / 50.000 (36%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+16 / 33 (48%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following grammar:<br>S → aSSbS<br>      | aSaSb<br>      | abb<br>      | b<br>	After eliminating common prefixes from the above grammar the equivalent grammar is:<br>	(Note: The equivalent grammar can contain extra non-terminal)<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S → S’ bS | b | abb<br>      S’→ aSS | aSaS</li>
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S → aS’ | b<br>      S’ →SSbS<br>            | SaSb<br>            | bb</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S → aS’ | abb | b<br>      S’ → SS’’<br>      S’’ → SbS | aSb</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> S → aS’ | b<br>      S’ → SS’’ | bb<br>      S’’→ SbS | aSb<br><span class="explanation">Explanation:</span><br>The given grammar is a non-deterministic grammar. We must left factor it to separate the common prefixes from rest of the uncommon terminals/non-terminals in a production.<br>A grammar of the form:<br>		A → αβ1 | αβ2 | αβ3<br>is known as non-deterministic grammar.<br>After left factoring we get the following deterministic grammar.<br>	A → αA’<br>	A’ → β1 | β2 | β3<br><br>The given grammar is:<br>	S → aSSbS<br>      	       | aSaSb<br>                   | abb<br>                   | b<br>After left factoring:<br>	S → aS’ | b<br>	S’ → S S’’ | bb<br>	S’’ → SbS | aSb
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement/s define significance of augmented grammar:<br>S1: To help the parser understand when to stop parsing and announce as successful completion.<br>S2: It helps to identify the final reduction when the start symbol has more than one alternative definition.<br>S3: It is very helpful in finding conflicts.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S1, S2, S3</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> S1 and S2<br><span class="explanation">Explanation:</span><br>Sometimes there is a confusion for the parser while parsing because of two reasons:<br>1.)	The start symbol may appear on the right hand side of any rule also because of which reduction by S can be used in between not only at the end.<br>2.)	There is no restriction that the start symbol should be defined with only one string. It can have more than one alternative definition , in such a case there can arise a dilemma in which one to consider final reduction.<br>The augmented production unambiguously determines when to stop parsing and announce successful completion.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S2 &amp; S3</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S1</li>
+</ol>
+<br><br>
+</li>
+<li>
+The three address code for the following expression is :<br><br>x&lt;y or z&lt; and &lt;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 1. if x&amp;lt;y<br><br>2. t1= 1 else t1 = 0<br><br>3. go to 10<br><br>4. if z &amp;lt;<br><br>5. t2 = 1 else t2= 0<br><br>6. go to 10<br><br>7. if &amp;lt;<br><br>8. t3 = 1 else t3 = 0<br><br>9. go to 10<br><br>10. if t1= 1 or t2=1 or t3=1<br><br>11. true cond<br><br>12.else</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 10. if x&amp;lt;y go to 13<br><br>11. = 0<br><br>12. go to 15<br><br>13. = 1<br><br>14. go to 22<br><br>15. if z &amp;lt; go to 18<br><br>16. t2 = 0<br><br>17. go to 23<br><br>18. if &amp;lt; go to 21<br><br>19. t3 = 0<br><br>20. go to 23<br><br>21. t3 = 1<br><br>22. go to true<br><br>23. false cond<br><span class="explanation">Explanation:</span><br>Three address code is a sequence of statements of the form A = B OP C where A, B and C are the names of the variables or temporary variables and OP is an arithmetic operator. As the name suggests there are at most three variables where two are operands and one is for result. In three address statement only one operator is permitted, if the expression is large then we have to break it into a sequence of sub expressions using the BODMAS rule and store intermediate results in temporary variables. Adhering by the above specifications this option gives the correct result.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 10. if x&amp;lt;y go to 12<br><br>11. go to 14<br><br>12. = 1<br><br>13. go to 22<br><br>14. if z &amp;lt; go to 17<br><br>15. t2 = 0<br><br>16. go to 23<br><br>17. if &amp;lt; go to 20<br><br>18. t3 = 0<br><br>19. go to 23<br><br>20. go to true<br><br>21. false cond</li>
+</ol>
+<br><br>
+</li>
+<li>
+The grammar is:<br><br>S → Aa | bAc | Bc | bBa<br><br>A → d<br><br>B → d<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> It is LALR(1)</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Not LALR(1) but it is CLR(1)<br><span class="explanation">Explanation:</span><br>Consider augmented grammar<br><br>S ’’ → S<br><br>1. S → Aa<br><br>2. S → bAc<br><br>3. S → Bc<br><br>4. S → bBa<br><br>5. A → d<br><br>6. B → d<br><br>Create cannonical collection of LR(1) items.<br>I <sub class="tcecode">1</sub> = {(S ’’ → .S, $), (S → .Aa, $), (S → .bAc, $), (S → .Bc, $), (S → .bBa,<br><br>$), (A → .d, a), (B → .d, c)}<br><br>I <sub class="tcecode">2</sub> = goto(I <sub class="tcecode">1</sub> , S) = {(S ’’ → S., $)},<br><br>I<sub class="tcecode"> 3</sub> = goto(I <sub class="tcecode">1 </sub>, A) = {(S → A.a, $)},<br><br>I <sub class="tcecode">4</sub> = goto(I <sub class="tcecode">1</sub> , b) = {(S → b.Ac, $), (S → b.Ba, $), (A → .d, c), (B → .d, a)}<br><br>I<sub class="tcecode"> 5</sub> = goto(I <sub class="tcecode">1</sub> , B) = {(S → B.c, $)},<br><br>I<sub class="tcecode"> 6</sub> = goto(I <sub class="tcecode">1</sub> , d) = {(A → d., a), (B → d., c)},<br><br>I<sub class="tcecode"> 7</sub> = goto(I<sub class="tcecode"> 3</sub> , a) = {(S → Aa., $)},<br><br>I <sub class="tcecode">8</sub> = goto(I <sub class="tcecode">4</sub> , A) = {(S → bA.c, $)},<br><br>I <sub class="tcecode">9</sub> = goto(I <sub class="tcecode">4</sub> , B) = {(S → bB.a, $)},<br><br>I <sub class="tcecode">10 </sub>= goto(I <sub class="tcecode">4</sub> , d) = {(A → d., c), (B → d., a)}<br>I <sub class="tcecode">11 </sub>= goto(I <sub class="tcecode">5</sub> , c) = {(S → Bc., $)},<br><br>I <sub class="tcecode">12</sub> = goto(I<sub class="tcecode"> 8</sub> , c) = {(S → bAc., $)},<br><br>I <sub class="tcecode">13 </sub>= goto(I<sub class="tcecode"> 9</sub> , a) = {(S → bBa., $)},<br><br>This grammar is an LR(1) grammar as there are no conflicts in the DFA below as shown in figure. To check for LALR(1), verify whether there are any two states differing by lookaheads. Look at states I <sub class="tcecode">6</sub> and I <sub class="tcecode">10 </sub>. Though there are no conflicts in the two states, later for LALR(1), when we combine the two, it results in RR conflict.<br><img src="./Test Results123_files/Q23_exp_1.PNG" alt="image:CD Subject Test - 2/Q23_exp_1.PNG" width="666" height="530" class="tcecode"><br><img src="./Test Results123_files/Extra_4.png" alt="image:CD Subject Test - 2/Extra_4.png" width="624" height="417" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> It is not CLR(1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The function of syntax phase is:<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> To generate parse tress<br><span class="explanation">Explanation:</span><br>A syntax analyzer or parser takes the input from a lexical analyzer in the form of token streams. The parser analyzes the source code (token stream) against the production rules to detect any errors in the code. The output of this phase is a parse tree.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> To parse the source program into the basic elements or tokens of the language.</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> To build a literal table and an identifier table</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> To build a uniform symbol table</li>
+</ol>
+<br><br>
+</li>
+<li>
+Shift reduce parsers executes semantic action only at reduce moves but never at shift moves. Which attribute can be evaluated by the shift reduce parser?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Synthesized attribute<br><span class="explanation">Explanation:</span><br>Since shift reduce parsers compute the parse tree through reduction in a bottom up manner so only synthesized attributes can be parsed.<br><br>A synthesized attribute depends only on attributes of its children and on its own inherited attributes. They are evaluated the last time we see it in a parse tree.<br><br>For synthesized attributes it is important that its children and its own inherited attributes are already evaluated first otherwise a later change in their values will affect the value of synthesized attributes.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both (a) and (b)</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Inherited attribute</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following:<br><img src="./Test Results123_files/Q14.PNG" alt="image:CD Subject Test - 2/Q14.PNG" width="474" height="119" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> A – P, B – Q, C – Q, D – P</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> A – Q, B – Q, C – R, D - P</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> A – R, B – S, C – P, D - Q<br><span class="explanation">Explanation:</span><br>A.	Context Free Grammar → R. Syntax of programming language<br>B.	Parser		        → S.  An algorithm<br>C.	Parse Tree		        → P. Structure of grammar<br>D.	Regular Expression       → Q. Lexical analysis
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> A – R, B – P, C – R, D - Q</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let M be deterministic finite automata and let G be the grammar generated by standard algorithm for M. Consider the following statements.<br><br>S1: Grammar G may not be an LL(1) grammar<br><br>S2: Grammar G is LR(1)<br><br>Which of the statement/s is/are true?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S1 and S2 both are false</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S2 is true but S1 is false</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S1 is true but S2 is false</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> S1 and S2 both are true<br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Q24_exp.PNG" alt="image:CD Subject Test - 2/Q24_exp.PNG" width="605" height="447" class="tcecode"><br>Note: The DFA shown above accepts the language L given as L = {w| w ends with b on ∑ = {a, b} }
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the error in the code and when shall it be resolved?<br><img src="./Test Results123_files/Q33.PNG" alt="image:CD Subject Test - 2/Q33.PNG" width="486" height="637" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> No declaration of ‘b’ in block B 3 or B 1 . Error resolved during run time.</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> No declaration of ‘b’ in block B 3 . Error resolved during run time.</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> No declaration of ‘a’ in block B 1 or B 2 or B 4 . Error resolved during compile time.<br><span class="explanation">Explanation:</span><br>The given program can be divided into blocks<br><br>main(){<br><br><img src="./Test Results123_files/Q33_exp.PNG" alt="image:CD Subject Test - 2/Q33_exp.PNG" width="426" height="564" class="tcecode"><br><br>}
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> No error</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar:<br>A → eAt | AA | ∊<br>	In context to the above grammar which of the following statements is/are true?<br>		S1: G is unambiguous grammar<br>		S2: The language accepted by the grammar consists of equal number e's and t's.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> S2 is true<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;"><strong class="tcecode">Statement S1 is false:</strong></span><br>		Consider the string w = ∊<br>		The derivation trees are:<br>	 <br><img src="./Test Results123_files/Q1_exp.PNG" alt="image:CD Subject Test - 2/Q1_exp.PNG" width="551" height="210" class="tcecode"><br>		Some more parse trees can also yield ∊ apart from those shown above.<br>		Since more than one parse trees are generated for string w = ∊, so it is ambiguous<br>	Note: ∊ ∙ ∊ = ∊<br>	Statement S2 is true:<br>		The given grammar is:<br>	A → eAt | AA | ∊<br>The language generated by above grammar will contain strings like ∊, et, etet, etetet,…..<br>So we see it produces either empty string or equal number of e’s and t’s .
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar shown below:<br>S → AB, B → *S | ∊, A → id<br>	In LL(1) table M of the grammar, the entries M[S, id] and M[R, $] are:<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S → AB &amp; { }</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> S → AB &amp; B → ∊<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>	S → AB<br>B → *S | ∊<br>A → id<br>		<br>The FIRST and the FOLLOW sets of the non-terminals are:<br>FIRST(S) ={id}<br>FIRST(B) ={*,∈}<br>FIRST(A) ={id}<br><br>FOLLOW(S)={$}<br>FOLLOW(B)={$}<br>FOLLOW(A)={*,$}<br><br>So the LL(1) parsing table (which is named as M) for the above grammar is:<br><img src="./Test Results123_files/Q11_exp_2.PNG" alt="image:CD Subject Test - 2/Q11_exp_2.PNG" width="337" height="198" class="tcecode"><br>∴ M[S, id] :⇒ S → AB<br>∴ M[B, $] :⇒ B → ∊
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> S → AB &amp; B → *S</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> A → id &amp; B → ∊</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar defined by the following rules<br>S → A * B<br>A → C | A * C<br>B → D + B | D<br>D → id<br>C → id<br>	Which of the following is TRUE?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> + is right associative, while * is left associative<br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Q3_exp.PNG" alt="image:CD Subject Test - 2/Q3_exp.PNG" width="249" height="204" class="tcecode"><br>If an operator is defined as right recursive then it is right associative and if it is defined as left recursive then it is left associative.<br>Left recursion is of the form A → Aα | β<br>and right recursion is of the form A → αA | β<br>In the grammar in production (3) the operator * is defined as left recursive, so it is left associative.<br>	A → A * C<br>While in production (4) the operator + is defined as right recursive. So it is right associative.<br>	B → D + B
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both + and * are right associative</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> + is left associative, while * is right associative</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both + and * are left associative</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar ‘G’ given below:<br>S → aSa | bSb | a | b | ϵ<br>Which of the following option is incorrect?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> G is ambiguous<br><span class="explanation">Explanation:</span><br>The given grammar is not ambiguous.<br>For example consider generating the string:<br>“babbab”<br>S → bSb<br>   →baSab<br>  →babSbab<br> →babbab<br>Only one derivation exists
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> There exists only one left most derivation for a given string.</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> G generates palindrome strings</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> G is unambiguous</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br><br>S1: Intermediate code and target code are important to make the compiler platform independent.<br><br>S2: Syntax tree, postfix notation and DAGs are the only three representations of intermediate code.<br><br>Which of the above statement/s is/are true?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both S1 and S2</li>
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Neither S1 nor S2<br><span class="explanation">Explanation:</span><br>S1 is false:<br><br>Only intermediate code helps in making the compiler platform independent. Target Code on the other hand depends on machine architecture.<br><br>S2 is false:<br><br>There is one more representation of intermediate code which is three address code.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br><br>S1: An inherited attribute present on the right side of a production, for a symbol, must be computed before the symbol is evaluated.<br>S2: A synthesized attribute for the non-terminal on the left can only be computed after all  attributes it references have been computed.<br><br>Which of the following option/s is/are true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S1</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br>Statement S1 is true:<br><br>Before a symbol is evaluated all its inherited attributes should be evaluated else it may give incorrect result when the symbol shall derive value from its children.<br><br>Statement S2 is true:<br><br>A synthesized attribute depends only on attributes of its children and on its own inherited attributes. They are evaluated the last time we see it in a parse tree.<br><br>For synthesized attributes it is important that its children and its own inherited attributes are already evaluated first otherwise a later change in their values will affect the value of synthesized attributes.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement/s is/are false for the following language:<br>L = {a<sup class="tcecode">m</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">q</sup> | m = n or n = q, m &gt; 0, n &gt; 0, q &gt; 0}<br>S1: The language can be parsed by any LR(K) parsers for any value of K.<br>S2: The language cannot be recognized by deterministic PDA.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Neither S1 nor S2</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>L = {a<sup class="tcecode">m</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">q</sup> | m = n or n = q, m &gt; 0, n &gt; 0, q &gt; 0}<br>		We need to check both the conditions which are:<br>			(I)  m = n  or<br>			(II) n = q<br>Any parser will not know whether we need to check if m = n or check if n = q. either one of these condition can be easily parsed by a PDA but not both.<br>		Since LR(K) is a deterministic parser. So it cannot parse the language for any K.
+</li>
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Q) Consider the following CFG:<br>E → E + T | T<br>T → T * F | F<br>F → id<br>While the string w = id * id is parsed using an SLR parsing algorithm and using the right most derivation. Which one of the following option regarding viable prefixes is FALSE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> id * is not a viable prefix</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> id * id is a viable prefix<br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Q25_exp.PNG" alt="image:CD Subject Test - 2/Q25_exp.PNG" width="465" height="347" class="tcecode"><br><br>We observe that at any point of time, the stack contents must be a prefix of a right sentential form.<br>However, not all prefixes of a right sentential form can appear on the stack.<br>For example, consider the rightmost derivation:<br>E ⇒ T ⇒ T * F ⇒ T * id ⇒ F * id ⇒ id * id<br>Here, ‘id *’ is a prefix of a right sentential form. But it can never appear on the stack. This is because we will always reduce by F -&gt; id before shifting ‘*’<br>Definition (viable prefix): <br>The prefixes of right sentential forms that can appear on the stack of a shift-reduce parser are called viable prefixes. By definition, a viable prefix is a prefix of a right sentential form that does not continue past the right end of the rightmost handle of that sentential form.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> T * id is a  viable prefix</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> T * E is not a viable prefix</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following errors :<br>i.) Accessing array index which is out of bounds<br>ii.) Context errors<br>iii.) Calling method with arguments of wrong type<br>iv.) Misspelling a keyword<br>Which of the following option/s is/are false?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> only ii is detected in type checking phase<br><span class="explanation">Explanation:</span><br>i, ii, iii are semantic errors and during this phase only type checking is done.<br><br>iv is a lexical error and is detected during that phase.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> iv is detected by the pre-processor.</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> i, ii , iii are detected in type checking phase</li>
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> i, ii, iii are semantic errors</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar<br>Expr → Expr + Expr | Expr * Expr | id<br>How many handles of the sentential form are there in the right most derivation while deriving the string “id + id * id”<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 6</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>Handle is nothing but a substring that matches the RHS of a production, which when reduced to non-terminal gives one step along the reverse of Right most Derivation.<br>if S → αAβ ⇒ αy’β<br>then A → y’ is a handle of α y’β in the position following y’<br><br>The right most derivation for the string “id + id * id” is<br>	   Expr ⇒ Expr + Expr<br>		⇒ Expr + Expr * Expr<br>		⇒ Expr + Expr * id<br>		⇒ Expr + id * id<br>		⇒ id + id * id<br>Handles of the Right Sentential Form:<br><img src="./Test Results123_files/Q12_exp.PNG" alt="image:CD Subject Test - 2/Q12_exp.PNG" width="634" height="201" class="tcecode"><br>So the number of handles of right sentential form is 5
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar<br>S → ACB | CbB | Ba<br>A → da | BC<br>B → g | ∊<br>C → h | ∊<br>	Which FIRST( ) values does the following two unions of FIRST( ) set represents?<br>		FIRST(ACB) ∪ FIRST(CbB) ∪ FIRST(Ba)<br>				&amp;<br>		{d} ∪ FIRST(BC)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> FIRST(S)       &amp;    FIRST(A)<br><span class="explanation">Explanation:</span><br>Explanation:<br>Evaluating the given union of FIRST( ) sets<br><br><br>FIRST(ACB) = FIRST(A) ∪ FIRST(C) ∪ FIRST(B)<br>= {d, g, h, ∊} ∪ {h, ∊} ∪ {g, ∊}<br>= {d, g, h, ∊} = FIRST(A)<br>FIRST(CbB) = FIRST(C) = {h, ∊}<br>Add only ‘h’ and apply FIRST on next symbol ‘b’ i.e., we shall add ∊ if every set in the process of deriving FIRST( ) set contains ∊.<br>FIRST(b) = {b}<br>Since FIRST(b) does not contain ∊ so we won’t find FIRST(B) and also in the FIRST( ) set ∊ won’t be present.<br>∴ FIRST(CbB) = {h, b}<br>FIRST(Ba):<br>FIRST(B) = {b, ∊}<br>Because of ∊ we shall find FIRST(a) and will not add ∊ in FIRST(Ba) if FIRST(a) does not also contains ∊ <br>FIRST(a) = {a}<br>∴ FIRST(Ba) = {b, a}<br>∴ FIRST(ACB) ∪ FIRST(CbB) ∪ FIRST(Ba)<br>= {d, g, h, ∊} ∪ {h, b} ∪ {b, a}<br>= FIRST(S)<br><br>Evaluating the next given union of FIRST( ) sets<br><br><br>FIRST(BC):<br>FIRST(B) = {g, ∊}<br>FIRST(C) = {h, ∊}<br>FIRST(BC) = {g, h, ∊}<br>∴ {d} ∪ {g, h, ∊} = {d, g, h, ∊} = FIRST(A)
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> FIRST(ACB) &amp;    FIRST(BC)</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> FIRST(AC)    &amp;    FIRST(S)</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both represents FIRST(S)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br><br>S → Aa | bAc | Bc | bBa<br><br>A → d<br><br>B → d<br><br>The CLR(1) parsing table is given below:<br><img src="./Test Results123_files/22Ea.PNG" alt="image:CD Subject Test - 2/22Ea.PNG" width="504" height="363" class="tcecode"><br>What will be the value of the entries E <sub class="tcecode">1 </sub>, E <sub class="tcecode">2</sub> , E <sub class="tcecode">3</sub> , E <sub class="tcecode">4</sub> respectively.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 3, S <sub class="tcecode">7</sub> , r<sub class="tcecode"> 3</sub> , r <sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 8, S <sub class="tcecode">11</sub> , r <sub class="tcecode">3</sub> , _<br><br>(Note: _ means there is no entry)</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 8, S <sub class="tcecode">11</sub> , r<sub class="tcecode"> 3 </sub>, r<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br>The canonical collection of LR(1) items is given below:<br><img src="./Test Results123_files/Extra_11.png" alt="image:CD Subject Test - 2/Extra_11.png" width="624" height="417" class="tcecode"><br><img src="./Test Results123_files/22Ea.PNG" alt="image:CD Subject Test - 2/22Ea.PNG" width="504" height="363" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 9, S <sub class="tcecode">12</sub> , _, r <sub class="tcecode">2</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question 22 &amp; 23:</strong></span><br>The three address code for the program will be<br><img src="./Test Results123_files/Q5.PNG" alt="image:CD Subject Test - 2/Q5.PNG" width="289" height="261" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> t1 = a<br>t2 = b<br>if (t1 != t2) goto L1<br>L1: t3 = t1 &gt; t2<br>	if t3 goto L2<br>	goto L3<br>L2: t1 = t3<br>	goto last<br>L3: t2 = t1<br>last: goto calling program</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> while (a!=b) goto L1<br>goto last<br>L1: if (a &gt; b) a = b<br>goto L2<br>L2: b = a<br>goto last <br>last: goto calling program</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> if (a!=b) goto L1<br>goto last<br>L1: if a &gt; b goto L2<br>goto L3<br>L2: a = b<br>goto last<br>L3: b = a<br>last: goto calling program<br><span class="explanation">Explanation:</span><br>The following seven types of instructions are available for 3-address code:<br><img src="./Test Results123_files/Q5_exp.PNG" alt="image:CD Subject Test - 2/Q5_exp.PNG" width="400" height="303" class="tcecode"><br>So by adhering to above constructs the 3-address code will be<br>		if (a!=b) goto L1<br>goto last<br>L1: if a &gt; b goto L2<br>goto L3<br>L2: a = b<br>goto last<br>L3: b = a<br>last: goto calling program
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question 22 &amp; 23:</strong></span><br>int gcd(int a, int b)<br>{<br>	while (a ! = b) {<br>	      if (a &gt; b) a = b;<br>	      else b = a;<br>	}<br>	return a;<br>}<br>The number of tokens generated by lexical analyzer for the above token is:<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 38</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 35</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 37<br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Q4_exp.PNG" alt="image:CD Subject Test - 2/Q4_exp.PNG" width="473" height="498" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question: 24 &amp; 25</strong></span><br>For the same grammar:<br>S → qABC<br>A → a | bbD<br>B → a | ∊<br>C → b | ∊<br>D → c | ∊<br>	What will be the entries E1, E2, E3 and E4 in the LL(1) parsing table given below:<br><img src="./Test Results123_files/Q10.PNG" alt="image:CD Subject Test - 2/Q10.PNG" width="415" height="224" class="tcecode"><br>(Note: No entry is denoted as ‘_’ in the option)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> E1: A → bbD; E2: B → a ; E3: C → ∊; E4: D → c</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> E1: A → bbD; E2: B → ∊ ; E3: C → b; E4: D → ∊<br><span class="explanation">Explanation:</span><br>The FIRST and the FOLLOW sets of each non-terminal is:	<br><img src="./Test Results123_files/Extra_2.PNG" alt="image:CD Subject Test - 2/Extra_2.PNG" width="430" height="164" class="tcecode"><br>We shall be putting the productions associated with a non-terminal under the symbols present in the FIRST( ) of that non-terminal. When the FIRST( ) set contains an ∊ then we shall be putting the corresponding production in the FOLLOW( ) set of that non-terminal.<br><br>The LL(1) parsing table is:<br><img src="./Test Results123_files/Extra_1.PNG" alt="image:CD Subject Test - 2/Extra_1.PNG" width="546" height="228" class="tcecode"><br>E1: A → bbD<br>		E2: B → ∊<br>		E3: C → b<br>		E4: D → ∊
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> E1: A → a; E2: - ; E3: C → b; E4: D → c</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> E1: A → a; E2: _ ; E3: C → b; E4: _</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question: 24 &amp; 25</strong></span><br>Consider the grammar given below:<br>S → qABC<br>A → a | bbD<br>B → a | ∊<br>C → b | ∊<br>D → c | ∊<br>	The FIRST set for the above grammar:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> FIRST(S) = {$}<br>FIRST(A) = {a, b}<br>FIRST(B) = {a, ∊}<br>FIRST(C) = {b, $}<br>FIRST(D) = {c, $}</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> FIRST(S)  = {q, a, b, c}<br>FIRST(A) = {a, b, c}<br>FIRST(B) = {a}<br>FIRST(C) = {b}<br>FIRST(D) = {c}</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> FIRST(S) = {q}<br>FIRST(A) = {a, b}<br>FIRST(B) = {a, ∊}<br>FIRST(C) = {b, ∊}<br>FIRST(D) = {c, ∊}<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>	S → qABC<br>A → a | bbD<br>B → a | ∊<br>C → b | ∊<br>D → c | ∊<br>FIRST(α) gives the set of terminals that are in the beginning when the strings are derived from α. If α* ⇒ ∊ or α → ∊ then ∊ is also in FIRST(α)<br>So the FIRST sets will be:<br>FIRST(S) = {q}<br>FIRST(A) = {a, b}<br>FIRST(B) = {a, ∊}<br>FIRST(C) = {b, ∊}<br>FIRST(D) = {c, ∊}
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Question 26 &amp; 27</strong></span><br>Consider the following grammar:<br><img src="./Test Results123_files/Q26.PNG" alt="image:CD Subject Test - 2/Q26.PNG" width="159" height="108" class="tcecode"><br>The above given productions can be interpreted as follows:<br>Production 1 → a number can be a list of bits<br>Production 2 → a list of bits followed simply by a bit<br>Production 3 → a list of bits can also be just a bit<br>Production 4  &amp; 5 → a bit can be 0 or 1<br>Which one of the following describes the correct semantic action to be associated with the grammar that can count the number of 1’s in a given binary string:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> <img src="./Test Results123_files/Q26_opt_C.PNG" alt="image:CD Subject Test - 2/Q26_opt_C.PNG" width="255" height="127" class="tcecode"><br><span class="explanation">Explanation:</span><br>Since we are interested in counting the number of 1s so the semantic rules associated with each one shall be<br>     N → L 		{N.C = L.C}<br>  		L → LB	{L.C = L1.C + B.C} We don’t need to multiply with 2 as we are                  interested only in finding the count of 1<br>		        | B	{L.C = B.C}<br>                       B → 0		{B.C = 0} Here number of 0s won’t be counted<br>                         | 1		{B.C = 1} Each occurrence of 1 we shall be adding 1
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> <img src="./Test Results123_files/Q26_opt_A.PNG" alt="image:CD Subject Test - 2/Q26_opt_A.PNG" width="249" height="121" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these.</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> <img src="./Test Results123_files/Q26_opt_B.PNG" alt="image:CD Subject Test - 2/Q26_opt_B.PNG" width="274" height="123" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Question 26 &amp; 27</strong></span><br>The above given productions can be interpreted as follows:<br>Production 1 → a number can be a list of bits<br>Production 2 → a list of bits followed simply by a bit<br>Production 3 → a list of bits can also be just a bit<br>Production 4  &amp; 5 → a bit can be 0 or 1<br><img src="./Test Results123_files/Q26.PNG" alt="image:CD Subject Test - 2/Q26.PNG" width="159" height="108" class="tcecode"><br>Which one of the following describes the correct semantic actions to be associated with the grammar to convert a given binary string to decimal considering it is having no fractional part:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> <img src="./Test Results123_files/Q27_opt_B.PNG" alt="image:CD Subject Test - 2/Q27_opt_B.PNG" width="339" height="153" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Q27_exp_1.PNG" alt="image:CD Subject Test - 2/Q27_exp_1.PNG" width="618" height="203" class="tcecode"><br><img src="./Test Results123_files/Q27_exp_2.PNG" alt="image:CD Subject Test - 2/Q27_exp_2.PNG" width="673" height="227" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> <img src="./Test Results123_files/Q27_opt_D.PNG" alt="image:CD Subject Test - 2/Q27_opt_D.PNG" width="356" height="133" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> <img src="./Test Results123_files/Q27_opt_C.PNG" alt="image:CD Subject Test - 2/Q27_opt_C.PNG" width="329" height="117" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> <img src="./Test Results123_files/Q27_opt_A.PNG" alt="image:CD Subject Test - 2/Q27_opt_A.PNG" width="327" height="121" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer question: 28, 29, 30, 31</strong></span><br>Consider the following grammar:<br>S-&gt; id=A!<br>A-&gt; id=A | E<br>E-&gt; id| (id!)| (A)<br><br>	The number of states consisting of the cannonical collection of LR(0) items:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 16<br><span class="explanation">Explanation:</span><br><img src="./Test Results123_files/Extra_6.png" alt="image:CD Subject Test - 2/Extra_6.png" width="543" height="552" class="tcecode"><br>So we can see that the total number of states consisting of the cannonical collection of LR(0) items is 16.<br>		(Note: the first state number is 0 which should also be counted).
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer question: 28, 29, 30, 31</strong></span><br>For the same grammar consider the following statements:<br>S-&gt; id=A!<br>A-&gt; id=A | E<br>E-&gt; id| (id!)| (A)<br><br>S1: From the cannonical collection of LR(0) items it can be seen that there is an LR(0) conflict present.<br>S2: From the cannonical collection of LR(0) items, SLR(1) conflicts is present or not can also be detected.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br>The canonical collection of LR(0) items is given below:<br><img src="./Test Results123_files/Extra_8.png" alt="image:CD Subject Test - 2/Extra_8.png" width="543" height="552" class="tcecode"><br>Note that two states (8 and 9) contain LR(0) conflicts and that one of them (9) is also an SLR(1) conflict since and E can be followed by either an ")" or an exclamation point.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer question: 28, 29, 30, 31</strong></span><br>Let the number of states present in cannonical collection of LR(0) items is n1<br>Let the number of states present in cannonical collection of LR(1) items is n2 Which of the following is true?<br>S-&gt; id=A!<br>A-&gt; id=A | E<br>E-&gt; id| (id!)| (A)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> none of these</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> n1 &lt; n2<br><span class="explanation">Explanation:</span><br>The below diagram shows the canonical collection of LR(0) items<br><img src="./Test Results123_files/Extra_9.png" alt="image:CD Subject Test - 2/Extra_9.png" width="543" height="552" class="tcecode"><br>We can see that there are 16 states in the canonical collection of LR(0) items.<br><img src="./Test Results123_files/Extra_92.png" alt="image:CD Subject Test - 2/Extra_92.png" width="519" height="603" class="tcecode"><br> <br>While in the canonical collection of LR(1) items there are 25 states .<br>So from here it is evident that no of states in LR(0) items is less than number of states in LR(1) items.
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> n1 &gt; n2</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> n1 = n2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Answer question: 28, 29, 30, 31</strong></span><br>While converting the LR(1) set of items to LALR(1) the number of merges required to be made for the given grammar is:<br>S-&gt; id=A!<br>A-&gt; id=A | E<br>E-&gt; id| (id!)| (A)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>The list below shows which states have been merged. LHS shows states in LALR(1)  while the RHS shows the states of the LR(1) items <br><img src="./Test Results123_files/Q18_exp_1.PNG" alt="image:CD Subject Test - 2/Q18_exp_1.PNG" width="201" height="633" class="tcecode"><br><br>The figure below shows canonical collection of LR(1) items<br><img src="./Test Results123_files/Extra_10.png" alt="image:CD Subject Test - 2/Extra_10.png" width="519" height="603" class="tcecode"><br>The LALR(1) states is shown below:<br><img src="./Test Results123_files/Extra_101.png" alt="image:CD Subject Test - 2/Extra_101.png" width="489" height="579" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions: 32 &amp; 33</strong></span><br>For grammar given below:<br>S → AaAb | BbBa<br>A → ∊<br>B → ∊<br><br>	Consider the following statements:<br>		S1: The grammar is CLR(1) as well as LALR(1)<br>		S2: The grammar is neither CLR(1) nor LALR(1)<br>	Which of the above statement/s is/are true?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Both S1 and S2</li>
+<li><img src="./Test Results123_files/wrong.png" width="16">&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Neither S1 nor S2</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results123_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br>Consider the augmented grammar G’’ as follows:<br>S’’ → S, S → AaAb | BbBa, A → ∊, B → ∊<br>Create cannonical collection of LALR(1) items<br>I0 = S’’ → .S, $, S → .AaAb, $, S → .BbBa, $, A → . , a, B → . , b<br>I1 = goto(I0, S) = {S’’ → S., $}<br>I2 = goto(I0, A) = {S → A.aAb, $}<br>I3 = goto(I0, B) = {S → B.bBa, $}<br>I4 = goto(I2, a) = {S → Aa.Ab, $, A → . , b}<br>I5 = goto(I3, b) = {S → Bb.Ba, $, B → . , a}<br>I6 = goto(I4, A) = {S → AaA. b, $}<br>I7 = goto(I5, B) = {S → BbB. a, $}<br>I8 = goto(I6, b) = {S → AaAb., $}<br>I9 = goto(I7, a) = {S → BbBa., $}<br><br>Look at the figure below:<br><img src="./Test Results123_files/Extra_3.png" alt="image:CD Subject Test - 2/Extra_3.png" width="525" height="308" class="tcecode"><br>		 <br>State I0 has no conflict. Though there are two final items [A → . , a] and [B → . , a]. Two lookaheads are different. Hence, there is no conflict. The grammar is CLR(1) as there are no conflicts in DFA.<br>For checking LALR(1), we need to check if any two states are differing by lookaheads. <br>If such states exist, merge them into single states and then check for conflicts. In this example, there are no such states. Hence, this is also LALR(1).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions: 32 &amp; 33</strong></span><br>Consider the following grammar<br>                       	S → AaAb | BbBa<br>		A → ∊<br>		B → ∊<br>For the above grammar the incomplete DFA for the cannonical collection of LR(1) items is given below:<br> <img src="./Test Results123_files/change_Q.png" alt="image:CD Subject Test - 2/change_Q.png" width="654" height="327" class="tcecode"><br>What are the items of I4 and I5 respectively?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> I4: S → Aa.Ab, $<br>     A → . , $<br>     B → . , $<br>I5: S → Bb.Ba, $<br>     B → . , a</li>
+<li><img src="./Test Results123_files/correct.png" width="18">&nbsp;<img src="./Test Results123_files/correct.png" width="18"> I4: S → Aa.Ab, $<br>     A → . , b<br>I5: S → Bb.Ba, $<br>     B → . , a<br><span class="explanation">Explanation:</span><br>The complete collection of cannonical collection of LR(1) items is given below:<br><img src="./Test Results123_files/Change_E.png" alt="image:CD Subject Test - 2/Change_E.png" width="631" height="349" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results123_files/wrong.png" width="16"> I4: S → Aa.Ab, $<br>I5: S → Bb.Ba, $</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results123_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

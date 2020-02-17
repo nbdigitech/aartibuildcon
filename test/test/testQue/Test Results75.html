@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=16822&test_id=224 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results75_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results75_files/calclayout.css">
+<script src="./Test Results75_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results75_files/jquery-ui.js.download"></script>
+<script src="./Test Results75_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results75_files/custom.js.download"></script>
+<script src="./Test Results75_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results75_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results75_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838119, 'I\'m sorry, the time available to complete the test is over!', false, 1486838119566);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=16822&amp;test_id=224#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Topic Test - 4</strong><br>
+TCP, Error Control Algorithms, Congestion Control Algorithms&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-11-20 22:23:04&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-11-20 23:07:40&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:36&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+9.680 / 25.000 (39%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+7 / 15 (47%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Choose the wrong statements below.<br>A.Host A is sending a large file to host B over a TCP connection. Assume host B has no data to send to host A. Host B will not send acknowledgments to host A because host B cannot piggyback the acknowledgments on data. <br>B.The size of the TCP RcvWindow never changes throughout the duration of the connection.<br>C.Suppose host A is sending a large file to host B over a TCP connection. The number of unacknowledged bytes that A sends cannot exceed the size of the advertised receiver buffer<br>D.Suppose that the last SampleRTT in a TCP connection is equal to 1sec. Then the current value of TimeoutInterval for the connection will necessarily be &gt;= 1 sec.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> A only</li>
+<li><img src="./Test Results75_files/wrong.png" width="16">&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> A and B only</li>
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> A, B and D only<br><span class="explanation">Explanation:</span><br>A.Piggybacking is an optimization that is used when both sides have to send data to each other so that the receiver, instead of sending two packets i.e., an ACK and a data packet, it just sends one. When the receiver (B) does not have any data to send, it will still send an ACK with the sequence number field containing the next sequence of data it is supposed to send.<br>B.RcvWindow is used to give the sender an idea of how much free buffer space is available at the receiver. Thus as the amount of unacknowledged TCP data varies the RcvWindow also changes.<br>C.TCP is not permitted to overflow the allocated receiver buffer. Hence when the sender can not send any more data RcvWindow would be 0 and hence all the buffer would have unacknowledged data.<br>D.Depending on the value of EstimatedRTT it may or may not be greater than 1.
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> All</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the total time required (measured from the start of transmission at the sender to completion of reception at the receiver) to transfer a 4­MB file over a 5­Mbps link assuming an RTT of 200 ms and an initial 2 x RTT “handshake” using a packet size of 2 KB. You may assume packets can be sent continuously after completion of the handshake (i.e., there is no flow ­control delay).<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 7.2 s<br><span class="explanation">Explanation:</span><br>The packet size is immaterial because the packets are sent continuously. <br>T<sub class="tcecode">total</sub> = T<sub class="tcecode">handshake</sub> + T<sub class="tcecode">transmit</sub> + T<sub class="tcecode">propogation</sub> <br>T<sub class="tcecode">handshake</sub> = 2 x RTT = 400ms <br>T<sub class="tcecode">propogation</sub> = RTT/2 = 100ms <br>T<sub class="tcecode">transmit </sub>= (4 x 8 x 1024 x 1024)/ (5,000,000) = 6.711s <br>T<sub class="tcecode">total</sub> = 7.211s
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 8.2 s</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 7.7 s</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 8.4 s</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a TCP connection has data rate of 100 Mbps and a packet can be in the network for a maximum of 60 sec. Find how many bits are required to avoid the wrap around time?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 28</li>
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 30<br><span class="explanation">Explanation:</span><br>Life time = 60 sec<br>		B = 100*10<sup class="tcecode">6</sup> bps<br><br>		→ So until 60 sec no sequence number should be repeated. I.e until 60 sec, all bytes should be unique.<br>		→ No. of bytes can send in 60  sec = (60*100*10<sup class="tcecode">6</sup>)/8 = 75 * 10<sup class="tcecode">7</sup><br>		→ Required bits = ceil(log<sub class="tcecode">2</sub>(75*10<sup class="tcecode">7</sup>)) = 30
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 32</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 31</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Answer Questions Q4 &amp; Q5:</strong><br>Suppose host H1 is transferring a huge file to host H2 by using a TCP connection. The link between these 2 hosts are separated by 10 msec with a bandwidth of 1Gbps. The packets in this link has the length of 1000 bytes and acknowledgements for these packets are negligible.<br>At least how big would the window size (in packets) have to be for the channel utilization to be greater than 80%.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 2000<br><span class="explanation">Explanation:</span><br>Given Propagation delay Tp = 10 ms, bandwidth B = 1 Gbps, packet length L = 1000 bytes.<br>⇒ Transmission delay T<sub class="tcecode">t</sub> =  L/B = 1000*8/10<sup class="tcecode">9</sup> = 8  *10<sup class="tcecode">-6</sup><br>⇒ efficiency = window size / (1 + 2a), where a = T<sub class="tcecode">p</sub> / T<sub class="tcecode">t</sub><br>⇒ Utilisation = efficiency * bandwidth &gt; 80/100<br>	⇒ (80/100) &lt; window size / (1 + 2 (10<sup class="tcecode">4</sup>/8))<br>	⇒ window size &gt; ((10<sup class="tcecode">4</sup>/4) + 1) * (⅘) = 2000.8 ~= 2000<br><br>		(or)<br><br>Bandwidth-delay product of H1 to H2 = 10<sup class="tcecode">9</sup> * 20 * 10<sup class="tcecode">-3</sup> = 2 * 10<sup class="tcecode">7</sup> bits.<br>		For 80% utilization, it will be 2 * 10<sup class="tcecode">7</sup> * 80/100 = 1.6 * 10<sup class="tcecode">7</sup> bits.<br>		⇒ No. of packets = 1.6 * 10<sup class="tcecode">7</sup>  / 8 * 1000 = 2000 packets.
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 200</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1000</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 20</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Answer Questions Q4 &amp; Q5:</strong><br>Suppose host H1 is transferring a huge file to host H2 by using a TCP connection. The link between these 2 hosts are separated by 10 msec with a bandwidth of 1Gbps. The packets in this link has the length of 1000 bytes and acknowledgements for these packets are negligible.<br> Suppose the starting threshold is infinite and no packet loss, approximately how long would it take for the normal slow start mechanism to achieve 80% utilization?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 0.24 sec<br><span class="explanation">Explanation:</span><br>The slow start mechanism works as in exponential way.(1, 2, 4, 8, …. 2000)<br>No. of transmissions to reach window size to 2000 is = ceil(log<sub class="tcecode">2</sub>(2000) + 1) = 12<br>	Total time = 12 * 20 * 10<sup class="tcecode">-3</sup> = 0.24 sec
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 24 sec</li>
+<li><img src="./Test Results75_files/wrong.png" width="16">&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 2.4 sec</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider Communication channel using the TCP over the channel. In this channel the congestion window varies from (W*MSS)/2 to W*MSS. If only one packet is lost over each period of time. Then what is the lost rate.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 1/ (3/8 * W*W + 3W/4)<br><span class="explanation">Explanation:</span><br>The lost rate = lost packets / total packets<br><br>Total packets = W/2 +(W/2+1)+(W/2+2)...........+(W/2+W/2)<br>Let W/2 = x, So above becomes x + x + 1 + x + 2 …….. + x + x<br>⇒ x + x*x + (1…...x)<br>⇒ x + x<sup class="tcecode">2</sup> + x(x+1)/2<br>⇒ (3x<sup class="tcecode">2</sup> + 3x)/2<br>⇒ 3/8W<sup class="tcecode">2</sup> + 3/4W
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1/ (3/4 * W + 3W/4)</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1 / (3/8 * W*W + 3W/8)</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1 / (3/4 * W*W + 3W/4)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a TCP connection having the TCP segment of length 3KB and sequence number is 3000 with a Header Length of 0X12 . Then how much data is urgent if URG pointer field contains 0X0F and what is the last sequence number.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 3000 -&gt; 3016, 6000</li>
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 3000 -&gt; 3015, 5999<br><span class="explanation">Explanation:</span><br>→ TCP segment = 3 KB = 3072B<br>		→ Sequence number = 3000<br>		→ Header length = 0X12 = 18 = 18*4 = 72 bytes<br>		→ Data = 3072 - 72 = 3000B<br>		→ Sequence number = 3000, <br>→ So last byte sequence number = 3000 + 3000(data) -1 = 5999<br>→ URG pointer = 0X0F = 15<br>→ So URG data = 3000 to 301
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 3057 -&gt; 3072, 3072</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 3000 -&gt; 3015, 6999</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements are TRUE <br>1.In silly window sindrome, Each acknowledgement advertises a small size of space available.<br>2.TCP can be implemented in virtual circuits.<br>3.TCP streams service honor structured data streams<br>4.TCP support buffer transfer.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 1, 3, 4</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1, 2, 4</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 2, 3, 4</li>
+<li><img src="./Test Results75_files/wrong.png" width="16">&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> all the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a TCP connection over that the three measured SampleRTT values of 106 ms, 120 ms and 140 ms. Compute the EstimatedRTT after each of these SampleRTT values is obtained, using a value of α = 0.125 and assuming that the value of EstimatedRTT was 100 ms just before the first of these three samples were obtained. To find DevRTT, assuming a value of β = 0.25 and assuming the value of DevRTT was 5 ms just before the first of these three samples was obtained. Compute the TCP Timeout Interval after three samples.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 168 ms</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 120 ms</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 135 ms</li>
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 149 ms<br><span class="explanation">Explanation:</span><br>EstimatedRTT  = (1 - α) * SampleRTT + α * EstimatedRTT<br>DevRTT  = (1 - β) * (SampleRTT  - EstimatedRTT) + β * DevRTT<br>TimeoutInterval  = EstimatedRTT  + 4*DevRTT<br>After obtaining first sampleRTT is<br>EstimatedRTT  = 0.875*106  + 0.125*100 = 105.25ms .<br>DevRTT  = 0.25 * 5+ 0.75*(106 - 105.25) = 5.12ms .<br>TimeoutInterval 105.25 + 4*5.12 = 125.73 ms<br><br><br>After obtaining second sampleRTT = 120ms:<br>EstimatedRTT  = 0.125*105.25 + 0.875*120 = 118.16ms .<br>DevRTT  = 0.25*5.12 + 0.75*(120 - 118.16)  = 2.66ms .<br>TimeoutInterval = 118.16 + 4*2.66 = 128.8ms .<br><br><br>After obtaining Third sampleRTT = 140ms:<br>EstimatedRTT  0.125*118.16 + 0.875*140 = 137.27ms .<br>DevRTT  = 0.25*2.66 + 0.75*(140 - 137.27) = 2.71ms .<br>TimeoutInterval = 137.27 + 4*2.71 = 148.11 ms
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose Host H1 and H2 are connected over TCP connection with a 100Mbps link. Host H1 is sending a random file over this connection. H1 can send the data into sockets at rate of 120 Mbps but H2 can only receive at maximum rate of 50 Mbps due to limit on buffers at H2. What is the sender effective bandwidth utilization?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 60 Mbps</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 40 Mbps</li>
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 50 Mbps<br><span class="explanation">Explanation:</span><br>Since the link capacity is only 100 Mbps. <br>so host H1’s sending rate can be at most 100 Mbps. Still, host H1 sends data into the receive buffer faster than Host H2 can remove data from the buffer. <br>The receive buffer fills up at a rate of 50 Mbps. <br>When the buffer is full, Host H2 signals to Host H1 to stop sending data by setting RcvWindow = 0.<br>Host H1 then stops sending until it receives a TCP segment with RcvWindow &gt; 0. <br>Host H1 will thus repeatedly stop and start sending as a function of the RcvWindow values it receives from Host H2. <br>On average, the long-term rate at which Host H1 sends data to Host H2 as part of this connection is no more than 50 Mbps
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 75 Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a packet of length L bytes transfer from Host H1 to Host H2 over a 155 Mbps link. The header size in data-link and network and transport layers is 22 bytes each and MSS is 536 bytes. Consider transferring an enormous file of L bytes from Host A to Host B. Find how long it takes to transmit the full packet. Assume that H1 is sending segments continuously.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 148</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 228</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 155</li>
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 249<br><span class="explanation">Explanation:</span><br>There are 2<sup class="tcecode">32</sup> possible sequence numbers.<br>The sequence number does not increment by one with each segment. Rather, it<br>increments by the number of bytes of data sent. So the size of the MSS is irrelevant --<br>the maximum size file that can be sent from A to B is simply the number of bytes<br>representable by 2<sup class="tcecode">32 </sup>= 4.19 Gbytes<br>	The number of segments is = 2<sup class="tcecode">32</sup> / 536 = 8,012,999.<br>66 bytes of header get added to each segment giving a total of 528,857,934 bytes of header. The total number of bytes transmitted is 2<sup class="tcecode">32</sup> + 528,857,934  = 4.824*10<sup class="tcecode">9</sup> bytes.<br>Thus it would take 249 seconds to transmit the file over a 155 Mbps link.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following is a dump of a TCP header in hexadecimal format.<br>	05320017 00001010 00000000 500207FF 00000000<br>	What is the source port and sequence number of the packet?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 17, 23</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 17, 10</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 1330, 23</li>
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 1330, 10<br><span class="explanation">Explanation:</span><br>The source port number is 0x0532 (1330 in decimal).<br>The destination port number is 0x0017 (23 in decimal).<br>The sequence number is 0x00001010 (10 in decimal).<br>The acknowledgment number is 0x00000000 (0 in decimal).<br>The header length is 0x5 (5 in decimal). So  5 × 4 = 20 bytes of header.<br>The control field is 0x002. This indicates a SYN segment used for connection<br>Establishment.<br>The window size field is 0x07FF (2047 in decimal).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A TCP segments of size(excluding headers) 1500 bytes with life time of a packet as 120 sec is sent over a TCP connection. There is no wrap around time for sequence numbers and sender sends the packets continuously. Consider TCP, IP and Ethernet overhead into consideration, what is the required data rate?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 240 Mbps</li>
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 299 Mbps<br><span class="explanation">Explanation:</span><br>The goal is to send 2<sup class="tcecode">32</sup> bytes in 120 sec or 35,791,394 payload bytes/sec. <br>This is 23,860 1500-byte segments/sec. <br>The TCP overhead is 20 bytes. The IP overhead is 20 bytes. <br>The Ethernet overhead is 26 bytes. This means that for 1500 bytes of payload, 1566 bytes must be sent. <br>If we are to send 23,860 frames of 1566 bytes every second, we need a line of 299 Mbps. With anything faster than this we run the risk of two different TCP segments having the same sequence number at the same time.
+</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 319 Mbps</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 288 Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a TCP connection uses a fifteen bit clock to generate starting sequence numbers. The clock ticks for each 0.1 sec and each tick generate a sequence number. The lifetime of a packet 60 sec. If 300 sequence numbers are used by packets for each minute, what is the time for resynchronization of clock?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 3261.6 sec</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 4261.6 sec</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 5361.6 sec</li>
+<li>&nbsp;<img src="./Test Results75_files/correct.png" width="18"> 6433.6 sec<br><span class="explanation">Explanation:</span><br>Total number of ticks before the clock cycles around is 2<sup class="tcecode">15</sup> = 32768 ticks<br>Clock ticking time = 0.1 sec.<br>The time elapsed for the clock to cycle around = 32768 × 0.1 = 3276.8 sec <br>Max packet lifetime T = 60 sec<br>Assume at "t" clock will resync<br>At 300 sequence numbers/min means 5 sequence numbers/sec. So, the actual sequence number is 5*t [where t is in sec].<br>Clock ticks per sec = 1/0.1<br>The sender of the forbidden region(keep idle) is (1/0.1)(t − (3276.8-60)). <br>Equating these two formulas, 5t = (1/0.1)(t − 3216.8)<br>Thus, we find that they intersect at t = 6433.6 sec.<br><img src="./Test Results75_files/solution.png" alt="image:CN4/solution.png" width="682" height="482" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the wrong statement below?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> It is possible for an application to enjoy reliable data transfer even when the application runs over UDP</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> 2 different hosts can send 2 different UDP segments to a socket of another host.</li>
+<li>&nbsp;<img src="./Test Results75_files/wrong.png" width="16"> Receiver need to maintain the sequence numbers of packets arrived.</li>
+<li><img src="./Test Results75_files/correct.png" width="18">&nbsp;<img src="./Test Results75_files/correct.png" width="18"> In Go-Back-N protocol, the source send five packets, and then pause and kill a first packet before any of the five packets reach the destination. Then after time out again first packet will be sent.<br><span class="explanation">Explanation:</span><br>The application developer can put reliable data transfer into the application layer protocol. This would require a significant amount of work and debugging, however.<br>Both segments will be directed to the same socket. For each received segment, at the socket interface, the operating system will provide the process with the IP addresses to determine the origins of the individual segments.<br>	Sequence numbers are required for a receiver to find out whether an arriving packet contains new data or is a retransmission.<br>	The packet loss caused a timeout after which all the five packets were retransmitted.
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results75_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

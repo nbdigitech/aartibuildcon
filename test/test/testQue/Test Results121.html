@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=5608&test_id=63 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results121_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results121_files/calclayout.css">
+<script src="./Test Results121_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results121_files/jquery-ui.js.download"></script>
+<script src="./Test Results121_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results121_files/custom.js.download"></script>
+<script src="./Test Results121_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results121_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results121_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921374, 'I\'m sorry, the time available to complete the test is over!', false, 1486921374468);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=5608&amp;test_id=63#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 1</strong><br>
+ER Model and Relational Database Model,  Conversion of ER Model to Relational Database Model&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-20 09:23:15&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-20 10:00:48&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:37:33&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+15.690 / 25.000 (63%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+11 / 15 (73%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Derived attribute is an attribute that represents a value that is derived from<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Only from a single attribute in an entity</li>
+<li><img src="./Test Results121_files/wrong.png" width="16">&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> It can be derived from two or more attributes in an entity</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> It can be derived from a different entity</li>
+<li>&nbsp;<img src="./Test Results121_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>Derived attribute can be derived  from a single attribute in an entity or can be derived from multiple attributes in an entity or an attribute from another entity.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the basic ER and relational models, which of the following is INCORRECT?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> An entity can have composite attributes</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> In  a row of relational table, an attribute can have exactly one value or a NULL value</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> In a row of relational table, an attribute can have more than one value<br><span class="explanation">Explanation:</span><br>The term ‘entity’ belongs to the ER and the term ‘relation’ belongs to relational model. A and B are true since ER model supports both multi valued and composite attributes. In relational model, an entry is relational table can have exactly one value or a NULL. So (c) is the answer.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> An entity can have multi valued attributes</li>
+</ol>
+<br><br>
+</li>
+<li>
+In an E-R diagram, the entry set person has UID, age, sex and address as attributes wit UID as primary key. Address is a multi valued composite attribute comprised of street number, city and pincode. When this entity set is mapped to a relational model, the relations are<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Person(UID, age, sex, address[n])</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> Person(UID, age,sex), Person_address(UID, street number, city, pincode)<br><span class="explanation">Explanation:</span><br>We know that for each multi valued attribute A, we create a new relation R. This relation R will include an attribute corresponding to A, plus the primary key attribute K of the relation that represents the entity type or relationship type that has A as an attribute. The primary key of R is the combination of A and K. If the multivalued attribute  is composite, we include its simple components. In our example we create a new relation Person_address. The set of attributes in relation Person_address {street number, city, pincode } represents the multivalued composite attribute address of Person, while UID as foreign key in Person_address referring to UID in Person. The primary key of Person_address relation is {UID, street number, city, pincode}.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Person(UID, age, street number[n], city[n], pincode[n])</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following diagram describes the part of an ERD of employee database<br><img src="./Test Results121_files/Q4.PNG" alt="image:Database Topic Test - 1/Q4.PNG" width="532" height="200" class="tcecode"><br>Which of the following is the CORRECT statement regarding the above diagram?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Dependents represents a weak entity.</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> The participation of employees in policy relationship is partial.</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> pname of the dependents entity is a partial key.</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>1.Dependents is a weak entity since the attribute pname and age can not identify uniquely every tuple in Dependents relation. Since two employees may have dependents with same policy name and sex.<br><br>2.Participation of employees in policy relationship is partial since all employees need not have policy.<br><br>3.pname is the partial key since with the help of pname alone  we can not uniquely identify weak entity dependent. For the given employee only, with the help of pname we can uniquely identify a tuple in weak entity DEPENDENT.We can also say with the help of SSN, we can uniquely identify the details of his/her dependents.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement(s) is/are correct?<br>I.Participation between relationship set and strong entity (if exist) is always total participation.<br>II.Participation between relationship set and weak entity (if exist) is always total participation.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Only I is correct</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> Only II is correct<br><span class="explanation">Explanation:</span><br>In a relationship set, weak entity always participates in total participation, but strong may or may not participate in  total participation.<br>          For example in<br><img src="./Test Results121_files/Q5_exp1.PNG" alt="image:Database Topic Test - 1/Q5_exp1.PNG" width="576" height="270" class="tcecode"><br>For example in<br><img src="./Test Results121_files/Q5_exp2.PNG" alt="image:Database Topic Test - 1/Q5_exp2.PNG" width="558" height="241" class="tcecode"><br>So, answer is (b).
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Both I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an empty relation R(AB) where A is primary key and B is foreign key referring same relation R. <br>Which one of the following row sequence can be inserted into R?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> (1, 2) (2, 3) (3, 4) (4, 5)</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> (1, NULL) (2, 1) (3, 2) (4, 3)<br><span class="explanation">Explanation:</span><br>Option (a) is wrong because, when we try to insert the tuple/row (1, 2) into the relation (A, B), it will through an error because attribute B is referring to attribute A and attribute A does not have the value 2. It will also throw an error when we try to insert the tuple/row (4,5) into the relation (A, B), because A does not has value 5.<br><br>Option (b) is correct as it does not throw any error while inserting tuples/rows into relation as it follows referential integrity constraint. For referential integrity to hold in relational database, any field in a table that is declared a foreign key can contain either a null value or only values from a parent table’s primary key or a candidate key.<br><br>Option (c) is wrong because, when we try to insert the tuple/row (4, 3) into the relation (A, B) it will through an error because attribute B having the value 3 is referring to attribute A and attribute A does not have the value 3.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> (1, NULL) (2, NULL) (4, 3) (5, 4)</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following ER diagram<br><br><img src="./Test Results121_files/Q13.PNG" alt="image:Database Topic Test - 1/Q13.PNG" width="262" height="129" class="tcecode"><br><br>Let the cardinality of each relation is 1: 1, then find the minimum number of tables possible in relational model?<br>	(Assume that the participation of A, B is total)<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results121_files/wrong.png" width="16">&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results121_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>To convert the given ER diagram into relational model, we require 3 tables AR<sub class="tcecode">1</sub>B, AR<sub class="tcecode">2</sub>C, BR<sub class="tcecode">3</sub>C.<br>To represent relationship R<sub class="tcecode">1</sub> we can include primary key of A as foreign key in B or we can include primary key of B as foreign key in A ( Both A and B has total participation in R<sub class="tcecode">1</sub>)<br>To represent relationship R<sub class="tcecode">2</sub> we include primary key of C as foreign key in A ( A has total participation in R<sub class="tcecode">2</sub>)<br>To represent relationship R<sub class="tcecode">3</sub> we include primary key of C as foreign key in B ( B has total participation in R<sub class="tcecode">3</sub>)<br>So, the minimum number of tables required is 3
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let there be relation R(A, B, C, D, E) where candidate keys are A, BC and D. How many superkeys are possible?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> 26<br><span class="explanation">Explanation:</span><br>Answer = Number of superkeys(A) + Number of superkeys (BC) + Number of superkeys (D) – Number of superkeys (ABC) – Number of superkeys (BCD) – Number of superkeys (AD) + Number of superkeys (ABCD)<br>	  = 2<sup class="tcecode">4</sup> + 2<sup class="tcecode">3</sup> + 2<sup class="tcecode">4</sup> – 2<sup class="tcecode">2</sup> – 2<sup class="tcecode">2</sup> – 2<sup class="tcecode">3</sup> + 2<sup class="tcecode">1</sup><br>	  = 16 + 8 + 16 – 4 – 4 – 8 +2<br>	  = 26
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following regarding mapping ER to relational model<br><img src="./Test Results121_files/Q10.PNG" alt="image:Database Topic Test - 1/Q10.PNG" width="601" height="222" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> a – 1, b – 3, c – 2</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> a – 1, b – 2, c – 3</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> a – 2, b – 1, c – 3</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following:<br><img src="./Test Results121_files/Q7.PNG" alt="image:Database Topic Test - 1/Q7.PNG" width="590" height="233" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> I – b, II – c, III – a, IV – d</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> I – c, II – b, III – a, IV – d<br><span class="explanation">Explanation:</span><br>Relational database schema is the collection of relation schemas describing one or more relations.<br><br>Relation instance is the set of tuples that each conform to the schema of relation.<br><br>Relation Cardinality is the number of tuples in the relation.<br><br>Relation degree is the number of fields (or columns) in the relation.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> I – c, II – b, III – d, IV – a</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> I – b, II – c, III – d, IV – a</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following table has two attributes ‘A’ and ‘B’ where ‘A’ is primary key and 'B' is the foreign key referring to 'A'. Which of the following statement(s) is/are true?<br><br><img src="./Test Results121_files/Q12.PNG" alt="image:Database Topic Test - 1/Q12.PNG" width="212" height="316" class="tcecode"><br><br>I.With “ON DELETE CASCADE”, the set of all tuples that must be additionally deleted to preserve the referential integrity when the tuple (9,2) is deleted is, (12, 9) (10, 9) and (5, 10)<br><br>II.With “ON DELETION NULL”, the set of all tuples in the resultant table when the tuple (9, 2) is deleted  (preserving referential integrity) is (1, NULL) (2, 1) (3, 1)     (12, NULL) (10, NULL) and (5, NULL)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> Only I is correct<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Statement I</span>: <br>On deleting tuple (9, 2) with “ON DELETE CASCADE”, the tuples that will be deleted in order not to violate referential integrity is (12, 9), (10, 9) and (5, 10). So statement I is correct.<br><br><span style="text-decoration:underline;">Statement II</span>:<br>On deleting tuple (9, 2) with “ON DELETE NULL”, the tuples in the relation in order not to violate referential integrity is (1, NULL) (2, 1) (3, 1)     (12, NULL) (10, NULL) and (5, 10). So statement II is not correct.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Only II is correct</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Both I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement(s) is/are correct?<br>I.A constraint showing the maximum number of entities to which another entity can be associated via a relationship set is called participation constraint.<br>II.The number of entity sets participating in the relationship is known as the degree of that relationship.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Only I is correct</li>
+<li>&nbsp;<img src="./Test Results121_files/correct.png" width="18"> Only II is correct<br><span class="explanation">Explanation:</span><br>1.A constraint showing the maximum number of entities to which another entity can be associated via a relationship set is called cardinality constraint.<br>For example one entity can be associated with at most n entities via relationship set then cardinality ratio of this relationship will be 1:N.<br><br>2.The number of entity sets participating in the relationship is known as the degree of that relationship.<br>For example if two entity sets are participating in a relationship, then degree of that relationship is “2”.
+</li>
+<li><img src="./Test Results121_files/wrong.png" width="16">&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Both I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement(s) is/are true?<br>I.Every existence dependency results in a weak entity.<br>II.Role names are  technically not necessary in relationships types when all the participating entity types are distinct.<br>III.The relationship between owner entity and the weak entity is one to many.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/correct.png" width="18"> Only II &amp; III are correct<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Statement I</span>:<br>		Every existence dependency need not result in a weak entity.<br>	For example: A subject being offered at the university, must have the relevant offering details associated with it, so OFFERING is existence-dependent on SUBJECT. But here OFFERING has its own primary key (offering#) which has not been derived from SUBJECT. Therefore OFFERING is not a weak entity. So, statement I is not correct. <br><br><span style="text-decoration:underline;">Statement II</span>:<br>	Roles names are mandatory in relationship types where all the participating entity types are same. In this case we concatenate role indicator with attribute from the entity set to get role name. So, statement II is correct.<br><br><span style="text-decoration:underline;">Statement III</span>:<br>	The relationship between owner entity set and weak entity set is one to many<br>	Consider the following ER diagram<br><img src="./Test Results121_files/Q9_exp1.PNG" alt="image:Database Topic Test - 1/Q9_exp1.PNG" width="542" height="264" class="tcecode">	<br>	The above ER diagram shows that employee is strong entity with eid as primary key. DEPENDENT is weak entity with dname as partial key. The cardinality ratio between employee and dependent is 1: N. this means each employee has n dependents but every dependent is dependent of one employee only. So, statement III is correct.
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> I, II &amp; III are correct</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> Only I &amp; II are correct</li>
+<li><img src="./Test Results121_files/wrong.png" width="16">&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q14 &amp; Q15</strong>:<br>Consider the following ER diagram<br><img src="./Test Results121_files/Q14.PNG" alt="image:Database Topic Test - 1/Q14.PNG" width="506" height="145" class="tcecode"><br>		<br>How many minimum number of tables needed to represent A, B, C, R<sub class="tcecode">1</sub>, R<sub class="tcecode">2</sub> is _____<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>The cardinality ratio between relations A and B is N : 1. So, for 2 entities A and B we will create 2 relations A and B and the relationship R<sub class="tcecode">1</sub> is represented by including primary  key of B as foreign key in A.<br>Since C is a weak entity referring to B, we create separate relation for C and include B<sub class="tcecode">1</sub> as foreign key in C. the primary key for C is C<sub class="tcecode">1</sub>B<sub class="tcecode">1</sub>.<br>So, the total number of tables required is 3.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q14 &amp; Q15</strong>:<br>Consider the following ER diagram<br><br><img src="./Test Results121_files/Q14.PNG" alt="image:Database Topic Test - 1/Q14.PNG" width="500" height="154" class="tcecode"><br><br>Which of the following is a correct attribute set for one of the tales for the correct answer to the above question?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results121_files/correct.png" width="18">&nbsp;<img src="./Test Results121_files/correct.png" width="18"> {A<sub class="tcecode">1</sub>, A<sub class="tcecode">2</sub>, A<sub class="tcecode">3</sub>, B<sub class="tcecode">1</sub>}<br><span class="explanation">Explanation:</span><br>The tables formed from the ER diagram is A(<span style="text-decoration:underline;">A<sub class="tcecode">1</sub></span>, A<sub class="tcecode">  2</sub>, A<sub class="tcecode">3</sub>, B<sub class="tcecode">1</sub>), B(<span style="text-decoration:underline;">B<sub class="tcecode">1</sub></span>, B<sub class="tcecode">2</sub>), C(<span style="text-decoration:underline;">C<sub class="tcecode">1</sub>, B<sub class="tcecode">1</sub></span>, C<sub class="tcecode">2</sub>) <br>From the given options, we can say that correct attribute set for one of the tables is (<span style="text-decoration:underline;">A<sub class="tcecode">1</sub></span>, A<sub class="tcecode">2</sub>, A<sub class="tcecode">3</sub>, B<sub class="tcecode">1</sub>).
+</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> {B<sub class="tcecode">1</sub>, B<sub class="tcecode">2</sub>, A<sub class="tcecode">1</sub>}</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> {A<sub class="tcecode">1</sub>, B<sub class="tcecode">1</sub>, C<sub class="tcecode">1</sub>}</li>
+<li>&nbsp;<img src="./Test Results121_files/wrong.png" width="16"> {B<sub class="tcecode">1</sub>,B<sub class="tcecode">2</sub>,C<sub class="tcecode">1</sub>}</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results121_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

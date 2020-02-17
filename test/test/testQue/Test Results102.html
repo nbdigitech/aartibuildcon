@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=35674&test_id=159 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results102_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results102_files/calclayout.css">
+<script src="./Test Results102_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results102_files/jquery-ui.js.download"></script>
+<script src="./Test Results102_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results102_files/custom.js.download"></script>
+<script src="./Test Results102_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results102_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results102_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920997, 'I\'m sorry, the time available to complete the test is over!', false, 1486920997414);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=35674&amp;test_id=159#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>P&amp;DS Topic Test - 3</strong><br>
+Stacks, Queues, Prefix - Postfix conversion, Towers of Hanoi, Postfix Evaluation&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-07 15:02:14&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-07 15:46:31&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:17&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+11.000 / 25.000 (44%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+7 / 15 (47%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+We push 9, 8, 7, 6, 5 in this order onto a stack which is implemented by an array. We can perform pop operation out at any time, which means we can delete an element between two insertions. Which of the following cannot be pop out sequence?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 5, 6, 7, 8, 9</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 9, 6, 8, 7, 5<br><span class="explanation">Explanation:</span><br>I.	5, 6, 7, 8, 9: push(9), push(8), push(7), push(6), push(5), pop(), pop(), pop(), pop(), pop()<br>II.	9, 8, 7, 6, 5: push(9), pop(), push(8), pop(), push(7), pop(), push(6), pop(), push(5), pop()<br>III.	9, 7, 8, 6, 5: push(9), pop(), push(8), push(7), pop(), pop(), push(6), pop(), push(5), pop()<br>IV.	9, 6, 8, 7, 5: push(9), pop(), push(8), push(7), push(6), pop(), … We cannot pop 8 because there is 7 on the top of the stack. So, this sequence cannot be achieved.
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 9, 8, 7, 6, 5</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 9, 7, 8, 6, 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+If the expression ((2 + 3) * 4 + 5 * (6 + 7) * 8) + 9 is evaluated with * having precedence over +, the value obtained is the same as the value of which of the following prefix expressions<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> + * + + 2 3 4 * * 5 + 6 7 8 9</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> + * + * 2 3 4 + + 5 * 6 7 8 9</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> + + * + 2 3 4 * * 5 + 6 7 8 9<br><span class="explanation">Explanation:</span><br>1. Given expression is ((2 + 3) * 4 + 5 * (6 + 7) * 8) + 9<br>2. Evaluation (2+3) results (+ 2 3 * 4 + 5 * (6 + 7) * 8) + 9<br>3. Evaluation of (6+7) results (+ 2 3 * 4 + 5 * + 6 7 * 8) + 9<br>4. Evaluation of  5 * + 67 results in *5+67 so it becomes (+ 2 3 * 4 + * 5 + 6 7 * 8) + 9<br>5. Evaluation of +23 * 4 results in *+23 4 so it becomes (* + 2 3 4 + * 5 + 6 7 * 8) + 9<br>6. Evaluation of *5+67  * 8 results ** 5+678 so it becomes (* + 2 3 4 + * * 5 + 6 7 8) + 9<br>7. Evaluation of *+234 + **5+678 becomes + *+234**5+678 + 9<br>8. Finally Evaluation of +*+234**5+678 + 9 becomes + + * + 2 3 4 * * 5 + 6 7 8 9
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> * + + 2 3 4 * * 5 + 6 7 8 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true? <br>I: If a stack is implemented as a linked list with n nodes, then push and pop takes O(1) time.<br>II: If a stack is implemented as an array then the preferred implementation uses a circular array<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> Only I<br><span class="explanation">Explanation:</span><br>I. A linked list with n nodes, then push and pop operations involve insertion at head and deletion from head, respectively, which takes O(1) time. So, this is true.<br>II. Circular array cannot be used to implement stack, because stack uses the Last In First Out principle
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following piece of program, push(a) inserts ‘a’ at the top of the stack, pop() deletes an element from the top of the stack and top() returns the element at the top of the stack. Initially, stack is empty. <br><img src="./Test Results102_files/Q4a.PNG" alt="image:P&amp;DS3/Q4a.PNG" width="245" height="335" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 33    33    2</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 33    11   22</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 33    11    2<br><span class="explanation">Explanation:</span><br>p = 11, q = 22<br><img src="./Test Results102_files/E4a.PNG" alt="image:P&amp;DS3/E4a.PNG" width="485" height="233" class="tcecode"><br>In the while loop, it prints the top element and pops it. This process repeats till the stack is empty. So, it prints 33, 11, 2 in this order.
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 35    33    2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let a queue is implemented using a circular array with 10 elements in the queue stored at data[12] through data[21]. The maximum size of the queue is 25. Where does the enqueue member function place the new entry in the array?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 22<br><span class="explanation">Explanation:</span><br>Let consider the index of Queue is starting from 0, data[0] to data[11] are empty and data[12] to data[21] are filled with the elements, capacity is 25. Hence data[22] to data[24] are still empty. We can easily see that front is pointing to the location =12 and rear is pointing to the location = 21. Hence if you enter new element then it will get inserted at rear pointer. <br>Since rear &lt; capacity-1, new element will get inserted at location 22.
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 23</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 24</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the array implementation of queue, what does the following function perform?<br><img src="./Test Results102_files/Q6a.PNG" alt="image:P&amp;DS3/Q6a.PNG" width="302" height="231" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Swaps the two consecutive elements in a queue</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> Reverse the elements in a queue<br><span class="explanation">Explanation:</span><br>Here front, rear (f, r) points to 1st and last elements in queue and the elements are swapped and the process continues. So, it reverses the element in a queue.
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Reverse every two consecutive elements in the queue</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> Reverse every three consecutive elements in the queue</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two stacks M and N. Stack M has the entries p, q, r, stack N is empty. For stack M ‘p’ is the top element.  An entry popped out of stack M can be can be printed immediately or pushed to stack N. An entry popped out of the stack N can be only be printed. In this arrangement, which of the following permutations of p, q, r is not possible?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> q p r</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> q r p</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> p q r</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> r p q<br><span class="explanation">Explanation:</span><br>1. Initially stack M will have p,q,r with p is on top and stack N is empty<br>2. Now if we pop from stack M p will come out and then q and then r these p q r can either be printed or pushed in N and whatever we pop from N can only be printed now one possibility is p is popped and pushed in N then q is popped from M and printed then p is popped and printed and finally r is popped and printed this will give q p r which is option A.<br>3. Second possibility is p is popped and pushed in N then q is popped from M and printed then r is popped from M and printed and p is popped from N and printed which gives q r p (Option B) .<br>4. Another possible sequence is Pop and print form M which gives p q r (Option C)<br>5. Option D is not possible as to print r first p and q must be pushed into N and when we pop q will come out before p which will give r q p.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The initial configuration of a queue is p, q, r, s (‘p’ is in the front end). To get the configuration s, r, q, p. One needs a minimum of<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 2 dequeues and 3 enqueues</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 3 dequeues and 3 enqueues<br><span class="explanation">Explanation:</span><br>Initial configuration of the queue = p, q, r, s<br><img src="./Test Results102_files/E8a.PNG" alt="image:P&amp;DS3/E8a.PNG" width="661" height="253" class="tcecode"><br>One needs a minimum of 3 deletions and 3 insertions
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 3 dequeues and 2 enqueues</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 3 dequeues and 4 enqueues</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following<br><img src="./Test Results102_files/Q9b.PNG" alt="image:P&amp;DS3/Q9b.PNG" width="312" height="103" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> I- 2, III-1, II-4, IV - 3</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> I- 2, III-4, II-3, IV - 1</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> I- 3, III-1, II-4, IV - 2</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> I- 3, III-4, II-2, IV - 1<br><span class="explanation">Explanation:</span><br>I) + + 4 (* 6 8) 3  =&gt; + + 4 (6*8) 3 =&gt; + (+ 4 (48)) 3 =&gt; +(48+4)3 =&gt; + 52 3 =&gt; 52+3 = 55<br><br>	II)* + 5 3 - 7 4	 =&gt; *(5+3)(7-4) =&gt; * 8 3 =&gt; 8*3 = 24 	<br><br>           III) 4 5 6 * +7 + =&gt; 4 (5*6)+7 + =&gt; 4 30+7+ =&gt; (4+30)7+ =&gt; 34 7 + =&gt; 34+7 = 41<br><br>            IV) 3 2 * 4 5 * + =&gt; (3 2 *) 4 5 * + =&gt; (3*2)(4*5)+ =&gt; 6 20 + =&gt; 20+6 = 26
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+There is a set of 64 platinum disks on 3 bronze needles. How many years will it need, assume that one move takes 1 second?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 2.14 × 10^63 years</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 1.85 × 10^10 years</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 3.07 × 10^17 years</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 5.85 × 10^11 years<br><span class="explanation">Explanation:</span><br>Mathematically, we want to work out a formula for how many steps (Tn) it takes to transfer n discs from the source pole to the destination pole. Looking at the smaller cases and counting the steps manually we see the following.<br><br>when n=1, Tn=1<br>when n=2, Tn=3<br>when n=3, Tn=7<br>when n=4, Tn=15<br>From this we can start to infer a pattern. Every time we increase the number of discs by 1, we need to double the number of steps and add 1, which means we can express the number of steps Tn taken to transfer n discs based on the number of steps taken to transfer n−1 discs:<br><br>Tn=2T(n−1)+1 where n&gt;0.<br><br>T (64) = 2^64 − 1 = 1.84 × 10^19 moves. At one move per second, that’s<br><br>= 1.84 × 10^19 seconds<br>= 3.07 × 10^17 minutes<br>= 5.12 × 10^15 hours<br>= 2.14 × 10^14 days<br>= 5.85 × 10^11 years
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function for traversing a tree:<br><br>fun()<br>{<br> printf(“%d”, root→data)<br> fun(root→right)<br> fun(root→left)<br>}<br>In the expression A*B, A represents left subtree, * represents root B represents right subtree<br>The traversal of the expression tree corresponding to the reverse polish expression<br><br>12 8 * 6 - 4 ^ 10 13 * 11 + - <br>is given by:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> – + 11 * 10 13 ^ 4 – 6  12 8 *</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> – + 11 * 10 13 ^ 4  6 - * 12 8</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> – + 11 * 13 10 ^ 4 – 6 * 8 12<br><span class="explanation">Explanation:</span><br>Expression given in reverse polish notation that is in post-order<br>Convert first it has to convert into In-order (left root right)<br>            <br>	12 8 * 6 - 4 ^ 10 13 * 11 + –<br>(12 * 8) 6 – 4 ^ 10 13 * 11 + –<br>((12 * 8) – 6) ^ 4) 10 13 * 11 + –<br>(((12 * 8) – 6) ^ 4) 10 13 * 11 + –<br>(((12 * 8) – 6) ^ 4) (10 * 13) 11 + –<br>(((12 * 8) – 6) ^ 4) ((10 * 13) + 11) –<br>((((12 * 8) – 6) ^ 4) – (10 * 13) + 11))<br><br>So Inorder expression in ((((12 * 8) – 6) ^ 4) – ((10 * 13) + 11))<br><br>Now we have to traverse in the order ROOT RIGHT LEFT<br><br>((((12 * 8) – 6) ^ 4) – ((10 * 13) + 11))<br>–(10 * 13) + 11) (((12 * 8) – 6) ^ 4)<br>– + 11(10 * 13) (((12 * 8) – 6) ^ 4)<br>– + 11 * 13 10 (((12 * 8) – 6) ^ 4)<br>– + 11 * 13 10 ^ 4 ((12 * 8) – 6)<br>– + 11 * 13 10 ^ 4 – 6(12 * 8)<br>– + 11 * 13 10 ^ 4 – 6 * 8 12<br>so finally we got   – + 11 * 13 10 ^ 4 – 6 * 8 12
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> – + 11 * 10 13  4 – 6 ^ * 12 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+The result evaluating the postfix expression 40 20 + 96 12 / * 19 – is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 361</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 391</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 411</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 461<br><span class="explanation">Explanation:</span><br>we have to keep symbol into stack and when we get two operands followed by operator. we will apply operator on last two operands<br><img src="./Test Results102_files/E12a.PNG" alt="image:P&amp;DS3/E12a.PNG" width="654" height="288" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A function <strong class="tcecode">fun()</strong> defined on stack of integers satisfies the following properties,fun(∅) = 0 and fun(push (S, i)) = max (fun(S), 0) + i for all stack S and integers r.If a stack S contains the integers 20, -7, 16, -14, 5, 3, 13 in order from bottom to top,what is fun(S)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 36<br><span class="explanation">Explanation:</span><br>20, -7, 16, -14, 5, 3, 13<br><img src="./Test Results102_files/C_and_DS_topic_3.JPG" alt="image:P&amp;DS3/C_and_DS_topic_3.JPG" width="649" height="304" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 13</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Questions Q14 – Q15</span></strong><br>Consider the expression [(A + B) * C – D] + [(E / F) / (G + H)] <br>14)  Convert the above infix expression to postfix<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> AB + CD * – EF / GH + / +</li>
+<li><img src="./Test Results102_files/correct.png" width="18">&nbsp;<img src="./Test Results102_files/correct.png" width="18"> AB + C * D – EF / GH + / +<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Steps:</strong> <br>1. Start scanning the input from the left side one character at a time. <br>2. If the stack is empty or contains a left parenthesis on top, push the incoming operator onto the stack.<br>3. If the incoming symbol is a left parenthesis , [ or (, push it on to the stack. <br>4. If the incoming symbol is a right parenthesis, ] or ), pop the stack and print the operators until you see a left parenthesis. Discard the pair of parentheses. <br>5. If the incoming symbol has higher precedence than the top of the stack, push it on the stack. <br>6. If the incoming symbol has equal precedence with the top of the stack, use association. If the association is left to right, pop and print the top of the stack and then push the incoming operator. If the association is right to left, push the incoming operator. <br>7. If the incoming symbol has lower precedence than the symbol on the top of the stack, pop the stack and print the top operator. Then test the incoming operator against the new top of stack. <br>8. At the end of the expression, pop and print all operators on the stack. (No parentheses should remain.)<br>Given expression: <br>[(A + B) * C – D] + [(E / F) / (G + H)]<br><img src="./Test Results102_files/E14a.PNG" alt="image:P&amp;DS3/E14a.PNG" width="425" height="488" class="tcecode"><br><img src="./Test Results102_files/E14b.PNG" alt="image:P&amp;DS3/E14b.PNG" width="481" height="209" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> AB + C * D – / EF + GH / +</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> AB + C * D – E / FG + / +</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Questions Q14 – Q15</span></strong><br>Q15. For the given infix expression, how many number of activation records used in the stack?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results102_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>While converting the expression from infix to postfix, the stack has used the activation records for operators. In each record one operator is present. A maximum of 5 records has been used in the conversion  “+ [ / ( +”
+</li>
+<li>&nbsp;<img src="./Test Results102_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results102_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91717&test_id=336 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results8_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results8_files/calclayout.css">
+<script src="./Test Results8_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results8_files/jquery-ui.js.download"></script>
+<script src="./Test Results8_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results8_files/custom.js.download"></script>
+<script src="./Test Results8_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results8_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results8_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486836714, 'I\'m sorry, the time available to complete the test is over!', false, 1486836714364);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91717&amp;test_id=336#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 19</strong><br>
+Theory of Computation, Compiler Design, Algorithms, Programming &amp; Data Structures, Engineering Mathematics&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:09:02&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results8_files/15.png" alt="image:MST19/15.png" width="308" height="63" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/16.png" alt="image:MST19/16.png" width="502" height="249" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results8_files/22.png" alt="image:MST19/22.png" width="374" height="55" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/23.png" alt="image:MST19/23.png" width="458" height="266" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A priority queue is implemented as a max heap. Initially the level order traversal of S elements of heap is 60, 40, 20, 10, 5. The new elements 3, 49 are inserted in heap, the level order traversal after insertion is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 60, 40, 20, 10, 5, 3, 49</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 60, 40, 49, 10, 5, 3, 20<br><span class="explanation">Explanation:</span><br>Initially the tree is<br><img src="./Test Results8_files/33.png" alt="image:MST19/33.png" width="660" height="428" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 60, 49, 40, 10, 5, 3, 20</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following language:													<br>	L={The binary positive integers (without 0) whose most significant bit is 1 and contain the substring 11}<br>What is the regular expression for the above language?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 1(1+0)*11(1+0)*+11(1+0)*<br><span class="explanation">Explanation:</span><br>The language definition has the following :<br>1.	Positive binary integers<br>2.	It shall not contain 0s<br>3.	MSB shall be 1<br>4.	Must contain substring 11<br>The regex 1(1+0)*11(1+0)*+11(1+0)* satisfies all the above conditions.<br>The option 1(1+0)*11(1+0)* shall not contain the string “11”<br>The option 1(1+0)*11+11 cannot produce strings ending with 0s
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1(1+0)*11(1+0)*</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1(1+0)*11+11</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following language:					<br>L={w│(|#0(w)-#1(w) |mod3)=1}<br>where <br>#0(w)→number of 0' s in w<br>#1(w)→number of 1' s in w<br>The above language is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Regular<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/10.png" alt="image:MST19/10.png" width="338" height="307" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Not regular but context free</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Not context free but context sensitive</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>I: The depths of any two leaves in a max heap differ by at most 1. <br>II: Inserting an element into a binary search tree of size n always takes O(log n) time. <br>Which of the above statements is/are true ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> I only<br><span class="explanation">Explanation:</span><br>I : A heap is derived from an array and new levels to a heap are only added once the leaf level is already full. As a result, a heap’s leaves are only found in the bottom two levels of the heap and thus the maximum difference between any two leaves’ depths is 1.<br>Hence True <br>II : Inserting an element into a binary search tree takes O(h) time, where h is the height of the tree. If the tree is not balanced, h may be much larger than log n (as large as n − 1). Hence False
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:						<br>S1: An inherited attribute for a symbol on the RHS of a production must be computed in an action before that symbol.<br>S2: An inherently ambiguous grammar is a language for which at least one grammar is ambiguous.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/1.png" alt="image:MST19/1.png" width="669" height="438" class="tcecode"><br><img src="./Test Results8_files/2.png" alt="image:MST19/2.png" width="656" height="260" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the given grammar :	<br>S→AB<br>A→a<br>B→C/b<br>C→D<br>D→E<br>E→a<br>Which of the following is an equivalent CFG for the given grammar?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> S→AB<br>A→a<br>B→a/b<br>C→a<br>D→a<br>E→a</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> S→AB<br>A→a|b</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> S→AB<br>A→a<br>B→a/b<br><span class="explanation">Explanation:</span><br>The list of unit productions and sequence of unit productions are<br>B→C<br>B→C→D<br>B→C→D→E	gives B→a<br>C→D<br>C→D→E		gives C→a<br>D→E			gives D→a<br>The new CFG for this language is<br>S→AB<br>A→a<br>B→a/b<br>C→a<br>D→a<br>E→a<br>Since C, D, E is not reachable from the start state so we shall eliminate those:<br>S→AB<br>A→a<br>B→a/b
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the coefficient of x<sup class="tcecode">a</sup> y<sup class="tcecode">b</sup> z<sup class="tcecode">c</sup>in 〖(x+y+z)〗<sup class="tcecode">n</sup>?  [where n≥0,a,b,c≥0]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> n!/(n!-(a+b+c)! )</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> n!/((a+b+c)! )</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> n!/(a!b!c! )<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/24.png" alt="image:MST19/24.png" width="553" height="305" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> n!/((a+b)!c! )</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let S be a finite set with 10 elements. The number of elements in largest equivalence relation of S is _________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 64</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 125<br><span class="explanation">Explanation:</span><br>If a set S contains n elements. Then the Cartesian product of S contains n<sup class="tcecode">2</sup> elements.<br>∴S×S=n<sup class="tcecode">2</sup><br>The largest possible relation on set Sis S×S.<br>∴The equivalence relation is a relation between elements of a set which is reflexive, symmetric and transitive.<br>The largest possible equivalence relation is having n<sup class="tcecode">2</sup> elements in the relation.<br>Given set S = 10 elements.<br>∴The number of elements in largest equivalence relation of S is =〖10〗<sup class="tcecode">2</sup>=100
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of states in minimal DFA that accepts all binary strings that starts with 11 and the string when represented as binary number is divisible by 2<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/9.png" alt="image:MST19/9.png" width="445" height="290" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+The chromatic number of K<sub class="tcecode">(m,n)</sub> is _______<br>[Note: K<sub class="tcecode">(m,n)</sub> is a complete bipartite graph on'm' and 'n'vertices].<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/25.png" alt="image:MST19/25.png" width="669" height="361" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> min(m, n)</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> max(m, n)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The set G={1,2,3,4,5,6}is a group with respect to multiplication modulo 7. What will be the value of 3<sup class="tcecode">(-3)</sup>and 6<sup class="tcecode">(-2)</sup> for the given group?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 5 and 4</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 3 and 2</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 6 and 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/13.png" alt="image:MST19/13.png" width="410" height="496" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 6 and 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the logical translation of the following statement?     <br>“Every person can speak Hindi”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (P(x)⋀H(x) )</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> ~∀<sub class="tcecode">x</sub> (P(x)→H(x) )</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (P(x)→~H(x) )</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> ∀<sub class="tcecode">x</sub> (P(x)→H(x) )<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/17.png" alt="image:MST19/17.png" width="569" height="331" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following features cannot be captured by CFG?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Matching nested parenthesis</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Syntax of if - then – else statements</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Syntax of recursive procedures</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Whether a variable is declared before its use<br><span class="explanation">Explanation:</span><br>Declaring a variable before its use is equivalent to recognizing the language {wcw | w ∈ {0,1}*}, where the first w is the declaration and the second is its use and wcw is not a CFG.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following permutations is a possible output obtained when push and pop operations are performed in any order if the given input sequence is 6, 8, 9, 5, 7 is pushed on to the stack in this order.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7, 5, 6, 8, 9</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7, 9, 5, 8, 6</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 8, 9, 5, 7, 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/27.png" alt="image:MST19/27.png" width="539" height="322" class="tcecode"><br><img src="./Test Results8_files/28.png" alt="image:MST19/28.png" width="620" height="392" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7, 5, 8, 9, 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results8_files/19.png" alt="image:MST19/19.png" width="294" height="63" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 1/6<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/20.png" alt="image:MST19/20.png" width="325" height="426" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1/4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results8_files/31.png" alt="image:MST19/31.png" width="508" height="205" class="tcecode"><br>What will be the percentage improvement of total binary stream transmission using Huffman coding over simple encoding?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 6.97%</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 6.52%<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/32.png" alt="image:MST19/32.png" width="583" height="408" class="tcecode"><br>A→0 (1 bit)<br>B→110 (3 bits)<br>C→111 (3 bits)<br>D→10 (2 bits)<br>Total number of bits required for encoding is<br>(50)(1)+(15)(3)+20(3)+30(2)<br>=50+45+60+60<br>=215 million bits<br>% improvement=(230-215)/230×100<br>=15/230×100<br>=6.52%
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 19.5%</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+A box has 8 similar White balls and 7 Blue balls. If 4 balls are to be randomly selected without replacement. What is the probability that the first 2 balls selected as White and the last 2 balls selected as Blue?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 0.071<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/18.png" alt="image:MST19/18.png" width="557" height="231" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 0.064</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 0.081</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 0.094</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the below tree<br><img src="./Test Results8_files/29.png" alt="image:MST19/29.png" width="204" height="207" class="tcecode"><br>What is the post order traversal of the mirror tree of the above tree? [Mirror tree of a binary tree (T) is another binary tree M(T) with left and right children of all non-leaf nodes interchanged]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 8, 6, 3, 5, 7, 2, 4, 1</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 8, 6, 3, 5, 7, 4, 2, 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/30.png" alt="image:MST19/30.png" width="457" height="335" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7, 4, 5, 2, 8, 6, 3, 1</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7, 4, 5, 3, 8, 6, 2, 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code  <br>int fun(int p, int q)<br>{<br>	if(q==0) return 1;<br>	else if(q%2 ==0)<br><br>       {	<br><br>	return(fun(p,q/2)*fun(p,q/2));<br>	}<br>	else <br>	{<br>		return(p* fun(p, q/2)*fun(2,q/2));<br>	}<br>}<br>what is the return value of fun(2,10)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1010</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1020</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 1024<br><span class="explanation">Explanation:</span><br>Explanation : fun(2,10) returns value 1024<br><br>fun(2,10) = fun(2,5) + fun(2+5)<br><br>now, fun(2,5) = 2*fun(2,2)*fun(2,2)<br><br>now fun(2,2) = fun(2,1)*fun(2,1)<br><br>fun(2,1) = 2*2*1 = 4 <br><br>so finally f(2,10) = f(2,5)*f(2,5)<br>			  =  2*fun(2,2)*fun(2,2) + 2*fun(2,2)*fun(2,2)<br>			  = 2*16*16 + 2*16*16<br>                       =1024
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1034</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program <br> int main()<br>{<br>int i = 20;<br>int * const p = &amp;i;<br>++(*p);<br>printf("%d", i);<br>return 0;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 21<br><span class="explanation">Explanation:</span><br>See following declarations to know the difference between constant pointer and a pointer to a constant.<br>int * const p—&gt; p is constant pointer. You can change the value at the location pointed by pointer p, but you cannot change p to point to other location.<br>int const * p—&gt; p is a pointer to a constant. You can change p to point other variable. But you cannot change the value pointed by p.<br>Therefore above program works well because we have a constant pointer and we are not changing p to point to any other location. We are only incrementing value pointed by p, so 21 will be printed
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Runtime Error</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Compiler Error</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relation table:	<br><img src="./Test Results8_files/4.png" alt="image:MST19/4.png" width="448" height="197" class="tcecode"><br>Which one is the precedence function table for the above Relation table?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> <img src="./Test Results8_files/5.png" alt="image:MST19/5.png" width="465" height="92" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> <img src="./Test Results8_files/6.png" alt="image:MST19/6.png" width="463" height="74" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> <img src="./Test Results8_files/7.png" alt="image:MST19/7.png" width="465" height="82" class="tcecode"><br><span class="explanation">Explanation:</span><br>There are four terminals id, *, + and $; hence, create 8 symbols fid, gid, f+, g+, f*, g*, f$ and g$. As there are no ≐ relations, each symbol is treated as a separate group. Now construct diagraph as shown in figure with each symbol as a node, that is, 8 nodes as follows.<br>To get the precedence function f(id), start from node fid, traverse all possible paths from fid. The path must start with fid and can end anywhere (need not be f$ or g$).<br>For example, from node fid there are four possible paths as follows:<br>f¬id – g$ where path length is 2<br>fid – g* – f+ – g$ where path length is 3<br>fid – g* – f+ – g+ – f$ where path length is 4<br>fid – g+ – f$ where path length is 3<br><img src="./Test Results8_files/8.png" alt="image:MST19/8.png" width="599" height="434" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>S1: Consider the languages L1, L2, L3 if w ∈ L1(L2∩L3) then w ∈ (L1L2 ∩L1L3) <br>S2:The language L={x1 # x2 # x3 # …# xn |n≥0,xi ∈ {a,b}*,∀i and xi is palindrome,∃i} is context free.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Only S2<br><span class="explanation">Explanation:</span><br>S1 : False<br>Let L1= {a,ab} , L2={ε}, L3 ={b}<br>We get <br>L2 ∩ L3 = ∅   =&gt; L1( L2 ∩ L3) = ∅<br>L1 L2 = {a,ab}{ ε } = {a,ab]<br>L1 L3 = {a, ab} {b}= {ab,abb}<br>L1 L2  ∩  L1 L3 = {a,ab} ∩ {ab,abb} = {ab}<br>Hence we see that if w ∈ L1(L2∩L3) then w ∈ (L1L2 ∩L1L3) is not always true<br>S2: True <br>This is context free. The CFG for L is <br>S → S#A | A#S | P<br>P → aPa | bPb | ϵ<br>A → aA | bA | #A | ϵ<br>The language is not regular, because palindromes cannot be recognized by the finite automata.
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:	<br>S1: The language F={ai bj│i,j≥0;i≠2j} is a CFL.<br>S2: For languages A &amp; B, let the perfect shuffle of A &amp; B be the language {w⁄(w=a<sub class="tcecode">1</sub> b<sub class="tcecode">1</sub>… a<sub class="tcecode">k</sub> b<sub class="tcecode">k</sub>  where a<sub class="tcecode">1</sub>,a<sub class="tcecode">2</sub>… a<sub class="tcecode">k</sub>∈A and b<sub class="tcecode">1</sub>… b<sub class="tcecode">k</sub>∈B,)  each a<sub class="tcecode">i</sub> b<sub class="tcecode">i</sub>∈Σ}.The class of CFLs are closed under perfect shuffle.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/11.png" alt="image:MST19/11.png" width="670" height="502" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following TM	<br><img src="./Test Results8_files/12.png" alt="image:MST19/12.png" width="337" height="264" class="tcecode"><br>Which of the following statements is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Rejects strings containing all 1's</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Accepts the string 11110</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> There exist a string which runs infinitely<br><span class="explanation">Explanation:</span><br>Consider a string 10010<br>q<sub class="tcecode">0</sub> 1 0 0 1 0<br>⟹1 q<sub class="tcecode">0</sub> 0 0 1 0<br>⟹1 1 q<sub class="tcecode">2</sub> 0 1 0<br>⟹1 q<sub class="tcecode">2</sub> 1 0 1 0<br>⟹1 1 q<sub class="tcecode">2</sub> 0 1 0<br>⟹1 q<sub class="tcecode">2</sub> 1 0 1 0<br>⟹1 1 q<sub class="tcecode">2</sub> 0 1 0<br>⟹1 q<sub class="tcecode">2</sub> 1 0 1 0<br>.<br>.<br>.<br>∴ It is a string where Turing machine may run infinitely.
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the total profit in the following 0/1 knapsack problem.Weight of knapsack is 5 units. (Assume unlimited number of items is allowed)<br>Weight:   2     3     1     5<br>Profit:     64   81   30   25<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 158<br><span class="explanation">Explanation:</span><br>Let P(w) is the maximum profit obtained with weight w.<br>P(0) = 0<br><br>P(1) =30 (Item 3)<br><br>P(2)=max⁡(64+P(0),30+P(1) )<br>=max⁡(64,60)<br>=64(Item 1)<br><br>P(3)=max⁡(81+P(0),64+P(1),30+P(2) )<br>=max⁡(81+0,64+30,30+64)<br>=max⁡(81,94,94)<br>=94(Item 1,3)<br><br>P(4)=max⁡(64+P(2),81+P(1),30+P(3) )<br>=max⁡(64+64,81+30,30+94)<br>=max⁡(128,111,124)<br>=128(2 number of Item 1's)<br><br>P(5)=max⁡(64+P(3),81+P(2),30+P(4),25)<br>=max⁡(64+94,81+64,30+128,25)<br>=max⁡(158,145,158,25)<br>=158(2 number of item 1 &amp;1 number of item 3)<br>So,total profit is 158.
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 145</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 141</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 150</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let f (n) = Ω (n), g(n)= O(n) and n(n)= Ѳ(n). Then [f (n). g (n)] + h (n) is: [f(n) and g(n) are non-decreasing functions]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> Ω (n)<br><span class="explanation">Explanation:</span><br><strong class="tcecode">f (n).g (n)</strong> - Here as f(n) is Ω(n) it should be ≥n and  as g(n) is O(n) it should be  ≤n . So, for their product we can just say it is ≥ n or Ω (n) provided g is a non-decreasing function. As h=Θ (n) <br>⟹h=O (n) ∧ h=Ω (n). <br>So, [f (n).g (n)] +h (n) =Ω (n). Because whatever be the complexity of f(n).g(n), h(n) grows at least at the rate of n and hence the whole expression too, due to '+', so it is Ω(n).
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> O (n)</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> Ѳ (n)</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+List of keys (K) = 6, 17, 23, 34, 48, 99 are inserted into the hash table by using hash function H=Kmod10. For resolving collisions linear probing is used. Number of collisions occurred when we insert new elements ‘103’,’33’ is respectively<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 1,7</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 3, 6</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 2, 7<br><span class="explanation">Explanation:</span><br>Initially table is<br><img src="./Test Results8_files/34.png" alt="image:MST19/34.png" width="171" height="222" class="tcecode"><br>When we try to insert 103, it should be put at slot 3(since 103 mod 10 = 3). Since already 23 is present at slot 3 we will move to next slot and in next slot also 34 is present. So, we will put 103 at slot 5. Therefore number of collisions after inserting 103 is 2. <br>Final hash table is<br><img src="./Test Results8_files/35.png" alt="image:MST19/35.png" width="167" height="220" class="tcecode"><br>Now when we try to insert 33, collision will happen between 33 and 23, 34, 103, 6, 7, 48, 19. So, finally it will be placed at slot 0.<br><img src="./Test Results8_files/36.png" alt="image:MST19/36.png" width="199" height="229" class="tcecode"><br>Here number of collisions after inserting 33 is 7. Therefore answer is option [C].
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following keys are inserted in an empty binary search tree and the root node of the tree is present at height 1. <br>Keys : 11, 10, 1,9,7,4,3,2,6,8,5,12;<br>The height of constructed BST is _____________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results8_files/26.png" alt="image:MST19/26.png" width="355" height="346" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimum weight spanning tree for the following graph using Kruskal’s algorithm? <br><img src="./Test Results8_files/37.png" alt="image:MST19/37.png" width="387" height="187" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> <img src="./Test Results8_files/38.png" alt="image:MST19/38.png" width="387" height="176" class="tcecode"><br><span class="explanation">Explanation:</span><br>If we apply Kruskal algorithm for the given graph, then the MST will be<br><img src="./Test Results8_files/41.png" alt="image:MST19/41.png" width="413" height="187" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> <img src="./Test Results8_files/39.png" alt="image:MST19/39.png" width="398" height="194" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> <img src="./Test Results8_files/40.png" alt="image:MST19/40.png" width="420" height="171" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question </strong><br>Consider the following grammar								<br>&lt;whole_expression&gt;→&lt;expression&gt;| &lt;rest_expression&gt;<br>&lt;rest_expression&gt;→ *&lt;expression&gt;;&lt;rest_expression&gt;|ε<br>&lt;expression&gt;→&lt;factor&gt;+&lt;expression&gt;|&lt;factor&gt;<br>&lt;factor&gt;→&lt;whole_expression&gt;|identifier<br>Choose the correct statement<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not LL(1) as it is right recursive</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not LL(1) as it is ambiguous</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not LL(1) as it is LR(0)</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> The grammar is not LL(1) as it contains indirect left recusion<br><span class="explanation">Explanation:</span><br>We can re-write the grammar as:<br>W→E| R <br>R→ *E;R|ε<br>E→F+E|F<br>F→W|id<br>The production F→W contains indirect left recursion also the FIRST sets also have an intersection so it is not LL(1)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Common Data Questions <br> Consider the following grammar							<br>&lt;whole_expression&gt;→&lt;expression&gt;| &lt;rest_expression&gt;<br>&lt;rest_expression&gt;→ *&lt;expression&gt;;&lt;rest_expression&gt;|ε<br>&lt;expression&gt;→&lt;factor&gt;+&lt;expression&gt;|&lt;factor&gt;<br>&lt;factor&gt;→&lt;whole_expression&gt;|identifier<br>Choose the false statement<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not LR(0)</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not SLR(1)</li>
+<li>&nbsp;<img src="./Test Results8_files/wrong.png" width="16"> The grammar is not LALR(1)</li>
+<li>&nbsp;<img src="./Test Results8_files/correct.png" width="18"> The grammar is CLR (1)<br><span class="explanation">Explanation:</span><br>We can re-write the grammar as:<br>W→E| R <br>R→ *E;R|ε<br>E→F+E|F<br>F→W|id<br>The collection of LR(0) items as well as LR(1) item contains SR conflict so it is neither LR(0) nor SLR(1) nor CLR(1) nor LALR(1)<br><img src="./Test Results8_files/3.png" alt="image:MST19/3.png" width="689" height="318" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results8_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92286&test_id=145 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results109_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results109_files/calclayout.css">
+<script src="./Test Results109_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results109_files/jquery-ui.js.download"></script>
+<script src="./Test Results109_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results109_files/custom.js.download"></script>
+<script src="./Test Results109_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results109_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results109_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921218, 'I\'m sorry, the time available to complete the test is over!', false, 1486921218161);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92286&amp;test_id=145#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Topic Test - 5</strong><br>
+Virtual memory - Demand paging, Page Replacement Algorithms, Thrashing, File Systems&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:37:29&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+What is the minimum number of page faults for an optimal page replacement strategy for the reference string 1, 2, 3, 4, 5, 3, 4, 1, 6, 7, 8, 7, 4, 5, 3, 2, 1, 5, 4, 2 with 3 page frames? Consider the page frames are empty initially.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 14<br><span class="explanation">Explanation:</span><br>Given reference string<br>1, 2, 3, 4, 5, 3, 4, 1, 6, 7, 8, 7, 4, 5, 3, 2, 1, 5, 4, 2<br><img src="./Test Results109_files/E1a.PNG" alt="image:OS5/E1a.PNG" width="261" height="144" class="tcecode"><br>Number of Hits: 6<br>Number of page faults: 14
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>i) The contents of the TLB are stored in PCB<br>ii)Thrashing can be reduced by decreasing the degree of multiprogramming<br>iii)TLB helps in faster memory references.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Both i,ii</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> Both ii,iii<br><span class="explanation">Explanation:</span><br>i) PCB will not maintain TLB contents. So, this is false<br>ii) If the number of processes increasing after certain extent page fault rate will increase and leads to Thrashing. By decreasing degree of programming thrashing may come down. So, this is true<br>iii) TLB is a cache that memory management hardware uses to improve virtual address translation speed. So, this is true.
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Only ii</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> only iii</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following page reference string<br>1, 2, 3, 4, 1, 2, 6, 5, 2, 1, 3, 7, 6, 2, 3, 2, 3.<br>How many page faults would occur for LRU replacement algorithm with 3 page frames?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 14<br><span class="explanation">Explanation:</span><br>Given reference string<br><img src="./Test Results109_files/E3a.PNG" alt="image:OS5/E3a.PNG" width="284" height="21" class="tcecode"><br>Number of page frames: 3<br>Algorithm: LRU<br><img src="./Test Results109_files/E3b.PNG" alt="image:OS5/E3b.PNG" width="157" height="134" class="tcecode"><br>Number of hits: 3<br>Number of page faults: 14
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following programming techniques and structures are good for demand-paged environment<br>a)Stack<br>b)Hashed symbol table<br>c)Sequential search<br>d)Pure code<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Only a</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Both a, b</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> Both a, c<br><span class="explanation">Explanation:</span><br>Stack -Good(Use of stack is good because it keeps all of the local variables for a function together, and also as close as possible to the local variables of the function that called it)<br>Hashed symbol table-Not good<br>Sequential search-Good<br>Binary search-Not good
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Both a, d</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following page reference strings exhibits Belady’s Anomaly?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 1, 2, 3, 5, 3, 2, 5, 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results109_files/E5a.PNG" alt="image:OS5/E5a.PNG" width="331" height="493" class="tcecode"><br><img src="./Test Results109_files/E5b.PNG" alt="image:OS5/E5b.PNG" width="286" height="499" class="tcecode"><br><img src="./Test Results109_files/E5c.PNG" alt="image:OS5/E5c.PNG" width="441" height="531" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 7, 5, 4, 6, 8, 5, 4, 8</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 7, 6, 4, 7, 8, 5, 3, 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the virtual page reference string<br>1, 3, 4, 5, 2, 3, 1, 4, 5, 2, 4, 1<br>On a demand paged virtual memory system running on a computer system that has main memory size of 4 page frames which are initially empty. Let LRU, FIFO and optimal denote the number of page faults under the corresponding page replacement policy. Then<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Optimal = LRU</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Optimal &lt; FIFO &lt; LRU</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> Optimal = FIFO &lt;LRU<br><span class="explanation">Explanation:</span><br>1, 3, 4, 5, 2, 3, 1, 4, 5, 2, 4, 1 ← Reference string<br>Number of page frames = 4<br><span style="text-decoration:underline;">LRU</span>: 1, 3, 4, 5, 2, 3, 1, 4, 5, 2, 4, 1<br><img src="./Test Results109_files/E15a.PNG" alt="image:OS5/E15a.PNG" width="253" height="399" class="tcecode"><br>Number of page faults = 6<br>Optimal: 1, 3, 4, 5, 2, 3, 1, 4, 5, 2, 4, 1<br><img src="./Test Results109_files/E15b.PNG" alt="image:OS5/E15b.PNG" width="228" height="255" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> Optimal &lt; LRU &lt; FIFO</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the disk capacity of 50 MB has block size 256 bytes and block/cluster is 8, the number of entries require in the FAT (File Allocation Table) is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 50*2<sup class="tcecode">12</sup><br><span class="explanation">Explanation:</span><br>Given disk capacity: 50 MB<br>               Block size: 256 bytes<br>Number of clusters per block: 8<br>Number of entries = (diskcapacity) / (blocksize)<br>		       = 50MB / 256B = (50*2<sup class="tcecode">20</sup>)/2<sup class="tcecode">8</sup><br>		       = 50*2<sup class="tcecode">12</sup>
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 50*2<sup class="tcecode">10</sup></li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 50*2<sup class="tcecode">24</sup></li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 50*2<sup class="tcecode">2</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+Using optimal replacement algorithm, some of the values are pre filled according to optimal.<br><img src="./Test Results109_files/Q12a.PNG" alt="image:OS5/Q12a.PNG" width="627" height="166" class="tcecode"><br>Find the values of *,#,$ respectively<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 3,5,4</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 3,1,5</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 3,5,3<br><span class="explanation">Explanation:</span><br>In options page replacement policy e replace the page has longest future reference<br><img src="./Test Results109_files/E12a.PNG" alt="image:OS5/E12a.PNG" width="611" height="220" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 3,3,5</li>
+</ol>
+<br><br>
+</li>
+<li>
+We have an operating system, which is capable of loading and executing a single sequential user process at a time. If the disk head scheduling algorithm which is initially First come first served (FCFS) is replaced by shortest seek time first (SSTF) claimed by the vendor to give 60% better benchmark results then what is expected improvement in the IN/OUT performance of user programs?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 40%</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 60%</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 0%<br><span class="explanation">Explanation:</span><br>Operating system is capable of loading single process at a time and executing it. So disk scheduler receives requests in order. Due to this even if we apply any scheduling algorithm there will be no improvement.
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 30%</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer has 4 page frames. The time of loading, time of last access and the R and M bits for each page are as shown below (the times are in clock ticks):<br><img src="./Test Results109_files/Q10a.PNG" alt="image:OS5/Q10a.PNG" width="281" height="158" class="tcecode"><br>Which page will LRU replace?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results109_files/E10a.PNG" alt="image:OS5/E10a.PNG" width="426" height="238" class="tcecode"><br><strong class="tcecode"><span style="text-decoration:underline;">Algorithm:</span></strong>	LRU<br>→ In LRU replacement algorithm we replace the page which is not referred from long back.<br>→ From the given information above<br>	Page 0 → Last Ref (280)<br>	Page 1 → Last Ref (270)<br>	Page 2 → Last Ref (282)<br>	Page 3 → Last Ref (281)<br>∴ Page 1 is not referred from long back.<br>∴ Answer: “Page 1”
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+The reference string for a certain process is <br>    1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3. <br>Assume memory has 4 frames. What is the difference of page faults if the LRU and MRU used?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>Reference string<br>1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3<br><span style="text-decoration:underline;"><strong class="tcecode">LRU:</strong></span><br>1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3<br><img src="./Test Results109_files/E9a.PNG" alt="image:OS5/E9a.PNG" width="201" height="163" class="tcecode"><br>Number of page faults = 10<br><span style="text-decoration:underline;"><strong class="tcecode">MRU:</strong></span><br>1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3<br><img src="./Test Results109_files/E9b.PNG" alt="image:OS5/E9b.PNG" width="293" height="162" class="tcecode"><br>Number of page faults = 10
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a sequential access file which is having B Byte fixed-size records. Assuming the first record is record 1,Find the logical location of the first byte of record R in terms of R and B is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (R-1)B+1</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (R-1)B-1</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> (R-1)B<br><span class="explanation">Explanation:</span><br>Let us take an example with 2 records 5 bytes each.<br><img src="./Test Results109_files/E8a.PNG" alt="image:OS5/E8a.PNG" width="514" height="111" class="tcecode"><br>The logical address of first byte of record 2 is 5 in this example <br>So we can get by (R-1)B =(2-1)*5=5
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (R+1)B-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+A system with 3 physical memory frames (initially empty) and the reference string is 1, 3, 4, 2, 2, 1, 6, 2, 3, 1, 2, 3, 6, 7. What will be the final content of memory if MRU page replacement is used?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> (7,1,3)<br><span class="explanation">Explanation:</span><br>Reference string:<img src="./Test Results109_files/E7a.PNG" alt="image:OS5/E7a.PNG" width="225" height="23" class="tcecode"><br>Physical memory frames: 3<br>Algorithm: MRU<br><img src="./Test Results109_files/E7b.PNG" alt="image:OS5/E7b.PNG" width="190" height="149" class="tcecode"><br>Number of page faults: 8<br>Final contents of memory: (7, 1, 3)
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (6,3,2)</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (7,3,6)</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> (7,2,3)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that the rotating disk head  moving  with 200 tracks numbered from 0 to 199 is currently serving a request at track 65. Disk queue requests are as follows: 93, 173, 132, 20, 35, 150, 100, 175 and 55. What is the total number of head movements needed to satisfy these requests for the SSTF (Shortest Seek Time First) algorithm.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 210</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 196</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> 200<br><span class="explanation">Explanation:</span><br>Given disk queue requests 93, 173, 132, 20, 35, 150, 100, 175, 55<br><br><img src="./Test Results109_files/E6a.PNG" alt="image:OS5/E6a.PNG" width="479" height="307" class="tcecode"><br>Total head movements =|65-55|+|55-35|+|35-20|+|20-93|+|93-100| +|100-132|+|132-150|+|150-173|+|173-175|<br>= 10 + 20 + 15 + 73 + 7 + 32 + 18 + 23 + 2<br>= 200 cylinders
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> 205</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a page reference string for a process with m frames. The length of the page reference string is p with n distinct page numbers occurring in it. For any page replacement <br>algorithms, What is lower and upper bound on the number of page faults?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> m, n</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> p, m</li>
+<li>&nbsp;<img src="./Test Results109_files/correct.png" width="18"> n,p<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;"><strong class="tcecode">Upper bound</strong></span><br>Worst case If m=1 and then each page creates page fault,So total length is p hence upper bound on the number of page faults is p.<br><span style="text-decoration:underline;"><strong class="tcecode">Lower Bound</strong></span><br>all pages in reference string must be in page ,So minium is n because we have n distinct pages.
+</li>
+<li>&nbsp;<img src="./Test Results109_files/wrong.png" width="16"> None of above</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results109_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

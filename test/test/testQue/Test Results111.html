@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92291&test_id=140 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results111_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results111_files/calclayout.css">
+<script src="./Test Results111_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results111_files/jquery-ui.js.download"></script>
+<script src="./Test Results111_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results111_files/custom.js.download"></script>
+<script src="./Test Results111_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results111_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results111_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921221, 'I\'m sorry, the time available to complete the test is over!', false, 1486921221980);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92291&amp;test_id=140#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Topic Test - 3</strong><br>
+Deadlocks, Starvation, Priority Inversion&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:37:42&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider a system having 8 resources, with n processes competing for them. Each process need 3 resources. What is the maximum value of n for the system to be deadlock free?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Total number of resources R = 8<br>Each process needs 3 resources, P<sub class="tcecode">j</sub> = 3<br>If we take 4 processes<br><img src="./Test Results111_files/E1a.PNG" alt="image:OS3/E1a.PNG" width="168" height="48" class="tcecode"><br> It will cause deadlock<br>∴ max number of processes is 3 so that we can guarantee deadlock free.
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not true about deadlock recovery<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Abort all deadlock processes.</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Abort one process at a time until the deadlock cycle is eliminated.</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> Banker’s algorithm.<br><span class="explanation">Explanation:</span><br>Banker’s algorithm is deadlock avoidance mechanism. This is not useful to recovery.
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Rollback – return to some safe state, restart process for that state.</li>
+</ol>
+<br><br>
+</li>
+<li>
+An operating system having M resources of the same type. These resources are shared by 4 processes p, q, r and s which have peak demands of 4, 5, 7 and 9 respectively. For what is the min value of M deadlock will not occur?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> 22<br><span class="explanation">Explanation:</span><br>If we want to know total number of resources, we need to find out the max number of resources which will cause a deadlock. By adding 1 to them we can avoid deadlock.<br><img src="./Test Results111_files/E3a.PNG" alt="image:OS3/E3a.PNG" width="497" height="184" class="tcecode"><br>∴ (3 + 4 + 6 + 8) + 1 → avoids deadlock<br>	M = 22.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Three processes share 4 resource units that can be reserved and released only one at a time. Each process needs 2 resource units. Which of the following statements is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Deadlock occur</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> Deadlock never occur<br><span class="explanation">Explanation:</span><br><img src="./Test Results111_files/E4a.PNG" alt="image:OS3/E4a.PNG" width="222" height="52" class="tcecode"><br>We have 3 processes each required 2 units. Each process reserves 1 unit of resource and since there is one more resource, deadlock never occurs. If there are only 3 resources, then deadlock occurs. We have 4 resources. So deadlock never arise.
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Deadlock will arise  if P1,P2 took all resources.</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Deadlock occur in only one case</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following<br><img src="./Test Results111_files/Q5a.PNG" alt="image:OS3/Q5a.PNG" width="303" height="145" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 1-b 2-c 3-a 4-d</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 1-c 2-d 3-a 4-b</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> 1-c 2-b 3-a 4-d<br><span class="explanation">Explanation:</span><br>1. Detection  → Wait for graph<br>2. Avoidance → Banker’s algorithm<br>3. Ignorance  → Ostrich Method<br>4. Starvation → Deadlock prevention
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 1-c 2-b 3-d 4-a</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two processes, P and Q, each need three records, R1, R2. and R3, in a database. If P asks for them in any order R1, R2, R3, and Q asks for them in any order, What fraction of all the combinations are guaranteed to be deadlock free?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> ⅓</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> ⅔</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> ⅙<br><span class="explanation">Explanation:</span><br>The following possible cases are as follows:<br>Case 1:If P asks in the order 123<br>Q may ask the following order <br>123: deadlock free<br>132: Possible deadlock <br>213: possible deadlock<br>231: possible deadlock<br>312: possible deadlock<br>321: possible deadlock<br>we have other 5 cases which P can request<br>Case 1 :132 ,Case 2:213,Case 3:231,Case 4:312,Case 5:321<br>Likely we will get total combinations of 36,out of which 6 cases are deadlock free.<br>Therefore answer is 6/36=1/6
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 1/9</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the runtime complexity to detect deadlock in  banker's algorithm with n processes and m resources?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> O(mn<sup class="tcecode">2</sup>)<br><span class="explanation">Explanation:</span><br>Let work be an integer array of length m, initialized to available. <br>Let finish be a boolean array of length n. <br>For all i, if allocation[i] != 0, then finish[i] = false; <br>Otherwise finish[i] = true.<br>Find an i such that both<br>finish[i] == false // Pi is currently not involved in a deadlock<br>request[i] &lt;= work<br>If no such i exists, go to step 4<br>// reclaim the resources of process P<sub class="tcecode">i</sub> <br>work = work + allocation[i]; <br>finish[i] = true; <br>Go to step 2<br>If finish[i] == false for some i, <br>Then the system is in a deadlocked state. <br>Moreover, if finish[i] == false, then process P<sub class="tcecode">i</sub> is deadlocked.<br>Run-time complexity: O(mn<sup class="tcecode">²</sup>).
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> O(m<sup class="tcecode">2</sup>n)</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> O(m<sup class="tcecode">2</sup>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there are  ‘K’ processes, all the processes share total of  ‘L’ identical resource units, which can be reserved and released one at a time. Each process requires a maximum of ‘M’ resource units, where M &gt; 0. Which one of the following is a necessary condition for ensuring that deadlock does not occur?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> M(K-1)+1&lt;L</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> K(M-1)+1&gt;L</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> KM-1&lt;L</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> K(M-1)+1&lt;=L<br><span class="explanation">Explanation:</span><br>From the given information we have K processes and each process required M resources.<br>      ∴ The maximum number of resources allocated that will cause deadlock is<br>                                         K(M – 1)<br>     ∴ By adding 1 more resource deadlock will be avoided.<br>    ∴ Minimum number of resources required for deadlock free is K(M – 1) + 1<br>From the given data total number of resources available is 1. Hence the necessary condition is<br>	K(M – 1) + 1 &lt;= L.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following system.<br><img src="./Test Results111_files/Q12a.PNG" alt="image:OS3/Q12a.PNG" width="585" height="250" class="tcecode"><br>Find the safe sequence?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> &lt; P<sub class="tcecode">1 </sub>  P<sub class="tcecode">2 </sub>  P<sub class="tcecode">3</sub>   P<sub class="tcecode">0</sub>   P<sub class="tcecode">4</sub> &gt;</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> &lt; P<sub class="tcecode">1</sub>   P<sub class="tcecode">3</sub>   P<sub class="tcecode">2</sub>   P<sub class="tcecode">0</sub>  P<sub class="tcecode">4</sub> &gt;<br><span class="explanation">Explanation:</span><br><img src="./Test Results111_files/E12a.PNG" alt="image:OS3/E12a.PNG" width="599" height="247" class="tcecode"><br><img src="./Test Results111_files/E12b.PNG" alt="image:OS3/E12b.PNG" width="600" height="213" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> &lt; P<sub class="tcecode">2 </sub>  P<sub class="tcecode">3 </sub>  P<sub class="tcecode">4</sub>   P<sub class="tcecode">0</sub>   P<sub class="tcecode">1</sub> &gt;</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> &lt; P<sub class="tcecode">1 </sub>  P<sub class="tcecode">2 </sub>  P<sub class="tcecode">3</sub>   P<sub class="tcecode">4</sub>   P<sub class="tcecode">0</sub> &gt;</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following resource allocation graph:<br><img src="./Test Results111_files/Q11a.PNG" alt="image:OS3/Q11a.PNG" width="269" height="234" class="tcecode"><br>Find the cycle which is equivalent to waits-for graph?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> P1-&gt;P2-&gt;P5-&gt;P2<br><span class="explanation">Explanation:</span><br>From the resource allocation graph<br><img src="./Test Results111_files/E11a1.PNG" alt="image:OS3/E11a1.PNG" width="133" height="132" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P1-&gt;P2-&gt;P3-&gt;P2</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P1-&gt;p2-&gt;P3-&gt;P5-&gt;P1</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P1-&gt;P2-&gt;P5-&gt;P1</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are N processes share M resource units that can be reserved and released only one at a time. The max need of each process cannot exceed M, and the sum of all maximum needs is less than M + N. In this case which of the following statement is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Deadlock occur</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> Deadlock never occur<br><span class="explanation">Explanation:</span><br>Given maximum need is always less than M + N. to get deadlock resources available must be 1 less than the max need of each of N processes.<br>∴ Total resources available = M<br>           For deadlock possible if (M + N – N) =M <br>		∴ Deadlock never arise.
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> System Is Unsafe</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Cannot be decided</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with five processes A,B,C,D and E are requesting resources R1,R2,R3,R4 and R5 in a order.The request of order is as follows.<br>1. P1 requests R2 <br>2. P4 requests R3,<br>3. P3 requests R1 <br>4. P2 requests R4 <br>5. P5 requests R5 <br>6. P4 requests R2 <br>7. P5 requests R3 <br>8. P3 requests R5<br>Assume Process P_i gets R_i if R_i is currently available.Which of the following statement is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Deadlock possible</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> No deadlock<br><span class="explanation">Explanation:</span><br>According to the given requests<br>So the current state is:<br>p1 has r2.<br>p2 has r4.<br>p3 has r1, and waiting r5(p5). <br>p4 has r3, and waiting r2(p1).<br>p5 has r5, and waiting r3(p4).<br>Dependency between the processes is as follows<br>p4 -&gt; p1, p5 -&gt; p4, p3 -&gt; p5<br>or:<br>p3 -&gt; p5 -&gt; p4 -&gt; p1<br>Because there is no cycle in there, deadlock has not happened
+</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Process P1,P3,P5,P4 form cycle</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> Both A,C</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following waits-for graph. <br><img src="./Test Results111_files/os_img_2.png" alt="image:OS3/os_img_2.png" width="819" height="460" class="tcecode"><br>Find which of the process(es) is/are possible to be in deadlock?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P<sub class="tcecode">1</sub></li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P<sub class="tcecode">1</sub>, P<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> P<sub class="tcecode">1</sub>,P<sub class="tcecode">2</sub>,P<sub class="tcecode">3</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results111_files/os_img_2.png" alt="image:OS3/os_img_2.png" width="819" height="460" class="tcecode"><br>Consider the following <br><img src="./Test Results111_files/E8a.PNG" alt="image:OS3/E8a.PNG" width="172" height="135" class="tcecode"><br>So, all processes are possible to fall in deadlock
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 3 concurrent processes and resource requirements<br><img src="./Test Results111_files/Q7a.PNG" alt="image:OS3/Q7a.PNG" width="176" height="139" class="tcecode"><br>Which of the following order cause deadlock?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P<sub class="tcecode">0</sub>-&gt;P<sub class="tcecode">1</sub>-&gt;P<sub class="tcecode">2</sub>-&gt;P<sub class="tcecode">0</sub></li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> P<sub class="tcecode">0</sub>-&gt;P<sub class="tcecode">2</sub>-&gt;P<sub class="tcecode">1</sub>-&gt;P<sub class="tcecode">0</sub></li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> None</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> Both A and B<br><span class="explanation">Explanation:</span><br><img src="./Test Results111_files/E7a.PNG" alt="image:OS3/E7a.PNG" width="284" height="470" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following snapshot.<br><img src="./Test Results111_files/Q14a.PNG" alt="image:OS3/Q14a.PNG" width="577" height="242" class="tcecode"><br>If the request from process P1(0, 4, 2, 0) granted find the total number of  safety sequences?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results111_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results111_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results111_files/E14a.PNG" alt="image:OS3/E14a.PNG" width="488" height="251" class="tcecode"><br>P<sub class="tcecode">1</sub>(0     4     2     0) request is granted then P<sub class="tcecode">1</sub> state is follow<br><img src="./Test Results111_files/E14b.PNG" alt="image:OS3/E14b.PNG" width="604" height="350" class="tcecode"><br>With availability &lt;1, 1, 0, 0&gt; only P<sub class="tcecode">0</sub> satisfies. So P<sub class="tcecode">0</sub> finishes its execution and new availability [1    1     1     2] <br>Next P<sub class="tcecode">2</sub> requirement satisfied. So new availability [2      4      6      4]<br>[Next P<sub class="tcecode">3</sub> requirement satisfied so new availability=[2     10     9     6]<br>	∴ P<sub class="tcecode">4</sub> is the last process in safety sequence. i.e. safety sequence is &lt; P<sub class="tcecode">0</sub>, P<sub class="tcecode">2</sub>, P<sub class="tcecode">3</sub> ]<br>           Now P<sub class="tcecode">1</sub>, P<sub class="tcecode">3</sub> requirements satisfied.<br>                       ∴ Possible sequences are<br>                            &lt; P<sub class="tcecode">0</sub>, P<sub class="tcecode">2</sub>, P<sub class="tcecode">1</sub>, P<sub class="tcecode">3</sub>, P<sub class="tcecode">4</sub> &gt;<br>&lt; P<sub class="tcecode">0</sub>, P<sub class="tcecode">2</sub>, P<sub class="tcecode">1</sub>, P<sub class="tcecode">4</sub>, P<sub class="tcecode">3</sub> &gt;<br>                            &lt; P<sub class="tcecode">0</sub>, P<sub class="tcecode">2</sub>, P<sub class="tcecode">3</sub>, P<sub class="tcecode">1</sub>, P<sub class="tcecode">4</sub> &gt;<br>                            &lt; P<sub class="tcecode">0</sub>, P<sub class="tcecode">2</sub>, P<sub class="tcecode">3</sub>, P<sub class="tcecode">4</sub>, P<sub class="tcecode">1</sub> &gt;
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results111_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

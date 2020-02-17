@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24457&test_id=131 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results113_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results113_files/calclayout.css">
+<script src="./Test Results113_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results113_files/jquery-ui.js.download"></script>
+<script src="./Test Results113_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results113_files/custom.js.download"></script>
+<script src="./Test Results113_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results113_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results113_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921226, 'I\'m sorry, the time available to complete the test is over!', false, 1486921226245);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24457&amp;test_id=131#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Topic Test - 1</strong><br>
+Processes - States, PCB, Schedulers, Threads and System calls, CPU Scheduling - FCFS, SJFS, Priority Scheduling, Round Robin, Multi Level Queue Scheduling, Multilevel Feedback Queue Scheduling&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-15 17:45:37&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-15 18:26:08&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:40:31&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+10.360 / 25.000 (41%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+8 / 15 (53%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+An operating system uses shortest job first scheduling algorithm. Consider the following set of processes with their arrival times and CPU burst times (in ms).<br><img src="./Test Results113_files/Q2.PNG" alt="image:OS Topic Test - 1/Q2.PNG" width="346" height="169" class="tcecode"><br> Find the average waiting time?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 9.25<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q2_exp.PNG" alt="image:OS Topic Test - 1/Q2_exp.PNG" width="426" height="390" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 9</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 8.25</li>
+</ol>
+<br><br>
+</li>
+<li>
+In multiprocessor environment concurrent execution possible with………...?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> Kernel level thread</li>
+<li><img src="./Test Results113_files/wrong.png" width="16">&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> Processes</li>
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> Processes and kernel level thread<br><span class="explanation">Explanation:</span><br>Assigning anything to different processors is done by kernel. So purely user level threads are not run in parallel on different processors in multiprocessors. But kernel level threads run simultaneously. Processes can run simultaneously on multi processor system.
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> User level thread</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that the following jobs are to be executed on a single processor system.<br><img src="./Test Results113_files/Q4.PNG" alt="image:OS Topic Test - 1/Q4.PNG" width="205" height="204" class="tcecode"><br>The jobs are assumed to have arrived at a time 0 and in the order a, b, c, d and e. using the Round Robin Scheduling with Time quantum ( 2 units).Find the average response time?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 3</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Gantt chart<br><img src="./Test Results113_files/New_edit_1.PNG" alt="image:OS Topic Test - 1/New_edit_1.PNG" width="402" height="339" class="tcecode"><br>∴ Response time means how much time it takes to get first chance to execute after arrival.<br><img src="./Test Results113_files/Q4_exp2.PNG" alt="image:OS Topic Test - 1/Q4_exp2.PNG" width="279" height="106" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a cricket match different players arrives in different times,Arrival times are as follows,1,4,6,8,and 11.Due to rain initially match delayed 1 unit of time. Runs scored by players are 7,3,5,7 and 4 respectively.Find the completion time of first session with 5 players using first come first serve algorithm is?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 23</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 27<br><span class="explanation">Explanation:</span><br>Gantt chart<br><br><img src="./Test Results113_files/Q1_exp.PNG" alt="image:OS Topic Test - 1/Q1_exp.PNG" width="401" height="355" class="tcecode"><br>∴ Total completion time = 27
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 25</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 26</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are contents of PCB?<br>i)Process Number<br>ii)Registers<br>iii)Process State<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> all i,ii,iii<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q5explanation.PNG" alt="image:OS Topic Test - 1/Q5explanation.PNG" width="191" height="307" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> both ii,iii</li>
+<li><img src="./Test Results113_files/wrong.png" width="16">&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> only i</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> Both i,ii</li>
+</ol>
+<br><br>
+</li>
+<li>
+With the use of  SRTF the execution of three processes is as follows,the process P is  scheduled first and when P has been running for the 8 units of time ,the process Q is arrived and process Q ran for 2 units of time ,later Process R is arrived and completed running in 3 units of time ,Find  the minimum possible  burst time of the Process P and Q.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 17,21</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 12,6</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 9,3</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 15,6<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q15_exp_1.PNG" alt="image:OS Topic Test - 1/Q15_exp_1.PNG" width="267" height="146" class="tcecode"><br>Given question is finding minimal burst times possible for P and Q.<br>SRTF: as of now P completes 8 units,<br>		         Q completes 2 units<br>Case 1. If    <br>		P = 9   → SRTF will finish P but<br>			     Q came so 9 not possible<br>		P = 10 → SRTF will finish P instead of Q execution because P came <br> early stage.<br>			P = 11 → SRTF will start P after Q instead of R.<br>			P = 12 → remaining time is 4(i.e. 12 – 8)<br>But Minimum time of Q is 6 so if Q get chance after 8 units of P so P should be &gt;6(after 8 units execution)<br>Therefore min value of P is 15.<br>		∴ Minimum value of P = 15<br>		Coming to Q it executes 2 units<br>			Q = 3 → SRTF allow Q instead of R<br>			    = 4 → SRTF allow Q instead of R<br>			    = 5 → SRTF allow Q instead of R<br>			    = 6 → Remaining time is 4<br>			R will executes and completes.<br>		At this stage P completes 8 remaining 4<br>			        Q completes 2 remaining 4<br> R completed 3 units<br><img src="./Test Results113_files/Q15_exp_2.PNG" alt="image:OS Topic Test - 1/Q15_exp_2.PNG" width="334" height="85" class="tcecode"><br>		<br>∴ Minimum burst times for P,  possible are 15, 6<br>//Small mistake in Gantt chart values.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the 5 processes, which require 4, 6, 7,5 and 1 time units and arrive at times 0, 1, 2,3, and 5 respectively. How many context switches are needed if the operating system implements shortest remaining time first  algorithm?(Don’t consider the last context switch)<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 8</li>
+<li><img src="./Test Results113_files/wrong.png" width="16">&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/New_edit_2.PNG" alt="image:OS Topic Test - 1/New_edit_2.PNG" width="300" height="359" class="tcecode"><br>Total number of context switches = 6
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table<br><img src="./Test Results113_files/Q14.PNG" alt="image:OS Topic Test - 1/Q14.PNG" width="448" height="142" class="tcecode"><br>Using the shortest remaining time first, find the completion time of process p2, if the context switching overhead is 1 unit.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 33</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 34</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 32</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 50<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q14_exp_1.PNG" alt="image:OS Topic Test - 1/Q14_exp_1.PNG" width="262" height="177" class="tcecode"><br><img src="./Test Results113_files/os-topic-test-1.png" alt="image:OS Topic Test - 1/os-topic-test-1.png" width="484" height="61" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the three processes P1, P2 and P3 with compute time bursts 3,5 and 9 time units. All processes arrive at time zero. Consider the Longest remaining time first (LRTF) scheduling algorithm. In LRTF ties are broken by giving priority to the process with lowest process id.Find the average of completion times of p1,p2?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 15.5<br><span class="explanation">Explanation:</span><br>Gantt chart<br><img src="./Test Results113_files/Q7_exp.PNG" alt="image:OS Topic Test - 1/Q7_exp.PNG" width="463" height="184" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 16.5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of processes that need to be scheduled on a single CPU. All the times are given in milliseconds.<br><img src="./Test Results113_files/Q6.PNG" alt="image:OS Topic Test - 1/Q6.PNG" width="376" height="166" class="tcecode"><br>Using Shortest Remaining Time First (SRTF),Find the completion time of a process P2?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 28</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 30<br><span class="explanation">Explanation:</span><br>Gantt Chart<br><img src="./Test Results113_files/Q6_exp.PNG" alt="image:OS Topic Test - 1/Q6_exp.PNG" width="288" height="81" class="tcecode"><br>∴ Completion of a process P2 = 30
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 4 processes A,B,C,and D are  sharing the CPU in a round robin fashion. Assume each process switch takes 6 seconds. What is the maximum quantum size T possible such that the overhead resulting from process switching is minimized but at same time each process is guaranteed to gets its turn at CPU at-least every 30 seconds is?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>For every process next turn we will get after (N – 1) process execution [(N – 1)q], N context switches.<br><img src="./Test Results113_files/Q11_exp.PNG" alt="image:OS Topic Test - 1/Q11_exp.PNG" width="296" height="165" class="tcecode"><br>Given N = 4<br>	 S = 6<br>         t = 30<br> 24 + 3q ≤ 30<br>           q ≤ 2
+</li>
+<li><img src="./Test Results113_files/wrong.png" width="16">&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table of arrival time, priority order and burst time. For the four processes P0, P1, P2 and P3<br><img src="./Test Results113_files/Q12.PNG" alt="image:OS Topic Test - 1/Q12.PNG" width="472" height="171" class="tcecode"><br>Using Preemptive priority scheduling Find the Geometric mean of  completion times of a process P1 ,P2?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 30.5</li>
+<li><img src="./Test Results113_files/wrong.png" width="16">&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 20.5</li>
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q12_exp.PNG" alt="image:Q12_exp.PNG" width="344" height="195" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 30</li>
+</ol>
+<br><br>
+</li>
+<li>
+Six jobs are waiting to be run. Their expected running times are 10, 8, 6, 3, 1 and X respectively. Where 6 &lt; X &lt; 8 and average completion time is 15.5. find the value of X using SJF algorithm?(Assume all jobs arrive at same time=0)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6.5</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 7.5</li>
+<li><img src="./Test Results113_files/correct.png" width="18">&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 7.3<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q13_exp_1.PNG" alt="image:OS Topic Test - 1/Q13_exp_1.PNG" width="384" height="122" class="tcecode"><br><img src="./Test Results113_files/Q13_exp_2.PNG" alt="image:OS Topic Test - 1/Q13_exp_2.PNG" width="474" height="228" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the 3 processes P1, P2 and P3 in the table<br><img src="./Test Results113_files/Q8.PNG" alt="image:OS Topic Test - 1/Q8.PNG" width="403" height="169" class="tcecode"><br>Using the highest response ratio next method (HRRN) scheduling algorithm.Find the average turnaround time?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 18</li>
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 11<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q8_exp_1.PNG" alt="image:OS Topic Test - 1/Q8_exp_1.PNG" width="268" height="220" class="tcecode"><br><img src="./Test Results113_files/Q8_exp_2.PNG" alt="image:OS Topic Test - 1/Q8_exp_2.PNG" width="338" height="248" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6.33</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 8.33</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the exponential average formula used to predict the next CPU burst. If α = 0.99 and T<sub class="tcecode">0</sub> = 20 ms,previous runs are as follows 6,4,8. Find the value of T<sub class="tcecode">3</sub>?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6.14</li>
+<li>&nbsp;<img src="./Test Results113_files/correct.png" width="18"> 7.96<br><span class="explanation">Explanation:</span><br><img src="./Test Results113_files/Q9_exp.PNG" alt="image:OS Topic Test - 1/Q9_exp.PNG" width="248" height="264" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 4.02</li>
+<li>&nbsp;<img src="./Test Results113_files/wrong.png" width="16"> 6.96</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results113_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=1162&test_id=27 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results135_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results135_files/calclayout.css">
+<script src="./Test Results135_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results135_files/jquery-ui.js.download"></script>
+<script src="./Test Results135_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results135_files/custom.js.download"></script>
+<script src="./Test Results135_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results135_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results135_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921412, 'I\'m sorry, the time available to complete the test is over!', false, 1486921412542);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=1162&amp;test_id=27#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Topic Test 3</strong><br>
+Regular Expressions and Conversions, Finding whether a given language is Regular, Pumping Lemma &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-08-28 01:33:39&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-08-28 02:16:35&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:42:56&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+13.690 / 25.000 (55%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+10 / 15 (67%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Find the pair of equivalent expressions<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (0*+10*) and (0+1*0)*</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (0+1*0)* and (0+1*)*</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> (0+1)* and (0+1*)*<br><span class="explanation">Explanation:</span><br>(0+1*0)* and (0*+1*)*<br>Consider the string 111, which can be generated by (0*+1* )* but not generated by (0+1*0)*. <br><br>(0*+10*) and  (0+1*0)*<br>The regular expression (0*+10*) cannot generate strings containing more than one 1, whereas the regular expression (0+1*0)* does <br><br>(0+1*0)* and (0+1*)*<br>The regular expression (0+1*0)* cannot generate strings ending with 1, whereas the regular expression (0+1*)* generates all strings over {0,1}*<br><br>(0+1)* and (0+1*)*<br>Both the regular expressions define the same language (0+1)*. So they are equivalent.
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (0+1*0)* and (0*+1*)*</li>
+</ol>
+<br><br>
+</li>
+<li>
+Identify the false statement<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 01+01 = 01 is true</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 01.ϵ = ϵ is false</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> (0*1*)* = (1*0*1*)* is false<br><span class="explanation">Explanation:</span><br>(0*1*0*)* <br>==&gt;(0+1+0)<sup class="tcecode">*</sup> [since (a*b*)<sup class="tcecode">*</sup> = (a+b)<sup class="tcecode">*</sup>]<br>==&gt; (0+1)* [i.e (a+a) = a] <br>==&gt; (0*1*)<sup class="tcecode">*</sup> <br>Therefore it is True but given as false.
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 01.ϕ=ϕ is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements,<br><br>S1: Pumping Lemma is used for finding whether given language is Regular Language or not<br>S2: {a<sup class="tcecode">m</sup>b<sup class="tcecode">n</sup>| 1 &lt;= n &lt;= m &lt;= 2<sup class="tcecode">|GATE|</sup>} is regular language, where |GATE| is the length of the string GATE. <br>Find which of the following is TRUE?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is FALSE and S2 is FALSE</li>
+<li><img src="./Test Results135_files/wrong.png" width="16">&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is TRUE and S2 is TRUE</li>
+<li>&nbsp;<img src="./Test Results135_files/correct.png" width="18"> S1 is FALSE and S2 is TRUE<br><span class="explanation">Explanation:</span><br>S1: Pumping lemma is <strong class="tcecode">used for proving non-regularity</strong><br>S2: m and n are finite numbers. Hence the language is finite language. Therefore it is regular
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is TRUE and S2 is FALSE</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is TRUE?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (ϕ*∙ϕ)*∙ϕ* = ϕ</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> r<sup class="tcecode">+</sup>∙(r*)<sup class="tcecode">+</sup> = r<sup class="tcecode">+</sup><br><span class="explanation">Explanation:</span><br>(Ø*∙Ø)*∙Ø* = Ø<br>We know that, Ø* = {Ԑ} <br>⇒ (Ø*∙Ø)*∙Ø* = ({Ԑ}. Ø)*. Ø*<br>We know that, a.Ø = Ø, where a is any regular expression<br>⇒ ({Ԑ}.Ø)*.Ø* = (Ø)*.Ø*<br>⇒ {Ԑ}.{Ԑ}<br>⇒ {Ԑ}<br>So this is false. <br><br>if r = Ø then r<sup class="tcecode">+</sup> = {ϵ}<br>Given r = Ø<br>⇒   r* = {Ԑ}<br>⇒   r<sup class="tcecode">+</sup> = { } = Ø<br>So this is false. <br><br>If r = ϵ, then r<sup class="tcecode">+</sup> ≠ r<sup class="tcecode">*</sup>  <br>If r = ϵ, then r* = r<sup class="tcecode">+</sup> = {ϵ}<br>So this is false.<br><br>r<sup class="tcecode">+</sup>∙(r<sup class="tcecode">+</sup>)* = r<sup class="tcecode">+</sup><br>r<sup class="tcecode">+</sup>.(r<sup class="tcecode">+</sup>)* ⇒ r<sup class="tcecode">+</sup>.r* ⇒ r<sup class="tcecode">+</sup><br>So this is true.
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> if r = ϕ then r<sup class="tcecode">+</sup> = {ϵ}</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> If r = ϵ,then r<sup class="tcecode">+</sup> ≠ r<sup class="tcecode">*</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the regular expressions r<sub class="tcecode">1</sub> = (0*1), r<sub class="tcecode">2</sub> = (0*1*)*. Which of the following is correct?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L(r<sub class="tcecode">1</sub>) ⊃ L(r<sub class="tcecode">2</sub>)</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> L(r<sub class="tcecode">1</sub>) ⊂ L(r<sub class="tcecode">2</sub>)<br><span class="explanation">Explanation:</span><br>r<sub class="tcecode">1</sub> = (0*1), r<sub class="tcecode">2</sub> = (0*1*)*<br>L(r<sub class="tcecode">1</sub>) = {1, 01, 001, 0001,...}<br>L(r<sub class="tcecode">2</sub>) = {Ԑ, 0, 1, 01, 10, 11, 00, ...}<br>∴ L(r1) ⊂ L(r2)
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L(r<sub class="tcecode">1</sub>) = L(r<sub class="tcecode">2</sub>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the two regular expressions<br>r<sub class="tcecode">1</sub> ∶ (1*011*)*(0+ϵ) + 1*(0+ϵ)<br>r<sub class="tcecode">2</sub> ∶ (1+01)*(0+ϵ)<br>Which of the following is TRUE?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> L(r<sub class="tcecode">1</sub>) = L(r<sub class="tcecode">2</sub>)<br><span class="explanation">Explanation:</span><br>r1: (1*011*)*(0+Ԑ) + 1*(0+Ԑ)<br>r2: (1+01)*(0+Ԑ)<br>r2 generates strings which does not contain two consecutive zero’s. <br>Observing  r2, whenever a 0 appears it must be followed immediately by a 1. Such a string may be preceded and/or followed by an arbitrary number of 1’s.<br>L(r<sub class="tcecode">2</sub>) = {ϵ, 0, 1, 11, 10, 01, 111, 110, 101, 010, 011, …}    <br><br>r1 =  (1*011*)*(0+Ԑ)+1*(0+Ԑ) can be written as ((1*011*)*+1*)(0+Ԑ)<br>L(r<sub class="tcecode">1</sub>) = {ϵ,0,1,11,10,01,111,110,101,010,011,…}    <br>We can see that every string generated by r1 is also generated by r2. And every string generated by r2 is also generated by r1. <br><br>∴L(r1) = L(r2)
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L(r<sub class="tcecode">1</sub>) ⊂ L(r<sub class="tcecode">2</sub>)</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L(r<sub class="tcecode">2</sub>) ⊂ L(r<sub class="tcecode">1</sub>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>i) (01)*0 = 0(10)*<br>ii) (0+1)*01(0+1)*+ 1*0* = (0+1)*<br>iii) Let r<sub class="tcecode">1</sub> &amp; r<sub class="tcecode">2</sub> be two regular expressions then (r<sub class="tcecode">1</sub> + r<sub class="tcecode">2</sub>)* = (r<sub class="tcecode">1</sub>*(r<sub class="tcecode">1</sub> + r<sub class="tcecode">2</sub>)*)*<br>Which of the following is TRUE?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> Only (i) &amp; (ii) is TRUE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> Only (i) is TRUE</li>
+<li>&nbsp;<img src="./Test Results135_files/correct.png" width="18"> All are TRUE<br><span class="explanation">Explanation:</span><br>(i) is true following the associativity property<br>(ii) (0+1)*01(0+1)*+ 1*0* generates all the strings over {0,1}*<br>(iii) (r1 + r2)* = (r1*(r1 + r2)*)*<br>We know that (a*b*)* = (a+b)*<br>Therefore, (r1*(r1 + r2)*)* = (r1 + r1 + r2)* = (r1 + r2)*
+</li>
+<li><img src="./Test Results135_files/wrong.png" width="16">&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> Only (i) &amp; (iii) is TRUE</li>
+</ol>
+<br><br>
+</li>
+<li>
+The regular expression corresponding to the finite automata given below is<br><img src="./Test Results135_files/Q13-question.png" alt="image:TOC Topic Test 3/Q13-question.png" width="245" height="211" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/correct.png" width="18"> (ab*(a+b)a+a)*(ab*(a+b)+ε)<br><span class="explanation">Explanation:</span><br><img src="./Test Results135_files/Q13-exp1.png" alt="image:TOC Topic Test 3/Q13-exp1.png" width="611" height="208" class="tcecode"><br><img src="./Test Results135_files/Q13-exp2.png" alt="image:TOC Topic Test 3/Q13-exp2.png" width="353" height="158" class="tcecode"><br><img src="./Test Results135_files/Q13-exp3.png" alt="image:TOC Topic Test 3/Q13-exp3.png" width="350" height="133" class="tcecode"><br><img src="./Test Results135_files/Q13-exp4.png" alt="image:TOC Topic Test 3/Q13-exp4.png" width="352" height="140" class="tcecode"><br><img src="./Test Results135_files/Q13-exp5.png" alt="image:TOC Topic Test 3/Q13-exp5.png" width="281" height="121" class="tcecode"><br>∴R.E.=(ab* (a+b)a+a)*
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> ((ϵ+(a+b)ab*)a)*</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (ϵ+a(a+b)b*a)*</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (ab*(a+b)+ϵ)*</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>S1: Let L<sub class="tcecode">4</sub> = L<sub class="tcecode">1</sub>.L<sub class="tcecode">2</sub>.L<sub class="tcecode">3</sub> , if L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are regular and L<sub class="tcecode">3</sub> is not regular. It is possible that L<sub class="tcecode">4</sub> is regular.<br>S2: L<sub class="tcecode">1</sub> ⊆ L ⊆ L<sub class="tcecode">2</sub> , where L<sub class="tcecode">1</sub> &amp; L<sub class="tcecode">2</sub> are regular, then L must be regular.<br><br>Which of the following is TRUE?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is TRUE and S2 is TRUE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is FALSE and S2 is FALSE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is FALSE and S2 is TRUE</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> S1 is TRUE and S2 is FALSE<br><span class="explanation">Explanation:</span><br>Given,<br>S1: L1, L2 are Regular, L3 is not Regular<br>    Suppose L1= ø<br>    L4 = ø. L2. L4<br>    L4 = ø<br>    Therefore, S1 is TRUE<br>S2: <br>    L1 ⊆ L ⊆ L2<br>    False, ø ⊆ {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>/n≥0} ⊆ {a,b}*
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let us consider an operation RM(L) is defined as in the sequence <br>1. Remove all the even length strings from L.<br>2. For each odd-length-string, remove the middle character.<br>For example, if L = {001,0010,01010}, then RM(L) = {01,0110}. That is, even-length string 0010 is deleted, the middle character of 001 is removed to make 01, and the middle character of 01010 is removed to make 0110.<br>It turns out that if L is a regular language, RM(L) may or may not be regular. <br><br>Consider two languages L<sub class="tcecode">1</sub>  and L<sub class="tcecode">2</sub>  over ∑ ={0,1}<br>L<sub class="tcecode">1</sub>: The language of regular expression (01)* 0<br>L<sub class="tcecode">2</sub>: The language of regular expression (0+1)*1(0+1)*<br>Which of the following is/are TRUE?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> Both RM(L<sub class="tcecode">1</sub>) and RM(L<sub class="tcecode">2</sub>)  are regular</li>
+<li>&nbsp;<img src="./Test Results135_files/correct.png" width="18"> RM(L<sub class="tcecode">1</sub>) is not regular but RM(L<sub class="tcecode">2</sub>) is regular<br><span class="explanation">Explanation:</span><br>Given L<sub class="tcecode">1</sub>: The language of regular expression (01)* 0<br>L<sub class="tcecode">1</sub> = {0,010,01010,0101010,010101010,…}<br>To find RM(L), we throw away all the even-length strings and for each odd-length string, remove the middle character. <br>We can see that L<sub class="tcecode">1</sub>  does not contain any string of even-length. For each odd-length string, after removing the middle character we get the following strings<br>RM(L<sub class="tcecode">1</sub>) = {ϵ,00,0110,010010,01011010,…}  <br>The language representing the above strings is <br>RM(L<sub class="tcecode">1</sub>) = {ww<sup class="tcecode">R</sup> | w∈{0,1}* and w never starts with 1 and w does not contain two consecutive 0’s} <br>This is clearly not a regular language. <br><br>Given L<sub class="tcecode">2</sub>: The language of regular expression (0+1)*1(0+1)*<br>L<sub class="tcecode">2</sub> = {1,01,11,10,010,011,110,111,0001,0010,0011,…, <br>	00100,00101,00110,00111,01100,01101,01110,01111,…}<br>Removing all even-length strings gives {1,010,011,110,111,00100,00101,00110,00111,01100,01101,01110,01111,…}<br>Deleting the middle character gives<br>{ϵ,00,01,10,11,0000,0001,0010,0011,0100,0101,0110,0111,…}<br>The language representing the above set of strings is ((0+1)(0+1))*  which is regular. <br><br>∴RM(L<sub class="tcecode">1</sub>)  is not regular and RM(L<sub class="tcecode">2</sub>)  is regular.
+</li>
+<li><img src="./Test Results135_files/wrong.png" width="16">&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> RM(L<sub class="tcecode">1</sub>) is regular but RM(L<sub class="tcecode">2</sub>)  is not regular</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> Neither RM(L<sub class="tcecode">1</sub>) nor RM(L<sub class="tcecode">2</sub>)  is regular</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements,<br><br>S1: Let L<sub class="tcecode">1</sub>,L<sub class="tcecode">2</sub>,L<sub class="tcecode">3</sub>,..L<sub class="tcecode">n</sub>... are infinite number of regular languages, <br><span style="font-size:x-large">∪</span><sub class="tcecode">(i≥1)</sub> L<sub class="tcecode">i</sub> = L<sub class="tcecode">1</sub> ∪ L<sub class="tcecode">2</sub> ∪ L<sub class="tcecode">3</sub> ∪ … ∪ L<sub class="tcecode">n</sub> ∪… is always regular<br><br>S2: If L is Regular Language, then L<sub class="tcecode">1</sub> = {uv | u ∈ L,v does not belongs to L and |v|=2}  is also regular<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is TRUE, S2 is FALSE</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> S1 is FALSE, S2 is TRUE<br><span class="explanation">Explanation:</span><br>S1 is FALSE:<br>Let us consider the languages <br>L1={ab}<br>L2={aabb}<br>L3={aaabbb}<br>.<br>.<br>.<br>L<sub class="tcecode">n</sub>={aaa… (n times) bbbb… (n times)}<br>.<br>.<br>.<br>We know each of the above languages is a finite language and hence each language is regular.<br>But union of all these languages become language L = {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup>/n&gt;=1}. This cannot be regular language because we need to maintain the count for number of a’s and the number of b’s and we need a stack to maintain the count. <br><br>S2 is TRUE:<br>Given L is regular language and as |v| = 2 we will have finite number of strings in this the language and it is also regular.<br>We know that regular languages are closed under concatenation. So, L1 is also regular
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is FALSE, S2 is FALSE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S1 is TRUE, S2 is TRUE</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Regular Expression<br>r<sub class="tcecode">1</sub> ∶ aaa + (aa)<sup class="tcecode">+</sup><br>If the language generated by the regular expression r<sub class="tcecode">1</sub>  is L(r<sub class="tcecode">1</sub>), then number of states in minimal DFA which accepts L'(r<sub class="tcecode">1</sub>) (i.e. Complement of L(r<sub class="tcecode">1</sub>)) is<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results135_files/Q9-exp.png" alt="image:TOC Topic Test 3/Q9-exp.png" width="546" height="360" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is the correct regular expression for the following DFA<br><img src="./Test Results135_files/Q7-question.png" alt="image:TOC Topic Test 3/Q7-question.png" width="405" height="340" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> ((a+b)(a+b))*</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (a+b)<sup class="tcecode">4</sup></li>
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>By observing the DFA, the strings of length not equal to 4 are not accepted and each string accepted by the DFA should have exactly 2 a's and 2 b's. <br>It is easy to see that all last row states and last column states are dead states because these states cannot reach the final state. Therefore, these are useless states and can be eliminated.<br>Now, the finite automata is<br><img src="./Test Results135_files/Q7-exp.png" alt="image:TOC Topic Test 3/Q7-exp.png" width="279" height="215" class="tcecode"><br>Strings accepted are = {aabb, abab, abba, baab, baba, bbaa}<br>Regular expression will be aabb + abab + abba + baab + baba + bbaa
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> (a+b)(a+b)(a+ϵ)(b+ϵ)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let ‘r’ be a regular expression, then which of the following statements is/are TRUE for every 'r'?<br><br>S1: There exists 'x' which satisfies property r + x = x for every regular expression 'r' possible where x is value.<br>S2: There exists 'x' which satisfies property r.x = x for every regular expression 'r' possible and where x is value.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results135_files/correct.png" width="18"> S<sub class="tcecode">1</sub> is FALSE, S<sub class="tcecode">2</sub> is TRUE<br><span class="explanation">Explanation:</span><br>S1: There is no 'x' which can satisfy this property<br>S2: If x = Ø then r.Ø = Ø , Hence this statement is true
+</li>
+<li><img src="./Test Results135_files/wrong.png" width="16">&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S<sub class="tcecode">1</sub> is TRUE, S<sub class="tcecode">2</sub> is FALSE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S<sub class="tcecode">1</sub> is FALSE, S<sub class="tcecode">2</sub> is FALSE</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> S<sub class="tcecode">1</sub> is TRUE, S<sub class="tcecode">2</sub> is TRUE</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements,<br><br>S1: L<sub class="tcecode">a</sub> = {a<sup class="tcecode">n</sup>| n&gt;=0}.{b<sup class="tcecode">n</sup>| n&gt;=0}.{c<sup class="tcecode">n</sup>| n&gt;=0} then L<sub class="tcecode">a</sub> is<br>S2: L<sub class="tcecode">b</sub> = { uv| u∈L<sub class="tcecode">1</sub>, v∈L<sub class="tcecode">1</sub><sup class="tcecode">R</sup>}, L<sub class="tcecode">1</sub>={a<sup class="tcecode">n</sup>│n≥0} then L<sub class="tcecode">b</sub> is<br><br>Which of the following is TRUE?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results135_files/correct.png" width="18">&nbsp;<img src="./Test Results135_files/correct.png" width="18"> L<sub class="tcecode">a</sub> is regular and L<sub class="tcecode">b</sub> is regular<br><span class="explanation">Explanation:</span><br>S1)<br>L<sub class="tcecode">1</sub> = {ε, a, aa, aaa, ...}<br>L<sub class="tcecode">2</sub> = {ε, b, bb, bbb, …..}<br>L<sub class="tcecode">3</sub> = {ε, c, cc, ccc, ….}<br>L<sub class="tcecode">a</sub> = {a,b,c,ab,ac,bc,abc,........}<br>L<sub class="tcecode">a</sub> = {a<sup class="tcecode">m</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">k</sup>/m,n,k≥0}<br>L<sub class="tcecode">a</sub> is Regular<br><br>S2:<br>uЄL<sub class="tcecode">1</sub><br>vЄL<sub class="tcecode">1</sub><sup class="tcecode">R</sup><br>L<sub class="tcecode">1</sub> is regular<br>L<sub class="tcecode">1</sub><sup class="tcecode">R</sup> is regular <br>L<sub class="tcecode">1</sub>={ε ,a,aa,aaa,.....}<br>L<sub class="tcecode">1</sub><sup class="tcecode">R</sup>={ε ,a,aa,aaa,.....}<br>L<sub class="tcecode">b</sub>= L1.L1<sup class="tcecode">R</sup> = { ε ,a,aa,aaa,...} = L<sub class="tcecode">1</sub> <br>So, L<sub class="tcecode">b</sub> is regular
+</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L<sub class="tcecode">a</sub> is Context-free and L<sub class="tcecode">b</sub> is Regular</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L<sub class="tcecode">a</sub> is context-free and L<sub class="tcecode">b</sub> is Context-free</li>
+<li>&nbsp;<img src="./Test Results135_files/wrong.png" width="16"> L<sub class="tcecode">a</sub> is Regular and L<sub class="tcecode">b</sub> is Context-free</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results135_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

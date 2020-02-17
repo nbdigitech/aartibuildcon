@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91833&test_id=315 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results20_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results20_files/calclayout.css">
+<script src="./Test Results20_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results20_files/jquery-ui.js.download"></script>
+<script src="./Test Results20_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results20_files/custom.js.download"></script>
+<script src="./Test Results20_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results20_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results20_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837034, 'I\'m sorry, the time available to complete the test is over!', false, 1486837034849);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91833&amp;test_id=315#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 10</strong><br>
+Digital Logic Design, Computer Organization&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:12:15&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+A designer makes a mistake and builds a cache that has a MRU (most recently used) replacement policy instead of an LRU replacement policy. What is left in a 4-entry, fully associative, MRU cache with 1 byte lines after the following address accesses?<br>1, 2, 3, 4, 5, 3, 5, 1, 5, 2<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>The MRU policy means we replace whatever we last put in the cache. So we will only ever use one entry in the cache.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2, 5</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2, 5, 3</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2, 5, 1, 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A digital computer has a memory unit with 32 bits per word. The instruction set consists of 128 different operations. All instructions have an operation code part (opcode) and an address part (allowing for only one address). Each instruction is stored in one word of memory.<br>How many bits are left for the address part of the instruction?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 25<br><span class="explanation">Explanation:</span><br>128 instructions = 2<sup class="tcecode">7</sup>, or 7 bits for the opcode<br>              bits are left for the address part of the instruction = 32 - 7 = 25.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 27</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 28</li>
+</ol>
+<br><br>
+</li>
+<li>
+A function is represented using the given K-map, ϕ represents don’t care. How many variables the function does not depend on?<br><img src="./Test Results20_files/3Ea.JPG" alt="image:MST10/3Ea.JPG" width="220" height="183" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/3Eb.JPG" alt="image:MST10/3Eb.JPG" width="309" height="381" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+A machine has a 32-bit architecture, with 1-word long instructions. It has 128 registers, each of which is 32 bits long. Machine supports 80 instructions, which have an immediate operand in addition to two register operands. Assuming that the immediate operand is an unsigned integer, what is the maximum value of the immediate operand?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2048</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 1023</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 2047<br><span class="explanation">Explanation:</span><br>Each instruction has 32 bits. To support 80 instructions, opcode must contain 7-bits. Register operand1 requires 7 bits, since the total registers are 128, Register operand 2 also requires 7 bits. 11-bits are left over for immediate operand. Using 11-bits, we can give maximum <br>2<sup class="tcecode">11</sup>-1=2048-1=2047
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4095</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a machine with a byte addressable main memory of 240 bytes and block size of 16 bytes. Assume that a direct mapped cache consisting of 16 lines is used with this machine. How is a 16-bit memory address divided into tag, line number, and byte number respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 5,8,3</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 8, 4, 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/C16Ea.JPG" alt="image:MST10/C16Ea.JPG" width="333" height="152" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4, 8, 4</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4, 4, 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many covering functions do a 4 boolean variable neutral function have?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2<sup class="tcecode">4</sup></li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 2<sup class="tcecode">8</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/11Ea.JPG" alt="image:MST10/11Ea.JPG" width="334" height="219" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2<sup class="tcecode">16</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+How many memory modules of size 1M*8 are required to construct a memory module of size 3M * 16 are ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>Number of modules required=Target capacity/given capacity<br>=(3M*16)/(1M*8)<br>=6 modules are required.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 13</li>
+</ol>
+<br><br>
+</li>
+<li>
+If ‘n’ number of bit register is used to store numbers, how many more number of negative numbers can be represented using 2’s complement method than that of 1’s complement?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/4Ea.JPG" alt="image:MST10/4Ea.JPG" width="318" height="173" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> log n</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> n</li>
+</ol>
+<br><br>
+</li>
+<li>
+Minimum number of NOR gates with a Fan-in of 2 required to realize Ex-OR.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/8Ea.JPG" alt="image:MST10/8Ea.JPG" width="635" height="519" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+The speedup of a pipeline is 6 and operating with an efficiency of 80%, what will be the number of stages?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Speed up = 6, efficiency = 80%, no. of stages = ?<br>Efficiency = Speed up / No. of stages<br><br>No. of stages = Speed up / efficiency<br>= 6 / 0.8  = ceil (7.5) = 8<br><br>No. of stages = 8.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimum number of two input NOR gates to realize a two input NAND gate?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/15Ea.JPG" alt="image:MST10/15Ea.JPG" width="542" height="222" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Not possible</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the given circuit if input has a property that P&gt;Q?<br><img src="./Test Results20_files/10Ea.JPG" alt="image:MST10/10Ea.JPG" width="522" height="165" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>Given: P&gt;Q⟹P=1,Q=0.<br>Note that there is a comparator inside the given circuit.<br><img src="./Test Results20_files/10Eb.JPG" alt="image:MST10/10Eb.JPG" width="374" height="412" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> P</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Q</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following instruction is following indirect mode addressing mode?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> LD 1000</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Move R1, R2</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> LD (R1)</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> LD @ADR<br><span class="explanation">Explanation:</span><br>Addressing modes refers to the different ways an instruction can specify an operand. <br>Immediate Addressing Mode: <br>The operand (data) immediately follows the instruction (the data is in the byte(s) that immediately follow the instruction) This type of addressing is mainly used when the operand is a constant and its value is known at the time the program is written. <br>Assembly convention: LD 1000 <br>Register transfer: AC&lt;-1000<br>Indirect addressing mode:<br>In this mode, the address field of an instruction gives not an actual operand address instead it gives the address where the effective address is stored in memory<br>EA[Effective address] = address contained in memory location M<br>Assembly convention: LD @ADR <br>Register transfer: AC&lt;- M[M[ADR]]<br>Register Indirect addressing mode:<br>In this mode the instruction specifies a register in the cpu whose content give the address of the operand in memory. In other words, the selected register contains the address of the operand rather than the operand itself.<br>Assembly convention: LD (R1)<br>Register transfer: AC&lt;-M[R1]<br>Register addressing mode:<br>Operand is held in register named in the address field.<br>EA[Effective address] = R<br>MOV R1 R2 is in register addressing mode format
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following things is/are not specified in the indexed mode of instruction?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> The middle address of the array</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> The value of the index register</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> The index value of the next element<br><span class="explanation">Explanation:</span><br>Index Mode for instruction is used to access an array whose elements are in successive memory locations. The content of the instruction code represents the starting address of the array and the value of the index register, and the index value of the current element, not the index value of the next element. By incrementing or decrementing index register different element of the array can be accessed. From the given options (c) is the answer.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given options is an alternative for subtractor.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Adder</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> Adder, -ve numbers in 2’s complement</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Adder, -ve numbers in 1’s complement</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Adder, -ve numbers in Sign magnitude</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given options is self-dual 3 variable function?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> Σ(0,1,2,3)<br><span class="explanation">Explanation:</span><br>A self dual function must contain only one term from each and every following pairs:<br>(0,7)(1,6)(2,5)(3,4)<br>Only Σ(0,1,2,3) satisfies the property.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(0,1,2,3,4,5,6,7)</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(0,1,6,7)</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(2,3,4,5)</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 5-stage pipeline has the stage delays as 110, 120, 280, 160 and 150 ns respectively. Registers that are used between the stages have a delay of 5 ns each. Assuming constant clocking rate, the total time taken to process 200 instructions is _______________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 58,140<br><span class="explanation">Explanation:</span><br>5-stage pipeline,<br>Stage delays are 110, 120, 280, 160 and 150 ns.<br>Register delay : 5 ns<br>Number of instructions : 200<br>Number of cycles required = k + (n – 1) clocks<br>Where k = number of stages and <br>n = number of instructions<br>Number of cycles required = 5 + (200 – 1) clocks<br>   = 5 + 199 clocks<br>   = 204 clocks<br>		Cycle Time = Maximum stage delay + Register delay<br>			        = Max(110, 120, 280, 160, 150 ) + 5<br>				= 285ns<br>Time required = 204 * 285 ns = 58,140
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 54,060</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 20,440</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 64,100</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer uses a memory unit with 512K words of 32 bits each. A binary instruction code is stored in one word of memory. The instruction has four parts: an indirect bit,an operation code,a register code part to specify one of 32 registers and an address part. How many bits are there in the operation code, the register code part and the address part?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 7,6,18</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 7,5,19<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/C4Ea.JPG" alt="image:MST10/C4Ea.JPG" width="623" height="209" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 6,7,18</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 6,6,19</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a disk pack with the following specifications 16 surfaces,256 tracks/surface,128 sectors/track and 256 bytes/sector. in the above disk pack formatted overhead 64 bytes/sector then what is the formatted disk space?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 38MB</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 48MB</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 66MB</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 96MB<br><span class="explanation">Explanation:</span><br>Disk pack consist of 16 surfaces<br>256 tracks/surface,128 sectors/track and 256 bytes/sector.<br>Given formatted overhead=64 bytes/sector<br>Total capacity of the disk pack=16 surfaces*256 tracks/surface*128 sectors/track*256 bytes/sector ⇒ 128 MB<br>Formatted overhead of the sectors=number of sectors * formatted overhead<br>= 16 surfaces * 256 tracks/surface * 128 sectors/track * 64 bytes/sector<br>=32 MB<br>Formatted disk space=128 MB - 32 MB=96 MB
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the disk pack with the following specifications.<br>32 surfaces<br>64 tracks/surface<br>128 sectors/track<br>512 bytes/sector<br>Let the diameter of the innermost track is 35cm, what is the maximum recording density?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0.85</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0.75</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0.65</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 0.58<br><span class="explanation">Explanation:</span><br>Track capacity=128 sectors/track*512 bytes/sector<br>=64 KB/track<br>Given that diameter of the innermost track is 35 cm<br>Circumference of the track is = 2*pi*r=pi*diameter<br>= (22/7)*35 cm=22*5 cm = 110cm<br>Recording density=(64 KB)/(110 cm)=0.58 KB/cm
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given sequential circuit produces the following state transitions, they are 0⟶0,1⟶3,2⟶2,3⟶2, where a state is Q<sub class="tcecode">1</sub>Q<sub class="tcecode">0</sub>. Then what is gate G?<br><img src="./Test Results20_files/1Ea.JPG" alt="image:MST10/1Ea.JPG" width="362" height="152" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> NAND</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> NOR</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> AND<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/1Eb.JPG" alt="image:MST10/1Eb.JPG" width="415" height="502" class="tcecode"><br><img src="./Test Results20_files/1Ec.JPG" alt="image:MST10/1Ec.JPG" width="501" height="257" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> OR</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many memory accesses required by the following instructions? <br>SUB r1, r2, r3<br>MUL r1, r2, (r3) <br>ADD r1, r2, (r3)<br>DIV r1, r2, @(r4) <br><br>Suppose every instruction is one word long, as well as every address.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 9</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>SUB r1, r2, r3 require only one memory access, reading the instruction. MUL r1, r2, (r3) require two memory accesses, the first to read the instruction and the other one to read the value from memory location(s), whose address is in r3, similarly two memory accesses for ADD r1, r2, (r3). DIV r1, r2, @(r4) three memory accesses are made in this case, the first to read the instruction, the second to get M[r4], and the third one to get M[M[r4]]. So total memory accesses required are = 1 + 2 + 2 + 3 = 8.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following sequence is generated from sequential circuit constructed using flip flop. The sequence is 01020300, and repeats. What is the minimum number of flip-flops to construct such sequential circuit?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/13Ea.JPG" alt="image:MST10/13Ea.JPG" width="327" height="186" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the function represented by the below circuit, if the function is f(A,B,C,D) ?<br><img src="./Test Results20_files/12Eb.JPG" alt="image:MST10/12Eb.JPG" width="314" height="165" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(0,2,4,6,8,10,11)</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> Σ(1,3,4,6,8,9,11)<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/12Ea.JPG" alt="image:MST10/12Ea.JPG" width="530" height="193" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(0,2,5,7,8,10,11)</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> Σ(1,3,4,6,8,10,11)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the MUX with least number of inputs to implement a function f(a,b,c)=Σ(2,3,6), without using additional gates, only true form of a,b,c are available<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2 x 1</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 4 x 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/17Ea.JPG" alt="image:MST10/17Ea.JPG" width="589" height="265" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 8 x 1</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 16 x 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is true?<br>I) Ex-OR and Ex-NOR are functionally complete<br>II) Only Ex-OR is functionally complete<br>III) Only Ex-NOR is functionally complete<br>IV) Neither Ex-OR nor Ex-NOR is functionally complete<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> I</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> II</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> III</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> IV<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/2Ea.JPG" alt="image:MST10/2Ea.JPG" width="411" height="231" class="tcecode"><br><img src="./Test Results20_files/2Eb.JPG" alt="image:MST10/2Eb.JPG" width="417" height="257" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given addresses enables the device, if the addresses are denoted as A<sub class="tcecode">4</sub>A<sub class="tcecode">3</sub>A<sub class="tcecode">2</sub>A<sub class="tcecode">1</sub>A<sub class="tcecode">0</sub>?<br><img src="./Test Results20_files/14Ea.JPG" alt="image:MST10/14Ea.JPG" width="331" height="182" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 11001</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 11010</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 10101</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> None<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/14Eb.JPG" alt="image:MST10/14Eb.JPG" width="430" height="272" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">COMMON DATA QUESTIONS Q28 &amp; Q29:</span></strong><br><img src="./Test Results20_files/mst_10_1.JPG" alt="image:MST10/mst_10_1.JPG" width="474" height="247" class="tcecode"><br>After 16 clock cycles, what would be the state of device if it starts at state 1.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>1 ⟶ 3 ⟶ 0 ⟶ 0 ⟶ ……… ⟶ 0<br>⟶After 2 clocks, it enters state 0, and lies there forever.
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">COMMON DATA QUESTIONS Q28 &amp; Q29:</span></strong><br><img src="./Test Results20_files/mst_10_1.JPG" alt="image:MST10/mst_10_1.JPG" width="474" height="247" class="tcecode"><br>If a state is represented as decimal value of(Q<sub class="tcecode">1</sub>Q<sub class="tcecode">0</sub>)<sub class="tcecode">2</sub>, then what are/is the states that the flip-flops can never be during the second cycle of the clock.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 1,2<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/5Eb.JPG" alt="image:MST10/5Eb.JPG" width="477" height="491" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 0,1,2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">COMMON DATA QUESTIONS 30&amp;31:</strong><br>Consider a memory system that uses a 32-bit address to address at the byte level, plus a cache that uses a 32-byte line size.<br><br>Assume 4-way set-associative cache of size 4KB then calculate the number of bits in tag?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 22<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/C18Ea.JPG" alt="image:MST10/C18Ea.JPG" width="625" height="182" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">COMMON DATA QUESTIONS 30&amp;31:</strong><br>Consider a memory system that uses a 32-bit address to address at the byte level, plus a cache that uses a 32-byte line size.<br><br>Assume a direct mapped cache with a tag field in the address of 20 bits. Calculate the tag directory size (in bytes)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 320<br><span class="explanation">Explanation:</span><br><img src="./Test Results20_files/C17Ea.JPG" alt="image:MST10/C17Ea.JPG" width="613" height="126" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 256</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2560</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">COMMON DATA QUESTIONS Q32 &amp; Q33:</strong><br>A hard disk has 128 sectors/ track, 20 platters, each with 2 recording surface and 1000 cylinders. The address of a sector is given as &lt;c,h,s&gt; where c → cylinder number, h → surface number, s → sector number. 0th sector is addressed as &lt;0, 0, 0&gt;.<br><br>What is the address of the 104363 sector?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> &lt;20,14,63&gt;</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> &lt;19,15,63&gt;</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> &lt;20,15,43&gt;<br><span class="explanation">Explanation:</span><br>The address is &lt;20,15,43&gt;<br>Number of sectors we need to cross=20 cylinders(20 platters/cylinder * 2 surfaces/platter * 1 track/surface * 128 sector/tack)+15 surfaces(1 track/surface * 128 sectors/track )+43 sectors=104363 sectors
+</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> &lt;20,15,44&gt;</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">COMMON DATA QUESTIONS Q32 &amp; Q33:</strong><br>A hard disk has 128 sectors/ track, 20 platters, each with 2 recording surface and 1000 cylinders. The address of a sector is given as &lt;c,h,s&gt; where c → cylinder number, h → surface number, s → sector number. 0th sector is addressed as &lt;0, 0, 0&gt;. <br><br>The address &lt;600, 10, 84&gt; corresponds to sector number is ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 1073364</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 3073264</li>
+<li>&nbsp;<img src="./Test Results20_files/wrong.png" width="16"> 2073264</li>
+<li>&nbsp;<img src="./Test Results20_files/correct.png" width="18"> 3073364<br><span class="explanation">Explanation:</span><br>c⇒cylinder number<br>h⇒surface number<br>s⇒sector number<br>Hard disk has 128 sectors/track, 20 platters and each with 2 recording surfaces &lt;600,10,64&gt; means we need to cross the 600 cylinders, 10 surfaces in a particular cylinder and 62 sectors in a particular track to find the desired sector. So we need to find the how many sectors we are crossing to get the sector address &lt;600,10,84&gt;.<br>Number of sectors we need to cross = 600 cylinders(20 platters/cylinder * 2 surfaces/platter *1 tracks/surface *128 sector/track) + 10 surfaces(1 tracks/surface * 128 sectors/track) + 84 sectors ⇒ 3073364 sectors
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results20_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

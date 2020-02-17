@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=32201&test_id=153 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results105_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results105_files/calclayout.css">
+<script src="./Test Results105_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results105_files/jquery-ui.js.download"></script>
+<script src="./Test Results105_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results105_files/custom.js.download"></script>
+<script src="./Test Results105_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results105_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results105_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921211, 'I\'m sorry, the time available to complete the test is over!', false, 1486921211090);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=32201&amp;test_id=153#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>P&amp;DS Topic Test - 1</strong><br>
+Arrays - 1D, 2D, Multidimensional, Row and Column major Orders&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-02 17:23:07&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-02 18:06:57&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:43:50&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+19.670 / 25.000 (79%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+11 / 15 (73%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which of the following statements are true about an array?<br><br>I:	int (*ptr)[10]; means ptr is a pointer to an array of 10 integers<br>II:	The expression M[1] designates the very first element in the array.<br>III:	It is necessary to initialize the array at the time of declaration.<br>IV:	int fun(int arr[]); int fun(int arr[2]); Both the statements are same<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> III,II</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I,III,IV</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> I,IV<br><span class="explanation">Explanation:</span><br>1. int (*ptr)[10]; means ptr is a pointer to an array of 10 integers<br><br>	2. The expression M[1] designates the very first element in the array. This statement is false, because it designates the second element of the array.<br><br>	3. It is not necessary to initialize the array at the time of declaration.<br><br>	4. It is the prototype for the function fun() that accepts one integer array as an parameter   and returns an integer value. This statement is true
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I,II,IV</li>
+</ol>
+<br><br>
+</li>
+<li>
+The expression which the p, q<sup class="tcecode">th</sup> entry of an M x N matrix stored in a column major form, where indices starting from 1 is ___________________<br>Here M = total number of rows, N = Total number of columns, base address is 0, Number of words = 1 byte<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> (p – 1) + N(q – 1)</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> (p – 1) N + (q – 1)</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> (p – 1) + M(q – 1)<br><span class="explanation">Explanation:</span><br>A[p][q] = Base + w * [(p – 1) + M(q – 1)]<br>		A[p][q] = 0 + 1 * [(p – 1) + M(q – 1)]<br>		             = (p – 1) + M( q – 1)<br>		w = number of bytes required for storing an element.
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> (p – 1) M + (q – 1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the output of the c program below<br>int main(){<br>    static int M[10];<br>    int x=0;<br>    M[x] = x++;<br>    printf("\n %d %d %d", M[0],M[1],x);<br>  }<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 000</li>
+<li>&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 001<br><span class="explanation">Explanation:</span><br>static int arr[20]; Default Initial Value for static variable is 0, hence each block will get 0 value<br>int x=0;<br>arr[x] = x++;  Here x++ is a post increment, hence it will get incremented after applying value of x to arr[x] hence arr[0] will get 0, then X get incremented.
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 101</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the output of the c program below, assume base address of the array is 1000<br>main()<br>{<br>unsigned int a[2][3]={ {30,20,10},{16,15,14}};<br>printf("%u,%u,%u,%u\n",a,a+1,&amp;a,&amp;a+1);<br>}<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1000,1004,1000, 1008</li>
+<li>&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 1000,1012,1000,1024<br><span class="explanation">Explanation:</span><br>Here a base address is 1000, %u is format specifier for unsigned integer usually to print address of the memory locations. For a”%u” is 1000, now a+1 means going to second row, we have to cross all the three elements, so 1000+3*4 = 1012, &amp;a means again base address of a, &amp;a+1 means completely pasts the whole array, 1000+(6*4) so 1024 will be printed. As you know that The pointer will be offset by the size of the type that the address contains.  a+1 offsets by the size of int, i.e. to the second element in the array.  &amp;a+1 offsets completely past the whole array.
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1004, 1008, 1004,1012</li>
+<li><img src="./Test Results105_files/wrong.png" width="16">&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1000, 1012, 1000,1008</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code given below			<br><br>int A[8][8], p, q;<br>for(p = 0; p &lt; 8; ++p)<br>	for(q = 0; q &lt; 8; q++)<br>	{<br>		A[p][q] = A[q][p];<br>	}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> Alters the matrix A for even values of p</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> Transposes the given matrix A</li>
+<li>&nbsp;<img src="./Test Results105_files/correct.png" width="18"> Transforms into a symmetric matrix A<br><span class="explanation">Explanation:</span><br>Let us take a simple example A[2][2]<br><img src="./Test Results105_files/matrix.png" alt="image:OSS2/matrix.png" width="71" height="34" class="tcecode">	 <br>Now, we are performing A[p][q] = A[q][p]<br>p = 0, p &lt; 2<br>			q = 0, q &lt; 2	A[0][0] = A[0][0] ⇒ A[0][0] = 1	q++<br>			q = 1, q &lt; 2	A[0][1] = A[1][0] ⇒ A[0][1] = 3	q++<br>			q = 2, q &lt; 2 false<br>		p = 1, p &lt; 2<br>			q = 0, q &lt; 2	A[1][0] = A[0][1] ⇒ A[1][0] = 3	q++<br>			q = 1, q &lt; 2	A[1][1] = A[1][1] ⇒ A[1][1] = 4	q++<br>			q = 2, q &lt; 2 false<br><img src="./Test Results105_files/E5b.PNG" alt="image:P&amp;DS1/E5b.PNG" width="228" height="45" class="tcecode"><br>Now, if A<sup class="tcecode">T</sup> = A ⇒ A is symmetric matrix
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> Transforms into identity matrix</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the output of the following program, array index starting with<br><img src="./Test Results105_files/Q6a.PNG" alt="image:P&amp;DS1/Q6a.PNG" width="278" height="191" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1  2  3  4  5  6  7  8</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1  2  3  5  4  6  7  8</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 8  7  6  5  4  3  2  1</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 1  2  3  3  5  5  7  8<br><span class="explanation">Explanation:</span><br><img src="./Test Results105_files/E6a.PNG" alt="image:P&amp;DS1/E6a.PNG" width="237" height="103" class="tcecode"><br>p is a variable of type integer<br>•	In first for loop same values will be reassigned<br>p = 2, p &lt; 6	A[A[2]] = A[2]<br>		A[3] = 3, 4 is replaced by 3 in A[3]<br>p = 3, p &lt; 6	A[A[3]] = A[3]<br>		A[3] = 3, 3 is replaced by 3 in A[3]<br>p = 4, p &lt; 6	A[A[4]] = A[4]<br>		A[5] = 5, 6 is replaced by 5 in A[4]<br>p = 5, p &lt; 6	A[A[5]] = A[5]<br>		A[5] = 5, 5 is replaced by 5 in A[5]<br>		So, when you point from 0 to 7 → 1, 2, 3, 3, 5, 5, 7, 8 will be printed
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output printed by the following C code<br><br># include &lt;stdio.h&gt;<br>int main( )<br>{<br>	char M[8] = “program”<br>	int p, q;<br>	for(p= 0, q = 7; p &lt; q; M[p++] = M[q--]);<br>	printf(“%s \n”, M);<br>}<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> margorp</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> progorp</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> gramarg</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> Null string<br><span class="explanation">Explanation:</span><br>Observe ’;’ at the end of for loop. So for loop alone executes without printing M, until the condition p &lt; q fails.<br><img src="./Test Results105_files/E14a.PNG" alt="image:P&amp;DS1/E14a.PNG" width="116" height="242" class="tcecode"><br>printf(“%s”, M) M is pointing to the starting of the string which is ‘\0’ and it indicates the end of the string.<br>So, it prints Null character.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the output of this program?<br>    #include&lt;stdio.h&gt;<br>    using namespace std;<br>    int M[] = {34,45,12,37,34,99,89};<br>    int N[] = {10,20,30,40,50,60};<br>    int p, q= 0;<br>    int main()<br>    {<br>        for (p= 0; p&lt; 6; p++) <br>       {<br>            q+= M[p];<br>        }<br>        for (p= 0; p&lt; 4; p++) <br>       {<br>           q += N[p];<br>        }<br>        printf(“%d”, q);<br>        return 0;<br>    }<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 120</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 350</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 361<br><span class="explanation">Explanation:</span><br>In the program we are adding every element in both the arrays except last element in second array.<br>Q = 34 + 45 + 12 + 37 + 34 + 99 + 10 + 20 + 30 + 40 = 361.
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 560</li>
+</ol>
+<br><br>
+</li>
+<li>
+If P, Q, R are arrays of unique integers of size i, j and i + j respectively. The numbers in P are in ascending order, while numbers in Q are in descending order. Following is a function that produces array R which is formed by merging array P and Q in non decreasing order. Find the correct option<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I : Q[x] ≤ P[y]<br>II:  y ≤ i</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I : P[y] ≤ Q[x]<br>II: x &lt; i</li>
+<li>&nbsp;<img src="./Test Results105_files/correct.png" width="18"> I : P[x] ≤ Q[y]<br>II: x &lt; i<br><span class="explanation">Explanation:</span><br>Let us consider one example P[4] = {1,2,3,4}, Q = {9,7,6,5} , size of P is 4, size of Q is 4, in order to produce array R which is formed by merging array P and Q in non decreasing order, the only option I : P[x] &lt; = Q[y], II: x &lt; i will satisfy the condition, and forms R= {1,2,3,4,5,6,7,9} and size of an array is 8. For this no shortcut is there you need to substitute each and every option.
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I : Q[x] &lt; P[y]<br>II: y ≤ i</li>
+</ol>
+<br><br>
+</li>
+<li>
+An array CS[19][18] is stored in row major order with each element occupies 4 bytes of memory, and the address of CS[7][5] is stored at the location 1600. Find the address of CS[12][14]. Assume array index starting with ‘1’<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1684</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1884</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 1996<br><span class="explanation">Explanation:</span><br>Array  <img src="./Test Results105_files/E11a.PNG" alt="image:P&amp;DS1/E11a.PNG" width="80" height="44" class="tcecode">, words per element is 4 bytes<br>Given address of CS[7][5] is 1600<br>		By using below formula we can get base address<br>		Address of CS[7][5] = Base + 4 * [N(i – 1) + (j – 1) ]<br>				1600 = Base + 4 * [18 * (7 – 1) + (5 – 1)]<br>				1600 = Base + (18 * 6 + 4)<br>				Base = 1600 – 448<br>				Base = 1152<br>		Now to find address of CS[12][14]<br>				CS[i][j] = Base + 4 * [N(i – 1) + (j – 1)]<br>					 = 1152 + 4 * [18 * (12 – 1) + (14 – 1)]<br>					 = 1152 + 4 * (18 * 11 + 13)<br>					 = 1152 + 4 * (198 + 13)<br>					 = 1152 + 4 * 211<br>					 = 1152 + 844<br>			      CS[12][14] = 1996
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1784</li>
+</ol>
+<br><br>
+</li>
+<li>
+An array M[25][20] is stored in column major order, with each element occupies 4 bytes, and the address of M[4][5] is stored at the location 1500. Find out the address of M[6][8]. Assume array index start with ‘0’.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1707</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1565</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 1808<br><span class="explanation">Explanation:</span><br>As we know that if M = Total rows, N = Total columns<br>Address A[p][q] = Base + W * [p + M * q], <br>Array M[25][20], words per element = 4 bytes<br>	Given M[4][5] address = 1500<br>		                    ⇒	1500 = Base + 4 * [(4 – 0) + 25(5 – 0)]<br>				1500 = Base + 4 * [4 + 125]<br>				1500 = Base + 4 * 129<br>				Base = 1500 – 516 = 984<br>		Now, to find M[6][8] <br>			       ⇒	984 + 4 * [(6 – 0) + 25(8 – 0)]<br>				984 + 4 * [6 + 200]<br>				984 + 4 * 206<br>				984 + 824<br>		M[6][8] = 1808
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1926</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the correct output of the following program?<br><img src="./Test Results105_files/edit1.png" alt="image:P&amp;DS1/edit1.png" width="425" height="247" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> LECXETAG</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> G</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> GATE</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> No output at all<br><span class="explanation">Explanation:</span><br>As the array a is with length of string 8 and hence in array reverse the contents are copied as “\0LECXETAG”. Since the character array is starting with null character, printf statement does not print anything. <br>		Here strlen[str] gives length of the string is 8, it will not consider ‘\0’.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an array defined as M[0…..5][0…..13]. When we refer an array element M[P][Q], we wish to check that this is a valid access to an array element. Consider the following tests for validity of the array reference             <br>I. The address of M[P][Q] is an address within the range of memory allocated for the array M<br>II. 0 ≤ P and 0 ≤ Q<br>III. P ≤ 5 and Q ≤ 13<br>Which of the following combinations of the above tests will minimally guarantees that the array access is valid.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> I and II</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> III only</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> II and III<br><span class="explanation">Explanation:</span><br>only we have to consider only one <br>1. If we work on indices of an array, II and III guarantee the array access is valid.<br>2. If we are checking with respect to memory we should check <br>    if( &amp;m[0][0] &lt;= &amp;m[p][q] &amp;&amp; &amp;m[p][q] &lt;= &amp;m[5][13])
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In array p[5][5], the address of p[1][1] and p[2][1] are 5000 and 5010 respectively and each element occupies 2 bytes of memory. Then the array has been stored in ___ order, assume that index starts with  p[1][1]<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> Row Major order<br><span class="explanation">Explanation:</span><br>Address of p[1][1] is 5000<br>		                   p[2][1] is 5010<br>For example, let the matrix is stored in RMO, then to access an element in RMO, formula is<br>				L<sub class="tcecode">0</sub> + [(i – 1) r<sub class="tcecode">2</sub> + (j – 1) ] * c<br>		For p[2][1]  = 	5000 + [(2 – 1)(5) + (1 – 1)] * 2<br>				5000 + (5(2)) = 5000 + 10 = 5010.<br>for the same example, let the matrix is stored in CMO, then to access an element in CMO, formula is<br>				L<sub class="tcecode">0</sub> + [(i – 1) + r<sub class="tcecode">1</sub>*(j – 1) ] * c<br>		For p[2][1]  = 	5000 + [(2 – 1) + 5*(1– 1)] * 2<br>				5000 + 2= 5000 + 2= 5002. <br>Clearly it is not stored in CMO, so options b &amp; c are wrong
+</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> Column Major order</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> Both Row Major and Column Major order</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C code and find output<br><img src="./Test Results105_files/Q15a.PNG" alt="image:P&amp;DS1/Q15a.PNG" width="230" height="427" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1, 3</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 1, 1</li>
+<li>&nbsp;<img src="./Test Results105_files/wrong.png" width="16"> 3, 2</li>
+<li><img src="./Test Results105_files/correct.png" width="18">&nbsp;<img src="./Test Results105_files/correct.png" width="18"> 2, 1<br><span class="explanation">Explanation:</span><br>Here abs returns the absolute value, that is, it always prints the positive value of the corresponding value.<br>m[] = {1, 3, 2, 2, 1}<br>for i = 0, <br>    m[abs(m[0])] = m[abs(1)] = m[1] = 3 &gt; 0 <br>	m[abs(m[0])] = m[1] = -3<br>Now the array m is 1, -3, 2, 2, 1<br><br>for i = 1, <br>   m[abs(m[1])] = m[abs(-3)] = m[3] = 2 &gt; 0 <br>	m[abs(m[1])] = m[3] = -2;<br>Now the array m is 1, -3, 2, -2, 1<br><br>for i = 2, <br>   m[abs(m[2])] = m[abs(2)] = m[2] = 2 &gt; 0 <br>	m[abs(m[2])] = m[2] = -2;<br>Now the array m is 1, -3, -2, -2, 1<br><br>for i = 3, <br>   m[abs(m[3])] = m[abs(-2)] = m[2] = -2 &lt; 0. So, it prints abs(m[3]) = abs(-2) = 2<br>The array m is 1, -3, -2, -2, 1<br>for i = 4, <br>   m[abs(m[4])] = m[abs(1)] = m[1] = -3 &lt; 0. So, it prints abs(m[4]) = abs(1) = 1
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results105_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

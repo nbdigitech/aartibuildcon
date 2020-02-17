@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=5934&test_id=68 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results119_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results119_files/calclayout.css">
+<script src="./Test Results119_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results119_files/jquery-ui.js.download"></script>
+<script src="./Test Results119_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results119_files/custom.js.download"></script>
+<script src="./Test Results119_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results119_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results119_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921371, 'I\'m sorry, the time available to complete the test is over!', false, 1486921371217);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=5934&amp;test_id=68#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 3</strong><br>
+Relational Algebra (Selection, Projection, Renaming,  Joins, Division, Set Operations, Cartesian Product, Tuple Relational Calculus, Domain Relational Calculus) 	&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-22 09:19:30&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the sequence of operations given below on the relation Employee(<span style="text-decoration:underline;">Eid</span>, Ename, address, Bdate, super_ssn, Dno)<br>	<img src="./Test Results119_files/Q4.PNG" alt="image:Databases Topic Test - 3/Q4.PNG" width="360" height="125" class="tcecode"><br>What will be the above sequence of operations performed on the given relation produce?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Eid of an employee who is either male or a supervisor</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Eid of all male supervisors</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> Eid of all male employees and Eid of their supervisors<br><span class="explanation">Explanation:</span><br>1.Result of first operation is the relation which contains all male employees.<br>2.Result of second operation is the relation which contains the list of all Eid’s of all male employees<br>3.Result of third operation is the relation which contains the list of all super_ssn of all male employees.<br>4.Result of fourth operation is the Eid of all male employees and Eid of their supervisors.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Eid of all male employees</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let StudInfo(<span style="text-decoration:underline;">studId</span>, name, sex, address) and CourseInfo(<span style="text-decoration:underline;">courseId</span>, Instructorname, sex) and enroll(<span style="text-decoration:underline;">studId, courseId</span>) be three relational schemes where the primary keys are shown underlined. What does the following relational algebra expression represent?(Assume at least one course is instructed by a female instructor).<br>((Enroll)÷(π<sub class="tcecode">courseId</sub>(σ<sub class="tcecode">sex='female'</sub>(courseInfo))))<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> CourseId’s of all courses leading by female instructor</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> CourseId’s of all courses leading by male instructor</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> StudentId’s of all students who took courses lead by female instructor</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br><img src="./Test Results119_files/Q5_Exp1.PNG" alt="image:Databases Topic Test - 3/Q5_Exp1.PNG" width="316" height="195" class="tcecode"><br>Result of (1) is the relation which contains the courses that are lead by female instructor.<br>Result of (2) is the relation which contains the courseId’s of all courses that are lead by female instructor<br>Result of (3) is the relation which contains the studId’s of all students that have taken all courses lead by female instructor.<br>Suppose take	<br><img src="./Test Results119_files/Q5_Exp2.PNG" alt="image:Databases Topic Test - 3/Q5_Exp2.PNG" width="583" height="272" class="tcecode"><br><img src="./Test Results119_files/Q5_Exp3.PNG" alt="image:Databases Topic Test - 3/Q5_Exp3.PNG" width="385" height="376" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the following relational schemes be given:<br>StudInfo (<span style="text-decoration:underline;">studId</span>, sex, name, age, address), courseInfo (<span style="text-decoration:underline;">courseId</span>, coursename, instructorname) and enroll(<span style="text-decoration:underline;">studId, courseId</span>) with primary keys as underlined. Which of the following queries cannot be expressed using the basic relational algebra operations { σ, π, ∪, –, ×, ρ }?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> The name of instructor who teaches physics</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> StudId’s of all students who were enrolled for physics</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Names of all female students enrolled for physics</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> Total number of students along with their average age<br><span class="explanation">Explanation:</span><br>"a" can be expressed as π<sub class="tcecode">instructorname</sub>(σ<sub class="tcecode">coursename='physics'</sub>(courseInfo))<br><br>"b" can be expressed as π<sub class="tcecode">studId</sub> (((σ<sub class="tcecode">coursename=' physics'</sub>(courseInfo))⨝Enroll)⨝studInfo)<br>(Note: ⨝ can be implemented by × and σ operators)<br><br>"c" can be expressed as π<sub class="tcecode">name</sub>(((σ<sub class="tcecode">coursename='physics'</sub>(courseInfo))⨝Enroll)⨝ (σ<sub class="tcecode">sex='f'</sub>(studInfo) )<br>(Note: ⨝  can be implemented by × and σ operators)<br><br>"d" can be expressed as ℱ<sub class="tcecode">count StudId,AVERAGE AGE</sub>(studInfo)<br>ℱ ⇒ Aggregate operation, which cannot be expressed using basic relational algebra operation<br>All queries except this can be expressed using basic relational algebra operations.<br>So, d is the correct answer.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the following two relational schemas be given<br><img src="./Test Results119_files/Q3.PNG" alt="image:Databases Topic Test - 3/Q3.PNG" width="315" height="72" class="tcecode"><br>With primary keys as underlined. The relation employee contains 1500 tuples and the relation department contains 1000 tuples. What is maximum number of tuples in (Employee ⨝ Department)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> 15,00, 000</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> 1500<br><span class="explanation">Explanation:</span><br>Here every tuple in Employee can join to atmost one tuple in Department since Dno is primary key in Department table . So, the maximum number of tuples is 1500.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> 1000</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> 0</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is the complete set of relational algebra operations (i.e., Any of the other relational algebra operations can be expressed as a sequence of operations from this set)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> { σ, π, ∪, ⨝ }</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> { σ, π, ∪, – }</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> { σ, π, ∩, – }</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> { σ, π, ∪, ρ, -, × }<br><span class="explanation">Explanation:</span><br>Complete set of operations:<br>These are the fundamental operations of the relational algebra that are sufficient to express any relational algebra query.<br>{ σ, π, ∪, ρ, –, × } → Complete set of RA operations<br><br> ∩ (Intersection) can be implemented by ‘–’ operator<br>A ∩ B = A – (A – B)<br> Join (⨝ ) can be implemented by × and σ operators<br>A ⨝ B = σ<sub class="tcecode">condition</sub> (A × B)<br> Division(÷) can be implemented by ×, – and π operators<br>R ÷ S = (π<sub class="tcecode">(R-S)</sub>)-(π<sub class="tcecode">(R-S)</sub>((S×π<sub class="tcecode">(R-S)</sub>(R))-R))
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schemas:<br>Student(Fname, <span style="text-decoration:underline;">Sid</span>, sex, age), courseInfo(<span style="text-decoration:underline;">courseId</span>, coursename, Hours, Instructor name) and Enroll(<span style="text-decoration:underline;">Sid, courseId</span>, sem).<br>Write the efficient relational algebra expression for the following query<br>“Find the Fnames of students who have enrolled for course having id 100”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> π<sub class="tcecode">Fname</sub>(σ<sub class="tcecode">courseId=100</sub>(Enroll⨝student))</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> π<sub class="tcecode">Fname</sub>(σ<sub class="tcecode">courseId=100</sub>(Enroll⨝courseInfo⨝student))</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> π<sub class="tcecode">Fname</sub>((σ<sub class="tcecode">courseId=100</sub> (Enroll))⨝student)<br><span class="explanation">Explanation:</span><br>Though a, b, c are the correct relational algebra expressions for the given query, c is the efficient one.<br>⇒ “a” is not efficient, since we are performing join first and then to the resultant table, we are applying selection, but here selection condition is only on enroll table. So, we can perform selection condition on enroll table and then do the join of the resultant table with student in an efficient way.<br>⇒ “b” is not efficient, since courseInfo relation is not needed to get the required info.<br>⇒ “c” is efficient relational algebra expression since we are performing selection on enroll first and then do the join of the resultant table with student relation to get student names who enrolled for course having id 100.<br>⇒ “d” is not correct option since we are projecting tuples having courseId as “100” instead of selecting rows having courseId “100”. So, it is not correct relational algebra query.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> π<sub class="tcecode">Fname</sub>(π<sub class="tcecode">courseId</sub>(Enroll⨝student))</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two relational schemas <br>Instructor(<span style="text-decoration:underline;">ID</span>, name, dept_name, salary) and<br>Teaches (<span style="text-decoration:underline;">ID, courseid</span>)<br>Which of the following queries is/are equivalent to this query in English?<br>“Find the names of all instructors in the physics department together with the courseid of all courses they taught”<br>I.π<sub class="tcecode">name,courseid</sub> (σ<sub class="tcecode">Instructor.ID=Teaches.ID</sub>(σ<sub class="tcecode">dept_name =' physics'</sub>(Instructor)×teaches) )<br>II.{&lt;n, c&gt; | ∃ i(&lt;i, c&gt; ∊ teaches ∧ ∃d, s (&lt;i, n, d, s&gt; ∊ instructor ∧ d = ‘physics’))}<br>III.{i.name, t.courseid | (Instructor(i) ∧ Teaches(t) ∧ i.id = t.id ∧ i.dept_name = ‘physics’)}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> I, II</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> I, III</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> I, II, III<br><span class="explanation">Explanation:</span><br>First we have to select all instructors in physics department. Then join the resultant relation with teaches on condition Instructor.ID = Teaches.ID, then display instructor name and courseid from resultant relation.<br>	All I, II, III are correct implementation.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the relation employee(<span style="text-decoration:underline;">ssn</span>,name, sex, Dno) and department(<span style="text-decoration:underline;">Dnumber</span>, Dname, Mgr_ssn) with ssn and Dnumber as keys in employee and department schemas respectively. Here Dnumber in the department is a foreign key referring to the Dno in employee. What does the following relational calculus query produces? [Assume each department has a manager]<br>{e.name | employee(e) ∧ (∀d)(¬department(d) ∨ d.Dnumber ≠ e.Dno ∨ (d.Mgr_ssn ≠ e.ssn) ∨ (e.sex = ‘male’))}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Names of all male managers</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Names of all female employees who are not managers.</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Names of all male employees who are not managers.</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> all the above<br><span class="explanation">Explanation:</span><br>Given TRC query can be written as<br>{e.name | employee (e) ∧ (∀d)(¬(department(d) ∧ d.Dnumber = e.Dno ∧ (d.Mgr_ssn = e.ssn)) ∨ (e.sex = ‘male’))}<br>⇒ {e.name | employee (e) ∧ (∀d)((department(d) ∧ d.Dnumber = e.Dno ∧ d.Mgr_ssn = e.ssn)→ (e.sex = ‘male’))}<br>	For a given employee to display in output, we will check whether he/she is manager of any department. If she/he is, then we will display that employee name only he is male, otherwise we won’t display in output.<br>	If given employee is not manager of any department, we will display that employee name irrespective of his/her sex. So, given TRC query produces all employees who are male managers and all employees who are either male or female but not managers. So, the correct option is (d).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the following relational schemas<br>Student (<span style="text-decoration:underline;">studId</span>, name, age, sex, deptNo, advisor)<br>Department (<span style="text-decoration:underline;">deptId</span>, DName, hod, phoneNo)<br>Which of the following will be the TRC query to obtain the department names that do not have any girl students?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {d.Dname | department(d) ∧ ~ ((∃(s)) student(s) ∧ s.sex ≠ ‘F’ ∧ s.deptNo = d.deptId)}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {d.Dname | department(d) ∧ ((∀ (s)) student(s) ∧ s.sex ≠ ‘F’ ∧ s.deptNo = d.deptId)}</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> {d.Dname | department(d) ∧ ~ ((∃(s)) student(s) ∧ s.sex = ‘F’ ∧ s.deptNo = d.deptId)}<br><span class="explanation">Explanation:</span><br>To display the department name in output, there should not exist at least one student row in student relation such that student department number is equal to the deptId of that department and student sex is female. So, C is the correct answer.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the following relational schemas<br>Student (name, <span style="text-decoration:underline;">sid</span>, age, sex)<br>CourseInfo<span style="text-decoration:underline;">(courseId</span>, courseName, Instructor, Hours)<br>Enroll(<span style="text-decoration:underline;">sid, courseId</span>)<br>Which of the following queries are equivalent to this query in English?<br>“Find the names of students who have enrolled for all courses”<br>I.π<sub class="tcecode">name</sub>((Enroll/π<sub class="tcecode">courseId</sub> (courseInfo))⨝student)<br>II.{&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∀ e, f, g, h (¬(&lt;e, f, g, h&gt; ∊ courseInfo) ∨ (∃&lt;i, j&gt; ∊ Enroll(b = i ∧ e = j)))}<br>III.{s.name | student(s) ∧ (∀c (¬courseInfo(c) ∨ (∃e(enroll(e) ∧ e.sid = s.sid ∧ e.cid = c.cid))}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> I, II, III<br><span class="explanation">Explanation:</span><br>For a student name to display in output, we have to check for all courses given student was enrolled.<br>	I. <br><img src="./Test Results119_files/Q15_Exp.PNG" alt="image:Databases Topic Test - 3/Q15_Exp.PNG" width="292" height="106" class="tcecode"><br>(1)gives the studId of students who enrolled for all courses.<br>(2)gives the names of all those students<br><br>II can also be written as<br>{&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∀ e, f, g, h ((&lt;e, f, g, h&gt; ∊ courseInfo) →    ∃&lt;i, j&gt; ∊ Enroll(b = i ∧ e = j))}<br>This means for a student name to display in output, for all courses there should be at least one tuple in enroll such that this student is registered in that course (so we performed join by condition enroll.studId = student.studId and enroll.courseId = courseInfo.courseId)<br><br><br>	III can be written as<br>{s.name | student(s) ∧ (∀c (courseInfo(c) → ∃e(enroll(e) ∧ e.sid = s.sid ∧ e.cid = c.cid))}<br>		This query also returns the same as IInd query. So, the answer is option (a).
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> I, II</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> II, III</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> None of above</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a relational database there are three relations: Customers = C(<span style="text-decoration:underline;">customerName</span>), shop = S(<span style="text-decoration:underline;">shopName</span>), purchase = P(<span style="text-decoration:underline;">customerName, ShopName</span>). Then the relational algebra expression<br>π<sub class="tcecode">customer name</sub>(C-(π<sub class="tcecode">customer name</sub>((C×S)-P) ) ) returns the names of<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Customers who buy from at least one shop</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Customers who buy from at least 2 shops</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> Customers who buy from all shop<br><span class="explanation">Explanation:</span><br>Given relational algebra query:<br><img src="./Test Results119_files/Q7_Exp1.PNG" alt="image:Databases Topic Test - 3/Q7_Exp1.PNG" width="293" height="117" class="tcecode"><br>(1)gives the list of all customerNames who don’t buy from every shop<br>(2)gives the list of customerNames who buy from all shops<br><span style="text-decoration:underline;">For example</span>:<br>Consider the relations as follows:<br><img src="./Test Results119_files/Q7_Exp2.PNG" alt="image:Databases Topic Test - 3/Q7_Exp2.PNG" width="495" height="463" class="tcecode"><br>Result of (1) i.e π<sub class="tcecode">customerName</sub>((C×S)- P) is<br><img src="./Test Results119_files/Q7_Exp3.PNG" alt="image:Databases Topic Test - 3/Q7_Exp3.PNG" width="250" height="473" class="tcecode"><br><img src="./Test Results119_files/Q7_Exp4.PNG" alt="image:Databases Topic Test - 3/Q7_Exp4.PNG" width="474" height="273" class="tcecode"><br>∴ Answer is (c)
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> Customers who don’t buy anything at all</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Commondata Questions 12 &amp; 13</strong></span>:<br>Consider the following relational schemas<br>Student(Name, <span style="text-decoration:underline;">studId</span>, sex, Age), courseInfo(<span style="text-decoration:underline;">courseId</span>, coursename, instructorName) and Enroll(<span style="text-decoration:underline;">studId,courseId</span>). Write the DRC for the following query:<br>Find the names of the students who enrolled for course instructed by ‘sindhu’.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∃ &lt;e, f&gt; ∊ Enroll ∧ ∃ &lt;g, h, ‘sindhu’&gt; ∊ courseInfo ∧ (e = g))}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∃ &lt;e, f&gt; ∊ Enroll ∧ ∃ &lt;g, h, i&gt; ∊ courseInfo ∧ (e = g))}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∃ &lt;e, f&gt; ∊ Enroll ∧ ∃ &lt;g, h, i&gt; ∊ courseInfo ∧ (e = b))}</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∃ &lt;b, e&gt; ∊ Enroll ∧ ∃ &lt;e, f, ‘sindhu’&gt; ∊ courseInfo)}<br><span class="explanation">Explanation:</span><br>First we have to perform selection condition on courseInfo such that InstructorName = 'Sindhu' and then perform join between courseInfo and enroll such that courseInfo.courseId = enroll.courseId and then perform join between enroll and student as enroll.studId = student.studId and then retrieve student names from the resultant relation.<br>Among the given options, only ‘d’ is correct DRC query for given question.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Commondata Questions 12 &amp; 13</strong></span>:<br>Consider the following relational schemas<br>Student(Name, <span style="text-decoration:underline;">studId</span>, sex, Age), courseInfo(<span style="text-decoration:underline;">courseId</span>, coursename, instructorName) and Enroll(<span style="text-decoration:underline;">studId,courseId</span>). Write the DRC for the following query:<br>“Find the names of students who enrolled for course having id 100”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {&lt;b&gt; | ∃ a, c, d (&lt;a, b, c, d&gt; ∊ student ∃ e, f (&lt;e, f&gt; ∊ enroll ∧ (e = b) ∧ (e = 100))}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∃ e, f, g (&lt;e, f, g&gt; ∊ courseInfo ∧ (b = e) ∧ (e = 100))}</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt; ∊ student ∧ ∃ e, f (&lt;e, f&gt; ∊ Enroll ∧ (e = b) ∧ (f = 100))}<br><span class="explanation">Explanation:</span><br>We have to perform join between student and Enroll on the condition “student.studId = Enroll.studId and enroll.courseId = 100”. In the resultant table we have to project student names.<br>So, Option(c) is correct.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Commondata Questions 14 &amp; 15</strong></span>:<br>Consider the following relational schemas<br>Student (<span style="text-decoration:underline;">studId</span>, name, age, year, sex, deptNo, supervisorId)<br>Professor(<span style="text-decoration:underline;">eId</span>, name, sex, startyear, deptId, phoneNo)<br>Course(<span style="text-decoration:underline;">courseId</span>, courseName, points, deptId)<br>enroll(<span style="text-decoration:underline;">studId, courseId, sem, year</span>, marks)<br>teaching(<span style="text-decoration:underline;">eid, courseId, sem, year</span>). Write TRC for the following query<br><br>List the students who enrolled for every course taught by prof C.K.Das. Assume that prof C.K.das teaches at least one course.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> { s.studId | student(s) ∧ (∀c)(course(c) ∧ (∀t)(∀p) teaching(t) ∧ professor(p) ∧ p.name = ‘C.K.Das’ ∧ p.eid = t.eid ∧ t.courseId = c.courseId)) → (∃e)(enroll(e) ∧ e.courseId = c.courseId ∧ e.studId = s.studId))}</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> { s.studId | student(s) ∧ (∀c)(course(c) ∧ (∃t)(∃p) teaching(t) ∧ professor(p) ∧ p.name = ‘C.K.Das’ ∧ p.eid = t.eid ∧ t.courseId = c.courseId)) → (∃e)(enroll(e) ∧ e.courseId = c.courseId ∧ e.studId = s.studId))}<br><span class="explanation">Explanation:</span><br>b is correct answer.<br>For a studentId to display in output, he should have enrolled for all courses taught by prof C.K.Das.<br>For a given student, we have checked for among all courses, if any course taught by prof C.K.Das. If any such course is there, then he should have enrolled for that course.<br>In the question, it is mentioned that at least one course is taught by prof C.K.Das, so that all studId’s will not display if no course is taught by prof C.K.das.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> { s.studId | student(s) ∧ (∀c)(course(c) ∧ (~(∃t)~(∃p) teaching(t) ∧ professor(p) ∧ p.name = ‘C.K.Das’ ∧ p.eid = t.eid ∧ t.courseId = c.courseId)) → (∃e)(enroll(e) ∧ e.courseId = c.courseId ∧ e.studId = s.studId))}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Commondata Questions 14 &amp; 15</strong></span>:<br>Consider the following relational schemas<br>Student (<span style="text-decoration:underline;">studId</span>, name, age, year, sex, deptNo, supervisorId)<br>Professor(<span style="text-decoration:underline;">eId</span>, name, sex, startyear, deptId, phoneNo)<br>Course(<span style="text-decoration:underline;">courseId</span>, courseName, points, deptId)<br>enroll(<span style="text-decoration:underline;">studId, courseId, sem, year</span>, marks)<br>teaching(<span style="text-decoration:underline;">eid, courseId, sem, year</span>). Write TRC for the following queries<br><br>List the names of students who have not taken at least one course taught by their supervisor<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {s.name | student(s) ∧ (∃e) (∃t)(enroll(e) ∧ teaching(t) ∧ e.courseId ≠ t.courseId ∧ e.studId ≠ s.studId ∧ t.eid = s.supervisorId)}</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> {s.name | student(s) ∧ (∀e) (∀t)(enroll(e) ∧ teaching(t) ∧ e.courseId = t.courseId ∧ e.studId = s.studId ∧ t.eid = s.supervisorId)}</li>
+<li>&nbsp;<img src="./Test Results119_files/correct.png" width="18"> {s.name | student(s) ∧ ~(∃e) ~(∃t)(enroll(e) ∧ teaching(t) ∧ e.courseId = t.courseId ∧ e.studId = s.studId ∧ t.eid = s.supervisorId)}<br><span class="explanation">Explanation:</span><br>c is correct. Since, for the given name to appear in output, there should not exist at least one tuple in enroll and teaching relations such that the given student is enrolled in a course that course was taught by his supervisor. We make sure of this by putting join condition as e.studId = s.studId and e.courseId = t.courseId and t.eid = s.supervisorId.
+</li>
+<li>&nbsp;<img src="./Test Results119_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results119_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

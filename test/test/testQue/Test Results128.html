@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4425&test_id=47 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results128_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results128_files/calclayout.css">
+<script src="./Test Results128_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results128_files/jquery-ui.js.download"></script>
+<script src="./Test Results128_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results128_files/custom.js.download"></script>
+<script src="./Test Results128_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results128_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results128_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921399, 'I\'m sorry, the time available to complete the test is over!', false, 1486921399951);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4425&amp;test_id=47#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CD Topic Test 1</strong><br>
+Stages in Compilers, Ambiguity&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-11 22:27:06&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-11 23:03:22&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:36:16&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+13.690 / 25.000 (55%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+9 / 15 (60%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following statements:<br>S1: Writing "int main" as "intmain" in a C program shall result in lexical error.<br>S2: Writing "int main" as "intmain" in a C program is handled by the lexical analyzer and won't result to any errors  further in other stages.<br>Which of the above statements is /are true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>If "int main" is written as "intmain" in a C program it shall be considered as an identifier by a lexical analyzer but during semantic analysis it shall give an error during type checking.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Both</li>
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements:<br>P: A regular grammar cannot be ambiguous<br>Q: Every regular set has a LR(1) grammar.<br>Which of the following is TRUE?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> P is true and Q is false</li>
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Both P and Q are false</li>
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> P is false and Q is true<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Checking for statement P: A regular grammar cannot be ambiguous<br></span>A regular grammar can also be ambiguous.<br>	For eg: consider the following grammar:<br>S → rR--------- (production I)<br>                 / r --------- (production II)<br>R → rR--------- (production III)<br>       / ϵ -------- (production IV)<br>	In the above grammar there are two leftmost left most derivations for string ‘r’<br>(1)	S → rR ------- (using production I,  S → rR)<br>S → r   ------- (using production IV,  R → ϵ)<br>(2)	S → r--------- (production II, S → r)<br>So, statement P is false.<br>	<span style="text-decoration:underline;">Checking for Q: Every regular set has a LR(1) grammar</span><br>LR(1) grammars are those grammars which can be parsed by LR parsers having one look ahead.<br>LR parsers handle DCFL in linear time.<br>All regular languages are also DCFL hence, they all can be parsed by a LR(1) grammar.<br>So, statement Q is True.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Both P and Q are true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the production rules of a grammar G1 as:<br>S<sub class="tcecode">1</sub>→ EF | eeF<br>E → e | Ee<br>F → f<br>and the production rules of a grammar G2 as:<br>S<sub class="tcecode">2</sub> → e S<sub class="tcecode">2</sub> f S<sub class="tcecode">2</sub> | f S<sub class="tcecode">2</sub> e S<sub class="tcecode">2</sub> | ∈<br>Which of the following is correct statement?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> G1 is not ambiguous and G2 is not ambiguous</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> G1 is not ambiguous and G2 is ambiguous</li>
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> G1 is ambiguous and G2 is ambiguous<br><span class="explanation">Explanation:</span><br>A grammar is ambiguous if a parser cannot derive unique parse trees for certain input string.<br>For G1 we can generate two parse trees for the string "eef" <br><img src="./Test Results128_files/Q1_exp1.png" alt="image:CD Topic Test 1/Q1_exp1.png" width="290" height="189" class="tcecode"><br>Similarly for G2 we can also generate more than one parse trees for string like "efef "<br><img src="./Test Results128_files/Q1_exp2.png" alt="image:CD Topic Test 1/Q1_exp2.png" width="419" height="243" class="tcecode">
+</li>
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> G1 is ambiguous and G2 is not ambiguous</li>
+</ol>
+<br><br>
+</li>
+<li>
+Many compilers are divided into two largely independent parsers: a front- end, responsible for analyzing the source code, and a back -end, responsible for generating the target code. What is the most important motivation for this division into passes?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> To minimize memory requirements on modern machines</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> To facilitate debugging the compiler</li>
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> It aids in portability<br><span class="explanation">Explanation:</span><br>Separating the parser from the executable code generation makes it much easier to port a compiler from one processor architecture to another.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> To facilitate division of labor when a compiler is build by a large team of programmers</li>
+</ol>
+<br><br>
+</li>
+<li>
+The equivalent production rules corresponding to the following production rules:<br>E → E + T | T<br>T → T * F |F<br>F→ (E) | id<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> E → TE<sup class="tcecode">'</sup>, E<sup class="tcecode">'</sup> → +TE<sup class="tcecode">'</sup> |∈, T → FT<sup class="tcecode">'</sup>, T<sup class="tcecode">'</sup> → *FT |∈, F → (E) | id</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> E → T + E| T, T → F*T | F, F → (E) | id</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> E → T,  E<sup class="tcecode">'</sup> →E + T, T→ F, T → T * F, F → (E) | id</li>
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> E → TE<sup class="tcecode">'</sup>, E<sup class="tcecode">'</sup> → +TE<sup class="tcecode">'</sup> |   ∈, T → FT<sup class="tcecode">'</sup>, T<sup class="tcecode">'</sup> → *FT<sup class="tcecode">'</sup> | ∈, F → (E) | id<br><span class="explanation">Explanation:</span><br>The given grammar is left recursive.<br>A grammar is said to be left recursive if it is of the form:<br>A → A α | β<br>The grammar after left recursion is: <br>A → β A<sup class="tcecode">'</sup><br>A<sup class="tcecode">'</sup> → ∈ | α A<sup class="tcecode">'</sup><br>The given grammar:<br>		E → E + T ------- (1)<br>                    | T   ------- (2)<br>      		T → T * F ------- (3)<br>                    | F   ------- (4)<br>     		 F→ (E)   ------- (5)<br>       | id       ------- (6)<br>has two left recursions at production (1) and production (3) <br>After removing the left recursion we get:<br>E → TE<sup class="tcecode">'</sup><br>       E<sup class="tcecode">'</sup> → +TE<sup class="tcecode">'</sup> |∈ <br>                          T → FT<sup class="tcecode">'</sup><br>                         T<sup class="tcecode">'</sup> → *FT<sup class="tcecode">'</sup> |∈<br>                       F → (E) | id
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A language L allows the declaration of arrays whose size are not known during compilation. Considering that it has to make the efficient use of memory, which of the following is TRUE.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> For L, a compiler using dynamic memory allocation can be written<br><span class="explanation">Explanation:</span><br>If the size of the array is not known during compilation then it has to be mentioned during run time when the dynamic memory allocation will be made or else memory can’t be assigned to the array. For this reason we require a complier using dynamic memory allocation for the  language L.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> No compiler can be written instead an interpreter is required</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> For L, a compiler using static memory allocation can be written</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br>		S → rX | rRx<br>		R → xRx | r<br>		X → rX | ∈<br>        	 How many back tracks are required to generate the string 'rrx' from the above grammar?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>First we shall be using the following productions:<br>S -&gt; rX -&gt; rrX -&gt; rrrX <br>The parse tree that we get is shown below. However we find that if we expand this way it won’t lead to string "rrx" so we do our first back track <br><img src="./Test Results128_files/Q7_exp1.png" alt="image:CD Topic Test 1/Q7_exp1.png" width="257" height="154" class="tcecode"><br>Now we are at the following stage:<br>S -&gt; rX -&gt; rrX<br>We try to replace X with an alternative production <br>S -&gt; rX -&gt; rrX -&gt; rr€<br>On doing this also we find that it is nowhere near to the derivation of the string w, so we back track twice.<br><img src="./Test Results128_files/Q7_exp2.png" alt="image:CD Topic Test 1/Q7_exp2.png" width="270" height="152" class="tcecode"><br>We get the following parse tress after two back tracks<br><img src="./Test Results128_files/Q7_exp3.png" alt="image:CD Topic Test 1/Q7_exp3.png" width="95" height="77" class="tcecode"><br>We now apply the production X → ∈  . Again we back track since it was not leading us to the string ‘rrx’<br><img src="./Test Results128_files/Q7_exp4.png" alt="image:CD Topic Test 1/Q7_exp4.png" width="263" height="136" class="tcecode"><br>This is followed by another back track:<br><img src="./Test Results128_files/Q7_exp5.png" alt="image:CD Topic Test 1/Q7_exp5.png" width="209" height="84" class="tcecode"><br>We will replace the whole S → rX   production and shall apply S → rXr<br><img src="./Test Results128_files/Q7_exp6.png" alt="image:CD Topic Test 1/Q7_exp6.png" width="88" height="70" class="tcecode"><br>Applying the production X → xRx, still we find it is not leading to our string so we shall back track<br><img src="./Test Results128_files/Q7_exp7.png" alt="image:CD Topic Test 1/Q7_exp7.png" width="224" height="124" class="tcecode"><br>We will use the production R → r and we see that it gives us the desired string w.<br><img src="./Test Results128_files/Q7_exp8.png" alt="image:CD Topic Test 1/Q7_exp8.png" width="112" height="110" class="tcecode"><br>So, the number of back tracks = 6
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> 2</li>
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar:<br>		S → PQ | SQ | PS<br>		P → x<br>		Q → y<br>	To get a string of n terminals, the number of steps to be used is:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> 2n-1<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>		S → PQ | 	------- (1)<br>        SQ | 	-------------- (2)<br>       PS		---------------- (3)<br>		P → x		------------ (4)<br>		Q → y		----------- (5)<br>	Let us derive the string w1 = xxy. Here the number of terminals = 3.<br>	         S → PS		---------- (3) <br>		→ xS		------------- (4)<br>		→ xPQ	----------- (5)<br>		→ xxQ	----------- (4)<br>		→ xxy	------------ (5)<br>	The number of productions is 5.<br>	Let us take another example. We shall derive the string w2 = xxyy where the number of terminals is 4. The productions to derive the string are given as follows:<br>	         S → SQ             --------- (2)<br>		→ PSQ      	---------- (3)<br>		→ xSQ      	---------- (4)<br>		→ xPQQ      	-------- (1)<br>		→ xxQQ      	-------- (4)<br>		→ xxyQ      	--------- (5)<br>		→ xxyy      	---------- (5)<br>	The number of steps = 7<br>	∴ We saw for 3 terminals number of steps are 5<br>	     Again for 4 terminals number of steps are 7<br>	    It is going in 2n – 1 fashion.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> n<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> 2n</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> n + 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+For an object oriented programming consider the following example:<br>(1)	There is a class C with a method named m( )<br>(2)	D is a sub class of C, and D has its own method named m( )<br>(3)	There is a use of m of the form x.m( ), where x is an object of class C.<br>          For statement (3) whether x will be a class of C or of the subclass of D when will it be resolved?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> Run time<br><span class="explanation">Explanation:</span><br>Normally, it is impossible to tell at compile time whether x will be of class C or of subclass D. If the method application occurs several times it is likely that some will be on objects denoted by x that are in class C but not in D, while others will be in class D.<br>	It is not until run-time that it can be decided which definition of m is the right one. It is after compilation, when the code is generated, during run time, it is determined to which class the object x belongs and the call to one or other method named m is resolved.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results128_files/wrong.png" width="16">&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Compile time</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Edit time</li>
+</ol>
+<br><br>
+</li>
+<li>
+In some phase of compiler the following input is given:<br>	Input:<br>		t<sub class="tcecode">1</sub> := int to float(60)<br>		t<sub class="tcecode">2</sub> := id<sub class="tcecode">3</sub> / t<sub class="tcecode">1</sub><br>		t<sub class="tcecode">3</sub> := id<sub class="tcecode">2</sub> + t<sub class="tcecode">2</sub><br>		id<sub class="tcecode">1</sub> := t<sub class="tcecode">3</sub><br>	We get the following output:<br>		t<sub class="tcecode">1</sub> := id<sub class="tcecode">3</sub> / 60<br>		id<sub class="tcecode">1</sub> := id<sub class="tcecode">2</sub> + t<sub class="tcecode">1</sub><br>	Where t<sub class="tcecode">1</sub>, t<sub class="tcecode">2</sub>, t<sub class="tcecode">3</sub> are temporary storage and id<sub class="tcecode">1</sub>, id<sub class="tcecode">2</sub>, id<sub class="tcecode">3</sub> are identifiers, “int to float” is converting 60 to real number. The above phase is:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Intermediate code generator</li>
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> Code optimizer<br><span class="explanation">Explanation:</span><br>The parse tree from semantic analysis phase is converted to intermediate code in ICG phase of compiler which is the input in the question. These codes are then optimized by reducing the number of lines of code. This work is done by the code optimizer.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Code generator</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following:<br><img src="./Test Results128_files/Q15.PNG" alt="image:CD Topic Test 1/Q15.PNG" width="500" height="227" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> A – III , B – IV, C – I, D – II<br><span class="explanation">Explanation:</span><br><img src="./Test Results128_files/Q15_exp.PNG" alt="image:CD Topic Test 1/Q15_exp.PNG" width="513" height="247" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> A – III , B – II, C – I, D – IV</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> A – II , B – I, C – III, D – IV</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> A – IV , B – II, C – I, D – III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following:<br><img src="./Test Results128_files/Q8.png" alt="image:CD Topic Test 1/Q8.png" width="536" height="211" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> i- a, ii- d, iii- c, iv- b</li>
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> i-c, ii- d, iii-b, iv- a<br><span class="explanation">Explanation:</span><br><img src="./Test Results128_files/Q8_exp.PNG" alt="image:CD Topic Test 1/Q8_exp.PNG" width="519" height="198" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> i- d, ii- c, iii- a, iv- b</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> i-b, ii- d, iii- c, iv- a</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following features cannot be captured by CFG?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Syntax of recursive procedures</li>
+<li>&nbsp;<img src="./Test Results128_files/correct.png" width="18"> Whether a variable is declared before its use<br><span class="explanation">Explanation:</span><br>Declaring a variable before its use is equivalent to recognizing the language {wcw | w ∈ {0,1}*}, where the first w is the declaration and the second is its use and wcw is not a CFG.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Syntax of if - then – else statements</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> Matching nested parenthesis</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Questions (Q14 &amp; Q15)</strong></span><br>The following grammar:<br>		S → R ↑ S | S &amp; R | R <br>		R → R # R | Q @ R | Q<br>		Q → i<br>From the above grammar what can be said about the associativity of the operators?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> @ is left associative</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> # is right associative</li>
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> ↑ is right associative<br><span class="explanation">Explanation:</span><br>Let us assume that we have to produce the string   i ↑ i ↑ i   . So, the parse tree is as follows:<br><img src="./Test Results128_files/Q9_exp1.png" alt="image:CD Topic Test 1/Q9_exp1.png" width="146" height="285" class="tcecode"><br>We can see that while deriving the string the parse tree is growing to the right<br>	Also production for ↑ <br>		S → R ↑ S<br>	Shows that it is right recursive. So ↑ is right associative.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Questions (Q14 &amp; Q15)</strong></span><br>The following grammar:<br>		S → R ↑ S | S &amp; R | R <br>		R → R # R | Q @ R | Q<br>		Q → i<br>       It can be implied that:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> ↑  has higher precedence than #</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results128_files/correct.png" width="18">&nbsp;<img src="./Test Results128_files/correct.png" width="18"> # has higher precedence than &amp;<br><span class="explanation">Explanation:</span><br>The given grammar<br>		S → R ↑ S | S &amp; R | R <br>		R → R # R | Q @ R | Q<br>		Q → i<br>Suppose we want to derive the string      i # i &amp; i     then the parse tree shall be constructed in the following way:<br><img src="./Test Results128_files/Q9_exp1.png" alt="image:CD Topic Test 1/Q9_exp1.png" width="146" height="271" class="tcecode"><br>Since in the above parse tree construction # is more away from the start symbol so # has higher precedence than &amp;<br>Now consider that we have to derive the string:     i # i ↑ i<br>For this the parse tree shall be:<br><img src="./Test Results128_files/Q9_exp2.png" alt="image:CD Topic Test 1/Q9_exp2.png" width="182" height="278" class="tcecode"><br>Again we can see # is away from the start symbol compared to ↑, so # has a higher precedence.<br>Since ↑ and &amp; are defined at the same level so both have same precedence. Similarly # and @ has same precedence.
+</li>
+<li>&nbsp;<img src="./Test Results128_files/wrong.png" width="16"> &amp; has higher precedence than ↑</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results128_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

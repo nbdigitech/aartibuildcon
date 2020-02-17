@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4142&test_id=35 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results133_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results133_files/calclayout.css">
+<script src="./Test Results133_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results133_files/jquery-ui.js.download"></script>
+<script src="./Test Results133_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results133_files/custom.js.download"></script>
+<script src="./Test Results133_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results133_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results133_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921409, 'I\'m sorry, the time available to complete the test is over!', false, 1486921409224);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4142&amp;test_id=35#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Topic Test 5</strong><br>
+Turing Machines, Context Sensitive Languages, Recursive and Recursively Enumerable Languages&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-10 10:52:08&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-10 11:36:49&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:41&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+15.350 / 25.000 (61%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+10 / 15 (67%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following statements<br>S1] Multi tape - TM is more powerful than Single tape - TM <br>S2] If algorithm exists for a particular problem then the language for the problem is Recursive<br>Which of the following is TRUE?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is TRUE &amp; S2 is TRUE</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is TRUE &amp; S2 is FALSE</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is FALSE &amp; S2 is FALSE</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> S1 is FALSE &amp; S2 is TRUE<br><span class="explanation">Explanation:</span><br>S1: Time taken for parsing a string using multi tape - TM and that of single tape - TM may vary but not the accepting power.<br>Number of languages accepted by multi tape - TM is equal to the number of languages accepted by single tape - TM<br><br>S2:The concept of an algorithm requires the problem to be solved in finite time producing a definite result following a predefined procedure. The set of recursive languages are those which halt on all inputs, thus either comes up with YES or NO. In recursive enumerable sets, strings accepted procedure a YES result but on some strings the corresponding TM may go on forever thus violating the requirements of an algorithm.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar below:<br>G: S → AaBC<br>   BC → ε<br>   aB →aaB<br>   A → ε<br>Which of the following is TRUE?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> G is Type 3</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> G is Type 0<br><span class="explanation">Explanation:</span><br>According the Chomsky hierarchy, <br>in Type 0 grammar, the productions are of the form α → β, where α, β∈(V, T)<sup class="tcecode">*</sup>. These are called unrestricted grammars.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> G is Type 1</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> G is Type 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given below is a Turing machine:<br>Σ = {a, b}, Γ = {a, b, B}<br><img src="./Test Results133_files/Q3.PNG" alt="image:TOC Topic Test 5/Q3.PNG" width="760" height="355" class="tcecode"><br><br>Consider the following statements:<br><br>(S1) The given TM may or may not halt for every string<br><br>(S2) This TM accepts recursive enumerable language<br><br>Which of the following is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is FALSE &amp; S2 is FALSE</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is TRUE &amp; S2 is TRUE</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> S1 is TRUE &amp; S2 is FALSE</li>
+<li>&nbsp;<img src="./Test Results133_files/correct.png" width="18"> S1 is FALSE &amp; S2 is TRUE<br><span class="explanation">Explanation:</span><br>(1)This TM is moving only in single direction. Therefore it definitely halts on every input whether the string is accepted or not.<br>(2)Since the given TM halts for every string, it accepts recursive language and every recursive language is a recursively enumerable.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+L = {&lt;m,w&gt; | m accepts w}, m is a TM and w is a string.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L is recursive</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> L is recursive enumerable but not recursive<br><span class="explanation">Explanation:</span><br>Given a string w and a Turing machine M, there exists no algorithm which decides whether the string w is accepted or not. So, it is not recursive. <br><br>The Turing machine M may or may not halt over the string w, so it is recursively enumerable. (The membership property for TM is undecidable).
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L is context sensitive</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L is not recursive enumerable</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>1] There exists a Turing machine which has only one state.<br>2] For Turing machines, the input alphabet Σ can be same as the tape alphabet Γ.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/correct.png" width="18"> 1 is FALSE &amp; 2 is FALSE<br><span class="explanation">Explanation:</span><br>S1: Turing machine should have at least two states: one non-final state and a final state to reject or accept a given string, respectively.<br>S2: Input alphabet does not contain blank symbol.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 is TRUE &amp; 2 is FALSE</li>
+<li><img src="./Test Results133_files/wrong.png" width="16">&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 is TRUE &amp; 2 is TRUE</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 is FALSE &amp; 2 is TRUE</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar<br>S →aBSd|T<br>T→ bTc|ε<br>Ba → aB<br>Bb → bb<br>Bd → bd<br>Which of the following languages generated by the above grammar?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L = {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> <sup class="tcecode">n</sup> d<sup class="tcecode">n</sup> | n≥0}.</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L = {a<sup class="tcecode">n+m</sup> b<sup class="tcecode">m+n</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">n</sup> | m, n≥0}.</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> L = {a<sup class="tcecode">n</sup> b<sup class="tcecode">m+n</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">n</sup> | m,n≥0}.<br><span class="explanation">Explanation:</span><br>S →aBSd|T<br>T→ bTc|ε<br>Ba → aB<br>Bb → bb<br>Bd → bd<br>We can see that the production S → aBSd generates equal number of a’s and d’s. The production T→ bTc generates equal number of b’s and c’s. <br>The production Ba → aB swaps a with B. This in turn makes the terminal ‘a’ to move towards left side until it hits an ‘a’.<br>The production Bb → bb adds one more b to the existing string. Bd → bd replaces B with b. <br>Now, let’s see what type of strings the grammar can generate. <br>S derives ε from S → T, T → ε<br>S derives bc:<br><img src="./Test Results133_files/Q9_exp1.PNG" alt="image:TOC Topic Test 5/Q9_exp1.PNG" width="72" height="62" class="tcecode"><br><img src="./Test Results133_files/Q9_exp2.PNG" alt="image:TOC Topic Test 5/Q9_exp2.PNG" width="166" height="262" class="tcecode"><br>It generates strings L = { ε, bc, abd, abbcd, aabbbcdd, abbbccd,…}<br>Thus the language generated by the given grammar is {a<sup class="tcecode">n</sup> b<sup class="tcecode">m+n</sup> c<sup class="tcecode">m</sup> d<sup class="tcecode">n</sup> | n,m ≥0}
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages<br>L1 = {w | n<sub class="tcecode">a</sub>(w)=n<sub class="tcecode">b</sub>(w)=n<sub class="tcecode">c</sub>(w)} <br>L2 = {wvw<sup class="tcecode">R</sup>: w,v ∈ {a,b}<sup class="tcecode">+</sup>. |w|&gt;=|v|}<br>Which of the following is/are true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Neither L1 nor L2 is CSL</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> Both L1 and L2 are CSL<br><span class="explanation">Explanation:</span><br>L1 = {w:n<sub class="tcecode">a</sub>(w)=n<sub class="tcecode">b</sub>(w)=n<sub class="tcecode">c</sub>(w)} requires 2 stacks to accept strings in the language. So, it is CSL but not CFL.<br>L2 = {wvw<sup class="tcecode">R</sup> | w,v ∈ {a,b}<sup class="tcecode">+</sup>. |w|&gt;=|v|} <br>Given constraints are,<br>(i) |w| &gt;= |v|<br>(ii) wvw<sup class="tcecode">R</sup><br>For checking these constraints we require two stacks. <br>∴ The language is CSL.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L1 is CSL and L2 is CFL</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> L1 is CFL and L2 is CSL</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following Turing Machine:<br><img src="./Test Results133_files/Q2-question.png" alt="image:TOC Topic Test 5/Q2-question.png" width="494" height="145" class="tcecode"><br>What is the output of the string 0100101110, if this is accepted by above TM?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 0001000010</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> 0111111110<br><span class="explanation">Explanation:</span><br>The given Turing machine writes the first symbol as 0 on the tape whatever the input symbol is. It then writes 1 for every input symbol till it reaches the end of the string. When it reaches the end of the string, it will move to the left by one symbol, and changes it to 0 and accepts. So, the output generated by the TM is of the form 01*0.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 0111101110</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 0010111010</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar G with ∑ = {a} with<br>	S → $Ca# | a |ϵ<br>	C# → D# | E<br>	$E → ϵ<br>	Ca → aaC<br>	aD → Da<br>	$D → $C<br>	aE → Ea<br>where $ denotes the starting of the string and # denotes the end of the string.<br>Which of the following strings is/are generated by the above grammar?<br>(i)     aa<br>(ii)	aaa<br>(iii)	aaaa<br>(iv)	aaaaaa<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/correct.png" width="18"> Only (i) and (iii)<br><span class="explanation">Explanation:</span><br>S⇒$Ca#⇒$aaC#⇒$aaE⇒$aEa⇒$Eaa⇒aa<br>S⇒$Ca#⇒$aaC#⇒$aaD#⇒$aDa#⇒$Daa#⇒$Caa#⇒$aaCa#<br>    ⇒$aaaaC#⇒$aaaaE⇒$aaaEa⇒$aaEaa⇒$aEaaa⇒$Eaaaa⇒aaaa<br>The language generated by the grammar is L(G)={a<sup class="tcecode">i</sup> | i is a power of 2}
+</li>
+<li><img src="./Test Results133_files/wrong.png" width="16">&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Only (i), (iii) and (iv)</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> All are generated</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Only (i) and (ii)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Turing machine below:<br><img src="./Test Results133_files/Q7-question.png" alt="image:TOC Topic Test 5/Q7-question.png" width="429" height="364" class="tcecode"><br>Which is the following language accepted by given TM<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> {a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup> | n &lt; m}</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> {a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup> | n &gt; m }</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> {a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup> | n = m }<br><span class="explanation">Explanation:</span><br>1.	The given Turing machine on seeing a, converts it to x, goes to q<sub class="tcecode">1</sub> and moves the read/write header to right. <br>2.	At q<sub class="tcecode">1</sub>, it skips any number of a’s and moves right, being at q<sub class="tcecode">1</sub> only. <br>3.	On seeing b at q<sub class="tcecode">1</sub>, it moves left by making it y and transits to q<sub class="tcecode">2</sub>. <br>4.	At q<sub class="tcecode">2</sub>, it skips all a’s and moves left being at q<sub class="tcecode">2</sub> until it reaches the output symbol x on the tape. <br>5.	Once it reaches the output symbol x, it skips and moves right and transits to q<sub class="tcecode">0</sub>. <br>Till now, we are done with one round of parsing the whole string. <br>In the next rounds, the above procedure repeats till it converts every a into x and every b into y. If we find any output symbol y, we simply skip it and move right being at q1. Once we convert all a’s into x, then we will skip all y’s and move to the right being at q<sub class="tcecode">3</sub>.  <br>Observe that, we are actually counting the number of a’s and b’s. If all a’s are followed by b’s and the number of a’s and b’s are equal, then only we are accepting the string. Otherwise, we do not accept the strings. See that strings like aaabb, aabbb, abab are not accepted. <br><br>Consider the string ab<br>q<sub class="tcecode">0</sub>abB → xq<sub class="tcecode">1</sub>bB → xq<sub class="tcecode">2</sub>yB → q<sub class="tcecode">2</sub>xyB → xq<sub class="tcecode">0</sub>yB → xyq<sub class="tcecode">3</sub>B → xyq<sub class="tcecode">3</sub>B → xyBq<sub class="tcecode">f</sub><br>ab is accepted
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> {w|n<sub class="tcecode">a</sub>(w)=n<sub class="tcecode">b</sub>(w)}</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let us consider the grammar <br>S → AxB<br>A → AC|ε<br>Cx → xxC<br>CB → B<br>B → ε<br>Which of the following strings is not accepted by given grammar?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> xxxx</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> x</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> xx</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>S → AxB → εxε<br>S → AxB →ACxB→AxxCB→ εxxCB →xxB→xx<br>S → AxB →ACxB→AxxCB→ ACxxCB →AxxCxB→AxxxxCB→AxxxxB→ εxxxxε <br>This grammar generates all the strings given above
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let us consider the grammar (context sensitive grammar)<br>	S → a b c / a Abc,<br>	Ab → bA,<br>	Ac → B bcc,<br>	bB → Bb,<br>	aB → aa / aaA<br>and also consider the strings<br>(1)a a b b c c c<br>(2)a b c<br>(3)a a a b b b c c c<br>which of above strings are generated by the given grammar<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Only (2) &amp; (3) &amp; (1)</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Only (1)</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Only (1) &amp; (2)</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> Only (2) &amp; (3)<br><span class="explanation">Explanation:</span><br>S → a b c ⇒ a b c is generated<br><span style="text-decoration:underline;">a a b b c c c</span> :<br><img src="./Test Results133_files/Q6_Exp1.PNG" alt="image:TOC Topic Test 5/Q6_Exp1.PNG" width="543" height="667" class="tcecode"><br>Not accepted<br><br><span style="text-decoration:underline;">a a a b b b c c c:</span><br>Continuing above derivation<br><img src="./Test Results133_files/Q6_Exp2.PNG" alt="image:TOC Topic Test 5/Q6_Exp2.PNG" width="210" height="239" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following languages<br><img src="./Test Results133_files/Q13-question.png" alt="image:TOC Topic Test 5/Q13-question.png" width="814" height="139" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 – (b), 2 – (b), 3 – (c)</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 – (c), 2 – (c), 3 – (a)</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1 – (a), 2 – (a), 3 – (c)</li>
+<li><img src="./Test Results133_files/correct.png" width="18">&nbsp;<img src="./Test Results133_files/correct.png" width="18"> 1 – (b), 2 – (a), 3 – (c)<br><span class="explanation">Explanation:</span><br>L={w1<sup class="tcecode">m</sup>|w∈{a,b}* and n<sub class="tcecode">a</sub>(w)=m}<br>Push all a’s and b’s on to the stack. Pop from the stack on seeing 1. If the stack becomes empty and the string is completely parsed then the string is in the language. Otherwise it is not in the language. We need only one stack and we can define every transition deterministically. So, this is DCFL. <br><br>L= {0<sup class="tcecode">n</sup>1<sup class="tcecode">n</sup>0<sup class="tcecode">n</sup>|n≥0}<br>We need two stacks to recognize the string whether it is in the language or not. It is CSL.<br><br>L={a<sup class="tcecode">n</sup>b<sup class="tcecode">2n</sup>}∪{a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>}<br>We can construct DPDAs for the languages {a<sup class="tcecode">n</sup>b<sup class="tcecode">2n</sup> } and {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>}. But the union of these two languages cannot be deterministic. We need to guess whether the string is of the form {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>}or of the form {a<sup class="tcecode">n</sup>b<sup class="tcecode">2n</sup>}. This is non deterministic context free language.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Common Data Questions (Q14 &amp; Q15)<br></span><br></strong><br>Given below is a Turing machine, where q<sub class="tcecode">0</sub> is start state and q<sub class="tcecode">f</sub> is the final state.<br><img src="./Test Results133_files/Q8.PNG" alt="image:TOC Topic Test 5/Q8.PNG" width="310" height="191" class="tcecode"><br>What does the given TM compute?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/correct.png" width="18"> One’s complement of the given input<br><span class="explanation">Explanation:</span><br>It computes the one’s complement of the given input.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Multiplies the given number by 4</li>
+<li><img src="./Test Results133_files/wrong.png" width="16">&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> Two’s complement of the given input</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Common Data Questions (Q14 &amp; Q15)<br></span><br></strong>Given below is a Turing machine, where q<sub class="tcecode">0</sub> is start state and q<sub class="tcecode">f</sub> is the final state. Find the output for the input string 0011.<br><img src="./Test Results133_files/Q8.PNG" alt="image:TOC Topic Test 5/Q8.PNG" width="310" height="191" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results133_files/correct.png" width="18"> 1100<br><span class="explanation">Explanation:</span><br>Given input string 0011, <br>Bq0 0011B → B1q0011B<br>		→ B11q011B<br>		→ B111q11B<br>		→ B11q211B<br>		→ B110q01B<br>		→ B1101q1B<br>		→ B110q21B<br>		→ B1100q0B<br>q0 on seeing a black symbol, goes to final state. So the output is 1100.
+</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1110</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1010</li>
+<li>&nbsp;<img src="./Test Results133_files/wrong.png" width="16"> 1011</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results133_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

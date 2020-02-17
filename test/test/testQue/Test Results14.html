@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91777&test_id=324 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results14_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results14_files/calclayout.css">
+<script src="./Test Results14_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results14_files/jquery-ui.js.download"></script>
+<script src="./Test Results14_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results14_files/custom.js.download"></script>
+<script src="./Test Results14_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results14_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results14_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837023, 'I\'m sorry, the time available to complete the test is over!', false, 1486837023316);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91777&amp;test_id=324#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 14</strong><br>
+Operating Systems, Databases&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:10:59&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+A fork() system call can fail, if<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> after fork() the parent and the child both are executing the same program</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> When the maximum no. of processes that can be under execution by a single user exceeds<br><span class="explanation">Explanation:</span><br>A fork() call will fail if the no. of processes exceeds the maximum limit on no. of processes that can be executed by a user.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> the previously executed statement in the program is also a fork() call</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> All of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume transactions T1 and T2 has 5 and 6 operations respectively. Number of possible concurrent schedule for these transactions are:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 5!×6!</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> (11)!</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 460<br><span class="explanation">Explanation:</span><br>Given T1 and T2 has 5 and 6 operations.<br>No. of concurrent schedules possible<br>=((5+6)!/(5!×6!)) - 2!<br>=(11!/(5!×6!)) - 2!<br>=((11×10×9×8×7×6!)/(6!×5!)) - 2!<br>=((11×10×9×8×7)/(5×4×3×2)) - 2!<br>=462-2 = 460.<br>Answer is Option [d].
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the correct option about deadlock and starvation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> A system in deadlock already has starvation<br><span class="explanation">Explanation:</span><br>A system is in deadlock if two or more processes are blocked indefinitely waiting for each other to release reources.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Starvation always leads to deadlock</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Both a &amp; b</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a B tree with search key field of 4 bytes, record pointer of 5 bytes, block pointer of 10 bytes and block size of 512 bytes. Calculate the order of B-tree node?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 27<br><span class="explanation">Explanation:</span><br>(P)(10)+(P-1)(4+5)≤512<br>10P+9P-9≤512<br>19P-9≤512<br>19P≤521<br>P≤521/19<br>P=⌊521/19⌋<br>=⌊27.421⌋<br>=27<br>∴Order of Btree is 27.<br>∴ Answer is option [a].
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 25</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation schema Employee (eid, ename, salary, age) and B+ tree index is built on the table based on eid field. With reference to the B+ tree of order 3 is shown below, the minimum number of nodes (including the root node) that must be fetched in order to implement the following query:<br>“SELECT * from Employee where eid &gt;= 7 AND eid &lt;= 19;	<br><img src="./Test Results14_files/1.png" alt="image:MST14/1.png" width="486" height="125" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/2.png" alt="image:MST14/2.png" width="694" height="258" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the below table of processes and their times:<br><img src="./Test Results14_files/21.png" alt="image:MST14/21.png" width="400" height="156" class="tcecode"><br>By using SRTF algorithm find the completion time of P4.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 39<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/22.png" alt="image:MST14/22.png" width="668" height="250" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 36</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 38</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 37</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relation EMPLOYEE and DEPARTMENT: <br><img src="./Test Results14_files/4.png" alt="image:MST14/4.png" width="323" height="241" class="tcecode"><br><img src="./Test Results14_files/5.png" alt="image:MST14/5.png" width="443" height="353" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/6.png" alt="image:MST14/6.png" width="465" height="242" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schema<br>Employee (<span style="text-decoration:underline;">Eid</span>, Ename, Salary, Age) with primary key as underlined. (Assume that the values of age field in table are in sorted order)<br>Consider the following SQL query<br>Select * from Employee where age ≤ 30 AND age ≥ 25;<br>To implement the above query effectively which of the following indices is used (at first level)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Primary index on eid field of employee table</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Primary index on age field of employee table</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Clustered index on eid field of employee table</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Clustered index on age field of employee table<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/3.png" alt="image:MST14/3.png" width="500" height="383" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements.<br>S1: A thread running in critical section may get context switched.<br>S2: Hardware access to devices is usually unavailable in user mode.<br>S3: Modifications to the page tables are only possible in Kernel mode.<br>Which of the above statements are correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> S1, S2</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> S2, S3</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> S1, S3</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> S1, S2, S3<br><span class="explanation">Explanation:</span><br>S1: A low priority process which is in critical section can be preempted by a high priority process, so S1 is true<br>S2: Access to hardware is denied in user mode. So, S2 is true.<br>S3: Page tables are stored in the system address space, so it requires kernel mode to access page tables.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table Student(<span style="text-decoration:underline;">Sid</span>,Sname,Dept)<br><img src="./Test Results14_files/8.png" alt="image:MST14/8.png" width="293" height="172" class="tcecode"><br>What will be the result of the following query?<br>Select*from Student where Sid=925<br> UNION ALL <br>Select*from Student where Dept=' CSE';<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> <img src="./Test Results14_files/9.png" alt="image:MST14/9.png" width="216" height="46" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> <img src="./Test Results14_files/DBMS_MST14_Optionb.JPG" alt="image:MST14/DBMS_MST14_Optionb.JPG" width="167" height="89" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/DBMS_MST14.JPG" alt="image:MST14/DBMS_MST14.JPG" width="167" height="165" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Can’t say</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Internal fragmentation can be avoided by________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Memory management by segmentation</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Making the unit of memory allocation to a single word</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Both a &amp; b<br><span class="explanation">Explanation:</span><br>Segmentation can be used to avoid internal fragmentation( as variable size blocks of memory is allocated for processes). Also if the memory is allocated in word by word, even then internal fragmentation can be avoided.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let there be a relation R(A,B,C,D,E) with FDs  under R:{A→BC,C→D,D→E,CD→A}.<br>How many super keys are possible?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 19</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 24<br><span class="explanation">Explanation:</span><br>Given relation R(A,B,C,D,E)<br>For under R:{A→BC,C→D,D→E,CD→A}<br>Candidate key for R:<br>Candidate keys of R:{A,C}<br>No.of superkeys=No.of superkeys(A)+No.of superkeys(C)-No.of superkeys(AC)<br>		=2<sup class="tcecode">4</sup>+2<sup class="tcecode">4</sup>-2<sup class="tcecode">3</sup><br>=16+16-8<br>=24
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match List-I with List-II and select the correct answer using the codes given below in the lists: <br><img src="./Test Results14_files/14.png" alt="image:MST14/14.png" width="471" height="185" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I-IV, II-IV, III-III, IV-II</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I-I, II-III, III-IV, IV-V</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> I-I, II-IV, III-III, IV-V<br><span class="explanation">Explanation:</span><br>Primary index ⟶ Primary key i.e., Ordering Key field<br>Secondary index ⟶Candidate key i.e., Non-ordering key field
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I-I, II-IV, III-III, IV-II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following:<br><img src="./Test Results14_files/25.png" alt="image:MST14/25.png" width="632" height="107" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> i-1, ii-2, iii-3</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> i-2, ii-3, iii-1</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> i-3, ii-2, iii-1</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> i-1, ii-3, iii-2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are satisfied using Test and Set Lock (TSL)<br>I. Mutual Exclusion<br>II. Progress<br>III. Bounded Waiting<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> I &amp; II<br><span class="explanation">Explanation:</span><br>Mutual Exclusion and Progress are guaranteed using TSL, whereas Bounded waiting is not guaranteed as there can be starvation.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> II &amp; III</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I &amp; III</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I, II &amp; III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which operation is used to deal with missing information in database?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Outer Join<br><span class="explanation">Explanation:</span><br>Outer join is used to deal with the missing information. Normal join and Cartesian product might result in loss of information if the tuple in one schema is missing in the other.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Normal Join</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Cartesian Product</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> All of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a preemptive priority based process scheduling algorithm that updates the priorities of processes every T units of time. Priority of every process is calculated as the waiting of that process since it's last execution. Initially consider the priorities of all the processes as zero.<br><br>The above mentioned algorithm is equal to which of the following algorithms?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Shortest Remaining Time First</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Longest job first</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> First come first serve</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Round Robin<br><span class="explanation">Explanation:</span><br>Take the below example of processes with T = 5 units of time<br><br><img src="./Test Results14_files/24.png" alt="image:MST14/24.png" width="737" height="427" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following resource allocation graph,<br><img src="./Test Results14_files/18.png" alt="image:MST14/18.png" width="463" height="234" class="tcecode"><br>Which of the following is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> The above allocation system is safe</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> The system is safe and the safety order is P2, P4, P1 and P3<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/20.png" alt="image:MST14/20.png" width="622" height="247" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> The system is safe and the safety order is P1, P2, P3 and P4</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> The system is safe and the safety order is P3, P2, P1 and P4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table for priority (Non Preemptive) scheduling algorithm<br><img src="./Test Results14_files/15.png" alt="image:MST14/15.png" width="587" height="221" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 31<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/16.png" alt="image:MST14/16.png" width="682" height="155" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 20</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two relational schemas		<br>Instructor(ID, name, dept_name, salary) and<br>Teaches (ID, course_id)<br>Which of the following queries is/are equivalent to this query in English?<br>“Find the names of all instructors in the Maths department together with the course_id of all courses they teach”<br><br>I. π<sub class="tcecode">name,course_id</sub>(σ<sub class="tcecode">Instructor.ID=Teaches.ID</sub>(σ <sub class="tcecode">dept_name =' Maths'</sub>(Instructor)×Teaches))<br>II. {&lt;n, c&gt; | ∃ i(&lt;i, c&gt;∊ teaches ∧∃d, s (&lt;i, n, d, s&gt;∊  instructor ∧ d = ‘Maths’))}<br>III.{i.name, t.course_id | (Instructor(i) ∧ Teaches(t) ∧ i.id = t.id ∧ i.dept_name = ‘Maths’)}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I, II</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I, III</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> I, II, III<br><span class="explanation">Explanation:</span><br>First we have to select all instructors in physics department. Then join the resultant relation with teaches on condition Instructor.ID = Teaches.ID, then display instructor name and course_id from resultant relation.<br>All I, II, III are correct implementation.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> II</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the two processes P1 and P2. Initial values of the boolean  variables P1inside and P2 inside are false. <br><img src="./Test Results14_files/23.png" alt="image:MST14/23.png" width="569" height="268" class="tcecode"><br>Consider the below statements:<br>S1: Mutual exclusion is satisfied.<br>S2: Progress is guaranteed<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Only S2 is true<br><span class="explanation">Explanation:</span><br>Intially, P1 inside and P2 inside variables are false. P1 is executing the <strong class="tcecode">while(P2 inside</strong>); and P2 is executing <strong class="tcecode">while(P1 inside);</strong> then by executing the next assignment statement both of them can enter into the CS at the same time, which violates the Mutual Exclusion.<br><br>Progress is guaranteed as any of P1 or P2 if not interested to enter the CS, its corresponding boolean variable will be false and the other process can enter the CS without any hinderance.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Both S1 and S2 are false</li>
+</ol>
+<br><br>
+</li>
+<li>
+Disk requests come in a disk queue for cylinders 5, 15, 73, 90, 11, 4, 55, 42 in order. One end of the disk is at cylinder 0 and another end is at cylinder 99. If the disk head is currently at cylinder 50, then how many total head movements will occur, if SSTF scheduling technique is used?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 134</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 142<br><span class="explanation">Explanation:</span><br>Starting from 50, using SSTF, the head movements are <br>= |50 – 55| + |55 – 42| + |42 – 15| + |15 – 11| + |11 – 5| + |5 – 4| + |4 – 73| + |73 – 90|<br>= 5+ 13+27+4+6+1+69+17 <br>= 142<br><img src="./Test Results14_files/17.png" alt="image:MST14/17.png" width="715" height="369" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 146</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 150</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a schedule S having 4 transactions executed concurrently. The order of their operation is given below. Find out whether the given schedule is serializable or not?<br>R1(A), R2(B), W2(A), W3(C), R4(C), R3(A), W3(B), R4(A), W2(B), W4(B), W3(A)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Conflict serializable</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> View serializable<br><span class="explanation">Explanation:</span><br><img src="./Test Results14_files/12.png" alt="image:MST14/12.png" width="571" height="429" class="tcecode"><br><img src="./Test Results14_files/13.png" alt="image:MST14/13.png" width="575" height="233" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Both (a) &amp; (b)</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Not serializable</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the order of B tree is 23 and the B tree is 60 percent full. What will be the average number of &lt;key, data-pointer&gt; entries that a 2-level B tree holds?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 2196<br><span class="explanation">Explanation:</span><br>Given order of B tree is 23 and it is 60 percent full.<br>∴ On an average, 23×0.6 block pointers present in each node <br>= 13.8 ⟹ approximately 13 block pointers.<br>Root – 1 node – 12 (&lt;key, data-pointer&gt; entries) 13 block pointers<br>Level 1 – 13 nodes – 13* 12 = 156 entries, 13 * 13 = 169 block pointers <br>Level 2 – 169 nodes – 169 * 12=2028 entries 169 * 13 = 2197 block pointers <br>∴ 2-level B tree holds (12+156+2028)entries =2196 entries on an average.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 168</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 2028</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select dept_name FROM PROFESSOR WHERE Sex='M'  <br>Group by dept_name HAVING AVG(Salary)&gt;<br>(SELECT avg(Salary)  FROM PROFESSOR)<br>Consider the above query with relation<br>PROFESSOR(Prof_name,Sex,Salary,dept_name)<br>What will be the result of the above query?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Name of the professors whose average salary is more than the average salary of all professors.</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Names of department in which average salary of the male professor is more than average salary of all professors<br><span class="explanation">Explanation:</span><br>Inner query gives average salary of all professors.<br>The complete query gives department name in which average salary of male professors is more than average salary of all professors.<br>Therefore answer is Option [b].
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Name of male professors whose average salary is more than average salary of all professors</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true for the given relation schema R decomposition into D_1?<br>R(ABCDEG)   <br>{AB→C,AC→B,AD→E,B→D,BC→A,E→G}<br>D<sub class="tcecode">1</sub> (ABC,ABDE,EG)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> Lossless Dependency preserving<br><span class="explanation">Explanation:</span><br>For under decomposed tables<br>ABC	ABDE▁E G<br>BC→AAD→EE→G<br>AB→CB→D<br>AC→B<br><br>Keys for ABC are {BC,AB,AC} <br>Keys for ABDE are {AB} <br>Key for EG are {E} <br><br>Check whether decomposition is lossless or not:<br>Union of (ABC),(ABDE),(EG)  is (ABCDEG)<br>ABC∩ABDE=AB(Key for ABC)<br>ABDE∩EG=E(Key for EG)<br>Thus, Lossless.<br><br>Check whether decomposition is Dependency preserving:<br>Final FD set after decomposition∶{BC→A,AB→C,AC→B,AD→E,B→D}<br>This is same as initial FD set.<br>Thus, decomposition is FD preserving.<br>Therefore, answer is Option [a].
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Loss join Dependency preserving</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Lossless Dependency unperceiving</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> Loss join Dependency unperceiving</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is/are true?<br>I. Strict schedule is a cascadeless schedule and recoverable schedule <br>II. Every cascadeless schedule is recoverable<br>III. Every conflict serializable schedule is recoverable<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> I and II only<br><span class="explanation">Explanation:</span><br>We know that every strict schedule is cascadeless and recoverable.<br>We know that every cascadeless schedule is recoverable.<br>Every conflict serializable schedule need not be recoverable schedule.<br>For example:<br><img src="./Test Results14_files/7.png" alt="image:MST14/7.png" width="173" height="188" class="tcecode"><br>The above schedule is  conflict serializable but not recoverable<br>So, answer is Option [a]
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> II and III only</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> I and III only</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> All of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q28 &amp; Q29:</span></strong><br><br>Consider the following relational schemas<br>Student(Name, studId, sex, Age), <br>CourseInfo(courseId, coursename, instructorName) and <br>Enroll(studId,courseId). <br>Write the DRC for the following query:<br><br>Find the names of students who were enrolled for course having id  200<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> {&lt;b&gt; | ∃ a, c, d (&lt;a, b, c, d&gt;∊Student ∃ e, f (&lt;e, f&gt;∊Enroll ∧ (e = b) ∧ (e = 200))}</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊Student ∃ e, f, g (&lt;e, f, g&gt;∊CourseInfo ∧ (b = e) ∧ (e = 200))}</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊Student ∧ ∃ e, f (&lt;e, f&gt;∊  Enroll ∧ (e = b) ∧ (f = 200))}<br><span class="explanation">Explanation:</span><br>We have to perform join between student and Enroll on the condition “student.studId = Enroll.studId and enroll.courseId = 200”. In the resultant table we have to project student names.<br>So, Option(c) is correct.
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q28 &amp; Q29:</span></strong><br><br>Consider the following relational schemas<br>Student(Name, studId, sex, Age), <br>CourseInfo(courseId, coursename, instructorName) and <br>Enroll(studId,courseId). <br>Write the DRC for the following query:<br>Find the names of the students who enrolled for course instructed by ‘Sinchani’.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊ student ∧∃&lt;e, f&gt;∊ Enroll ∧∃&lt;g, h, ‘Sinchani’&gt;∊ courseInfo ∧ (e = g))}</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊ student ∧∃&lt;e, f&gt;∊ Enroll ∧∃&lt;g, h, i&gt;∊ courseInfo ∧ (e = g))}</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊ student ∧∃&lt;e, f&gt;∊ Enroll ∧∃&lt;g, h, i&gt;∊ courseInfo ∧ (e = b))}</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> {&lt;a&gt; | ∃ b, c, d (&lt;a, b, c, d&gt;∊ student ∧∃&lt;b, e&gt;∊ Enroll ∧∃&lt;e, f, ‘Sinchani’&gt;∊ courseInfo)}<br><span class="explanation">Explanation:</span><br>First we have to perform selection condition on courseInfo such that InstructorName = 'Sinchani' and then perform join between courseInfo and enroll such that courseInfo.courseId = enroll.courseId and then perform join between enroll and student as enroll.studId = student.studId and then retrieve student names from the resultant relation.<br>Among the given options, only ‘d’ is correct DRC query for given question.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q30 &amp; Q31:</span></strong><br><br>Consider the system with the 2-level paging with TLB support. The page table is divided into 2K pages each of size 4K words. If the physical address space has 64M words. TLB access time is 25ns and main memory access time is 100ns. The CPU finds 145 page references in the TLB out of total of 180 references.<br> Find the effective memory access time if there's a page fault for every 1 million  memory accesses and page fault service time is 10ms?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 164ns</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 174ns<br><span class="explanation">Explanation:</span><br>Page fault rate, PFR = 1 / (10^6)<br>Page fault service time, PST = 10ms = 10 * (10^6) ns<br><br>The CPU finds 145 page references in the TLB out of total 180 page references, so the hit rate, p = 145 / 180 =0.805<br><br>TLB access time, t = 25ns, <br>Main memory access time , m = 100ns<br>k = no. of levels of paging = 2<br><br>The effective memory access time includes the time for Virtual Address to Physical Address conversion and once the physical address is obtained the time to access the content.<br><br>VA -&gt; PA conversion time = t + (1-p)(km) =  25 + (0.195) * 2*100 = 25 + 39 = 64ns<br><br>Time to access the content: The content will be searched first in the main memory and if there's a page fault then the page fault service time to be included.<br>Content accessing time = PFR (PST + m) + (1-PFR)m = PFR * PST + PFR * m + m – PFR *m = PFR * PST + m<br>=(1 / (10^6) )* (10 * 10^6) + 100<br>=10 + 100  = 110<br><br>Effective Memory Access Time = 64 + 110 = 174ns
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 125ns</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 150 ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q30 &amp; Q31:</span></strong><br><br>Consider the system with the 2-level paging with TLB support. The page table is divided into 2K pages each of size 4K words. If the physical address space has 64M words. TLB access time is 25ns and main memory access time is 100ns. The CPU finds 145 page references in the TLB out of total of 180 references.<br>Then what is the effective memory access time using TLB<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 164ns<br><span class="explanation">Explanation:</span><br>The  CPU finds 145 page references in the TLB out of total 180 page references, so the hit rate, p = 145 / 180 =0.805<br><br>TLB access time, t = 25ns, <br>Main memory access time, m = 100ns<br>The system uses 2-level paging with TLB,  so effective memory access time = p(t+m)+(1-p)(t+3m)<br>0.805(25+100) + (0.195) (25+300) = 0.805(125) + (0.195) (325) = 100.625 + 63.375 = 164ns
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 174ns</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 125ns</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 150 ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q32 &amp; Q33:</span></strong><br><br>Consider the following information regarding multi-disk drive given below:		(2M)<br><br>Nuumber of platters/disk = 6<br>Number of surfaces/platter = 2<br>Number of cylinders = 32<br>Number of sectors/track = 64<br>Sector capacity = 256 Bytes <br>Cylinder capacity = 196608Bytes<br>Number of disks = 2<br><br>If the record size is twice the size of the sector, then find the number of records that can be stored on disk?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 24K<br><span class="explanation">Explanation:</span><br>No. of records = Disk capacity / Record size = 12MB / 2 * 256Bytes  = 24K records
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 20K</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 12K</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions Q32 &amp; Q33:</span></strong><br><br>Consider the following information regarding multi-disk drive given below:<br>Number of platters/disk = 6<br>Number of surfaces/platter = 2<br>Number of cylinders = 32<br>Number of sectors/track = 64<br>Sector capacity = 256 Bytes <br>Cylinder capacity = 196608Bytes<br>Number of disks = 2<br><br>Find the multi-disk capacity.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 6MB</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 10MB</li>
+<li>&nbsp;<img src="./Test Results14_files/correct.png" width="18"> 12MB<br><span class="explanation">Explanation:</span><br>No. of tracks/surface =  No. of cylinders = 32<br>Disk capacity = [No. of platters * (No. of surfaces/platter) * (No. of tracks/surface) * (No. of sectors/track) * sector capacity] * No. of disks<br><br>= [6*2*32*64*256]* 2 = 12MB
+</li>
+<li>&nbsp;<img src="./Test Results14_files/wrong.png" width="16"> 16MB</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results14_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

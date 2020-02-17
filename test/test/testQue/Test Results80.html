@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=28784&test_id=208 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results80_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results80_files/calclayout.css">
+<script src="./Test Results80_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results80_files/jquery-ui.js.download"></script>
+<script src="./Test Results80_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results80_files/custom.js.download"></script>
+<script src="./Test Results80_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results80_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results80_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838394, 'I\'m sorry, the time available to complete the test is over!', false, 1486838394317);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=28784&amp;test_id=208#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DLD Subject Test - 2</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-26 15:40:25&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-26 17:00:22&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:19:57&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+18.720 / 50.000 (37%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+18 / 33 (55%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+How many Boolean functions be formed with at most 4 max terms if the function has 3 boolean variables.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <sup class="tcecode">8</sup>C<sub class="tcecode">4</sub></li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <sup class="tcecode">8</sup>C<sub class="tcecode">1 </sub>+ <sup class="tcecode">8</sup>C<sub class="tcecode">2</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">3</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">4</sub></li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> <sup class="tcecode">8</sup>C<sub class="tcecode">0</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">1</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">2</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">3</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">4</sub><br><span class="explanation">Explanation:</span><br>3 variables ⟹ 2<sup class="tcecode">3</sup> terms = 8 max terms<br>at max 4 terms ⟹ 0 terms or 1 term or 2 terms or 3 terms or 4 terms<br>⟹ <sup class="tcecode">8</sup>C<sub class="tcecode">0</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">1</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">2</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">3</sub> + <sup class="tcecode">8</sup>C<sub class="tcecode">4</sub>
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O1a.PNG" alt="image:DLDS2/O1a.PNG" width="30" height="34" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of levels required to construct a 128×1 MUX using 4×1 are ________.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Number of levels =⌈log<sub class="tcecode">4</sub> 128⌉=⌈log<sub class="tcecode">2</sub> 128/log<sub class="tcecode">2</sub> 4⌉=⌈7/2⌉=4
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3.5</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results80_files/Q15a.PNG" alt="image:DLDS2/Q15a.PNG" width="354" height="321" class="tcecode"><br>Which of the following options is an address mapped to device 3?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 110011</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 000011</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 100011<br><span class="explanation">Explanation:</span><br>To enable devices A<sub class="tcecode">5 </sub>A<sub class="tcecode">4</sub> A<sub class="tcecode">3</sub>=100
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 011100</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many possible invalid combinations a BCD adder happens to receive?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 160</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 156<br><span class="explanation">Explanation:</span><br>Valid bcd codes = 10 out of 16<br>BCD adder takes two numbers.<br>Total combinations = 16 ⨯ 16 = 256<br>Valid combinations = 10 ⨯ 10 = 100<br>Invalid combinations = Total – Valid combinations = 256 – 100 = 156
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 192</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 36</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given options is not functionally complete?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> Ex-OR</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> MUX</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> NOR</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> NAND</li>
+</ol>
+<br><br>
+</li>
+<li>
+If A+B is implemented using given 2×1 MUX, then what are I<sub class="tcecode">0</sub>,I<sub class="tcecode">1</sub>,S<sub class="tcecode">0</sub><br><br><img src="./Test Results80_files/Q11a.PNG" alt="image:DLDS2/Q11a.PNG" width="238" height="144" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> S<sub class="tcecode">0</sub>=1,I<sub class="tcecode">0</sub>=A,I<sub class="tcecode">1</sub>=B</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> S<sub class="tcecode">0</sub>=A,I<sub class="tcecode">0</sub>=B,I<sub class="tcecode">1</sub>=A<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E11a.PNG" alt="image:DLDS2/E11a.PNG" width="359" height="343" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> S<sub class="tcecode">0</sub>=0,I<sub class="tcecode">0</sub>=B,I<sub class="tcecode">1</sub>=A</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> S<sub class="tcecode">0</sub>=A,I<sub class="tcecode">0</sub>=0,I<sub class="tcecode">1</sub>=B</li>
+</ol>
+<br><br>
+</li>
+<li>
+JK flip-flop is configured the way it is shown in the figure. What is the value of K to happen a state transition from 1 to 0.<br><br><img src="./Test Results80_files/Q10a.PNG" alt="image:DLDS2/Q10a.PNG" width="218" height="185" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Q</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E10a.PNG" alt="image:DLDS2/E10a.PNG" width="270" height="241" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O10d.PNG" alt="image:DLDS2/O10d.PNG" width="18" height="24" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+A sequential circuit is built with 4 flip-flops. The circuit produces a mod X counter. What is the maximum value of X?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> None</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 16<br><span class="explanation">Explanation:</span><br>4 flip flops can generate 2<sup class="tcecode">4</sup> states = 16<br>So, it can be mod 16 counter at maximum.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If f(a,b,c)=ab'+c, what are canonical SOP terms?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> abc+a'b'c+a'b'c'+a'bc'+a'bc</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> abc+a'b'c+ab'c'+a'b'c'+a'bc'</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> abc+a'bc+abc'+a'b'c+ab'c'</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> abc+a'bc+ab'c+a'b'c+ab'c'<br><span class="explanation">Explanation:</span><br>ab'+c<br>ab'+(c+c')+c(a+a')(b+b')<br>=<span style="text-decoration:underline;">(ab'c)</span>+ab'c'+abc+a'bc+<span style="text-decoration:underline;">(ab'c)</span>+a'b'c<br>=abc+a'bc+ab'c+a'b'c+ab'c'
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given statements is/are true?<br>I) All neutral functions are self-dual.<br>II) All self-dual functions are neutral.<br>III) A neutral function need not be self-dual.<br>IV) A self-dual function need not be neutral.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> I &amp; IV</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> only IV</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> only I</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> II &amp; III</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is gray code representation of (182)<sub class="tcecode">10</sub><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 01001010</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 11101101<br><span class="explanation">Explanation:</span><br>(182)<sub class="tcecode">10</sub> = (10110110)<sub class="tcecode">2</sub><br>		g<sub class="tcecode">n</sub>= b<sub class="tcecode">n</sub><br>		g<sub class="tcecode">n – 1</sub> = b<sub class="tcecode">n</sub>⊕b<sub class="tcecode">n – 1</sub><br>		g<sub class="tcecode">n – 2</sub> = b<sub class="tcecode">n – 1</sub>⊕b<sub class="tcecode">n – 2</sub><br>			.<br>			.<br>		g<sub class="tcecode">1</sub> = b<sub class="tcecode">2</sub>⊕ b<sub class="tcecode">1</sub><br>		g<sub class="tcecode">0</sub> = b<sub class="tcecode">1</sub>⊕ b<sub class="tcecode">0</sub><img src="./Test Results80_files/E6a.PNG" alt="image:DLDS2/E6a.PNG" width="406" height="115" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10110110</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 11011011</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the correction used while performing binary addition?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> No correction</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following circuit does not represent Ex-OR.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O3a.PNG" alt="image:DLDS2/O3a.PNG" width="229" height="70" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O3c.PNG" alt="image:DLDS2/O3c.PNG" width="389" height="93" class="tcecode"></li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> <img src="./Test Results80_files/O3b.PNG" alt="image:DLDS2/O3b.PNG" width="242" height="76" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E3a.PNG" alt="image:DLDS2/E3a.PNG" width="387" height="345" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O3d.PNG" alt="image:DLDS2/O3d.PNG" width="459" height="184" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+How much sized register is needed to store (7462)<sub class="tcecode">8</sub><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 12<br><span class="explanation">Explanation:</span><br>(7462)<sub class="tcecode">8</sub>=(111 100 110 010)<sub class="tcecode">2</sub><br>⟹12 bits<br>(or)<br>(7462)<sub class="tcecode">8</sub>=(4002)<sub class="tcecode">10</sub><br>n=⌈log<sub class="tcecode">2</sub> 4002⌉=⌈11.96⌉=⌈12⌉<br>Note:- The number should be converted to decimal before applying “log”.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If f is a function with a notation f(a,b,c,0,1,∙,+,-)  where '-' denotes 'NOT'  logic.<br>Then what would be the notation of dual for function f.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> f<sub class="tcecode">d</sub> (a,b,c,1,0,∙,+,-)</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> f<sub class="tcecode">d</sub> (a',b',c',1,0,+,∙,-)</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> f<sub class="tcecode">d</sub> (a,b,c,1,0,+,∙,-)</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> f<sub class="tcecode">d</sub> (a',b',c',1,0,∙,+,-)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the number of 2×4 decoders needed to construct a 8×256 decoder?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 85<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E14a.PNG" alt="image:DLDS2/E14a.PNG" width="412" height="187" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 128</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 64</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 116</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the function represented by the given circuit?<br><img src="./Test Results80_files/Q17a.PNG" alt="image:DLDS2/Q17a.PNG" width="562" height="255" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> AB+CD+B'D'</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> (A+B)(C+D)+B'D'</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> AB+CD+BD+A' B'+C' D'+B'D'<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E17a.PNG" alt="image:DLDS2/E17a.PNG" width="319" height="116" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> AB'+A' B+CD'+C' D+BD+B'D'</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given 4 variable Boolean functions can’t be converted as a self-dual function through additional terms can be added to it?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Σ(2,4,6,8,10,12)</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Σ(0,3,5,6,11)</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> Σ(1,2,5,6,7,8)<br><span class="explanation">Explanation:</span><br>Self dual pairs are (0,15),(1,14),(2,13),(3,12),(4,11),(5,10),(6,9),(7,8).<br>⟶ A self dual function must contain only one term from each and every pair.<br>Σ(1,2,5,6,7,8) violates the rule.<br>The other three seem that they can satisfy the rule if additional terms added.
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Σ(0,1,2,3,4,5,6)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following rules are used while performing addition of two numbers represented in Excess-3 Notation:<br>Rule I:- 3 gets added to the sum if the addition of MSB produces carry.<br>Rule II:- 3 gets subtracted from the sum if the addition of MSB doesn’t produce carry.<br>The steps involved are as below:<br>Step 1: Perform addition.<br>Step 2: Apply Rule I and Rule II.<br>If the number 4, 8, which are represented in Excess-3 Notation, what is the sum pattern after step-1?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 00010010</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 01110010<br><span class="explanation">Explanation:</span><br>4+8=12<br>⟹ The result is two digited.<br>⟹ 04+08 should be performed.<br><img src="./Test Results80_files/E31a.PNG" alt="image:DLDS2/E31a.PNG" width="181" height="300" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 01000101</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0010</li>
+</ol>
+<br><br>
+</li>
+<li>
+If the given counter is mod x counter, then what is x?<br><img src="./Test Results80_files/Q30a.PNG" alt="image:DLDS2/Q30a.PNG" width="341" height="128" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> none</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 2</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> both (a) &amp; (b)<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E30a.PNG" alt="image:DLDS2/E30a.PNG" width="426" height="498" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the functions <img src="./Test Results80_files/Q27a.PNG" alt="image:DLDS2/Q27a.PNG" width="555" height="32" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O27c.PNG" alt="image:DLDS2/O27c.PNG" width="84" height="27" class="tcecode"></li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> <img src="./Test Results80_files/O27d.PNG" alt="image:DLDS2/O27d.PNG" width="156" height="24" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E27c.PNG" alt="image:DLDS2/E27c.PNG" width="599" height="500" class="tcecode"><br><img src="./Test Results80_files/E27d.PNG" alt="image:DLDS2/E27d.PNG" width="363" height="156" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O27b.PNG" alt="image:DLDS2/O27b.PNG" width="148" height="24" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> <img src="./Test Results80_files/O27a.PNG" alt="image:DLDS2/O27a.PNG" width="116" height="25" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results80_files/Q26a.PNG" alt="image:DLDS2/Q26a.PNG" width="799" height="54" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>:-  f(a, b, c, d) = ∑(0, 1, 13, 3, 10, 8) <br> self dual points = (0, 15), (1,14), (2,13), (3,12), (4, 11), (5,10), (6, 9), (7,8) <br> f + one from (4,11) + one from (7,8) <br> ═&gt; f + 4 + 11, f + 4 + 8, f + 11 + 7, f  + 11 + 8 <br> There are  4  self dual functions
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+The boolean expression AB+AB′+A'C+AC is independent of the boolean variable<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> A</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> B<br><span class="explanation">Explanation:</span><br>The given function can be written as A(B+B')+C(A+A') = A+C<br>So, the given function is independent of B.
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> C</li>
+</ol>
+<br><br>
+</li>
+<li>
+The given sequential circuit generates the following state transitions <br>0⟶2,1⟶2,2⟶1,3⟶3, where a state is Q<sub class="tcecode">0</sub> Q<sub class="tcecode">1</sub>. Then what is gate G?<br><img src="./Test Results80_files/Q24a.PNG" alt="image:DLDS2/Q24a.PNG" width="345" height="163" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> NOR</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Ex OR</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> NAND<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E24a.PNG" alt="image:DLDS2/E24a.PNG" width="226" height="406" class="tcecode"><br><img src="./Test Results80_files/E24b.PNG" alt="image:DLDS2/E24b.PNG" width="267" height="385" class="tcecode">
+</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Ex NOR</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many minimal expressions does f<sub class="tcecode">1</sub>⨀f have, where f<sub class="tcecode">1</sub> (w,x,y,z)=Σ(0,4,5,9,10,11,12,13,14)<br>f<sub class="tcecode">2</sub> (w,x,y,z)=Σ(0,4,5,7,8,11,14)?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E21a.PNG" alt="image:DLDS2/E21a.PNG" width="385" height="537" class="tcecode"><br>A=w'y'<br>B=w'z'<br>C=w'x'<br>D=xyz'<br>E=wxy<br>F=wyz<br>G=x'yz<br><img src="./Test Results80_files/E21b.PNG" alt="image:DLDS2/E21b.PNG" width="368" height="447" class="tcecode"><br>⟶ Every term is being covered by two prime implicants.<br>⟶ Need to check all the combinations.<br>⨳B+C+E+F<br>⨳ B+C+E+G<br>⨳ B+C+D+F<br>  So,either (B+G+E) or (C+D+F) is minimal<br>So minimal forms are A+B+G+E<br>		     and<br>	A+C+D+F<br>⟹w'y'+w'z'+x'yz+wxy<br>                        and<br>      w'y'+w'x'+xyz'+wyz
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimal POS form of the function given using K-map?<br><img src="./Test Results80_files/Q20a.PNG" alt="image:DLDS2/Q20a.PNG" width="166" height="154" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/correct.png" width="18">&nbsp;<img src="./Test Results80_files/correct.png" width="18"> (w'+x)(w'+y'+z)(w+x'+y' )(w+y+z)<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E20a.PNG" alt="image:DLDS2/E20a.PNG" width="415" height="585" class="tcecode"><br>⟶ A,B,D,E are collectively covering all terms.<br>⟶ Minimal POS=ABDE<br>		  =(w'+x)(w'+y'+z)(w+x'+y' )(w+y+z)
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> (w'+x)(w'+y'+z)(w+y+z)(x+y+z)(w+x'+y' )</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> (w'+x)(w'+y'+z)(x'+y'+z)(w+x'+y' )(w+y+z)(x+y+z)</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> (w'+x)(w'+y'+z)(x'+y'+z)(x+y+z)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The given flow chart depicts the Booths algorithm for signed number multiplication, where ‘n’ is the number of bits in multiplier. If 3x7 is performed using Booth’s algorithm, what are the contents of register ‘A’ after 2 cycles of operation, where ‘7’ is taken as multiplier?<br><img src="./Test Results80_files/IMG_20161009_113953_879.JPG" alt="image:DLDS2/IMG_20161009_113953_879.JPG" width="489" height="333" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 1110<br><span class="explanation">Explanation:</span><br>+ 3 = 0011<br>		<br>+ 7 = 0111<br>	<br>Algorithm:<br><img src="./Test Results80_files/E19a.PNG" alt="image:DLDS2/E19a.PNG" width="562" height="568" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0010</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0110</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1010</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is binary representation of (146.6953125)<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10010010.101100101…..</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 10010010.1011001<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E18a.PNG" alt="image:DLDS2/E18a.PNG" width="371" height="232" class="tcecode"><br><img src="./Test Results80_files/E18b.PNG" alt="image:DLDS2/E18b.PNG" width="456" height="573" class="tcecode"><br>⇒ (146.6953125) = (10010010.1011001)
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10010010.1001101</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 10010010.100110101…..</li>
+</ol>
+<br><br>
+</li>
+<li>
+Minimum number of NAND gates required to realize the given circuit only with NAND gates.<br><img src="./Test Results80_files/Q33a.PNG" alt="image:DLDS2/Q33a.PNG" width="311" height="110" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E33a.PNG" alt="image:DLDS2/E33a.PNG" width="293" height="428" class="tcecode"><br><img src="./Test Results80_files/E33b.PNG" alt="image:DLDS2/E33b.PNG" width="250" height="441" class="tcecode">
+</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions: 30 &amp; 31</strong><br><img src="./Test Results80_files/Q22.PNG" alt="image:DLDS2/Q22.PNG" width="309" height="178" class="tcecode"><br>If a state is represented as decimal value of (Q<sub class="tcecode">2</sub> Q<sub class="tcecode">1</sub> Q<sub class="tcecode">0</sub> )<sub class="tcecode">2</sub>, then what are the states involved in counting loop?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0, 7</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1, 2, 3, 4, 5, 6</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 1, 2, 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E22a.PNG" alt="image:DLDS2/E22a.PNG" width="493" height="283" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 3, 6, 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions: 30 &amp; 31</strong><br><img src="./Test Results80_files/Q22.PNG" alt="image:DLDS2/Q22.PNG" width="309" height="178" class="tcecode"><br>If the sequential circuit starts with Q<sub class="tcecode">2</sub>=1, Q<sub class="tcecode">1=</sub>0, Q<sub class="tcecode">0</sub>=1 initially, how many clock cycles it would take to enable device X.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results80_files/wrong.png" width="16">&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> Device never gets enabled.</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Initial state is 101,<br>To enable device X, Q<sub class="tcecode">1</sub> needs to be 1.<br>From state transition diagram<br><img src="./Test Results80_files/E23a.PNG" alt="image:DLDS2/E23a.PNG" width="288" height="58" class="tcecode"><br>It takes 3 clock cycles.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions: 32&amp;33 </strong><br><img src="./Test Results80_files/Q28a.PNG" alt="image:DLDS2/Q28a.PNG" width="523" height="258" class="tcecode"><br>What values of X, Y put flip flop in SET mode?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0, ϕ</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0, 0</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> ϕ, 1</li>
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 1, 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E28a.PNG" alt="image:DLDS2/E28a.PNG" width="325" height="221" class="tcecode"><br>So,  X, Y = (1, 0)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions: 32 &amp; 33 </strong><br><img src="./Test Results80_files/Q28a.PNG" alt="image:DLDS2/Q28a.PNG" width="523" height="258" class="tcecode"><br>What are the values of X, Y to change the state of flip flop from 1 to 0?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results80_files/correct.png" width="18"> 0, ϕ<br><span class="explanation">Explanation:</span><br><img src="./Test Results80_files/E29a.PNG" alt="image:DLDS2/E29a.PNG" width="398" height="225" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 0, 0</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> 1, 0</li>
+<li>&nbsp;<img src="./Test Results80_files/wrong.png" width="16"> ϕ, 1</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results80_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

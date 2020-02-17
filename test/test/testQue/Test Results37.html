@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92148&test_id=294 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results37_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results37_files/calclayout.css">
+<script src="./Test Results37_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results37_files/jquery-ui.js.download"></script>
+<script src="./Test Results37_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results37_files/custom.js.download"></script>
+<script src="./Test Results37_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results37_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results37_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837541, 'I\'m sorry, the time available to complete the test is over!', false, 1486837541917);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92148&amp;test_id=294#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 11</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:03&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Find the next term in the sequence:<br>B1Y,E4V,H9S,K16P,_______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> M25N</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> N25M<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/1Ea.png" alt="image:APT11/1Ea.png" width="279" height="120" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> N25O</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;">Since we are</span> (I) <span style="text-decoration:underline;">working together</span> (II) <span style="text-decoration:underline;">there should be no secret</span> (III) <span style="text-decoration:underline;">between You and I</span> (IV)<br>Which one of the above underlined parts of the sentence is NOT appropriate?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> I</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> II</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> III</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> IV<br><span class="explanation">Explanation:</span><br>Here, part IV is incorrect. In the given sentence, the pronoun ‘I’ is in object place or used as an object which is wrong because in English, the pronoun ‘I’ should be used as a subject. So, we should replace I with its objective form, i.e., <strong class="tcecode">me</strong>.<br>		Since we are working together there should be no secret between you and <strong class="tcecode">me</strong>.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following options is the closest in meaning to the word underlined in the sentence below?<br>Rahim’s<strong class="tcecode"><span style="text-decoration:underline;"> propensity</span></strong> to lie is going to get him into trouble.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> characteristic</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Natural tendency<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word propensity refers to an inclination or natural tendency to behave in a particular way. So, of all the given options the word that is closest to the meaning of propensity is <strong class="tcecode">natural tendency.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> used to</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> to get away</li>
+</ol>
+<br><br>
+</li>
+<li>
+He offered me a banana, but I wasn’t hungry as I ________ lunch.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> was just eating</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> have just eaten</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> had just eaten<br><span class="explanation">Explanation:</span><br>In the given sentence we are talking about an action that completed/happened before a certain moment in the past and to represent such actions we use past perfect tense, i.e., He offered me a banana, but I wasn’t hungry as I <strong class="tcecode">had just eaten</strong> lunch.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> just ate</li>
+</ol>
+<br><br>
+</li>
+<li>
+The sum of the third and the ninth term of an AP is 10. Find a possible sum of the first 11 terms of this AP?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 44</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 50</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 66</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 55<br><span class="explanation">Explanation:</span><br>Let, First term = a<br>Common difference = d<br>∴ Third term = a +2d<br>Ninth term = a + 8d<br>Sum of the third and the ninth term = 10<br>(a + 2d) + (a + 8d) = 10<br>2a + 10d = 10<br>Sum of n terms in an A.P=n/2 [2a+(n-1)d]<br>∴Sum of first 11 terms =11/2 [2a+(11-1)d]<br>		=11/2 [2a+10d]<br>		=11/2 (10)=55
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>If I prepared, I _____ the test.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> will pass</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> would pass<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/wd.JPG" alt="image:APT11/wd.JPG" width="590" height="255" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> would have passed</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> had passed</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the word opposite in meaning to the given word.<br><strong class="tcecode">PUNY</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Small</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Scared</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Selfish</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Strong<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Puny</strong> means “small and weak or poor in quality, amount or size”. So, of all the given options the word that is opposite in meaning to puny is <strong class="tcecode">strong</strong>.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A man takes 3 hr 45 minutes to row a boat 15 km downstream of a river and 2 hr 30 minutes to cover a distance of 5 km upstream. Find the speed of the current.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 0.5 kmph</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 0.75 kmph</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 1 kmph<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/8Ea.png" alt="image:APT11/8Ea.png" width="260" height="306" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1.5 kmph</li>
+</ol>
+<br><br>
+</li>
+<li>
+When a coin is tossed 7 times, the probability of getting the same face on exactly 5 consecutive trails is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 3/128</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 5/64<br><span class="explanation">Explanation:</span><br>Total number of possibilities =2<sup class="tcecode">7</sup><br>Let us take that Head (H) is the face that gets repeated.<br>It can happen in 5 ways.<br>HHHHHTT,THHHHHT,TTHHHHH,HHHHHTH,HTHHHHH<br>We can’t take the case of all Heads because question says exactly 5 consecutive trails.<br>Similarly, with Tail (T) we get 5 ways.<br>∴Required probability =10/2<sup class="tcecode">7</sup> =5/64
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1/16</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1/64</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the odd one in the following group of words<br>Ominous, Auspicious, Fortunate, Favorable<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Ominous<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Ominous</strong> means “giving the worrying impression that something bad is going to happen; threatening inauspicious.”<br>		<strong class="tcecode">Fortunate</strong> refers to bringing something good and unforeseen; auspicious.<br>	<strong class="tcecode">Auspicious</strong> refers to favorable circumstances or showing signs of favorable outcome or being a sign of future success.<br>		<strong class="tcecode">Favorable</strong> refers to the advantage of someone or something.<br>	 From the given explanation, the words Auspicious, fortunate and favorable are synonyms to each other and so ominous is the odd one in the given group of words.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Auspicious</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Fortunate</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Favorable</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following should come in place of (?) in the following series.<br>12,35,81,173,357, ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 650</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 725<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/7Ea.png" alt="image:APT11/7Ea.png" width="492" height="104" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 770</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 840</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the value of x from the following equation:<br>log<sub class="tcecode">10</sub><sup class="tcecode">3</sup>+ log<sub class="tcecode">10</sub><sup class="tcecode">(4x+1)</sup>=log<sub class="tcecode">10</sub><sup class="tcecode">(x+1)</sup>+1<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 2/7</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 7/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/2Ea.png" alt="image:APT11/2Ea.png" width="274" height="284" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 9/2</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a family, a couple has a son and a daughter. The age of the father is four times that of his daughter and the age of the son is half of that of his mother. The wife is 10 years younger to her husband and the brother is 6 years older than his sister. What is the age of the father?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 52 years</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 48 years</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 44 years<br><span class="explanation">Explanation:</span><br>Let the daughter’s age =x years<br>Then, father’s age =4x years<br>Mother’s age =(4x-10)  years<br>Son’s age =(x+6)  years<br>The age of the son is half of that of his mother. That means,<br>x+6=((4x-10))/2<br>2x+12=4x-10<br>2x=22⇒x=11<br>∴ Father’s age =4(11)=44 years
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 36 years</li>
+</ol>
+<br><br>
+</li>
+<li>
+Pointing to a person, a man tells Murali, “I am the only son of this lady and her son is your maternal uncle”. How is the man related to Murali’s father?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> brother</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> brother-in-law<br><span class="explanation">Explanation:</span><br>Clearly, the man is Murali’s maternal uncle. So, the man is brother of Murali’s mother.<br>∴The man is brother-in-law of Murali’s father.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> grand father</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a certain code, DISTRIBUTION is written as TSIDUBIRNOIT. How is CONVENTIONAL written in that code.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> NOCNEVOITCAN</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> EVNOCNOITNAL</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> VNOCITNELANO<br><span class="explanation">Explanation:</span><br>The word is divided into groups of four letters each and then the letters in each are written in a reverse order.<br><span style="text-decoration:underline;">DISTRIBUTION</span>⇒<span style="text-decoration:underline;">TSIDUBIRNOIT</span><br><span style="text-decoration:underline;">CONVENTIONAL</span>⇒VNOCITNELANO
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Fill in the blank with the most appropriate word(s) from the options given.<br>I _______ five pages when my computer suddenly crashed<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> had typed<br><span class="explanation">Explanation:</span><br>In the given sentence, we are referring to an action that took place before a certain time in the past and to represent such actions, we use past perfect tense (had + V3). So, we say<br>I <strong class="tcecode">had typed</strong> five pages when my computer suddenly crashed.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> was typing</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> have typed</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> type</li>
+</ol>
+<br><br>
+</li>
+<li>
+Cost of fencing a circular plot at the rate of ₹ 8 per metre is ₹ 3520. What will be the cost of flooring the plot at the rate of ₹ 20 per square metre?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 308000<br><span class="explanation">Explanation:</span><br>Circumference of the circular plot =3520/8=440 m<br>∴2πr=440<br>2× 22/7×r=440<br>r=70 m<br>Area of the plot =πr<sup class="tcecode">2</sup>=22/7×70×70=15,400 squaremetre<br>Cost of flooring of one square metre plot =₹ 20<br>∴ Cost of flooring of 15,400 square metre plot =15,400×20<br>= 308000
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 31800</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 30810</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair<br><strong class="tcecode">REGALE: ENTERTAIN</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Despondent : Courage</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Extol : Praise<br><span class="explanation">Explanation:</span><br><strong class="tcecode">RELATIONSHIP BETWEEN THE GIVEN PAIR:</strong><br>		To regale is to provide with great enjoyment i.e., to entertain to a higher degree.<br>	<strong class="tcecode">Option (a)</strong>:<br>Despondent refers to being in low spirits from loss of hope or courage. Thus, courage is an antonym for despondent.<br>	<strong class="tcecode">Option (b)</strong>:<br>		Extol is to praise highly i.e., to praise to a higher degree.<br>	<strong class="tcecode">Option (c)</strong>:<br>Generous refers to showing a readiness to give more of something / money, than is strictly necessary or expected. Thus, selfish is an antonym for generous.<br>	<strong class="tcecode">Option (d):</strong><br>		Mute is opposite in meaning to loud.<br>	 From all the above explanation, we can say that the pair that best expresses a relationship similar to that expressed in Regale: Entertain is <strong class="tcecode">Extol: Praise.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Generous : Selfish</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Mute : Loud</li>
+</ol>
+<br><br>
+</li>
+<li>
+A team of 10 is to be formed from 4 girls and 11 boys. How many ways this can be done by taking at most 3 girls in the team?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1435</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 2541<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/10Ea.png" alt="image:APT11/10Ea.png" width="431" height="333" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 2381</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 3031</li>
+</ol>
+<br><br>
+</li>
+<li>
+Ajay started from point A and walked 10 km East to point B then turned to North and walked 3 km to point C and then turned West and walked 12 km to point D, then again turned South and walked 3 km to point E. In which direction is he from his starting point?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> East</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> South</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> West<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/9Ea.png" alt="image:APT11/9Ea.png" width="611" height="188" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> North</li>
+</ol>
+<br><br>
+</li>
+<li>
+Mona told Sanjay, “The girl I met yesterday at the library was the youngest daughter of the brother-in-law of my friend’s mother”. How is the girl related to Mona’s friend?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Niece</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Friend</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Aunt</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Cousin<br><span class="explanation">Explanation:</span><br>Let us take it in the point of view of Mona’s friend.<br>Brother-in-law of my friend’s mother becomes Brother-in-law of my mother<br>i.e., the person is Mona’s friend’s uncle.<br>∴ His daughter will be his/her cousin.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given below is a statement followed by two courses of action. Assuming everything in the given statement to be true and on the basis of the information given in the statement, decide which of the suggested courses of action logically follow(s):<br><strong class="tcecode">Statement</strong>:<br>A reputed private bank has decided to retrench two third of its employees in view of the huge losses incurred by it during the past three quarters.<br><strong class="tcecode">Courses of Action:</strong><br>I.	The government should direct the bank to refrain from retrenching its employees.<br>II.	The government should ask the central bank of the country to initiate an enquiry into the bank’s activities and submit a report.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> If only I follows</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> If only II follows<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Action I</strong> - Since the bank is private and is not under the judicial power of the government, the given action will not be applicable.<br><strong class="tcecode">Action II</strong> - Asking for an enquiry into the bank’s activities is an advisable action as the retrenchment is on a very large scale.<br>	  Only Action II follows.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> If neither I nor II follows</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> If both I and II follows</li>
+</ol>
+<br><br>
+</li>
+<li>
+A, B and C start a business. B and C invest in the ratio 2 : 3. A leaves for 3 months. Total profit for the year is ₹ 10 Lakhs. B and C divide the profit as per investment ratio and it is decided that A gets 50% of the profit. How much is the share of B?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1,00,000</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1,50,000</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 2,00,000</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 2,50,000<br><span class="explanation">Explanation:</span><br>Total profit = 10 Lakhs<br>A is to get 5 Lakhs for 12 months.<br>But he worked only for 9 months.<br>⇒ A’s profit =5×9/12=15/4  Lakhs<br>Remaining profit =10-15/4=25/4  Lakhs<br>B’s profit =2/5×25/4=2.5 Lakhs<br>	=2,50,000
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Erosion of America’s farmland by wind and water has been a problem since settlers first put the prairies and grasslands under the plough in the nineteenth century. By the 1930, more than 282 million acres of farmland were damaged by erosion. After 40 years of conservation efforts, soil erosion has accelerated due to new demands placed on the land by heavy crop production. In the years ahead, soil erosion and the pollution problems it causes are likely to replace petroleum scarcity as the nation’s most critical natural resource problem.<br>In the given passage, it is pointed out that in America:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Petroleum is causing heaving soil erosion and pollution problems</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Heavy crop production is necessary to meet the demands and to prevent soil erosion.</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> Soil erosion has been hastened due to overuse of farming lands.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a)</strong>:<br>		This is incorrect because, <br>In the given passage, it is mentioned that, currently petroleum scarcity is the nation’s most critical natural resource problem. So, it is not causing soil erosion and pollution problems.<br>	<strong class="tcecode">Option (b)</strong>:<br>		This is incorrect because,<br>Heavy crop production on the land has accelerated the soil erosion but didn’t prevent it.<br>	<strong class="tcecode">Option (c)</strong>:<br>		This is correct because,<br>It is clearly mentioned in the passage that the overdue of farming lands by heavy crop production accelerated / hastened the soil erosion.<br>	<strong class="tcecode">Option (d)</strong>:<br>		This is incorrect because,<br>It is no where mentioned in the passage that soil erosion only in areas with no vegetation.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> Soil erosion occurs only in areas with no vegetation.</li>
+</ol>
+<br><br>
+</li>
+<li>
+The probability that a man can hit a target is 2/5. He tries 6 times. The probability that he will hit the target at least 4 times is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 7256/5<sup class="tcecode">6</sup></li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 7264/5<sup class="tcecode">6</sup></li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 7768/5<sup class="tcecode">6</sup></li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 7984/5<sup class="tcecode">6</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/6Ea.png" alt="image:APT11/6Ea.png" width="388" height="329" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results37_files/5Qa.png" alt="image:APT11/5Qa.png" width="392" height="93" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 16/31</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 15/31<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/5Ea.png" alt="image:APT11/5Ea.png" width="628" height="363" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 8/21</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 11/21</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a survey of political references, 78% of those asked were in favour of atleast one of the proposals: I, II, III. 50% of those asked favoured proposal I, 30% favoured proposal II and 20% favoured proposal III. If 5% of those asked favoured all three of the proposals, what percentage of those asked favoured more than one of the three proposals?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 17<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/4Ea.png" alt="image:APT11/4Ea.png" width="480" height="267" class="tcecode"><br>Given,<br>a+b+c+d+e+f+g=78  ⟶①<br>∴h=22<br>g=5 (all three)<br>①⇒a+b+c+d+e+f+5=78  <br>a+b+c+d+e+f=73  ⟶②<br>a+d+e+d=50⇒a+d+e=45<br>b+d+g+f=30⇒b+d+f=25<br>c+e+g+f=20⇒(c+e+f=15)<br>+b+c+2(d+e+f)=85   ⟶③<br>② in ③:<br>a+b+c+d+e+f+d+e+f=85<br>73+d+e+f=85<br>d+e+f=12<br>Number of those asked favoured more than one of the three proposals =d+e+f+g<br>=12+5=17<br>∴ Required %=17/100×100=17%
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 22</li>
+</ol>
+<br><br>
+</li>
+<li>
+At a railway station, ‘INDIAN RAILWAY SERVICES’ is flashed using neon lights. The words are individually flashed at the intervals of 2 1/2  s, 4 1/4  s and 5 1/8  s respectively and each word is put off after a second. The least time after which the full name of the railway station can be read again is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 49.5</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 73.5<br><span class="explanation">Explanation:</span><br>Each word is put off after a second.<br>⇒The time taken should be taken as 1+2 1/2  s,1+4 1/4  s,1+51/8  s  i.e.,7/2,21/4,49/8<br>We need to find the LCM of these three numbers.<br>LCM(7/2,21/4,49/8)=LCM(3.5,5.25,6.125) = 73.5<br>∴Least time after which the full name can be read again is 73.5 s.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1744.5</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 855</li>
+</ol>
+<br><br>
+</li>
+<li>
+Instead of walking along two adjacent sides of a rectangular field, a boy took a short cut along the diagonal and saved a distance equal to one-third of the longer side. Then ratio of the longer side to the shorter side is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 12:5<br><span class="explanation">Explanation:</span><br><img src="./Test Results37_files/3Ea.png" alt="image:APT11/3Ea.png" width="500" height="523" class="tcecode"><br><img src="./Test Results37_files/3Eb.png" alt="image:APT11/3Eb.png" width="301" height="139" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 7:5</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 4:3</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 24:7</li>
+</ol>
+<br><br>
+</li>
+<li>
+A contract is to be completed in 32 days and 48 men are set to work, each working 6 hours a day. After 20 days, 3⁄8<sup class="tcecode">th</sup> of the work is finished. How many additional men may be employed so that work may be completed on time, each man now working 8 hours per day?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 8 men</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 9 men</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 12 men<br><span class="explanation">Explanation:</span><br>Total work =32×6×48=9216 MH<br>After 20 days, 3⁄8<sup class="tcecode">th</sup> work is finished.<br>⇒ Remaining 5⁄8<sup class="tcecode">th</sup> work should be completed in 12 days.<br>Remaining work =9216×5/8=5760 MH<br>Let, ‘x’ additional men are to be employed and they work for 8 hours per day<br>5760=(48+x)×12×8<br>⇒48+x=60<br>∴x=12
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 15 men</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results37_files/11Ea.png" alt="image:APT11/11Ea.png" width="345" height="193" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 1 : c, 2 : a, 3 : d, 4 : b<br><span class="explanation">Explanation:</span><br>1)	<strong class="tcecode">Inflate</strong> means fill (a balloon, tyre or other expandable structure) with air or gas so as to make it swell, i.e., <strong class="tcecode">bloat.</strong><br>2)	<strong class="tcecode">Litter</strong> refers to waste or rubbish such as paper, tins and bottles left lying in an open or public place.<br>3)	<strong class="tcecode">Convention</strong> refers to a <strong class="tcecode">formal meeting </strong>of members, representatives, or delegates as a political party, fraternal society, profession or industry.<br>4)	<strong class="tcecode">Dissident</strong> refers to one who <strong class="tcecode">disagrees</strong>, as in opinion or belief.
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1 : b, 2 : a, 3 : c, 4 : d</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1 : b, 2 : c, 3 : a, 4 : d</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 1 : c, 2 : b, 3 : d, 4 :</li>
+</ol>
+<br><br>
+</li>
+<li>
+COMMON DATA:<br>Details of 3000 employees working in an organization in various departments.<br><img src="./Test Results37_files/CD1.JPG" alt="image:APT11/CD1.JPG" width="562" height="289" class="tcecode"><br>What is the ratio between female employees in Department A and male employees in Department E respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 15:14</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 14:15<br><span class="explanation">Explanation:</span><br>The total number of employees in the organization =3000<br>The total number of employees in the Department A =18/100×3000<br>=540<br>The total number of female employees in the <br>Department A=(Total number of employees in the Department A) -<br>(Total number of male employees in the Department A)<br>	=540-16/100×1800<br>	=540-288=252<br>The total number of male employees in the Department E =15/100×1800<br>=270<br>∴Respected ratio=252:270=14:15
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 15:16</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 16:15</li>
+</ol>
+<br><br>
+</li>
+<li>
+COMMON DATA:<br>Details of 3000 employees working in an organization in various departments.<br><img src="./Test Results37_files/CD1.JPG" alt="image:APT11/CD1.JPG" width="562" height="289" class="tcecode"><br>What is the total number of female employees working in Departments C and F together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 134</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 136</li>
+<li>&nbsp;<img src="./Test Results37_files/correct.png" width="18"> 138<br><span class="explanation">Explanation:</span><br>The total number of Employees in Departments C and F together =(10+12)% of 3000<br>=660<br>The total number of male employees in Departments C and F together =(14+15)% of 1800<br>=522<br>∴The total number of female Employees in Departments C and F together =660-522<br>=138
+</li>
+<li>&nbsp;<img src="./Test Results37_files/wrong.png" width="16"> 140</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results37_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

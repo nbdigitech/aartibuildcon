@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24263&test_id=222 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results77_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results77_files/calclayout.css">
+<script src="./Test Results77_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results77_files/jquery-ui.js.download"></script>
+<script src="./Test Results77_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results77_files/custom.js.download"></script>
+<script src="./Test Results77_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results77_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results77_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838388, 'I\'m sorry, the time available to complete the test is over!', false, 1486838388781);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24263&amp;test_id=222#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Topic Test - 2</strong><br>
+ISO/OSI stack, Applications of each layer, Bridges, Routers, Gateways, Flow Control Methods - Stop &amp; Wait, Go - back N, SR; Access control - TDM, Polling; CSMA/CD, Exponential Back off algorithm&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-14 23:05:46&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-14 23:50:45&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:59&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+9.700 / 25.000 (39%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+7 / 15 (47%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider an ethernet of distance between 2 peers is 500 meters. Is it possible to increase the length of this ethernet to multiple segments, if a repeater is added at end of each segment to connect to another segment?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> No<br><span class="explanation">Explanation:</span><br>The answer is no. Although such an arrangement does guarantee sufficient signal strength, each repeater and segment along the path increases delay. The Ethernet CSMA/CD scheme is designed for low delay. If the delay becomes too large, the scheme fails. In fact, repeaters are a part of current Ethernet standard, which specifies that the network will not operate correctly if more than four repeaters separate any pair of station.
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Can’t say</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Yes only if repeater can have sufficient signal strength.</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Yes</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A and B are the stations using backoff algorithm to transmit the data. During the first collision, B wins the race and transmitted the packet. Again collision happened and B wins the race while A sends 1st packet and B sends its 2nd packet. What is the probability of A winning  the next time transmission (A’s 1st packet, B’s 3rd packet.)?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 5/8</li>
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 1/16<br><span class="explanation">Explanation:</span><br><img src="./Test Results77_files/EQ2.PNG" alt="image:CN2/EQ2.PNG" width="538" height="261" class="tcecode">
+</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1/8</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 13/16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a machine M1 wants to send a huge file to machine M2 over a TCP connection. Suppose the sequence number for a segment in this connection is S, then the subsequent segment’s sequence number will necessarily be S + 1.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> False<br><span class="explanation">Explanation:</span><br>If sequence number of segment is S and its size is Z, Then next sequence number will be<br>S+Z. So subsequent segment can be S+1 or more depending on size of segment we have sent.
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Depends on implementation</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> True</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q4 &amp; Q5</strong><br>The diagram below shows the size of a TCP sender’s congestion window over a period of time. Answer the following questions based on this diagram.<br><img src="./Test Results77_files/Q4.PNG" alt="image:CN2/Q4.PNG" width="405" height="303" class="tcecode"><br>At what transmission round the 128th segment will be sent?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 9</li>
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>During the 1st transmission round, packet 1 is sent; packet 2-3 are sent in the 2nd transmission round; packets 4-7 are sent in the 3rd transmission round; packets 8-15 are sent in the 4th transmission round; packets 16-31 are sent in the 5th transmission<br>round; packets 32-63 are sent in the 6th transmission round; packets 64 – 96 are sent in the 7th transmission round;packets 97-131 are sent in 8th transmission round. Thus packet 128 is sent in the 8th transmission round.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q4 &amp; Q5</strong><br>The diagram below shows the size of a TCP sender’s congestion window over a period of time. Answer the following questions based on this diagram.<br><img src="./Test Results77_files/Q4.PNG" alt="image:CN2/Q4.PNG" width="405" height="303" class="tcecode"><br>In the diagram it clearly shows that after 22nd transmission round, there is a packet/segment loss. This packet/segment is lost due to _____________________________<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Can not say</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> Duplicate ack’s</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> None</li>
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> Timeout<br><span class="explanation">Explanation:</span><br>After the 22nd transmission round, segment loss is detected due to timeout, and hence the congestion window size is set to 1.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a satellite communication channel with 0% error rate and a link capacity of 64 kbps. The satellite is sending the images of size 512 bytes data in one direction. One Image can be accumulated in one frame. The acknowledgement packets are very small and can be negligible to calculate the  delays. The propagation delay for this satellite channel is 270 msec, what is the maximum achievable throughput for window sizes of 1,7,15 and 90?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 6.7 Kbps, 47 Kbps, 101 Kbps, 0.6 Mbps</li>
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 6.7 Kbps, 47 Kbps, 64 Kbps, 64 Kbps<br><span class="explanation">Explanation:</span><br>L = 512 bytes x 8 bits/B = 4096 bits<br>Tt = L/B = 4096/64000 bps = 64 msec <br>Round trip delay = 540 msec<br>Window size (w) = vary for different window sizes.<br>Throughput = efficiency * bandwidth<br><img src="./Test Results77_files/EQB2.PNG" alt="image:CN2/EQB2.PNG" width="325" height="155" class="tcecode"><br><strong class="tcecode">Window size 10 and greater:</strong> 6781 x 10 = 67810 bps but the maximum capacity is 64 kbps so for window sizes greater than 9 the maximum throughput is 64 kbps
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 6.7 Kbps, 47 Kbps, 61 Kbps, 0.6 Mbps</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 6.7 Kbps, 47 Kbps, 101 Kbps, 61 Kbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume there is a satellite communication link between moon to earth with a capacity of 1-Mbps. The communication is happening between moon and earth with 1000-bit frames and takes 270-ms one way delay. What is the maximum link utilization, if we use<br>Stop-and-wait flow control<br>Continuous flow control with a window size of 7?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1→ 0.017, 2 → 0.002</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1→ 0.02, 2 → 0.0013</li>
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 1→ 0.002, 2 → 0.013<br><span class="explanation">Explanation:</span><br>For stop-and-wait: Utilization = 1/(1+2a) <br>Continuous flow control(SR or GO-back-N):Utilization = W/(1+2a)<br>Where , a = (Propagation Time)/ (Transmission Time)<br>Now, Transmission Time = (Frame Length) / (Data Rate)<br>The following values are given:<br>Propagation Time = 270 ms = 270 x 10-3sec<br>Frame Length = 1000 bits<br>Data Rate = 1 Mbps= 1 x 10<sup class="tcecode">6</sup> bps<br>Therefore, a = (270 x 10<sup class="tcecode">-3</sup>)/ (1000 / 10<sup class="tcecode">6</sup>) =270<br>1.U= 1/(1+2a) = 1/(1+2 x 270) = 1/541 = 0.002<br>2.U= W/(1+2a) = 7/(1+2 x 270) = 7/541 = 0.013
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1→ 0.012, 2 → 0.022</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the Hyderabad Central University uses the 10Base5 cable of length 2500 metres to provide intranet. Consider the  velocity of propagation in fiber cable is 200,000,000 m/s. How much delay will take to send a bit from one end to another end of the network? Assume that  the equipments placed between source to destination will cause a delay of 10micro sec.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 55.2 micro sec</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 40 microsec</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 22.5 micro sec</li>
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 52.5 micro sec<br><span class="explanation">Explanation:</span><br>Explanation : 10Base5 has a maximum length of 500 metres so repeaters should be inserted into the cable in order to ensure transmission over the full length of the 2500m cable. 4 repeaters are required.<br>So  4 x 10micro s + 2500/200,000,000 sec = 52.5micro s<br><img src="./Test Results77_files/EQB9.PNG" alt="image:CN2/EQB9.PNG" width="394" height="56" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let us Consider a scenario of go-back-N protocol of having independent acknowledgments. In this scenario total sequence numbers used are 0, 1, 2, 3 and window size is 2 MSS. while transmitting the packet 1, it has been lost before reaches to destination. Packet 2 was sent before timeout timer of 1 packet expires. Then what are the total number of data packets transmissions and acknowledgements transmissions successfully?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 6, 6</li>
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 6, 5<br><span class="explanation">Explanation:</span><br>Assume that 4 packets are P0, P1, P2 and P3 and acknowledgements of these packets are A0, A1, A2 and A3.<br><img src="./Test Results77_files/EQB8.PNG" alt="image:CN2/EQB8.PNG" width="223" height="327" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 5, 5</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 5, 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a scenario of GO-BACK-4 protocol with 10 bits sequence numbers. Assume that s is the sequence number of subsequent packet at time t0, Then what can be the possible range of window size at sender. Note: medium does not change the order of packets.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> [s-9, s-1]</li>
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> [s,s+3]<br><span class="explanation">Explanation:</span><br>Here we have a window size of N=4.<br>	We have 2 cases possible here,<br>First case, Suppose the receiver has received packet s-1, and has acknowledged that and all other preceding packets. If all of these ACK's have been received by sender, then the sender's window is [s, s+N-1].<br>Second case, Suppose next that none of the ACKs have been received at the sender. the sender's window contains s-1 and the N packets up to and including s-1. The sender's window is thus [s-N,s-1].
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> [s-4, s-9]</li>
+<li><img src="./Test Results77_files/wrong.png" width="16">&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> [s-4,s]</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a LAN with the sender and receiver are 30 kms apart and the link works at a speed of light in fiber. Suppose a packet of size 2KB needs to be transferred, at what data rate does the round-trip delay equal the transmission delay of the packet?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 80 Mbps<br><span class="explanation">Explanation:</span><br>The speed of light in fiber is about 3 * 10<sup class="tcecode">8</sup> m/sec. <br>For a 30-km line, the propagation delay is 10<sup class="tcecode">-4</sup> sec <br>RTT = 2*10<sup class="tcecode">-4</sup>sec.<br>Packet size = 2KB = 16384 bits.<br>⇒ Given, Ttrans = RTT<br>⇒ L/B = 2 * 10<sup class="tcecode">-4</sup> sec <br>⇒ B = 16384 / (2 * 10<sup class="tcecode">-4</sup>)<br>        = 8192*10<sup class="tcecode">4</sup> bps <br>	        = 80Mbps
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 70 Mbps</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 40 Mbps</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 60 Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a scenario where a channel is used in the communication between the earth and geostationary satellite. Suppose the bandwidth is 50 Mbps and each packet is 1500 bytes, what is the channel capacity (bandwidth delay) and the maximum window size (in packets), respectively?<br>Note: Generally delay in geostationary link will be 0.27 sec<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 14Mb, 2222</li>
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 27Mb, 2252<br><span class="explanation">Explanation:</span><br>The propagation delay = 0.27 sec = 270 msec<br>	 The round-trip delay = 540 msec<br>	The Transmission delay = L/B <br><img src="./Test Results77_files/EQB5.PNG" alt="image:CN2/EQB5.PNG" width="406" height="106" class="tcecode"><br>So with a 50-Mbps channel the bandwidth-product delay is 27 megabits or 3,375,000 bytes. <br>Each packet size is 1500 bytes, <br>With packets of 1500 bytes, it takes 2250 packets to fill the pipe. <br>So the window should be at least 2250 packets. <br>In options we do not have this 2250. Then we go for greater than 2250 because of window should be at least 2250 packets.<br><br>	(or)<br><br>Window size = 1 + 2*a, where a = Tp/Tt<br><img src="./Test Results77_files/EQB51.PNG" alt="image:CN2/EQB51.PNG" width="218" height="48" class="tcecode"><br>In options we do not have this 2251. Then we go for greater than 2251 because of window should be at least 2251 packets.
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 27Mb, 2249</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 14Mb, 2211</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let us consider a statistical time division multiplexing of packets. The number of sources is 10. In a time unit/slot, a source transmits a packet of 1000 bits. The number of sources sending data for the first 20 time units is 6, 9, 3, 7, 2, 3, 2, 5, 4, 6, 1, 10, 7, 5, 8, 3, 6, 2, 9, 5 respectively. The output capacity of multiplexer is 5000 bits per time unit. Then the average number of backlogged of packets per time unit during the given period is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 4.45<br><span class="explanation">Explanation:</span><br>Explanations: Each station can send 1000 bits for a packet. <br>Multiplexer output = 5000 bits. I.e 5 packets can be send in a time unit.<br>This means for each time unit, All the data successfully transmitted if 5 station(sources) or less than 5 stations want to transmit the data(each 1000 bits or 1 packet). If more than 5 stations want to transmit the data, remaining stations packets are all backlogged packets(because only 5 packet can send in a time unit).<br><br>For each time unit data packets has to send is = ((No. of stations want send * 1 packet) + (backlogged packets from previous unit))   <br>Given no. of stations for each time unit  6, 9, 3, 7, 2, 3, 2, 5, 4, 6, 1, 10, 7, 5, 8, 3, 6, 2, 9, 5<br>No. of backlogged packets in each station :<br><br>6(want to send) - 5(able to send) = 1,    <br>9(want to send)+1(backlogged) - 5 = 5, <br>3(want to send)+5(backlogged) - 5 = 3, <br>7(want to send)+3(backlogged) - 5 = 5, <br>2(want to send)+5(backlogged) - 5 = 2, <br>3(want to send)+2(backlogged) - 5 = 0, <br>2(want to send)+0(backlogged) - 5 = 0, <br>5(want to send)+0(backlogged) - 5 = 0, <br>4(want to send)+0(backlogged) - 5 = 0, <br>6(want to send)+0(backlogged) - 5 = 1, <br>1(want to send)+1(backlogged) - 5 = 0, <br>10(want to send)+0(backlogged) - 5 = 5, <br>7(want to send)+5(backlogged) - 5 = 7<br>5(want to send)+7(backlogged) - 5 = 7<br>8(want to send)+7(backlogged) - 5 = 10<br>3(want to send)+10(backlogged) - 5 = 8<br>6(want to send)+8(backlogged) - 5 = 9<br>2(want to send)+9(backlogged) - 5 = 6<br>9(want to send)+6(backlogged) - 5 = 10<br>5(want to send)+10(backlogged) - 5 = 10<br>Avg. no. of packets backlogged = (1 + 5 + 3 + 5 +2 + 1 + 5 + 7 + 7 + 10 + 8 + 9 + 6 + 10 + 10) / 20 = 4.45
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 5.16</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 4.52</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a scenario that an ISP can serve minimum of 80% of time for each user. The probability of each user being active is ½. The ISP contains a router which can serve users with a data rate of 500Mbps and is able to provide 1.5 Mbps for each user. How many number of users can an ISP is able to serve?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 833<br><span class="explanation">Explanation:</span><br>Assume N = no. of stations.<br>	Each station bandwidth = 1.5 Mbps<br>Each user active state = ½ = 0.5<br>Each user can be served = 80/100 = 0.8<br>	<br>	Total bandwidth used for all users = N * 1.5 Mbps * 0.5 * 0.8<br>	But total bandwidth given = 500Mbps<br><br>⇒ N * 1.5Mbps * 0.8 * 0.5 = 500Mbps<br>⇒ N = 833
+</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 783</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 555</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1041</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a machine M1 wants to send a large file to Machine M2. There are 3 routers configured in the path from machine M1 to machine M2.  The data rates at each router while leaving is 500kbps, 2Mbps, and 1Mbps respectively. Suppose throughout the path full capacity can be used for the transmission, what is the maximum possible bandwidth for the file transfer? Suppose the file is 4.5 million bytes and time to take 1 bit reached to M2 from M1 is 64sec.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 1200 Kbps</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 2048 Kbps</li>
+<li>&nbsp;<img src="./Test Results77_files/wrong.png" width="16"> 2000 Kbps</li>
+<li><img src="./Test Results77_files/correct.png" width="18">&nbsp;<img src="./Test Results77_files/correct.png" width="18"> 180 Kbps<br><span class="explanation">Explanation:</span><br>The data can be transmitted with minimum data rate throughout the path.<br>	I.e 500 kbps<br>	Throughout the path full capacity can be used for the transmission means no other traffic in the network.<br>         Total length of data 4.5 million <br>	Transmission delay = L/B = 72 sec<br>	Propagation delay = 64sec<br>        Maximum possible bandwidth means the throughput. i.e how much bandwidth can be used.<br>        Throughput = utilization * bandwidth<br>                   = 1/(1+2(64/72)) * (500)Kbps<br>                   = 180kbps
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results77_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

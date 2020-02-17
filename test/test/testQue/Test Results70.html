@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24742&test_id=240 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results70_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results70_files/calclayout.css">
+<script src="./Test Results70_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results70_files/jquery-ui.js.download"></script>
+<script src="./Test Results70_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results70_files/custom.js.download"></script>
+<script src="./Test Results70_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results70_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results70_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838108, 'I\'m sorry, the time available to complete the test is over!', false, 1486838108680);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=24742&amp;test_id=240#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Subject Test - 1</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-16 16:38:48&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-16 18:04:18&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:25:30&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+5.750 / 50.000 (12%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+9 / 33 (27%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+How many data elements can be carried by each signal, if the signal has a bit rate of 9000 bps and a baud rate of 3000 baud?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.336 bits/baud</li>
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 3 bits/baud<br><span class="explanation">Explanation:</span><br>Baud is unit for signal and bits are units for data.<br>		So The question is how many bits can be  transferred in a single baud.<br>		Given 9000 bits per sec and 3000 baud(signals) per sec<br>		I.e 9000 bits are transmitted in 3000 baud(signals) <br>		Then for each baud 3 bits must send.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 120,00,000 bits/baud</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following IP addresses are matched by the address prefix 153.234.99.10/20?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 153.235.31.10</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 153.234.95.23</li>
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 153.234.102.10<br><span class="explanation">Explanation:</span><br>The address in option (d) is not even a valid IP address, so we can rule it out. (because 257 octet is not valid) <br>The masks given as 20, so addresses must have the same first 20 bits for the prefix to be a match. I.e first 20 bits should be matched with the IP addresses  given in options. <br>We can rule out 123.235.31.10 because of 2nd octet differs.<br>For the other two addresses, we need to look at how their 3rd octet can match with prefix(first 20 bits of given IP) <br>The third byte of the prefix is of the form 0110 ****, i.e., only the first 4 bits matter given the mask size of 20 (8+8+4 = 20). We have: 95 = 0101 1111,<br>         102 = 0110 0110. <br>Hence, the prefix is a match only for 153.234.102.10
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 153.257.140.10</li>
+</ol>
+<br><br>
+</li>
+<li>
+UDP and TCP use 1’s complement for their checksums. Suppose you have the<br>following 4 bytes: 01010011, 01100110, 01110100, 10010100. What will be the checksum received at destination if no errors are there.<br>(Note:  The checksum field is represented with 8-bits. )<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 00111111</li>
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 00111101<br><span class="explanation">Explanation:</span><br>Although UDP and TCP use 16-bit words in computing the checksum, for this problem you are being asked to consider 8-bit sums.<br><br>		0 1 0 1 0 0 1 1<br>0 1 1 0 0 1 1 0<br>		------------------<br>		1 0 1 1 1 0 0 1<br>0 1 1 1 0 1 0 0<br>		-----------------<br>		0 0 1 0 1 1 1 0<br>	      +	1 0 0 1 0 1 0 0<br>		------------------<br>		1 1 0 0 0 0 1 0<br>	1’s complement or checksum = 0 0 1 1 1 1 0 1
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 01111101</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 00111001</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a machine M1 wants to send a huge file to machine M2 over a TCP connection. Suppose the sequence number for a segment in this connection is s, then the subsequent segment’s sequence number will necessarily be s + 1.<br>The above statement is True/ False : __________________________<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> False<br><span class="explanation">Explanation:</span><br>It depends on number of bytes in the segment.
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> True</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Depends on implementation</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following is a dump of a UDP header in hexadecimal format.<br>0X 0632000D001CE217<br>What will be the destination port and total length  of datagram?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1586, 28</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 13, 20<br><span class="explanation">Explanation:</span><br>The source port number → 	0X 0632 = 1586<br><br>The destination port number → 0X 000D = 13<br><br>The total length of the user datagram → 0X 001C =  28 bytes<br><br>The length of the data → 20 bytes (28 – 8 byte header)
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 13, 28</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 13, 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose N users are transmitting their own data continuously at a rate of 1 Mbps over a 2 Mbps capacity link by sharing it. Each user transmits only for 30% of the time. If the N is 4, find the probability that at any given time, all the users are transmitting simultaneously?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.9</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 0.0081<br><span class="explanation">Explanation:</span><br><sup class="tcecode">4</sup>c<sub class="tcecode">u</sub> pu (1-p)4-u<sup class="tcecode"></sup>     where u = no. of users want to transmit out of 4 users.<br>	Probability that a given user is transmitting = 0.3<br>	Probability that all 4 users are transmitting simultaneously =   <sup class="tcecode">4</sup>c4<sub class="tcecode"></sub> p<sup class="tcecode">4 </sup>(1 - p)<sup class="tcecode">4-4</sup><br>= (0.3)<sup class="tcecode">4</sup> = 0.0081. <br><br>Here required bandwidth by all users want to transmit (4 Mbps) &gt; capacity (2 Mbps). 	 	In this case, there will be queuing delay before the link.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.009</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.018</li>
+</ol>
+<br><br>
+</li>
+<li>
+The address 43:7B:6C:DE: 10:00 has been shown as the source address in an Ethernet frame. What will be the receiver does when it receives the frame?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> forward to upper layer</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> forward to down layer</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> discarded<br><span class="explanation">Explanation:</span><br>The first byte in binary is 01000011. The least significant bit is 1. This means that<br>the pattern defines a multicast address. A multicast address can be a destination<br>address, but not a source address. Therefore, the receiver knows that there is an<br>error, and discards the packet.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following CRC generators guarantee the detection of a single bit<br>Error?<br>1.x<sup class="tcecode">3</sup> + x + 1<br>2.x<sup class="tcecode">4</sup> + 2x<br>3.x<br>4.2x + 1<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> only 1</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1 and 3</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 2 and 3</li>
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 1 and 4<br><span class="explanation">Explanation:</span><br>To detect single bit errors, <br>→ A CRC generator must have at least two terms and <br>→ The coefficient of x0 must be nonzero.<br>→  x<sup class="tcecode">3</sup> + x + 1 ⇒  It meets both criteria.<br>→  x<sup class="tcecode">4</sup> + 2x ⇒  It meets the first criteria, but not the second.<br>→  x ⇒  It meets the second criteria, but not the first.<br>→  2x + 1 ⇒  It meets both criteria.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+2 persons are using a channel like TCP. In their link they have used 64-bit sequence numbers with a link speed of 75 Tbps. How long can a packet stay in link without worrying about problem of having 2 packets with same sequence numbers?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 3 weeks<br><span class="explanation">Explanation:</span><br>75Tbps = 75/8 TBps = 9.375 TBps<br>	Each byte uses a sequence number, so 9.375 TB uses 9.375 × 10<sup class="tcecode">12</sup> sequence numbers. <br><br>	Total time takes is 2<sup class="tcecode">64</sup> = 2million sec.<br>It takes 2 million seconds to wrap around. Since there are 86,400 seconds in a day, it will take over 3 weeks to wrap around, even at 75 Tbps.<br> A minimum packet lifetime of 3 weeks will prevent the problem. In short, going to 64 bits is likely to work for a while.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1 week</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1 month</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 3 days</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose in a TCP communication channel, the congestion window is set to 21 KB and a timeout occurs. What will be the window size after 4 successful transmissions, if maximum segment size is 2 KB? Note: When a timeout occurs slow start phase has been initialized.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 21 KB</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 16 KB</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 32 KB</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 12 KB<br><span class="explanation">Explanation:</span><br>Timeout occurs means slow start phase has to follow for next transmissions.<br>	The first transmission will be 1 maximum segment size so data size = 2 KB. Then 2, 4, 8 and 16. The corresponding data sizes are 4KB, 8KB, 16KB, 32KB. <br>But due to the timeout, threshold will be set to half of the current congestion window i.e 21/2 = 10<br>So the fourth and fifth cwnd sizes are 10KB(5MSS) and 12KB(6MSS).<br>So after four successful transmission,, it will be 12 KB.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the length of a contention slot in CSMA/CD a 40-km multimode fiber optic cable (signal propagation speed is 65% of the signal propagation speed in vacuum)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 205μ sec.</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 410μ sec.<br><span class="explanation">Explanation:</span><br>Signal propagation speed is 65% of the speed of light = (65/100)*3*10<sup class="tcecode">8</sup>m/s = 1.95 × 10<sup class="tcecode">8</sup> m/sec. <br>Signal propagation time for 40 km is d/v = 40 × 10<sup class="tcecode">3</sup> m / (1.95 × 10<sup class="tcecode">8</sup> m/sec) = 20.513×10<sup class="tcecode">-5</sup> sec = 205.13 μ sec <br>The length of contention slot is 2*Tp = 2*205.13 μ sec = 410.26 μsec
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 480 μ sec.</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 312 μ sec.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a line with a length of 100km runs at T1 data rate. Then how much data can be fit in the line, if speed of the line is ⅔ rd of the speed of light? Note: T1 data rate is well known to represent 1.544Mbps with each frame of size 193 bits.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 642 B</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 96.5 B</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 772 B<br><span class="explanation">Explanation:</span><br>The propagation speed in the cable is ⅔ of light speed(3 * 10<sup class="tcecode">5</sup>) = 200,000 km/sec<br>So a 100-km cable will be filled in 500 μ sec. <br>Each frame is 193 bits sent in 125 μ sec. <br>This corresponds to four frames, or 772 bits on the cable.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 331 B</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a communication link between a workstation which is on earth and a satellite which acts as a server. Distance between earth and satellite is 4 * 104 km. What is the best-case delay in response to a request?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 133.33 m sec</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 266.67 m sec</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 400.00 m sec</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 533.33 m sec<br><span class="explanation">Explanation:</span><br>The request must go up and down (request and acknowledgment), and the response must go up and down (response and acknowledgment). <br>The total distance d traversed is thus 16 * 10<sup class="tcecode">4</sup> km. <br>The speed is equal to speed of light in space. So speed v is 300,000 km/sec <br>Therefore, the propagation delay is d/v = 160,000/300,000 sec or about 533 m sec.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many keys have to be generated on the whole if Krishna wants to communicate with all 100 people using asymmetric confidentiality?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 10000</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 200<br><span class="explanation">Explanation:</span><br>For asymmetric key confidentiality required keys are 2n. Ie. 200
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 199</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data Q15 &amp; Q16</strong><br>Consider a communication channel from source to destination of having 3 routers in between.<br>Assume each link has a data rate of 4 Mbps and propagation delay of 2ms. The source wants send a data of L bits to destination in 2 different ways. <br>Circuit Switching<br>		Assume in this way, to set up and destroy the circuit takes 1 sec each. <br>Packet Switching<br>		Assume in this way, total data is divided into packets of size 1kb each having 24 bits header and 1000 bits data.<br>Neglect any other details involved. .<br><br>Assume that source sends one packet, waits until an acknowledgment is received (assuming that this takes 10ms after the packet has been completely delivered to the destination), then sends the next packet, and so on. What is the total delay to deliver the file using packet-switching?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 20.2 * 10<sup class="tcecode">-6</sup> L sec</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 17.042 *10<sup class="tcecode">-6</sup> L sec</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 19 *10<sup class="tcecode">-6</sup> L sec<br><span class="explanation">Explanation:</span><br>Packet Switching with acknowledgment with packet size =1 Kbits= 1000bits (payload)+ 24bits(header)<br>Since, number of packets = Total size of data / size of payload in each packet = L / 1000.<br> Then time required to transfer this file = number of packets*[time to transfer one packet + time of receiving packet acknowledge] <br>Since there are 3 routers between source and destination, there are 4 links connecting the network. <br>So, time to transfer one packet = 4* T<sub class="tcecode">propagation</sub> +4*T<sub class="tcecode">transmission</sub> = 4*2ms + 4*1024/(4*10<sup class="tcecode">6</sup> ) = 9.042 ms <br>Time needed to transfer this file = (L / 1000) *[9.042 +10]m sec<br>				    = 19.042 *10<sup class="tcecode">-6</sup> L sec
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 18.02 *10-3 L sec</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data Q15 &amp; Q16</strong><br>Consider a communication channel from source to destination of having 3 routers in between.<br>Assume each link has a data rate of 4 Mbps and propagation delay of 2ms. The source wants send a data of L bits to destination in 2 different ways. <br>Circuit Switching<br>		Assume in this way, to set up and destroy the circuit takes 1 sec each. <br>Packet Switching<br>		Assume in this way, total data is divided into packets of size 1kb each having 24 bits header and 1000 bits data.<br>Neglect any other details involved. .<br>What is the approximate ratio of delay of packet switching over that of  circuit-switching, if total data which sender wants to send is 1 Tb?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 33:1</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 76:1<br><span class="explanation">Explanation:</span><br>Given total data size L = 1Tb = 10<sup class="tcecode">12</sup> bits<br>Total Delay =  t<sub class="tcecode">setup</sub> + t<sub class="tcecode">transmission Data</sub> +t<sub class="tcecode">prop</sub>+t<sub class="tcecode">release</sub><br>Total Delay = 1+ (L/(4*10<sup class="tcecode">6</sup>)) + 8ms + 1<br>	        = 2 + (L/(4*10<sup class="tcecode">6</sup>))<br>	        = 2 + 10<sup class="tcecode">12</sup>/(4*10<sup class="tcecode">6</sup>) <br><br>Ratio 	= Packet switching / circuit switching<br>	= (19.042 *10<sup class="tcecode">-6</sup> *10<sup class="tcecode">12</sup>) / (2 + (10<sup class="tcecode">12</sup>/(4*10<sup class="tcecode">6</sup>)))<br>	= 76/1
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 12:5</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 25:6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose users share a 3 Mbps link and each user requires 150 kbps when transmitting, but each user transmits only 10 percent of the time. Suppose there are 20 users and packet switching is used. Find the probability that at any given time, exactly 5 users are transmitting simultaneously. (Hint: Use the binomial distribution.)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 0.032<br><span class="explanation">Explanation:</span><br>→ <sup class="tcecode">20</sup>c<sub class="tcecode">n</sub> p<sup class="tcecode">n</sup> (1-p)<sup class="tcecode">20-n</sup>     where n = no. of users want to transmit.<br>	→ Probability of a user transmit = 0.1<br>	→ <sup class="tcecode">20</sup>c<sub class="tcecode">5</sub> 0.1<sup class="tcecode">5</sup> (1-0.1)<sup class="tcecode">15</sup> = 0.032
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.12</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1.23</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 0.33</li>
+</ol>
+<br><br>
+</li>
+<li>
+The total number of keys required for a set of n individuals to be able to communicate with each other using secret key and public key crypto-systems respectively are<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> n(n-1) and 2n</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 2n and n(n-1)/2</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> n(n-1)/2 and 2n<br><span class="explanation">Explanation:</span><br>In Symmetric Key Cryptography, access of key is with both the parties. It implies every person needs to communicate N-1 other users using different keys i.e 1+2+3...N-2+N-1 This is like number of edges needed in a complete graph with N vertices is N(N-1)/2.<br>	In asymmetric key cryptography, required keys are 2n
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> n(n-1)/2 and n</li>
+</ol>
+<br><br>
+</li>
+<li>
+A Link state routing protocol considers which of the following metric to choose the best path?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Delay</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Bandwidth</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Number of hops</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> Reliability<br><span class="explanation">Explanation:</span><br>Note : Number of hops is more often used in case of distance vector routing. So it is a wrong choice. The most appropriate choice is Reliability. Link state also uses bandwidth, delay and load in many cases as well.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+An IP packet has arrived with the first 8 bits as 0100 0010. Which of the following is correct?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> The number of hops this packet can travel is 2.</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> The total number of bytes in header is 16 bytes</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> The upper layer protocol is ICMP</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> The receiver rejects the packet<br><span class="explanation">Explanation:</span><br>It is given in Question that arrived packet has 8 bits and according to IP header 4 bits is for Header Length .That must be invalid because the min header length in Bytes must be 20.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using public key cryptography, sateesh adds digital signature “z” to message “m”, encrypts (m,z)  and sends it to srinu where it is decrypted which of the following sequence of keys used for the operations?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Encryption : Sateesh’s private key followed by Srinu’s public key<br>    Decryption: Sateesh’s publick key followed by Srinu’s public key</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Encryption : Sateesh’s private key followed by Srinu’s public key<br>    Decryption: Sateesh’s publick key followed by Srinu’s private key</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Encryption : Sateesh’s public key followed by Srinu’s private key<br>    Decryption: Srinu’s public key followed by Sateesh’s private key</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> Encryption : Sateesh’s private key followed by Srinu’s public key<br>    Decryption: Srinu’s private key followed by Sateesh’s public key</li>
+</ol>
+<br><br>
+</li>
+<li>
+An IPV4 datagram has arrived with following partial information in the header(in hexadecimal)<br>	45000054 00030000 2006…..<br>       What is the header size, data size and number of router travel to reach destination respectively?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 20, 84, 32</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 20, 34, 29</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 20, 64, 31<br><span class="explanation">Explanation:</span><br><img src="./Test Results70_files/E33a.PNG" alt="image:CNS1/E33a.PNG" width="317" height="169" class="tcecode"><br>You can find it by mapping the hex values to the IPv4 header diagram <br>Total Length = (0054)16 = (84)10 = 84 bytes<br>Header length = (5)16  = (5)10 = 4 * 5 = 20 bytes<br>⇒ data size = 84 - 20 = 64 bytes<br>TTL = (20)16 = (32)10<br>⇒ The number of routers packet needs to travel to reach destination is 31(reduce TTL value by 1 in current router)
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 40, 44, 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that a host H receives the fragments of data size 1K bytes with below IP header values. Then what is the missing fragment offset and data size of last fragment respectively?<br>1.MF = 1, offset = 0, Header length = 6, Total length = 496 <br>2.MF = 1, offset = 80, Header length = 7, Total length = 196 <br>3.MF = 0, offset = 118, Header length = 6, Total length = 80<br>4.MF = 1, offset = 59, Header length = 7, Total length = 196<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 136, 56</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 139, 136</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 101, 56<br><span class="explanation">Explanation:</span><br><img src="./Test Results70_files/E11a.PNG" alt="image:CNS1/E11a.PNG" width="458" height="523" class="tcecode"><br><img src="./Test Results70_files/E11b.PNG" alt="image:CNS1/E11b.PNG" width="414" height="222" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> No fragment is missed, 136</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume a datagram of length 5*10<sup class="tcecode">3</sup> bytes needs to pass through five networks to reach its destination. The MTU’s of each network is 1000, 820, 850, 950 and 900 respectively. Then at destination how many datagrams has to reached and what is the offset value of 3rd fragment after fragmentation?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 7,  200<br><span class="explanation">Explanation:</span><br>Here	are	the	header	field	for	the	fragments: <br>Length = 820, ID =	x, mf = 1, offset = 0;<br>Length = 820, ID =	x, mf = 1, offset = 100;<br>Length = 820, ID =	x, mf = 1, offset = 200;<br>Length = 820, ID =	x, mf = 1, offset = 300;<br>Length = 820, ID =	x, mf = 1, offset = 400;<br>Length = 820, ID =	x, mf = 1, offset = 500;<br>Length = 220, ID =	x, mf = 0, offset = 600;
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 6, 400</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 6, 300</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 7, 400</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the GBN protocol with a sender window size of 4 and a sequence number range of 1,024. Suppose that at time t, the next in-order packet that the receiver is expecting has a sequence number of k. Assume that the medium does not reorder messages. What are all possible values of the ACK field in all possible messages currently propagating back to the sender at time t?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> k-4 → k-1<br><span class="explanation">Explanation:</span><br>If the receiver is waiting for packet with sequence number K, then it has received the packet before that (k-1) and all packets leading up to that point as well (N-1). Because the sender has already sent packet [K-N, K-1] then the sender must have already received the ack for K-N-1.
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> k-5 → k-1</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> k-5 → k</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> k-4 → k</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a message of size 80,00,000 bits is sending from a source host to destination host over link which contain 2 switches in between. With 2 switches 3 links are formed and each link has 2 Mbps. Assume message is divided with each having 10,000 bits. Total how much delay is need to transfer entire message from source to destination. Remaining delays(propagation, queuing, processing) are negligible.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 4.1 sec<br><span class="explanation">Explanation:</span><br>Time to send 1st packet from source host to first packet switch = 1*104 / 2 * 106 = 5 msec. Time at which 1st packet is received at the destination host =5 msec * 3 hops = 15msec . After this, every 5 msec one packet will be received; thus time at which last (800th) packet is received = 15msec + 799*5 msec  = 4.01sec<br><img src="./Test Results70_files/E24a.PNG" alt="image:CNS1/E24a.PNG" width="318" height="97" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 2.2 sec</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 3.9 sec</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider channel of having <br>average number of packets in buffer and being transmitted is N.<br>Data rate of packets arriving is d<br>Average total delay by a packet (transmission + propagation)is t. <br>Then the little formulae proposed in queuing theory is N = d * t<br>Suppose the  channel is configured like little's formulae, what is the packet arrival rate  if buffer contain on an average of 10 packets with eath queuing delay 10 msec. The transmission rate is 100 packets/sec.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 500</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 550<br><span class="explanation">Explanation:</span><br>The total number of packets in the system includes those in the buffer and the packet that<br>is being transmitted. So, N=10+1.<br>Because N = a * d , so (10+1)=a * (queuing delay + transmission delay). That is,<br>11=a * (0.01+1/100)=a * (0.01+0.01). Thus, a=550 packets/sec.
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 450</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 400</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true when describing a unique local address?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> Packets addressed to a unicast address are delivered to a single interface.</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> These are your typical publicly routable addresses, just like a regular publicly routable address in IPv4.</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> These are like private addresses in IPv4 in that they are not meant to be routed.</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> These addresses are meant for non-routing purposes, but they are almost globally unique so it is unlikely they will have an address overlap.<br><span class="explanation">Explanation:</span><br>These addresses are meant for non-routing purposes like link-local, but they are almost globally unique so it is unlikely they will have an address overlap. Unique local addresses were designed as a replacement for site-local addresses.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following is a dump of a TCP header in hexadecimal format.<br>	05320017 00001010 00000000 500207FF 00000000<br>	What is the source port and sequence number of the packet?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 17, 23</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 17, 10</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1330, 23</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 1330, 4112<br><span class="explanation">Explanation:</span><br>The source port number is 0x0532 (1330 in decimal).<br>The destination port number is 0x0017 (23 in decimal).<br>The sequence number is 0x00001010 (4112 in decimal).<br>The acknowledgment number is 0x00000000 (0 in decimal).<br>The header length is 0x5 (5 in decimal). So  5 × 4 = 20 bytes of header.<br>The control field is 0x002. This indicates a SYN segment used for connection Establishment.<br>The window size field is 0x07FF (2047 in decimal).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a link with a transmission rate of R. Assume N packets are reached to link simultaneously. What is the average queuing delay for N packets, if each packet of size L. Currently no packet is transmitted or queued.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> (N-1)(L-1)/(2R)</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> (N)L/(2R)</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> (N-1)L/(4R)</li>
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> (N-1)L/(2R)<br><span class="explanation">Explanation:</span><br>The queuing delay is 0 for the first transmitted packet, L/R for the second transmitted<br>packet, and generally, (n-1)L/R for the nth transmitted packet. Thus, the average delay<br>for the N packets is:<br>(L/R + 2L/R + ....... + (N-1)L/R)/N<br>= L/(RN) * (1 + 2 + ..... + (N-1))<br>= L/(RN) * N(N-1)/2<br>= LN(N-1)/(2RN)<br>= (N-1)L/(2R)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Every hub develops a one-dimensional exhibit containing the "distances"(costs) to every other hub and disperses that vector to its quick neighbors<br>1.The starting assumption for distance-vector routing is that each node knows the cost of the link to each of its directly connected neighbors.<br>2.A link that is down is assigned an infinite cost.<br><img src="./Test Results70_files/Q28a.PNG" alt="image:CNS1/Q28a.PNG" width="304" height="232" class="tcecode"><br>Find the below table with correct entries?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> <img src="./Test Results70_files/O28a.PNG" alt="image:CNS1/O28a.PNG" width="625" height="283" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> <img src="./Test Results70_files/O28ba.PNG" alt="image:CNS1/O28ba.PNG" width="629" height="140" class="tcecode"><br><img src="./Test Results70_files/O28bb.PNG" alt="image:CNS1/O28bb.PNG" width="625" height="138" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> <img src="./Test Results70_files/O28c.PNG" alt="image:CNS1/O28c.PNG" width="630" height="286" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> <img src="./Test Results70_files/O28d.PNG" alt="image:CNS1/O28d.PNG" width="633" height="290" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data:Q32 &amp; Q33</strong><br>Consider a single TCP connection using a 5 Mbps link which does not buffer any data. Suppose that this is the bottleneck link between the pair of hosts. Assume the TCP sender has a huge file to send to the receiver and the receiver’s receive buffer is much larger than the congestion window. We make the following simplifying assumptions: <br>→ Each TCP segment size is 1500 bytes <br>→ The RTT of the connection is 100 ms <br>→ The TCP connection is always in congestion avoidance (ignore slow start)<br>What is the maximum window size (in segments) that this TCP connection can achieve?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results70_files/correct.png" width="18">&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 42<br><span class="explanation">Explanation:</span><br>Let W denote the max window size measured in segments. Then, W*MSS/RTT =<br>5Mbps, as packets will be dropped if the maximum sending rate exceeds link<br>capacity. Thus, we have W*1500*8/0.1=10*106, then W is about 42 segments.
+</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 125</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 72</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data:Q32 &amp; Q33</strong><br>Consider a single TCP connection using a 5 Mbps link which does not buffer any data. Suppose that this is the bottleneck link between the pair of hosts. Assume the TCP sender has a huge file to send to the receiver and the receiver’s receive buffer is much larger than the congestion window. We make the following simplifying assumptions: <br>→ Each TCP segment size is 1500 bytes <br>→ The RTT of the connection is 100 ms <br>→ The TCP connection is always in congestion avoidance (ignore slow start)<br>How long would it take for this TCP connection to reach its maximum window size again after recovering from a packet loss?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 1.1 sec</li>
+<li>&nbsp;<img src="./Test Results70_files/correct.png" width="18"> 1.6 sec<br><span class="explanation">Explanation:</span><br>When recovering packet loss, congestion window size varies from W/2 to W, then the average window size is<br>0.75W=32 (ceiling of 31.5) segments.<br><br>	32/2 *0.1 = 1.6 seconds, as the number of RTTs (that this TCP connections needs<br>in order to increase its window size from W/2 to W) is given by W/2. <br>Note:In each RTT the window size increases by one.
+</li>
+<li><img src="./Test Results70_files/wrong.png" width="16">&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 2 sec</li>
+<li>&nbsp;<img src="./Test Results70_files/wrong.png" width="16"> 3.2 sec</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results70_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

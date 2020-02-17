@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=34295&test_id=261 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results57_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results57_files/calclayout.css">
+<script src="./Test Results57_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results57_files/jquery-ui.js.download"></script>
+<script src="./Test Results57_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results57_files/custom.js.download"></script>
+<script src="./Test Results57_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results57_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results57_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837847, 'I\'m sorry, the time available to complete the test is over!', false, 1486837847041);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=34295&amp;test_id=261#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Topic Test - 3</strong><br>
+Graph Theory&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-05 15:54:01&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-05 15:55:40&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:01:39&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+1.000 / 25.000 (4%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+1 / 15 (7%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Let G be the graph whose vertex is the set of K-tuples with elements in {0, 1}, with x adjacent to y, if x and y different in exactly two positions. The number of components of G _____<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results57_files/correct.png" width="18">&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>Consider k=3 the vertices will be {000,001,010,011,100,101,110,111}<br>We can separate these vertices into<br>A = {000, 011, 101, 110}	(even number of 1’s)<br>B = {001, 010, 100, 111}	(odd number of 1’s)<br>As shown in graph<br><img src="./Test Results57_files/E1a.PNG" alt="image:EM3/E1a.PNG" width="245" height="233" class="tcecode"><br>Any vertex in A will never connects to any other vertex in B. A, B both forms two disconnected complete graphs <br>Therefore, even with k size tuples we can divide them into two completely disconnected complete graphs.
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+A simple graph has 10 vertices and 3 components, the maximum number of edges possible in the graph<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 28<br><span class="explanation">Explanation:</span><br>The complete graph will have maximum number of edges, you can divide these 10 vertices into three groups each group having vertices 1,1,8 and form complete graph with all three components<br>	First and second group will have 0 edges<br>	The 3<sup class="tcecode">rd</sup> group will have <sup class="tcecode">8</sup>C<sub class="tcecode">2</sub> edges<br>	<sup class="tcecode">8</sup>C<sub class="tcecode">2</sub>=28<br>Therefore, the answer is 28
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 17</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many distinct directed graphs are there nodes labeled 1, 2, 3, 4? [consider graphs with no multiple edges and loops]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 4096<br><span class="explanation">Explanation:</span><br>We consider that between any pair of nodes, there are four possibilities: <ol class="tcecode">1.edge in one direction, 2.edge in the opposite direction, 3. edge in both directions, 4. no edge</ol>. In particular, because there are 6 pairs of nodes, and each of these decisions is independent of the others, we can see that there must be<br>4<sup class="tcecode">6</sup> = 4096<br>possible graphs of this kind.
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 81</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 72</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 729</li>
+</ol>
+<br><br>
+</li>
+<li>
+The total number of planar graphs can be formed with 5 vertices are _____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 1024</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 1014</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 1023<br><span class="explanation">Explanation:</span><br><img src="./Test Results57_files/E13a.PNG" alt="image:EM3/E13a.PNG" width="639" height="66" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 1015</li>
+</ol>
+<br><br>
+</li>
+<li>
+The minimum number of edges the graph G should have for the graph G to a 3-connected and it given that G has 10 vertices<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br><img src="./Test Results57_files/E14a.PNG" alt="image:EM3/E14a.PNG" width="536" height="206" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 25</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many distinct paths of length 4 that do not visit the same node more than once are there between node 0 and node 1?<br><img src="./Test Results57_files/Q2a.PNG" alt="image:EM3/Q2a.PNG" width="151" height="143" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 32</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 24<br><span class="explanation">Explanation:</span><br>we can reach ‘1’ from any of {‘2’, ‘3’, ‘4’, ‘5’} with a length 1,<br><br>		 there are 4 ways you can reach vertex ‘1’ with path length 1<br><br>	Let’s suppose we reached ‘1’ from ‘2’ [Total path length =1],<br><br>we can reach ‘2’ from any of {‘3’, ‘4’, ‘5’} with path length 1,<br><br>		 there are 3 ways you can reach vertex ‘2’ with path length 1<br><br>	Let’s suppose we reached ‘2’ from ‘3’ [Total path length =2],<br><br>we can reach ‘3’ from any of {‘4’, ‘5’} with path length 1,<br><br>		 there are 2 ways you can reach vertex ‘3’ with path length 1<br><br>Let’s suppose we reached ‘3’ from ‘4’ [Total path length =3],<br><br>we can reach ‘4’ from ‘0’ with path length 1,<br><br>		 there is 1 way you can reach vertex ‘4’ with path length 1<br><br>		Which makes path length of 4<br>	Number of ways distinct paths of length 4 are = 4*3*2*1=24
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 48</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement is incorrect?<br>S1: Finite graphs having exactly two vertices of odd degree must contain a path from one to other.<br>S2: A connected graph any two paths of maximum length share at least one vertex<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> S1</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> S2</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> neither S1 nor S2<br><span class="explanation">Explanation:</span><br>a).Assume G is a finite graph with exactly 2 vertices of odd degree, call them u and v. If G is connected, then we are finished. Thus, we can assume Gis disconnected. Let J be the connected component of G such that u∈J. Since J is a graph, it must contain an even number of vertices of odd degree since<br><img src="./Test Results57_files/E15a.PNG" alt="image:EM3/E15a.PNG" width="187" height="71" class="tcecode"><br>Thus, there is at least one more vertices of odd degree in J. Since G contains exactly two vertices of odd degree, we must have v∈J. This implies there is a path from u to v.<br><br><img src="./Test Results57_files/E15b.PNG" alt="image:EM3/E15b.PNG" width="615" height="131" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let G denote a graph on ‘n’ vertices with chromatic K. At least how many edges should G have<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">2</sub> – 1</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">k</sub></li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> <sup class="tcecode">k</sup>C<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results57_files/E12a.PNG" alt="image:EM3/E12a.PNG" width="642" height="146" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">k</sub> – 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+A random permutation π of set[n] = {1, 2, …, n} can be represent by a directed graph on n vertices with directed arc (i, π<sub class="tcecode">i</sub>) where π<sub class="tcecode">i</sub> is the i<sup class="tcecode">th</sup> entry in the permutation. Observe that the resulting graph is just a collection of disjoint cycles.<br>What is the expected length of the cycle containing vertex 1?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> n(n-1)/2n</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> (n+1)/2n</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> ((n-1))/2</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> ((n+1))/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results57_files/E11a.PNG" alt="image:EM3/E11a.PNG" width="640" height="207" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Place n points on a circle where n≥K(K+1). LetGn,kbe the 2K-regular graph obtained by joining each point to the Knearest points in each direction on the circle. Ex G<sub class="tcecode">n,1</sub> = C<sub class="tcecode">n</sub>. then the chromatic number of x(G<sub class="tcecode">7,2</sub>) is ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results57_files/E10a.PNG" alt="image:EM3/E10a.PNG" width="232" height="204" class="tcecode"><br>For a graph Gn,k the chromatic number will be k+1 if k+1 divides ‘n’ and k+2 if not<br>Since 7 is not divisible by 3, the chromatic number of the graph is 4<br>Or <br>From the graph, you can find the chromatic number which is 4
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following graph does not has a vertex ordering to which greedy coloring uses △(G) + 1 colors[where △(G) is maximum degree of a vertex in graph G]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <img src="./Test Results57_files/O9a.PNG" alt="image:EM3/O9a.PNG" width="166" height="48" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <img src="./Test Results57_files/O9b.PNG" alt="image:EM3/O9b.PNG" width="139" height="195" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> <img src="./Test Results57_files/O9c.PNG" alt="image:EM3/O9c.PNG" width="130" height="182" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> <img src="./Test Results57_files/O9d.PNG" alt="image:EM3/O9d.PNG" width="161" height="157" class="tcecode"><br><span class="explanation">Explanation:</span><br><strong class="tcecode">1<sup class="tcecode">st</sup> Graph:</strong> if we color 1<sup class="tcecode">st</sup> and last vertices with number 1, you have to use 3 colors to color the graph.<br><br><strong class="tcecode">2<sup class="tcecode">nd</sup> Graph:</strong> If we color the vertices A, D with color 1, you can color either {F, B} or {E, C} same color 2, if we color {F, B} same color 2 we have to use other color 3 to {E, C}.<br><br><strong class="tcecode">3<sup class="tcecode">rd</sup> Graph:</strong> If you color the graph in A(1), C(2), B(3), D(4), F(3), G(1), H(2), E(5) we need 5 colors to color this graph<br><br><strong class="tcecode">4<sup class="tcecode">th</sup> Graph:</strong> This can be colored with 3 colors in any order, you choose.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of distinct Hamiltonian cycles are there in a unlabeled complete graph K6______ [Note : the path a-&gt;b-&gt;c is same as b-&gt;c-&gt;a]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 120</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 121</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 60<br><span class="explanation">Explanation:</span><br>the Hamiltonian cycle a Hamiltonian path (or traceable path) is a path in an undirected or directed graph that visits each vertex exactly once. <br><br>In Kn the Hamiltonian can be written as V<sub class="tcecode">1</sub>→v<sub class="tcecode">2</sub>→⋯→n→V<sub class="tcecode">1</sub>. Snice there is a direct edge from every vertex to any other vertex.<br><br>The number of distinct Hamiltonian cycles is analogues to number of ways to arranging n items in circular way where both reverse and forward directions are considered as same.<br><br>Therefore, number of ways you can arrange them in different ways in (n-1)!, and among these half them are reverse of other permutations<br>	It results ½ *(n-1)! Ways  <br><br>Ex: Take K3 as example. Let's call its vertices 1, 2 and 3. Thenwe consider1→2→3→1same as2→3→1→2, and 1→2→3→1 is the same as 2→3→1→2, which is the same as 3→1→2→3 in K3. <br><br>Then we will have two Hamiltonian cycles 1→2→3→1 and 1→3→2→1. Moreover,if we consider 1→2→3→1 and 1→3→2→1 being the same because the second one is obtained by reversing direction the first one, then we have only one Hamiltonian cycle in K3.
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 720</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an air traffic system with 6 airlines suppose that<br>1)	Direct service between two cities means round trip direct service<br>2)	Each pair of cities has direct service from at least one air line.<br><br>Suppose also that no airline can schedule a cycle through an odd number of cities, what is the maximum number of cities in the system?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 64<br><span class="explanation">Explanation:</span><br>Consider an air traffic system with k airlines. Suppose that <br>1) direct service between two cities means round-trip direct service, and<br>2) each pair of cities has direct service from at least one airline. <br>Suppose also that no airline can schedule a cycle through an odd number of cities. In terms of k, what is the maximum number of cities in the system?<br>By Theorem,<br>“A complete graph K<sub class="tcecode">n</sub> can be expressed as expressed as the union of k bipartite graphs if and only if n ≤2<sup class="tcecode">k</sup>”<br>we seek the largest n such that K<sub class="tcecode">n</sub> can be expressed as the union of k bipartite graphs, one for each airline. The answer is 2<sup class="tcecode">k</sup>.<br><strong class="tcecode">Theorem Proof:</strong><br>We use induction on k. Basis step: k=1. Since K<sub class="tcecode">3</sub> has an odd cycle and K<sub class="tcecode">2</sub> does not, K<sub class="tcecode">n</sub> is itself a bipartite graph if and only if n ≤ 2.<br>Induction steps: k &gt;1. We prove each implication using the induction hypothesis. Suppose first that K<sub class="tcecode">n</sub>=G<sub class="tcecode">1</sub>∪…∪G<sub class="tcecode">k</sub>, where each G<sub class="tcecode">i</sub> is bipartite. We partition the vertex set into two sets X, Y such that G<sub class="tcecode">k</sub> has no edge within X or within Y. The union of the other k – 1 bipartite subgraphs must cover the complete subgraphs induced by X and by Y. Applying the induction hypothesis to each yield|X|≤2<sup class="tcecode">(k-1)</sup> and |Y|≤2<sup class="tcecode">(k-1)</sup>, so n≤2<sup class="tcecode">(k-1)</sup>+2<sup class="tcecode">(k-1)</sup>=2<sup class="tcecode">k</sup>.<br>Conversely, suppose that n≤2<sup class="tcecode">k</sup>. We partition the vertex set into subsets X, Y, each of size at most 2<sup class="tcecode">(k-1)</sup>. By the induction hypothesis, we can cover the complete subgraph induced by either subset with k–1 bipartite subgraphs. The union of the i<sup class="tcecode">th</sup> such subgraphon Y is a bipartite graph.Hence we obtain k–1 bipartite graphs whose union consists of the complete subgraphs induced by X and Y. The remaining edges are those of the biclique with bipartition X, Y. Letting this to be the k<sup class="tcecode">th</sup> bipartite subgraph completes the construction.
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 18</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 36</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE?<br>[P] Every disconnected graph has an isolated vertex<br>[Q] A graph is connected if and only if some vertex is connected to all other vertices<br>[R] The edge set of every closed trail can be partitioned into edge sets of cycles<br>[S] If a maximal trail in a graph is not closed, then its endpoints have odd degree<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> P only</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> S only</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> Q, R</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> Q, R, S<br><span class="explanation">Explanation:</span><br>a)Every disconnected graph has an isolated vertex FALSE. A simple 4-vertex graph in which every vertex has degree 1 is disconnected and has no isolated vertex.<br><br>b)A graph is connected if and only if some vertex is connected to all other vertices- TRUE. A vertex is “connected to” another if they lie in a common path. If G is connected, then by definition each vertex is connected to every other. If some vertex x is connected to every other,then because a ux-path   xv-­path together contain a uv-­path, every vertex is connected to every other and, G is connected.<br><br>c)The edge set of every closed trail can be partitioned into edge sets of cycles-TRUE. The vertices and edges of a closed trail form an even graph.<br><br>d)If a maximal trail in a graph is not closed,then its end points have odd degree- TRUE. If an end point v is different from the other end point,then the trail uses an odd number of edges incident to v.If v has even degree then,there remains an incident edge at v on which to extend the trail.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a connected graph has 15 labeled nodes, given that it has an eularian circuit, what is the minimum number of distinct circuits which it must have? [Note : the circuit a-&gt;b-&gt;c-&gt;a is not same as b-&gt;c-&gt;a-&gt;b]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 105</li>
+<li>&nbsp;<img src="./Test Results57_files/correct.png" width="18"> 30<br><span class="explanation">Explanation:</span><br>We can call the Eulerian circuit that exists n<sub class="tcecode">1</sub>, n<sub class="tcecode">2</sub>, n<sub class="tcecode">3</sub>, n<sub class="tcecode">4</sub> … n<sub class="tcecode">k</sub>, n<sub class="tcecode">1</sub>. <br>Then k &lt;= 15, because every node must be in the Eulerian circuit. Furthermore, we can create Eulerian circuits at will simply by taking n<sub class="tcecode">i</sub>, n<sub class="tcecode">i+1</sub>, …, n<sub class="tcecode">k</sub>, n<sub class="tcecode">1</sub>, n<sub class="tcecode">2</sub>, …, n<sub class="tcecode">i-1</sub>, n<sub class="tcecode">i</sub> or alternatively n<sub class="tcecode">i</sub>, n<sub class="tcecode">i-1</sub>, …, n<sub class="tcecode">k</sub>, …, n<sub class="tcecode">i+1</sub>, n<sub class="tcecode">i</sub>, which creates a guaranteed 30 Eulerian paths (lower bound for the minimum).<br>We can show that this is an achievable minimum by considering the graph that consists of 15 nodes on a circle with adjacent nodes having an edge in between them. Since this graph only has 30 Eulerian circuits, this is indeed the fewest we can do.
+</li>
+<li>&nbsp;<img src="./Test Results57_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results57_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

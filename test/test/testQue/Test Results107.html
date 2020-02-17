@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92283&test_id=149 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results107_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results107_files/calclayout.css">
+<script src="./Test Results107_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results107_files/jquery-ui.js.download"></script>
+<script src="./Test Results107_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results107_files/custom.js.download"></script>
+<script src="./Test Results107_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results107_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results107_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921214, 'I\'m sorry, the time available to complete the test is over!', false, 1486921214688);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92283&amp;test_id=149#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Subject Test - 2</strong><br>
+Complete Syllabus &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:37:22&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following snapshot of a system<br><img src="./Test Results107_files/Q1a.PNG" alt="image:OSS2/Q1a.PNG" width="545" height="239" class="tcecode"><br> Find Need matrix?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> P0-0000 P1-0750 P2-1004 P3-0010 P4-0642</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> P0-0000 P1-0750 P2-1004 P3-0020 P4-0632</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> P0-0000 P1-0750 P2-1004 P3-0020 P4-0642<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E1a.PNG" alt="image:OSS2/E1a.PNG" width="185" height="130" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the segment table: Find the physical address for the following logical address<br>&lt; 3,600 &gt;<br><img src="./Test Results107_files/Q16a.PNG" alt="image:OSS2/Q16a.PNG" width="272" height="135" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1927</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 690</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> illegal address<br><span class="explanation">Explanation:</span><br>Illegal address since size of segment 3 is 580 and the offset in logical address is 600.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 819</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the exponential averaging for the SJF with τ<sub class="tcecode">0</sub>=20, α=0.6 and previous runs as 1,2,4,8. Find the value τ<sub class="tcecode">3</sub>(give the answer correct to two decimal places)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 4.25<br><span class="explanation">Explanation:</span><br>τ<sub class="tcecode">n+1</sub> = α * t<sub class="tcecode">n</sub> + (1-α)τ<sub class="tcecode">n</sub><br><br>τ<sub class="tcecode">1</sub> = 0.6*(1)+(0.4)20 = 8.6<br><br>τ<sub class="tcecode">2</sub> = 0.6*(2)+(0.4)(8.6) = 4.64<br><br>τ<sub class="tcecode">3</sub> = 0.6*(4)+(0.4)(4.64) = 4.256
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 14.67</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 14</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that a rotating disk head with 200 tracks numbered 0 to 199 is currently serving a request at track 65. Disk queue requests are as follows: 93, 173, 132, 20, 35, 150, 100, 175 and 55. What is the total number of head movements required to satisfy these requests for the C-SCAN disk scheduling algorithm?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 300</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 310</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 370<br><span class="explanation">Explanation:</span><br>In C-SCAN, if the current direction of the head movement is not given, we need to move towards the nearest end. From the present position of the head 65, 0 is the nearest end compareed to 199. So, head moves from 65 towards 0 in the beginning. <br>So the total movement can be calculated as (65-55)+(55-35)+(35-20)+(20-0)+(199-0)+(199-175)+(175-173)+(173-150)+(150-132)+(132-100)+(100-93) = 65+199+199-93 = 65+199+106 = 370
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 340</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that a rotating disk head with 100 tracks numbered 0 to 199 is currently serving a request at track 40. Disk queue requests are as follows: 13, 73, 32, 20, 35, 50, 90, 75 and 55. How many times the header changes its direction using First come first serve (FCFS) disk scheduling strategy?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 245<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E13a.PNG" alt="image:OSS2/E13a.PNG" width="414" height="263" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 270</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 260</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 250</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer has 4 page frames. The time of loading, time of last access and the read (R) and modify (M) bits for each page are as shown below (the times are in clock ticks):<br><img src="./Test Results107_files/Q11a.PNG" alt="image:OSS2/Q11a.PNG" width="263" height="159" class="tcecode"><br>Which page will Most Recently Used (MRU) algorithm replace?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Page 1</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Page 0</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> Page 2<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;"><strong class="tcecode">MRU</strong></span><br>→ In MRU replacement algorithm we replace the page which is referred recently.<br>→ From the given information above<br>	Page 0 → Last Ref (380)<br>	Page 1 → Last Ref (370)<br>	Page 2 → Last Ref (382)<br>	Page 3 → Last Ref (381)<br>∴ Page 2 is  referred recently.<br>∴ Answer: “Page 2”
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Page 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a program that consists of 8 pages (0 to 7) and we have 4 page frames in the physical memory for the pages. The page reference string is<br>1, 2, 3, 1, 2, 5, 4, 3, 2, 1, 2, 3, 4, 5<br>The number of page faults in LRU replacement algorithms are:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E10a.PNG" alt="image:OSS2/E10a.PNG" width="374" height="260" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+A paging system uses 32 – bit address, each of which specifies 1 byte of memory. The system has a main memory unit of 1024 MB, and a page size of 32 KB.<br>i) How many frames does the system memory contain?<br>ii) How many bits does the system use to maintain displacements (offset)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 2<sup class="tcecode">15</sup>,15<br><span class="explanation">Explanation:</span><br>Address: 32-bits, offset = 17 bits<br>MM = 1024 MB<br>Page size = 32 KB<br>Number of Frames= (1024MB)/(32KB)=(2<sup class="tcecode">10</sup>*2<sup class="tcecode">20</sup>)/(2<sup class="tcecode">5</sup>*2<sup class="tcecode">10</sup>) = 2<sup class="tcecode">15</sup><br>Displacement (offset) = 32 – 15 = 17
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2<sup class="tcecode">16</sup>,17</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2<sup class="tcecode">15</sup>,18</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2<sup class="tcecode">16</sup>,18</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 32 bit virtual address uses 2 - level page table (9 bit top level and 11 bit second level). How much is the size of the page, and what is the minimum size of the page table that should reside in the memory?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 4KB,1MB<br><span class="explanation">Explanation:</span><br>Virtual Address: 32 bits<br>Size of the page = 212 = 4 Kbytes<br>No. of entries in PT=1M<br><img src="./Test Results107_files/E8a.PNG" alt="image:OSS2/E8a.PNG" width="419" height="163" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2KB,1MB</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1KB,1MB</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 4Kb,2MB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with frame size of 1024 bytes. If P<sub class="tcecode">1</sub> of 20 KB and P<sub class="tcecode">2</sub> of 10 KB are only 2 processes running in a system with total 60 free frames. The ratio of number of allocated frames to P<sub class="tcecode">2</sub> in equal allocation to that proportional allocation is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 3:2<br><span class="explanation">Explanation:</span><br>Size of the frame = 1024 bytes = 1 KB<br>P<sub class="tcecode">1</sub> size = 20 KB<br>P<sub class="tcecode">2</sub> size = 10 KB<br>Total number of frames = 60<br><span style="text-decoration:underline;">Equal Allocation:</span><br>Number of frames allocated for P<sub class="tcecode">2</sub> = 30<br><span style="text-decoration:underline;">Proportional Allocation:</span><br>Number of frames allocated = 20<br>Ratio = 30/20 = 3:2
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1:2</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1:3</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 3:1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the time to service a page fault is on average 30 ms, while a memory access time is 20 μs. Then a 75% hit ratio results in an average page memory access time of (in ms) ?(use 2 deccimal)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 7.51<br><span class="explanation">Explanation:</span><br>Time for serving page fault = 30 ms<br>Memory Access time = 20 μs<br>Hit ratio = 75%<br><img src="./Test Results107_files/E6a.PNG" alt="image:OSS2/E6a.PNG" width="492" height="221" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 6.51</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 6.00</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 7.25</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a system using single processor, a new process arrives at the rate of eight processes per minute and each such process requires six seconds of service time. What is the CPU utilization (in percentage)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 60%</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 70%</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 80%<br><span class="explanation">Explanation:</span><br>Given new process arrives at the rate of eight processes per minute.<br>⟹  That means new process arrives at the rate of 8 processes/minute.<br>On an average, new process is arriving for every 7.5 sec.<br>⟹  That means every process holding the CPU for 7.5 sec.<br>But given that 6 sec is running time for every process.<br>∴ CPU utilization = (6/7.5)100=80%
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 75%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following algorithm leads convoy effect?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> FCFS</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> SJF</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Priority scheduling</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>Convoy effect is slowing down CPU utilization  by executing slower  processes . That means when the process with high burst time comes first, it executes more time in CPU and stops the processes with low burst time for a long time, due to this average waiting time of the whole system increases.<br>FCFS, SJF, Priority scheduling will suffer from convoy effect.<br><img src="./Test Results107_files/E4a.PNG" alt="image:OSS2/E4a.PNG" width="338" height="409" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The primary difference between a thread and a process is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> The amount of Memory allocation<br><span class="explanation">Explanation:</span><br>Both processes and threads are independent sequences of execution. The typical difference is that threads (of same process) run in a shared memory space, while processes run in separate memory space.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> The number of I/O requests made</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> The amount of overhead associated with creation and context switching.</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> The average number of instructions executed.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following snapshot<br><img src="./Test Results107_files/Q2a.PNG" alt="image:OSS2/Q2a.PNG" width="490" height="169" class="tcecode"><br>If the safe sequence is &lt; P0, P2, P1 &gt; find the minimum possible values of a, b, c<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 0, 1, 2</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2, 2, 3</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1, 2, 3</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 2, 2, 4<br><span class="explanation">Explanation:</span><br>Given safe sequence is&lt;P0,P2,P1&gt;<br>P0 need is &lt;1,2,3&gt; Let us assume (a,b,c) is 1,2,3<br>Now P0 completes its execution and new availability is (2,3,5)<br>According to safe sequence availability satisfies need of P2(3,0,2)<br>So a value should be 2 at this point to satisfy P2.<br>Once P2 is completed new availability is (5,5,8).<br>But P0 need (1,1,9), so c should be 4 to satisfy P0.<br>Final answer is &lt;2,2,4&gt;
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The I/O wait percentage p of a process is the percentage of time the<br>process wait for an IO to completion when executed in a<br>monoprogramming environment . on a system using round robin with n<br>process ,all having same IO . what percentage of time cpu will be idle<br>in term of (p) ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> n%</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> p%<br><span class="explanation">Explanation:</span><br>Each process I/O time is p percent ,For n processes total time spent<br>for I/O is np%,<br><br>For n processes total execution time is n%<br><br>Therefore total time for cpu idle is p%.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> (n/2)%</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> (p/2)%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 2 processes A and B.<br><br>Process A:<br><br>while(S1&gt;=S2);<br><br>Critical section<br><br>S1=S2+1;<br><br>Process B:<br><br>while(S1&lt;S2);<br><br>Critical section<br><br>S2=S1-1;<br><br>Where S1 and S2 are variables generated randomly. Which of the following statement is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> Mutual exclusion ensured<br><span class="explanation">Explanation:</span><br>Mutual exclusion is ensured, at a time only one process is allowed.<br><br>Progress is not ensured because if S1 =1 and S2=2 and process A is not interested, Process B is unable to execute so progress is not guaranteed.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Progress achieved</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Both A and B</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Neither A nor B.</li>
+</ol>
+<br><br>
+</li>
+<li>
+If a machine have a 48-bit address space with a page size of 16 KB and that page table entry takes 8 bytes. How many levels of page tables would be required to map the virtual address space if every page table is required to fit in a single page?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>There will be four levels of page tables. <br><br>no. of entries in 1st level page table = (2^48)/2^14 = 2^34<br>Size of 1st level page table = (2^34) * (2^3) = (2^37)<br><br>Size of 1st level page table &gt; size of page, (2^37 &gt; 2^14). So we need next level of paging:<br>no. of entries in 2nd level page table = (2^37)/2^14 = 2^23<br>Size of 2nd level page table = (2^23) * (2^3) = (2^26)<br><br>Size of 2nd level page table &gt; size of page, (2^26 &gt; 2^14). So we need next level of paging:<br>no of entries in 3rd level page table = (2^26) / (2^14) = (2^12)<br>Size of 3rd level page table = (2^12) * (2^3) = (2^15)<br><br>Size of 3rd level page table &gt; size of page, (2^15 &gt; 2^14). So we need next level of paging:<br>No of entries in 4th level page table = (2^15) / (2^14) = (2)<br>Size of 4th level page table = (2) * (2^3) = (2^4)<br><br><br>So the split will be [1, 11, 11, 11, 14]
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true with 3 and 4 physical frames for the following reference string? Assume that the frames are initially empty. <br>3     2     1     0     3     2     4     3     2     1     0<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Number of page faults with 4 is 10</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> Number of page faults with 3 is 9<br><span class="explanation">Explanation:</span><br>Given reference string:<br>3   2   1   0   3   2   4   3   2   1   0<br><img src="./Test Results107_files/E22a.PNG" alt="image:OSS2/E22a.PNG" width="353" height="283" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Belady’s anomaly exist</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> All the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 10 jobs each takes 100 seconds. What is the difference between the average turnaround times of the<br><br>* FCFS: Non-preemptive<br>* Round Robin: Time slice is 50 sec and no overhead<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 225<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E19a.PNG" alt="image:OSS2/E19a.PNG" width="211" height="260" class="tcecode"><br><img src="./Test Results107_files/E19b-new.PNG" alt="image:E19b-new.PNG" width="517" height="397" class="tcecode"><br><img src="./Test Results107_files/E19c-new.PNG" alt="image:E19c-new.PNG" width="850" height="550" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 160</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 150</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 200</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the corresponding groups<br><img src="./Test Results107_files/Q25a.PNG" alt="image:OSS2/Q25a.PNG" width="426" height="123" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> a-ii,b-i,c-iii,d-iv<br><span class="explanation">Explanation:</span><br>Segmentation is supports user view of memory.<br>In working set we will use fixed partitions.<br>To avoid the external fragmentation we will use compaction.<br>Paging suffer from internal fragmentation.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> a-iii,b-ii,c-iv,d-i</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> a-i,b-iv,c-ii,d-iii</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> a-iv,b-iii,c-i,d-ii</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the jobs with the following characteristics:<br><img src="./Test Results107_files/Q18a.PNG" alt="image:OSS2/Q18a.PNG" width="380" height="184" class="tcecode"><br>Determine the turnaround time, waiting time and response time of Job B while the CPU runs these jobs. Assume the schedule is pre-emptive and the CPU quantum is 5 ms<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> (55,35,5)<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E18a.PNG" alt="image:OSS2/E18a.PNG" width="493" height="409" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> (70,30,10)</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> (35,25,0)</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a uni-processor system executing four processes A, B, C, D each of which is composed of 20 sequence of jobs which arrive periodically at interval of 3, 6, 12, 16 ms resp. The priority of each task is directly proportional to its period and available tasks are scheduled based on priority, with highest priority task scheduled first. Each instance of A, B, C, D requires execution time of 4, 8, 10, 5 ms resp. Find the completion time of  2nd instance of C in ms?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 25<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E28a.PNG" alt="image:OSS2/E28a.PNG" width="620" height="121" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following system<br><img src="./Test Results107_files/Q29.PNG" alt="image:OSS2/Q29.PNG" width="267" height="224" class="tcecode"><br>Find the total number of safety sequences.?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 36<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/E29a.PNG" alt="image:OSS2/E29a.PNG" width="447" height="142" class="tcecode"><br>‘P<sub class="tcecode">0</sub>’ is executed first<br>New Avail = 1   4   0    1 + 0   0   2   1 = 1   4   2   2<br><br><img src="./Test Results107_files/E29b.PNG" alt="image:OSS2/E29b.PNG" width="295" height="565" class="tcecode"><br>Like P<sub class="tcecode">0</sub> if we start with P<sub class="tcecode">4</sub> we will get 18,<br>Total=36.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 4 processes P 0 , P 1 , P 2 and P 3 . Each process performs a single computation that<br><br>requires CPU for T B milliseconds and then initiates a single I/O operation that lasts for T I/O ms.Operating System of the computer assigns different I/O devices to each process. Also the scheduling overhead of OS is negligible. The processes have following characteristics:<br><img src="./Test Results107_files/Q17a.PNG" alt="image:OSS2/Q17a.PNG" width="260" height="182" class="tcecode"><br>Using Round Robin scheduling algorithm with Time quantum 25 ms. Find the % CPU utilization<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 40%</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 47.36%<br><span class="explanation">Explanation:</span><br>Time quantum = 25 ms<br><img src="./Test Results107_files/os-subtest-2.png" alt="image:os-subtest-2.png" width="850" height="65" class="tcecode"><br>So, total schedule time is 950ms and  CPU idle time is 500ms. CPU utilization = (450 / 950 )* 100 = 47.36%
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 42.9%</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 43%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>i)Paging breaks a process virtual memory into physical unit of same size,where assegmentation breaks a process vitual memory into logical units of different sizes.<br>ii)Overlays are used to put instructions which are required to keep in memory.<br>iii)If interrupt occurs CPU may change state of interrupted process to blocked and scheduleanother process.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only i and ii</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only ii and iii</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only i and iii</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> All i, ii and iii<br><span class="explanation">Explanation:</span><br>True → Paging breaks a process virtual memory into physical unit of same size,where assegmentation breaks a process virtual memory into logical units of different sizes<br>True → Overlays are used to put instructions which are required to keep in memory.<br>True → If interrupt occ urs CPU may change state of interrupted process to blocked andschedule another process.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>i)User level threads are transparent to kernel.<br>ii)System call can block entire process in case of user level threads.<br>iii)Kernel supported threads can be scheduled independently.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only ii and iii</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only i and iii</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Only i and ii</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> All i, ii and iii<br><span class="explanation">Explanation:</span><br>i) True – User level threads are transparent to kernel.<br>ii) True – System call can block entire process in case of user level threads.<br>iii) True – Kernel supported threads can be scheduled independently.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a file system using inode structure. Inode consists of the following information<br><br>i) 7 direct indices<br><br>ii) 1 indirect index,<br><br>iii) 1 double index,<br><br>iv) 1 triple index.<br><br>Find the maximum file size (approximately) if disk block size is 256 bytes and disk block address is 16 bytes?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 1MB<br><span class="explanation">Explanation:</span><br>Total number of addresses stored in disk block = 256/16 = 16<br><br>Maximum number of addressable bytes due to direct address block = 1*256<br><br>Maximum number of addressable bytes due to 1 single indirect address block = 16*256<br><br>Maximum number of addressable bytes due to 1 double indirect address block = 16*16*256<br><br>Maximum number of addressable bytes due to 1 triple indirect address block=16*16*16*256<br><br>The maximum possible file size = 1*256+16*256+16*16*256+16*16*16*256=1092.5 KB =1MB
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 2MB</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 1KB</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 4MB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table<br><img src="./Test Results107_files/Q20a.PNG" alt="image:OSS2/Q20a.PNG" width="185" height="149" class="tcecode"><br>Using the shortest remaining time first, find the CPU utilization in %, if the context switching overhead is 1 unit.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 80%</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 75.5%</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 72.09%<br><span class="explanation">Explanation:</span><br><img src="./Test Results107_files/os-sub-test-2-cpu.png" alt="image:os-sub-test-2-cpu.png" width="555" height="328" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 66.7%</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data questions 30 &amp; 31:</strong></span><br>Consider the program to implement solution to producer consumer problem using semaphores.buffer size is infinite.semaphore n=0,s=1.<br>Void Producer()<br>{<br>while(T)<br>{<br>produce();<br>wait(s);<br>add_item();<br>signal(s);<br>signal(n);<br>}<br>}<br>Void Consumer()<br>{<br>while(T)<br>{<br>produce();<br>wait(n);<br>consume_item();<br>signal(s);<br>consume();<br>}<br>}<br>What will happen ,if we change order of signal(s) and signal(n) in producer?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> System remains deadlock free<br><span class="explanation">Explanation:</span><br>In the given case to  consume item it requires both semaphores.So interchanging semaphores does not effect.System remains in deadlock free state.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Deadlock may occur</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Given solution is applicable only to finite buffer size,it falls when buffer size is infinite.</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data questions 30 &amp; 31:</strong></span><br>Consider the program to implement solution to producer consumer problem using semaphores.buffer size is infinite.semaphore n=0,s=1.<br>Void Producer()<br>{<br>while(T)<br>{<br>produce();<br>wait(s);<br>add_item();<br>signal(s);<br>signal(n);<br>}<br>}<br>Void Consumer()<br>{<br>while(T)<br>{<br>produce();<br>wait(n);<br>consume_item();<br>signal(s);<br>consume();<br>}<br>}<br>What will happen ,if we reverse the order of wait(n) and wait(s) in consumer?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> System remains deadlock free</li>
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> Deadlock may occur<br><span class="explanation">Explanation:</span><br>If consumer utilized first s=1 then n =0 ,so no producer will add the data item to buffer,hence system leads to deadlock.
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> Given solution is applicable only to finite buffer size,it falls when buffer size is infinite.</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Data Question 32 &amp; 33:</strong></span><br>Consider a computer system has the segmented paging to implement virtual memory. The memory is byte addressable both virtual and physical address space have 2^16 bytes each. The virtual address space is divided into 8 equal segments. The memory management unit has a hardware segment tables. Each entry of which contains the physical address of the page table for segment. Page tables are stored in main memory and consist of 2 byte page table entries.<br><br>What is the minimum page size in bytes so that the page table for a segment requires at most one page to store it? (Assume that the page size can only be a power of 2).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 128<br><span class="explanation">Explanation:</span><br>Size of each segment = 2^16/8=2^13<br>Let the size of page be 2^k bytes<br>We need a page table entry for each page. For a segment of size 2^13, number of pages required will be<br>2^13 − k and so we need 2^13 − k page table entries. Now, the size of these many entries must be less than or equal to the page size, for the page table of a segment to be requiring at most one page. So,<br>(2^13−k)×2=2^k<br>k=7<br>So, page size =2^7=128 bytes
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 64</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 256</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 512</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Data Question 32 &amp; 33:</strong></span><br>Consider the page size obtained from the above question. It is proposed to provide a TLB (Transaction look-aside buffer) for speeding up address translation. The proposed TLB will be capable of storing page table entries for 16 recently referenced virtual pages, in a fast cache that will use the direct mapping scheme. What is the number of tag bits that will need to be associated with each cache entry?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results107_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>TLB stores page table entries, it is given that page table entry size = 2B = 16 bits <br>#Pages = 2^13/2^7=2^6 so, 6 bits represents page number. <br>also, the virtual page address it contain will also have 7 bits to represent Page offset.<br>Rest we are left with tag bits, which are = 16 - 7 - 6 = 3 bits
+</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results107_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results107_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

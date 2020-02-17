@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92161&test_id=285 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results43_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results43_files/calclayout.css">
+<script src="./Test Results43_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results43_files/jquery-ui.js.download"></script>
+<script src="./Test Results43_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results43_files/custom.js.download"></script>
+<script src="./Test Results43_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results43_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results43_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837552, 'I\'m sorry, the time available to complete the test is over!', false, 1486837552690);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92161&amp;test_id=285#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 5</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:40&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The average score of Ravi, Murali, and Srinu is 73. Ravi’s score is 18 less than Arun and 12 more than Murali. If Arun scored 40 marks more than the average score of Ravi, Murali and, Srinu. What is the sum of Murali’s and Srinu’s scores?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 124<br><span class="explanation">Explanation:</span><br>Arun’s score = 40 + 73<br>	         = 113<br>Ravi’s score is 18 less than Arun’s score<br>Therefore, Ravi’s score = 113 – 18<br>			   = 95<br>The average score of Ravi, Murali and Srinu is 73.<br>(ravi+Murali+Srinu)/3<br> = 73<br><br>95 + Murali + Srinu = 219<br>       Murali + Srinu = 219 – 95<br>		         = 124<br>Sum of Murali’s and Srinu’s scores = 124.
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 114</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 126</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 113</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>At that time, they _____ the bridge for three months.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> had been building</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> have been building<br><span class="explanation">Explanation:</span><br>In the given sentence, the phrase ‘At that time’ refers to an action which began at some point in the past and continued up to that time. To represent such actions we use present perfect continuous tense.<br>		So, we say At that time, they <strong class="tcecode"><span style="text-decoration:underline;">have been building</span></strong> the bridge for three months.’
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> has been building</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> are building</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the odd one in the following group of words.<br>Amigo, Comrade, Foe, Associate<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Amigo</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Comrade</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> Foe<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):<br></strong>The word Amigo is used to address or refer to a <strong class="tcecode">friend.<br></strong><strong class="tcecode">Option (b):</strong><br>	           The word <strong class="tcecode">Comrade </strong>refers to a person who shares one’s interests or activities; a <strong class="tcecode">friend </strong>or companion.<br><strong class="tcecode">Option (c):</strong><br>               <strong class="tcecode">Foe </strong>refers to a personal enemy or an opponent<br>	<strong class="tcecode">Option (d):</strong><br>               <strong class="tcecode">Associate</strong> refers to a partner or companion in business or at work, i.e., a partner, colleague, <strong class="tcecode">friend, </strong>workmate etc.<br>	Therefore, from the given explanation, Amigo, Comrade and associate are synonyms to each other and are referring to a friend. Whereas, the word foe refers to an enemy. So, the odd one is <strong class="tcecode">“foe”.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Associate</li>
+</ol>
+<br><br>
+</li>
+<li>
+The army had to suffer terrible privations in ______ march.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> its<br><span class="explanation">Explanation:</span><br>In the given sentence, we need a pronoun that refers to the collective noun <strong class="tcecode">army</strong> and when a pronoun stands for a collective noun, it must be in the singular form and neuter gender (it), if the collective noun is viewed as a whole. So, the given sentence will be “The army had to suffer terrible privations in <strong class="tcecode">its</strong> march”.
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> their</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> his</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> during</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following options is opposite in meaning to the word underlined in the sentence below?<br>When Sanjana was booed off the stage, she realized her first attempt at stand-up comedy was a <span style="text-decoration:underline;">fiasco.</span><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Triumph</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> Success<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word fiasco refers to ‘a complete <strong class="tcecode">failure</strong>, especially a ludicrous or humiliating one.’ <br>The word Triumph refers to a great victory or achievement and salutary means ‘Favorable to health, beneficial or healthy’.<br>Therefore, of all the given options, the word that is opposite in meaning to the underlined word <strong class="tcecode">fiasco </strong>is <strong class="tcecode">success.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Salutary</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Disaster</li>
+</ol>
+<br><br>
+</li>
+<li>
+If 266 + 375 = 663. How much is 642 + 517?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 1161</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 1261</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 1159</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 1361<br><span class="explanation">Explanation:</span><br><img src="./Test Results43_files/1Ea.png" alt="image:APT5/1Ea.png" width="596" height="396" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair<br><strong class="tcecode">PROVISIONAL: PERMANENT</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Accolade : Medal</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> Moderate : Extreme<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair: </strong>ANTONYM VARIANT<br>Provisional means temporary (or) conditional. Thus, provisional is the opposite of permanent. i.e., an antonym.<br>	<br><strong class="tcecode">Option (a):<br></strong>Accolade is an award, medal or privilege granted as a special honor as an acknowledgement of merit.<br>		 Medal is synonym of Accolade<br>	<strong class="tcecode">Option (b):<br></strong>Moderate refers to an average in amount, intensity, quality or degree and extreme refers to reaching a high or the highest degree; very great.<br>		 Moderate is an antonym for extreme<br>	<strong class="tcecode">Option (c):</strong><br>		Laptop is a kind of computer<br>	<strong class="tcecode">Option (d):</strong><br>Aggressive refers to ready or likely to attack or confront i.e., quarrelsome or vigorous.<br>		 Quarrelsome is a synonym for aggressive<br>From the given explanation, the pair that best expresses a relationship similar to that expressed in <strong class="tcecode">Provisional:permanent</strong> is <strong class="tcecode">Moderate: Extreme.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Laptop : Computer</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Aggressive : Quarrelsome</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following Pie chart shows the distribution of sales (in units) of cars in the year 2015 manufactured by XYZ Ltd. Study the chart carefully and answers the questions that follow.<br><img src="./Test Results43_files/10Qa.png" alt="image:APT5/10Qa.png" width="401" height="275" class="tcecode"><br>Number of cars sold in region A = 520<br>What is the difference between the total number of cars sold in the regions A and F together and the total number of cars sold in the regions D and C together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 600</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 560</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 520<br><span class="explanation">Explanation:</span><br>Number of cars sold in the region A = 520<br>		60<sup class="tcecode">0 </sup>= 520<br>		360<sup class="tcecode">0</sup> = ?<br>	Total number of cars sold in the year (360<sup class="tcecode">0</sup>)<br>= (360/60)X520<br>=3120<br>Cars sold in the regions A and F together<br>=(90<sup class="tcecode">0</sup>+60<sup class="tcecode">0</sup>/360<sup class="tcecode">0</sup>)<br>=3120<br>Cars sold in the regions D and C together<br>=(55<sup class="tcecode">0</sup>+35<sup class="tcecode">0</sup>/360<sup class="tcecode">0</sup>)X3120<br><img src="./Test Results43_files/10Ea.png" alt="image:APT5/10Ea.png" width="407" height="196" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 540</li>
+</ol>
+<br><br>
+</li>
+<li>
+Based on the given statements, select the most appropriate option to solve the given question. How is A related to B?<br>Statements:<br>I.	C, who has only two kids, A and B, is the mother – in – law of D, who is sister – in-law of B.<br>II.	E, the sister – in – law of A, is the daughter – in – law of F, who has only two kids, A and B.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> Statement I alone is sufficient, but statement II alone is not sufficient<br><span class="explanation">Explanation:</span><br><img src="./Test Results43_files/9Ea.png" alt="image:APT5/9Ea.png" width="516" height="520" class="tcecode"><br><img src="./Test Results43_files/9Eb.png" alt="image:APT5/9Eb.png" width="648" height="511" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Statement II alone is sufficient, but statement I alone is not sufficient.</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Both the statements together are sufficient, but neither statement alone is sufficient.</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Either statement I alone or Statement II alone is sufficient</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the given question a statement is given followed 	by two conclusions I and II. Consider the statement and decide which of the conclusions follow from the statement.<br>Statement: Workers feel highly motivated when they get a sense of involvement by participating in the management of the company.<br>Conclusions:<br>I.	Workers should be motivated about work.<br>II.	Workers should be allowed to participate in the management of the company.<br><br>a)	If only conclusion I follows<br>b)	If only conclusion II follows<br>c)	If both conclusions I and II follows<br>d)	If neither conclusion I nor II follows.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If only conclusion I follows</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If only conclusion II follows</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> If both conclusions I and II follow<br><span class="explanation">Explanation:</span><br>Motivation comes after some kind of participation in the main stream activities. So, from the statement both the conclusions must follow.
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If neither conclusion I nor II follows</li>
+</ol>
+<br><br>
+</li>
+<li>
+A man buys a laptop valued at Rs. 36,000. He pays Rs. 12,000 at once and the rest 2 years later, on which he is charged compound interest at the rate of 12.5 per annum. Find the total amount he pays for the laptop.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Rs. 38,475</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> Rs. 42,375<br><span class="explanation">Explanation:</span><br>Explanation:<br>	Cost of a Laptop = Rs. 36,000<br>	Money paid at once = Rs. 12,000<br>	Money left = Rs. (36,000 – 12,000)<br>		      = Rs. 24,000<br>	Time = 2 Years<br>	Rate = 12.5 per annum<br>	Money to be paid at the end<br><img src="./Test Results43_files/8Ea.png" alt="image:APT5/8Ea.png" width="345" height="393" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Rs. 44,375</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> Rs. 40,475</li>
+</ol>
+<br><br>
+</li>
+<li>
+An integer is chosen at random from the numbers 1,2,3,….25. The probability that the chosen number is divisible by 3 or 4, is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 11/25</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 12/25<br><span class="explanation">Explanation:</span><br>Explanation:<br>Numbers divisible by 3 are 3, 6, 9, 12, 15, 18, 21, 24.<br>Total 8 numbers are divisible by 3.<br>Numbers divisible by 4 are 4, 8, 12, 16, 20, 24<br>Total 6 numbers are divisible by 4.<br>Numbers divisible by 3 and 4 are 12, 24.<br>Total 2 numbers are divisible by 3 and 4.<br>Therefore, probability that the chosen number is divisible by 3 or 4 is <br>P(3 or 4) = P(3) + P(4) – P(3 and 4)<br><img src="./Test Results43_files/7Ea.png" alt="image:APT5/7Ea.png" width="237" height="119" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 13/25</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 14/25</li>
+</ol>
+<br><br>
+</li>
+<li>
+Mr. Ravi has 25 horses, and he wants to pick the fastest 3 horses out of those 25. He has only 5 tracks that means only 5 horses can run at a time and he doesn’t have a stop watch. What is the minimum number of races required to find the 3 fastest horses?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>Let the horses be numbered as H1, H2, H3, …., H25. Now first arrange 5 races among horses as:<br><span style="text-decoration:underline;">Race 1:</span> H1, H2, H3, H4, H5 ( Let’s say that H1 comes first in the race, then H2, then H3, then H4 and then H5 and similarly happens for the next races).<br><span style="text-decoration:underline;">Race 2:</span> H6, H7, H8, H9, H10<br><span style="text-decoration:underline;">Race 3:</span> H11, H12, H13, H14, H15<br><span style="text-decoration:underline;">Race 4:</span> H16, H17, H18, H19, H20<br><span style="text-decoration:underline;">Race 5:</span> H21, H22, H23, H24, H25<br><br>For winners of all the above races arrange a new race.<br><span style="text-decoration:underline;">Race 6: </span>H1, H6, H11, H16, H21<br>	So, now H1, H6, H11 are top 3 winners of Race 6. Then the horses H16 to H25 will not be there in top 3 fastest horses. After Race 6, we can conclude that H1 is the fastest horse among all. Now, we are interested in finding the second and third fastest horse.<br><br>(i)	For the second and third positions H2 and H3 could have the possibility but not H4 and H5.<br>(ii)	As H6 comes second in the race, so we can be sure that only H7 could have possibility of third fastest horse.<br>(iii)	As H11 comes third in the race, so we can be sure that H12 to H15 cannot acquire top 3 positions.<br><span style="text-decoration:underline;">Race 7: </span>H2, H3, H6, H7, H11<br>	From Race 7, we will get second and third fastest horses.<br>So, minimum number of races required to find 3 fastest horses is 7.
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many numbers between 4000 to 5000 can be formed with the digits 0, 1, 2, 3, 4, 5, 6, 7 (repetition of digits not allowed).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 220</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> 210<br><span class="explanation">Explanation:</span><br><img src="./Test Results43_files/3Ea.png" alt="image:APT5/3Ea.png" width="593" height="243" class="tcecode"><br><img src="./Test Results43_files/3Eb.png" alt="image:APT5/3Eb.png" width="646" height="349" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 215</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> 230</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assuming everything in the given statement to be true and on the basis of the information given in the statement, decide which of the suggested courses of action logically follow(s):<br><strong class="tcecode">Statement:</strong><br>	People in the locality were agitated as more than 30 people died in a building collapse.<br><strong class="tcecode">Courses of Action:</strong><br>I.	Government should immediately announce compensations for the affected families.<br>II.	Authorities should take a stringent action against builders tending to compromise over the quality of materials used.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If only I follows</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If only II follows</li>
+<li>&nbsp;<img src="./Test Results43_files/wrong.png" width="16"> If neither I nor II follows</li>
+<li>&nbsp;<img src="./Test Results43_files/correct.png" width="18"> If both I and II follow<br><span class="explanation">Explanation:</span><br>I – Compensations would help the families of the victims and also in suppressing the agitation.<br>II – This helps in prevention of such accidents in future and also in taking necessary actions against the builders who have violated the Government regulations.<br>	So, both courses of action follow
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results43_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

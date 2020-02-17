@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4557&test_id=51 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results126_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results126_files/calclayout.css">
+<script src="./Test Results126_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results126_files/jquery-ui.js.download"></script>
+<script src="./Test Results126_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results126_files/custom.js.download"></script>
+<script src="./Test Results126_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results126_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results126_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921386, 'I\'m sorry, the time available to complete the test is over!', false, 1486921386336);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4557&amp;test_id=51#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CD Topic Test 3</strong><br>
+Parsing (Recursive Descent, Operator Precedence, LL(1), LR(0), SLR, CLR, LALR)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-12 21:47:10&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-12 22:07:07&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:19:57&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+4.710 / 25.000 (19%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+5 / 15 (33%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following context free grammar<br>S → SS + | SS*| a<br>Which of the following statement/s is/are correct with respect to the grammar?<br>S1: The grammar has leftmost derivation for the string aa + a*<br>S2: The grammar has rightmost derivation for the string aa + a *<br>S3: Since the grammar has left most derivation as well as right most derivation so it is ambiguous grammar.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Only S3 is true</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S1, S2, S3 are true</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> S1 and S2 are true<br><span class="explanation">Explanation:</span><br>The left most derivation for string aa + a* is:<br>		    S = lm ⇒ SS* ⇒ SS + S* ⇒ aS + S* ⇒ aa + S* ⇒ aa + a*<br>		So the statement S1 is true<br>The right most derivation for string aa + a* is:<br>		    S = r m ⇒ SS* ⇒ Sa* ⇒ SS + a* ⇒ Sa + a* ⇒ aa + a*<br>		So the statement S2 is true<br>Statement S3 is not true i.e., since the grammar has left most derivation as well as right most derivation but it is not capable of generating different parse trees for a given string and hence it is not ambiguous grammar.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Only S1 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar<br>S → a + A<br>A → (S)<br>A → a<br>If we want to write a recursive descent parser for the above grammar then which one of the following functions will correctly represent production A?<br>(NOTE: The match ( ) is a function which matches the next token in the parsing with the current terminal derived in the grammar and advancing the i/p pointer to the next token)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> <img src="./Test Results126_files/Q3_opt_B.PNG" alt="image:CD Topic Test - 3/Q3_opt_B.PNG" width="234" height="148" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> <img src="./Test Results126_files/Q3_opt_A.PNG" alt="image:CD Topic Test - 3/Q3_opt_A.PNG" width="264" height="266" class="tcecode"><br><span class="explanation">Explanation:</span><br>Writing functions for recursive descent parsing is explained with an example below:<br>For a production of the form:<br><img src="./Test Results126_files/Q3_exp_1.PNG" alt="image:CD Topic Test - 3/Q3_exp_1.PNG" width="314" height="78" class="tcecode"><br>Where + and i are terminals and E' is a variable<br>1.Declare a function for E' ( ) like E’(). This will be done for any variable encountered<br>2.Then for first terminal put an if statement. Then call match( ) for every terminals(including the first terminal also). So we get:<br><img src="./Test Results126_files/Q3_exp_2.PNG" alt="image:CD Topic Test - 3/Q3_exp_2.PNG" width="207" height="133" class="tcecode"><br>3.Since we have a variable E' itself after ‘i’ in the production so next line shall be function call to the variable E'<br><img src="./Test Results126_files/Q3_exp_3.PNG" alt="image:CD Topic Test - 3/Q3_exp_3.PNG" width="191" height="148" class="tcecode"><br>4.For production (2) E' → a we need to put it in else portion and check with ‘if’<br><img src="./Test Results126_files/Q3_exp_4.PNG" alt="image:CD Topic Test - 3/Q3_exp_4.PNG" width="236" height="309" class="tcecode"><br>This way function for a recursive parser is constructed.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> <img src="./Test Results126_files/Q3_opt_C.PNG" alt="image:CD Topic Test - 3/Q3_opt_C.PNG" width="265" height="181" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements with respect to SLR(1) and LALR(1) parsing tables for a CFG. <br>i.The goto part of both tables may be different<br>ii.The shift entries are identical in both the tables<br>iii.The reduce entries in the entries the tables may be different<br>iv.The error entries in the table may be different<br>Which of the following statements is/are true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> Options (ii), (iii), (iv)<br><span class="explanation">Explanation:</span><br>The difference in parsing tables for context free grammar of SLR(1) &amp; LALR(1) parser is in reduce entries only. Due to difference in reduce entries there may be difference in error entries also.<br>In case of SLR(1) we don’t blindly reduce whatever is the next symbol. We reduce a symbol to the LHS of the production only if the next symbol is in the FOLLOW of the LHS of the production. <br>For eg:<br><img src="./Test Results126_files/Q2_exp.PNG" alt="image:CD Topic Test - 3/Q2_exp.PNG" width="468" height="140" class="tcecode"><br>	 <br>In case of LALR(1) parsing reduce moves are placed only under lookaheads, also if two states have the same LR(0) items then two states are merged.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Option (i)</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Options (iv)</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Options (ii), (iv)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: Removing left recursion alone suffices to convert an arbitrary CFG to an LL(1) grammar<br>S2: Removing left recursion and left factoring the grammar suffices to convert an arbitrary CFG to an LL(1) grammar<br>Which of the above statement/s is/are true?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>Just by simply removing left recursion and left factoring an arbitrary CFG won’t suffice to convert it to an LL(1) grammar since these methods won’t convert an ambiguous grammar to unambiguous.<br>For a grammar to become LL(1) it must be unambiguous, deterministic and should not be left recursive
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the maximum number of reduce moves that can be taken by a bottom-up parser for a grammar with no epsilon production, unit-production (i.e., of type A→ϵ and A→B) and no production of the form A-&gt; a , to parse a string with n tokens?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> n/2</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> 2n – 1</li>
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> n – 1<br><span class="explanation">Explanation:</span><br>Since it is given that the grammar cannot have :<br>1)	No epsilon production<br>2)	No production of the form A -&gt;a<br>Consider the grammar:<br>S -&gt; Sa | a<br>If we were to derive the string “aaa” whose length is 3 then the number of reduce moves that would have been required are shown below:<br>S-&gt; Sa<br>  -&gt;Saa<br>  -&gt;aaa                            <br>This shows us that it has three reduce moves. The string length is 3 and the number of reduce moves is also 3. So presence of such kinds of production might give us the answer “n” for maximum number of reduce moves. But these productions are not allowed as per the question. <br>Also note that if a grammar does not have unit production then the maximum number of reduce moves can not exceed “n” where “n” denotes the length of the string.<br>3)	No unit productions <br>Consider the grammar :<br>S-&gt; A<br>A-&gt; B<br>B-&gt;C<br>C-&gt;a<br>If we were to derive the string “a” whose length is 1 then the number of reduce moves that would have been required are shown below:<br>S-&gt; A<br>A-&gt; B<br>B-&gt;C<br>C-&gt;a                                  <br>This shows us that it has four reduce moves. The string length is 1 and the number of reduce moves is  4. So presence of such kind of productions might give us the answer “n+1” or even more, for maximum number of reduce moves. But these productions are not allowed as per the question.<br><br>Now keeping in view the above points suppose we want to parse the string “abcd”. ( n = 4 ) using bottom-up parsing where strings are parsed finding the rightmost derivation of a given string backwards. So here we are concentrating on deriving right most derivations only.<br>We can write the grammar which accepts this string which in accordance to the question, (i.e.,  with no epsilon- and unit-production (i.e., of type A -&gt; є and A -&gt; B)  and no production of the form     A-&gt;a) as follows : <br>S-&gt;aB<br>B-&gt;bC<br>C-&gt;cd <br>The Right Most Derivation for the above is:<br>S -&gt; aB ( Reduction 3 )<br>-&gt; abC ( Reduction 2 )<br>-&gt; abcd ( Reduction 1 )<br>We can see here the number of  reductions present is 3.<br>We can get less number of reductions with some other grammar which also doesn’t produce unit or epsilon productions or production of the form A-&gt;a:<br>S-&gt;abA<br>A-&gt; cd<br>The Right Most Derivation for the above is:<br>S -&gt; abA ( Reduction 2 )<br>-&gt; abcd ( Reduction 1 )<br>Hence 2 reductions.<br>But we are interested in knowing the maximum number of reductions which comes from the 1st grammar. Hence total 3 reductions as maximum, which is ( n – 1) as n = 4 here.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> 2<sup class="tcecode">n</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that LR(0) parser has n <sub class="tcecode">1</sub> states, SLR(1) has n <sub class="tcecode">2</sub> states, CLR(1) has n <sub class="tcecode">3</sub> states and LALR(1) has n<sub class="tcecode"> 4</sub> states for grammar G. The relationship among all the states is:<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> n<sub class="tcecode">1</sub> &gt; n<sub class="tcecode">2</sub> &gt; n<sub class="tcecode">3</sub> &gt; n<sub class="tcecode">4</sub></li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> n<sub class="tcecode">1</sub> ≥ n<sub class="tcecode">2 </sub>= n<sub class="tcecode">3</sub> ≥ n<sub class="tcecode">4</sub></li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> n<sub class="tcecode">3</sub> ≥ n<sub class="tcecode">1</sub> = n<sub class="tcecode">2</sub> = n<sub class="tcecode">4</sub><br><span class="explanation">Explanation:</span><br>The number of states in LR (0) = number of states in SLR(1)<br>		Since they just differ in the placement of reduce moves<br>		The number of states in CLR (1) might increase sometimes due to lookaheads<br>			CLR(1) ≥ LR(0) = SLR(1)<br>When in LALR (1) we merge the states which are different in lookaheads, we achieve same number of states as they were in LR(0) or SLR(1)<br>			CLR(1) ≥ LR(0) = SLR(1) = LALR(1)<br>	        ⇒ n<sub class="tcecode">3</sub> ≥ n<sub class="tcecode">1</sub> = n<sub class="tcecode">2</sub> = n<sub class="tcecode">4</sub>
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> n<sub class="tcecode">1</sub> &lt; n<sub class="tcecode">2</sub> = n<sub class="tcecode">3</sub> ≥ n<sub class="tcecode">4</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a CFG contains ‘n’ tokens. What is the best case time complexity of LL(1) parsing n tokens?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> O(n<sup class="tcecode">3</sup>)</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>LL(1) is a table-driven parser. The model of any table-driven predictive parser is:<br><img src="./Test Results126_files/Q14_exp1.PNG" alt="image:CD Topic Test - 3/Q14_exp1.PNG" width="372" height="382" class="tcecode"><br>It is the predictive parsing algorithm which shall give us the complexity for LL(1) parsing.	<br>The predictive parsing algorithm can be written as follows:<br><img src="./Test Results126_files/Q14_exp2.PNG" alt="image:CD Topic Test - 3/Q14_exp2.PNG" width="325" height="96" class="tcecode"><br><img src="./Test Results126_files/Q14_exp3.PNG" alt="image:CD Topic Test - 3/Q14_exp3.PNG" width="414" height="492" class="tcecode"><br><br><span style="text-decoration:underline;">Complexity Analysis</span>:<br>The work inside the main loop is bounded by a constant: even when we push all the symbols of a right hand side, the length of that RHS is bounded by a constant.<br>The important thing that we have to find is the number of time the main loop execute.<br>Since we don’t call ‘scan’ on every iteration so we cannot say that the number of iterations is same as the number of token in the input.<br>The trick is to think about the parse tree. In every iteration of the main loop we either predict and expand a production (possibly an epsilon production) or we match a token. Precisely we have as many iterations as the nodes in the parse tree.<br><br>	<span style="text-decoration:underline;">Finding number of node that can be there in a parser tree</span>:<br>Suppose we have no epsilon production in our grammar. Then the number of leaves is equal to the number of tokens in the input.<br>Since the grammar we consider is unambiguous too then it means that we never have a node that derives itself and this rules out the possibility of an internal node.<br>This means starting with any node in the tree after at most P predictions, working downward, where P is the number of productions in the grammar, we have to get some fan-out. Informally, after generating some constant number of internal nodes, we have to double the number of leaves. So it goes in the fashion N + N/2 + N/4 + N/8 + N/16 + .....  that sums up to 2N (where N is the number of leaves).<br><br>So the number of nodes in the parse tree turns out to be O(NP) where P is constant so it is O(N) which is also the complexity of LL(1) parsing.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> O(n log n)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an ∈ free CFG. If for every pair of production Q → u and Q → v<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> If FIRST(u) ∩ FIRST(v) = ϕ then the CFG has to be LL(1)<br><span class="explanation">Explanation:</span><br>In order to be LL(1) the following rule must hold:<br>			FIRST(u) ∩ FIRST(v) = ϕ<br>		Since the same non-terminal Q has two productions<br>			Q → u and Q → v<br>So if there is an intersection in their FIRST then one cell in the LL(1) parsing table shall contain more than one entry, which shall lead to conflict.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> If FIRST(u) ∩ FIRST(v) ≠ ϕ then the CFG has to be LL(1)</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> If FOLLOW(Q) = $ then the CFG has to be LL(1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br>E → EAE / id<br>A → + / *<br>S1: The above grammar is operator precedence grammar<br>S2: The above grammar is not an operator precedence grammar.<br>Which of the following above statement/s is/are true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Cannot be decide</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S1 is true</li>
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> S2 is true<br><span class="explanation">Explanation:</span><br>Some restrictions for a grammar to be operator precedence grammar are as follows:<br>(i)	No two variables are adjacent<br>(ii)	There are no ∈ production<br>The given grammar is:<br>E → EAE | id<br>A → + | *<br>This grammar does not satisfy rule (i) since there is a production of the form E → EAE where two variables are adjacent.<br>So the above grammar is not an operator precedence grammar.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of thes</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: Whenever we apply transition on any symbol the lookahead does not change<br>S2: The lookahead has effect on items of the form<br>	[A → α. β, a] where β ≠ ∈ and [A → α., a]<br>	Which of the above statements are true wrt LR(1) items?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Both</li>
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> S1 is true<br><span class="explanation">Explanation:</span><br>S1 is true while S2 is false<br>	Explanation for S2:<br>The lookahead shall have no effect in an item of the form [A → α.β, a] where β is not ∈. It shall have effect on an item of the form [A → α., a] since we are compelled to reduce by A → α only on those i/p symbols ‘a’ for which A → α ., a is an LR(1) item in the state on the top of the stack. The set of such a’s will always be a subset of FOLLOW(A), but it could be a proper subset.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S2 is true</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+With respect to recursive descent parsing, which of the following statements are true?<br>S1: A special stack shall be considered to evaluate the recursive calls in a recursive descent parsing.<br>S2: If a variable has more than one productions then we shall have that many if else or switch cases.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> S2 is true<br><span class="explanation">Explanation:</span><br>S2 is true while S1 is false<br>No special stack is considered in recursive descent parsing. The stack that is used to evaluate any other recursion is used here to evaluate the recursive calls.
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q9 &amp; Q10:</strong><br>Consider the following pair of LR(1) items for the same grammar<br>S → AA<br>A → aA | b<br>I<sub class="tcecode">3</sub> and I<sub class="tcecode">6</sub><br>I<sub class="tcecode">4</sub> and I<sub class="tcecode">7</sub><br>I<sub class="tcecode">8</sub> and I<sub class="tcecode">9</sub><br>Which of the following statements related to merging of two sates in the corresponding parser is/are FALSE?<br>(1)Cannot be merged since lookaheads are different<br>(2)Can be merged but will result in SR conflict<br>(3)Can be merged but will lead to RR conflict<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> 1, 2, 3<br><span class="explanation">Explanation:</span><br>The pairs of states to be merged are written below:<br><img src="./Test Results126_files/Q10_exp_1.PNG" alt="image:CD Topic Test - 3/Q10_exp_1.PNG" width="465" height="456" class="tcecode"><br><img src="./Test Results126_files/Q10_exp_2.PNG" alt="image:CD Topic Test - 3/Q10_exp_2.PNG" width="498" height="389" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Both 2 &amp; 3 only</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Only 1</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q9 &amp; Q10:</strong><br>Consider the following CFG:<br>S → AA<br>A → aA | b<br>The CLR(1) parsing table is:<br><img src="./Test Results126_files/Q9_Linked_Q.PNG" alt="image:CD Topic Test - 3/Q9_Linked_Q.PNG" width="523" height="244" class="tcecode">	<br>The entries E1, E2, E3, E4 will be:<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> 7, S<sub class="tcecode">4</sub>, r3, r2</li>
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> 8, S<sub class="tcecode">8</sub>, r3, r1</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> S<sub class="tcecode">4</sub>, 5, r3, r1</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> 5, S<sub class="tcecode">4</sub>, r1, r2<br><span class="explanation">Explanation:</span><br>For CLR(1) we use canonical collection of LR(1) items.<br>		LR(1) item = LR(0) item + lookaheads<br>The collection of LR(1) items is:<br><img src="./Test Results126_files/Q9_exp_1.PNG" alt="image:CD Topic Test - 3/Q9_exp_1.PNG" width="635" height="350" class="tcecode"><br>Numbering the productions of the original grammar<br>		S → AA	--------- (1)<br>		A → aA	--------- (2)<br>		        | b		--------- (3)<br>	The CLR(1) parsing table constructed from the algorithm mentioned is given as follows<br><img src="./Test Results126_files/Q9_exp_2.PNG" alt="image:CD Topic Test - 3/Q9_exp_2.PNG" width="516" height="242" class="tcecode"><br>∴ The correct option is (b)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q12 &amp; Q13:</strong><br>For the same grammar which is:<br><img src="./Test Results126_files/Q13.PNG" alt="image:CD Topic Test - 3/Q13.PNG" width="248" height="73" class="tcecode"><br>Consider the following statements<br>S1: If sets of LR(0) items are constructed for the grammar then the ambiguity in the grammar will lead to SR conflict in some state.<br>S2: If sets of LR(0) items are constructed for the grammar then the ambiguity in the grammar will lead to RR conflict in some state.<br>	Which of the above statement/s is/are true?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results126_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br>The given grammar is:<br><img src="./Test Results126_files/Q13.PNG" alt="image:CD Topic Test - 3/Q13.PNG" width="248" height="73" class="tcecode"><br>To simplify the discussion, let us consider an abstraction of this grammar, where i stands for ‘if expr then’ ,  e stands for else, and a stands for “all other productions”. We can then write the grammar, with augmenting production S^' → S, as<br>S^' → S<br>S → iSeS | iS | a<br>The sets of LR(0) items for grammar is:<br><img src="./Test Results126_files/Q13_exp_1.PNG" alt="image:CD Topic Test - 3/Q13_exp_1.PNG" width="157" height="361" class="tcecode"><br><img src="./Test Results126_files/Q13_exp_2.PNG" alt="image:CD Topic Test - 3/Q13_exp_2.PNG" width="136" height="272" class="tcecode"><br>We can see the ambiguity in the grammar gives rise to a shift/reduce conflict in I4.<br>There, S → iS.eS calls for a shift of e and, since FOLLOW(S) = {e, $}, item        S → iS. calls for reduction by S → iS on input e.<br>So it gives rise to SR conflict but no RR-conflict is present.
+</li>
+<li><img src="./Test Results126_files/wrong.png" width="16">&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Both S1 &amp; S2</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> Only S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q12 &amp; Q13:</strong><br>For the grammar given below<br><img src="./Test Results126_files/Q12.PNG" alt="image:CD Topic Test - 3/Q12.PNG" width="235" height="71" class="tcecode"><br>Which of the following statement/s is/are true<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results126_files/correct.png" width="18">&nbsp;<img src="./Test Results126_files/correct.png" width="18"> The grammar is ambiguous and the ambiguity  can be resolved<br><span class="explanation">Explanation:</span><br>The grammar is ambiguous since the string<br>		         “if E1 then if E2 then S1 else S2”<br>		has two parse trees.<br><img src="./Test Results126_files/Q12_exp_1.PNG" alt="image:CD Topic Test - 3/Q12_exp_1.PNG" width="392" height="270" class="tcecode"><br><img src="./Test Results126_files/Q12_exp_2.PNG" alt="image:CD Topic Test - 3/Q12_exp_2.PNG" width="364" height="287" class="tcecode"><br>The general rule is “to match each else with the closest previous unmatched then”. This rule is unambiguous and can be incorporated as grammar which shall work exactly as the grammar in question but will not be ambiguous.<br>		This is known as the “Dangling-Else” ambiguity.<br>	The grammar is:<br><img src="./Test Results126_files/Q12_exp_3.PNG" alt="image:CD Topic Test - 3/Q12_exp_3.PNG" width="497" height="167" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> The grammar is unambiguous</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> The grammar is ambiguous and the ambiguity cannot be resolved</li>
+<li>&nbsp;<img src="./Test Results126_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results126_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

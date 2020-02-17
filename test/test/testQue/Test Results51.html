@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92231&test_id=272 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results51_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results51_files/calclayout.css">
+<script src="./Test Results51_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results51_files/jquery-ui.js.download"></script>
+<script src="./Test Results51_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results51_files/custom.js.download"></script>
+<script src="./Test Results51_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results51_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results51_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837834, 'I\'m sorry, the time available to complete the test is over!', false, 1486837834023);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92231&amp;test_id=272#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Topic Test - 9</strong><br>
+Conditional Probability Bayes theorem&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:35:26&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+A total of 46% of the voters in a certain city classify themselves as Independents, where as 30% classify themselves as Liberals and 24% say they are Conservatives. In s recent local election, 35% of the Independents, 62% of the Liberals and 58% of the Conservatives voted. A voter is chosen at random. Given that this person voted in the local election, the probability that he or she is an Independent is _________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 0.331<br><span class="explanation">Explanation:</span><br>Given that<br>P(J) = 46%	Independents<br>P(L) = 30%	Liberals<br>P(C) = 24%	Conservatives<br>⇒ And also given that 35% of Independents are voted<br>P(V/J) = 35%<br>P(V/L) = 62%<br>P(V/C) = 58%<br>∴ We have to find P(J/V).<br>According to the Bays theorem,<br>P(J/V)=P(I∩V)/P(V) <br>=P(V/I)P(I)/(P(V/I)P(I)+P(V/L)P(L)+P(V/C)P(C) )<br>=(0.35×0.46)/(0.35×0.45+0.62×0.30+0.58×0.24)<br>=0.331
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.335</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.337</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.339</li>
+</ol>
+<br><br>
+</li>
+<li>
+A family has children with probability P_i where P<sub class="tcecode">1</sub>=0.01,P<sub class="tcecode">2</sub>=0.25,P<sub class="tcecode">3</sub>=0.35,P<sub class="tcecode">4</sub>=0.3. A child from this family is randomly chosen. Given that this child is the eldest child in the family, the conditional probability that the family has 4 children _______.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.24</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 0.18<br><span class="explanation">Explanation:</span><br><img src="./Test Results51_files/E4a.PNG" alt="image:EM9/E4a.PNG" width="596" height="512" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.26</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 0.16</li>
+</ol>
+<br><br>
+</li>
+<li>
+I toss a coin repeatedly until I observe the first tail at which point I stop. Let X be the total number of coin tosses. P(X=5)is _________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/5</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 1/32<br><span class="explanation">Explanation:</span><br>P(X=5)means that the first 4 coin tosses result in heads and the fifth one results in tails.<br>Thus, the probability of sequence H H H H T when tossing a coin five times<br>P(H H H H T)=P(H)∙P(H)∙P(H)∙P(H)∙P(T)<br>=1/2∙1/2∙1/2∙1/2∙1/2 [all are independent event]<br>=1/32
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/64</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q4 &amp; Q5:</strong><br>Mr. Elliot has just had a biopsy or a possibly cancerous tumor. Not wanting to spoil a weekend family event, he does not want to hear any bad news in the next few days. But if he tells the doctors to call only if the news is good, then if the doctor doesn’t call, Mr. Elliot can conclude that the news is bad.<br>Being a student of probability Mr. Elliot instruct the doctor to flip a coin. If it comes up head, the doctor is to call if the new is good and not call if the new is bad. If the coin comes up tails, the doctor is not to call whether the news is good or bad.<br>Let α be the probability that the tumor is cancerous.<br>Let βbe the probability that the tumor is cancerous given that the doctor doesn’t call then β = ________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> α/(1+α)</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 2α/(1+3α)</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/(1+2α)</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 2α/(1+α)<br><span class="explanation">Explanation:</span><br><img src="./Test Results51_files/E2a.PNG" alt="image:EM9/E2a.PNG" width="460" height="535" class="tcecode"><br><img src="./Test Results51_files/E2b.PNG" alt="image:EM9/E2b.PNG" width="437" height="352" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q4 &amp; Q5:</strong><br>Mr. Elliot has just had a biopsy or a possibly cancerous tumor. Not wanting to spoil a weekend family event, he does not want to hear any bad news in the next few days. But if he tells the doctors to call only if the news is good, then if the doctor doesn’t call, Mr. Elliot can conclude that the news is bad.<br>Being a student of probability Mr. Elliot instruct the doctor to flip a coin. If it comes up head, the doctor is to call if the new is good and not call if the new is bad. If the coin comes up tails, the doctor is not to call whether the news is good or bad.<br>Let α be the probability that the tumor is cancerous.<br>Let βbe the probability that the tumor is cancerous.<br>According to the question Q4, which should be bigger α or β?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> α&gt;β</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> α&lt;β<br><span class="explanation">Explanation:</span><br>2α/(1+α)≥α [which is strictly inequal unless α=1]<br>β≥α⇒β&gt;α
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> α=β</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Can’t say</li>
+</ol>
+<br><br>
+</li>
+<li>
+players P<sub class="tcecode">1</sub>,P<sub class="tcecode">2</sub>,P<sub class="tcecode">3</sub>……… P<sub class="tcecode">16</sub> play in a tournament. They are divided into eight pairs at random, from each pair a winner is decided on the basis of a game played between the two players of the pairs. Assuming that all the players are of equal strength, the probability that exactly one of the two players P<sub class="tcecode">1</sub> and P<sub class="tcecode">2</sub> is among the eight winners is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 11/15</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 7/15</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 8/15<br><span class="explanation">Explanation:</span><br><img src="./Test Results51_files/E7a.PNG" alt="image:EM8/E7a.PNG" width="618" height="512" class="tcecode"><br><img src="./Test Results51_files/E7b.PNG" alt="image:EM8/E7b.PNG" width="440" height="260" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 17/30</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there are two doctors of surgeries that doctors perform. Doctor A has a higher success rate than Doctor B on first type of surgery. Doctor A also has a higher success rate than Doctor B on second type of surgery. Is it true that Doctor A necessarily has higher overall success rate than Doctor B?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> It must be false</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Yes, it must be true</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> It can be true but not necessarily<br><span class="explanation">Explanation:</span><br>Though this might at first sight appeal to true, that is not necessarily false.<br>Suppose that the two types of surgeries are vastly different in difficulty, and Doctor A just performs many more of the difficult surgery than Doctor B, bringing his average down.<br>On the first surgery, Doctor A can perform it with 95% success and Doctor B achieves 90% success. However, on the second, Doctor A has a 50% success rate and Doctor B has 10% success rate.<br>Doctor A performs the first surgery 20% of the time.<br>Success rate=20/100×95/100+80/100×50/100=59%<br>However, Doctor B performs the first surgery 80% of the time.<br>Success rate=80/100×90/100+20/100×10/100=74%
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Can't be determined</li>
+</ol>
+<br><br>
+</li>
+<li>
+On planet XZ101X, there are two types of creatures: small brain and big brain.<br>Small brain tells the truth 6/7 of the time and lie only 1/7 of the time, while big brain tells the truth 1/5 of the time and lie 4/5 of the time.<br>It is also known that there is 2/3 chance a creature from XZ101X is a small brain and a 1/3 chance that it is a big brain but there is no way of differentiating from these two types.<br>You are visiting XZ101X on a research trip. During your stay, you come across a creature who states that it has found a one line proof Fermet's last theorem.<br>Immediately after that, a second creature shows up and states that the first creatures’ statement was a true one.<br>If the probability that the first creature’s statement was actually true is a/b for some co-prime positive integer a, b. The value of b-a=__________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 4489</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 1444<br><span class="explanation">Explanation:</span><br>Let A be the event the first creature’s statement was truth<br>      B be the event that the second creature says that the first creature’s statement was true.<br>P(A/B)=P(A∩B)/P(B) <br>In order to find P(A∩B) and P(B) we will consider four cases based on the type of creatures.<br><strong class="tcecode">Case 1:</strong> Consider the first one is tell the truth and 2nd one also telling the truth.<br><img src="./Test Results51_files/E12a.PNG" alt="image:EM8/E12a.PNG" width="642" height="449" class="tcecode"><br><strong class="tcecode">Case 2:</strong> First one tells truth second one tells lie [we don’t need to consider this case, it is already given that second one told first one’s statement was true]<br><strong class="tcecode">Case 3:</strong> First one tells lie second one tells truth [for the same reason we will ignore this one]<br><strong class="tcecode">Case 4:</strong> First one tells lie second one also tells lie<br><img src="./Test Results51_files/E12b.PNG" alt="image:EM8/E12b.PNG" width="633" height="516" class="tcecode"><br>∴P(B)=P(case 1)+P(csae 2)<br>=(67)<sup class="tcecode">2</sup>/(105)<sup class="tcecode">2</sup> +(38/105)<sup class="tcecode">2</sup><br>		P(A/B)=P(A∩B)/P(B) =(67)<sup class="tcecode">2</sup>/((67)<sup class="tcecode">2</sup>+(38)<sup class="tcecode">2</sup> )<br>		∴a=(67)<sup class="tcecode">2</sup>        b=(67)<sup class="tcecode">2</sup>+(38)<sup class="tcecode">2</sup><br>		b-a=(38)<sup class="tcecode">2</sup>=1444
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 5933</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Can’t determine</li>
+</ol>
+<br><br>
+</li>
+<li>
+For three events A, B and C, we know that<br>	<ul class="tcecode">A and C are independent<br>	B and C are independent<br>	A and B are disjoint<br>	P(A∪C)=2/3      P(B∪C)=3/4      P(A∪B∪C)=11/12</ul><br>P(A)=___________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 1/3<br><span class="explanation">Explanation:</span><br>Let’s assume P(A)=a<br>	P(B)=b<br>	P(C)=c<br>Let’s visualize these events	<br> <img src="./Test Results51_files/E15a.PNG" alt="image:EM8/E15a.PNG" width="309" height="201" class="tcecode"><br>It’s given<br>	P(A∪C)=a+c-ac=2/3<br>	P(B∪C)=b+c-bc=3/4<br>	P(A∪B∪C)=a+b+c-ac-bc=11/12<br>a+b+c-ac-bc-a-c+ac-b-c+bc=11/12-2/3-3/4<br>-c=11/12-17/12<br>	(c=1/2)<br>	a+1/2-a(1/2)=2/3<br>	a/2+1/2=2/3<br>	a/2=2/3-1/2=(4-3)/6<br>	a/2=1/6<br>	(a=1/3)
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 12/17</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 2/3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider independent trails consisting of rolling a pair of fair dice, over and over. What is the probability that a sum of 5 appears before sum of 7?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/5</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/6</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 2/9</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> None of them<br><span class="explanation">Explanation:</span><br>Let E be the event we see a sum 5 before a sum of 7.<br>Let F be the event the first roll is a 5.<br>Let G be the event that the first roll is a 7.<br>Let H be the event that the first roll is a sum other than 5 or 7.<br>P(F)=4/36    [(1,4)  (4,1)  (3,2)  (2,3)]<br>P(G)=6/36    [(1,6)  (6,1)  (2,5)  (5,2)  (3,4)  (4,3)]<br>P(H)=26/36    [1-P(F)-P(G)]<br>P(E)=P(E ⁄ F)P(F)+P(E / G)P(G)+P(E ⁄ H)P(H)  <br>P(E⁄F)<br>Given that the first roll is 5, probability getting a 5 before 7 is 1.<br> P(E/G)<br>Given that the first roll is 7, probability getting a 5 before 7 is 0.<br>P(E/G)<br>Given that the first roll’s sum is neither 5 nor 7, we can think of the process starts all over again.<br>The chance we get a 5 before 7 is just like it was P(E) before we started rolling.<br>(P(E/H)=P(E) )<br>∴P(E)=1×4/36+0×6/36+26/36×P(E)<br>P(E)=4/36+26/36 P(E)<br>P(E)  10/36=4/36<br>(P(E)=2/5)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A gambler has a fair coin and a two headed coin. He selects one of the coins at random flipped it twice and got two heads. Now the probability that it is the fair coin is _______.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/4</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 1/5<br><span class="explanation">Explanation:</span><br>It is given that he got two heads<br>∴ we have to find,<br>P(fair/hh)=P(fair∩hh)/P(hh) <br>=(P(hh/fair)P(fair))/(P(hh/fair)P(fair)+P(hh/not fair)P(no fair) )<br>P(hh/fair)=1/4 [(hh),(hT),(Th),(TT) ]<br>P(hh/notfair)=1 <br>∴P(fair/hh)=(1/4×1/2)/(1/4×1/2+1×1/2)<br>=(1/8)/(1/8+1/2)<br>=1/5
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+English and American spellings are “rigour” and “rigor” respectively. A man staying at a Parisian hotel writes this word, and a letter taken at random from his spelling is found to be a vowel.<br>If the 40% of the English speaking men at the hotel are English and 60% are Americans. What is the probability that the writer is an Englishman?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 5/13</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 4/9</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 5/11<br><span class="explanation">Explanation:</span><br>We have to find<br>P(E/V)=P(V/E)P(E)/(P(V/E)P(E)+P(V/A)P(A) )<br>=(3/6×40/100)/(3/6×40/100+2/5×60/100)<br>=(1/2×2/5)/(1/2×2/5+2/5×3/5)<br>=5/11
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 2/5</li>
+</ol>
+<br><br>
+</li>
+<li>
+You randomly choose a treasure chest to open and then randomly choose a coin from that treasure chest. If the coin you choose is gold then what is the probability that you choose chest A?<br>Treasure 1 = 100 gold coins<br>Treasure 2 = 50 gold coins + 50 silver coins<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> 2/3<br><span class="explanation">Explanation:</span><br>Let G be the event of selecting a Gold coin.<br>⇒ Let A be the event selecting Treasure 1.<br>⇒ Let B be the event selecting Treasure 2.<br>∴P(G/A)=1<br>P(G/B)=1/2<br>We need to find<br>P(A/G)=P(A∩G)/P(G) <br>=(P(A)∙P(G/A))/(P(A)∙P(G/A)+P(B)∙P(G/B) )<br>=(1/2∙1)/(1/2∙1+1/2∙1/2)<br>=2/3
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> ½</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> ¼</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q14 &amp; Q15:</strong><br>You are in a game show! There are 10 closed doors, 0 leads to nothing and 1 leads to an expensive sports car. You are allowed to pick a door and earn the sports car if it’s behind the door you choose. You choose a door and the host tells you he was preauthorized to make your chance of winning better! You have two options.<br>Option 1: Get the right to open two doors and win if the car is behind either of the ones you open.<br>Option 2: Have the host open 5 empty doors [None of them the one you had choose] and then get the right to switch if you want.<br>If you want to win the car, what should you do?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> Go with option 2 and switch<br><span class="explanation">Explanation:</span><br>⟹If you take option 1, then you have 2 chances in 10 to get the car, for a probability of 1/5 of Success.<br>⟹If you take option 2, and don’t, your chance of Success remains equal to 1/10 [not helpful]<br>⟹If you take option and switch<br>	There is 9/10 probability that the car is not in the first door you choose and ¼ probability in the remaining 4 closed doors. [One you already choose a host open 5 doors]<br>∴The probability you get the car is<br>9/10×1/4=9/40&gt;1/5 (8/40)<br>=9/40&gt;8/40<br>And thus, option 2 with switching is better than option 1 by 1/40.
+</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> You should be indifferent</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Go with option 2, then don’t switch</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Go with option 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions Q14 &amp; Q15:</strong><br>You are in a game show! There are 10 closed doors, 0 leads to nothing and 1 leads to an expensive sports car. You are allowed to pick a door and earn the sports car if it’s behind the door you choose. You choose a door and the host tells you he was preauthorized to make your chance of winning better! You have two options.<br>Option 1: Get the right to open two doors and win if the car is behind either of the ones you open.<br>Option 2: Have the host open 4 empty doors [None of them the one you had choose] and then get the right to switch if you want.<br>If you want to win the car, what should you do?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> You should be indifferent</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Go with option 2, then don’t switch</li>
+<li>&nbsp;<img src="./Test Results51_files/wrong.png" width="16"> Go with option 2 and switch</li>
+<li>&nbsp;<img src="./Test Results51_files/correct.png" width="18"> Go with option 1<br><span class="explanation">Explanation:</span><br>⟹If you take option 1, then you have 2 chances in 10 to get the car, for a probability of 1/5 of Success.<br>⟹If you take option 2, and don’t, your chance of Success remains equal to 1/10 [not helpful]<br>⟹If you take option and switch<br>	There is 9/10 probability that the car is not in the first door you choose and ¼ probability in the remaining 4 closed doors. [One you already choose a host open 5 doors]<br>∴The probability you get the car is<br>9/10×1/4=9/40&gt;1/5 (8/40)<br>=9/40&gt;8/40<br>And thus, option 2 with switching is better than option 1 by 1/40.<br>Option 2 with switch will have<br>	=9/10×1/5=9/50&lt;1/5 (10/50)<br>And thus, option 1 is better than option 2 with switching by 1/50.
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results51_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,1 @@
+[13-Feb-2020 08:29:13 UTC] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/amitdx94/public_html/lp/public/index.php on line 52

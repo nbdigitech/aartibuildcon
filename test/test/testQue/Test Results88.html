@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92272&test_id=192 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results88_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results88_files/calclayout.css">
+<script src="./Test Results88_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results88_files/jquery-ui.js.download"></script>
+<script src="./Test Results88_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results88_files/custom.js.download"></script>
+<script src="./Test Results88_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results88_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results88_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838424, 'I\'m sorry, the time available to complete the test is over!', false, 1486838424119);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92272&amp;test_id=192#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Algorithms Subject Test - 2</strong><br>
+Complete syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:36:42&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Find the output after applying 2 passes of radix sort after performing 1 pass of bubble sort to the given integers: 121, 232, 418, 344, 543, 999, 676, 197. Tie is broken as<br>per FIFO order.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 121, 232, 543, 344, 676, 197, 418, 999</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 418, 121, 232, 344, 543, 676, 197, 999</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 418, 121, 232, 543, 344, 676, 197, 999<br><span class="explanation">Explanation:</span><br>Bubble sort<br>Pass1:<br>121, 232, 418, 344, 543, 999, 676, 197<br>121, 232, 418, 344, 543, 999, 676, 197<br>121, 232, 418, 344, 543, 999, 676, 197<br>121, 232, 344, 418, 543, 999, 676, 197<br>121, 232, 418, 344, 543, 999, 676, 197<br>121, 232, 418, 344, 543, 999, 676, 197<br>121, 232, 418, 344, 543, 676, 999, 197<br>121, 232, 418, 344, 543, 676, ,197 999<br><br>Radix sort<br>pass1(sort by least significant digit)<br>121, 232, 543, 344, 676, 197, 418, 999<br><br>pass2(sort by 10’s place digit)<br>418, 121, 232, 543, 344,  676, 197, 999
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 121, 232, 418, 344, 543, 197, 676, 999</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Every spanning tree of G=(V, E) must contain V-1 edges</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Every spanning tree is maximally acyclic</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> The removable of one edge from spanning tree it becomes still connected</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> Both (a) and (b) are connected.<br><span class="explanation">Explanation:</span><br>(a) Every spanning tree of G must contain V-1 edges correct. Let’s take example 3 vertices of complete graph, the minimum spanning tree contains 2 edges  i.e 3-1 .<br>(b) Every spanning tree is maximally acyclic. (i.e by addition of only one edge to spanning tree it forms a cycle)<br>(c) is not correct. The removable of one edge from spanning tree the graph will become disconnected.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the time complexity of RADIX-SORT to use INSERTION-SORT to sort by digits, instead of COUNTING-SORT. The complexity of conventional RADIX-SORT on n numbers is base b with at most d digits is O((n+b).d)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n<sup class="tcecode">d</sup>)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n<sup class="tcecode">d</sup> logn)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(d n<sup class="tcecode">2</sup> )<br><span class="explanation">Explanation:</span><br>Insertion sort is a stable sort, so the new Radix Sort algorithm would still work correctly. The new complexity becomes O(n<sup class="tcecode">2</sup>d), because now we are using insertion sort, an O(n<sup class="tcecode">2</sup>) algorithm, d times in our Radix Sort.
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n.d)</li>
+</ol>
+<br><br>
+</li>
+<li>
+In an effort to make MERGE-SORT faster, you decide to divide the array into k equal sized, disjoint subarrays, where k &gt; 2. This means that you have to merge k lists. How many levels are present for this algorithm assuming merge can be accomplished in O(n log(k)) time.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(log<sub class="tcecode">2</sub> k)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(log<sub class="tcecode">k</sub>n)<br><span class="explanation">Explanation:</span><br>The recurrence realtion is<br><br>	T(n) = k * T(n/k) + n log k<br><br>We have O(logkn) levels and each level work is O(n * log(k))<br>Total = O(n * log<sub class="tcecode">k</sub>(n)*log(k)) = O(nlog(n))
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(log<sub class="tcecode">n</sub>k)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The running time of an algorithm is given by the recurrence relation<br><br>	T(n) = T(n-1) + T(n-2) – T(n-3)		if n&gt;3<br><br>	        = n 		otherwise<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(nlogn)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>T(1) = 1<br>T(2) = 2<br>T(3) = 3<br>T(4) = 3 + 2 -1 = 4<br>T(5) = 4 + 3 – 2 = 5<br>.<br>.<br>.<br>T(n) = n - 1 + n - 2 – (n-3) = n<br><br>Time complexity is O(n)
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(logn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The total number of inversions if the input array of 14 elements is in decreasing order is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 78</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 91<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E11a.PNG" alt="image:AlgoS2/E11a.PNG" width="348" height="41" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 66</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 105</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE?<br><br>I.	Sorting 7 numbers takes 10 comparisons using binary tree<br>II.	Merge sort can be implemented to be stable<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> Only II<br><span class="explanation">Explanation:</span><br>I. False: To sort 7 numbers, the binary tree must have 7! = 5040 leaves. The number of leaves of a complete binary tree of height 10 is 210 = 1024. This is not enough.<br><br>II. True: Whether it is stable or not depends on which element is chosen next in case there is a tie during the merge step. If the element from the left list (the list of elements that came earlier in the original array) is always chosen, then the merge sort is stable.
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Neither I nor II.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE?<br><br>I. In min-heaps, the operations insert, min-heapify and find-max all take O(logn) time.<br>II. Inserting into an AVL Tree can take o(log n)  time (small o logn)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> Neither I nor II.<br><span class="explanation">Explanation:</span><br>I. False: The time complexity to find max element in a min-heap is O(n). The max-element always present at the leafs of the min-heap<br>II. False: The time complexity is to insert into AVL Tree takes Θ(logn) best case. Therefore it can’t take o(logn) time.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program which sorts distinct elements in increasing order<br><br><div class="tcecodepre">for(i=n-1;&nbsp;CONDITION1;&nbsp;i—)<br>{<br>	max&nbsp;=&nbsp;i;<br>	for(j&nbsp;=&nbsp;i-1;&nbsp;CONDITION2;&nbsp;j--)<br>	{<br>		if&nbsp;(CONDITION3)<br>			max&nbsp;=&nbsp;j;<br>	}<br>	swap(A[i]&nbsp;,&nbsp;A[max]);<br>}<br></div><br>Which of the following will represents correct value of CONDITION1, CONDITION2, CONDITION3 in the above code?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> i &gt;=0, j&gt;=0, A[j] &gt; A[max]<br><span class="explanation">Explanation:</span><br>The given program is selection sort algorithm.<br><br>Option (a) is correct.
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> i &gt;= 0, j &lt;=0, A[j] &gt; A[max]</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> i &lt;= 0, j &gt;= 0, A[i] &lt; A[max]</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> i &gt;= 0, j&gt;=0, A[j] &lt; A[max]</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a max heap of log n elements, what is the time complexity to delete the root element?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(1)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(log n)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(log logn)<br><span class="explanation">Explanation:</span><br>Suppose n elements are present in a max heap then time complexity to delete root is O(log n) because, delete takes O(1) time and need to arrange again max heap takes O(logn) time (max-heapify)<br>Total time complexity is O(loglogn) because log n elements are present.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+. What is the time complexity of following recurrence relation?<br><br>	T(n) = 2T(√n)+log √n if n&gt;4<br>	        = 1 other wise<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n log n)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(log<sup class="tcecode">2</sup>n)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(logn loglogn)<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E6a.PNG" alt="image:AlgoS2/E6a.PNG" width="250" height="320" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(logn logloglogn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the worst case time complexity to construct a binary search tree when inorder an preorder traversal of the tree is given?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n log n)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(n<sup class="tcecode">2</sup>)<br><span class="explanation">Explanation:</span><br>Algorithm:<br>Step 1: Select an element from preorder. Increment the preorder index variable to select next element in next recursive call.<br>Step2: Create a new tree node temp with the data as selected element.<br>Step 3: Find the selected element’s index in inorder. Let the index be inIndex<br>Step 4: Call createTree for elements before inIndex and make the create tree as left subtree of temp<br>Step 5: Call createTree for elements after inIndex and make the create tree as right subtree of temp<br>Step 6: return temp<br>Worst case it takes O(n<sup class="tcecode">2</sup>) i.e left skewed or right skewed binary search tree
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n<sup class="tcecode">3</sup>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given 8 sorted lists, each list of size n/8. If we merge these lists into a single sorted list of n elements, how many comparisons are required in worst case using an efficient algorithm?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> (10/4)n-5</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> (11/4)n-5</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> (12/4)n-7<br><span class="explanation">Explanation:</span><br>Here we have 8 lists, each of size n/8. The number of comparisons required to merge 2 lists is = (n/4  -1). like that merge all lists then<br><img src="./Test Results88_files/E5b.PNG" alt="image:AlgoS2/E5b.PNG" width="555" height="285" class="tcecode"><br>Total number of comparisons:<br>4(n/4-1)+2(n/2-1)+1(n-1) <br>= 3n-7<br>=(12/4)n-7
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> (13/4)n-5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE regarding Dijkstra’s algorithm?<br>I. Dijkstra’s algorithm produces incorrect results only if the graph contains negative weight cycle.<br>II. Dijkstra’s algorithm will not terminate, if a graph contains negative weight cycle<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> Neither I nor II<br><span class="explanation">Explanation:</span><br>I. False: Dijkstra’s algorithm will give incorrect results even if the graph contains negative edge weights are present in a graph.<br>II. False: Dijsktra’s algorithm will terminate even if a graph contains negative weight cycle
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not a greedy algorithm?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> selection sort</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Huffman coding</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> Dijkstra’s algorithm</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> Bellman Ford algorithm<br><span class="explanation">Explanation:</span><br>Selection sort, Huffman coding and Dijkstra’s algorithm are applications of greedy algorithm
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a list has ‘logn’ strings where each string is of length n. Using Divide and conquer approach, what is the worst case running time to find the final sorted  string?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(log<sup class="tcecode">2</sup>n)</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(nloglogn)</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> O(nlognloglogn)<br><span class="explanation">Explanation:</span><br>we have log n strings, then total number of levels will be loglogn  according to merge sort algorithm.<br><br>The work done at each level is nlogn<br>Total time complexity is nlogn * loglogn
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>loglogn)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following LIST1 with LIST2<br><div class="tcecodepre">		LIST1								&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIST2<br>I.	Insert&nbsp;element&nbsp;at&nbsp;the&nbsp;middle&nbsp;of&nbsp;an&nbsp;existing&nbsp;array&nbsp;of&nbsp;size&nbsp;n&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;n-1&nbsp;elements&nbsp;are&nbsp;already&nbsp;present&nbsp;in&nbsp;an&nbsp;array		P.&nbsp;O(n&nbsp;log&nbsp;n)<br>II.	Insert&nbsp;element&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;linked&nbsp;list				Q.O(n)<br>III.	Search&nbsp;element&nbsp;in&nbsp;a&nbsp;sorted&nbsp;array						R.O(1)<br>IV.	Delete&nbsp;‘n’&nbsp;elements&nbsp;in&nbsp;sorted&nbsp;order&nbsp;from&nbsp;linked&nbsp;list&nbsp;		S.O(log&nbsp;n)<br></div><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-R, II-Q, III-S, IV-P</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-R, II-Q, III-P, IV-S</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> I-Q, II-R, III-S, IV-P<br><span class="explanation">Explanation:</span><br>1. Insert element at the middle of an array is O(n). Because, need to find location of middle. You need to shift already exists elements to right . It take O(n) and insert at middle. <br>2. Insert element at the beginning of linked list is O(1)<br>3. Search element in a sorted array takes O(logn) apply binary search<br>4. Delete ‘n’ elements in sorted order from linked list takes O(nlogn). Sort the linked list it takes O(nlogn). Then deleting the element from beginning takes O(1) time and need to delete n elements so time complexity is O(n). So, ovserall time complexity is O(nlogn)
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-Q, II-R, III-P, IV-S</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two strings X and Y<br>X = “abcdaf”<br>Y = “acbcf”<br>The length of longest common subsequence possible from X and Y is.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><div class="tcecodepre"><br>		a	b	c	d	a	f<br>	0	0	0	0	0	0	0<br>a	0	1	1	1	1	1	1<br>c	0	1	2	2	2	2	2<br>b	0	1	2	2	2	2	2<br>c	0	1	2	3	3	3	3<br>f	0	1	2	3	3	3	4<br></div>
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Rank the following functions by increasing order of growth.<br><br>g<sub class="tcecode">1</sub>(n) = n<sup class="tcecode">log n</sup>	g<sub class="tcecode">2</sub>(n) = √n		g<sub class="tcecode">3</sub>(n) = n<sup class="tcecode">3+sin(n)</sup>		g<sub class="tcecode">4</sub>(n) = log n<sup class="tcecode">n</sup><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g<sub class="tcecode">4</sub>, g<sub class="tcecode">2</sub>, g<sub class="tcecode">1</sub>, g<sub class="tcecode">3</sub></li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> g<sub class="tcecode">2</sub>,  g<sub class="tcecode">4</sub>, g<sub class="tcecode">3</sub>, g<sub class="tcecode">1</sub><br><span class="explanation">Explanation:</span><br>We see log n<sup class="tcecode">n</sup>  = n <sup class="tcecode">log n</sup><br>n<sub class="tcecode">2</sub>≤n<sup class="tcecode">(3+sin(n))</sup>≤n<sub class="tcecode">4</sub> because sin(n) ranges between -1 and 1 for all n. Also n<sup class="tcecode">log n</sup> &gt;n<sup class="tcecode">c</sup> for all constant of c. So the correct order is  g<sub class="tcecode">2</sub>,  g<sub class="tcecode">4</sub>, g<sub class="tcecode">3</sub>, g<sub class="tcecode">1</sub>
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g<sub class="tcecode">2</sub>,  g<sub class="tcecode">4</sub>, g<sub class="tcecode">1</sub> , g<sub class="tcecode">3</sub></li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g<sub class="tcecode">4</sub> ,  g<sub class="tcecode">2</sub> , g<sub class="tcecode">3</sub>, g<sub class="tcecode">1</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following LIST1 and LIST2<br><div class="tcecodepre"><br>I.T(n)&nbsp;=&nbsp;2T(n/2)&nbsp;+&nbsp;nlogn		P.&nbsp;O(n)<br>II.&nbsp;&nbsp;T(n)&nbsp;=&nbsp;16&nbsp;T(n/4)&nbsp;+&nbsp;n		Q.O(nlogn)<br>III.&nbsp;T(n)&nbsp;=&nbsp;6T(n/3)&nbsp;+&nbsp;n<sup class="tcecode">2</sup>logn	R.&nbsp;O(n<sup class="tcecode">2</sup>)<br>IV.&nbsp;T(n)&nbsp;=&nbsp;T(n/2)&nbsp;+&nbsp;n/logn	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S.&nbsp;O(log&nbsp;n)<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	U.&nbsp;O(n&nbsp;log<sup class="tcecode">2</sup>&nbsp;n)<br>					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V.O(n<sup class="tcecode">2</sup>&nbsp;logn)<br><br></div><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-V, II-R, III- U, IV-P</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-V, II-S, III- U, IV-R</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> I-U, II-R, III-V, IV-P<br><span class="explanation">Explanation:</span><br>I. T(n) = 2T(n/2) + nlogn<br>Apply master’s theorem<br>a = 2, b= 2, k = 1, p = 1<br>case a = b<sup class="tcecode">k</sup> and p &gt;= 0<br>T(n) = O(n log<sup class="tcecode">2</sup> n)<br><br>II. T(n) = 16 T(n/4) + n<br>Apply master’s theorem<br>a = 16, b = 4, k = 1 p = 0<br>case a &gt; b<sup class="tcecode">k</sup><br>T(n) = O(n<sup class="tcecode">2</sup>)<br><br>III. T(n) = 6 T(n/3) + n<sup class="tcecode">2</sup>logn<br>Apply master’s theorem<br>a = 6, b= 3, k = 2 p = 1<br>case a&lt;b<sup class="tcecode">k</sup> and p&gt;= 0<br>T(n) = O(n<sup class="tcecode">2</sup>logn)<br><br>IV. T(n) = T(n /2) + n/logn<br>Apply master’s thoerem<br><br>a = 1, b = 2, k = 1, p = -1<br>case a&lt;b<sup class="tcecode">k</sup>  and p&lt;0<br>T(n) = O(n<sup class="tcecode">k</sup>) = O(n)
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I-U, II-S, III-V, IV-R</li>
+</ol>
+<br><br>
+</li>
+<li>
+The four C-Programs of the following lengths are to be stored in a hard disk of infinite length (l<sub class="tcecode">1</sub>, l<sub class="tcecode">2</sub>, l<sub class="tcecode">3</sub>, l<sub class="tcecode">4</sub>)  = (5, 10, 8, 25) the minimum retrieval time of the all the four programs is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 90</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 84<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E15a.PNG" alt="image:AlgoS2/E15a.PNG" width="237" height="233" class="tcecode"><br>Minimum retrival time is  = 48 + 23 + 13  = 84
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 80</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 94</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following table which contains keys and frequencies.<br><br>(k<sub class="tcecode">1</sub>, k<sub class="tcecode">2</sub>, k<sub class="tcecode">3</sub>)	11	13	21<br>(f<sub class="tcecode">1</sub>, f<sub class="tcecode">2</sub>, f<sub class="tcecode">3</sub>)	35	10	60<br><br>What is the minimum cost of optimal binary search tree?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 200</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 160<br><span class="explanation">Explanation:</span><br>The number of BST’S possible from the keys are 5. One of the possible binary search tree is root contains key 21 and root left contains key 11 and right of element 11 is 13.<br>Minimum cost of Binary search Tree is  = 1*60 + 2*35 + 3*10 = 160
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 140</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 150</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a hash table H with 7 slots. The keys 76, 40, 48, 5 and 55 are inserted into hashtable using qudratic probing then what is the location of key 5?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>insert 76, 76%7 = 6<br>insert 40, 40%7 = 5<br>insert 48, 48%7 = 6 (collision occurs then according to quadratic probing the location of 48 is 0)<br>insert 5,  5%7 = 5 (collision occurs then according to quadratic probing the location of 5 is 2. because, 5+1 already a probe then (5 + 22) % 7 = 2
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements are False?<br>I.The depth of a breadth-first search tree on an undirected graph G=(V,E) from an arbitrary vertex v∈V is the diameter of the graph G. (The diameter d of a graph is the smallest d such that every pair of vertices s and t have δ(s, t) ≤ d.)<br>II.Every directed acyclic graph has exactly one topological ordering.<br>III. Given a graph G = (V, E) with positive edge weights, the Bellman-Ford algorithm and Dijkstra’s algorithm can produce different shortest-path trees despite always producing the same shortest-path weights.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> I and II<br><span class="explanation">Explanation:</span><br>I. False. An arbitrary vertex could lay closer to the ’center’ of the graph, hence the BFS depth will be underestimating the diameter. For example, in graph G = (V, E) = ({a, v, b}, {(a, v),(v, b)}), a BFS from v will have depth 1 but the graph has diameter 2.<br>II. False. Some priority constraints may be unspecified, and multiple orderings may be possible for a given DAG. For example a graph G = (V, E) = ({a, b, c}, {(a, b),(a, c)}) has valid topological orderings [a, b, c] or [a, c, b]. As another example, G = (V, E) = ({a, b}, {}) has valid topological orderings [a, b] or [b, c].<br>III. True. Both algorithms are guaranteed to produce the same shortestpath weight, but if there are multiple shortest paths, Dijkstra’s algorithm will choose the shortest path according to the greedy strategy, and Bellman-Ford will choose the shortest path depending on the order of relaxations, and the two shortest path trees may be different.
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I and III</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> II and III</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> I, II and III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following matrix representation of graph contains 8 vetices as A, B, C, D, E, F, G, H<br><img src="./Test Results88_files/Q25a.PNG" alt="image:AlgoS2/Q25a.PNG" width="245" height="163" class="tcecode"><br>Which of the following is NOT a DFS traversal of the above graph?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> ACFHGEBD</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> ACFHEBDG</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> ABDEHFCG<br><span class="explanation">Explanation:</span><br>ABDEHFCG is not DFS traversal. Traversal from node D to E fail the DFS algorithm
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> ABDHFCGE</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions 26&amp;27:</span></strong><br>Consider the following graph:<br><img src="./Test Results88_files/Q26a.PNG" alt="image:AlgoS2/Q26a.PNG" width="441" height="206" class="tcecode"> <br>What is the maximum cost of the spanning tree (using Prim’s algorithm) (Assume starting vertex is ‘A’).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 71<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E26a.PNG" alt="image:AlgoS2/E26a.PNG" width="411" height="216" class="tcecode"><br>Total maximum cost=14+11+7+7+8+8+6+10=71
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 60</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 62</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 64</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Common Data Questions 26&amp;27:</span></strong><br>Consider the following graph:<br><img src="./Test Results88_files/Q26a.PNG" alt="image:AlgoS2/Q26a.PNG" width="441" height="206" class="tcecode"><br>What is the cost of spanning tree by applying Dijkstra’s single source shortest path. (Assume source as A and destination H.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 25</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 11<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E27a.PNG" alt="image:AlgoS2/E27a.PNG" width="349" height="254" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 17</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Questions Q28 &amp; Q29</strong></span><br>Consider the following message:<br>PPP  QQQQ  P  Q  RRR SSSS  RRRRR  QQQ  SS  RRR<br>What is the average length of bits required for encoding each letter using Huffman coding?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 1.965<br><span class="explanation">Explanation:</span><br>P=4 <br>Q=8<br>R=11 <br>S=6<br>Arrange the letters in increasing order.<br><img src="./Test Results88_files/E28a.PNG" alt="image:AlgoS2/E28a.PNG" width="308" height="239" class="tcecode"><br>Total bits=1*11+2*8+3*4+3*6<br>                    =11+16+12+18<br>                    =57<br>Average length=57/29=1.9655
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 2.068</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 1.9310</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Questions Q28 &amp; Q29</strong></span><br>If Huffman tree code as left child with ‘1’ and right child with ‘0’ from every node then what is the decoded message for 1001010001.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> RSPQR</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> RPQSR<br><span class="explanation">Explanation:</span><br>P=4 <br>Q=8<br>R=11 <br>S=6<br>Arrange the letters in increasing order.<br><img src="./Test Results88_files/E28a.PNG" alt="image:AlgoS2/E28a.PNG" width="308" height="239" class="tcecode"><br>Total bits=1*11+2*8+3*4+3*6<br>                    =11+16+12+18<br>                    =57<br>Average length=57/29=1.9655<br>From above solution<br>R = 1<br>P = 001<br>Q = 101<br>S = 000<br>Option (b) is correct
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> RQPSR</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> RPQRR</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Questions Q30 &amp; Q31</strong></span><br>Consider the following graph and a matrix contains distance between the cities.<br><img src="./Test Results88_files/Q30a.PNG" alt="image:AlgoS2/Q30a.PNG" width="399" height="143" class="tcecode"><br>What is the recurrence relation for travelling salesman problem?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> g(i,s)=min⁡{c(i,k)+g(k,s-{k})}</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g(i,s)=min⁡{c(k,i)+g(k,s-{k})}</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g(i,s)=min⁡{c(k,i)+g(s-{k},k)}</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> g(i,s)=min⁡{c(i,k)+g(s-{k},k)}</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Questions Q30 &amp; Q31</strong></span><br>Find minimum cost of tour by visiting all the cities available in the graph from the city ①.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 25</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 35<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E31a.PNG" alt="image:AlgoS2/E31a.PNG" width="473" height="351" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 23</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 45</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions Q32 &amp; Q33</strong></span><br>Consider the following objects of the knapsack problem.<br><img src="./Test Results88_files/Q32a.PNG" alt="image:AlgoS2/Q32a.PNG" width="293" height="95" class="tcecode"><br>and M=20<br>Find the maximum profit by placing objects into the knapsack using fractional knapsack algorithm.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 25</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 30.5</li>
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 31.5<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E32a.PNG" alt="image:AlgoS2/E32a.PNG" width="445" height="164" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 33</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions Q32 &amp; Q33</strong></span><br>Consider the following objects of the knapsack problem.<br><img src="./Test Results88_files/Q32a.PNG" alt="image:AlgoS2/Q32a.PNG" width="293" height="95" class="tcecode"><br>and M=20<br>Find the maximum profit by placing objects in to the knapsack using 0/1 Knapsack algorithm<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results88_files/correct.png" width="18"> 25<br><span class="explanation">Explanation:</span><br><img src="./Test Results88_files/E33a.PNG" alt="image:AlgoS2/E33a.PNG" width="673" height="126" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 30.5</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 31.5</li>
+<li>&nbsp;<img src="./Test Results88_files/wrong.png" width="16"> 33</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results88_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

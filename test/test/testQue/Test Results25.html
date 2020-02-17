@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91836&test_id=312 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results25_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results25_files/calclayout.css">
+<script src="./Test Results25_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results25_files/jquery-ui.js.download"></script>
+<script src="./Test Results25_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results25_files/custom.js.download"></script>
+<script src="./Test Results25_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results25_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results25_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837305, 'I\'m sorry, the time available to complete the test is over!', false, 1486837305177);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91836&amp;test_id=312#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 8</strong><br>
+Operating Systems, Databases&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:12:22&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results25_files/7.png" alt="image:MST8/7.png" width="377" height="265" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> T1, T2, T3</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> T3, T1, T2</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> T2, T3, T1<br><span class="explanation">Explanation:</span><br><img src="./Test Results25_files/8.png" alt="image:MST8/8.png" width="352" height="418" class="tcecode"><br><img src="./Test Results25_files/9.png" alt="image:MST8/9.png" width="574" height="287" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> T2, T1, T3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A B+ tree is build with the following parameter system, block size is 230 bytes, record pointer is 16 bytes and block pointer is 14 bytes, index keys are 8 bytes. What is the maximum order of leaf node that can be constructed using above parameters?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>Let order of leaf node of B+ tree is ‘P’<br>Block size = 230 bytes<br>(P)(8+14)+14≤230<br>(P)(22)≤216<br>P≤216/22<br>P=⌊216/22⌋=9<br>∴ Answer is [b]
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+A certain computer is provided with logical address space of 8 GB and page size is 8 KB, physical address space is 1024 MB. How many bits are required to represent entries in single level page table and in inverted page table respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 20,17<br><span class="explanation">Explanation:</span><br>LAS= 8GB<br>Number of bits in logical address space= 33<br>Page size = 8KB<br>∴ No. of pages = 2<sup class="tcecode">33</sup>/2<sup class="tcecode">13</sup> =   2<sup class="tcecode">20</sup><br>∴ Physical address space= 2<sup class="tcecode">30</sup><br>∴ No. of entries in inverted page table= 2<sup class="tcecode">30</sup>/2<sup class="tcecode">13</sup> =2<sup class="tcecode">17</sup>
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 17, 20</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 17, 17</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 20, 20</li>
+</ol>
+<br><br>
+</li>
+<li>
+A disk has 200 tracks starting from 0 to 199. It has requests for I/O at tracks <br>23, 90, 132, 42, 187<br>With disk head initially at 100, what are the total head movements in FCFS and SCAN respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 287,421</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 420,288</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 421,287<br><span class="explanation">Explanation:</span><br>Total no. of head moves for FCFS : 77+67+42+90+145 = 421<br>Total no. of head moves for SCAN : 10+48+19+23+132+55 = 287
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 288,420</li>
+</ol>
+<br><br>
+</li>
+<li>
+A system uses FIFO policy for page replacement. It has 8 page frames with no pages loaded to begin with. The system first accesses 200 distinct pages in some order and then accesses the same 200 pages but now in the reverse order. How many page faults will occur?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 390</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 392<br><span class="explanation">Explanation:</span><br>Given all 200 pages are distinct, Number of page frames are 8. Initially all 200 pages are page faults in reverse order. Last 8 pages will reside so page hits. Remaining 192 pages are page faults.<br>∴Total no.of page faults=200+192=392
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 400</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 408</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the exponential averaging for the SJF with τ1=30, α=0.5 and previous runs as 6,8,10. Find the value T3?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 11.5<br><span class="explanation">Explanation:</span><br>T1=0.5(30)+0.5(6)=15+3=18<br> T2=0.5(18)+0.5(8)= 9+4= 13<br> T3=0.5(13)+0.5(10)= 6.5+5= 11.5
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 18</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following schema R(C, D), Q(B, C), P(A, B)<br>C is foreign key in Q referring R(C) on delete cascade; B is foreign key in P referring <br>Q (B) on delete set null. Suppose current state of P, Q and R is follows:<br><img src="./Test Results25_files/1.png" alt="image:MST8/1.png" width="495" height="166" class="tcecode"><br>After executing delete from R, what tuples P will contain?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> (a, NULL) and (b, b)</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> (a, NULL) and (b, NULL)<br><span class="explanation">Explanation:</span><br>If we delete ‘R’ then Q will be empty because ‘C’ column in Q has values “a” referring to “a” of C in R. as Q becomes empty, the tuples in P will become (a, NULL) &amp; (b, NULL) (since given ON DELETE SET NULL).<br>So, answer is Option (b).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> (b, b) only</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P will remain same</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the table EMPLOYEE (EID, ENAME, MAIL_ID, JOB_ID, SALARY)<br>What is SQL query for “To get the average salary for each Job ID excluding programmer”.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Select JOB_ID, AVG(SALARY) FROM EMPLOYEE<br>GROUP BY JOB_ID HAVING JOB ID  &lt;&gt; IT_PROG;</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Select JOB_ID, AVG(SALARY) FROM EMPLOYEE  HAVING <br>         JOB ID NOT EQUAL TO IT_PROG<br>          GROUP BY JOB_ID;</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Select JOB_ID, AVG(SALARY) FROM EMPLOYEE WHERE<br>JOB_ID &lt;&gt; IT_PROG<br>GROUP BY  JOB_ID;<br><span class="explanation">Explanation:</span><br>Here we have to get average salaries for each job_id employees except programmer. So we have to group all employees by their job_id except programmer and have to calculate average salaries of all employees. In SQL, we have to use symbol “&lt; &gt;’ for NOT EQUAL TO and having should be used inorder to mention conditions regarding aggregate functions. So, here WHERE clause should be used inorder to represent condition “job_id &lt; &gt; IT _PROG”. <br>So, answer is option (c).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the two statements about thread:-<br>S: When designing a multithreaded application, you must use synchronization primitives to make sure that the threads do not overwrite each other’s registers<br>R: Threads belonging to the same process share their registers<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Both S and R are true and R is the correct reason for S.</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Both S and R are true but R is not the correct reason for S.</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> S is true but R is false</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both S and R are false<br><span class="explanation">Explanation:</span><br>Explanation: Registers are kept in the TCB and are private to each thread. Consequently, one thread will not overwrite another thread’s register under normal circumstances.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Four processes P, Q, R, and S form a system of producers and consumers with<br>    the following structure:<br><br>                 P-Q : producer-consumer<br>                 P-R : producer-consumer<br>                 Q-S : producer-consumer<br>                 R-S : producer-consumer<br>                 <br>    Which of the following statement is/are True?<br>I) Deadlock occur	II)No Deadlock	III)Cycle exist between Processes IV) No cycle<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> only I is true</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Only II is true</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both I and III are true<br><span class="explanation">Explanation:</span><br>Q waits for P (all P-Q buffers are empty)<br>P waits for R (all P-R buffers are full)<br>R waits for S (all R-S buffers are full)<br>and, S waits for Q (all Q-S buffers are full)  which is a cycle.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> none of these.</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many superkeys are possible in following relation R (A B C D E) {AB→C, BC→D, CD→A, AD→B}?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>Given relation R (A B C D E) and FD set: {AB→C, BC→D, CD→A, AD→B}<br>Candidate keys for the given relation are {ABE, BCE, CDE, ADE}.<br>Superkeys formed with key ABE -&gt; {ABE, ABCE, ABDE, ABCDE}<br>Superkeys formed with key BCE -&gt; {BCE, BCDE, ABCE, ABCDE}<br>Superkeys formed with key CDE -&gt; {CDE.ACDE, BCDE, ABCDE}<br>Superkeys formed with key ADE -&gt; {ADE, ACDE, ABDE, ABCDE}<br>Therefore number of super keys in the given relation is 9.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If table R has foreign key constraint referring to table S then<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Each tuple in R is related to one or more tuples in S</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Each tuple in R is related to exactly one tuple in S</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Each tuple in R is related to zero or one tuple in S<br><span class="explanation">Explanation:</span><br>Given R has FK referring to table S.<br>Therefore FK in R should be either NULL (or) value referring to primary key of table S.<br>So, each tuple in R is related to almost one tuple in S.<br>Answer is option (c).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Each tuple in R is related to zero or more tuples in S</li>
+</ol>
+<br><br>
+</li>
+<li>
+In SQL, LIKE ‘Raudra\% Edu%’ matches<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> All strings beginning with “Raudra Edu”</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> All strings beginning with “Raudra%Edu”<br><span class="explanation">Explanation:</span><br>Generally “%” is used to indicate 0 or more characters in string pattern searching. But if we want to take “%” as part of string to search then we have to precede that symbol with Escape sequence \. So, answer is (b).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> All strings beginning with “Raudra\% Edu”</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Gives error</li>
+</ol>
+<br><br>
+</li>
+<li>
+Measurements of a certain system have shown that a process runs, on the<br>    average, for time T before blocking for Input/Output.  Process switch<br>    requires time S which is overhead.  For round robin scheduling with quantum<br>    Q, give a formula for the cpu efficiency if S&lt;Q&lt;T<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Q/(Q+S)<br><span class="explanation">Explanation:</span><br>Since Q&lt;T, each run of T requires T/Q process  switches,  resulting<br>    in overhead of ST/Q and therefore, the efficiency is T/(T+(ST/Q))  which is<br>    Q/(Q+S).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> S/(Q+S)</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> T/(Q+S)</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> (Q+S)/(T+S)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following diagram describes that an order consists of several items and a single customer places an order:<br><img src="./Test Results25_files/10.png" alt="image:MST8/10.png" width="432" height="227" class="tcecode"><br>A customer is located in an area identified by pincode. Using the pincode we can determine the street name. Each item ordered has a description and a quantity, which is identified by the item no. Which of the following best describes the normal form of the entries?<br>Customer(name,pincode,streetname)  <br>and   (order(orderno,{itemno,description,quantity} )?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Customer in 3NF, Order not in 1NF</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Customer in 3NF, Order in 1NF</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Customer in 2NF, Order not in 1NF<br><span class="explanation">Explanation:</span><br>Here customer relationship is not in 3NF since non-key attribute streetname is dependent on non-key attribute pincode which is transitive dependency.<br>Order relationship is not in 1NF because itemno is composite and multivalued attribute we know that relation is in 1NF if and only if it consists of only simple and atomic attributes.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Customer in 2NF, Order in 1NF</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true? <br>(a) If spinlock is there, deadlock must happen<br>(b) If spinlock is there, deadlock may happen<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> a only</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> b only<br><span class="explanation">Explanation:</span><br>Deadlock: A situation in which two or more processes are unable to proceed because each is waiting for one another to do something.<br>Live lock: A situation in which 2 or more processes continuously change their status in response to changes in the other process without doing any useful work.<br>Live lock may lead to deadlock.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> both a and b</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Neither a nor b .</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results25_files/12.png" alt="image:MST8/12.png" width="604" height="197" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> <img src="./Test Results25_files/13.png" alt="image:MST8/13.png" width="150" height="100" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> <img src="./Test Results25_files/14.png" alt="image:MST8/14.png" width="144" height="91" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results25_files/16.png" alt="image:MST8/16.png" width="432" height="337" class="tcecode"><br><img src="./Test Results25_files/17.png" alt="image:MST8/17.png" width="385" height="362" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> <img src="./Test Results25_files/15.png" alt="image:MST8/15.png" width="157" height="90" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results25_files/6.png" alt="image:MST8/6.png" width="416" height="338" class="tcecode"><br>Which of the following statement is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> S1 is recoverable but S2 is not recoverable</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> S1 is not recoverable but S2 is recoverable</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both S1 and S2 are recoverable<br><span class="explanation">Explanation:</span><br>A recoverable schedule is one where, for each pair of transaction Ti and Tj such that if Tj reads data item previously written by Ti then the commit/ abort operation of Ti appears before the commit / abort operation Tj.<br><span style="text-decoration:underline;">Checking whether S1 is recoverable or not:</span><br>Here T2 is reading the data item “A” which was written by T1 and T1 aborts before T2 aborts so, schedule S1 is recoverable schedule.<br><span style="text-decoration:underline;">Checking whether S2 is recoverable or not:</span><br>Here T3 is reading the data item “A” which was written by T1 and T3 commits after T1 commits so, S2 is also recoverable schedule. Answer is option [C].
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Both S1 and S2 are not recoverable</li>
+</ol>
+<br><br>
+</li>
+<li>
+A unix i-node has 10 disk addresses for data blocks, as well as addresses of<br>    single, double and triple indirect  blocks.  If each of these indirect blocks<br>    hold 256 disk addresses, what is the size of the largest file?  Assume each<br>    disk block is 1K bytes size.(Approximately)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 14GB</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 16GB<br><span class="explanation">Explanation:</span><br>i-node holds 10 addresses  required 10 blocks<br>   =&gt; Single indirect block holds 256 addresses required 256blocks<br>    =&gt;Double indirect block leads to 256x256=65536 addresses required 65536blocks<br>    =&gt;Triple indirect  required 65536x256=16777216 blocks .<br>Total is 10 + 28 + 216 + 224 blocks of 1k bytes each.<br>  16,843,018 blocks = 16 Gigabytes approximately
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 18GB</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 20GB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with 5 processes and four  resources.  The state is given<br>    by C (current  allocation  matrix), R  (maximum  resources needed matrix),<br>    and A (vector of free resources).<br><img src="./Test Results25_files/22.png" alt="image:MST8/22.png" width="372" height="218" class="tcecode"><br>Which of the following statements true?<br>    (I) system in a safe state<br>    <br>    (II) If process 2 makes a request for (0 4 2 0) can  be granted.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Only I</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Only II</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both I &amp; II<br><span class="explanation">Explanation:</span><br>(I) YES.  From the given state, processes can finish in the order of process 1,<br>     process 3 or 4 next, and then the rest of all processes.<br><br>    (II) If request of process 2 is granted, A will become [ 1 1 0 0 ] and row 2<br>     in C will be (1 4 2 0). This is a safe state and the request of process 2 <br>     can be granted.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> none of these.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider table EMPLOYEE(▁Eid,Ename,Age,Dept_no,Salary)<br>The SQL query for “Find the average salary of employee for each department that has atleast 2 employees”.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Select E.Eid,AVG(E.Salary)FROM Employee E Group By E.Dept_no<br>WHERE Count(*)&gt;1;</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Select E.Eid,AVG(E.Salary) FROM Employee E Group By E.Dept_no HAVING 1&lt;<br>(Select Count(*)from Employee E2 WHERE E.dept_no=E2.dept_no);</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Select E.Eid,AVG(E.Salary)  As AVG_SALARY FROM Employee E Group By E.Dept_no <br>HAVING Count(*) &gt;1;</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both (b) &amp; (c)<br><span class="explanation">Explanation:</span><br>Option (b): Here first we have to group the employees by their dept_no and for each group we will calculate average salary if that group consists of atleast 2 employees.<br>Option (c): Here we have to group the employees by their dept_no and we have to calculate the average salary of each dept_no only if they are atleast 2 employees in that department. We will do this using nested correlated subquery.  <br>Therefore option (b) and option (c) both are correct. Answer is option [d].
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the attribute at R = ABCDEFG and the FD set<br>F={AB→C,AC→B,AD→E,B→D,BC→A,E→F}<br>What is the normal form of the sub relation ABCEF?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 1NF</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 2NF<br><span class="explanation">Explanation:</span><br>Given sub relation is ABCEF.<br>FD set under ABCEF will be {AB→C,AC→B,BC→A,E→F,AB→E}<br>Candidate keys for sub relation are<br>{AB,AC,BC}<br><span style="text-decoration:underline;">Check if sub relation is in 2NF:</span><br>There are no partial dependencies. So, sub relation is in 2NF.<br><span style="text-decoration:underline;">Check if sub relation is in 3NF:</span><br>The FD E ⟶ F is transitive dependency.<br>So, the sub relation is not in 3NF.<br>Therefore, sub relation is in 2NF.<br>Answer is option (b).
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 3NF</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> BCNF</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of processes that need to be scheduled on a single CPU. All the times are given in milliseconds.<br><img src="./Test Results25_files/20.png" alt="image:MST8/20.png" width="362" height="182" class="tcecode"><br>Using the first come first serve algorithm, find the average response time?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 17.4<br><span class="explanation">Explanation:</span><br><img src="./Test Results25_files/21.png" alt="image:MST8/21.png" width="488" height="422" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 18.4</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 19.5</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 16.5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>S1: R(ABCD), F= {AB→CD, C→A} where R denotes the schema and F denotes the set of FDs. This table is in 3NF.<br>S2: Further decomposition of the above may be lossless but not dependency preserving<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> Both (S1) and (S2) are true<br><span class="explanation">Explanation:</span><br>Given relation R(ABCD) and the FD set F: {AB→CD, C→A}<br>Candidate keys of R are {BC, BA}<br>Therefore Prime attributes: {A, B, C}<br>A relation R is said to be in 3NF, if for every FD X→Y in R, either X is a superkey or Y is a prime attribute.<br>All FDs in the relation R satisfies the above condition. Therefore, given relation R is in 3NF.<br>So, S1 is correct.<br>Given FDs   AB→CD→ (1)<br>	        C→A→ (2)<br>We know that a relation R is said to be in BCNF, if for every FD X→Y in R, X should be superkey in R.<br>FD (1) is in BCNF since AB is superkey<br>FD (2) violates BCNF so find (C) +<br>	(C)+ = CA<br><img src="./Test Results25_files/5.png" alt="image:MST8/5.png" width="192" height="124" class="tcecode"><br>Decomposed tables R1 (CA) and R2 (BCD) are in BCNF. Decomposition is lossless since the common attribute between R1 and R2 is C which is key for R1.<br><span style="text-decoration:underline;">Check whether decomposition is FD preserving or not:</span><br>Final FD set obtained after decomposition is <br>	G :{ C→A, BC→D}<br><span style="text-decoration:underline;">Check whether FD (1) is covered by final FD set G:</span><br>Compute (AB)+ in G<br>	(AB)+ = AB<br>	AB-&gt;CD is not covered by G.<br>∴ We can say that the decomposition is not FD preserving.<br>∴ S2 is also correct.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Only S2 is true</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> Neither S1 nor S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a data file with 100 records per page and 1000 pages. How deep should be the B tree to index this file. Order of B tree is 512.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results25_files/MST8_mistake.JPG" alt="image:MST8/MST8_mistake.JPG" width="575" height="175" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many times GATE2017 will be printed by the following program:<br><div class="tcecodepre">int&nbsp;main()<br>{<br>staticinti;<br>if(fork()&nbsp;==&nbsp;0)&nbsp;<br>printf("&nbsp;\n&nbsp;%d&nbsp;GATE2017&nbsp;\n",&nbsp;++i);<br>if(fork()&nbsp;==&nbsp;0)&nbsp;<br>printf("&nbsp;\n&nbsp;%d&nbsp;GATE2017&nbsp;\n",&nbsp;++i);<br>if(fork()&nbsp;==&nbsp;0)&nbsp;<br>printf("&nbsp;\n&nbsp;%d&nbsp;GATE2017&nbsp;\n",&nbsp;++i);<br><br>return&nbsp;0;<br>}<br></div><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>There are 3 fork calls, so, total no. of child processes created are: 23-1. Every child process prints one GATE2017, so it will be printed 7 times.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimum value and maximum value possible for variable count in the below code?<br><div class="tcecodepre">constint&nbsp;n&nbsp;=&nbsp;10;<br>int&nbsp;Count=&nbsp;0;<br>void&nbsp;A(&nbsp;)<br>{<br>inti;<br>for(i=&nbsp;1&nbsp;to&nbsp;n)<br>Count=&nbsp;Count&nbsp;+&nbsp;1;<br>}<br>Main&nbsp;(&nbsp;)<br>{<br>Par&nbsp;begin<br>A();<br>A();<br>Par&nbsp;end<br>}<br></div><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 1,20</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 2, 20<br><span class="explanation">Explanation:</span><br>Max value <br>If both A( ) functions execute sequentially the value of count becomes 20, which is maximum.<br>Minimum value<br>Step1: Execute First A( ) one time, Preempt after incrementing (the incremented value is 1) without storing latest value in count. So after preemption still count =0 at this stage.<br>Step2: Execute Second A() 9 times now count becomes= 9, then preempt Second A()<br>Step3: Execute First A(), it overwrites the count by 1( first iteration value from Step1 ) and then preempt. At this stage count=1.<br>Step4: Now execute Second A() last iteration, it reads count as 1 and increments (the incremented value is 2) and then preempts without storing this value.<br>Step5: Now execute First A() remaining 9 iterations, at this stage count =10.<br>Step6: Now execute Second A() which only has to store the value from Step4 and it overwrites the count by 2.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2, 30</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 3, 30</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question:</strong><br>Consider the following relational schema Student (<span style="text-decoration:underline;">Sid,</span> Sname, age, sex), course Info (<span style="text-decoration:underline;">courseId</span>, courseName, instrusctorName) and Enroll (<span style="text-decoration:underline;">Sid, courseId,</span> grade)<br>What is the relational algebra expression for the following query “Find the ids of students who enrolled for all courses taught by instructors Sowmya and Sindhu”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> π<sub class="tcecode">Sid</sub> (Enroll |( π<sub class="tcecode">courseId </sub>( σ<sub class="tcecode">instructor Name = ‘Sindhu’</sub> (courseInfo)) ∪  π<sub class="tcecode">courseId </sub>( σ<sub class="tcecode">instructor Name = ‘Sowmya’</sub> (courseInfo))))<br><span class="explanation">Explanation:</span><br>Sowmya and Sindhu. So, first we have to take union of courseId’s of courses taught by Sowmya and courses taught by Sindhu.<br>This gives courseId’s of all courses that are taught by Sowmya and Sindhu. Then if we do division of Enroll with these courseId’s and project all Sids of students from the resultant table then we will get Sids of all students that are enrolled for all the courses taught by Sowmya and Sindhu.<br>For example, consider<br><img src="./Test Results25_files/2.png" alt="image:MST8/2.png" width="639" height="446" class="tcecode"><br><img src="./Test Results25_files/3.png" alt="image:MST8/3.png" width="389" height="326" class="tcecode"><br><img src="./Test Results25_files/4.png" alt="image:MST8/4.png" width="638" height="198" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> πSid (Enroll | π<sub class="tcecode">courseId </sub>( σ<sub class="tcecode">instructor Name = ‘Sindhu’</sub> (courseInfo)) ∩  π<sub class="tcecode">courseId</sub> ( σ<sub class="tcecode">instructor Name = ‘Sowmya’ </sub>(courseInfo))))</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> πSid (Student | [sub]</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+b]Common Data Question:[/b]<br>Consider the following relational schema Student (<span style="text-decoration:underline;">Sid,</span> Sname, age, sex), course Info (<span style="text-decoration:underline;">courseId</span>, courseName, instrusctorName) and Write tuple relational calculus expression for the query “Get the names of students who have scored ‘A’ grade in all courses they have enrolled” Assume that every student is enrolled in at least one course.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> {S. Sname | student (S) ^ (∀e) ((Enroll (e) ^ e . roll No = S . roll No ^ e . grade = ‘A’)}</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> {S. Sname | student (S) ^ (∀e) ((Enroll (e) ^ e . roll No = S . roll No ) → e . grade = ‘A’)}<br><span class="explanation">Explanation:</span><br>We will display the names of students such that whatever courses they enroll they should secure grade ‘A’. So, (b) is answer.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> {S. Sname | student (S) ^ ∃e ((Enroll e) ^ e . roll No = S . roll No ^ e . grade = ‘A’)}</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Consider a machine with 128 MB physical memory and a 32bit virtual address space. If the page size is 8KB.<br>Find the total no. of entries in inverted page table.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2<sup class="tcecode">13</sup></li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 2<sup class="tcecode">14</sup><br><span class="explanation">Explanation:</span><br>Inverted page table contain all frames.<br>∴2<sup class="tcecode">14</sup>  entries in inverted page table.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2<sup class="tcecode">15</sup></li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2<sup class="tcecode">19</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Consider a machine with 128 MB physical memory and a 32bit virtual address space. If the page size is 8KB.<br>What is the approximate size of the page table?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> 1MB<br><span class="explanation">Explanation:</span><br><img src="./Test Results25_files/18.png" alt="image:MST8/18.png" width="419" height="263" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 2MB</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 1.5MB</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> 512KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br><img src="./Test Results25_files/19.png" alt="image:MST8/19.png" width="659" height="316" class="tcecode"><br>Synchronize statements can be inserted only at points w,x,y,z.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)at w,V(S)at x,P(T)at y,V(T)at z,S and T initially 1.</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> P(S)at w,V(T)at x,P(T)at y,V(S)at z,S=1,T=0.<br><span class="explanation">Explanation:</span><br>Output string starts with **, so if T=1 there is a chance to get $ first. <br>Therefore, the option A and C are wrong.<br>Option D:If S=1, P(S) at w , So it will print ** later V(S) makes S=1. So, once again * is possible. Option D is wrong.<br>Option B: S=1,T=0<br>                P(S) at w prints ** , V(T) at x makes T=1. <br>P(T) at y prints $$, V(s) at z makes S=1.<br>So, alternatively prints **$$**$$**$$<br>Applying definitions of down and up operations on semaphores with initial values 1, 0 we will get option B as answer.
+</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)at w,V(T)at x,P(T)at y,V(S)at z,S=1,T=1.</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)at w,V(S)at x,P(T)at y,V(T)at z,S=1,T=0.</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br><img src="./Test Results25_files/19.png" alt="image:MST8/19.png" width="659" height="316" class="tcecode"><br>Which of the following ensures that o/p string never contain substring *$^n*  or  $*^n $ where n is odd.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)  at w,V(S)  at x,P(T)  at y,V(T)  at z,S=1,T=1.</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)  at w,V(S)  at x,P(T)  at y,V(S)  at z,S=1,T=1.</li>
+<li>&nbsp;<img src="./Test Results25_files/wrong.png" width="16"> P(S)  at w,V(S)  at x,P(S)  at y,V(S)  at z,S=1.</li>
+<li>&nbsp;<img src="./Test Results25_files/correct.png" width="18"> V(S)  at w,V(T)  at x,P(S)  at y,P(T)  at z,S=1,T=1.<br><span class="explanation">Explanation:</span><br>Option A and B: Given S=1,T=1<br>                By using both processes run at some time *$$$* possible<br>Option C: given S=1, So the possible sequence is **$$ alternatively or $$** alternatively.<br>                  This o/p string never contain substring *$^n*  or  $*^n $
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results25_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

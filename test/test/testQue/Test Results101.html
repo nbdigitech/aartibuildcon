@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=35706&test_id=161 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results101_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results101_files/calclayout.css">
+<script src="./Test Results101_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results101_files/jquery-ui.js.download"></script>
+<script src="./Test Results101_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results101_files/custom.js.download"></script>
+<script src="./Test Results101_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results101_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results101_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920994, 'I\'m sorry, the time available to complete the test is over!', false, 1486920994512);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=35706&amp;test_id=161#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>P&amp;DS Topic Test - 4</strong><br>
+Pointers, Function Pointers, Structures, Unions, Linked List&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-07 15:48:10&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-07 16:32:37&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:27&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+13.020 / 25.000 (52%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+9 / 15 (60%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Given the function below will removes duplicates from a sorted list<br><img src="./Test Results101_files/Q1a.PNG" alt="image:P&amp;DS4/Q1a.PNG" width="301" height="373" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> I: next_next = current→next;      <br>III: free(current-&gt;next);<br>II: current= next_next;</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> II: current-&gt;next = next_next;<br>I: free(current);<br>III:current-&gt;next = next_next-&gt;next;</li>
+<li><img src="./Test Results101_files/wrong.png" width="16">&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> I: next_next = current-&gt;next-&gt;next;<br>II: free(current-&gt;next);<br>III: current-&gt;next = next_next-&gt;next;</li>
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> I: next_next = current-&gt;next-&gt;next;<br>II: free(current-&gt;next);<br>III:current-&gt;next = next_next;<br><span class="explanation">Explanation:</span><br>if current→data = current→next→data, then we need to delete the current→next node. So, we update ‘next_next’ value with ‘current→next →next’ value and free the memory allocated to current→next. To continue checking for duplicates in the list, we need to update the current→next with ‘next_next’. So, from the above options, option d is correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The below code returns decimal value of binary linked list<br><br>int val(struct Node *head)<br>{<br>    struct Node *p = head;<br>	int val2= 0;<br>    while (p!= NULL)<br>    {<br>        XYZ;<br>        p = p→next;<br>    }<br>    return val2;<br>}<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> XYZ: val = (val  &lt;&lt; 1) + head→data;</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> XYZ: val = (val2  &lt;&lt; 1) + p→data;</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> XYZ: val2 = (val2  &lt;&lt; 1) + p→data;<br><span class="explanation">Explanation:</span><br>for the code to return a decimal value of a binary linked list,p is a pointer and head pointer are pointing to first node, for each and every iteration upto last node, value should perform left shift and should add p’s data in order to get decimal value.<br><br>0&lt;&lt;1 + 1 = 0+1 = 1<br>1&lt;&lt; 1 + 0 = 2+0 = 2<br>2&lt;&lt;1 + 0 =  4+0 = 4<br> so finally it will return 4, option c is correct.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> XYZ: val2 = (val  &lt;&lt; 1) + head→data;</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program<br>#include&lt;stdio.h&gt;<br>int q=10;<br>int p=4;<br>void fun(int*, int);<br>int main()<br>{<br>int p=5,q=6;<br>fun(&amp;p,q);<br>printf("%d",p);<br>return 0;<br>}<br>void fun(int *p, int r)<br>{<br>        *p=*p+10;<br>        q=q+6;<br>        printf("%d",q);<br>}<br><br>What will be the output produced by the program?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results101_files/wrong.png" width="16">&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 12, 15</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 15, 16</li>
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> 16,15<br><span class="explanation">Explanation:</span><br>The variable p is passed as reference so any change made to the variable p will reflect, hence p becomes 15. q is passed as value but not modified in the program the reference q will be global variable. Hence updating global variable to 16.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 15, 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following declaration of structure is legal ?<br><br>I :struct node1<br>	{<br>	int element;<br>	struct node1 next;<br>	};<br><br>II: struct node2<br>	{<br>	int element;<br>	struct node2 *next;<br>	};<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Only I</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> Only II<br><span class="explanation">Explanation:</span><br>In a) field ‘next’ has incomplete type, hence it will give compile time error
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Neither I nor II</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following C function takes a singly-linked list as input argument<br><img src="./Test Results101_files/Q5a.PNG" alt="image:P&amp;DS4/Q5a.PNG" width="186" height="409" class="tcecode"><br>Which of the following is true for the above function?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> The function returns length of the list</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> The function returns maximum value from the list</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> The function returns minimum value from the list<br><span class="explanation">Explanation:</span><br>In the above linked list,until p→next no equals to null, control will be iterating to next node and comparing p data with a variable a, when ever p→data is less than a, we are updating p→data to a and like this it goes till the end, finally minimum value will be there in ‘a’. so function returns the minimum value from the list, which is option C.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> The function returns sum of numbers in the list</li>
+</ol>
+<br><br>
+</li>
+<li>
+The output of following C program is<br><img src="./Test Results101_files/Q6a.PNG" alt="image:P&amp;DS4/Q6a.PNG" width="308" height="324" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> GATE lectures by Ravindra</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> ardnivaR yb serutceL ETAG<br><span class="explanation">Explanation:</span><br>Function fun takes string pointer (str) as input and calls itself with next location to passed pointer (str+1). In the next step recursion continues this way, until the pointer reaches ‘\0′, all functions accumulated in stack print char at passed location (str) and return one by one. So this function actually reverses the given string and “ardnivaR yb serutceL ETAG” is the answer.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Ravindra by Lectures GATE</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> segmentation fault</li>
+</ol>
+<br><br>
+</li>
+<li>
+What does the following program print?<br><img src="./Test Results101_files/Q14a.PNG" alt="image:P&amp;DS4/Q14a.PNG" width="578" height="342" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> battle, okmark, 8, ddress</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> attle, inute, 8, dress</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> choice, inute, 6, nute, ookmark<br><span class="explanation">Explanation:</span><br>At beginning *p is pointing to array of structures. Now p++→c, since this is post increment, it prints choice and then increments. Now p is pointing to st[1]. <br>++p will make p to point to st[2]. <br>++p→c,  ‘→’ has higher precedence than pre increment operator. So, p→c evaluates first; meaning that p→c  is pointing to the string “minute”. Now, ++p→c points to the second letter in “minute” ie., “i” and when printf executes it will print “inute”. <br>p is pointing to st[2], so “p[0].a is 6”<br>(++((p++)→c)), post increment and → has equal precedence and left to right associativity, so p++ executes first and which makes p to point to st[2], p++→c is now pointing to ‘inute’ ,     now ++(p++)→c prints ‘nute’.<br>Now pointer p is in s[3] (because of the post increment in the previous statement), p→ c points to ‘bookmark’ ++(p→c) prints ‘ookmark’<br>So option c is the right answer.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> hoice, inute, 6, nute, bookmark</li>
+</ol>
+<br><br>
+</li>
+<li>
+What does the following program print?<br><img src="./Test Results101_files/Q13a.PNG" alt="image:P&amp;DS4/Q13a.PNG" width="162" height="248" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 2     2</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 2     1</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 0     1</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> 0     2<br><span class="explanation">Explanation:</span><br>i = j ; now i and j are pointing to same address i.e., address of ‘q’.<br>		*i = 2 ; value of q will be updated to 2.<br>		Ans: 0, 2
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code segments c1, c2, c3<br><img src="./Test Results101_files/Q12a.PNG" alt="image:P&amp;DS4/Q12a.PNG" width="258" height="430" class="tcecode"><br>Which of the above three functions are likely to cause problems with pointers<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> Only c1 and c2<br><span class="explanation">Explanation:</span><br>[c1]: May cause an error because function is returning the address of locally declared variable.<br>[c2]: Will cause a problem because ax is an int pointer that is not assigned with any address and we are doing dereferencing<br>[c3]:Will work because memory in bytes of size of int will be reserved and its address will be stored in ax that can be further reserved and its address will be stored in ax that can be further use, once function execution completes this m/m main memory will still exists in Heap until we free it using free function.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Only c1 and c3</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Only c3</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> c1, c2 and c3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program<br><br>int fun(int *p, int m)<br>{<br>	if(m &lt; = 1) return 0;<br>	else return max(fun(p + 1, m – 1), p[0] – p[1]);<br>}<br><br>int main( )<br>{<br>	int q[ ] = {10, 11, 12, 13, 14};<br>	printf(“%d”, fun(q, 4));<br>}<br><br>Let assume max(x, 4) returns the maximum of x and 4. The value printed by this program is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results101_files/E11a.PNG" alt="image:P&amp;DS4/E11a.PNG" width="190" height="70" class="tcecode"><br>Let the base address of the array q be 100, p is pointing to the first element of q initially. We keep on moving to the next element and performing the operations of fun(). <br>		= max(max(max(fun(p + 1, 1), -1), -1),-1)<br>		= max(max(max(0, -1), -1), -1)<br>		= max(max(0, -1), -1)<br>		= max(0, -1)<br>		= 0
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following C code<br><br>void main( )<br>{<br>	int p[5] = {10, 11, 12, 13, 14};<br>	int *ptr = (int *) (&amp;p + 1);<br>	printf(“%d %d”, *(p + 1), *(ptr – 1);<br>}<br>The output for this program is<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results101_files/wrong.png" width="16">&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 11      10</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 11      11</li>
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> 11      14<br><span class="explanation">Explanation:</span><br>Here p is an array of 5 elements, ptr is a pointer which is pointing to next block location after p, now we are printing *(p+1) which is second element in array p, *(ptr-1) which is   value at last location in array p, this is because ptr will be pointing to next block’s starting address, and decreasing it by one gives the last element in array p.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following C code<br><img src="./Test Results101_files/Q9a.PNG" alt="image:P&amp;DS4/Q9a.PNG" width="195" height="299" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> GATE<br><span class="explanation">Explanation:</span><br>Here pointer p and m are pointing to same location. In the function fun(), we are just moving the pointer p. In main(), we are printing m, which is pointing to the starting position of the string.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> ATE</li>
+<li><img src="./Test Results101_files/wrong.png" width="16">&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> TE</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> E</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following C code<br><img src="./Test Results101_files/Q8a.PNG" alt="image:P&amp;DS4/Q8a.PNG" width="259" height="212" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 6 EXAM</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Run time error</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> Compiler error<br><span class="explanation">Explanation:</span><br>Initialization should not be done for non constant static members inside the structure. It will results in compilation error
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> 6 garbage value</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the output of the following C program<br><br>void main( )<br>{<br>	static char a[5][20] = {“Mona”, “Vijay”, “Kumar”, “Ankur”, “Suresh”};<br>	int i;<br>	char *p;<br>	p = a[3];<br>	a[3] = a[4];<br>	a[4] = p;<br>	for(i = 0; i &lt;= 4; i++)<br>	printf(“%s”, a[i]);<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> “Mona”, “Vijay”, “Kumar”, “Suresh”, “Ankur”</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> “Mona”, “Vijay”, “Kumar”, “Ankur”, “Suresh”</li>
+<li>&nbsp;<img src="./Test Results101_files/correct.png" width="18"> Compilation error<br><span class="explanation">Explanation:</span><br>Compilation error: array names are pointer constants.<br>		So they cannot be modified.
+</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> Unexpected output</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a single linked list with a head and tail pointer (i.e., pointers to the first and last nodes in the list), which of the following operations could be implemented in constant time?<br><br>I.	Insert item at the rear of the list<br>II.	Delete rear item from list<br>III.	Insert item at the front of the list<br>IV.	Delete front item from list<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> I &amp; II</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> I &amp; III</li>
+<li>&nbsp;<img src="./Test Results101_files/wrong.png" width="16"> I, II &amp; III</li>
+<li><img src="./Test Results101_files/correct.png" width="18">&nbsp;<img src="./Test Results101_files/correct.png" width="18"> I, III &amp; IV<br><span class="explanation">Explanation:</span><br>To delete the node at rear end, the previous node next must be changed to NULL which requires the traversal of the entire list and it takes O(n) time
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results101_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

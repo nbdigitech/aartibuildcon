@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91829&test_id=317 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results19_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results19_files/calclayout.css">
+<script src="./Test Results19_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results19_files/jquery-ui.js.download"></script>
+<script src="./Test Results19_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results19_files/custom.js.download"></script>
+<script src="./Test Results19_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results19_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results19_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837032, 'I\'m sorry, the time available to complete the test is over!', false, 1486837032105);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91829&amp;test_id=317#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 11</strong><br>
+Computer Networks, Operating Systems&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:12:09&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results19_files/2.png" alt="image:MST11/2.png" width="619" height="152" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-a, 2-b, 3-c</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-c, 2-b, 3-a</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 1-c, 2-a, 3-b</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-c, 2-a, 3-c</li>
+</ol>
+<br><br>
+</li>
+<li>
+A building, running CSMA – CD protocol is having a bandwidth of 512 Mbps and distance of 2 kilometres. If the signal speed is 2,00,000km/s, then the minimum frame size (in bytes) in order to detect a collision is ____________ .<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 720bytes</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 1280bytes<br><span class="explanation">Explanation:</span><br>Bandwidth B = 512 Mbps = 512*10<sup class="tcecode">6</sup> bits/sec<br>Distance d = 2km<br>Speed of signal V = 2,00,000kmps = 2 * 105 km/s<br>For CSMA – CD, to detect collision, <br>Ttrans&gt;= 2Tprop<br>Propagation delay Tprop<br>=Distance/(Speed of signal)<br>=2km/(2×〖10〗<sup class="tcecode">5</sup>km/sec)<br>10<sup class="tcecode">-5</sup> sec<br>Transmission delay Ttrans<br>=(Size of data)/Bandwidth<br>=L/(512×〖10〗<sup class="tcecode">6</sup>  bits/sec)<br>Since Ttrans&gt;= 2Tprop<br>L = 2×10<sup class="tcecode">-5</sup>sec × 512 ×10<sup class="tcecode">6</sup> bits/sec<br>= 10240 bits = 1280bytes
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1024bytes</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1296bytes</li>
+</ol>
+<br><br>
+</li>
+<li>
+A is sending 4 packets to B through a link using sliding window protocol. Both sender and receiver window size is 4 packets each. Size of each packet is 2000 Byte. If the data transmission time is 50 μsec and throughput of the channel is 107 Bps, then the propagation delay in micro sec is ________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 425 μs</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 400 μs</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 525 μs</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 375 μs<br><span class="explanation">Explanation:</span><br>Total Data to transfer= 2000 x 4= 8000 B<br>10<sup class="tcecode">7</sup> B --------------------------- 1 s<br>8000 B-------------------------800μs<br>800μs= RTT + transmission time<br>800μs= 2*prop delay+ transmission time<br>800μs = 2*prop delay+ 50 micro seconds<br>Prop delay= 375μs
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A transmission channel operates at 10 kbps bandwidth. Distance between two<br>Stations in the channel is 2 km. Assume that the speed of propagation of a bit is<br>200 m/sec. If stop and wait ARQ is used with 50% efficiency, what is the frame length?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 25 KB<br><span class="explanation">Explanation:</span><br>Efficiency = 1  / (1 + 2a), where a = Tp / Tt<br>0.5= 1/(1+2a)=&gt;a=1/2<br>                       Therefore, <br>(Tp )/Tt =1/2<br><br>                                   =&gt;(d/v)/(L/B) = 1/2<br>                                       L= 2× (2×〖10〗<sup class="tcecode">3</sup>)/200×10×〖10〗<sup class="tcecode">3</sup>	=&gt;L = 25KB
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 50 KB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 100 KB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 200 KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a TCP machine having window size 32KB over a 512 Mbps channel that has propagation delay of 20msec. What is the throughput of the channel?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 6.47Mbps<br><span class="explanation">Explanation:</span><br>Given window size 32KB = 262144 bits<br>Transmission time =(window size )/(channel capacity)<br>		= 262144b/512Mbps<br>		       = 0.512 msec<br>Total time = transmission time + 2(propagation) = 40.512msec<br>Throughput = Amount of data sent / total time <br>	        = 262144b/40.512ms	<br>	        = 6.47Mbps
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 7.47Mbps</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 6.9Mbps</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 7.17Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a virtual address space of 2GB and page table entry size of 32 bytes, what is the page size that will minimize the overhead due to paging?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 128KB<br><span class="explanation">Explanation:</span><br>Explanation: Given the virtual address space ‘S’ and page table entry size ‘e’, page size so that the overhead due to paging is minimal =<img src="./Test Results19_files/9.png" alt="image:MST11/9.png" width="77" height="36" class="tcecode"><br>Here S = 2GB = 2<sup class="tcecode">31</sup> Bytes<br>e= 32 bits = 4 Bytes<br>So, the required page size ‘p’ =<img src="./Test Results19_files/10.png" alt="image:MST11/10.png" width="288" height="47" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 128MB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 64KB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 32MB</li>
+</ol>
+<br><br>
+</li>
+<li>
+If the page size is 4KB then find the page number and offset of the corresponding address 18466.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> &lt;4, 2082&gt;<br><span class="explanation">Explanation:</span><br>18466/4K = 18466/4086 =  4 is the page number<br>18466%4086 = 2082 is the page offset<br>So &lt;4, 2082&gt; is the answer.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;4, 2048&gt;</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;10, 4096&gt;</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;8, 1024&gt;</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a network the maximum lifetime of a segment is 30 sec and link capacity is 500Mbps.The number of bits required to avoid wrap around during this time is -----<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 31<br><span class="explanation">Explanation:</span><br>Given time = 30sec<br>B = 500 Mbps<br>1sec → 500 Mb<br>30 sec → 30 * 500 * 〖10〗<sup class="tcecode">6</sup>/8bytes = <br>1.875 * 10<sup class="tcecode">9</sup>bytes.<br>No. of bits required to avoid wrap around = ceil(log2 (1.875*10<sup class="tcecode">9</sup>)) bits<br>= ceil(30.807) bits<br>= 31 bits
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 29</li>
+</ol>
+<br><br>
+</li>
+<li>
+In an IPv4 packet, the value of HLEN is 15, and the value of the total length field is 0X0064. How many bytes of data are being carried by this packet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 85bytes</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 49bytes</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 40bytes<br><span class="explanation">Explanation:</span><br>The HLEN value is 15, which means the total number of bytes in the header is 15*4 = 60 bytes (this is the maximum possible header length). Given the total length is 0X0064 in hexadecimal = 100bytes including header size. So, the data carried by this packet = total length – header length = 100 – 60 = 40 bytes.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 20bytes</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the Hyderabad Central University uses the 10Base5 cable of length 2500 metres to provide intranet. Consider the velocity of propagation in fiber cable is 200,000,000 m/s. How much delay will take to send a bit from one end to another end of the network? Assume that the equipments placed between source to destination will cause a delay of 10micro sec.Also assume that all the other delays are to be neglected. <br><img src="./Test Results19_files/1.png" alt="image:MST11/1.png" width="569" height="80" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 22.5 micro sec</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 40 microsec</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 52.5 micro sec<br><span class="explanation">Explanation:</span><br>10Base5 is a link of capacity 10Mbps and has a maximum length of 500 metres. So repeaters should be inserted into the cable in order to ensure transmission over the full length of the 2500m cable. 4 repeaters are required.<br>So 4×10 μsec + (2500 m)/(200,000,000 m/sec)=52.5μ sec
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 55.2 micro sec</li>
+</ol>
+<br><br>
+</li>
+<li>
+The interval from the time of submission of a process to the time of completion is termed as<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> waiting time</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> turnaround time<br><span class="explanation">Explanation:</span><br>TurnAround Time = Completion Time - Arrival Time
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> response time</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> throughput</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the drawback in Test-and-Set Lock solution?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Deadlock can occur</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Progress is not guaranteed</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> Process can starve forever waiting for CS (No Bounded waiting)</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> All of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the throughput for the below given system if SJF scheduling is applied?<br>(Consider the times in seconds)<br><img src="./Test Results19_files/11.png" alt="image:MST11/11.png" width="366" height="180" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1 job/sec</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 0.5 jobs/sec</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 0.4 jobs/sec</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 0.2 jobs/sec<br><span class="explanation">Explanation:</span><br>Explanation: Gantt chart for the given system is:<br><img src="./Test Results19_files/12.png" alt="image:MST11/12.png" width="608" height="305" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is false?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Smaller page size results in less internal fragmentation.</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Larger disk block results in more internal fragmentation.</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> Variable partitioning scheme results in internal fragmentation.<br><span class="explanation">Explanation:</span><br>Segmentation or variable partition not results in internal fragmentation. But which may suffer from external fragmentation.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Fixed partitioning scheme results in external fragmentation.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not a condition for deadlock prevention?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> No mutual exclusion</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> No hold and wait</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> No preemption<br><span class="explanation">Explanation:</span><br>No preemption is a necessary condition for deadlock. Whereas preemption is a condition for deadlock prevention.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> No circular wait</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Thrashing can be reduced by increasing the RAM size</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> Thrashing can be reduced by decreasing the degree of multiprogramming</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> TLB helps in faster memory references.</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>a). By increasing the RAM size page faults can be reduced as more page frames can be made available. So this reduces thrashing. So, this is true.<br>b). If the number of processes increases after certain extent page fault rate will increase and leads to Thrashing. By decreasing degree of programming thrashing may come down. So, this is true<br>c). TLB is a cache that memory management hardware uses to improve virtual address translation speed. So, this is true.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results19_files/5.png" alt="image:MST11/5.png" width="534" height="204" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-s, 2-t, 3-u, 4-r, 5-p, 6-q</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 1-q, 2-s, 3-u, 4-t, 5-p, 6-r<br><span class="explanation">Explanation:</span><br>1.	Network layer takes care of feedback messaging through ICMP messages.<br>2.	Application layer sends data of any size to transport layer. Now transport layer will know the MTU(Maximum Transmittable Unit) of the network, so it will segment the data into smaller parts and these segments are reassembled at the transport layer of the receiver. So, Transport Layer takes care of Segmentation and Reassembly.<br>3.	When more than one system is connected to a shared link, Data Link Layer protocols are required to determine which device has the control over the link at a given time. It is implemented by protocols like CSMA/CD, CSMA/CA, ALOHA.<br>4.	Dialogue control is using the full duplex link as half duplex. It sends out dummy packets from the client to the server when the client is ideal. This is done by the session layer. <br>5.	Presentation layer translates a message from common form to encoded format which will be understood by the receiver.<br>6.	Physical layer chooses which type of transmission mode is to be selected for the transmission. The transmission modes are Simplex, Half Duplex and Full Duplex.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-s, 2-u, 3-p, 4-r, 5-q. 6-t</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1-q, 2-s, 3-u, 4-p, 5-r. 6-t</li>
+</ol>
+<br><br>
+</li>
+<li>
+An Internet Service Provider (ISP) is granted a block of addresses starting with 145.75.0.0/16. The ISP needs to distribute these addresses to three groups of customers as follows: <br>	    (a) The first group has 128 customers; each needs 256 addresses.<br>	    (b) The second group has 128 customers; each needs 64 addresses.<br>	    (c) The third group has 64 customers; each needs 128 addresses.<br>	Find the first address of 128th customer of 2nd group and how many addresses are still available with ISP after these allocations.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 145.75.127.128/24, 32768</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 145.75.159.192/26, 16384<br><span class="explanation">Explanation:</span><br>Given 145.75.0.0/16 is the starting address. So, we have 216 = 65,536 addresses with the ISP initially. <br>	For the 1st group, each customer needs 256 addresses. So, 8 bits are needed to define each host. The prefix length is 32 – 8 = 24. Therefore the addresses of 1st group are:<br>		1st customer  145.75.0.0/24 to 145.75.0.255/24 <br>		2nd customer ----&gt; 145.75.1.0/24 to 145.75.1.255/24<br>			<br>		128th customer  ----&gt; 145.75.127.0/24 to 145.75.127.255/24<br>	So, for 1st group the ISP has allocated 128*256 = 32768 addresses<br><br>	For the 2nd group, each customer needs 64 addresses. So, 6 bits are needed to define each host. The prefix length is 32 – 6 = 26. Therefore the addresses of 2nd group are:<br>		1st customer ----&gt; 145.75.128.0/26 to 145.75.128.63/26<br>		2nd customer  ----&gt; 145.75.128.64/26 to 145.75.128.127/26<br><br>		3rd customer  ----&gt;  145.75.128.128/26 to 145.75.128.191/26<br>		4th customer  ----&gt;  145.75.128.192/26 to 145.75.128.255/26<br><br><br>		128th customer  ----&gt;  145.75.159.192/26 to 145.75.159.255/26 <br>	So, for 2nd group the ISP has allocated 128*64 = 8192 addresses<br>	<br>	For the 3rd group, each customer needs 128 addresses. So, 7 bits are needed to define each host. The prefix length is 32 – 7 = 25. Therefore the addresses of 3rd group are:<br>		1st customer  ----&gt;  145.75.160.0/25 to 145.75.160.127/25<br>		2nd customer  ----&gt;  145.75.160.128/25 to 145.75.160.255/25<br>		<br>		64th customer  ----&gt;  145.75.191.128/25 to 145.75.191.255/25<br>	So, for 3rd group the ISP has allocated 64*128 = 8192 addresses.<br><br>	Hence the total number of addresses available after allocating is 65536 – (32768 + 8192 + 8192) = 16384 addresses
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 145.75.159.192/26, 32768</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 145.75.191.128/25, 16384</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the effective throughput for transferring a 1000KB file assuming TCP using slow start congestion control technique. Given the round trip time 100 ms, and maximum segment size is 1460bytes. Assume there are no losses and both the bandwidth and the receiver window size is infinite.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 5MBPS</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 10Mbps</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 1MBPS<br><span class="explanation">Explanation:</span><br>Given Slow start congestion protocol, so size of the sender window starts from 1MSS and increases exponentially.<br>	So, for the 1st transmission, 1MSS = 1*1460<br>	                  2nd transmission, 2MSS = 2*1460<br>	                  3rd transmission, 4MSS = 4*1460                 <br>	                  4th transmission, 8MSS = 8*1460<br>		.<br>Nth transmission, N MSS = N*1460<br>	Sum of all the data sent in N transmissions should be equal to 1000KB<br>	1460(1+2+4+8+....+N)bytes = 1000KB<br>	1+2+4+8+....+N = 1024000B/1460B<br>	1+2+4+8+....+N = 701.369 <br>	It is in Geometric progression so sum of N terms in G.P is <br>1(2<sup class="tcecode">N</sup> – 1)/(2 – 1) = 701.369<br>2<sup class="tcecode">N</sup> – 1 = 701.369<br>	2<sup class="tcecode">N</sup> = 702 (approx) --&gt;N = Ceil(log2 702) = 9.45<br>	N = 10<br>So we need to transmit 10 times to send all the 1000KB data file.<br>	Therefore we need 10RTTs time<br>	10*100ms --&gt; 1000KB<br>	1sec --&gt;1000KB/1000ms = 1MBPS
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a program that consists of 8 pages (0 to 7) and we have 4 page frames in the    physical memory for the pages. The page reference string is<br>1, 2, 3, 4, 1, 2, 5, 4, 3, 2, 1, 2, 3, 4, 5<br>The number of page faults in FCFS replacement algorithms are:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br><img src="./Test Results19_files/6.png" alt="image:MST11/6.png" width="230" height="206" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system TLB lookup takes 20ns and main memory takes 300ns what will be the TLB miss rate if effective memory access time is 380 ns?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 0.8</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 0.3</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 0.2<br><span class="explanation">Explanation:</span><br>Let h = TLB hit rate, t = TLB access time = 20ns, m = main memory access time = 300ns<br><br><br>EMAT= h(t+m)+(1-h)(t+2m)<br>380 = h(320) + (1-h) (620)<br>380 = 320h + 620 - 620h<br>300h = 240<br>h = 240/300 = ⅘ = 0.8<br>We are asked the value of miss rate = 1-h = 1 - 0.8 = 0.2
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 0.7</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system using multilevel feedback queue, CPU bound process P1 requires 100 time units to execute. If the first queue uses time quantum of 8 units and at each level the time quantum increases by double the time units of the previous level. How many times the process P1 is interrupted?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>In Level 1 ----&gt;8 units  <br>At context switch 1, P1 requires 100-8 = 92 more time units to complete execution<br>Level 2-----&gt;16 units<br>At context switch 2, , P1 requires 92-16 = 74 more time units to complete execution<br>Level 3------&gt;32 units<br>At context switch 3, P1 requires 74-32 = 42 more time units to complete execution<br>Level 4 -----&gt;64, <br>In level 4, P1 can execute completely without any interruptions as the time quantum at level 4 is 64 units and P1 only needs 42 more time units. So, there are 3 interruptions.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 25</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following bit stream<br>“01111010011111101110”<br>Using bit stuffing framing method in Data Link layer, how many 0’s present in the bit stream after performing bit stuffing using the flag “0111”?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>Whenever the user data has 0 followed by two 1's <br>a zero is stuffed. Data after stuffing is 01101101001101111011010
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 14</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code<br>begin<br>S1;<br>   parbegin<br>	S2;<br>	S3;<br>	begin<br>	S4;<br>	      parbegin<br>	      S5;<br>	      S6;<br>	      parend<br>	       S7;<br>	end;<br>    parend;<br>S8;<br>end;<br><br><br>Find the precedence graph.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> <img src="./Test Results19_files/16.png" alt="image:MST11/16.png" width="279" height="267" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> <img src="./Test Results19_files/17.png" alt="image:MST11/17.png" width="287" height="237" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> <img src="./Test Results19_files/18.png" alt="image:MST11/18.png" width="283" height="303" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> <img src="./Test Results19_files/19.png" alt="image:MST11/19.png" width="292" height="265" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following subnet. Distance vector routing is used, and the following vectors have just come in to router C: from B: (3, 0, 6, 5, 3, 8, 3); from D: (1, 5, 3, 0, 8, 6, 3); from E: (4, 3, 1, 1, 0, 4, 6); and from F: (3, 8, 3, 6, 4, 0, 9). The measured delays to B, D, E and F are 2, 3, 1 and 6, respectively. What is C's new routing table?<br><img src="./Test Results19_files/4.png" alt="image:MST11/4.png" width="296" height="219" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> (4, 2, 0, 2, 1, 5, 5)<br><span class="explanation">Explanation:</span><br>Explanation:<br>	Given routing vectors come into router C are:<br>	From B: (3, 0, 6, 5, 3, 8, 3);<br>	From D: (1, 5, 3, 0, 8, 6, 3);<br>	From E: (4, 3, 1, 1, 0, 4, 6);<br>	From F: (3, 8, 3, 6, 4, 0, 9);<br>Given that the distance metric (delay) from C to B is 2; C to D is 3; C to E is 1 and C to F is 6<br>So the distance vector at C if going via B is = Distance from C to B + Distance from B to other routers<br>	Going via B gives (2+3, 2+0, 2+6, 2+5, 2+ 3, 2+8, 2+3) = (5, 2, 8, 7, 5, 10, 5)<br>	Going via D gives (3+1, 3+5, 3+3, 3+0, 3+8, 3+6, 3+3) = (4, 8, 6, 3, 11, 9, 6)<br>	Going via E gives (1+4, 1+3, 1+1, 1+1, 1+0, 1+4, 1+6) = (5, 4, 2, 2, 1, 5, 7)<br>	Going via F gives (6+3, 6+8, 6+3, 6+6, 6+4, 6+0,6+9) = (9, 14, 9, 12, 10, 6, 15)<br><br>So, taking minimum for each destination except C from the above calculations, we get the distance vector at C as (4, 2, 0, 2, 1, 5, 5)
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> (4, 4, 0, 3, 1, 6, 5)</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> (5, 4, 0, 3, 5, 6, 6)</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> (5, 2, 0, 2, 5, 5, 5)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given below process details, find the completion time of P2 using Shortest Remaining Time First Scheduling algorithm. All processes arrive at time zero.<br><img src="./Test Results19_files/7.png" alt="image:MST11/7.png" width="508" height="195" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 41</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 44</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 46</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 48<br><span class="explanation">Explanation:</span><br><img src="./Test Results19_files/8.png" alt="image:MST11/8.png" width="622" height="169" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If size of a TCP segment is 1KB and header length value is 6, the sequence number starting from 3500. Given that URG flag = 1 and URG pointer = 45. How many bytes of data is urgent, Give the sequence numbers of urgent data.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 45 bytes of urgent data, sequence no.  3500 – 3544</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 45 bytes of urgent data, sequence no.  1024 – 1069</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 46 bytes of urgent data, sequence no.  1024 – 1070</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 46 bytes of urgent data, sequence no.  3500 – 3545<br><span class="explanation">Explanation:</span><br>(Given Size of TCP segment = 1KB = 1024 Bytes<br>Header Length field is 6, so header size = 6*4 = 24 bytes<br>Total data size = size of Segment – Header size = 1024 – 24 = 1000bytes of data)<br>Therefore, the urgent data is 1000 to 1045 and its sequence no. range is 3500 – 3545<br>Starting Sequence no. is 3500<br>So the range of sequence no. of the data is 3500 to 4499<br>URG pointer = 45 so data from 0th byte till 45th byte are urgent so 46bytes are urgent data.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are two stations A and B connected by a 1 mbps link. The distance between A and B is 45000 km and the propagation speed is 2x108 m/s. If packets of size 150B are sent from A to B using Go back 127 sliding window protocol, then what will be the maximum utilization of the link ?(Ignore transmission delay)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 11.4%</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 33.87%<br><span class="explanation">Explanation:</span><br><img src="./Test Results19_files/3.png" alt="image:MST11/3.png" width="536" height="299" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 42.56%</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 67.73%</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the value of symmetric key in the Diffie – Hellmen protocol if A and B want to exchange the key. Given that A chooses XA= 3 and B chooses XB = 7, α = 7, p = 23?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 17</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>α = 7 and p = 23<br>Given that A selected X<sup class="tcecode">A</sup>=3 so A calculates YA = α<sup class="tcecode">Xa </sup>mod p and sends Y<sub class="tcecode">A</sub> to B<br>X<sub class="tcecode">A</sub> is private and Y<sub class="tcecode">A</sub> is public to A.<br>So Y<sub class="tcecode">A</sub> = 7<sup class="tcecode">3</sup> mod 23 = 21 =&gt; (X<sub class="tcecode">A</sub>, Y<sub class="tcecode">A</sub>) = (3, 21)<br>B selected X<sub class="tcecode">B</sub> = 7 and calculates Y<sub class="tcecode">B</sub> = α<sup class="tcecode">Xb</sup> mod p and sends YB to A.<br>X<sub class="tcecode">B</sub> is private and YB is public to B.<br>So Y<sub class="tcecode">B</sub> = 77 mod 23 = 5 =&gt; (X<sub class="tcecode">B</sub>, Y<sub class="tcecode">B</sub>) = (7, 5)<br>Now the key is computed at A as (Y<sub class="tcecode">B</sub>)<sup class="tcecode">XA</sup> mod p or at B as (Y<sub class="tcecode">A</sub>)<sup class="tcecode">XB</sup> mod p<br>	Key calculated at A, K<sub class="tcecode">A</sub> = (Y<sub class="tcecode">B</sub>)<sup class="tcecode">XA </sup>mod p <br>	      = 53 mod 23 = 10<br>	Key calculated at B, KB = (Y<sub class="tcecode">A</sub>)<sup class="tcecode">XB</sup> mod p<br>	      = 217 mod 23 = 10
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Consider a virtual memory system with 48-bit virtual addresses and page size of 16KB. Each page table entry requires 32-bits.<br>Find the memory size required to store total page tables (in KBs)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 36KB<br><span class="explanation">Explanation:</span><br>Explanation: From the previous question, sum of all the page table sizes = <br>4KB + 2^12 * 4Bytes + 2^12 * 4Bytes = 4KB+16KB+16KB = 36KB
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 32 KB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 64KB</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 16KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Consider a virtual memory system with 48-bit virtual addresses and page size of 16KB. Each page table entry requires 32-bits.<br>How many levels of page tables required?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Virtual address: 48-bit<br>Size of the page: 16KB<br>PTE size: 32-bits = 4 bytes<br><br><br>No. of entries in Page Table1 (PT1) = VAS/PS = 2<sup class="tcecode">48</sup>/2<sup class="tcecode">14</sup> = 2<sup class="tcecode">(48-14)</sup> = 2<sup class="tcecode">(34)</sup><br>Size of PT1 = 2<sup class="tcecode">(34)</sup> * 4 Bytes = 2<sup class="tcecode">(36)</sup> Bytes = 64GB.<br><br><br>This (64GB)doesn't fit into a single page(16KB). <br>So this needs to be further divided,<br><br><br>No. of entries in Page Table2 (PT2) = 2<sup class="tcecode">(36)</sup> / (2<sup class="tcecode">14</sup>) = 2<sup class="tcecode">(22)</sup><br>Size of PT2 = 2<sup class="tcecode">(22)</sup> * 4 Bytes = 2<sup class="tcecode">(24)</sup> Bytes = 16MB.<br><br><br>Even this(16MB) doesn't fit into a single page (16KB), so we need to go for one more level of page table.<br><br><br>No. of entries in Page Table3 (PT3) = 2<sup class="tcecode">(24)</sup> / (2<sup class="tcecode">14</sup>) = 2<sup class="tcecode">(10)</sup><br>Size of PT3 = 2<sup class="tcecode">(10)</sup> * 4 Bytes = 2<sup class="tcecode">(12)</sup> Bytes = 4KB.<br><br><br>This fits into a single page.<br><br><br>So total 3 levels of page tables are needed.
+</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">linked Questions</strong><br><img src="./Test Results19_files/13.png" alt="image:MST11/13.png" width="508" height="283" class="tcecode"><br>Find the total number of safety sequences.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> 60</li>
+<li>&nbsp;<img src="./Test Results19_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br><img src="./Test Results19_files/14.png" alt="image:MST11/14.png" width="593" height="379" class="tcecode"><br><img src="./Test Results19_files/15.png" alt="image:MST11/15.png" width="521" height="271" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For the above-given data which of the following is not a safe sequence?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;A, D, B, C&gt;</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;C, A, B, D&gt;</li>
+<li>&nbsp;<img src="./Test Results19_files/wrong.png" width="16"> &lt;C, D, A, B&gt;</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results19_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

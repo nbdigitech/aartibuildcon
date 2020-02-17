@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=13248&test_id=37 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results132_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results132_files/calclayout.css">
+<script src="./Test Results132_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results132_files/jquery-ui.js.download"></script>
+<script src="./Test Results132_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results132_files/custom.js.download"></script>
+<script src="./Test Results132_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results132_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results132_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921407, 'I\'m sorry, the time available to complete the test is over!', false, 1486921407234);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=13248&amp;test_id=37#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Topic Test 6</strong><br>
+Closure properties of all languages, Undecidability&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-11-05 22:20:37&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-11-05 22:56:23&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:35:46&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+9.360 / 25.000 (37%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+7 / 15 (47%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Let ∑= {a,b}  and Δ={b,c,d}. Consider the homomorphism function h:∑* → Δ*, defined by h(a)=dbcc,h(b)=bdc. If L is regular language denoted by (a+b* ) (aa)*, find h(L).<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (dbcc+(bdc)* )* dbccdbcc</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> (dbcc+(bdc)* ) (dbccdbcc)*<br><span class="explanation">Explanation:</span><br>L is represented by the regular expression R=(a+b* ) (aa)*<br>h(R)=(dbcc+(bdc)* ) (dbccdbcc)*
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> ((dbcc)*+bdc)dbccdbcc</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> ((dbcc)*+(bdc)* )* dbccdbcc</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let L = {automata} and L<sub class="tcecode">1</sub>=Prefix(L)-ϵ over the alphabet Σ = {0…z}, where Prefix(L) = {x|xy ∈ L for some y ∈ Σ*} . Consider a language L<sub class="tcecode">2</sub>={x│|x|mod2 = 0 x ∈ L<sub class="tcecode">1</sub> }<br>We define half(L) as follows: <br>half(L) = {x │∃ y,   |x| = |y|  and xy ∈ L}<br>The number of strings in the language half(L<sub class="tcecode">2</sub>) is _____.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>L={automata}<br>Prefix(L)={ϵ,a,au,aut,auto,autom,automa,automat,automata}<br>L<sub class="tcecode">1</sub>=Prefix(L)-ϵ={a,au,aut,auto,autom,automa,automat,automata}<br>L<sub class="tcecode">2</sub>is a language of set of all strings of even length that belongs to L<sub class="tcecode">1</sub>.<br>∴ L<sub class="tcecode">2</sub>={au,auto,automa,automata}<br>We define half(L<sub class="tcecode">2</sub>) as follows:<br>half(L<sub class="tcecode">2</sub>) = {x│∃y, |x|=|y| and xy∈L<sub class="tcecode">2</sub>}<br>In other words, half(L<sub class="tcecode">2</sub>) consists of the first halves of strings in L<sub class="tcecode">2</sub>.<br>half(L<sub class="tcecode">2</sub>) = {a,au,aut,auto}<br>∴ There are 4 strings in half(L<sub class="tcecode">2</sub>).
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let L<sub class="tcecode">1</sub>  be 0<sup class="tcecode">*</sup> 10<sup class="tcecode">*</sup>  and L<sub class="tcecode">2</sub>  be 10<sup class="tcecode">*</sup> 1. Define L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  ={x|xy ∈ L<sub class="tcecode">1</sub>   for some y ∈ L<sub class="tcecode">2</sub>}, then L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results132_files/wrong.png" width="16">&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> ϵ</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> 0<sup class="tcecode">*</sup></li>
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> ϕ<br><span class="explanation">Explanation:</span><br>L<sub class="tcecode">1</sub>={1,01,10,010,001,100,0001,0010,0100,1000,…}<br>L<sub class="tcecode">2</sub>={11,101,1001,10001,…}<br>Since every string y in L<sub class="tcecode">2</sub>  has two 1’s and every string xy in L<sub class="tcecode">1</sub>  can have only one 1, there is no such x such that xy ∈ L<sub class="tcecode">1</sub>  and y ∈ L<sub class="tcecode">2</sub>. <br>∴L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  = ϕ
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> 0<sup class="tcecode">*</sup> 1<sup class="tcecode">*</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> “Does a DFA recognize the empty language?” is undecidable</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> “Does a TM M accepts a string w?” is decidable</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> “Does a CFG G generate a string w?” is undecidable</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> “Does a TM M recognize the empty language?” is undecidable<br><span class="explanation">Explanation:</span><br>Almost all properties of regular languages are decidable: emptiness, finiteness, membership, equalness all are decidable. So, the question “Does a DFA recognize the empty language?” is decidable.<br><br>The question “Does a CFG G generate a string w?” is decidable. This is membership property which is decidable for context-free languages. <br> <br>Almost all properties of TM are undecidable. Acceptance property of TM is undecidable. <br><br>“Does a TM M recognize the empty language?” is undecidable. This is Blank Tape Acceptance Problem (BTAP), which is undecidable. We can prove the undecidability of BTAP by reducing the Halting problem, which is undecidable, to BTAP, and prove by contradiction.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is TRUE?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> If L and its complement are recursive enumerable then L is recursive.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">If L is CFL, then complement of L is never a context free.</strong><br>CFLs are not closed under complementation. This means the complement of the CFL may or may not be CFL. Therefore, this statement is false<br><br><strong class="tcecode">If L and its complement are recursive enumerable then L is recursive.</strong><br>Recursively enumerable (RE) languages are not closed under complementation, where as recursive languages are closed under complement. We also know that every recursive language is an RE but the converse is not true. So, if L and its complement are REs then L should be recursive, because the complement of L may or may not be RE, but definitely a recursive language. Therefore, this statement is true.<br><br><strong class="tcecode">If L is a recursive then the complement of L may or may not be recursive.</strong><br>From the above explanation describing the complementation of recursive languages, this statement is false. <br><br><strong class="tcecode">If L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are context sensitive, then L<sub class="tcecode">1</sub> ∩ L<sub class="tcecode">2</sub>'  is recursively enumerable but not context-sensitive.</strong><br>Context sensitive languages are closed under complementation and intersection. So L<sub class="tcecode">1</sub> ∩ L<sub class="tcecode">2</sub>'  is context-sensitive.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> If L is a recursive then the complement of L may or may not be recursive.</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> If L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are context sensitive, then L<sub class="tcecode">1</sub> ∩ L<sub class="tcecode">2</sub>'  is recursively enumerable but not context-sensitive.</li>
+<li><img src="./Test Results132_files/wrong.png" width="16">&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> If L is CFL, then complement of L is never a context free.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a language L and a homomorphism function h : ∑<sup class="tcecode">*</sup>→ Δ<sup class="tcecode">*</sup>  . Which of the following is/are TRUE?<br>	(i) h(h<sup class="tcecode">-1</sup> (L) ) ⊆ L<br>	(ii) h<sup class="tcecode">-1</sup> (h(L) ) ⊇ L<br>	(iii) If L is not regular, then h(L)  is also not regular.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> Only (i) and (ii) are True<br><span class="explanation">Explanation:</span><br><strong class="tcecode">(i) h(h<sup class="tcecode">-1</sup> (L) ) ⊆ L</strong><br>:- 	Consider L=(ab+ba)* a and h:{0,1}* → {a,b}*  be a homomorphism function defined as h(0) = aa and h(1) = aba <br>It is easy to see that h<sup class="tcecode">-1</sup> (L) = {1}. Observe that h(h<sup class="tcecode">-1</sup> (L) ) = {aba} ≠ L, but instead {aba} ⊆ L. <br>∴h(h<sup class="tcecode">-1</sup> (L) ) ⊆ L<br><br><strong class="tcecode">(ii) h<sup class="tcecode">-1</sup> (h(L) ) ⊇ L</strong><br>	Consider L={0<sup class="tcecode">n</sup> 1<sup class="tcecode">n</sup>│n ≥ 0}  and h(0) = a,h(1) = ϵ. Then h(L) = a* = (a + ϵ)*. So, h<sup class="tcecode">-1</sup> (h((a + ϵ)* ) ) = (0 + 1)* ⊇ L<br>∴h<sup class="tcecode">-1</sup> (h(L) ) ⊇ L<br><br><strong class="tcecode">(iii) If L is not regular, then h(L)  is also not regular.</strong><br>	This is not true. <br>Consider L = {0<sup class="tcecode">n</sup> 1<sup class="tcecode">n</sup>│n  ≥ 0}  and h(0) = a and h(1) = ϵ. Then h(L) = a*. <br>We can see that L is not regular but h(L)  is regular.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only (i) is True</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only (iii) is True</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> All are True</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are CORRECT?<br>(i)	Every Turing-decidable language is also context-free<br>(ii)	There exists a language that is recognized by the nondeterministic Turing machine that is not recognized by the deterministic Turing machine<br>(iii)	If a language L is Turing decidable then it is also Turing recognizable.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – False, (ii) – True, (iii) – False</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – True, (ii) – False, (iii) – False</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> (i) – False, (ii) – False, (iii) – True<br><span class="explanation">Explanation:</span><br>(i) Consider the language {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">n</sup> |n ≥ 0}. This is decidable but not context-free. So, (i) is false.<br>	(ii) Every nondeterministic Turing machine has an equivalent deterministic Turing machine. They have and equal acceptance power. So, there does not exists a language that is recognized by the nondeterministic TM but not by its deterministic version. So, this is false.<br>(iii) A language is decidable iff there is a Turing Machine which will accept strings in the language and reject strings not in the language. <br>A language is recognizable iff there is a TM which will halt and accept only the strings in that language and for strings not in the language, the TM either rejects, or does not halt at all. <br>If a language L is Turing decidable then it is Turing recognizable, but the converse is not true.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – True, (ii) – True, (iii) – True</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following languages is/are decidable?<br>	(i) L<sub class="tcecode">1</sub>={⟨M⟩|M is a DFA and L(M)is finite}<br>	(ii) L<sub class="tcecode">2</sub>={⟨M,x⟩ |M is a DFA and M halts on a string x}<br>	(iii) L<sub class="tcecode">3</sub>={⟨M⟩ |M is a TM and there exists an input on which M halts <br>within 2017 steps}<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only L<sub class="tcecode">1</sub> and L<sub class="tcecode">3</sub> are decidable</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are decidable</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only L<sub class="tcecode">2</sub> and L<sub class="tcecode">3</sub> are decidable</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> All are decidable<br><span class="explanation">Explanation:</span><br><strong class="tcecode">(i) L<sub class="tcecode">1</sub>={⟨M⟩|M is a DFA and L(M)is finite}</strong><br>:-	This is decidable. Check whether there is a loop in M that is reachable from the start state. This is actually finiteness problem which is decidable for finite automata.<br><br><strong class="tcecode">(ii) L<sub class="tcecode">2</sub>={⟨M,x⟩ |M is a DFA and M halts on a string x}</strong><br>:-	This is decidable. DFA’s always halt for any string over the given alphabet. This is acceptance problem which is decidable for finite automata.<br><br><strong class="tcecode">(iii) L<sub class="tcecode">3</sub>={⟨M⟩ |M is a TM and there exists an input on which M halts within 2017 steps}</strong><br>:- 	This is decidable. Run M on all inputs of length at most 2017, for at most 2017 steps, and accepts if M accepts at least one of the strings within 2017 steps. Else, reject.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let L be a language containing only one string w, where<br>w = 0,if you do not get AIR 1 in GATE 2017<br>w = 1,if you get AIR 1 in GATE 2017<br>(AIR – All India Rank)<br>Then<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L is recursively enumerable but not recursive</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> This is still an unknown problem</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L is not even recursively enumerable</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> L is recursive<br><span class="explanation">Explanation:</span><br>In this language, there are two possibilities: either you get All India Rank 1 or not in GATE 2017. For each possibility there is a TM that decides it. So, it is recursive language.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let ∑ = {0,1,2},  and Δ = {a,b}. Consider the homomorphism function h : ∑<sup class="tcecode">*</sup> → Δ<sup class="tcecode">*</sup>  , defined by h(0)=ab,h(1)=b,h(2)=aa and if L is the language (ab+baa)*bab then what is h<sup class="tcecode">-1</sup> (L)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (0*+(12)*+(120)*)10</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (0*120)*10</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (0*+120)*10</li>
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> (0+12)*10<br><span class="explanation">Explanation:</span><br>The language L = (ab + baa)<sup class="tcecode">*</sup> bab generates<br>            {bab,abbab,baabab,ababbab,abbaabab,baaabbab,baabaabab,ababbaabab, <br>baabaaabbab,baaabbaaabbab,…}<br>We can observe that every string is ending with bab, which is 10 in the inverse homomorphism. This means, every string in h<sup class="tcecode">(-1)</sup> (L)  ends with 10.<br>Given h(0) = ab,h(1) = b,h(2) = aa<br>Let’s consider the strings of the form (ab)*bab = {bab,abbab,ababbab,abababbab,…} <br>h<sup class="tcecode">-1</sup> (bab) = 10<br>h<sup class="tcecode">-1</sup> (abbab) = 010<br>h<sup class="tcecode">-1</sup> (ababbab) = 0010<br>.<br>.<br>.<br>It is clear that the strings of the form (ab)<sup class="tcecode">*</sup> bab give the regular expression 0<sup class="tcecode">*</sup> 10<br><br>Now consider the strings of the form (baa)* bab={bab,baabab,baabaabab,…}<br>h<sup class="tcecode">-1</sup> (bab)=10<br>h<sup class="tcecode">-1</sup> (baabab) = 1210<br>h<sup class="tcecode">-1</sup> (baabaabab) = 121210<br>.<br>.<br>.<br>From the above, we can see that the strings of the form (baa)<sup class="tcecode">*</sup> bab has the regular expression (12)*10<br>The strings generated from the regular expression (ab + baa)<sup class="tcecode">k</sup> bab,k ≥ 2 would result in the regular expression ((12)<sup class="tcecode">*</sup> 0<sup class="tcecode">*</sup> )<sup class="tcecode">*</sup> 10, which is equivalent to <br>0<sup class="tcecode">*</sup> (12 + 0)<sup class="tcecode">*</sup> 10. <br>h<sup class="tcecode">-1</sup> (abbaabab) = 01210<br>h<sup class="tcecode">-1</sup> (baaabbab) = 12010<br>h<sup class="tcecode">-1</sup> (ababbaabab) = 001210<br>h<sup class="tcecode">-1</sup> (baabaaabbab) = 1212010<br>h<sup class="tcecode">-1</sup> (baaabbaaabbab) = 12012010<br>.<br>.<br>.<br><br>∴h<sup class="tcecode">-1</sup> ((ab + baa)<sup class="tcecode">*</sup> bab) = 0*10 + (12)*10 + (12 + 0)*10<br>=(0*+(12)*+(12+0)*)10<br>=(12+0)*10  [we know that (x*+y*+(x+y)*)=(x+y)*]
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If L and L<sup class="tcecode">'</sup>are decidable, then which of the following is/are true?<br>	L ∪ L<sup class="tcecode">'</sup> is decidable<br>	L ∩ L<sup class="tcecode">'</sup> is decidable<br>	L - L<sup class="tcecode">'</sup> is decidable<br>	L<sup class="tcecode">'</sup> - L is decidable<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only (i) and (ii) are true</li>
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> All are true<br><span class="explanation">Explanation:</span><br><strong class="tcecode">L ∪ L<sup class="tcecode">'</sup> is decidable</strong><br> :- 	Let M and M<sup class="tcecode">'</sup> be Turing machines that decide L and L<sup class="tcecode">'</sup>, respectively. We can build a Turing machine M<sub class="tcecode">∪</sub>  that decides L∪L<sup class="tcecode">'</sup>as follows.  First, M<sub class="tcecode">∪</sub>  copies its string w onto another tape. Then M<sub class="tcecode">∪</sub>  runs M on the input string w (on the first tape), and then runs M<sup class="tcecode">'</sup>on input w on the second tape. If either M or M<sup class="tcecode">'</sup>accepts, then M<sub class="tcecode">∪</sub>  accepts; if both M and M<sup class="tcecode">'</sup>  reject, then M<sub class="tcecode">∪</sub>  rejects. So, L∪L<sup class="tcecode">'</sup>  is decidable.<br><br><strong class="tcecode">L ∩ L<sup class="tcecode">'</sup> is decidable</strong><br>:-	Let M and M<sup class="tcecode">'</sup> be Turing machines that decide L and L<sup class="tcecode">'</sup>, respectively. We can build a Turing machine M<sub class="tcecode">∩</sub>  that decides L ∩ L<sup class="tcecode">'</sup>as follows.  First, M<sub class="tcecode">∩</sub>  copies its string w onto another tape (a second tape). Then M<sub class="tcecode">∩</sub>  runs M on the input string w on the first tape, and then runs M<sup class="tcecode">'</sup>on input w on the second tape. If both M and M<sup class="tcecode">'</sup>accepts, then M<sub class="tcecode">∩</sub>  accepts; if either M or M<sup class="tcecode">'</sup>  reject, then M<sub class="tcecode">∩</sub>  rejects. So, L ∩ L<sup class="tcecode">'</sup>  is decidable.<br><br><strong class="tcecode">L - L<sup class="tcecode">'</sup> is decidable</strong><br>:-	L - L<sup class="tcecode">'</sup>  can be written as L ∩ (L<sup class="tcecode">'</sup> )<sup class="tcecode">'</sup>=L ∩ L = L, which is decidable. So, L - L<sup class="tcecode">'</sup> is decidable.<br><br><strong class="tcecode">L<sup class="tcecode">'</sup> - L is decidable</strong><br>:-	L<sup class="tcecode">'</sup> - L can be written as L<sup class="tcecode">'</sup> ∩ L<sup class="tcecode">'</sup> = L<sup class="tcecode">'</sup>, which is decidable. So, L<sup class="tcecode">'</sup> - L is decidable.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only (iii) and (iv) are true</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only (i), (ii) and (iii) are true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the languages <br>L<sub class="tcecode">1</sub> = {babaabaaab…ba<sup class="tcecode">(n-1)</sup>ba<sup class="tcecode">n</sup>b |  n ≥ 1}<br>L<sub class="tcecode">2</sub>=Complement(L<sub class="tcecode">1</sub>)<br>Which of the following is TRUE?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Both L<sub class="tcecode">1</sub>  and L<sub class="tcecode">2</sub>  are CFLs</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>  is CFL but L<sub class="tcecode">2</sub>  is not CFL</li>
+<li><img src="./Test Results132_files/wrong.png" width="16">&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Neither L<sub class="tcecode">1</sub>  nor L<sub class="tcecode">2</sub> is CFL</li>
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> L<sub class="tcecode">1</sub>  is not CFL but L<sub class="tcecode">2</sub>  is CFL<br><span class="explanation">Explanation:</span><br>The language L<sub class="tcecode">1</sub>  is not CFL. We can’t build a PDA for L<sub class="tcecode">1</sub>: if we count the first group of a’s then we’ll need to pop them to match against the second group. But, then what do we do for the third group and the rest of the groups? So, it is not CFL. <br><br>L<sub class="tcecode">2</sub>  is CFL. Since L<sub class="tcecode">2</sub>  is complement of L<sub class="tcecode">1</sub>, we do not need to check all the groups of a follow the right pattern. Instead, we simply have to find a group that does not follow the pattern. We can do that with a nondeterministic PDA P. P goes through the string making sure that the basic b(a<sup class="tcecode">+</sup> b)<sup class="tcecode">+</sup>  structure is followed. Also, it non-deterministically chooses one group of a’s to count. It then checks that the following group does not contain one more ‘a’ than the current group. If any branch succeeds (i.e., it finds a mismatched pair of adjacent a groups) then P accepts.<br><br>We can also show that L<sub class="tcecode">2</sub>  is CFL by decomposing the language into union of two simpler languages. <br>i.e., the complement of L<sub class="tcecode">1</sub>  contains the strings of the form L<sub class="tcecode">11</sub> ∪ L<sub class="tcecode">12</sub>, where <br>L<sub class="tcecode">11</sub> = {(a ∪ b)* - b(a<sup class="tcecode">+</sup> b)<sup class="tcecode">+</sup> }<br>L<sub class="tcecode">12</sub> = {xba<sup class="tcecode">m</sup> ba<sup class="tcecode">n</sup> by |  x,y ∈ {a,b}*  and m + 1 ≠ n}<br><br>The language L<sub class="tcecode">11</sub> includes all the strings which do not follow the pattern b(a<sup class="tcecode">+</sup> b)<sup class="tcecode">+</sup>. It is easy to see that L<sub class="tcecode">11</sub>  is regular.<br>The language L<sub class="tcecode">12</sub> includes all the strings which follows the pattern but do not follow the rule that each group of a’s must contain one more ‘a’ than its predecessor. We can construct a PDA for L<sub class="tcecode">12</sub> which is much similar to the PDA of {a<sup class="tcecode">n</sup> b<sup class="tcecode">m</sup> |  n ≠ m}. So L<sub class="tcecode">12</sub> is CFL. <br>The union of regular and CFL is CFL. So L<sub class="tcecode">2</sub>  is CFL.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements.<br>S1: If a language L is context free, then the language (L'.L) ∪ (L.L' ) ∪ (L.L) ∪ (L'.L' )  is not context free. <br>S2: L = {a<sup class="tcecode">n</sup> ba<sup class="tcecode">m</sup>|n,m ≥ 0 and n = m mod 5} is regular<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> Only S2 is true<br><span class="explanation">Explanation:</span><br>S1 is FALSE. <br>We can write (L'.L) ∪ (L.L') ∪ (L.L) ∪ (L'.L') as L'.(L ∪ L') ∪ L.(L' ∪ L)=L'.Σ* ∪ L.Σ* = (L' ∪ L).Σ* = Σ*.Σ* = Σ*<br>More formally, every string x ∈ Σ*, can be written as x = yz, where y ∈ L or y ∈ L' for some language L and z ∈ L or z ∈ L'  for the same language L. So, (L'.L) ∪ (L.L') ∪ (L.L) ∪ (L'.L') = Σ*  which is regular. We know that every regular language is also a CFL. So, S1 is false. <br>S2 is TRUE.<br>This is regular. <br>L = {a<sup class="tcecode">n</sup> ba<sup class="tcecode">m</sup>|n,m ≥ 0 and n = m mod 5}<br>If m = 0,then n = 0,the string is b<br>If m = 1,then n = 1,the string is aba<br>If m = 2,then n = 2,the string is aabaa<br>If m = 3,then n = 3,the string is aaabaaa<br>If m = 4,then n = 4,the string is aaaabaaaa<br>If m = 5,then n = 0,the string is baaaaa<br>If m = 6,then n = 1,the string is abaaaaaa<br>.<br>.<br>.<br><br>	We can describe the language using a regular expression. <br>	The regular expression that corresponds to the language is bx + abxa + aabxaa + aaabxaaa + aaaabxaaaa,where x = (a<sup class="tcecode">5</sup> )*<br>	So, this is regular.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Only S1 is true</li>
+<li><img src="./Test Results132_files/wrong.png" width="16">&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> Neither S1 nor S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages<br>L<sub class="tcecode">1</sub> = Complement of L<sub class="tcecode">2</sub>, where L<sub class="tcecode">2</sub> = {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>│n≥0}<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>  is regular, L<sub class="tcecode">2</sub>  is CFL</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>  is CFL, L<sub class="tcecode">2</sub>  is regular</li>
+<li>&nbsp;<img src="./Test Results132_files/correct.png" width="18"> Both L<sub class="tcecode">1</sub>  and L<sub class="tcecode">2</sub>  are CFLs<br><span class="explanation">Explanation:</span><br>Clearly, L<sub class="tcecode">2</sub> is context-free as it needs one stack to recognize the strings. The language L<sub class="tcecode">1</sub> = (L<sub class="tcecode">2</sub>)' = (a∪b)*-{a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup> |n≥0}<br>The complement of L<sub class="tcecode">2</sub> contains strings of the form<br>{a<sup class="tcecode">n</sup> b<sup class="tcecode">m</sup>|n≠m}∪(a+b)*ba(a+b)*<br>Clearly, {a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup> | n≠m} is CFL and (a+b)*ba(a+b)* is regular. We know from the closure properties that union of CFL and a regular language is CFL but may not be regular. So, L<sub class="tcecode">1</sub>  is CFL.
+</li>
+<li><img src="./Test Results132_files/wrong.png" width="16">&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>  is not CFL, L<sub class="tcecode">2</sub>  is CFL</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>(i)	Regular languages are closed under inverse homomorphism <br>(ii)	Context free languages are closed under complementation but deterministic context free languages are not. <br>(iii)	Halting problem of recursive languages is undecidable. <br>(iv)	Membership property of TM is undecidable.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results132_files/correct.png" width="18">&nbsp;<img src="./Test Results132_files/correct.png" width="18"> (i) – T, (ii) – F, (iii) – (F), (iv) – T<br><span class="explanation">Explanation:</span><br><strong class="tcecode">(i)	Regular languages are closed under inverse homomorphism </strong><br>:- 	Regular languages are closed under homomorphism and inverse homomorphism. So, this is TRUE<br><br><strong class="tcecode">(ii)	Context free languages are closed under complementation but deterministic context free languages are not. </strong><br>:- 	CFLs are not closed under complementation but DCFLs are. So, this is FALSE.<br><br><strong class="tcecode">(iii)	Halting problem of recursive languages is undecidable. </strong><br>:- 	The Halting Problem can be defined as: given a Turing machine and an input to the Turing machine, does the Turing machine finish computing in a finite number of steps (a finite amount of time)?<br>Remember, recursive languages are decidable. Hence, the Halting Problem is decidable for recursive languages. So, this is FALSE.<br><br><strong class="tcecode">(iv)	Membership property of TM is undecidable.</strong><br>:- 	Membership property of TM is undecidable. In fact, most of the properties of TM are undecidable. So, this is TRUE.
+</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – F, (ii) – F, (iii) – (F), (iv) – F</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – F, (ii) – T, (iii) – (F), (iv) – F</li>
+<li>&nbsp;<img src="./Test Results132_files/wrong.png" width="16"> (i) – T, (ii) – T, (iii) – (T), (iv) – T</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results132_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

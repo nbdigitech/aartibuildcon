@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92280&test_id=151 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results106_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results106_files/calclayout.css">
+<script src="./Test Results106_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results106_files/jquery-ui.js.download"></script>
+<script src="./Test Results106_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results106_files/custom.js.download"></script>
+<script src="./Test Results106_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results106_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results106_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921212, 'I\'m sorry, the time available to complete the test is over!', false, 1486921212884);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92280&amp;test_id=151#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Subject Test - 3</strong><br>
+Complete Syllabus &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:37:15&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which of the following CPU scheduling algorithm leads to starvation?<br>a) Round robin<br>b) FCFS<br>c) SJF<br>d) Priority<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only c</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only a and c</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only b and c</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Only b,c and d<br><span class="explanation">Explanation:</span><br>Shortest Job First may lead to starvation for processes which require a long time to complete if short processes are continuously added to the ready queue.<br>In Priority scheduling may lead to starvation when higher priority processes arrive continuously, leaving the lower priority processes.<br>FCFS also leads starvation by executing longer jobs.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following properties inherits child from parent with fork() system call?<br>i) process id<br>ii) process code<br>iii) defined variables<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> both i,ii</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> both ii,iii</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> all i,ii,iii<br><span class="explanation">Explanation:</span><br>fork() system call creates the new process called child process which consist the same copy of the code of the parent process, that means child process inherit the parent process code.<br>Id of the child process and the parent process is same that means child process inherit the id of the parent process.<br>If the code is inherited by the child process then all the defined variables from the parent process is inherited by child process.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is correct?<br>a).Smaller page sizes will reduce page faults<br>b).Large page sizes will reduce the page faults<br>c).CPU bound processes may reduce the page fault rate.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Only 1<br><span class="explanation">Explanation:</span><br>If the size of the page is large then number of pages will become less it may increase the page fault rate.<br>If we decrease the size of the page then number of pages will become more it might decrease the page fault rate.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only 2</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only 1 and 3</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> All</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that the rotating disk head is moving with 100 tracks numbered from 0 to 99 is currently serving a request at track 25. Disk queue requests are as follows: 93, 73, 32, 20, 35, 50, 10, 15 and 55. What is the total number of head movements needed to satisfy these requests for the SSTF (Shortest Seek Time First) algorithm.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 98<br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/E9a.PNG" alt="image:OSS3/E9a.PNG" width="455" height="379" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 97</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 99</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 96</li>
+</ol>
+<br><br>
+</li>
+<li>
+A certain computer is provided with a logical address space of 8GB, page size is 8 Kbytes and 512 MBytes of physical memory. How many bits are required to represent entries in single level page table and in inverted page table, respectively (assume that each word is byte addressable)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 20,16<br><span class="explanation">Explanation:</span><br>Answer is 20,16<br>Given LAS = 8GB = 2^33 Bytes<br>           Page size = 8 Kbytes = 2^13 Bytes<br>           PAS = 512 MBytes = 2^29 Bytes<br>           Number of entries in single level page table = 2^33/2^13 = 2^20<br>           Number of bits required for Inverted page table = 2^29/2^13 = 2^16
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 20,20</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 16,16</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 24,16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Deadlock is an extreme case of starvation<br><span class="explanation">Explanation:</span><br>Deadlock is when all the processes do not get access to resources because every process is waiting for some other process and there is cycle.<br><br>Starvation is when a low priority process does not get access to the resources it needs because there is a high priority process accessing the resources. The entire system of processes hasn't come to halt in this case.<br>Since, only low priority process do not have access to resources in starvation, while in deadlock no process has access to the resources they need therefore deadlock is an extreme case of starvation
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Starvation only leads to deadlock</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> There is no relation between starvation and deadlock</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Starvation is an extreme case of deadlock</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is true if a single instance resource allocation graph contains cycle?<br>i) System is unsafe<br>ii) the system may possible in deadlock state<br>iii) system is in deadlock state<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only i</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Only ii</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only iii</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> both i,iii<br><span class="explanation">Explanation:</span><br>When a single instance resource allocation graph contains the cycle, the system is in deadlock state.<br>System enters into the deadlock state when it is unsafe.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following mechanism will helpful to reduce thrashing?<br>a).Decreasing the degree of multiprogramming.<br>b).Increasing the RAM size<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only a</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only b</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> both a,b<br><span class="explanation">Explanation:</span><br>By decreasing the degree of multiprogramming page fault rate will fall down.<br>Adding RAM will increase the swap size ,so thrashing will reduce.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following<br><img src="./Test Results106_files/Q5a.PNG" alt="image:OSS3/Q5a.PNG" width="497" height="251" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> a-iii,b-ii,c-iv,d-i<br><span class="explanation">Explanation:</span><br>Contiguous allocation ---&gt; Number of disks required to access file is minimal.<br><br>Linked allocation ---&gt; This allocation technique supports only sequential files<br><br>Indexed allocation ---&gt;  This technique suffers from maximum wastage of space <br><br>Multi-level indexed  ---&gt; This scheme supports very large file sizes
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> a-iii,b-iv,c-ii,d-i</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> a-ii,b-iii,c-i,d-iv</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> a-ii,b-iv,c-i,d-iii</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following page trace :   4, 3, 2, 1, 4, 3, 5, 4, 3, 2, 1, 5. If the number of physical frames are 4 which are initially empty, find the percentage of page fault rate using FIFO?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 83.33%<br><span class="explanation">Explanation:</span><br>Given number of frames = 4<br><img src="./Test Results106_files/E4a.PNG" alt="image:OSS3/E4a.PNG" width="333" height="159" class="tcecode"><br> Total page references = 12<br>Page faults = 10<br>% page fault rate = = 83.33%
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 75%</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 66.66%</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 80%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with three processes and 19 resources. Process A requires 4 resources, Process B requires 10 resources and process C requires 9 resources. At a particular time A holds 3 resources, B holds 8 resources and C holds 6 resources, which of the following statements is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> No deadlock</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> System is safe</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Deadlock will arise<br><span class="explanation">Explanation:</span><br>Total resources=20<br><img src="./Test Results106_files/E14a.PNG" alt="image:OSS3/E14a.PNG" width="107" height="168" class="tcecode"><br>So if C took 2 resources there may be a chance of deadlock.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> starvation exist</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system TLB lookup takes 30ns and main memory takes 200ns what will be the TLB miss rate if effective memory access time is 250 ns?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 30%</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 20%</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 40%</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 10%<br><span class="explanation">Explanation:</span><br>Sol:<br>TLB’s access time = 30ns<br>Memory access time = 200ns<br>EMAT = 250ns<br>EMAT = TLBhit(TLBaccess+MainMemoryaccesstime)+TLBmiss*(TLBaccess+2*MainMemoryaccesstime)<br>250=h1*230+(1-h1)(30+400)<br>200h1 = 430-250<br>200h1= 180<br>h1 = 90%<br><br>So, miss rate is 10%
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two tasks T1 and T2, each requires 20 minutes of CPU time, arrives at 0 and 1 time units, repspectively. Assume that the process spends half of its time waiting for I/O and half of its time for execution. Find the completion time of T2 if the tasks are scheduled according to FCFS?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 60</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 80<br><span class="explanation">Explanation:</span><br>Given that the process spends half of its time waiting for I/O and half of its time for execution.<br>i.e., if total CPU time is 2x, then it spends x time units for I/O operation and other x time units running the process.<br>Given that each processes has a burst time of 20 minutes (x time units). So, the process spends 20 minutes for execution and 20 minutes for I/O. <br>Since the tasks are scheduled according to FCFS, T1 is scheduled first, it spends 20 minutes executing and 20 minutes on I/O. Then T2 is scheduled which spends 40 minutes for completion.<br>So, T2 completes after 80 minutes.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the initial value of a counting semaphore is 10, later 14 down operations and X Up operations were performed, then the value of semaphore becomes 25. Find the value of X.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 29<br><span class="explanation">Explanation:</span><br>10 - 14 + X = 25<br>X = 29
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 27</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 30</li>
+</ol>
+<br><br>
+</li>
+<li>
+Measurements of a certain system have shown that a process runs, on an average, for time T  before blocking for Input/Output. Process switch requires time S which is overhead. For round robin scheduling with quantum Q, where S&lt;Q&lt;T. Find the cpu efficiency?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Q/(Q+S)<br><span class="explanation">Explanation:</span><br>since Q&lt;T, each run of T requires T/Q process switches,  resulting <br>in overhead of ST/Q and therefore, the efficiency is T/(T+(ST/Q))  which is Q/(Q+S).
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> S/(Q+S)</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> QS/(Q+S)</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Q/(QS+S)</li>
+</ol>
+<br><br>
+</li>
+<li>
+int main()<br>{<br>   if(fork() == 0) <br>       printf("GATE2017");<br>   if(fork() == 0) <br>       printf("GATE2017");<br>}<br><br>How many times GATE2017 printed?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Printf execute when return id is zero so only child can print,so after first fork we have 2 processes, but only one process prints GATE2017.<br>After second fork we will get 4 processes, out of them 2 child processes prints GATE 2017.<br>So total =1+2=3
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program:<br><br>const int n= 20<br><br>int Count= 0<br><br>void OS( )<br><br>{<br><br>int i;<br><br>for i = 1 to n<br><br>Count= Count + 1;<br><br>}<br><br>main ( )<br><br>{<br><br>Par begin<br><br>OS( );<br><br>OS( );<br><br>OS( );<br><br>Par end<br><br>}<br><br>What is the minimum and maximum possible value of Count after the completion of the program?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 20, 40</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 2, 60<br><span class="explanation">Explanation:</span><br>Max value <br>If all OS( ) functions execute sequentially the value of count becomes 60.which is maximum.<br>Minimum value<br>Step1: Execute First OS( ) one time Preempt after incrementing without storing count  =0 at this stage.<br>Step2: Execute Second OS() completely now count =20<br>Step3: Execute Third OS() 19 times now count becomes=39<br>Step4: Execute First OS(), it overwrites the count by 1(first iteration )<br>Step5: Now Execute Third OS last iteration, it reads count as 1 and increments and then preempt without storing.<br>Step6: Now execute First OS() remaining 19 iterations, at this stage count =20.<br>Step7: Now execute third OS(),it overwrites the count by 2.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 3, 30</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 20, 60</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is not true with respect to syncronous and asyncronous I/O?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> An ISR is invoked on completion of I/O in synchronous I/O but not in asynchronous I/O</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> In both synchronous and asynchronous I/O, an ISR (Interrupt Service Routine) is invoked after completion of the I/O<br><span class="explanation">Explanation:</span><br>In both Synchronous and Asynchronous, an interrupt is generated on completion of I/O. In Synchronous, interrupt is generated to wake up the process waiting for I/O. In Asynchronous, interrupt is generated to inform the process that the I/O is complete and it can process the data from the I/O operation.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> A process making a synchronous I/O call waits until I/O is complete, but a process making an asynchronous I/O call does not wait for completion of the I/O</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> In the case of synchronous I/O, the process waiting for the completion of I/O is woken up by the ISR that is invoked after the completion of I/O</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using algorithm, some of the values are pre filled according to LRU.<br><img src="./Test Results106_files/Q27a.PNG" alt="image:OSS3/Q27a.PNG" width="629" height="173" class="tcecode"><br>Find the values of *,$,# respectively<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> (c,e,c)<br><span class="explanation">Explanation:</span><br>In the given options, page replacement policy e replace the page has longest future reference<br><img src="./Test Results106_files/E27a.PNG" alt="image:OSS3/E27a.PNG" width="411" height="187" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> a,c,d</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> (c,b,a)</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> (a,b,c)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following pseudocode: Let BinarySemaphore and Bdata are binary semaphores, initialized to 1. <br>semaphore *BinarySemaphore, *Bdata;<br>void Srinu( ) {<br> P(BinarySemaphore);  <br> P(Bdata);<br> {<br>Critical section<br> }<br> V(BinarySemaphore);<br> V(Bdata);<br>}<br>void Murali( ) {<br> P(Bdata)<br> P(BinarySemaphore);<br>{<br>Critical Section<br>}<br> V(Bdata);<br> V(BinarySemaphore);<br>}<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Deadlock possible</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Mutual exclusion exists</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Progress guaranteed</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> All the above<br><span class="explanation">Explanation:</span><br>Mutual exclusion exist, at a time only one process will enter if both semaphores available.<br>Deadlock possible<br>	If Srinu executes P(Binary Semaphore), Murali executes P(Bdata), Srinu is waiting for P(Bdata) and Murali is waiting for P(Binary Semaphore),So deadlock arise.<br>Progress is achieved: Here if both semaphores available not interested process can not effect the execution of interested process. So progress guaranteed.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the resource allocation graph<br><br><img src="./Test Results106_files/Q25a.PNG" alt="image:OSS3/Q25a.PNG" width="253" height="235" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Deadlock occurs</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> System is in safe mode</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> No Deadlock<br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/E25a.PNG" alt="image:OSS3/E25a.PNG" width="129" height="99" class="tcecode"><br>No cycle is formed<br>If cycle is not formed in resource allocation graph then system is Deadlock free.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> System is in unsafe state</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let 5 jobs are waiting to execute. Their expected running times are 9, 7, 5, 3, and S respectively. Where 9&gt;S&gt;7 is and average turnaround time is 16. find the value of S using Shortest job scheduled first  algorithm? (Assume all jobs arrive at same time=0).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 7.5<br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/E24a.PNG" alt="image:OSS3/E24a.PNG" width="366" height="437" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 7.4</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 7.8</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following snapshot.<br><img src="./Test Results106_files/Q23a.PNG" alt="image:OSS3/Q23a.PNG" width="359" height="135" class="tcecode"><br>Using the shortest remaining time first, find the completion time of process p2, if the context switching overhead is 1 unit.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 42<br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/E23a.PNG" alt="image:OSS3/E23a.PNG" width="538" height="286" class="tcecode"><br>Completion time of process P2 = 42 time units
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 37</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+With the use of SRTF the execution of three processes is as follows: the process A is scheduled first and when A has been running for the 6 units of time, the process B is arrived and process B ran for 3 units of time, later Process C is arrived and completed running in 4 unit of time, find the minimum possible burst time of the Process A and B.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 15,8<br><span class="explanation">Explanation:</span><br>Given question is finding minimal burst times possible for A and B.<br>SRTF: as of now A completes 6 units,<br>		         B completes 3 units<br>Later C came and completes its execution 4 units.<br>Using SRTF concept C finishes means B burst time remaining is greater than C,So minimum burst time of B is 8.<br>B started after 6 units of execution, So, minimum burst time minimum of A is 15.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 15,6</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 10,8</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assuming that the disk head is currently on track 1000, provide a sequence of 10 read / write requests (track numbers) as follows 2000, 1, 2000, 1, 2000, 1, 2000, 1, 2000, 1.Find which of the algorithm leads least head movements.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> FCFS</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> SSTF<br><span class="explanation">Explanation:</span><br>Given requests are<br>2000, 1, 2000, 1, 2000, 1, 2000, 1, 2000, 1<br><br><img src="./Test Results106_files/E21a.PNG" alt="image:OSS3/E21a.PNG" width="391" height="377" class="tcecode"><br><img src="./Test Results106_files/E21b.PNG" alt="image:OSS3/E21b.PNG" width="390" height="390" class="tcecode"><br><img src="./Test Results106_files/E21c.PNG" alt="image:OSS3/E21c.PNG" width="390" height="387" class="tcecode"><br><img src="./Test Results106_files/E21d.PNG" alt="image:OSS3/E21d.PNG" width="556" height="412" class="tcecode"><br>Answer:<br>	SSTF will leads to least head movements
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> LOOK</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> SCAN</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a byte addressable system with<br>a. 32 bit address<br>b. 3 level page table<br>c. 256 byte page size<br>d. Tables at each level of the tree each contain the same number of entries<br>e. All page table entries are 4 bytes.<br>How many physical pages are needed to store the maximum number of 3rd level page?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>32-bit address, 3 level page tables<br>Size of page: 256 byte<br>At each level of page table contains same number of entries<br>PT entry size: 4 bytes<br><img src="./Test Results106_files/E20a.PNG" alt="image:OSS3/E20a.PNG" width="473" height="403" class="tcecode"><br>4- physical pages are required
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 2-D array<br>Int x [16][16];<br>Suppose that a system can accommodate 4 pages in main memory and each page is 1024 bytes long and each element size is 4 bytes. Suppose the x array is stored in RMO (row measure order). Which of the following two code fragments will generate the less number of page faults.<br>	<strong class="tcecode"><span style="text-decoration:underline;">Fragment 1:</span></strong><br> for (int j=0; j&lt;16; j++)<br>			for (int i=0; i&lt;16; i++)<br>			     x [i] [j]++;<br>	<strong class="tcecode"><span style="text-decoration:underline;">Fragment 2:</span></strong> <br>for (int i=0; i&lt;16; i++)<br>      for (int j=0; j&lt;16; j++)<br>			     x [i] [j]++;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> Fragment 1</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> Both are same<br><span class="explanation">Explanation:</span><br>Given 2D-array<br>int X[16] [16] :<br>There are 16 pages in main memory<br>All elements are stored in Row major order<br>Given page size: 1024 bytes, element size: 4 bytes<br><strong class="tcecode"><span style="text-decoration:underline;">Fragment 1:</span></strong><br>	for(int j = 0; j &lt; 16; j++)<br>		for(int i = 0; i &lt; 16; i++)<br>			X[i][j] ++<br><br><strong class="tcecode"><span style="text-decoration:underline;">Fragment 2:</span></strong><br>	for(int i = 0; i &lt; 16; i++)<br>		for(int j = 0; j &lt; 16; j++)<br>			X[i][j] ++<br>Number of elements can accommodate in each page =1024byte/4byte = 256<br><img src="./Test Results106_files/E19a.PNG" alt="image:OSS3/E19a.PNG" width="405" height="457" class="tcecode"><br><img src="./Test Results106_files/E19b.PNG" alt="image:OSS3/E19b.PNG" width="410" height="455" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the page fault service time be 500 ms in a computer with average access time being 1000 ns. If one page fault is generated for every 10000 memory accesses, what is the effective access time(ns)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 51000<br><span class="explanation">Explanation:</span><br>fault service time = 500ms<br>Average access time = 1000 ns<br>Page fault is generated for every 10,000 memory accesses<br>EMAT  = ?<br>     <img src="./Test Results106_files/E18a.PNG" alt="image:OSS3/E18a.PNG" width="336" height="237" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 52000</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 40000</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 48000</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement is/are True?<br>i)Bounded waiting is satisfied in Strict alternation mechanism.<br>ii)Bounded waiting satisfied in Peterson's solution.<br>iii)Progress is achieved in Strict alternation mechanism.<br>iv)Progress is achieved in Peterson's Solution<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> all i,ii,iv<br><span class="explanation">Explanation:</span><br>Strict alternation does not satisfy progress because uninterested process restrict execution of interested process ,but ensures bounded waiting.Peterson’s solution ensures Bounded waiting and progress.
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only i,iv</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> only ii,iii</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> all i,ii,iii</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data questions 30 &amp; 31:</strong></span><br>Consider a virtual memory system with 32-bit virtual addresses and 1 Kb pages. Each page table entry requires 32- bits. It is desired to limit the page table size to one page:   <br>How many levels of page tables required?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Virtual address: 32-bit<br>Size of the page: 1Kb<br>PTE size: 32-bits = 4 bytes<br>Given PT size is limited to size of the page<br><img src="./Test Results106_files/E30a.PNG" alt="image:OSS3/E30a.PNG" width="434" height="136" class="tcecode"><br>Number of page tables required = 3
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data questions 30 &amp; 31:</strong></span><br>Consider a virtual memory system with 32-bit virtual addresses and 1 Kb pages. Each page table entry requires 32- bits. It is desired to limit the page table size to one page:   <br>Find the memory size required to store total page tables (in bytes)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> 8208<br><span class="explanation">Explanation:</span><br>Size of the outer level page table = 22 * 4-bytes = 16 bytes (4 bytes → PTE size)<br>Size of the 1st level PT = 2^10 * 4 bytes = 2^12 bytes<br>Size of the inner most PT = 2^10 * 4 bytes = 2^12 bytes<br>Total size = (2^12 + 2^12 + 16) bytes<br>       	        = (4096 + 4096 + 16) bytes<br>       	    	= 8208 bytes
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 7400</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> 8800</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Questions 32&amp;33:</span></strong><br>Consider the following code:<br>S1<br>Parbegin<br>	Begin<br>	S2:S4<br>	End;<br>	Begin<br>S3;<br>Parbegin<br>S5;<br>Begin<br>S6:S8<br>End<br>Parend<br>	S7<br>       End<br>Parend<br>S9<br>Find the precedence graph?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> <img src="./Test Results106_files/O32a.PNG" alt="image:OSS3/O32a.PNG" width="184" height="294" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> <img src="./Test Results106_files/O32b.PNG" alt="image:OSS3/O32b.PNG" width="189" height="298" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/O32b.PNG" alt="image:OSS3/O32b.PNG" width="189" height="298" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> <img src="./Test Results106_files/O32c.PNG" alt="image:OSS3/O32c.PNG" width="189" height="298" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> <img src="./Test Results106_files/O32d.PNG" alt="image:OSS3/O32d.PNG" width="189" height="298" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Questions 32&amp;33:</span></strong><br>From the obtained precedence graph find the the order of execution ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results106_files/correct.png" width="18"> S1-&gt;S3-&gt;S5-&gt;S6-&gt;S8-&gt;S7<br><span class="explanation">Explanation:</span><br><img src="./Test Results106_files/E33a.PNG" alt="image:E33a.PNG" width="182" height="295" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> S1-&gt;S3-&gt;S5-&gt;S8-&gt;S9</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> S1-&gt;S2-&gt;S4-&gt;S5-&gt;S8-&gt;S9</li>
+<li>&nbsp;<img src="./Test Results106_files/wrong.png" width="16"> S1-&gt;S3-&gt;S6-&gt;S8-&gt;S9</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results106_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

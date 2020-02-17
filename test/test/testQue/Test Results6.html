@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91714&test_id=337 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results6_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results6_files/calclayout.css">
+<script src="./Test Results6_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results6_files/jquery-ui.js.download"></script>
+<script src="./Test Results6_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results6_files/custom.js.download"></script>
+<script src="./Test Results6_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results6_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results6_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486836709, 'I\'m sorry, the time available to complete the test is over!', false, 1486836709921);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91714&amp;test_id=337#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 20</strong><br>
+Databases, Computer Networks, Digital Logic, Computer Organization and Architecture, General General Aptitude&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:08:58&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results6_files/14.png" alt="image:MST20/14.png" width="552" height="145" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> Only S1, S3<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/15.png" alt="image:MST20/15.png" width="641" height="106" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Only S2, S3</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> All S1, S2, S3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A hard disk has 63 sectors per track, 10 platters each with 2 recording surfaces and 1000 cylinders. The address of a sector is given as a triple ⟨c,h,s⟩, where c is the cylinder number, h is the surface number and s is the sector number. Thus, the 0th sector is addresses as ⟨0,0,0⟩, the 1st sector as ⟨0,0,1⟩, and so on<br><br>The address of the 1045th sector is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> ⟨0,15,31⟩</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> ⟨0,16,37⟩<br><span class="explanation">Explanation:</span><br>1045th sector will be stored in track number (1045 + 1) / 63 = 16.60 (as counting starts from 0 as given in question) and each track has 63 sectors. So, we need to go to 17th track which will be numbered 16 and each cylinder has 20 tracks (10 platters * 2 recording surface each). Number of extra sectors needed = 1046-16*63 = 38 and hence the sector number will be 37. So, option b.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> ⟨0,16,31⟩</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> ⟨0,17,31⟩</li>
+</ol>
+<br><br>
+</li>
+<li>
+A processor has 80 distinct instructions and 38 general purpose registers. A 32-bit instruction word has an opcode, two register operands and an immediate operand. The number of bits available for the immediate operand field is__________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 13<br><span class="explanation">Explanation:</span><br>Each instruction has 32 bits. To support 80 instructions, opcode must contain 7-bits. Register operand1 requires 6 bits, since the total registers are 38, Register operand 2 also requires 6 bits. So, 32 - (7+6+6) = 13 bits are left over for immediate operand.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+An image is 1024∗800 pixels with 3 bytes/pixel. Assume the image is uncompressed. How long does it take to transmit it over a 10-Mbps Ethernet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 196.6 seconds</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 19.66 seconds</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 1.966 seconds<br><span class="explanation">Explanation:</span><br>Total bytes of image =1024×800×24 bits.<br>Time totransmit= (1024×800×24)/(10×〖10〗<sup class="tcecode">6</sup> )=1.96 s.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 0.1966 seconds</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>I _____ into the shower when there was a knock at the door.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> have just stepped</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> just stepped</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> was just stepped<br><span class="explanation">Explanation:</span><br>In the given sentence, we are referring to an action going on at some time in the past, when there was a knock at the door.<br>		There was a knock at the door is in simple past tense.<br>	In English, the past continuous and simple past are used together when an action happened in the middle of a longer action. So, we need a tense that is in past continuous form which is <strong class="tcecode">‘was just stepping’.</strong><br>	 I <span style="text-decoration:underline;">was just stepping</span> into the shower when there was a knock at the door.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> will just stepped</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a non-pipelined processor design which has a cycle time of 15ns and average CPI of 1.4. The processor is pipelined into 5 stages and delays of each stage are 2ns, 3.5ns, 6 ns, 1ns, and 2.5ns, what is the maximum speedup achieved during the pipelined processor_____________?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 2.5<br><span class="explanation">Explanation:</span><br>Speed up = 15 ns / max(stage delay)<br>=15 ns / 6 ns<br>= 2.5
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relation:<br>R(A<sub class="tcecode">1</sub>,A<sub class="tcecode">2</sub>,…,A<sub class="tcecode">n</sub> )and Every (n-2) attributes of R forms Candidate key.<br>How many super keys are there in R?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">n-2</sub> * 2<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> <sup class="tcecode">n</sup>C<sub class="tcecode">n-2</sub> + n + 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/13.png" alt="image:MST20/13.png" width="673" height="175" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">n-2</sub> +2n</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <sup class="tcecode">n</sup>C<sub class="tcecode">n-2</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following tables R, S and T.<br>CREATE TABLE T(C INT PRIMARY KEY,D INT);<br>CREATE TABLE S(B INT PRIMARY KEY,C INT REFERENCES T(C)  ON DELETE CASCADE); <br>CREATE TABLE R(A INT PRIMARY KEY,B INT REFERENCES S(B)  ON DELETE SET NULL); <br>Suppose that tables R, S and T (as declared above) contain r, s and t tuples respectively. Let n be the number of tuples in the result of the following query:<br>SELECT*FROM R NATURAL JOIN  S NATURAL JOIN  T where R.B=S.B and S.C=T.C;<br>What is the most restrictive and correct upper bound of n?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> n≤r</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> n≤t<br><span class="explanation">Explanation:</span><br>Because of the referential integrity constraints each tuple in R joins with at most one tuple in S and each tuple in S join with atmost one tuple in T. Therefore the total number of tuples produced in the resultant table is no more than number of tuples in T. Therefore n≤t.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> n≤r×s×t</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> n≤ min⁡(r,s,t)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Eighteen men can do a work in 30 days. Sixteen women can complete the same work in 30 days. What is the ratio between the capacity of a man and a woman?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 6 : 7</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 3 : 4</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2 : 3</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 8 : 9<br><span class="explanation">Explanation:</span><br>work=strength×time	<br>The total work done = 18M × 30D=540MD <br>The total work done= 16W×30D=480WD<br>Then, 540MD=480WD <br>∴M:W=480:540 = 8:9
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In multilevel feedback scheduling algorithm<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> a process can move to a different classified ready queue<br><span class="explanation">Explanation:</span><br>By definition in multilevel feedback scheduling algorithm a process can move from one ready queue to a different ready queue.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> classification of ready queue is permanent</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> processes are not classified into groups</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> none of the mentioned</li>
+</ol>
+<br><br>
+</li>
+<li>
+Joseph purchased a car for₹6,10,000. He sold it at a loss of 7%. With that money he purchased another car and sold it at a profit of 7%. What is his overall profit/loss?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2889 loss</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2889 profit</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2989 profit</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 2989 loss<br><span class="explanation">Explanation:</span><br>S.P os first car= 93/100×6,10,000=5,67,300=C.P of second car (7% loss)<br>S.P os second car=107/100×5,67,300=6,07,011 (7% profit)<br>Overall loss=6,10,000-6,07,011=2989 loss
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the alternative meaning of the underlined part of the sentence<br>I would like to visit my grandfather more often, but he <strong class="tcecode"><span style="text-decoration:underline;">talks my head off</span></strong> every time I visit him.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> talks nonsense</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> not understandable</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> talks too much<br><span class="explanation">Explanation:</span><br>In the given sentence, talks my head off refers to an idiom “To talk someone’s head off” which means <strong class="tcecode">“to talk too much”</strong>, sometimes to the point of boring someone.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> gives advices</li>
+</ol>
+<br><br>
+</li>
+<li>
+Study the following table and answer the question given below it.<br>Number of candidates appearing for an entrance exam from various cities and percentage of candidates qualifying:<br><img src="./Test Results6_files/21.png" alt="image:MST20/21.png" width="478" height="149" class="tcecode"><br>The number of candidates who qualified from cities A and C together was approximately what percentage of the candidates who did not qualify from cities B and D together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 49</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 52<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/22.png" alt="image:MST20/22.png" width="526" height="344" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 54</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 56</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using which transmission technique, the data packets will be received by the receiver in the same order in which they were sent by the sender.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> broadcasting</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> unicasting</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Packet switching</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> Circuit Switching.<br><span class="explanation">Explanation:</span><br>Circuit switching is a methodology of implementing a telecommunications network in which two network nodes establish a dedicated communications channel before the nodes may communicate and packets are transmitted in order.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following addresses is used to deliver a message to the correct application program running on a host ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> Port</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> IP</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Logical</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Physical</li>
+</ol>
+<br><br>
+</li>
+<li>
+x and y are positive numbers such that x<sup class="tcecode">y</sup>=y<sup class="tcecode">x</sup> and y=9x. The value of x is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/29.png" alt="image:MST20/29.png" width="58" height="49" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> <img src="./Test Results6_files/25.png" alt="image:MST20/25.png" width="50" height="63" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/30.png" alt="image:MST20/30.png" width="338" height="220" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/27.png" alt="image:MST20/27.png" width="58" height="54" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/28.png" alt="image:MST20/28.png" width="55" height="55" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results6_files/23.png" alt="image:MST20/23.png" width="558" height="158" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 90°</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 120°</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 135°<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/24.png" alt="image:MST20/24.png" width="635" height="460" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 150°</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 3000kmlong channel  is used to transmit 64byte frames using a protocol. If the propagation speed is 6 μsec/km and the bandwith of the channel is 1.7Mbps, how many bits should the sequence numbers be to operate efficiently?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>To operate efficiently, the sequence space (actually, the send window size) must be large enough to allow the transmitter to keep transmitting until the first acknowledgement has been received. <br>Tp = 18 ms.<br>Tt = 0.3 msec<br>Therefore, the first frame fully arrives 18.3 msec after its transmission was started. <br>The acknowledgement takes another 18 msec to get back.(ignore transmission time for ack as it not given)<br>Total time = 36.3 msec. <br>The transmitter must have enough window space to keep going for 36.3 msec. A frame takes 0.3 ms, so it takes 121 frames to fill the pipe. Sevenbit sequence numbers are needed.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+A B-tree is used as an index for a large database table has 85 nodes. Order of B tree is 4. [Assume every node is full]. If a new key is inserted in this index, then the maximum number of nodes that could be newly created in the process<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/16.png" alt="image:MST20/16.png" width="570" height="266" class="tcecode"><br><img src="./Test Results6_files/17.png" alt="image:MST20/17.png" width="565" height="377" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a pipelined processor having 5 stages. The stage delays are 1, 1.4, 1.2, 3, 2ns and interstage buffer delays are 1ns. The 3rd stage is capable of deciding branch target address. Processor starts fetching new instruction when the conditional branch outcome is known. 25% of instructions are conditional branch, then calculate the execution time for 1200 instructions?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 6000ns</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 4800ns</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 7200ns<br><span class="explanation">Explanation:</span><br>5 stage pipeline<br>Delays are 1, 1.4, 1.2, 3, 2ns<br>Inter stage buffer delays are 1 ns<br>3rd stage is capable of knowing Branch Address<br>25% instructions are branch instructions<br><br>Number of clock cycles = 2<br>Clock time= max stage delay + BUFF delay<br>= 3 + 1 = 4ns<br>Number of clock cycles = (1 + stall Freq * stall cycles) clocks<br>= (1 + 0.25 * 2) clocks<br>= 1.5 clocks<br>Execution time = 1.5 * 4 ns / instruction<br>= 6 ns / instruction<br>Execution time for 1200 instructions = 6 ns / instruction * 1200 instruction<br>= 7200 ns
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 5000ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation R(ABCD) with FD’s {A→D,B→D,D→BC} which is decomposed into R<sub class="tcecode">1</sub> (AB)and  R<sub class="tcecode">2</sub> (BCD). Which of the following statement is true regarding this decomposition?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> Lossless join and dependency preserving decomposition<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/12.png" alt="image:MST20/12.png" width="496" height="385" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Lossless join but not dependency preserving decomposition</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Dependency preserving but not lossless join decomposition</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Not lossless and not dependency preserving decomposition</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with main memory of size 64MB. If the no. of tag bits = 10, find the size  of a 4-way set associative cache.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 256 KB<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/20.png" alt="image:MST20/20.png" width="439" height="212" class="tcecode"><br>No of bits for set no. + no of bits for block offset = 16 bits<br><br>Let no of bits for set no = x , no. of sets = 2<sup class="tcecode">x</sup><br><br>No of bits for block offset = 16 -x, cache block size = 2<sup class="tcecode">(16-x)</sup>Bytes<br><br>In a 4 way cache no. of lines per cache = 4<br><br>Cache size = No. of sets * No. of lines per set * size of cache block<br>	       =  (2<sup class="tcecode">x</sup>) * 4 * 2<sup class="tcecode">(16-x)</sup><br>	       = 4 * (2<sup class="tcecode">16</sup>)<br>	       = 2<sup class="tcecode">18</sup> = 256 KB
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 128KB</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 64KB</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 32KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two cooperating processes P1 and P2. The following critical section solution is proposed based on boolean variable lock which is initialized to false.<br>Pi		i = 1, 2<br>---------<br>while(1)<br>{<br><br>while(lock);<br>lock = true;<br><br>CS<br><br>lock = false;<br><br>}<br><br>S1: This solution provides mutual exclusion<br>S2: This solution provides bounded waiting<br>S3: This solution may lead to deadlock<br><br>Choose the right option from below:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> S2, S3 are true</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> S1, S2, S3 are all false<br><span class="explanation">Explanation:</span><br>S1: Consider the situation P1 enters, looks at lock=0, but gets preempted after the ‘while(lock);’ statement before making lock=ture. Other process P2 comes looks at lock, it is still false, so it makes lock=true and P2 enters Critical section. When P1 resumes again it will also make lock=true and enters Critical Section. So, No mutual exclusion<br>S2: There is no strict rule of FIFO or something, So after leaving CS a process make lock=false, and after that same process may go to CS again and again, It is not compulsory that other want to go CS so i should wait. There may be starvation and hence no BW.<br>S3: No deadlock since Mutual exclusion is not guaranteed.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> S1, S2, S3 are all true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two processes P1 and P2 accessing the shared variables X and Y protected by two binary semaphores S<sub class="tcecode">X</sub> and S<sub class="tcecode">Y</sub> respectively, both initialized to 1. P and V denote the usual semaphore operators, where P decrements the semaphore value, and V increments the semaphore value. The pseudo-code of P1 and P2 is as follows: <br>P1:	<br>While true do {<br>	L1:……<br>	L2:……<br><br>	X = X + 1;<br>	Y = Y -1;<br><br>	V(SX);<br>	V(SY); <br>}<br><br>While true do {<br>	L3:……<br>	L4:……<br><br>	Y = Y + 1;<br>	X = Y -1;<br><br>	V(SY);<br>	V(SX);<br>}<br><br>In order to avoid deadlock, the correct operators at L1, L2, L3 and L4 are respectively.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> P(S<sub class="tcecode">Y</sub>), P(S<sub class="tcecode">X</sub>); P(S<sub class="tcecode">X</sub>), P(S<sub class="tcecode">Y</sub>)</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> P(S<sub class="tcecode">X</sub>), P(S<sub class="tcecode">Y</sub>); P(S<sub class="tcecode">Y</sub>), P(S<sub class="tcecode">X</sub>)</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> P(S<sub class="tcecode">X</sub>), P(S<sub class="tcecode">X</sub>);  P(S<sub class="tcecode">Y</sub>),P(S<sub class="tcecode">Y</sub>)</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> P(S<sub class="tcecode">X</sub>), P(S<sub class="tcecode">Y</sub>);  P(S<sub class="tcecode">X</sub>),P(S<sub class="tcecode">Y</sub>)<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/19.png" alt="image:MST20/19.png" width="664" height="380" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For the given Venn diagram, find the minimized expression that the shaded region represents.<br><img src="./Test Results6_files/3.png" alt="image:MST20/3.png" width="293" height="235" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> <img src="./Test Results6_files/4.png" alt="image:MST20/4.png" width="126" height="39" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/7.png" alt="image:MST20/7.png" width="355" height="387" class="tcecode"><br><img src="./Test Results6_files/8.png" alt="image:MST20/8.png" width="663" height="373" class="tcecode"><br><img src="./Test Results6_files/9.png" alt="image:MST20/9.png" width="506" height="210" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/5.png" alt="image:MST20/5.png" width="117" height="40" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> A⊕B</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/6.png" alt="image:MST20/6.png" width="85" height="33" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the following tables:<br><img src="./Test Results6_files/11.png" alt="image:MST20/11.png" width="373" height="371" class="tcecode"><br>D ⟶ Foreign key with “on update set NULL” referring to the attribute A of Relation R. <br>If the following query is executed on the above table what will be the output ?<br>DELETE FROM R WHERE A=3;<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> The values of attribute C in table R and attribute D in table S are set to NULL</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Only the values of attribute D in table R are set to NULL</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> It generates an error<br><span class="explanation">Explanation:</span><br>When we try to delete the tuples in relation R with attribute value A = 3, it will generate an error. Since there exists a foreign key D in Relation S, where values are referring to this value (A = 3). Also, the Referential integrity ON UPDATE SET NULL will be enforced only when the values of attribute A in relation R gets updated, but not on deletion.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> All the rows in tables R &amp; S will get deleted</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let Department and Project be 2 entities in an ER diagram with simple single-valued attributes. “Owns” and Guides” are two relationships between Department and Project, where every Department can own more than one project and many departments can guide many projects. “Owns” and “Guides” do not have any attributes of their own. What is the minimum number of tables required to represent this in the relational model?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Here as per question we can come to conclusion that “Owns” is 1:N relationship and “Guides” is M:N relationship between Department and Project.<br>Firstly we have to create 2 tables for 2 string entities Department and Project. Let schemas of 2 entities be Department(<span style="text-decoration:underline;">Dno</span>,Dname) and Project(<span style="text-decoration:underline;">Pno</span>,Pname) with underlined attributes as keys. <br>So, the tables are<br><img src="./Test Results6_files/18.png" alt="image:MST20/18.png" width="690" height="428" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair:<br><strong class="tcecode">CARNIVORE : MEAT</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Vegetarian : Wheat</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> Herbivore : Plants<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair:</strong><br>		Carnivore refers to an animal that eats flesh / meat.<br>	<strong class="tcecode">Option (a):</strong><br>		Wheat is a cereal that comes under vegetarian.<br>	<strong class="tcecode">Option (b):</strong><br>		Herbivore refers to an animal that feeds on plants<br>	<strong class="tcecode">Option (c):</strong><br>Omnivore refers to an animal or person that eats a variety of food of both plant and animal origin. Thus, vegetarian is an antonym for omnivore.<br>	<strong class="tcecode">Option (d):</strong><br>Vegan refers to a vegetarian who eats plant products only, especially one who uses no products derived from animals, as fur or leather.<br> From the given explanation, the pair that best expresses a relationship similar to that expressed in the pair <strong class="tcecode">Carnivore: Meat is Herbivore : Plants.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Omnivore : Vegetarian</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Vegan : Meat</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following rules are used while performing addition of two numbers represented in Excess-3 Notation:<br><strong class="tcecode">Rule I</strong>:- 3 gets added to the sum if the addition of MSB produces carry.<br><strong class="tcecode">Rule II</strong>:- 3 gets subtracted from the sum if the addition of MSB doesn’t produce carry.<br>The steps involved are as below:<br>Step 1: Perform addition.<br>Step 2: Apply Rule I and Rule II.<br>If the number 4, 8, which are represented in Excess-3 Notation, what is the sum pattern after <span style="text-decoration:underline;">step-1?</span><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 0010</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 00010010</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 01110010<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/10.png" alt="image:MST20/10.png" width="286" height="427" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 01000101</li>
+</ol>
+<br><br>
+</li>
+<li>
+The product of the sides of a right angled triangle is 14760. If its perimeter is 90, find its hypotenuse.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 34</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> 41<br><span class="explanation">Explanation:</span><br><img src="./Test Results6_files/31.png" alt="image:MST20/31.png" width="496" height="355" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> 51</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using the RSA algorithm find the cipher text of the given plain text SUZANNE. Let p=3, q=11, d=7. Assume that the given text is converted to numerical form based on alphabet position(A-1;B-2 etc) and after using RSA algorithm, it is converted back to alphabet.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> BUTAEEZ<br><span class="explanation">Explanation:</span><br>N=p×q =33;<br>Phi(n)=(p-1)×(q-1) =20;<br>Ciphertext, C=(p)emod n.<br>Choose e such that 1 &lt; e &lt; phi  and e and n are coprime. <br>Compute a value for e such that e×d = 1 mod phi(n). <br>One solution is e = 3 [(3×7) % 20 = 1] so e =3.<br>Now consider the plain text SUZANNE. First letter is S<br>S position is 19 thin alphabet, so C=(19×19×19)mod 33=28 (quotient =207). So 28th position corresponds to B. (26 alphabets so wrapping around)<br>Similarly for 2ndletter  U: 〖21〗<sup class="tcecode">3</sup> mod 33 = 21 =U<br>For Z :〖26〗<sup class="tcecode">3</sup> mod 33=20 = T<br>For A: 1 mod 33 = 1 =  A<br>For N:〖14〗<sup class="tcecode">3</sup> mod 33 =5=E<br>For E: 5<sup class="tcecode">3</sup> mod 33=26=Z<br><br>Hence answer is option A.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> SUZANNE</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> XYZABCD</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> ABCDXYZ</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Question</strong><br>Consider the population of  various continents as follows:<br>Africa – 900Million;   Asia    – 3700Million;<br>North America-400 Million;   South America-500million;<br>Europe- 700Million<br><br>Consider the above data. Suppose each person requires 100 IP addresses. Then design an appropriate CIDR scheme that fulfils the requirements to assign addresses. (assume 〖10〗<sup class="tcecode">6</sup>= 2<sup class="tcecode">20</sup>)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> <img src="./Test Results6_files/1.png" alt="image:MST20/1.png" width="314" height="199" class="tcecode"><br><span class="explanation">Explanation:</span><br>Consider Africa: The population is 900M. And each person requires 100 IPs.<br>So total requirement = 90000M = 90×〖10〗<sup class="tcecode">9</sup>  = 90×2<sup class="tcecode">30</sup><br>The nearest power of 2 for 90 is 128(2<sup class="tcecode">7</sup>).<br>So we need 37 bits in HID to fulfil this requirement. <br>Since IVP6 is a 128 bit address, if HID is given 37 bits then NID has 128-37=91 bits.<br>Similarly calculate for other continents.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> <img src="./Test Results6_files/2.png" alt="image:MST20/2.png" width="317" height="198" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> It is not possible to fulfil the above requirement</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> Both A and B are valid</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linking questions</strong><br>Consider the population of  various continents as follows:<br>Africa – 900Million;   Asia    – 3700Million;<br>North America-400 Million;   South America-500million;<br>Europe- 700Million<br>Suppose each person in each continent requires 1 IP address. <br>Then which of the following statements is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> The above requirement can be fulfilled by IPV4 addressing</li>
+<li>&nbsp;<img src="./Test Results6_files/correct.png" width="18"> The above requirement can be fulfilled by IPV6 addressing.<br><span class="explanation">Explanation:</span><br>The total population above =6200 Million =6.2×〖10〗<sup class="tcecode">9</sup><br>IPV4 is a 32 bit address and using 32 bits 2<sup class="tcecode">32</sup> addresses are possible. 2<sup class="tcecode">32</sup>  = 4×〖10〗<sup class="tcecode">9</sup> (approximately).<br>So IPV4 is not possible. <br>IPV6 is a 128 bit address and the requirement can be fulfilled.
+</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> The above requirement can be fulfilled by both IPV4 and IPV6 addressing.</li>
+<li>&nbsp;<img src="./Test Results6_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results6_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

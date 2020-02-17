@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=17086&test_id=71 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results117_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results117_files/calclayout.css">
+<script src="./Test Results117_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results117_files/jquery-ui.js.download"></script>
+<script src="./Test Results117_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results117_files/custom.js.download"></script>
+<script src="./Test Results117_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results117_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results117_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921367, 'I\'m sorry, the time available to complete the test is over!', false, 1486921367939);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=17086&amp;test_id=71#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 6</strong><br>
+File Structures - Indexing, B and B+ trees - insertion, deletion.&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-11-22 08:50:30&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-11-22 09:31:22&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:40:52&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+5.710 / 25.000 (23%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+5 / 15 (33%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Assertion (A) : Second level index in multilevel indexing is always a primary index.<br>Reason (R) : All indexed files are  physically ordered files. <br>Which one of the following is true?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> Both (A) and (R) are true and (R) is the reason for (A)<br><span class="explanation">Explanation:</span><br>Assertion (A) is true since first level index is always ordered and consists of distinct values, Second level index in multilevel indexing is always a primary index.<br>So, we can say assertion (A) is true and Reason (R) is true and R is the reason for (A).
+</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Both (A) and (R) are true but (R) is not correct reason for (A)</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Both (A) and (R) are false</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> (A) is true but (R) is false</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a B<sup class="tcecode">+</sup> tree in which the maximum number of keys in an internal node is 5. What is the minimum number of keys in root-node?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>Irrespective of order of given B<sup class="tcecode">+</sup> tree, we can say that minimum number of keys in root-node is 1.<br>So, answer is (a).
+</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Duplicate keys are allowed in<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> B trees</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> B<sup class="tcecode">+</sup> trees<br><span class="explanation">Explanation:</span><br>Duplicate keys are allowed in B<sup class="tcecode">+</sup> trees only but not in B trees.<br>In B<sup class="tcecode">+</sup> tree, the parent key and the first key in its right child are always same.<br><img src="./Test Results117_files/Q3_exp.PNG" alt="image:Databases Topic Test 6/Q3_exp.PNG" width="186" height="82" class="tcecode"> <br>Here 16 and 14 are duplicate keys.<br>So, answer is (b).
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Both (a) &amp; (b)</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the List-I with List-II<br><img src="./Test Results117_files/Q2.PNG" alt="image:Databases Topic Test 6/Q2.PNG" width="395" height="159" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> A – 1, B – 2, C – 3</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> A – 2, B – 1, C – 3<br><span class="explanation">Explanation:</span><br>Primary index is on the ordered key field.<br>Secondary index is  either on the  key or non-key unordered field.<br>Clustered index is on the non-key ordered field.
+</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> A – 2, B – 3, C – 1</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is the key factor for preferring B<sup class="tcecode">+</sup> tree to binary search trees for indexing database relations?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Database relations have a large number of records</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Database relations are stored on primary key</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> B<sup class="tcecode">+</sup> trees requires less memory than binary search tree</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> Data transfer from Disks is in block<br><span class="explanation">Explanation:</span><br>In order to search for a key, in BST on an average we have to search the nodes equal to the height of tree. The height of BST is large since each node has only 2 children unlike B<sup class="tcecode">+</sup> tree which has more children and so height of B<sup class="tcecode">+</sup> tree is small compared to B tree and no. of nodes to access is small compared to BST tree to search an element. We know that in B<sup class="tcecode">+</sup> tree each node is accommodated in to one disc block. In BST also it may be possible that each node is in one disc block. As number of nodes to access in BST is more compared to B tree or B<sup class="tcecode">+</sup> tree to search for an element , disk block accesses  in BST are more compared to  B or B<sup class="tcecode">+</sup> tree as a result searching takes less time in B or B<sup class="tcecode">+</sup> tree rather than B tree.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a relation, there are 4 records as shown below:<br>(Assume that addresses of records are their serial number respectively)<br><img src="./Test Results117_files/Q1.PNG" alt="image:Databases Topic Test 6/Q1.PNG" width="252" height="101" class="tcecode"> <br>There is an index file associated with this and it contains 2, 4, 3, 1 values. From which field, is the index built:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results117_files/correct.png" width="18">&nbsp;<img src="./Test Results117_files/correct.png" width="18"> Only Emp_name<br><span class="explanation">Explanation:</span><br>We know that index file is an ordered file.<br>If index file is created on the  field “Emp_name” then index file is <br><img src="./Test Results117_files/Q1_exp1.PNG" alt="image:Databases Topic Test 6/Q1_exp1.PNG" width="173" height="94" class="tcecode"><br>⟹ Matches with given index values (2, 4, 3, 1)<br><br><br>If index file is created on the key field “Eid” then index file is <br><img src="./Test Results117_files/Q1_exp2.PNG" alt="image:Databases Topic Test 6/Q1_exp2.PNG" width="178" height="99" class="tcecode"><br>⟹Does not match with given index values.<br><br>If index file is created on  the  field “Salary” then index file is <br><img src="./Test Results117_files/Q1_exp3.PNG" alt="image:Databases Topic Test 6/Q1_exp3.PNG" width="294" height="224" class="tcecode"><br>⟹ Does not matches with the given  index values (2,4,3,1)<br><br>If index file is created on field “Dept_id” then index file is <br><img src="./Test Results117_files/Q1_exp4.PNG" alt="image:Databases Topic Test 6/Q1_exp4.PNG" width="176" height="95" class="tcecode"> <br>⟹Does not match with the given index values (2, 4, 3, 1)<br><br>So, the index is built based on either Emp_name , So, answer is (a).
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Only Dept_id</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Either Emp_name or salary</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Either Emp_name or Dept_id</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a B tree of order 3. If we insert the keys in order(1,2,3,4,5,6,7) to an empty tree, how many splitting of nodes should be done?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Given B tree of order p = 3<br><img src="./Test Results117_files/Q13_exp.PNG" alt="image:Databases Topic Test 6/Q13_exp.PNG" width="464" height="101" class="tcecode"><br>Insert 1:<br><img src="./Test Results117_files/Q13_exp2.PNG" alt="image:Databases Topic Test 6/Q13_exp2.PNG" width="83" height="33" class="tcecode"><br><img src="./Test Results117_files/Q13_exp3.PNG" alt="image:Databases Topic Test 6/Q13_exp3.PNG" width="351" height="440" class="tcecode"><br><img src="./Test Results117_files/Q13_exp4.PNG" alt="image:Databases Topic Test 6/Q13_exp4.PNG" width="349" height="502" class="tcecode"><br>Insert 7:<br><img src="./Test Results117_files/Q13_exp5.PNG" alt="image:Databases Topic Test 6/Q13_exp5.PNG" width="465" height="430" class="tcecode"><br>∴Number of splittings done = 4
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation schema Employee(<span style="text-decoration:underline;">eid</span>, ename, salary, age) and B<sup class="tcecode">+</sup> tree index is built on the table based on eid field. With reference to the B<sup class="tcecode">+</sup> tree of order 3 is shown below, the minimum number of nodes (including the root node) that must be fetched in order to implement the following query:<br>“SELECT * from Employee where eid&gt;= 5 AND eid&lt;= 20;<br><img src="./Test Results117_files/Q10.PNG" alt="image:Databases Topic Test 6/Q10.PNG" width="368" height="119" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results117_files/correct.png" width="18">&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>Given B<sup class="tcecode">+</sup> tree<br><img src="./Test Results117_files/Q10_exp.PNG" alt="image:Databases Topic Test 6/Q10_exp.PNG" width="363" height="136" class="tcecode"> <br>Number of nodes to be fetched in order to retrieve all the records whose employee eid between 5 and 20 is 6.
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following B tree of order (P = 3)<br><img src="./Test Results117_files/Q14.PNG" alt="image:Databases Topic Test 6/Q14.PNG" width="177" height="84" class="tcecode"> <br>If keys (1, 6) are deleted from the above tree in the same order as mentioned above, what is the resultant B tree?<br>(Assume if we want to delete non-leaf key, replace it with Inorder predecessor)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> <img src="./Test Results117_files/Q14_option1.PNG" alt="image:Databases Topic Test 6/Q14_option1.PNG" width="140" height="75" class="tcecode"></li>
+<li><img src="./Test Results117_files/correct.png" width="18">&nbsp;<img src="./Test Results117_files/correct.png" width="18"> <img src="./Test Results117_files/Q14_option2.PNG" alt="image:Databases Topic Test 6/Q14_option2.PNG" width="143" height="85" class="tcecode"><br><span class="explanation">Explanation:</span><br>Given order of B tree = 3<br>No. of min keys present in non-leaf/ leaf-node =⌈P/2⌉-1<br>			=⌈3/2⌉-1	<br>			=1		<br>If number of keys less than 1 then it causes underflow.<br>Given B-tree:<br><img src="./Test Results117_files/Q14_exp1.PNG" alt="image:Databases Topic Test 6/Q14_exp1.PNG" width="173" height="83" class="tcecode"> <br>Delete (1) ⟹ (leaf and if we delete it, it does not cause underflow)<br><img src="./Test Results117_files/Q14_exp2.PNG" alt="image:Databases Topic Test 6/Q14_exp2.PNG" width="136" height="84" class="tcecode"><br>Delete (6):<br>It is non-leaf, so replace with inorder predecessor.<br><img src="./Test Results117_files/Q14_exp3.PNG" alt="image:Databases Topic Test 6/Q14_exp3.PNG" width="212" height="177" class="tcecode"><br><img src="./Test Results117_files/Q14_exp4.PNG" alt="image:Databases Topic Test 6/Q14_exp4.PNG" width="126" height="74" class="tcecode"><br>So, Answer is (b)
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> <img src="./Test Results117_files/Q14_option3.PNG" alt="image:Databases Topic Test 6/Q14_option3.PNG" width="150" height="75" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relational schema <br>Employee(<span style="text-decoration:underline;">Eid</span>, Ename, Salary, Age) with primary key as underlined.( Assume  that the values of age field  in table are in sorted order)<br>Consider the following SQL query<br>Select * from Employee where age ≤ 30 AND age ≥ 20;<br>To implement the above query effectively which of the following index is used (at first level)?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Primary index on eid field of employee table</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Primary index on age field of employee table</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> Clustered index on eid field of employee table</li>
+<li><img src="./Test Results117_files/correct.png" width="18">&nbsp;<img src="./Test Results117_files/correct.png" width="18"> Clustered index on age field of employee table<br><span class="explanation">Explanation:</span><br>Given query is range query on non-key ordered field (age, given age is ordered)<br>So, clustering index on age_field is efficient implementation of indexing( at first level) of the given employee table.<br>Suppose employee table is as follows:<br><img src="./Test Results117_files/Q15_exp.PNG" alt="image:Databases Topic Test 6/Q15_exp.PNG" width="649" height="273" class="tcecode"> <br>So, if we perform searching on index file on search field (age) between 20 and 30, we can retrieve all employee records whose age is between 20 and 30.<br>So, answer is (d).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a B-tree of order 4 and is as given below:<br><img src="./Test Results117_files/Q9.PNG" alt="image:Databases Topic Test 6/Q9.PNG" width="281" height="97" class="tcecode"> <br>If 42 and 40 are inserted into above B tree in this order consecutively, what is the resultant B tree?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> <img src="./Test Results117_files/Q9_option1.PNG" alt="image:Databases Topic Test 6/Q9_option1.PNG" width="243" height="102" class="tcecode"></li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> <img src="./Test Results117_files/Q9_option2.PNG" alt="image:Databases Topic Test 6/Q9_option2.PNG" width="448" height="168" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> <img src="./Test Results117_files/Q9_option3.PNG" alt="image:Databases Topic Test 6/Q9_option3.PNG" width="518" height="199" class="tcecode"><br><span class="explanation">Explanation:</span><br>Given order of B tree is 4.<br>∴ Max no. of keys that can be present in root/ leaf/ internal node is (4-1)=3 keys.<br>If no. of keys exceed 3, overflow occurs and we need to split the node.<br>Given B tree is<br><img src="./Test Results117_files/Q9_exp1.PNG" alt="image:Databases Topic Test 6/Q9_exp1.PNG" width="282" height="103" class="tcecode"><br>Insert (42):<br><img src="./Test Results117_files/Q9_exp2.PNG" alt="image:Databases Topic Test 6/Q9_exp2.PNG" width="391" height="257" class="tcecode"><br>Insert (40):<br><img src="./Test Results117_files/Q9_exp3.PNG" alt="image:Databases Topic Test 6/Q9_exp3.PNG" width="432" height="152" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> <img src="./Test Results117_files/Q9_option4.PNG" alt="image:Databases Topic Test 6/Q9_option4.PNG" width="242" height="107" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a data file with 50 records per block and 2000 blocks are present and a block can accommodate 512 index entries. How many levels does a multilevel indexing consists of ?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results117_files/correct.png" width="18">&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>Given data file consists of 2000 data blocks and each block contains 50 records.<br>∴ No. of records = 1,00,000<br>Given a block can accommodate 512 index entries.<br>∴ No. of index blocks required at first level index is 1,00,000/512<br>=195.3125<br>=196 index blocks<br>At second level no. of index entries =196<br>These 196 entries can be accommodated in one block.<br>The structure of B+ tree  is like<br><img src="./Test Results117_files/Q8_exp.PNG" alt="image:Databases Topic Test 6/Q8_exp.PNG" width="204" height="145" class="tcecode"> <br>∴ No. of levels in multi level indexing is 2.
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 0</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let the order of B tree is 32 and the B tree is 63 percent full. What will be the average number of &lt;key, data-pointer&gt; entries that a 2-level B tree holds?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 7999<br><span class="explanation">Explanation:</span><br>Given order of B tree is 32 and it is 63 percent full.<br>∴On an average, 32×0.63 block pointers present in each node =20.16⟹ approximately 20 block pointers.<br>Root – 1 node – 19 (&lt;key, data-pointer&gt; entries)    20 block pointers<br>Level 1 – 20 nodes – 20 * 19 = 380 entries               20 * 20 =  400 block pointers <br>Level 2 – 400 nodes – 400 * 19=7600 entries    400 * 20 =  8000 block pointers   <br>∴ 2-level B tree holds (19+380+7600)entries =7999 entries on an average.<br>So, answer is (a).
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 7600</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 380</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 7980</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Questions Q5 &amp; Q6:</strong><br>In a database file structure, the search key value field is 6 bytes long, the block size is 1024 bytes, a record pointer is 10 bytes and a block pointer is 5 bytes long.<br><br>The largest possible order of a B tree, if it is used in implementing this file structure is<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 50</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 51</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 48</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 49<br><span class="explanation">Explanation:</span><br>Let n be the order of B tree.<br>Given block size = 1024 bytes<br>We know that structure of non-leaf node in B tree is <br><img src="./Test Results117_files/Q6_exp.PNG" alt="image:Databases Topic Test 6/Q6_exp.PNG" width="566" height="94" class="tcecode"> <br>In case of leaf node block pointers will be NULL values.<br>We have to accommodate the whole node into one disc block.<br>Let P<sub class="tcecode">b</sub> be block pointer size ⟹P<sub class="tcecode">b</sub>=5 bytes<br>Let k be the size of search key field ⟹k=6 bytes<br>Let P<sub class="tcecode">r</sub> be the size of record pointer ⟹P<sub class="tcecode">r</sub>=10 bytes<br>∴n(P<sub class="tcecode">b</sub>)+(n-1)(k+P<sub class="tcecode">r</sub>)≤1024<br>⟹(n)(5)+(n-1)(6+10)≤1024<br>⟹5n+16n-16≤1024<br>⟹21n-16≤1024<br>⟹21n≤1024<br>⟹n≤49.5238…<br>⟹Largest possible value of n is floor( 49.5238….) i.e n is 49 floor<br>∴ Order of B tree is 49.<br>Answer is (d).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Questions Q5 &amp; Q6:</strong><br>In a database file structure, the search key value field is 6 bytes long, the block size is 1024 bytes, a record pointer is 10 bytes and a block pointer is 5 bytes long.<br><br>The largest possible order of a non-leaf node in a B<sup class="tcecode">+</sup> tree is used in implementing this file structure is<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 91</li>
+<li><img src="./Test Results117_files/wrong.png" width="16">&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 92</li>
+<li>&nbsp;<img src="./Test Results117_files/correct.png" width="18"> 93<br><span class="explanation">Explanation:</span><br>Let n be the order of non-leaf node in B<sup class="tcecode">+</sup> tree.<br>Given block size = 1024 bytes<br>We know that structure of non-leaf node in B<sup class="tcecode">+</sup> tree is<br><img src="./Test Results117_files/Q5_exp.PNG" alt="image:Databases Topic Test 6/Q5_exp.PNG" width="340" height="37" class="tcecode"> <br>P<sub class="tcecode">1</sub>→block pointer<br>k<sub class="tcecode">1</sub>→search key field<br>We have to accommodate the whole non-leaf node into one block.<br>∴Let P<sub class="tcecode">b</sub> be block pointer size, here P<sub class="tcecode">b</sub>=5 bytes<br>k be size of search key field, here k=6 bytes<br>∴(n)(P<sub class="tcecode">b</sub>)+(n-1)(k)≤1024<br>⟹(n)(5)+(n-1)(6)≤1024<br>⟹5n+6n-6≤1024<br>⟹11n-6≤1024<br>⟹11n≤1030<br>⟹n≤1030/11<br>⟹n≤93.6363…<br>Largest possible of n is floor(93.6363) i.e n is 93.<br>∴ Order of non-leaf node in B<sup class="tcecode">+</sup> tree is 93.<br>So, answer is (c).
+</li>
+<li>&nbsp;<img src="./Test Results117_files/wrong.png" width="16"> 94</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results117_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

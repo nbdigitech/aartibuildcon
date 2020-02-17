@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=15164&test_id=211 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results78_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results78_files/calclayout.css">
+<script src="./Test Results78_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results78_files/jquery-ui.js.download"></script>
+<script src="./Test Results78_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results78_files/custom.js.download"></script>
+<script src="./Test Results78_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results78_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results78_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838390, 'I\'m sorry, the time available to complete the test is over!', false, 1486838390520);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=15164&amp;test_id=211#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Topic Test - 1</strong><br>
+Classification of Addresses, Subnetting, Supernetting&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-11-14 22:29:35&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-11-14 23:10:38&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:41:03&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+13.010 / 25.000 (52%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+9 / 15 (60%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+What is the supernet mask for given below networks? <br>	100.10.32.0/24, 100.10.33.0/24, 100.10.34.0/24, ..... 100.10.47.0/24<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /26</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> /20<br><span class="explanation">Explanation:</span><br>100.10.001<span style="text-decoration:underline;">00000</span>.00000000<br>100.10.001<span style="text-decoration:underline;">00001</span>.00000000<br>100.10.001<span style="text-decoration:underline;">00010</span>.00000000<br><br>100.10.001<span style="text-decoration:underline;">01111</span>.00000000<br>1<sup class="tcecode">st</sup> Rule: contiguous ✓<br>2<sup class="tcecode">nd</sup> Rule: all network’s size should be same (2<sup class="tcecode">8</sup>) ✓ <br>3<sup class="tcecode">rd</sup> Rule: 1<sup class="tcecode">st</sup> IP should be divisible by total size ✓<br>∴Total size=2<sup class="tcecode">4</sup>*2<sup class="tcecode">8</sup>=212<br>∴ 1<sup class="tcecode">st</sup> IP is divisible [12×0's(least significant) are there in 1<sup class="tcecode">st</sup> IP]<br>∴ Changing bits are ‘4’.<br>⟹ 24 – 4 = 20
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /21</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /24</li>
+</ol>
+<br><br>
+</li>
+<li>
+The router interface has the following IP address on Ethernet0: 172.16.2.1/23. Which of the following can be valid host IDs on the LAN interface attached to the router?<br>1.172.16.1.100 <br>2.172.16.1.198 <br>3.172.16.2.255 <br>4.172.16.3.0<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 1 only</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 2 and 3 only</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 3 and 4 only<br><span class="explanation">Explanation:</span><br><img src="./Test Results78_files/Q2a.PNG" alt="image:CN1/Q2a.PNG" width="380" height="451" class="tcecode"><br>(Or)<br>    Net ID part (first 23 bits) should not change, Only Host ID part (24-32 bits) can vary.<br>    172.16.00000001.01100100        ✕<br>            Here 23 bit has changed. But it should not.<br>    172.16.00000011.10000110        ✕<br>            Here 23 bit has changed. But it should not.<br>    172.16.00000010.11111111        ✓<br>            No Network bits are changes. <br>    172.16.00000011.00000000        ✓<br>            No Network bits are changes.
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Supernet mask for subnets 100.10.1.0/24, 100.10.2.0/24, 100.10.3.0/24, 100.10.4.0/24<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /21</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /24</li>
+<li><img src="./Test Results78_files/wrong.png" width="16">&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> /22</li>
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> Not possible<br><span class="explanation">Explanation:</span><br>100.10.1.0	→ 	100.10.00000<span style="text-decoration:underline;">001</span>.00000000<br>100.10.2.0	→ 		.00000<span style="text-decoration:underline;">010</span>.00000000<br>100.10.3.0	→ 		.00000<span style="text-decoration:underline;">011</span>.00000000<br>100.10.4.0	→		.00000<span style="text-decoration:underline;">100</span>.00000000<br>1<sup class="tcecode">st</sup> Rule: contiguous ✓<br>2<sup class="tcecode">nd</sup> Rule: all network’s size should be same (28) ✓ <br>But 3<sup class="tcecode">rd</sup> rule: 1<sup class="tcecode">st</sup> IP should be divisible by total supernet size is failing. <br>N/w size = 4*2<sup class="tcecode">8</sup> = 2<sup class="tcecode">10</sup>  i.e. 1<sup class="tcecode">st</sup> IP is not divisible. <br>In options if we have “None” (or) can’t possible, then we need to check all “3‟ rules.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data question (14, 15)</strong><br>A router has following (CIDR) entries in routing table.<br><img src="./Test Results78_files/Q4a.PNG" alt="image:CN1/Q4a.PNG" width="283" height="108" class="tcecode"><br>Next hop for a packet with IP address 138.48.63.10<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> I-0</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> I-1<br><span class="explanation">Explanation:</span><br>Mask for I-0=255.255.252.0<br>              	   I-1=255.255.252.0                <br>               	   R-1=255.255.254.0<br>Given IP = 138.48.63.10<br>(logical AND)<span style="text-decoration:underline;">255.255.252.0</span>	<br>	       	       138.48.60.0  (Net ID)
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> R-1</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> R-2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data question (14, 15)</strong><br>A router has following (CIDR) entries in routing table.<br><img src="./Test Results78_files/Q4a.PNG" alt="image:CN1/Q4a.PNG" width="283" height="108" class="tcecode"><br>Next hop for a packet with IP address 138.48.52.2<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> I-0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> I-1</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> R-1</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> R-2<br><span class="explanation">Explanation:</span><br>Mask for I-0=255.255.252.0<br>              	   I-1=255.255.252.0                <br>               	   R-1=255.255.254.0<br>Given IP = 138.48.52.2<br>	(logical AND)<span style="text-decoration:underline;">255.255.252.0</span>	<br>	       	       138.48.52.0  (Net ID)<br>	Goes to Default.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following IP addresses is  matched by the address prefix 153.234.99.10/20?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 153.235.31.10</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 153.234.95.23</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 153.234.102.10<br><span class="explanation">Explanation:</span><br>The last address is not even a valid IP address, so we can rule it out. (because 257 octet is not valid) <br>The masks given as 20, so addresses must have the same first 20 bits for the prefix to be a match. i.e first 20 bits should be matched with the IP’s given in options. <br>We can rule out 123.235.31.10 because of 2nd octet is differ.<br>For the other two addresses, we need to look at how their 3rd octet can match with prefix(first 20 bits of given IP) <br>The third byte of the prefix is of the form 0110 ****, i.e., only the first 4 bits matter given the mask size of 20 (8+8+4 = 20). We have: 95 = 0101 1111,<br>         102 = 0110 0110. <br>Hence, the prefix is a match only for 123.234.102.10
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 153.257.140.10</li>
+</ol>
+<br><br>
+</li>
+<li>
+In an organisation, class B address is given by ISP. There are total 6 projects going in 6 different blocks and each project wants its own subnet to do experiments. Each block in organisation can be expanded at any time in future if requirement comes up. The company has bought all the routers very long back so that routers are not upgraded with “ip subnet zero” command. If you are the network administrator, what is the best subnet mask to use in this scenario?<br>Note: The routers configured with “ip subnet zero” are the only routers to support the usage of first(with all 0’s in subnet bits place) and last subnet(with all 1’s in subnet bits place)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.0.0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.248.0</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 255.255.224.0<br><span class="explanation">Explanation:</span><br>The default mask for a Class B is 255.255.0.0. <br>Answer C extends that mask by three bits, creating 8 subnets (2<sup class="tcecode">3</sup> =8). Because of routers are not upgraded with “ip subnet zero” command the first subnet (all 0’s in subnet bits place) and last subnet(all 1’s in subnet bits place). So we are left with six subnets. <br>Answer A is incorrect because it is the default mask for a Class B and not subnetted at all. <br>Answer B and D are incorrect because although they create sufficient subnets, they do not maximize the number of hosts per subnet and so are not the best answer.
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.240.0</li>
+</ol>
+<br><br>
+</li>
+<li>
+In an engineering college, the network administrator has IP 208.10.128.0/24. He needs to<br>divide this network into 4 segments (ECE = 60, CSE = 120, EEE = 30, MEC = 30). ECE block<br>got 208.10.128.0/26 as its address. Then what will be MEC block address?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 208.10.128.64/27</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 208.10.128.96/27</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> a or b<br><span class="explanation">Explanation:</span><br><img src="./Test Results78_files/E13a.PNG" alt="image:CN1/E13a.PNG" width="424" height="221" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the below range of hosts belong to a particular subnet in class B with IP address 182.168.0.0, if 4 bits are borrowed for subnetting from host ID part?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 182.168.17.1 to 182.168.22.254<br><span class="explanation">Explanation:</span><br><img src="./Test Results78_files/E12a.PNG" alt="image:CN1/E12a.PNG" width="231" height="67" class="tcecode"><br>⇒ Here we need to find all possible subsets and its Host ID ranges.<br><img src="./Test Results78_files/E12b.PNG" alt="image:CN1/E12b.PNG" width="401" height="474" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 182.168.255.1 to 182.168.22.255</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 182.168.17.1 to 182.168.32.255</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 182.168.16.0 to 182.168.22.255</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following addresses as the first IP addresses of subnets in Oxford University. Among those starting IPs, 4 IP’s are given below and some of them are part of a block, whose size is 1024(i.e block have 1024 IP’s). Which of the following IPs is/are a part of the block of 1024 IPs?<br>1.205.16.37.32 <br>2.190.16.42.0 <br>3.17.17.32.0 <br>4.123.45.24.52<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 1 only</li>
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 3 only<br><span class="explanation">Explanation:</span><br>First address of subnet is nothing but the subnet ID of the subnet.<br>	A block(subnet) contains the 1024 address means, the first address(subnet ID) of the subnet is divisible by 1024.<br>	<br>	To be divisible by 1024 = 2<sup class="tcecode">10</sup>, 10 rightmost bits of an address should be 0. <br>Only the address 17.17.32.0 meets this condition.
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 2 and 1</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 4  and 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+The Stanford university needs 900 addresses in a same network for english literature department. Below given are class C addresses. Then which set of addresses can be used by the university(Note: University is trying to do aggregation of networks)<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 198.47.32.0 198.47.33.0 198.47.34.0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 198.47.32.0 198.47.42.0 198.47.52.0 198.47.62.0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 198.47.31.0 198.47.32.0 198.47.33.0 198.47.52.0</li>
+<li><img src="./Test Results78_files/correct.png" width="18">&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 198.47.32.0 198.47.33.0 198.47.34.0 198.47.35.0<br><span class="explanation">Explanation:</span><br>For each set we have to check all the 3 rules.<br>1<sup class="tcecode">st</sup> Rule: contiguous <br>2<sup class="tcecode">nd</sup> Rule: all network’s size should be same (2<sup class="tcecode">8</sup>) <br>3<sup class="tcecode">rd</sup> Rule: 1<sup class="tcecode">st</sup> IP should be divisible by total size <br>a): No, there are only three blocks. <br>b): No, the blocks are not contiguous. <br>c): No, 31 in the first block is not divisible by 4. <br>d): Yes, all three rules are fulfilled.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What could be the network mask if direct broadcast address of a network is 186.19.07.255?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results78_files/wrong.png" width="16">&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.248.0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.252.0</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 255.255.254.0</li>
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> All the above<br><span class="explanation">Explanation:</span><br>Without knowing how many subnets are there or how many bits are used for subnetting, we can not say the netmask perfectly.<br>If we assume 3rd octet first 5 bits as subnet borrowed bits, mask will be 255.255.248.0. And network ID is 186.19.0.0<br>If we assume 3rd octet first 6 bits as subnet borrowed bits, mask will be 255.255.252.0. <br>And network ID is 186.19.4.0<br>If we assume 3rd octet first 7 bits as subnet borrowed bits, mask will be 255.255.254.0. <br>And network ID is 186.19.6.0<br>All are possible, so All the above
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the IP-address 0xBF2F1582, 5 bits are borrowed from Host ID to do subnetting. How many valid host IPs are possible for each subnet.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> 2046<br><span class="explanation">Explanation:</span><br>Given IP address is in hexadecimal form.<br>	The IP address in decimal form: 191.47.21.130<br>	It’s a class B address, so 16-bits are Network ID and 16-bits are Host ID.<br>	If 5 bits are borrowed for subnet from Host ID, 16-5 = 11 bits are for Host ID<br>	Total possible valid host IPs are 2<sup class="tcecode">11</sup> - 2 = 2046
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 2048</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 1024</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 1022</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the type of IP address given as 198.18.37.127/25 where a single bit is borrowed to do subnetting?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> Network</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> Limited broadcasted</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> Host</li>
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> None<br><span class="explanation">Explanation:</span><br>Here 1 subnet bit has borrowed for subnetting. <br>	So networks possible are ⇒ 198.18.37.0 and 198.18.37.128<br><img src="./Test Results78_files/E7a.PNG" alt="image:CN1/E7a.PNG" width="541" height="75" class="tcecode"><br>For both network limited broadcast network is 255.255.255.255.<br>So, given IP is a Direct broadcast address type.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A large number of consecutive IP address are available starting at 192.168.0.0. Suppose that five universities, HU, BU, CU,  DU and PU has requirement of 4000, 2000, 500, 1000 and 7000 IP address blocks  respectively. There are large number of consecutive IP address available with starting of 192.168.0.0. What will be the valid first and last  IP address assigned for BU.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 192.168.12.0/21 → 192.168.61.255/21</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> 192.168.48.0/21 → 192.168.55.255/21</li>
+<li>&nbsp;<img src="./Test Results78_files/correct.png" width="18"> Either (a) or (b)<br><span class="explanation">Explanation:</span><br>Given IP 192.16.0.0<br>Total host ID’s require is 4000 + 2000 + 500 + 1000+ 7000 = 14500<br>For BU 2000 IP’s are needed so log<sub class="tcecode">2</sub>(2000) = 11 bits should be available as host ID part.<br>In given options,<br>a.192.168.12.0/21 → 192.168.61.255/21<br>	192 . 168 . <span style="text-decoration:underline;">0 0</span> 0 0 <span style="text-decoration:underline;">1 1 0</span> 0 . 0 0 0 0 0 0 0 0 → 192 . 168 . <span style="text-decoration:underline;">0 0</span> 1 1 <span style="text-decoration:underline;">1 1 0</span> 1 . 1 1 1 1 1 1 1 1<br>	Underline bits are used to do subnetting.<br>	192.168.0.0/19 → 192.168.55.255/19 ⇒ PU(8192 possible host IP’s)<br>	192.168.8.0/20 → 192.168.59.255/20 ⇒ HU(4096 possible host IP’s)<br>	192.168.12.0/21 → 192.168.61.255/21 ⇒ BU(2048 possible host IP’s)<br>	192.168.14.0/22 → 192.168.62.255/22 ⇒ DU(1024 possible host IP’s)<br>	192.168.15.0/23 → 192.168.63.127/23 ⇒ CU(512 possible host IP’s)<br><br>b.192.168.48.0/21 → 192.168.55.255/21<br>	192 . 168 . <span style="text-decoration:underline;">0 0 1 1 0</span> 0 0 0 . 0 0 0 0 0 0 0 0 → 192 . 168 . <span style="text-decoration:underline;">0 0 1 1 0</span> 1 1 1 . 1 1 1 1 1 1 1 1<br>	Underline bits are used to do subnetting.<br>	192.168.0.0/19 → 192.168.31.255/19 ⇒ PU(8192 possible host IP’s)<br>	192.168.32.0/20 → 192.168.47.255/20 ⇒ HU(4096 possible host IP’s)<br>	192.168.48.0/21 → 192.168.55.255/21 ⇒ BU(2048 possible host IP’s)<br>	192.168.56.0/22 → 192.168.59.255/22 ⇒ DU(1024 possible host IP’s)<br>	192.168.60.0/23 → 192.168.61.255/23 ⇒ CU(512 possible host IP’s)<br>So both options (a) and (b) are possible.
+</li>
+<li>&nbsp;<img src="./Test Results78_files/wrong.png" width="16"> Neither (a) nor (b)</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results78_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

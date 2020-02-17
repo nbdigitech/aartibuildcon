@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92162&test_id=284 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results44_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results44_files/calclayout.css">
+<script src="./Test Results44_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results44_files/jquery-ui.js.download"></script>
+<script src="./Test Results44_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results44_files/custom.js.download"></script>
+<script src="./Test Results44_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results44_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results44_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837554, 'I\'m sorry, the time available to complete the test is over!', false, 1486837554265);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92162&amp;test_id=284#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 4</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:47&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which one of the following is closest in meaning to the word given below?<br><strong class="tcecode">GADFLY</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Calm</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Straight forward</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Nuisance<br><span class="explanation">Explanation:</span><br>GADFLY means, “A person who annoys (or) criticizes others in order to provoke them into action”.<br>So, from all the given options Nuisance is the word that is closely related to the meaning of gadfly.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Terror</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the alternative meaning of the underlined part of the sentence.<br>He wasted all afternoon on <span style="text-decoration:underline;">a wild goose chase</span>.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Genuine effort</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Futile search<br><span class="explanation">Explanation:</span><br>In the given sentence, we can predict the alternative meaning by using keywords from the context, such as the verb wasted, it refers to something that is of no use. <br>Of all the given options, the word futile in option (b) means “<strong class="tcecode">having no useful result, pointless</strong>” which meets our requirement. So, in the context of the sentence, <strong class="tcecode">a futile search</strong> is compatible with “a wild goose chase”.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Ideal effort</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> A fruitful search</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>Raghav is ______ than his sister<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Elder</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Eldest</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Older<br><span class="explanation">Explanation:</span><br>In the given sentence, since we are comparing Raghav with his sister, we need the comparative form of the adjective. So, either elder or older could be the answer. But, the adjective <span style="text-decoration:underline;">Elder</span> is not used with <span style="text-decoration:underline;">than</span> and so older is the correct choice.<br>		 Raghav is <span style="text-decoration:underline;">older</span> than his sister.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Oldest</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the word that is opposite in meaning to the underlined word.<br>I suppose using that <strong class="tcecode"><span style="text-decoration:underline;">hyperbole</span></strong> makes her feel good about herself.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Understate<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word hyperbole refers to an extravagant statement which is not intended to be taken literally, i.e., an obvious and intentional exaggeration. <br>Of all the given options, the word understate in option (a) means represent (something) as being smaller or less good or important than it really is, which is opposite to exaggeration.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Stretch</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Magnify</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Increase</li>
+</ol>
+<br><br>
+</li>
+<li>
+The difference of two numbers 1291. On dividing the larger number by the smaller, we get 4 as quotient and 16 as remainder. What is the larger number?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 1296</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 1719</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 1716<br><span class="explanation">Explanation:</span><br>Let ‘x’ is the larger number and ‘y’ is the smaller number.<br>	Given the difference of the two number is = 1291<br>					x-y = 1291 -----------------(1)<br>On dividing the larger number by the smaller, we get 4 as quotient and 16 as remainder.<br>				x = 4y + 16 ---------------- (2)<br>By substituting the value of x in equation (1)<br>				4y + 16 – y = 1291<br>					   3y = 1275<br>					     y = 425<br>Then, <br>	x – 425 = 1291<br>	         x = 1291 + 425<br>	         x = 1716<br>The largest number is 1716.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 1416</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair.<br><strong class="tcecode">YEAST: FERMENTATION</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Deny : Approve</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Bacteria : Decomposition<br><span class="explanation">Explanation:</span><br><strong class="tcecode">RELATIONSHIP BETWEEN THE GIVEN PAIR:<br></strong>Yeasts are minute organisms which cause fermentation (chemical reaction induced by living organisms).<br><strong class="tcecode">Option (a):</strong><br>Deny is to reject which is an antonym (opposite in meaning) for approve.<br><strong class="tcecode">Option (b):</strong><br>Bacteria are minute organisms which cause decomposition.<br>	<strong class="tcecode">Option (c):</strong><br>		A doctor gives treatment to the patients.<br>	<strong class="tcecode">Option (d):</strong><br>		Antibiotic is a kind of medicine.<br>	 From the given explanation, the pair that best expresses the relationship similar to that expressed in <strong class="tcecode">Yeast: Fermentation is Bacteria: Decomposition.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Doctor : Treatment</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Antibiotic : Medicine</li>
+</ol>
+<br><br>
+</li>
+<li>
+Germany is rightly proud of its ability to control costs and keep on exporting. But it also needs to recognize that its success has been won in part at the expense of its European neighbors. Germans like to believe that they made a huge sacrifice in giving up their beloved D-mark ten years ago, but they have in truth benefited more than anyone else from the euro. Almost half of Germany’s exports go to other euro-area countries that can no longer resort to devaluation to counter German competitiveness.<br>Which of the statements below can be inferred from the above passage?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Germany has favored helping the deficit euro-area countries.</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> All the Germany’s exports go to other euro-area countries</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> Germans have benefited more than anyone else from the euro.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong><br> This statement is incorrect and cannot be inferred as nothing is mentioned about Germany favoring other euro-area countries in the passage.	<br><strong class="tcecode">Option (b):<br></strong>In the passage, it is mentioned that “almost half of Germany’s exports go to other euro-area countries”, but not all. So, the given statement cannot be inferred from the passage.<br><strong class="tcecode">Option (c):</strong><br> The given statement can be inferred from the given passage as it is clearly mentioned that “They (Germans) have in truth benefited more than anyone else from the euro.”<br><strong class="tcecode">Option (d):<br></strong>This statement cannot be inferred as it contradicts to what is given in the passage that “Germany needs to recognize that its success has been won in part at the expense of its European neighbors”.
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> Germany has recognized that its success has been won in part at the expense of its European neighbors.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Smitha was married 9 years ago. Today her age is 1(3/8) times to that at the time of marriage. At present her daughter’s age is  (1/3)rd of her age. What was her daughter’s age 5 years ago?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/04Ea.PNG" alt="image:APT4/04Ea.PNG" width="482" height="489" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+An IT company employs 18,000 persons, out of which 55 percent are males and 65 percent of males are either 27 years or older. How many males are employed in that IT company who are younger than 27 years?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 2345</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 3465<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/02Ea.png" alt="image:APT4/02Ea.png" width="599" height="310" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 4567</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 5678</li>
+</ol>
+<br><br>
+</li>
+<li>
+The production of a company has ups and downs every year. The production increases for three consecutive years consistently by 20% and in the fourth year it decreases by 10%. Again in the next three years it increases by 25% each year and decreases by 10% in the fourth year. If we start counting from the year 2004, approximately what will be the effect on production of the company in 2009?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 78.8% increase</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 94.4% increase<br><span class="explanation">Explanation:</span><br>Let the production of the company in 2004 be 100 units<br>The production of the company increases for three consecutive years consistently by 20%.<br><img src="./Test Results44_files/10Ea.PNG" alt="image:10Ea.PNG" width="498" height="524" class="tcecode"><br><img src="./Test Results44_files/10Eb.PNG" alt="image:APT4/10Eb.PNG" width="303" height="191" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 92.2% increase</li>
+</ol>
+<br><br>
+</li>
+<li>
+NASA sent a vehicle to Saturn at a speed of 1000 miles per hour. It further went to moon at a speed of 3000 miles per hour. The time taken by vehicle to reach Saturn from earth to that of Saturn to moon are in the ratio 2 : 3. Then find the average speed of the vehicle from earth to moon.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 6,200 miles/hour</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 4,200 miles/hour</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 2,200 miles/hour<br><span class="explanation">Explanation:</span><br>Speed of vehicle from earth to Saturn<br>			S<sub class="tcecode">1</sub> = 1000 miles/hour<br>	Speed of vehicle from Saturn to moon<br>			S<sub class="tcecode">2</sub> = 3000 miles/hour<br>	The time taken by vehicle to reach Saturn from earth = T<sub class="tcecode">1</sub><br>	The time taken by vehicle to reach moon from Saturn = T<sub class="tcecode">2</sub><br>			T<sub class="tcecode">1</sub> : T<sub class="tcecode">2</sub>  = 2 : 3<br>			∴ T<sub class="tcecode">1</sub> = 2x<br>			   T<sub class="tcecode">2</sub> = 3x<br>	Average speed of vehicle from earth to moon = S<br><img src="./Test Results44_files/011Ea.PNG" alt="image:APT4/011Ea.PNG" width="453" height="381" class="tcecode"><br><img src="./Test Results44_files/11Eb.png" alt="image:APT4/11Eb.png" width="471" height="530" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 5,200 miles/hour</li>
+</ol>
+<br><br>
+</li>
+<li>
+2 bulbs out of a sample of 10 bulbs manufactured by a company are defective. The probability that 3 out of 4 bulbs bought by a customer will not be defective is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 8/17</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 8/15<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/01Ea.PNG" alt="image:APT4/01Ea.PNG" width="486" height="324" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 7/17</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 7/15</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a certain code, MURALI is written as NCTWOK and RAVI is written as XCTK. How RAUDRA will be written in that code?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> TWFCTC</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> TFWTCC</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> TFWCTC<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/13Ea.png" alt="image:APT4/13Ea.png" width="629" height="213" class="tcecode"><br><img src="./Test Results44_files/E13b.png" alt="image:APT4/E13b.png" width="380" height="308" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> TWFCCT</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question:</strong><br>		Percentage of profit earned by the company over the years<br><br><img src="./Test Results44_files/13Ec.png" alt="image:APT4/13Ec.png" width="611" height="422" class="tcecode"><br>If the profit earned in the year 2006 is Rs 46,400 , then find the ratio of the income to the expenditure in that year.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 5 : 7</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 13 : 10</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 7 : 9</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 7 : 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/14Ea.png" alt="image:APT4/14Ea.png" width="504" height="360" class="tcecode"><br><img src="./Test Results44_files/14Eb.png" alt="image:APT4/14Eb.png" width="471" height="242" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question:</strong><br>		Percentage of profit earned by the company over the years<br><br><img src="./Test Results44_files/13Ec.png" alt="image:APT4/13Ec.png" width="611" height="422" class="tcecode"><br>The expenditure of the company in the years 2006 and 2007 are equal. If the income of the company in the year 2007 is Rs31,000 , then find the income of the company in the year 2006<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 27,000</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 27,500</li>
+<li>&nbsp;<img src="./Test Results44_files/correct.png" width="18"> 28,000<br><span class="explanation">Explanation:</span><br><img src="./Test Results44_files/15Ea.png" alt="image:APT4/15Ea.png" width="470" height="395" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results44_files/wrong.png" width="16"> 28.500</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results44_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

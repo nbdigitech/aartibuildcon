@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92224&test_id=264 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results56_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results56_files/calclayout.css">
+<script src="./Test Results56_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results56_files/jquery-ui.js.download"></script>
+<script src="./Test Results56_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results56_files/custom.js.download"></script>
+<script src="./Test Results56_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results56_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results56_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837845, 'I\'m sorry, the time available to complete the test is over!', false, 1486837845089);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92224&amp;test_id=264#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Topic Test - 4</strong><br>
+Combinatorics: Counting, Recurrance Relations, Generating Functions&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:35:13&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+A palindrome is a string whose reversal is identical to the string. How many bit strings of length n are palindromes?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 2<sup class="tcecode">⌈n⁄2⌉</sup><br><span class="explanation">Explanation:</span><br>A palindrome of length n is completely determined by its first ⌈n/2⌉ bits. This is true because once these bits are specified, the remaining bits, read from right to left, must be identical to the first ⌈n/2⌉ bits, read from left to right. Furthermore, these first ⌈n/2⌉ bits can be specified at will, and by the product rule there are 2<sup class="tcecode">⌈n⁄2⌉</sup>  ways to do so.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">(⌊ n/2⌋ )</sup></li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">⌈n⁄2⌉</sup>  -1</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">(⌊ n/2⌋)</sup> -1</li>
+</ol>
+<br><br>
+</li>
+<li>
+5 integers randomly chosen from 1 to 2015. What is the probability that there is a pair of integers whose difference is a multiple of 4?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 1⁄4</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2⁄4</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 3⁄4</li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>We will show that there must be a pair of integers whose difference is a multiple of 4.<br>Let the boxes be the remainder that a number leaves upon division by 4, and there are 4 of them corresponding to a remainder of 0, 1, 2 and 3. Let the pigeons be 5 integers that are randomly chosen. Then, by the pigeonhole principle, there are ⌈5/4⌉=2 integers that leave the same remainder. If so, then their difference will be a multiple of 4.<br>Hence, the probability is 1.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are 52 people in a room. What is the largest value of n such that the statement “At least n people in this room have birthdays falling in the same month” is always true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>There are 12 months, and we can “put” one person in each month, and that accounts for 12 people. Next we can put a second person in each month (we have now accounted for 24 people). A third person in each month (36 people). A fourth (48 people), leaving 4 people to spread out over four months.<br>The most “spread out” extreme is to have 5 people with birthdays in each of four months, January to April say, and 4 people with birthdays in each of the remaining eight months. (And that is indeed 4×5+8×4=52 people).<br>What does this extreme tell us?<br>Well…. that the numbers 4 and 5 seem significant.<br>Must there always be 4 people in the room with a birthday in the same month?<br>Well we can’t have 3 people or less with the same birthday in each month (that accounts for only 12×3=36 people at most), so there must be at least one month with 4 people “in” it!<br>Must there always be 5 people in the room with a birthday in the same month?<br>Well, we can’t have 4 people or less with the same birthday in each month, as that will account for only 12×4=48 people at most. So, yeas, there must be a month with at least 5 people “in” it.<br>Must there always be 6 people in the room with a birthday in the same month?<br>No. we already have an example to show this need not be the case: 5 people with birthdays in each of four months January to April, and 4 people with birthdays in each of the remaining eight months.<br>So “5” seems to be a key number. We can guarantee that, no matter how people’s birthday’s fall, there are at least are five people with a common birthday month. We cannot guarantee that there are 6 people with a common birthday month. (It can happen. It is just not guaranteed).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<sup class="tcecode">m+n</sup>C<sub class="tcecode">r</sub> =<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O4a.PNG" alt="image:EM4/O4a.PNG" width="134" height="57" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O4b.PNG" alt="image:EM4/O4b.PNG" width="147" height="51" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> <img src="./Test Results56_files/O4c.PNG" alt="image:EM4/O4c.PNG" width="136" height="54" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results56_files/E4a.PNG" alt="image:EM4/E4a.PNG" width="644" height="212" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O4d.PNG" alt="image:EM4/O4d.PNG" width="142" height="62" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Tom Riddle must choose 4 classes for his final semester at school. He must take at least 1 science class and at least 1 art class. In his school offers 4 (distinct) science classes, 3 (distinct) art classes and three other (distinct) classes, hoe many different choices for classes does we have? ________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 195</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 175</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 210</li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 160<br><span class="explanation">Explanation:</span><br><img src="./Test Results56_files/E5a.PNG" alt="image:EM4/E5a.PNG" width="641" height="203" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following expressions the correct formula for the number of unit squares with exactly 1 bold side in an n×n square with n×n square __________<br><img src="./Test Results56_files/Q6a.PNG" alt="image:EM4/Q6a.PNG" width="239" height="147" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> (n – 2)<sup class="tcecode">2</sup></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 4(n – 2)<br><span class="explanation">Explanation:</span><br>N is number of squares on each side. Subtracting the corners which are 2 on each side give the one side bold squares on each side. Multiplying by 4 gives the one side bold square in the whole shape.<br>Therefore, 4(n-2).
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> n<sup class="tcecode">2</sup> – 8</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 4n – 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+In how many ways can seven different jobs be assigned to 4 different employees so that each employee is assigned at least one job and the most difficult job is assigned to the best employee?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 2100<br><span class="explanation">Explanation:</span><br>Let us ignore temporarily the stipulation about the most difficult job and an employee). Then we are looking for the number of onto functions from the set of 7 jobs to the set of 4 employees. By theorem 1 there are 4<sup class="tcecode">7</sup>-C(4,1) 3<sup class="tcecode">7</sup>+C(4,2) 2<sup class="tcecode">7</sup>-C(4,1) 1<sup class="tcecode">7</sup>=8400 such functions. Now, by symmetry in exactly one fourth of those assignments should the most difficult job be given to the best employee, as opposed to one of the other three employees. Therefore, the answer is 8400/4=2100.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2400</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 8400</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 8200</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a country, there are coins of denominations $2, $3 and $7. Different ways are there to pay exactly $10 are x<sup class="tcecode">10</sup> co-efficient of fallowing geniting function _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 1/(1-x<sup class="tcecode">2</sup> )∙1/(1-x<sup class="tcecode">6</sup> )∙1/(1-x<sup class="tcecode">2</sup> )</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 1/(1-x<sup class="tcecode">3</sup> )∙1/(1-x<sup class="tcecode">3</sup> )∙1/(1-x<sup class="tcecode">4</sup> )</li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> (1)/(1-x<sup class="tcecode">2</sup> )∙1/(1-x<sup class="tcecode">3</sup> )∙1/(1-x<sup class="tcecode">7</sup> )<br><span class="explanation">Explanation:</span><br>The $2 coins may contribute a sum of $0, $2, $4,…, thus leading to the factor 1+x^2+x^4+⋯ . Using the same idea for the $3 and $7 coins, the generating function is given by<br>G(x)=(1+x<sup class="tcecode">2</sup>+x<sup class="tcecode">4</sup>+⋯)(1+x<sup class="tcecode">3</sup>+x<sup class="tcecode">6</sup>+⋯)(1+x<sup class="tcecode">7</sup>+x<sup class="tcecode">14</sup>+⋯)<br>=1/(1-x<sup class="tcecode">2</sup> )∙1/(1-x<sup class="tcecode">3</sup> )∙1/(1-x<sup class="tcecode">7</sup> )<br>The answer is the coefficient of x<sup class="tcecode">10</sup> in G(x). This is hard to compute by hand (it would be easier to count the number of ways directly). But this is easily be done with the help of suitable computer software (by contrast, the computer will not be able to count the number of ways directly).
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> (-1)/(1-x<sup class="tcecode">2</sup> )∙1/(1-x<sup class="tcecode">3</sup> )∙(-1)/(1-x<sup class="tcecode">7</sup> )</li>
+</ol>
+<br><br>
+</li>
+<li>
+The Fibonacci’s famous rabbit are so fecund that they produce two daughters in their second tear instead of just one.<br>Specifically, let T(n) satisfy the recurrence relation <br>T(n) = T(n – 1) + 2 T(n – 2) with T(1) = T(0) = 1<br>The closed-form expression for T(n)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O12a.PNG" alt="image:EM4/O12a.PNG" width="134" height="56" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> <img src="./Test Results56_files/O12b.PNG" alt="image:EM4/O12b.PNG" width="137" height="61" class="tcecode"><br><span class="explanation">Explanation:</span><br>We’ll solve this using Generating functions. Let F(z)=∑T(n) z<sup class="tcecode">n</sup> . Summing the recurrence times z<sup class="tcecode">n</sup> for all n gives<br>F=zF+2z<sup class="tcecode">2</sup> F+T(0)+z(T(1)-T(0) )<br>Here the T(0) term supplies the value of T(0)z<sup class="tcecode">0</sup> on the left hand side and the second term supplies the value of T(1)z<sup class="tcecode">1</sup> (after compensating for the copy of zT(0) that gets thrown in by zF). Since T(1)-T(0)=0, we can drop the second term, and get<br>F=zF+2z<sup class="tcecode">2</sup> F+1<br>Solving for F gives,<br>F=1⁄((1-z-2z<sup class="tcecode">2</sup> ) )<br>We can factor 1-z-2z<sup class="tcecode">2</sup> as (1+z)(1-2z). Apply the cover-up method to split F into partial fractions as<br><img src="./Test Results56_files/E12a.PNG" alt="image:EM4/E12a.PNG" width="487" height="299" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O12c.PNG" alt="image:EM4/O12c.PNG" width="115" height="56" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O12d.PNG" alt="image:EM4/O12d.PNG" width="115" height="55" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+If there is an unlimited number of red, green, blue and black jelly beans in how many ways can Harry select 24 of these candies so that he has at least six black one? _________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O11a.PNG" alt="image:EM4/O11a.PNG" width="172" height="53" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> <img src="./Test Results56_files/op.JPG" alt="image:DLDS3/op.JPG" width="217" height="60" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results56_files/EM_Test_4.JPG" alt="image:EM4/EM_Test_4.JPG" width="587" height="233" class="tcecode"><br><img src="./Test Results56_files/sol2.JPG" alt="image:EM4/sol2.JPG" width="304" height="54" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O11c.PNG" alt="image:EM4/O11c.PNG" width="177" height="47" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O11d.PNG" alt="image:EM4/O11d.PNG" width="183" height="49" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+The solution of the recursive relation <br>  for n ≥ 2, a0 = 1, a1 = 0<br><img src="./Test Results56_files/Q10a.PNG" alt="image:EM4/Q10a.PNG" width="259" height="66" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O10a.PNG" alt="image:EM4/O10a.PNG" width="135" height="61" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> <img src="./Test Results56_files/O10b.PNG" alt="image:EM4/O10b.PNG" width="137" height="59" class="tcecode"><br><span class="explanation">Explanation:</span><br>The characteristic equation is r<sup class="tcecode">2</sup>-1⁄4=0, so the roots are r=1⁄2 and r=-1⁄2. Therefore, the solution is a<sub class="tcecode">n</sub>=a<sub class="tcecode">1</sub> (1⁄2)<sup class="tcecode">n</sup>+a<sub class="tcecode">2</sub> (-1⁄2)<sup class="tcecode">n</sup> for some constants a<sub class="tcecode">1</sub> and a<sub class="tcecode">2</sub>. We plug in the initial conditions to solve for the a's. We have 1=a<sub class="tcecode">1</sub>+a<sub class="tcecode">2</sub>, and 0= a<sub class="tcecode">1</sub>⁄2-a<sub class="tcecode">2</sub>⁄2. These linear equations are easily solved to yield a<sub class="tcecode">1</sub>=a<sub class="tcecode">2</sub>=1⁄2. Therefore, the solution is a<sub class="tcecode">n</sub>=(1⁄2) (1⁄2)<sup class="tcecode">n</sup>+(1⁄2) ((-1)⁄2)<sup class="tcecode">n</sup>=(1⁄2)<sup class="tcecode">(n+1)</sup>-(-1⁄2)<sup class="tcecode">(n+1)</sup>.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O10c.PNG" alt="image:EM4/O10c.PNG" width="136" height="74" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> <img src="./Test Results56_files/O10d.PNG" alt="image:EM4/O10d.PNG" width="123" height="65" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+There are 10 bacteria in a flask. Every hour 3 bacteria die and the remaining ones are each divided into 2 after 1 day, how many bacteria will live there?<br>Assume that the flask is large enough to contain any number of bacteria?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">26</sup></li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 2<sup class="tcecode">26</sup> + 6<br><span class="explanation">Explanation:</span><br>Let x<sub class="tcecode">n</sub> be the number of bacteria after n hours, then<br>x<sub class="tcecode">1</sub>=(10-3)×2=14<br>x<sub class="tcecode">(n+1)</sub>=(x<sub class="tcecode">n</sub>-3)×2=2x<sub class="tcecode">n</sub>-6<br>Consider α that satisfies x<sub class="tcecode">(n+1)</sub>-α=2(x<sub class="tcecode">n</sub>-α). Since this must be the same as x<sub class="tcecode">(n+1)</sub>=2x<sub class="tcecode">n</sub>-6 obtained above, α=6.<br>Now, let x<sub class="tcecode">n</sub>-6=a<sub class="tcecode">n</sub>, then<br>a<sub class="tcecode">(n+1)</sub>=x<sub class="tcecode">(n+1)</sub>-6=(2x<sub class="tcecode">n</sub>-6)-6=2(x<sub class="tcecode">n</sub>-6)=2a<sub class="tcecode">n</sub>⟹a<sub class="tcecode">n</sub>=a<sub class="tcecode">1</sub> 2<sup class="tcecode">(n-1)</sup><br>Since a<sub class="tcecode">1</sub>=x<sub class="tcecode">1</sub>-6=14-6=8, <br>x<sub class="tcecode">n</sub>-6=a<sub class="tcecode">n</sub>=8∙2<sup class="tcecode">(n-1)</sup>⟹x<sub class="tcecode">n</sub>=2<sup class="tcecode">(n+2)</sup>+6<br>Thus, after 1 day (= 24 hours), the number of living bacteria will be 2<sup class="tcecode">26</sup> + 6.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">24</sup> + 6</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 2<sup class="tcecode">24</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+The tower of Hanoi is a traditional game where there are 3 pegs and n discs arranged as in picture.<br><img src="./Test Results56_files/Q8a.PNG" alt="image:EM4/Q8a.PNG" width="209" height="106" class="tcecode"><br>All discs are to be moved from 1<sup class="tcecode">st</sup> peg (P<sub class="tcecode">1</sub>) to 3<sup class="tcecode">rd</sup> peg (P<sub class="tcecode">3</sub>) such that only one disc is moved once. But no disc should keep on smaller one than it during the process. So the minimum number of moves required to transfer all discs to P<sub class="tcecode">3</sub> (say a<sub class="tcecode">n</sub>) is counted as a<sub class="tcecode">n</sub> = 2 a<sub class="tcecode">n-1</sub>  + 1 and a<sub class="tcecode">n</sub> = 1 [a<sub class="tcecode">n</sub> = 2<sup class="tcecode">n</sup> – 1].<br>If we have a Tower of Hanoi with 42 pegs and we have an additional rule that no disc can be moved more than twice, what is the maximum number of discs such that all discs can be moved to pegs other than the first peg P<sub class="tcecode">1</sub>?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 861<br><span class="explanation">Explanation:</span><br>Let X be the number of discs that are there in peg P<sub class="tcecode">1</sub>, since we have total 42 pegs currently we have 41 empty pegs.<br>We can transfer top 41 discs in X discs to 41 empty pegs, once this is done we can transfer all 41 to last peg. <br>Now we have 40 empty pegs (1<sup class="tcecode">st</sup> and 42<sup class="tcecode">nd</sup> are occupied), we can put 1 disc each in all those 40 pegs and finally transfer all to 2<sup class="tcecode">nd</sup> last peg<br>Now we have 39 empty pegs (1,41 and 42<sup class="tcecode">nd</sup> are occupied), we can put 1 disc each in all those 39 pegs and finally transfer all to 3<sup class="tcecode">rd</sup> last peg<br>So on<br>We get a series of discs from 42<sup class="tcecode">nd</sup> peg to 2<sup class="tcecode">nd</sup> peg as 41, 40, …, 3, 2, 1 and hence the total discs moved away from 1<sup class="tcecode">st</sup> peg is 41 + 40 + … + 3 + 2 + 1 = 861
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 862</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 863</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 860</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many ways can numbers 1, 2, 3, 4, 5, 6, 7 are arranged in the 2nd, 4th, 6th positions are each larger than both of their neighbors ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> 272<br><span class="explanation">Explanation:</span><br>Since the numbers in the 2<sup class="tcecode">nd</sup> , 4<sup class="tcecode">th</sup> and 6<sup class="tcecode">th</sup> positions are each larger than both of the neighbors, the smallest number we can place in any of these three positions is 3, next to which only 1 and 2 can be placed. And 7 must be in one of the three positions.<br>If a 3 is already in place, 4 cannot be placed in any of the 2<sup class="tcecode">nd</sup>, 4<sup class="tcecode">th</sup> or 6<sup class="tcecode">th</sup> positions since all numbers smaller than 4 (i.e. 1, 2, 3) have been used once.<br>Hence we consider the situation where 3, 5, 7 are put in the three positions. 7 must take either the 2<sup class="tcecode">nd</sup> or the 6<sup class="tcecode">th</sup> position because 6 cannot be placed next to any other number in this case. 1 and 2 can switch positions as they are definitely smaller than the rest. As such, there are 2*4=8 ways of arranging the numbers in this situation.<br>Next we consider 3, 6, 7 being in the three positions. Similarly, 1 and 2, 4 and 5 can both switch positions. Plus 7 can be place in the middle this time round. Thus there are 2*2*6=24 ways in this case.<br>When numbers 4, 5, 7 are put in the three places. It is again similar to the first scenario (7 cannot be in the middle). So 6 must be in either 1<sup class="tcecode">st</sup> or 7<sup class="tcecode">th</sup> position. The other three numbers (1, 2, 3) can be put in the three positions left in by order. So the number of ways is given by :1*2*3*4=24<br>When 4, 6, 7 are placed in the three positions, the only restriction is that 5 cannot be placed next to 4 so there are only 2 places available. The other three numbers can be placed in any position. So there are 2*3*2*1*6=72 ways of arranging it.<br>Finally when 5, 6, 7 are placed in the three positions. Each of the number 1, 2, 3, 4can be placed in any position. So there are 1*2*3*4*6=144 ways of arranging it in this case.<br>Adding them up, we get 144+72+24+24+8=272 ways in total.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 144</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> 72</li>
+</ol>
+<br><br>
+</li>
+<li>
+Alice and Betty play a game where Alice goes first. They each say a distinct integer from 1 to 15 (inclusive). The first person to say an integer which we summed with a previously spoken integer, gives the value of 16, will lose the game. Who will win the game?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> Alice</li>
+<li>&nbsp;<img src="./Test Results56_files/correct.png" width="18"> Betty<br><span class="explanation">Explanation:</span><br>Consider the following 8 sets of numbers {1, 15}, (2, 14}, {3, 13}, {4, 12}, {5, 11}, {6, 10}, {7, 9}, {8}. If 9 numbers are chosen (pigeons), then out of these 8 sets (holes), there must be a set which contains at least ⌈9/8⌉=2 numbers. Then, it is clear that these 2 numbers will result in a sum of 16, and hence the person will lose the game. Thus, the game must end by the 9th round.<br>Conversely, if it’s before the 9th round, then there must be one of these sets which have a number that is unspoken. Then saying any number from the set will allow the person to not lose the game.<br>As such, the 9th person will lose the game, and this person is Alice. Hence, Betty will win the game.
+</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> It's a tie</li>
+<li>&nbsp;<img src="./Test Results56_files/wrong.png" width="16"> Can't be determined</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results56_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

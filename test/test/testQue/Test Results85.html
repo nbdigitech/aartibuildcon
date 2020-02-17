@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92270&test_id=199 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results85_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results85_files/calclayout.css">
+<script src="./Test Results85_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results85_files/jquery-ui.js.download"></script>
+<script src="./Test Results85_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results85_files/custom.js.download"></script>
+<script src="./Test Results85_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results85_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results85_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838402, 'I\'m sorry, the time available to complete the test is over!', false, 1486838402447);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92270&amp;test_id=199#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DLD Topic Test - 2</strong><br>
+Minimization&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:36:31&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The following K-map represents a Boolean function of 4 variables, which of the given options represents the minimal form of the function?<br><img src="./Test Results85_files/Q1a.PNG" alt="image:DLD2/Q1a.PNG" width="192" height="168" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'b'c'+abc+a'bd+ab'd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'b'c'd'+abcd+a'bd+ab'd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'b'c'd'+abcd+a'bd+abd'</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> a'b'c'd'+abcd'+ab'd+a'bd<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E1a.PNG" alt="image:DLD2/E1a.PNG" width="290" height="214" class="tcecode"><br>⟹  a'b'c'd'+abcd'+ab'd+a'bd
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimal form of the function represented by the given K-map?<br><img src="./Test Results85_files/Q2a.PNG" alt="image:DLD2/Q2a.PNG" width="202" height="172" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> bd+abc'+ac'd+a'cd<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E2a.PNG" alt="image:DLD2/E2a.PNG" width="283" height="186" class="tcecode"><br>⟹bd+abc'+ac'd+a'cd
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> ac+abc'+ac'd+a'cd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> b'd'+abc'+ac'd'+a'c'd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'c'+abc'+ac'd'+a'c'd</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many essential and non-essential prime implicants are there in the given K-map respectively?<br><img src="./Test Results85_files/Q3a.PNG" alt="image:DLD2/Q3a.PNG" width="197" height="168" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> 4,0<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E3a.PNG" alt="image:DLD2/E3a.PNG" width="199" height="168" class="tcecode"><br>4 essential prime implecants.<br>No non-essential prime implicants.
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 3,0</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 1,2</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimal form of the function of the given K-map, where ϕ represents “don’t care” term.<br><img src="./Test Results85_files/Q4a.PNG" alt="image:DLD2/Q4a.PNG" width="198" height="173" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> w'x+xz+xy'</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> w'x+xz+wz+xy'</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> w'x+wz+xz</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> w'x+xy'+wz<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E4a.PNG" alt="image:DLD2/E4a.PNG" width="210" height="176" class="tcecode"><br>⟹w'x+xy'+wz
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given that f(a,b,c)=Σ(0,1,5). How many covering functions does f have other than itself?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 32</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> 31<br><span class="explanation">Explanation:</span><br>f(a,b,c)=Σ(0,1,5)<br>It has 3 min-terms. Out of 8 min-terms, 5 min-terms are left. Any function with terms (0,1,5) and additional terms is a covering function for f, and f itself covers f.<br>0-f<br>1-f<br>2⟶<sup class="tcecode">2</sup>C<sub class="tcecode">1</sub><br>3⟶<sup class="tcecode">2</sup>C<sub class="tcecode">1</sub><br>4⟶<sup class="tcecode">2</sup>C<sub class="tcecode">1</sub>                          <br>5-f<br>6⟶<sup class="tcecode">2</sup>C<sub class="tcecode">1</sub><br>7⟶<sup class="tcecode">2</sup>C<sub class="tcecode">1</sub><br>⟹2×2×2×2×2=32<br>If no min-terms out of 5 is taken, then it is f itself. <br>We need to eliminate this. <br>⟹32-1=31
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimal POS form of the function given using K-map?<br><img src="./Test Results85_files/Q6a.PNG" alt="image:DLD2/Q6a.PNG" width="197" height="172" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> x'z'+wy'z'+wx'y'+w'x'y+w'yz'</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> x'z'+wyz'+wx'y+w'x'y'+w'y'z'</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (x+z)(w'+y'+z)(w'+x+y')(w+x+y)(w+y+z)</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> (x'+z')(w+y+z')(w+x'+y)(w'+x'+y')(w'+y'+z')<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E6a.PNG" alt="image:DLD2/E6a.PNG" width="490" height="186" class="tcecode"><br>=(x'+z')(w+y+z')(w+x'+y)(w'+x'+y')(w'+y'+z')
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of minimal SOP forms for the given K-map are ________.<br><img src="./Test Results85_files/Q7a.PNG" alt="image:DLD2/Q7a.PNG" width="199" height="173" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E7a.PNG" alt="image:DLD2/E7a.PNG" width="481" height="182" class="tcecode"><br><img src="./Test Results85_files/E7b.PNG" alt="image:DLD2/E7b.PNG" width="298" height="217" class="tcecode"><br>A=abc'<br>B=bc'd<br>C=abd<br>D=a'c'd<br>E=a'b'd<br>F=a'b'c<br><img src="./Test Results85_files/E7c.PNG" alt="image:DLD2/E7c.PNG" width="276" height="173" class="tcecode"><br>12 is covered by only A.<br>15 is covered by only C.<br>2 is covered by only F.<br>A,C,F are essential prime implicants.<br>Terms not covered by A,C,F are<br><img src="./Test Results85_files/E7d.PNG" alt="image:DLD2/E7d.PNG" width="193" height="111" class="tcecode"><br>⟶ To cover 1,5 we need either D or B+E<br>⟶ Choosing D gives minimal.<br>Minimal form =A+C+F+D<br>only one minimal form
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which implicant in the given options can’t be a part of minimal form of the function represented by the given K-map.<br><img src="./Test Results85_files/Q8a.PNG" alt="image:DLD2/Q8a.PNG" width="208" height="180" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'b'c</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> c'd</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> a'cd'<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E8a.PNG" alt="image:DLD2/E8a.PNG" width="238" height="201" class="tcecode"><br>A=c'd<br>B=a'b'd<br>C=a'b'c<br>D=a'cd'<br>E=a'bd'<br>F=a'bc'<br>'A' must be there in the minimal form as it is the bigger subcube.<br>Now a choice should be made among B,C,D,E,F.<br><img src="./Test Results85_files/E8b.PNG" alt="image:DLD2/E8b.PNG" width="184" height="155" class="tcecode"><br>C+E covers all terms, minimal.<br>B+D+F covers all terms, but not minimal.
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'bd'</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many minimal POS forms exist for the function represented using given K-map, where ϕ is don’t care.<br><img src="./Test Results85_files/Q9a.PNG" alt="image:DLD2/Q9a.PNG" width="205" height="181" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>For minimal POS to be formed K-map is<br><img src="./Test Results85_files/E9a.PNG" alt="image:DLD2/E9a.PNG" width="229" height="190" class="tcecode"><br><span style="text-decoration:underline;">Prime Implicant chart:</span><br><img src="./Test Results85_files/E9b.PNG" alt="image:DLD2/E9b.PNG" width="287" height="172" class="tcecode"><br>A,B must be there in minimal form.<br><span style="text-decoration:underline;">Reduced prime implicant chart:</span><br><img src="./Test Results85_files/E9c.PNG" alt="image:DLD2/E9c.PNG" width="470" height="152" class="tcecode"><br>⟹ 4 minimal SOP forms.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What are the variables that the function f<sub class="tcecode">1</sub>⨁f<sub class="tcecode">2</sub> is free form, where f<sub class="tcecode">1</sub> (a,b,c,d)=Σ(0,1,3,5,8,12,15), f<sub class="tcecode">2</sub> (a,b,c,d)=Σ(2,4,6,8,11,12,14) ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> b</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> c</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> d</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> None<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E10a.PNG" alt="image:DLD2/E10a.PNG" width="253" height="402" class="tcecode"><br><img src="./Test Results85_files/E10b.PNG" alt="image:DLD2/E10b.PNG" width="265" height="261" class="tcecode"><br>A=a'c'<br>B=a'd'<br>C=a'b'<br>D=bcd'<br>E=abc<br>F=acd<br>G=b'cd<br><span style="text-decoration:underline;">Prime Implicant chart:</span><br><img src="./Test Results85_files/E10c.PNG" alt="image:DLD2/E10c.PNG" width="333" height="199" class="tcecode"><br>Only A covers term 5, hence it should be taken.<br><span style="text-decoration:underline;">Reduced Prime Implicant Chart:</span><br><img src="./Test Results85_files/E10d.PNG" alt="image:DLD2/E10d.PNG" width="235" height="167" class="tcecode"><br>⟶ Every term is being covered by two prime implicants.<br>⟶ Need to check all the combinations.<br>⨳B+C+E+F<br>⨳ B+C+E+G<br>⨳ B+C+D+F<br><img src="./Test Results85_files/E10e.PNG" alt="image:DLD2/E10e.PNG" width="167" height="51" class="tcecode"><br>So minimal forms are <br>A+B+G+E<br>		     and<br>	A+C+D+F<br>⟹a'c'+a'd'+b'cd+abc<br>                 and<br>a'c'+a'b'+bcd'+acd
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If f(x,y,z)=xy+yz', what are canonical POS terms?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (x'+y'+z').(x'+y'+z).(x'+y+z).(x+y'+z').(x+y'+z)</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> (x+y+z).(x+y+z').(x+y'+z').(x'+y+z).(x'+y+z')<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E11a.PNG" alt="image:DLD2/E11a.PNG" width="468" height="144" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (x+y'+z).(x'+y'+z).(x'+y'+z')</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (x'+y+z').(x+y+z').(x+y+z)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given f=a'c'+b'c+abc'+a'c+b'd'+a'bc'. How many minimal SOP and POS forms it has respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 1,1</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 1,2</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> 2,1<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E12a.PNG" alt="image:DLD2/E12a.PNG" width="504" height="487" class="tcecode"><br>⨳a',bc',b'c are essential prime implicants<br>⨳b' d',c'd' are non-essential prime implicants<br><img src="./Test Results85_files/E12b.PNG" alt="image:DLD2/E12b.PNG" width="474" height="226" class="tcecode"><br>1 minimal POS form.
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> 2,2</li>
+</ol>
+<br><br>
+</li>
+<li>
+If minimal SOP form of Boolean function <br>f(a,b,c,d) is bd+a^' c^' d+b'c'd'. Which of the given options is minimal POS form of f?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (b'+d)(a'+b+d')(b+c')(c'+d)</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (b+d')(a+b'+d)(b'+c)(c+d')</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> (a+b'+d)(b'+c)(b+d')</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> (a'+b+d')(b+c')(b'+d)<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E13a.PNG" alt="image:DLD2/E13a.PNG" width="394" height="425" class="tcecode"><br>⨳a'+b+d',b+c',b'+d are essential prime implicants and collectively these are covering all the terms.<br>⟹(a'+b+d')(b+c')(b'+d) is minimal POS form.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions: 14&amp;15</strong></span><br><img src="./Test Results85_files/Q14a.PNG" alt="image:DLD2/Q14a.PNG" width="199" height="165" class="tcecode"><br>What is the minimal form of the function represented by the given K-map?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> a' b' c'+b' c' d+bcd+a'b'd<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E14a.PNG" alt="image:DLD2/E14a.PNG" width="216" height="199" class="tcecode"><br>A=a'b'c'<br>B=b'c'd<br>C=a'b'd<br>D=a'cd<br>E=bcd<br><img src="./Test Results85_files/E14b.PNG" alt="image:DLD2/E14b.PNG" width="233" height="157" class="tcecode"><br>0⟶   only covered by A<br>9⟶   only covered by B<br>15⟶ only covered by E<br>⟹A,B,E are essential prime implicants.<br>⟶A,B,E collectively cover 0,1,7,9,15<br>⟶ only minterm 3 needs to be covered<br>⟶3 can be covered using either C or D<br>⟹ Two minimal forms<br>	A+B+E+C or <br>A+B+E+D<br>⟹a' b' c'+b' c' d+bcd+a'b'd or<br>a' b' c'+b' c' d+bcd+a'cd
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a' b' c'+b' c' d+bcd'+a'b'd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a' b' c+b' c' d+bcd'+a'bd'</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a' b' c+b' c' d+bcd+a'bd'</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions: 14&amp;15</strong></span><br><img src="./Test Results85_files/Q14a.PNG" alt="image:DLD2/Q14a.PNG" width="199" height="165" class="tcecode"><br>The term that need not be present in the minimal form of the function is ________?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> a'b'c'</li>
+<li>&nbsp;<img src="./Test Results85_files/correct.png" width="18"> a'cd<br><span class="explanation">Explanation:</span><br><img src="./Test Results85_files/E14a.PNG" alt="image:DLD2/E14a.PNG" width="216" height="199" class="tcecode"><br>A=a'b'c'<br>B=b'c'd<br>C=a'b'd<br>D=a'cd<br>E=bcd<br><img src="./Test Results85_files/E14b.PNG" alt="image:DLD2/E14b.PNG" width="233" height="157" class="tcecode"><br>0⟶   only covered by A<br>9⟶   only covered by B<br>15⟶ only covered by E<br>⟹A,B,E are essential prime implicants.<br>⟶A,B,E collectively cover 0,1,7,9,15<br>⟶ only minterm 3 needs to be covered<br>⟶3 can be covered using either C or D<br>⟹ Two minimal forms<br>	A+B+E+C or <br>A+B+E+D<br>⟹a' b' c'+b' c' d+bcd+a'b'd or<br>a' b' c'+b' c' d+bcd+a'cd<br>we can see that a' b' c',bcd,b'c'd are essential prime implicants, whereas a'cd and a' b' d are non-essential prime implicants, we have options to choose non-essential prime implicant. So the answer is a'cd.
+</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> bcd</li>
+<li>&nbsp;<img src="./Test Results85_files/wrong.png" width="16"> b'c'd</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results85_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

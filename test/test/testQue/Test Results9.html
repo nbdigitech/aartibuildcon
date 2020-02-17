@@ -1,0 +1,705 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91754&test_id=329 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results9_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results9_files/calclayout.css">
+<script src="./Test Results9_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results9_files/jquery-ui.js.download"></script>
+<script src="./Test Results9_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results9_files/custom.js.download"></script>
+<script src="./Test Results9_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results9_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results9_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837006, 'I\'m sorry, the time available to complete the test is over!', false, 1486837006613);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91754&amp;test_id=329#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 17</strong><br>
+Computer Networks, Databases&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:10:15&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results9_files/9a.PNG" alt="image:MST17/9a.PNG" width="617" height="210" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> <img src="./Test Results9_files/9b.PNG" alt="image:MST17/9b.PNG" width="382" height="23" class="tcecode"><br><span class="explanation">Explanation:</span><br>Option (a) returns all the tuples where Rollno of Student matches with Rollno in Library.
+</li>
+<li>&nbsp;. <img src="./Test Results9_files/9c.PNG" alt="image:MST17/9c.PNG" width="390" height="24" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/9d.PNG" alt="image:MST17/9d.PNG" width="393" height="28" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/9e.PNG" alt="image:MST17/9e.PNG" width="408" height="34" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the latency (from first bitsent to last bit received) of  a 10-Mbps Ethernet with a single store-and-forward switch in the path, and a packet size of 5000 bits. Assume that each link introduces a propagation delay of 10 µs, and that the switch begins retransmitting immediately after it has finished receiving the packet.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 0.51ms</li>
+<li>&nbsp;. 10.02ms</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 1.02ms<br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/8.png" alt="image:MST17/8.png" width="600" height="100" class="tcecode">
+</li>
+<li>&nbsp;. 5.1ms</li>
+</ol>
+<br><br>
+</li>
+<li>
+Ckecksum error detection method is used in which of the following?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. TCP</li>
+<li>&nbsp;. ICMP</li>
+<li>&nbsp;. IP</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> All the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation with 3 attributes. How many maximum candidate keys could it have atmost at the same time? (Simultaneously)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Let R(A, B, C) is a relation with 3 attributes.<br>Ex:- At a time (few cases) : A, B, C are possible as candidate keys or AB, AC, BC are possible.<br>∴ Maximum 3 candidate keys can present at a time in a relation.<br>Assume A, B, C are candidate keys. Taking any combination will be superkey. Therefore maximum can present 3 candidate keys in a relation at a time.
+</li>
+<li>&nbsp;. 4</li>
+<li>&nbsp;. 5</li>
+<li>&nbsp;. 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an IPv4 datagram has the following fields<br>HLEN is 5,<br>Total length is 200,<br>Offset is 200.<br>What is the number of the first byte and number of the last byte in this datagram?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 1600, 1779<br><span class="explanation">Explanation:</span><br>header length = 5 *4 =20 B<br>Data size = 200 − 20 = 180 bytes<br>Offset = 200 × 8 = 1600<br>The number of the first byte = offset value = 1600<br>The number of the last byte = offset value + data size − 1 = 1779
+</li>
+<li>&nbsp;. 200, 1780</li>
+<li>&nbsp;. 1600, 1780</li>
+<li>&nbsp;. 800, 1800</li>
+</ol>
+<br><br>
+</li>
+<li>
+Derived attribute is an attribute that represents a value that is derived from<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. Only from a single attribute in an entity</li>
+<li>&nbsp;. It can be derived from two or more attributes in an entity</li>
+<li>&nbsp;. It can be derived from a different entity</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>Derived attribute can be derived from a single attribute in an entity or can be derived from multiple attributes in an entity or an attribute from another entity.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For the given schedule, which of the following is TRUE?<br><img src="./Test Results9_files/12.png" alt="image:MST17/12.png" width="460" height="334" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. The above schedule is not serializable</li>
+<li>&nbsp;. The above schedule is equivalent to serial schedule T<sub class="tcecode">3</sub>,T<sub class="tcecode">4</sub>,T<sub class="tcecode">1</sub>,T<sub class="tcecode">2</sub></li>
+<li>&nbsp;. The above schedule is equivalent to serial schedule T<sub class="tcecode">2</sub>,T<sub class="tcecode">4</sub>,T<sub class="tcecode">3</sub>,T<sub class="tcecode">1</sub></li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> The above schedule is equivalent to serial schedule T<sub class="tcecode">4</sub>,T<sub class="tcecode">1</sub>,T<sub class="tcecode">3</sub>,T<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br>Precedence graph for the above schedule is :<br><img src="./Test Results9_files/13.png" alt="image:MST17/13.png" width="277" height="186" class="tcecode"><br>As there are no cycles, the given schedule is<br>Conflict serializable and it is conflict equivalent to T<sub class="tcecode">1</sub>,T<sub class="tcecode">3</sub>,T<sub class="tcecode">2</sub>,T<sub class="tcecode">4</sub> (or) T<sub class="tcecode">4</sub>,T<sub class="tcecode">1</sub>,T<sub class="tcecode">3</sub>,T<sub class="tcecode">2</sub>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given relation R(A,B,C,D,E) and set of functional dependencies<br>F={AB→C,AB→D,D→A,BC→D,BC→E}<br>The highest normal form satisfied by R is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 1 NF</li>
+<li>&nbsp;. 2 NF</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 3 NF<br><span class="explanation">Explanation:</span><br>Keys for the relation are: AB, BD and BC<br>D→A,A is key attribute<br>⇒ Relation R is in 3NF but not in BCNF since D→A does have a superkey on the left hand side.
+</li>
+<li>&nbsp;. BCNF</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a IPV6 protocol communication, If the total Router Header length is 448 bits, then how manyhops are required to reach the destination.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Router header length = 448 / 8 = 56 bytes<br>First 8 bytes are fixed( Next header(1 byte), Header Extension length(1 byte), Routingtype(1 byte), segments left(1 byte), Reserved(4 bytes)).<br>So 56 - 8 = 48 bytes are hop addresses.<br>Each address is 16 bytes. So 48 / 16 = 3
+</li>
+<li>&nbsp;. 4</li>
+<li>&nbsp;. 5</li>
+<li>&nbsp;. 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+In ER-model, which of the following statements are true about weak entity<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. Weak entity is existence dependent i.e., Weak entity cannot exist without the entity with which it has a relationship.</li>
+<li>&nbsp;. Weak entity has a primary key that is partially or totally derived from the parent entity in the relationship.</li>
+<li>&nbsp;. Neither (a) and (b)</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> Both (a) and (b)<br><span class="explanation">Explanation:</span><br>Weak entity is existence dependent and maintains a primary key which is derived from parent.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the CSMA/CD protocol, a host waits K*512 bit times after a collision, where K is drawn randomly. For K = 100, what is the wait time.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 512  sec.</li>
+<li>&nbsp;. 51.2  sec</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 5.12 msec.<br><span class="explanation">Explanation:</span><br>Given Wait time= 51,200 bit times. <br>To convert this into seconds divide it by BW.<br>For 10 Mbps, this wait time = 51200/10*10<sup class="tcecode">6</sup>
+</li>
+<li>&nbsp;. 5.12 µsec.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Match the following<br>a.	Watch live cricket	1. TCP<br>b.	Torrentz download	2. UDP<br>c.	DNS<br>d.	EMail<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. a-1, b-2, c-1, d-2</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> a-2, b-1, c-2, d-1<br><span class="explanation">Explanation:</span><br>TCP is connection oriented and reliable service. UDP is connection less and less reliable service.<br>For real time multimedia, timely delivery is more important than correctness. --&gt; UDP <br>For file transfer, correctness is necessary. --&gt; TCP <br>DNS, timely delivery is more important --&gt; UDP <br>Email again same as file transfer --&gt; TCP
+</li>
+<li>&nbsp;. a-1, b-1, c-2, d-2</li>
+<li>&nbsp;. a-2, b-2, c-1, d-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose 1000 clients are trying to download a 10MB file from a server that has 100Mbps access link. The clients have 2Mbps downstream access rate. What is the time taken by the server to send the file to all clients.(ignore TCP connection time and assume ideal conditions exist.)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 5 sec</li>
+<li>&nbsp;. 40 sec</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 800 sec<br><span class="explanation">Explanation:</span><br>Total number of bits sent by server = 10M * 8 * 1000=80 gigabits<br>So transmission time = 80 G/100M = 800sec
+</li>
+<li>&nbsp;. 0.8 sec</li>
+</ol>
+<br><br>
+</li>
+<li>
+The ER diagram shown below depicts a car rental scheme, where every person can take more than one car for rent, or one car may be rented to multiple persons.<br><img src="./Test Results9_files/14.png" alt="image:MST17/14.png" width="609" height="250" class="tcecode"><br>If the above ER diagram is mapped to a relational model, to correctly depict above scenario, the total number of required relations is ______.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 3</li>
+<li>&nbsp;. 4</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/15.png" alt="image:MST17/15.png" width="405" height="239" class="tcecode">
+</li>
+<li>&nbsp;. 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the maximum size of the data that can be sent from application layer to Transport layer?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> Any size</li>
+<li>&nbsp;. 1500B</li>
+<li>&nbsp;. 2<sup class="tcecode">16</sup> B</li>
+<li>&nbsp;. 64KB</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is a function of data link layer?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. framing</li>
+<li>&nbsp;. flow control</li>
+<li>&nbsp;. channel access control</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> All the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results9_files/7a.PNG" alt="image:MST17/7a.PNG" width="610" height="314" class="tcecode"><br>I. Both Query:1 and Query:2 returns same no. of rows. <br>II. Both Query:1 and Query:2 returns same no. of columns.<br>III. Both Query:1 and Query:2 returns different no. of rows.<br>IV. Both Query:1 and Query:2 returns different no. of columns.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. I, II only</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> I, IV only<br><span class="explanation">Explanation:</span><br>EQUI JOIN (vs) NATURAL JOIN<br>Both returns same no. of rows. But in Natural Join, the common columns will exist only ONCE, whereas in Equi Join, the common columns repeats twice once for each table.
+</li>
+<li>&nbsp;. II, III only</li>
+<li>&nbsp;. III, IV only</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results9_files/8a.PNG" alt="image:MST17/8a.PNG" width="477" height="406" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. error in the SQL statement</li>
+<li>&nbsp;. 3</li>
+<li>&nbsp;. 5</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>In SQL we must use IS NULL or IS NOT NULL operators in order to check for a null value or to compare a value with a NULL value. But, in the given query we are comparing the values of the email attributes with a NULL value directly and since each NULL is distinct in SQL, there will be no tuples matching. Therefore, the query returns no rows, i.e., zero rows.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 1-km long, 10-Mbps CSMA/CD LAN has propagation speed of 200 m/μsec. Data frames are 66 bytes long. The first bit slot after a successful transmission is reserved for the receiver to capture the channel to send a 32-bit acknowledgement frame. What is the effective data rate?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 5.67Mbps<br><span class="explanation">Explanation:</span><br>Tt for data = 66*8/10M = 52.8 micro sec<br>Tp for data=1000/200 micro sec =5 micro sec<br>Tt for ack = 32/10M =3.2micro sec<br>Tp for ack = 5 microsec<br>Assuming there are e collisions before acquiring the channel,<br>Efficiency = useful time/total time<br>             = Tt for data/(e*2Tp + Ttdata +Tpdata + Ttack + Tpack)<br>= 0.567<br>Effective data rate = efficiency * BW = 5.67Mbps
+</li>
+<li>&nbsp;. 6.21Mbps</li>
+<li>&nbsp;. 10Mbps</li>
+<li>&nbsp;. 8.26Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+AB<sup class="tcecode">+</sup> tree index is built on the key ‘student_id’ attribute of the relation GATE2017. The student_id is of length 24 Bytes, disk blocks are of size 512 Bytes and the index pointers are of size 6 Bytes. What would be the number of pointers per internal node of the B<sup class="tcecode">+</sup> tree?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 35</li>
+<li>&nbsp;. 36</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 34<br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/10a.PNG" alt="image:MST17/10a.PNG" width="409" height="259" class="tcecode">
+</li>
+<li>&nbsp;. None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Compute the fraction of the bandwidth that is wasted on overhead (headers and retransmissions) for protocol on a heavily loaded 50-kbps satellite channel with data frames consisting of 40 bits header and 3960 data bits. Assume that the signal propagation time from the earth to the satellite is 270 msec. ACK frames never occur. NAK frames are 40 bits. The error rate for data frames is 1%, and the error rate for NAK frames is negligible.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 1.21%</li>
+<li>&nbsp;. 2.12%</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 1.99%<br><span class="explanation">Explanation:</span><br>The data sent = 3960 * 100 <br>The overhead for data = 40 * 100 = 4000 bits<br>The number of retransmissions per 100 frames is 1.<br>So for the retransmission the overhead= 4000(data) + 40(NAK) =4040bits<br>So bandwidth wasted =8040/((396000 + 8040) )×100= 1.99%.
+</li>
+<li>&nbsp;. 1.71%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a B+ tree of non-leaf node order 25 and leaf node order 24 with 3 levels [root is at level 0]. The maximum possible no. of records which can be indexed by the above B+ tree is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 15625</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 15000<br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/14a.PNG" alt="image:MST17/14a.PNG" width="628" height="227" class="tcecode">
+</li>
+<li>&nbsp;. 625</li>
+<li>&nbsp;. 600</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a table R(A,B,C,D,E) with functional dependencies as<br>A→B<br>B→C<br>D→E<br>Table is decomposed as D={R<sub class="tcecode">1</sub> (A,B),R<sub class="tcecode">2</sub> (B,C),R<sub class="tcecode">3</sub> (D,E) }. Then decomposition is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. Dependency preserving and lossless</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> Dependency preserving and lossy<br><span class="explanation">Explanation:</span><br>Dependencies are preserved.<br>But it is lossy because (R<sub class="tcecode">1</sub>∪R<sub class="tcecode">2</sub> )∩R<sub class="tcecode">3</sub>=∅ and all other combinations of R<sub class="tcecode">1</sub>,R<sub class="tcecode">2</sub> and R<sub class="tcecode">3</sub> will result the same.
+</li>
+<li>&nbsp;. Neither dependency preserving nor lossless</li>
+<li>&nbsp;. Not dependency preserving but lossless</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider RSA with p = 5 and q = 11. The possible values of “e” is 3 and 5. Encrypt the message m = 8 using the key (n, e) where n = p*q.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 22</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 17<br><span class="explanation">Explanation:</span><br>Given p = 5, q = 11<br>n = p*q = 55, f(n) = (p-1)(q-1) = 40<br>The possible values of e = 3 and 5. But we take 3 because it is less than n and has no common factors with f(n) except 1. If we take 5, we have a common factor with f(n).<br>de = 1 (mod f(n)); 3*d = t*f(n) + 1; d = 27(substitute values for t from starting from 1 to compute d)<br>m = 8, Ciphertext c = m<sup class="tcecode">e</sup> mod n = 17
+</li>
+<li>&nbsp;. 14</li>
+<li>&nbsp;. 21</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following figure.The data rate between A and B is 100 kbps. The propagation speed is 5µsec/km for both lines. Frames are generated at node A and sent to node C through node B and each frame is 1000 bits long. Between A and B, a sliding window protocol is used, with a window size of 3. Between B and C, stop and wait is used. Determine the minimum transmission rate required between nodes B and C so that the buffers at node B are not flooded. (ACK frames are of negligible length)<br><img src="./Test Results9_files/1.png" alt="image:MST17/1.png" width="485" height="72" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 100Kbps</li>
+<li>&nbsp;. 125Kbps</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 150Kbps<br><span class="explanation">Explanation:</span><br>To avoid flooding buffers at B the incoming frame count should be equal to outgoing frame count.<br>A to B: Tp = 4000* 5 µsec = 20 msec<br>Tt per frame = 1000/(100*10^3) = 10 msec. <br>B to C: Tp = 1000* 5 µsec = 5 msec<br>Tt per frame = x = 1000/B;<br>A can transmit 3 frames to B and then must wait for the ack of the first frame before transmitting additional frames. The first frame takes 10 msec to transmit; the last bit of the first frame arrives at B 20 msec after it was transmitted(Tp). It will take an additional 20 msec for B’s ack to return to A. Thus A can transmit three frames in 50 msec. <br>B can transmit one frame to C at a time. It takes 5 + x msec for the frame to be received at C and an additional 5 msec for C’s ack to return to A. Thus, B can transmit one frame every 10 + x msec, or three frames every 30 + 3x msec. <br>To avoid buffering: 30+3x=50;  x= 6.66 msec and B = 1000/x = 150 kbps.
+</li>
+<li>&nbsp;. 175Kbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following relation student (name, rank)<br><img src="./Test Results9_files/11.png" alt="image:MST17/11.png" width="233" height="257" class="tcecode"><br>Find the number of tuples in the result produced by the following SQL query. [rank 1 is highest, rank 4 is lowest rank]<br>Select S.name<br>From Student S<br>Where 3≥(Select count (distinct rank)from student St where St.rank&lt;S.rank)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 5</li>
+<li>&nbsp;. 6</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>Given SQL query is to find all student names whose ranks are among the top 3 ranks.<br>∴ Student names are: B, C, E, F, G, H, I.
+</li>
+<li>&nbsp;. 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Distance vector routing algorithm is used in the subnet shown below. The delay vectors that have just come in to router C from its neighbor routers and the measured delays to the neighbors of C are given below. Find the new routing table of C. <br>Delay vectors received from C’s neighbors: <br><img src="./Test Results9_files/2.png" alt="image:MST17/2.png" width="640" height="217" class="tcecode"><br><img src="./Test Results9_files/3.png" alt="image:MST17/3.png" width="406" height="110" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. <img src="./Test Results9_files/4.png" alt="image:MST17/4.png" width="240" height="284" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> <img src="./Test Results9_files/5.png" alt="image:MST17/5.png" width="205" height="283" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/6.png" alt="image:MST17/6.png" width="226" height="281" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/7.png" alt="image:MST17/7.png" width="183" height="282" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Let there be relation R(A, B, C, D, E) where candidate keys are A, BC and E. How many superkeys are possible?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> 26<br><span class="explanation">Explanation:</span><br>Answer = Number of superkeys(A) + Number of superkeys (BC) + Number of superkeys (E) – Number of superkeys (ABC) – Number of superkeys (BCE) – Number of superkeys (AE) + Number of superkeys (ABCE)<br>= 24 + 23 + 24 – 22 – 22 – 23 + 21<br>= 16 + 8 + 16 – 4 – 4 – 8 +2<br>= 26
+</li>
+<li>&nbsp;. 28</li>
+<li>&nbsp;. 30</li>
+<li>&nbsp;. 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+Supernet mask for subnets 100.10.1.0/24, 100.10.2.0/24, 100.10.3.0/24, 100.10.4.0/24.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. /21</li>
+<li>&nbsp;. /24</li>
+<li>&nbsp;. /22</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> None<br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/10.png" alt="image:MST17/10.png" width="625" height="331" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;">LINKED QUESTIONS Q30 &amp; Q31:</span><br>Consider the following relational schema.<br>Student(<span style="text-decoration:underline;">SID</span>,NAME,DEPT)  is student relation<br>Enroll(<span style="text-decoration:underline;">CID,SID</span>,GRADE,DEPT)  is course enroll relation<br><br><img src="./Test Results9_files/12a.PNG" alt="image:MST17/12a.PNG" width="338" height="163" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> Displays all students who never got a grade above 5.0<br><span class="explanation">Explanation:</span><br>Given SQL query produces:<br>The list of all students who never got a grade above 5.0
+</li>
+<li>&nbsp;. Displays all students who never got a grade less than or equal to 5.0</li>
+<li>&nbsp;. Displays all students who got a grade above 5.0</li>
+<li>&nbsp;. Displays all students who got a grade less than 5.0</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;">LINKED QUESTIONS Q30 &amp; Q31:</span><br>Consider the following relational schema.<br>Student(<span style="text-decoration:underline;">SID</span>,NAME,DEPT)  is student relation<br>Enroll(<span style="text-decoration:underline;">CID,SID</span>,GRADE,DEPT)  is course enroll relation<br><br>Identify relational algebra query that can produce the above result.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> <img src="./Test Results9_files/13a.PNG" alt="image:MST17/13a.PNG" width="380" height="36" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results9_files/13e.PNG" alt="image:MST17/13e.PNG" width="393" height="69" class="tcecode">
+</li>
+<li>&nbsp;. <img src="./Test Results9_files/13b.PNG" alt="image:MST17/13b.PNG" width="361" height="28" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/13c.PNG" alt="image:MST17/13c.PNG" width="213" height="25" class="tcecode"></li>
+<li>&nbsp;. <img src="./Test Results9_files/13d.PNG" alt="image:MST17/13d.PNG" width="381" height="34" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">LINKED QUESTIONS Q32 &amp; Q33</strong></span><br>A router buffer of infinite size has queuing delay  Let L be the size of packets coming to the router and R be the rate(bits/sec) at which packets are sent out of the queue. Find the average queuing delay if packet arrive periodically every L/R sec.(Assume the queue is empty initially)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. 2L/R</li>
+<li>&nbsp;. L/R</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> zero<br><span class="explanation">Explanation:</span><br>The time taken to transmit a packet = L/R<br>And given that packet arrival rate = L/R<br>So the next packet arrives after the previous packet is transmitted. So no packet waits in the queue for transmission.
+</li>
+<li>&nbsp;. none</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">LINKED QUESTIONS Q32 &amp; Q33</strong></span>:<br>A router buffer of infinite size has queuing delay Let L be the size of packets coming to the router and R be the rate(bits/sec) at which packets are sent out of the queue.<br>What is the average routing delay if N packets arrive simultaneously every NL/R seconds.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;. Zero</li>
+<li>&nbsp;<img src="./Test Results9_files/correct.png" width="18"> (L(N-1)) / 2R<br><span class="explanation">Explanation:</span><br>Time taken to transmit N packets = NL/R sec<br>So buffer is empty whenever a fresh batch of N packets arrive.<br>Therefore the 1st packet has queuing delay zero.<br>The 2nd packet has queuing delay of L/R(time taken to transmit the first packet)<br>Similary the nth packet has queuing delay of (N-1)L/R sec.<br>So average queuing delay = 1/N(L/R  + 2L/R + … + (N-1)L/R) <br>                                               = (L(N-1)) / 2R   <br>Note: The queuing delay for N+1th packet is zero because the buffer is empty by the time next set of N packets arrive.
+</li>
+<li>&nbsp;. L/R</li>
+<li>&nbsp;. none</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results9_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

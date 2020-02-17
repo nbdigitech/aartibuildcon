@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92154&test_id=289 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results40_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results40_files/calclayout.css">
+<script src="./Test Results40_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results40_files/jquery-ui.js.download"></script>
+<script src="./Test Results40_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results40_files/custom.js.download"></script>
+<script src="./Test Results40_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results40_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results40_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837547, 'I\'m sorry, the time available to complete the test is over!', false, 1486837547557);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92154&amp;test_id=289#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 8</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:21&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>______ your father and mother at home?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> is</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> was</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> are<br><span class="explanation">Explanation:</span><br>In the given sentence, father, mother are singular nouns joined by ‘and’ and when two (or) more singular nouns (or) pronouns joined by ‘and’ require a plural verb. So, in the given context, we need a plural verb and of all given options, ‘are’ is the plural verb that best fits the context.
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> do</li>
+</ol>
+<br><br>
+</li>
+<li>
+If she had the money, she ______ the loan.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> will pay</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> would pay<br><span class="explanation">Explanation:</span><br>The given sentence is a type 2 conditional sentence which refers to a hypothetical condition and its probable result i.e., an action could happen if the present situation were different. In these type2 conditional sentences, the if clause and the main clause uses the following.<br><img src="./Test Results40_files/2Qa.png" alt="image:APT8/2Qa.png" width="427" height="74" class="tcecode"><br>So, the answer is<br>			If she had the money, she <strong class="tcecode">would pay </strong>the loan.
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> pays</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> can pay</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the grammatically CORRECT sentence:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> What time is the last show going to start?</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> What time will the last show start?</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> What time does the last show start?<br><span class="explanation">Explanation:</span><br>In the given sentence, we are referring to an event (show) that is scheduled. In English, present simple tense is used to refer to future events that are scheduled (and often out of our control).<br>	<strong class="tcecode">E.g.</strong> Hurry up! The train <span style="text-decoration:underline;">departs</span> in 5 minutes.<br>		So, of all the given options, the grammatically correct sentence is:<br>		What time does the last show start?
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> What time is the last show going to starting?</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following is closest in meaning to the word given below?<br><strong class="tcecode">HOLOCAUST</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> Destruction<br><span class="explanation">Explanation:</span><br>Holocaust refers to great destruction resulting in the extensive loss of life, especially by fire (or) slaughter on a mass scale. So, of all the given options the word that is closest in meaning to holocaust is destruction.
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Aimless</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Suspected</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Representation</li>
+</ol>
+<br><br>
+</li>
+<li>
+The average marks in Algorithms subject of a class of 44 is 66. If the marks of three students were misread as 54, 55 and 79 instead of the actual marks61, 59 and 90 respectively, then what would be the correct average?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 66</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 66.25</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 66.5<br><span class="explanation">Explanation:</span><br>∵Total marks of 44 students=44×66=2904<br>New total marks of 44 students=2904-54-55-79+61+59+90<br>=2926<br>Hence required average=2926/44=66.5
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 67</li>
+</ol>
+<br><br>
+</li>
+<li>
+The simple interest accrued on an amount of ₹22,500 at the end of four years is ₹10800. What would be the compound interest accrued on the same amount at the same rate at the end of two years?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 5724<br><span class="explanation">Explanation:</span><br><img src="./Test Results40_files/6Ea.png" alt="image:APT8/6Ea.png" width="509" height="325" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 15409</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 7424</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+The Yoga system is divided into two principal parts, Hatha and Raja Yoga. Hatha Yoga deals principally with the physiological part of man with a view to establish his health and train his will. The processes prescribed to arrive at this end are so difficult that only a few resolute souls go through all the stages of its practice. Many have failed and some have died in the attempt. It is therefore strongly denounced by all the philosophers. The most illustrious Shankaracharya has remarked in his treatise called Aparokshanubhuti that “the system of Hatha Yoga was intended for those whose worldly desires are not pacified or uprooted.”<br><br>Which of the statements can be inferred from the above passage?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Anyone who attempts Hatha Yoga dies</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Philosophers strongly recommend Hatha Yoga.</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> The processes included in hatha yoga are very difficult.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (A) :</strong><br>This statement cannot be inferred from the passage because not all who attempts hatha yoga dies <strong class="tcecode">(“Many have failed and some have died in the attempt”).</strong><br><strong class="tcecode">Option (B):</strong><br>This statement cannot be inferred as it is given in the passage that <strong class="tcecode">“It is therefore strongly denounced by all the philosophers”</strong>. Denounce means to “publicly declare to be wrong, evil or criticize” which contradicts the given statement.<br><strong class="tcecode">Option (D):</strong><br> This statement cannot be inferred from the passage as it is given that, <strong class="tcecode">“the system of Hatha Yoga was intended for those, whose worldly desires are not pacified or uprooted”</strong> but not for everyone.<br><strong class="tcecode">Option (C):</strong><br>In the passage, it is given that <strong class="tcecode">“The processes (hatha yoga) prescribed to arrive at this end are so difficult”</strong>. Therefore, the given statement can be inferred directly from the passage.
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Shankaracharya has remarked that the system of Hatha Yoga is for everyone.</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results40_files/13Qa.png" alt="image:APT8/13Qa.png" width="434" height="58" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br><img src="./Test Results40_files/13Ea.png" alt="image:APT8/13Ea.png" width="556" height="285" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 12</li>
+</ol>
+<br><br>
+</li>
+<li>
+The probability of guessing at least 8 out of 10 answers correctly in a true-false examination is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 7/64</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 7/128<br><span class="explanation">Explanation:</span><br><img src="./Test Results40_files/12Ea.png" alt="image:APT8/12Ea.png" width="453" height="320" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 45/1024</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 145/1024</li>
+</ol>
+<br><br>
+</li>
+<li>
+Point A is 8m to the West of Point B. Point C is 4m to the South of Point B. Point D is 4m to the East of Point C. Point E is 6m to the North of Point D. Point F is 8m to the West of Point E. Point G is 2m to the South of Point F. How far and in which direction is Point G from Point A.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 4m to the East of A<br><span class="explanation">Explanation:</span><br><img src="./Test Results40_files/11Ea.png" alt="image:APT8/11Ea.png" width="556" height="439" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 4m to the West of A</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 2m to the East of A</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 2m to the West of A</li>
+</ol>
+<br><br>
+</li>
+<li>
+A mixture contains 80% acid and the rest water. Part of the mixture that should be removed and replaced by the same amount of water to make the ratio of acid and water 4:3 is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 1/3<sup class="tcecode">rd</sup></li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 3/7<sup class="tcecode">th</sup></li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 2/3<sup class="tcecode">rd</sup></li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 2/7<sup class="tcecode">th</sup><br><span class="explanation">Explanation:</span><br>cid in mixture=80%= 4/5<br>Water in mixture=20%=1/5<br>Let x<sup class="tcecode">th</sup> part of the mixture remove.<br>Part of Acid in mixture left=4/5-4/5 x<br>Part of water in mixture left=1/5-1/5 x<br>x<sup class="tcecode">th</sup> Part of the water replaced, then<br>(4/5-4/5 x)/(1/5-1/5 x+x)=4/3<br>⇒(4-4x)/(1-x+5x)=4/3<br>⇒12-12x=4+16x<br>⇒x=8/28=2/7<br>⇒x=2/7<sup class="tcecode">th</sup>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a certain code, ‘he is waiting there’ is written as ‘la pa ro ta’, ‘there is the train’ is written as 'zo ro ji la','waiting in the station' is written as 'ma ta fu ji'and<br> 'is this a station' is written as 'fu bi ro vi'. Which of the following represents 'the train station'?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> zo la ma</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> fu ji ta</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> fu ji zo<br><span class="explanation">Explanation:</span><br>‘There is the train’is written as 'zo ro ji la', 'waiting in the station' is written as 'ma ta fu ji'.<br>The common word from the above sentences is 'the' and the common code is 'ji'.<br>So, 'the' is coded as 'ji'.<br>'Waiting in the station'is coded as 'ma ta fu ji' and 'is this a station' is coded as 'fu bi ro vi'. The common word is 'station' and the code for station is 'fu'.<br>From the sentences, ‘he is waiting there’and ‘there is the train’, the sentence 'there is' coded as 'la ro'.<br>∴Train is coded as 'zo'.<br>Hence, 'the train station'⟶fu ji zo.
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> ro zo fu</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 350m long train moving with an average speed of 90km/h crosses a platform in 38 seconds. A man crosses the same platform in 5min. What is the speed of man in m/s ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 1.5</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>The given speed of the train=90km/h<br>=90×5/18 m/s<br>=25m/s<br>Suppose the length of the platform=x m<br>Then,Distance/Speed=Time<br>(x+350)/25=38<br>x+350=950<br>x=600<br>Hence,Speed of a man=600/(5×60) m/s=2m/s
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 2.5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Smallest angle of a triangle is equal to two-third the smallest angle of a quadrilateral. The ratio between the angles of the quadrilateral is 3:4:5:6. Largest angle of the triangle is twice its smallest angle. What is the sum of second largest angle of the triangle and second largest angle of the quadrilateral?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 140°</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> 160°<br><span class="explanation">Explanation:</span><br>Let the angles of the quadrilateral be 3x,4x,5x and 6x respectively.<br>⇒3x+4x+5x+6x=360°<br>18x=360°<br>x=20°<br>∴Smallest angle of the triangle=3×2/3×20°<br>=40°<br>∴Largest angle of the triangle=40°×2<br>=80°<br>∴Second largest angle of the triangle=180°-(40°+80°)<br>=60°<br>The second largest angle of the quadrilateral=5x=100°<br>Hence,required sum=60°+100°=160°
+</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 180°</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> 200°</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair.<br><strong class="tcecode">BARTER: GOODS</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Money : Poor</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Credible : Convincing</li>
+<li>&nbsp;<img src="./Test Results40_files/wrong.png" width="16"> Dilatory : Slow</li>
+<li>&nbsp;<img src="./Test Results40_files/correct.png" width="18"> Correspond : Letters<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair:</strong><br>Barter is to exchange (goods or services) for other goods or services without using money.<br>	<strong class="tcecode">Option (a):</strong><br>		Poor needs money.<br>	<strong class="tcecode">Option (b):</strong><br>		Credible refer to able to be believed; convincing.	<br><strong class="tcecode">Option (c):</strong><br>		Dilatory means slow to act.<br>	<strong class="tcecode">Option (d):</strong><br>		Correspond is to communicate by exchanging letters.<br> The pair that best expresses the relationship similar to that expressed in the pair <strong class="tcecode">Barter: Goods is Correspond: Letters.</strong>
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results40_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

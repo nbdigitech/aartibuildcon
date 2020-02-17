@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=21643&test_id=66 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results120_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results120_files/calclayout.css">
+<script src="./Test Results120_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results120_files/jquery-ui.js.download"></script>
+<script src="./Test Results120_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results120_files/custom.js.download"></script>
+<script src="./Test Results120_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results120_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results120_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921373, 'I\'m sorry, the time available to complete the test is over!', false, 1486921373167);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=21643&amp;test_id=66#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 2</strong><br>
+Normalisation (Introduction to FD's , Determining Candidate Keys, Equivalence of FD's, FD Preserving, Lossless Decomposition, 1NF, 2NF, 3NF, BCNF) &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-07 23:54:20&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-08 00:37:05&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:42:45&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+10.020 / 25.000 (40%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+8 / 15 (53%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following set F of functional dependencies on schema (A, B, C):<br><br>A → BC<br><br>B → C<br><br>A → B<br><br>AB → C<br><br>The cannonical cover for F:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {A → B, AB → C, B → C}</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {A → B, A → C, B → C}</li>
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> {A → B, B → C}<br><span class="explanation">Explanation:</span><br>Given in relation R(A, B, C) FD set:<br><br>{A → BC, B → C, A → B, AB → C}<br><br><span style="text-decoration:underline;">Step 1</span>: Split FD’s such that RHS contain single attribute<br><br>A → B<br><br>A → C<br><br>B → C<br><br>A → B<br><br>AB → C<br><br><span style="text-decoration:underline;">Step 2</span> : Find the redundant FD’s and delete them from the set.<br><br>A → B<br><br>B → C<br><br><span style="text-decoration:underline;">Step 3</span>: Find the redundant attributes on LHS and delete them<br><br>A → B<br><br>B → C<br><br>So, the minimal cover of the given FD set:<br><br>{A → B, B → C}.<br><br>Answer is option (c).
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given relation R(A, B, C, D) with FD set {AB → C, C → A, C → D, DE→A}.What is/are candidate key(s) of sub relation r1(ABCD) ?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {AB, BD}</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> {AB, BC}<br><span class="explanation">Explanation:</span><br>Given relation R(A, B, C, D, E) with FD set: {AB → C, C → A, C → D, DE→A}<br>The FDs under sub relation r1 (ABCD) will be { AB → C, C → A, C → D}.<br><br><span style="text-decoration:underline;">Finding candidate key</span>:<br>	B is not there in right hand side of any FD. So, B is necessary in every candidate key. We will check whether B itself is sufficient to be candidate key or not by finding (B)<sup class="tcecode">+</sup>. As (B)<sup class="tcecode">+</sup>  = B, B is not sufficient to be a candidate key. So, check for all combination of 2 attributes including B such as AB, BC, BD. Only AB and BC are candidate keys since (AB)<sup class="tcecode">+</sup> = ABCD and (BC)<sup class="tcecode">+</sup> = BCAD. Now Check for all combination of 3 attributes including B but excluding A and C( since AB and AC are already candidate keys any combination of attributes with them will become superkey). We cannot find any such combination. So, the candidate keys for the given relation are {AB, BC}. Answer is option (b).
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {AB, BC, BD}</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Relation R = ABCDE with ABC as primary key. Mention FD so that R is not in 2NF<br><br>(i) AB → D<br><br>(ii) A → D<br><br>(iii) C → D<br><br>(iv) ABC → DE<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Only (i)</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Only (i), (ii)</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Only (iv)</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> Only (i), (ii), (iii)<br><span class="explanation">Explanation:</span><br>Given relation R(ABCDE) with ABC as primary key.<br><br>Prime attributes: {A, B, C}<br><br>Non-prime attribute: {D, E}<br><br>R violates 2NF if there are only partial dependencies in R. Partial dependency is nothing but part of key determining non-prime attribute<br><img src="./Test Results120_files/Q1_exp.PNG" alt="image:Database Topic Test - 2/Q1_exp.PNG" width="401" height="325" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Every relation in 3NF is also in BCNF</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> Every relation in BCNF is also in 2NF<br><span class="explanation">Explanation:</span><br><img src="./Test Results120_files/Q4_exp.PNG" alt="image:Database Topic Test - 2/Q4_exp.PNG" width="166" height="250" class="tcecode"><br>Option ‘a’ is not correct because every relation in 3NF need not be in BCNF.<br><br>Option ‘b’ is correct because every relation in BCNF is also in 2NF.<br><br>Option ‘c’ is not correct because a relation can be in 2NF and 3NF.<br><br>Option ‘d’ is not correct because in 2NF every non-prime attribute is fully<br><br>functionally dependent on every key of R but not in 3NF.
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> No relation can be both in 3NF and 2NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> A relation R is in 3NF if every non-prime attribute is fully functionally dependent on every key of R</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is false?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> BCNF is stricter than 3NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Lossless, dependency-preserving decomposition into 3NF is always possible</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Lossless, dependency-preserving decomposition into 2NF is always possible</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> Lossless, dependency-preserving decomposition into BCNF is always possible<br><span class="explanation">Explanation:</span><br>Option ‘a’ is correct because BCNF is stricter than 3NF.<br><br>Option ‘b’ is correct because lossless decomposition, dependency-preserving into 2NF is always possible.<br><br>Option ‘c; is correct because lossless decomposition, dependency-preserving into 2NF is always possible.<br><br>Option ‘d’ is not correct because lossless, dependency-preserving into BCNF is not always possible.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Agency called immediate cover supplies part time 1 temporary staff to hotels throughout India. The table shown below lists the time speed by agency staff working at two hotels.<br><img src="./Test Results120_files/Q6.PNG" alt="image:Database Topic Test - 2/Q6.PNG" width="575" height="258" class="tcecode"><br>In the process of normalizing the above table into 3NF, how many tables will be formed? (Assume FD’s based on given table)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>From the given relational instance, we can write the following FD’S<br>hoursPerWeek -&gt; SSN contractNo employeeName hotelNo hotelLocation -&gt;(1)<br>SSN, contractNo → hoursPerWeek    employeeName   hotelNo  hotelLocation → (2)<br>SSN, hotelNo -&gt; contractNo hoursPerWeek    employeeName hotelLocation -&gt;(3)<br>hotelNo → hotelLocation  → (4)<br>holtelLoctaion -&gt; hotelNo -&gt; (5)<br>SSN → employeeName  → (6)<br>employeeName → SSN  → (7)<br><br>Assume Assume SSN as A, contractNo as B, hoursPerWeek as C, employeeName as D,hotelNo as E, hotelLocation as F.<br>Therefore for the given relation {AB, BD, C, AE, AF, DE, DF} are candidate keys.<br><br>Since all attributes are prime attributes, there are no partial and transitive dependencies. Therefore given relation is already in 3NF. No need to decompose. Answer is 1.
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a relation R(A, B, C, D, E). Which of the following FD set holds on R such that R is in 3NF but not in BCNF?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results120_files/wrong.png" width="16">&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {ABC → DE, B → C}</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {A → BC, C → D, D → E}</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> {A → BCD}</li>
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> None of the above<br><span class="explanation">Explanation:</span><br>Checking for option (a):<br>		Given relation R(ABCDE) and FD set that holds on R: {ABC → DE, B → C}<br>	Finding Candidate key:<br>Attributes A, B are not present in right hand side of the any FD. So, AB is necessary in every candidate key. We have to find whether AB is sufficient to be candidate key.<br>		So, find whether (AB)<sup class="tcecode">+</sup> derives all attributes, since (AB)<sup class="tcecode">+</sup>  = ABCDE<br>		∴ AB is necessary and sufficient to be a candidate key.<br>No need to check for the combination of other attributes for finding candidate key.<br>		AB is the only candidate key of R<br>		Prime attributes: {A, B}<br>		Given FD’s<br>			ABC → DE	------ (1)<br>                         B → C	------ (2)<br>	Check whether R satisfies 3NF:<br>Formal definition of 3NF states that a relation R is said to be in 3NF if for every non-terminal FD X → Y in R, either X is a super key or Y is a prime attribute.<br>		Here FD (1) satisfies 3NF since LHS of FD(1) i.e., ABC is super key<br>		Here FD (2) does not satisfy 3NF since RHS of FD(2) i.e., C is NOT prime attribute<br>		∴ Given relation R does not satisfy 3NF<br>	So, answer is option (a) is wrong.<br>	Checking for option (b):<br>		Given relation R = (ABCDE) and FD’s that hold on R:<br> A → BC,	----- (1)<br> C → D	----- (2)<br> D → E 	----- (3)<br>Finding candidate key:<br>Attribute A is not present in right hand side of any FD. So, A is necessary in every candidate key. So, find (A)<sup class="tcecode">+</sup>, (A)<sup class="tcecode">+</sup> = ABCDE. A is sufficient to be a candidate key. Therefore we need not check for any other combination of attributes for candidate key. Only candidate key is A.<br>	Checking for 3NF:<br>		Here FD (1) satisfies 3NF since LHS of FD(1) i.e., A is super key in R<br>	FD(2) violates 3NF since either LHS of FD(2) i.e., C is not a super key or RHS of FD(2) i.e., D is not prime attribute.<br>	So, R does not satisfy 3NF<br>	So, option (b) is not answer<br><br>	Checking for option (c):<br>		Given relation R(ABCDE) and FD’s that hold on C, <br>			{A → BCD}	------ (1)<br>	Finding candidate key:<br>Attribute E is not present in right hand side of any FD. So, E is necessary in every candidate key<br>So, find (E)<sup class="tcecode">+</sup> as (E)<sup class="tcecode">+</sup> = E, E is not sufficient  to be candidate key. Now check for 2 attribute combination including E as AE, BE, CE and DE, every (AE)<sup class="tcecode">+</sup> determining all attributes. So, AE is the candidate key for R. similarly, check for all 3 attribute combinations and 4 attribute combinations. No other combination gives candidate key. Only AE is the candidate key for R.<br>	Checking for 3NF:<br>FD(1) violates 3NF since LHS of FD(1) i.e., A is not super key and RHS of FD(1) i.e., BCD are not prime attributes. So, R does not satisfy 3NF.<br>		So, option (c) is not correct answer.<br><br>So, the correct answer is option (d) -&gt; None of the above.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a relation R(MNPQT) and set of FD’s <br>	F<sub class="tcecode">1</sub> = {M → TN, P → QM}	and<br>	F<sub class="tcecode">2</sub> = {M → N, P → Q, P → MT, MN → T}	<br>Which of the following statement is true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> F1 and F2 are not equivalent</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> F1 and F2 are equivalent<br><span class="explanation">Explanation:</span><br>Given relation R(MNPQT) and FD set<br>		F<sub class="tcecode">1</sub> = {M → TN, P → QM}	and<br>		F<sub class="tcecode">2</sub> = {M → N, P → Q, P → MT, MN → T}	<br>	F<sub class="tcecode">1</sub> and F<sub class="tcecode">2</sub> are equivalent if F<sub class="tcecode">1</sub> can cover F<sub class="tcecode">2</sub> and F<sub class="tcecode">2</sub> can cover F<sub class="tcecode">1</sub><br>Check whether F<sub class="tcecode">2</sub> can cover F<sub class="tcecode">1</sub>:<br>	In F<sub class="tcecode">1</sub> first FD is M → TN<br>		∴ find (M)<sup class="tcecode">+</sup> in F<sub class="tcecode">2</sub><br>		           ⇒ (M)<sup class="tcecode">+</sup> = MNT<br>		∴ M → TN can be covered by F<sub class="tcecode">2</sub><br>	Second FD is P → QM<br>		find (P)<sup class="tcecode">+</sup> in F<sub class="tcecode">2</sub><br>		(P)<sup class="tcecode">+</sup> = PQMNT<br>		∴ P → QM can be covered by F<sub class="tcecode">2</sub><br>		∴ We can say that F<sub class="tcecode">2</sub> can cover F<sub class="tcecode">1</sub> → (1)<br>            Check whether F<sub class="tcecode">1</sub> can cover F<sub class="tcecode">2</sub>:<br>		In F<sub class="tcecode">2</sub> first FD is M → N<br>		∴ find (M)<sup class="tcecode">+</sup> in F<sub class="tcecode">1</sub><br>		           ⇒ (M)<sup class="tcecode">+</sup> = MNT<br>		∴ M → N can be covered by F<sub class="tcecode">1</sub><br>	Second FD is P → Q<br>		find (P)<sup class="tcecode">+</sup> in F<sub class="tcecode">1</sub><br>		(P)<sup class="tcecode">+</sup> = PQMNT<br>		∴ P → Q can be covered by F<sub class="tcecode">1</sub><br>                        Third FD is P → MT<br>find (P)<sup class="tcecode">+</sup> in F<sub class="tcecode">1</sub><br>		(P)<sup class="tcecode">+</sup> = PQMNT<br>		∴ P → MT can be covered by F<sub class="tcecode">1</sub><br>                        Fourth FD is MN → T<br>find (MN)<sup class="tcecode">+</sup> in F<sub class="tcecode">1</sub><br>		(MN)<sup class="tcecode">+</sup> = MNT<br>		∴ MN → T can be covered by F<sub class="tcecode">1</sub><br>                        	∴ We can say F<sub class="tcecode">1</sub> can cover F<sub class="tcecode">2</sub>	→ (2)<br>		From (1) &amp; (2) we can say that F<sub class="tcecode">1</sub> and F<sub class="tcecode">2</sub> are equivalent.<br>			So, (a) is correct answer.	<br>		∴ We can say that F<sub class="tcecode">2</sub> can cover F<sub class="tcecode">1</sub> → (1)
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> We can’t say</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given a relational schema r(A, B, C, D, E) and set of FD’s {A → BC, CD → E, B → D, E → A} that holds on r. The decomposition of r into r<sub class="tcecode">1</sub>(A, B, C) and r<sub class="tcecode">2</sub>(A, D, E) is<br>I.Lossless decomposition<br>II.Dependency preserving<br>Which of the following is true?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> I only<br><span class="explanation">Explanation:</span><br>Given relation schema r(A, B, C, D, E) and FD set:<br>		{A → BC, CD → E, B → D, E → A}<br>	Given r is to be decomposed into r<sub class="tcecode">1</sub>(A, B, C) and r<sub class="tcecode">2</sub>(A, D, E). <br>FDs under r<sub class="tcecode">1</sub>(A, B, C) will be {A → BC}. <br>So, the key for r<sub class="tcecode">1</sub> is {A}. <br>FDs under r<sub class="tcecode">2</sub>(A D, E) will be {E → A}. So, the key for r<sub class="tcecode">2</sub>(A, D, E) is ED.<br>	∴ Decomposition of r(A, B, C, D, E) into r<sub class="tcecode">1</sub>(A, B, C) and r<sub class="tcecode">2</sub>(A, D, E) is lossless since the common attribute of r<sub class="tcecode">1</sub> and r<sub class="tcecode">2</sub> i.e., A is key for r<sub class="tcecode">1</sub>.<br>	So, I is correct.<br>Here the final FD set we obtained after decomposition is { A→BC, E→A}.<br>The decomposition is not FD preserving since the FDs CD→E and B→D which are there in original FD set are not covered by final FD set ( (CD)<sup class="tcecode">+</sup> = CDEAB in original FD set but in final FD set (CD)<sup class="tcecode">+</sup> = CD and also (B)<sup class="tcecode">+</sup>  in original FD set is BD but (B)<sup class="tcecode">+</sup>  in final FD set is B). Therefore we can say that given decomposition is not FD preserving.<br> So II is not correct.<br>Answer is option (a).
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> II only</li>
+<li><img src="./Test Results120_files/wrong.png" width="16">&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> Both I &amp; II</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> We can't say</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q10 &amp; Q11:</strong><br>Consider the relation R = {A, B, C, D E, F, G, H, I, J} and the set of functional dependencies F = {{A, B} → {C}, {A} → {D, E}, {B} →{F}, {F} → {G, H}, {D} → {I, J}}<br>What is the key of above relation R?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> ABC</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> AB<br><span class="explanation">Explanation:</span><br>Given relation<br>	    R = {A, B, C, D, E, F, G, H, I, J}<br>And FD set = { {A, B} → {C}, {A} → {D, E}, {B} → {F}, {F} → {G, H},  {D} → {I, J} }<br><br><span style="text-decoration:underline;">Finding candidate key</span>:<br>A, B are not there in right hand side of any FD. So AB is necessary in every candidate    key. We will check whether AB is sufficient by itself to be candidate key or not. So find (AB)+ , (AB)+ = ABCDEFGHIJ. So, Ab is necessary and sufficient to be candidate key. Therefore we can say that AB is the only candidate key. No need to check for other combination of attributes to find candidate key.
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> B</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> BD</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q10 &amp; Q11:</strong><br>Consider the relation R = {A, B, C, D E, F, G, H, I, J} and the set of functional dependencies F = {{A, B} → {C}, {A} → {D, E}, {B} →{F}, {F} → {G, H}, {D} → {I, J}}<br><br>How many tables will be formed if we decompose the above relation R into BCNF?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>Explanation:<br>	Given FD’S are AB → C	→ (1)<br>			     A → DE	→ (2)<br>			     B → F	→ (3)<br>			     F → GH	→ (4)<br>			     D → IJ	→ (5)<br>	A relation R is said to be in BCNF, if for every non-trival FD X→Y in R, X should be super key in R.<br>	FD(2)  violates BCNF since left hand side of FD(2) i.e., A is not superkey in R. so the given relation is decomposed into<br>            <br><img src="./Test Results120_files/Q13_exp.PNG" alt="image:Database Topic Test - 2/Q13_exp.PNG" width="479" height="325" class="tcecode"><br>	∴ Total number of tables formed after we decompose the given relation R into BCNF is 5
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q12 &amp; Q13:</strong><br>A relation R  is given as	<br><img src="./Test Results120_files/Q2.PNG" alt="image:Database Topic Test - 2/Q2.PNG" width="384" height="280" class="tcecode"><br>What is the normal form of the above relation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 1NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 2NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 3NF</li>
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> None<br><span class="explanation">Explanation:</span><br>The above relation contains multi valued attributes B, C, D. so, the given relation R is unnormalized.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q12 &amp; Q13:</strong><br>A relation R  is given as	<br><img src="./Test Results120_files/Q2.PNG" alt="image:Database Topic Test - 2/Q2.PNG" width="384" height="280" class="tcecode"><br>If the above relation is converted to 1NF what will be the number of rows in the resulting relation(assume we can create only one relation)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> 12<br><span class="explanation">Explanation:</span><br>If we convert the given relation R into 1NF then relation will be<br><img src="./Test Results120_files/Q3_exp.PNG" alt="image:Database Topic Test - 2/Q3_exp.PNG" width="284" height="431" class="tcecode"><br>So, the total number of rows in the resulting relation will be 12.
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q32 &amp; Q33:</strong><br>Consider the relation R, which has attributes that hold schedules of courses and sections at a university; R = {CourseNo, SecNo, OfferingDept, Credit_Hours, CourseLevel, InstructorSSN, Semester, Year, days-Hours, RoomNo, NoofStudents}. Suppose that the following functional dependencies hold on R:<br>{CourseNo} → {OfferingDept, CreditHours, CourseLevel}<br>(CourseNo, SecNo, Semester, Year} → {Days_Hours, RoomNo, NoofStudents, InstructorSSN}<br>{RoomNo, Days_Hours, semester, year} → {InstructorSSN, CourseNo, SecNo}<br><br>What is the highest normal form the above relation satisfies?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/correct.png" width="18"> 1NF<br><span class="explanation">Explanation:</span><br>Candidate keys for given relation are<br>				{courseNo secNo semester Year} and <br>{RoomNo, Days-Hours, semester, Year}, as only these combination of attributes closure gives all attributes.<br>	Here partial functional dependency <br>		({courseNo} → {offeringDept, creditHours, courseLevel}) is prsent.<br>	∴ Highest normal form satisfying given relation is 1NF
+</li>
+<li><img src="./Test Results120_files/wrong.png" width="16">&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 2NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 3NF</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> BCNF</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Questions Q32 &amp; Q33:</strong><br>Consider the relation R, which has attributes that hold schedules of courses and sections at a university; R = {CourseNo, SecNo, OfferingDept, Credit_Hours, CourseLevel, InstructorSSN, Semester, Year, days-Hours, RoomNo, NoofStudents}. Suppose that the following functional dependencies hold on R:<br>{CourseNo} → {OfferingDept, CreditHours, CourseLevel}<br>(CourseNo, SecNo, Semester, Year} → {Days_Hours, RoomNo, NoofStudents, InstructorSSN}<br>{RoomNo, Days_Hours, semester, year} → {InstructorSSN, CourseNo, SecNo}<br><br>How many tables will be formed, if we decompose the above table into BCNF?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results120_files/correct.png" width="18">&nbsp;<img src="./Test Results120_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>Formal definition of BCNF states that a relation R is said to in BCNF, if for every non-trivial FD X→Y in R, X should be a superkey in R.<br>           FD {CourseNo} → {OfferingDept, CreditHours, CourseLevel} ⇒ Violates BCNF ( Since left hand side of FD i.e CourseNo is not superkey).<br>	Assume CourseNo as A, OfferingDept as B, CreditHours as C, CourseLevel as D, InstructorSSN as E, Semester as F, Year as G, Days_Hours as h, RoomNo as  I, NoofStudents as J, SecNo as K<br>So, the candidate keys are AKFG and IHFG The FD’s can be re-written as:<br>A → BCD 	 ---(1)<br>AKFG → HIJE---(2) <br>IHFG → EAK  ---(3)<br>FD(1) violates the condition of BCNF.  <br><br>	Given relation can be decomposed into<br>       <img src="./Test Results120_files/Q10_exp.PNG" alt="image:Database Topic Test - 2/Q10_exp.PNG" width="337" height="142" class="tcecode"> <br>	So, if we decompose given relation into BCNF, total number of tables formed will be 2.
+</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results120_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results120_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

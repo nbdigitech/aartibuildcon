@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=15703&test_id=218 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results76_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results76_files/calclayout.css">
+<script src="./Test Results76_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results76_files/jquery-ui.js.download"></script>
+<script src="./Test Results76_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results76_files/custom.js.download"></script>
+<script src="./Test Results76_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results76_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results76_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838386, 'I\'m sorry, the time available to complete the test is over!', false, 1486838386936);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=15703&amp;test_id=218#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Topic Test - 3</strong><br>
+Transmission and Propagation delays, CRC, Aloha Technologies, Framing, Bit stuffing, Ethernet&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-11-16 21:40:08&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-11-16 22:16:29&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:36:21&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+1.680 / 25.000 (7%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+2 / 15 (13%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The minimum size of ethernet frame is 64 bytes long to make sure that the sender is able to detect the collision at the far end of the cable. If the Fast Ethernet with bandwidth 100 Mb/s also has the same 64 byte minimum frame size, but can get the bits out ten times faster. How is it possible to maintain the same frame size?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> increase the velocity of cable by a factor of 10</li>
+<li><img src="./Test Results76_files/correct.png" width="18">&nbsp;<img src="./Test Results76_files/correct.png" width="18"> reduce the cable length by a factor of 10<br><span class="explanation">Explanation:</span><br>In order to detect collision on the channel, the transmission time Tt &gt; 2*Tp. So for the faster Ethernet, since the transmission rate is increased by a factor of 10, we will have to decrease the propagation delay by 10 so that it can still detect the collision. So the maximum wire length in Fast Ethernet is 1/10 as long as in ethernet.<br>⇒ Tt ∝ Tp<br>⇒ Length/Bandwidth ∝ Distance/Velocity<br>⇒ Bandwidth ∝ 1 / Distance(length)
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> increase the cable length by a factor of 10</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> Frame size must be change</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a scenario that a communication link having a bandwidth of 10 Mbps with 20 routers and each router having a 3μs queuing delay  and 2 μs processing delay. The length of cable is 3000 Km and speed inside the link is equal to speed of light. Then what is total delay to send a packet of size  25 million bits? Ignore the transmission delay at routers.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 3.7 sec</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 3.5 sec</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 2.6 sec<br><span class="explanation">Explanation:</span><br>Latency = processing time + queuing time + transmission time + propagation time<br>Processing time = 20 × 2 μs = 40 μs = 0.000040 s<br>Queuing time = 20 × 3 μs = 60 μs = 0.000060 s<br>Transmission time = 25,000,000 bits / (10 Mbps) = 2.5 s<br>Propagation time = (3000 *103 m) / (3 × 10<sup class="tcecode">8</sup> m/s) = 0.01 s     <br>[ ⇒  speed of light = 3 * 108m/s]<br>Latency = 0.000040 + 0.000060 + 2.5 + 0.01 = 2.5101 s
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 2.2 sec</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that a university in gotham city is using a classical ethernet of 10 Mbps data rate. Suppose the network administrator in the university wants to configure the ethernet with an efficiency of 80%, if and only if all the packets in the ethernet have the minimum length(exclude the flag and preamble from the ethernet header). What is the minimum propagation delay in this scenario?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 1.98 microsec<br><span class="explanation">Explanation:</span><br>⇒ Efficiency = 1/ (1+6.44a) &gt;= 80%    <br>⇒ A minimum length ethernet packet is 64 bytes, which is 512 bits. <br>⇒ So Ttrans = 51.2 µs, ⇒ Tprop &lt;= 1.98 µs
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 50 micro sec</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 3.5 micro sec</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;">Linked Answer Questions(Q4 &amp; Q5)</span>:<br>Consider a router having buffer capacity to hold 5000 packets. The router is connected to multiple links which are having the bandwidth of 1 Gbps. Suppose the incoming data from 5 links are being redirected to one of its links. In these 5 flows, 4 flows(tiny flows) are sending 10000 packets/sec and another flow(huge flow) is sending 50000 packets/flow. Assume each packet in size in these flows is 10000 bits.<br>How many packets are in the buffer on an average?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>⇒	1 packet(p) = 10000 bits.<br>⇒	The link can forward 1Gbps = 100 Kp/s(kilo packets per sec).<br>    	Since the arriving packet rate is(5 flows = 4 tiny flows and one huge flow) = 90 Kp/s. <br>    	So, the traffic intensity = 90/100 = 0.9, <br>⇒ 	So the average number of packets in the queue is  = 0.9/(1-0.9) = 9.
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 0.9</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;">Linked Answer Questions(Q4 &amp; Q5)</span>:<br>Consider a router having buffer capacity to hold 5000 packets. The router is connected to multiple links which are having the bandwidth of 1 Gbps. Suppose the incoming data from 5 links are being redirected to one of its links. In these 5 flows, 4 flows(tiny flows) are sending 10000 packets/sec and another flow(huge flow) is sending 50000 packets/flow. Assume each packet in size in these flows is 10000 bits.<br>With the above question information, suppose the huge flow increases its sending rate to 80000 packets per second. Then what is the rate at which the huge flow’s packets are sent over the link?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 667 Mbps<br><span class="explanation">Explanation:</span><br>⇒ 1 packet = 10000 bits<br>⇒ The link can forward 1Gbps = 100 Kp/s.<br>⇒ The arriving packet rate is now 120 Kp/s, (80Kp + 4*10Kp)<br>⇒ So the traffic intensity is 120/100 = 1.2, <br>⇒ So only 5/6 of the arriving traffic can be sent on the link (100Kp/120Kp).<br>⇒ So the large flow is able to send 80*5/6 or about 66.7 Kp/s.
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 667 Kbps</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 120 Mbps</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 1 Gbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider below fields are header fields of a packet used in a communication channel. CRC for these type of packets are of size 1 byte.  <br>1.First 4 bits: Generic Flow Control (GFC) field  <br>2.Next 8 bits: Virtual Path Identifier (VPI) field  <br>3.Next 16 bits: Virtual Circuit Identifier (VCI)field  <br>4.Next 3 bits: Type field  <br>5.Next 1 bit: CLP field  <br>6.Next 8 bits: CRC field<br>The CRC is calculated using the generator polynomial x<sup class="tcecode">8</sup> + x<sup class="tcecode">2</sup> + x + 1. Find the CRC bits if the GFC, VPI, Type and CLP fields are all zero and the VCI field is given by 00000000 00001111. Assume that the GFC bits correspond to the highest order bits in the polynomial.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 10111001</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 10100011</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 10111010</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 11011110<br><span class="explanation">Explanation:</span><br>The data will be     : 000 00000000 00000000 00001111 000 0<br>		Generator polynomial is x<sup class="tcecode">8</sup> + x<sup class="tcecode">2</sup> + x + 1 = 100000111<br>		Add 8 0’s to end of data so that once crc is calculated, we can replace it.<br><img src="./Test Results76_files/E6a_update.png" alt="image:CN3/E6a_update.png" width="474" height="240" class="tcecode"><br>⇒ CRC = <strong class="tcecode">11011110</strong>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the checksum for the following ICMP packet:<br>Type: Echo Request<br>Identifier: 123<br>Sequence number: 25<br>Message: HELLO<br>Assume that message is divided into 8-bits(1 bytes)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 001110001 001010100</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 110001110 110001011</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 001010001 001110100</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 001110001 001110100<br><span class="explanation">Explanation:</span><br>25 		⇒ 00000000 00011001<br>123		⇒ 00000000 01111011<br>H &amp; E(ascii)	⇒ 01001000 01000101<br>L &amp; L(ascii)	⇒ 01001100 01001100<br>O(ascii)	⇒ 00000000 01001111 <br><br>Sum 		⇒ 110001110 110001011<br>Compliment	⇒ 001110001 001110100
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a channel having a bandwidth of 72 Kbps which uses pure ALOHA as a flow control mechanism. Assume there are N stations are trying to share this channel. Each station sends a frame of size 2048-bit for every 120 sec, even though the previous frame has not been sent yet. Find the value of N?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 779</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 777</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 776<br><span class="explanation">Explanation:</span><br>Given Bandwidth (B) = 72Kbps = 72*10<sup class="tcecode">3</sup><br>		Bitrate for each host (b) = 2048/120 = 17.06 b/s<br>		<br>		In pure ALHOA, Number of stations N = (0.184 * Bandwidth) / Bitrate of each station.<br>							    =  (0.184 * 72*10<sup class="tcecode">3</sup>) / 17.06<br>							    = 776.5 stations
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 775</li>
+</ol>
+<br><br>
+</li>
+<li>
+The data from Network layer is divided into 10 frames at data link layer. Assume each frame has 70% probability to reach safely(without corrupted) and no retransmissions are there for corrupted packets. How many times the data can be sent on average to send the entire message through?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 35<br><span class="explanation">Explanation:</span><br>Since each frame has a success probability of 0.7 <br>The success probability of whole message is (0.7)10= 0.028. <br><br>The expected number of transmissions for a message is <br><img src="./Test Results76_files/E12a.PNG" alt="image:CN3/E12a.PNG" width="204" height="59" class="tcecode"><br>Where i = no. of transmissions, p = success probability<br>The sum of an infinite geometric series, <br>          <img src="./Test Results76_files/E12b.PNG" alt="image:CN3/E12b.PNG" width="180" height="67" class="tcecode">       <br>Now use a = 1-p, then we get E = 1/p. Thus, it takes an average of 1/0.028, or about 35.714 transmissions.<br><br>But if the question says that we need to consider retransmissions for each corrupted frame,<br>Probability of each frame success = 0.7<br>Average for a single frame reach = 1/0.7<br>For 10 frames = 10/0.8 = 14.28
+</li>
+<li><img src="./Test Results76_files/wrong.png" width="16">&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 14.28</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 32.3</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the Internet checksum of a packet which contains 10 bytes of data each byte is an unsigned binary ASCII character value. Assume the data is “NETWORKING.” <br>Note: ASCII code is numerical representation of characters to understand by computers. “A” starts with ascii code 65 and increment each next letter by one. “a” starts with 97 and increment each next letter by one.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 01010010 10001001</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 01010000  01001110</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 10101101  10110101</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 01110101   10000000<br><span class="explanation">Explanation:</span><br>ASCII values for each letter:<br>	N 	= 78 = 01001110<br>	E 	= 69 = 01000101<br>	T 	= 84 = 01010100<br>	W 	= 87 = 01010111<br>	O 	= 79 = 01001111<br>	R 	= 82 = 01010010<br>	K 	= 75 = 01001011<br>	I 	= 73 = 01001001<br>	N 	= 78 = 01001110<br>	G 	= 71 = 01000111<br>	Here we need to find Internet(IP) checksum which means 16-bit checksum.<br><img src="./Test Results76_files/E11a.png" alt="image:CN3/E11a.png" width="220" height="343" class="tcecode"><br>1’s complement of 10001010  01111111 = 01110101   10000000
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 2 hosts, H<sub class="tcecode">1</sub>, H<sub class="tcecode">2</sub> are at two ends of a link. The transmission rate of the link is 2Mbps and the propagation delay is 10 msec. Host H<sub class="tcecode">1</sub> will receive the data with a rate of 64Kbps from another link and send the data by dividing them into frames of length 56 bytes to Host H<sub class="tcecode">2</sub>. How much time elapses from the time a bit is received (from another link at Host H<sub class="tcecode">1</sub>) until the bit is stored (at Host H<sub class="tcecode">2</sub>)?<br>Note : H<sub class="tcecode">2</sub> stores the packet, once it receives the entire packet.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 15.5</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 18.2</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 16.4</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 17.2<br><span class="explanation">Explanation:</span><br>Consider the first bit in a packet at Host H<sub class="tcecode">1</sub>. Before this bit can be transmitted, all of the bits in the packet must be received from another link. This requires<br>56 * 8 / 64*103 = 7 msec.<br>The time required to transmit the packet is<br>56 * 8 / 2*106 = 224 sec.<br>Propagation delay = 10 msec.<br>The delay until the packet is stored at Host H<sub class="tcecode">2</sub> is<br>7 msec + 224 sec + 10 msec = 17.224msec
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider two ethernet channels having data rate of 190 kbps and 180 kbps respectively. If the channels used pulse stuffing TDM with no synchronization bits, What is the frame rate? <br>Note: Pulse stuffing is often used as a means of controlling synchronization in systems that require both transmitter and receiver to transmit at the same bit rate.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 180K</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 170K</li>
+<li><img src="./Test Results76_files/correct.png" width="18">&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 190K<br><span class="explanation">Explanation:</span><br>We need to add extra bits to the second source to make both rates = 190 kbps. Now<br>we have two sources, each of 190 Kbps.<br>→ The frame carries 1 bit from each source. Frame size = 1 + 1 = 2 bits.<br>→ Each frame carries 1 bit from each 190-kbps source. Frame rate = 190,000 frames/s.
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 185K</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the data 10011101 is transmitted in a ethernet link using the standard CRC method for error control. The Generator polynomial is x<sup class="tcecode">3</sup> + 1. Suppose the 3rd bit from left is inverted while transmitting, what will be the CRC value at receiver end?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 010</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 100<br><span class="explanation">Explanation:</span><br>The frame is 10011101. The generator is 1001. <br>The message after appending three zeros is 10011101000. <br>The remainder on dividing 10011101000 by 1001 is 100. <br>So, the actual bit string transmitted is 10011101100. <br>The received bit stream with an error in the third bit from the left is 10111101100. <br>Dividing this by 1001 produces a remainder of 100.
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 010</li>
+<li><img src="./Test Results76_files/wrong.png" width="16">&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 001</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a ethernet technology where all the stations can send their own size of data with a fixed size of header.  Then what are the percentage of bits in a frame belong to the header for both the largest and smallest Ethernet frames.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> 20, 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results76_files/E7a.PNG" alt="image:CN3/E7a.PNG" width="474" height="87" class="tcecode"><br>	 	 	<br>The Smallest Ethernet Frame has the following size in bytes<br>Preamble	→	08 bytes<br>Header		→	14 bytes<br>Data		→	46 bytes<br>CRC		→	04 bytes<br>Total size	⇒	72 bytes	or	576 bits<br>Percentage of header bits in smallest Ethernet frame is:<br>(Header bits / Total size in bits) x 100 = 112 / 576 x 100 = 19.44 %<br><br>The Largest Ethernet Frame has the following size in bytes<br>Preamble	→	 8 bytes<br>Header		→	14 bytes<br>Data		→	1500 bytes<br>CRC		→	 4 bytes<br>Total size	⇒	1526 bytes	or	12208 bits<br>Percentage of header bits in largest Ethernet frame is:<br>(Header bits / Total size in bits) x 100 = 112 / 12208 x 100 = 1% approx.
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 15, 5</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 18, 7</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 23, 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there are 4 nodes N<sub class="tcecode">1</sub>, N<sub class="tcecode">2</sub>, N<sub class="tcecode">3</sub> and N<sub class="tcecode">4</sub> are  using a slotted ALOHA channel to send their own huge data. When competing all the nodes to transfer their data only one node will get succeeded with a probability P. The time is divided into slots S<sub class="tcecode">1</sub>, S<sub class="tcecode">2</sub>, S<sub class="tcecode">3</sub> ….and so on. What is probability of N<sub class="tcecode">1</sub> succeeded in slot 5?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 4*(1-P)<sup class="tcecode">3</sup>(P(1-P)<sup class="tcecode">3</sup>)</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> P(1-P)<sup class="tcecode">3</sup>(1-P(1-P)<sup class="tcecode">3</sup>)</li>
+<li>&nbsp;<img src="./Test Results76_files/correct.png" width="18"> P(1-P)<sup class="tcecode">3</sup>(1-P(1-P)<sup class="tcecode">3</sup>)<sup class="tcecode">4</sup><br><span class="explanation">Explanation:</span><br>N<sub class="tcecode">1</sub> succeeds in slot 5 for the first time means, N<sub class="tcecode">1</sub> has to fail for 4 times and then 5th time it should succeed.<br>I.e (1-P<sub class="tcecode">A</sub>)<sup class="tcecode">4</sup>P<sub class="tcecode">A</sub> <br>Let P<sub class="tcecode">N1</sub> is the probability of N<sub class="tcecode">1</sub> success.[i.e N<sub class="tcecode">1</sub> should success and remaining all (B, C, D) should fail<br>→ P<sub class="tcecode">N1</sub> = P(1-P)(1-P)(1-P)<br>⇒ N<sub class="tcecode">1</sub> succeeds for the first time in slot 5  = (1-P<sub class="tcecode">N1</sub>)<sup class="tcecode">4</sup>P<sub class="tcecode">N1</sub><br>					               = (1-(P(1-P)<sup class="tcecode">3</sup>))<sup class="tcecode">4</sup>P(1-P)<sup class="tcecode">3</sup>
+</li>
+<li>&nbsp;<img src="./Test Results76_files/wrong.png" width="16"> 4*P(1-P)<sup class="tcecode">3</sup>(1-P<sup class="tcecode">3</sup>(1-P)<sup class="tcecode">3</sup>)</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results76_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

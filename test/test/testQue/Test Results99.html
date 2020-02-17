@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92321&test_id=172 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results99_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results99_files/calclayout.css">
+<script src="./Test Results99_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results99_files/jquery-ui.js.download"></script>
+<script src="./Test Results99_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results99_files/custom.js.download"></script>
+<script src="./Test Results99_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results99_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results99_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920989, 'I\'m sorry, the time available to complete the test is over!', false, 1486920989050);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92321&amp;test_id=172#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>P&amp;DS Subject Test - 1</strong><br>
+Complete syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:39:12&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The expression which the (p, q) <sup class="tcecode">th</sup> entry, where p corresponds to rows and q corresponds to columns of an M x N matrix stored in a row major form, where indices starting from 1 is<br><br>Note: M = total number of rows, N = Total number of columns, Base address is 0,Number of words = 1 byte<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> (p – 1) + N(q – 1)</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> (p – 1) N + (q – 1)<br><span class="explanation">Explanation:</span><br>Let A be a matrix of size M x N, <br> A[p][q] = Base + w * [(p – 1)N + (q – 1)] <br> A[p][q] = 0 + 1 * [(p – 1)N + (q – 1)]              <br> =  N(p – 1) + (q – 1)
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> (p – 1) + M(q – 1)</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> (p – 1) M + (q – 1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function<br>   print(int a)<br><br>{<br><br>if(a ≤ 1)<br><br>return;<br><br>else<br><br>{<br><br>print(a – 1);<br><br>printf(“%d”, a);<br><br>print(a – 1);<br><br>}<br><br>}<br>Find the output for print(4)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 3  2  3  4  3  2  4</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1  2  3  4  1  2  3</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2  2  3  4  2  2  3</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 2  3  2  4  2  3  2<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E15a.PNG" alt="image:P&amp;DSS1/E15a.PNG" width="622" height="336" class="tcecode"><br>Finally, the output is 2  3  2  4  2  3  2
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program<br>int count( int x)<br><br>{<br><br>static int c = 0;<br><br>c = c + x;<br><br>return c;<br><br>}<br><br>main( )<br><br>{<br><br>int p, q;<br><br>for(p = 1; p &lt; = 5; p++)<br><br>{<br><br>q = count(p);<br><br>}<br><br>}<br><br>Value of q at the end of program is ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E14a.PNG" alt="image:P&amp;DSS1/E14a.PNG" width="221" height="222" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 17</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a max heap, represented by the array: 60, 50, 40, 30, 35, 36, 37, 28, 24.<br> <br>Now consider that a value 55 is inserted into this heap. After insertion, the new max heap is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 60, 50, 40, 30, 35, 36, 37, 28, 24, 55</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 60, 55, 40, 30, 50, 36, 37, 28, 24, 35<br><span class="explanation">Explanation:</span><br>Heap is a complete binary tree. To insert a new element, we put it at the end of the tree and move up towards root till heap property is satisfied. Here, 55 comes as child of 35, with the path 60-50-35-55. So, we swap 35, 55 and then 50, 55 to get the new path 60-55-50-35. So, new max heap will be 60 55 40 30 50 36 37 28 24 35.<br> <img src="./Test Results99_files/E13a.PNG" alt="image:P&amp;DSS1/E13a.PNG" width="334" height="209" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 60, 50, 40, 30, 55, 36, 37, 28, 24, 35</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 60, 55, 40, 30, 35, 36, 37, 28, 24, 50</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the output of the program?<br># define fun(p, q)p + q<br><br># define gun(p, q) p * q<br><br>main( )<br><br>{<br><br>int i;<br><br>i = 11 * fun(12, gun(13, 14));<br><br>printf(“%d”, i);<br><br>}<br><br>The value of i is __________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 312</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 314<br><span class="explanation">Explanation:</span><br>i = 11 * fun(12, gun(13, 14))<br>  = 11 * 12 + gun(13,14)<br>  = 11 * 12+ 13* 14<br>  = 182 + 132 <br>  = 314
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2134</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2424</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following expression with infix notation<br> <br>19 * 39 - (11 + 99) * (29 / 67) ^ 73 <br> <br>The maximum size of the operator stack during conversion from infix to postfix is _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E11a.PNG" alt="image:P&amp;DSS1/E11a.PNG" width="412" height="184" class="tcecode"><br>1. First we push * onto stack, then - , as we know – has low precedence over stack so pop *, push -<br>2. Now we push (, and + and ), we pop + because we have seen “( )” what ever inside must be popped<br>3. push *, (, / ) so pop / and we try to push ^, finally pop all the operators in the stack.<br> <br>We see that in stack we have 4 operators at max. so stack size is 4
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the output of the program?<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>int m[6] = {15, 11, 25, 30, 35, 45};<br>int p, q, r;<br>p = ++m[1];<br>q = m[1]++;<br>r = m[p++];<br>printf("%d, %d, %d", p, q, r);<br>return 0;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 12, 11, 25</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 11, 12, 15</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 13, 12, 0<br><span class="explanation">Explanation:</span><br>Step 1: int m[5] = {15, 11, 25, 30, 35, 45}; The variable array is declared as an integer array with a size of 6 and it is initialized to m[0] = 15, m[1] = 11, m[2] = 25, m[3] = 30, m[4] = 35…….<br>Step 2:int p, q, r; The variable p, q, r are declared as an integer type.<br>Step 3: p = ++m[1]; becomes p = ++11; Hence p = 12 and m[1] =12<br>Step 4: q = m[1]++; becomes q = 12++; Hence q = 12 and m[1] = 13.<br>Step 5: r = m[p++]; becomes r = m[12]; Hence r =0 and p is incremented by 1(p++ means 12++ so p=13)<br>Step 6: printf("%d, %d, %d", p, q, r); It prints the value of the variables p, q, r.<br>Hence the output of the program is 13, 12, 0.
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 12, 13, 30</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a binary max-heap implemented using an array. What is the content of the array after two delete max operations on {36,25,27,24,21,19,23}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 21 23 24 19 25</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 21 24 23 25 19</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 25 24 23 19 21<br><span class="explanation">Explanation:</span><br>During delete, the root element is removed, replaced with the last element. This violates the max heap property. So, we apply max_heapify() to get the max heap property.<br> <br>36 25 27 24 21 19 23 → 23 25 27 24 21 19 → 23 25 27 24 21 19 → 27 25 23 24 21 19 the element not satisfying max-heap property is exchanged with the largest of its children here heap property satisfied<br> <br>Second delete:<br> <br>27 25 23 24 21 19 → 19 25 23 24 21 → 25 19 23 24 21 → 25 24 23 19 21, heap property satisfied<br>Following are the max heaps obtained after each deletion.<br><img src="./Test Results99_files/E9a.PNG" alt="image:P&amp;DSS1/E9a.PNG" width="536" height="170" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 23 21 25 19 24</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function, head is pointing to the first node of the linked list.<br><img src="./Test Results99_files/Q8b.PNG" alt="image:P&amp;DSS1/Q8b.PNG" width="234" height="168" class="tcecode"><br>Suppose 23→45→15→30→89→91→63→NULL  is the single linked list, which of the following options will print the sequence 23 15 89 63 63 89 15 23.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> I : head→next→next!= NULL , II : head→next</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> I : head→next! = NULL, II :  head→next→next<br><span class="explanation">Explanation:</span><br>Given single linked list  23→45→15→30→89→91→63→NULL<br>1. Option (a) : It will prints 23, and enters if =&gt; head→next→next!= NULL (15!=Null) true,<br>     fun(head→next), it will goes to 45, It will prints 45, and enters if =&gt; head→next→next!= NULL (30!=Null) true, but 45 should not be printed according to our requirement. So wrong option<br> <br>2. Option (b) :<br>prints(23)        head→next→next, (15!==null)<br>prints(15)        head→next→next  (89!==null)<br>prints(89)        head→next→next  (63!==null)<br>prints(63)        here head-&gt;next is null prints(63) and again moves back prints results in reverse<br>so results in printing 23 15 89 63 63 89 15 23<br>lastly if head is null nothing is done return<br> <br>3. Option (c) : I : head→next == NULL , II : head→next<br>    It will prints 23, and enters if =&gt; head→next == NULL (15!=Null) true,<br>     fun(head→next), it will goes to 45, and prints 45, like wise it will print all the elements and also prints the elements in reverse order. So wrong option<br> <br>4. Option (d) :  I : head→next→next == NULL Since the next→next of head is not NULL, condition fails, and executes printf, it will print 23 and comes out of the function
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> I : head→next! = NULL, II : head→next</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> I : head→next→next == NULL, II: head→next</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a single linked list, let i and j are pointers to the first and last elements, respectively.<br> <img src="./Test Results99_files/Q7a.PNG" alt="image:P&amp;DSS1/Q7a.PNG" width="472" height="95" class="tcecode"><br>Which of the following operations does depend on the length of the linked list?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> Delete the first element of the list</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> Delete the last element of the list<br><span class="explanation">Explanation:</span><br>Option (a): For deleting the first element of the list, just pointer i will be set to next node, and does not depends on length of linked list.<br> <br>Option (b): For deleting the last element of the list,  we need to get the address of the node just before the last node, last-&gt;next=NULL. So calculating this address we need to linear search the linked list and so it depends on length of linked list.<br> <br>Option (c) : For adding an element at the end of the list we know the address of last node due pointer j. So just do j-&gt;next=new node. It does not depends on length of linked list.<br> <br>Option (d): For interchange the first two elements of the list, again this can be performed using a temp node and does not depends on length of linked list.
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> Add an element at the end of the list</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> Interchange the first two elements of the list</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br> <br>I: For representing hierarchical relationship between elements, trees are efficient data structures<br>II: For root node the height of its left subtree and right subtree differ at most by 1 in AVL Tree<br>III: In-order and level order traversal of the tree will yield a sorted listing of elements of tree in         <br>      Binary search tree<br>IV: The minimum number of queues required to implement a priority queue is two.<br> <br>Which of the above are true<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> I and III only</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> II and III only</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> I and IV only<br><span class="explanation">Explanation:</span><br>1.Trees are efficient data structures for representing hierarchical relationship between elements,<br>2. For every node the height of its left subtree and right subtree differ almost by 1 in AVL Tree, it<br>     should satisfy for every node not only at the root<br>3. Only In-order traversal of the tree will yield a sorted listing of elements of tree in         <br>      Binary search tree but not level order traversal<br>4. Priority queue has the priority associated with each element, so first queue stores the elements<br>    and second queue gives the priority to the elements which are stored in the queue.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following binary search tree, if we remove the root node, which of the nodes from the tree will be the new root ? ___________<br><img src="./Test Results99_files/Q5a.PNG" alt="image:P&amp;DSS1/Q5a.PNG" width="274" height="252" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Here root node 6 has two children. After deleting 6 we can replace root element either with in-order successor or in-order predecessor of the node. Either element 2 (maximum of left sub-tree) or element 8 (minimum of right sub-tree) will be next root element.<br>Hence, 8 is the correct answer.<br><img src="./Test Results99_files/E5a.PNG" alt="image:P&amp;DSS1/E5a.PNG" width="365" height="215" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 9</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of Max Heaps possible in which the numbers 15, 25, 40, 60, 90 can be inserted into a Binary Heap such that resulted binary heap is Max Heap is _________________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Here 90 is fixed at root because its a max heap<br> <br>1st way: we can have (15, 25, 40) in left sub tree and only 60 at the right sub tree, here (15,25,40) can be arranged in 2 ways by keeping 40 as root in left sub tree<br>2nd way : (15, 25, 60) at left sub tree which itself can be done in 2 ways and keep 40 at right sub tree<br>3rd way : (15, 40, 60) at left sub tree (2 ways) and 25 at right sub tree<br>4th way : (25, 40, 60) at left sub tree (2 ways) and 15 at right sub tree<br> <br>Total ways = 2+2+2+2 = 8 ways
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 63</li>
+</ol>
+<br><br>
+</li>
+<li>
+A is an array represented as follows A: array[-10 … 10] of elements, each element occupies two bytes, the starting location is 2016, The location of element A[8] is ______________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2032</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2036</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 2052<br><span class="explanation">Explanation:</span><br>A: array [lb … ub], L<sub class="tcecode">0</sub> is starting location = 2016, c = element size = 2 bytes ,<br>lb= lower bound = -10, location of A[i] = L<sub class="tcecode">0</sub>+(i - lb)*c<br>location of A[8] = 2016 + (8-(-10))*2<br>                  = 2016+ 18*2 = 2016 + 36 = 2052
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2064</li>
+</ol>
+<br><br>
+</li>
+<li>
+An array M[16][12] is stored in column major order, with each element occupies 2 bytes, and the address of M[3][4] is stored at location 1600. Find out the address of M[8][9]. Assume array index start with ‘0’  ___________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1712</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 1770<br><span class="explanation">Explanation:</span><br>Array M[16][12], Size of each element  = 2 bytes<br>Given M[3][4] address = 1600<br>Let M be a matrix of size m x n stored in column major order, the address of A[i][j] can be given by<br>A[i][j] = base + w*[(i-0)+m(j-0)], w is the size of each element.<br>                    ⇒ 1600 = Base + 2 * [(3 – 0) + 16(4 – 0)]<br>1600 = Base + 2 * [3 + 64]<br>1600 = Base + 2 * 67<br>Base = 1600 – 134<br>Base = 1466<br>Now, to find M[8][9]<br>base + w*[(p-0)+m(q-0)]<br>       ⇒1466 + 2 * [(8 – 0) + 16(9 – 0)]<br>1466 + 2 * [8 + 144]<br>1466 + 2 * 152<br>1466 + 304<br>M[6][8] = 1770
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1812</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1832</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c program<br><br>        #include&lt;stdio.h&gt;<br><br>void value(int *m, int *n)<br><br>{<br><br>*m = *m + *n;<br><br>*n = *m + *n;<br><br>}<br><br>void main( )<br><br>{<br><br>int i = 16, j = 18;<br><br>value(&amp;i, &amp;j);<br><br>printf(“%d”, i * j);<br><br>}<br><br> <br><br>The value printed by the above program is _____________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1568</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1668</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 1768<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E16a.PNG" alt="image:P&amp;DSS1/E16a.PNG" width="326" height="267" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1868</li>
+</ol>
+<br><br>
+</li>
+<li>
+The min heap with 1000 elements is stored in an array. The maximum possible array index for 8<sup class="tcecode">th</sup> min element is ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 63</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 127</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 255<br><span class="explanation">Explanation:</span><br>In a min heap, we can always find the first minimum element at the root, second minimum element within the first 2 levels, third minimum element can be found within the first 3 levels. Similarly, we can find the 8th minimum element within the first 8 levels. <br>We know that every min heap is a complete binary tree having n levels and the maximum number of nodes is 2<sup class="tcecode">n</sup> – 1. <br>So, the 8<sup class="tcecode">th</sup> minimum element can be found at the index 2<sup class="tcecode">8</sup> – 1 = 255, in worst case.<br>		2<sup class="tcecode">p</sup> – 1<br>		⇒ 2<sup class="tcecode">8</sup> – 1
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c program<br><img src="./Test Results99_files/Q29a.PNG" alt="image:P&amp;DSS1/Q29a.PNG" width="128" height="282" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 012333</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 012345<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E29a.PNG" alt="image:P&amp;DSS1/E29a.PNG" width="509" height="551" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 123456</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 013579</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c program<br> #include&lt;stdio.h&gt;<br>void f1(int *k)<br>{<br>*k+=15;<br>}<br>void f2(int *x)<br>{<br>int m=*x,*n=&amp;m;<br>*n*=10;<br>}<br>main()<br>{<br>int i=20,*j=&amp;i;<br>f1(j);<br>*j+=10;<br>f2(j);<br>printf("%d,%d",i,*j);<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 43, 43</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 43, 45</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 45, 43</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 45, 45<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E31c.PNG" alt="image:P&amp;DSS1/E31c.PNG" width="443" height="380" class="tcecode"><br> printf(“%d %d”, i, *j); || 45, 45<br>Output: 45, 45
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that reference of head of following doubly linked list is passed to the function fun() 56 ↔ 34 ↔ 23 ↔ 46 ↔ 15↔76. What should be the modified linked list after the function call, where ‘prev’ is previous and ‘next’ is next pointer. The pointer head_ref is pointing to the first element of the doubly linked list.<br><img src="./Test Results99_files/Q28a.PNG" alt="image:P&amp;DSS1/Q28a.PNG" width="243" height="297" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 76 ↔ 46 ↔ 34 ↔ 34 ↔ 46↔76</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 56 ↔ 23 ↔ 15 ↔ 76 ↔ 15↔46</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 56 ↔ 34 ↔ 23 ↔ 46 ↔ 15↔76</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 76 ↔ 15 ↔ 46 ↔ 23 ↔ 34↔56<br><span class="explanation">Explanation:</span><br>The given function reverses the doubly linked list
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c program<br> #include&lt;stdio.h&gt;<br>main()<br>{<br>int x=0;<br>for(;x&lt;20 &amp;&amp; printf("%d ",x);x++)<br>{<br> switch(x)<br> {<br>case 0: x++,x*=2;<br>case 20: x+=2;<br>case 70: x+=6;<br>default: x+=3;<br>break;<br>}<br>}<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 0 14  14</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 0 12 14</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 0 12 16</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 0 14 18<br><span class="explanation">Explanation:</span><br>initially X = 0<br>X &lt; 20 (TRUE) and ‘0’ is printed<br>switch(0) is executed then program counter shifts to case 0<br>case 0: X++ ⇒ X = 1<br>            X * = 2 ⇒ X = X * 2 = 1 * 2 = 2<br>There is no break statement between case statements then all case statements executed sequentially<br>case 20: X = X + 2 = 2 + 2 = 4<br>case 70: X + = 6 ⇒ X + 6 ⇒ 4 + 6 = 10<br>default: X + = 3 ⇒ X + 3 ⇒ 10 + 3 = 13<br>and again enters into for loop, X++ is executed and ‘X’ value becomes 14<br>14 &lt; 20 (TRUE) and prints ‘14’<br>Then switch(14) executed<br>and there is no case(14) so default case is executed<br>default: X = X + 3 ⇒ 14 + 3 = 17<br>again enters into for loop X++ is executed and ‘X’ value becomes 18<br>18 &lt; 20 (TRUE) and prints ‘18’ value<br>switch(18) executed, and there is no case 18 statement, so default case executed<br>default: X = X + 3 = 18 + 3 = 21<br>again enters into the loop, X++ executed then ‘X’ value becomes 22<br>22 &lt; 20 (FALSE), LOOP is breaks<br>Shapes not supportedAns: 0, 14, 18
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following stack permutations is possible for the input sequence<br>1, 2, 3, 4, 5, 6, 7, 8, 9, 10?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2, 4, 3, 1, 7, 5, 6, 8, 10, 9</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2, 4, 1, 3, 5, 7, 6, 8, 10, 9</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 1, 2, 4, 5, 7, 6, 8, 3, 10, 9<br><span class="explanation">Explanation:</span><br>option (a) : After 7 it must be 6 not 5<br><br>option (b) : After 4 it must be 3 not 1<br><br>option (c) : Push(1), pop, push(2), pop, push(3), push(4), pop, push(5), pop, push(6),<br><br>                  push(7), pop, pop, push(8), pop, pop, push(9), pop, pop.<br><br>option(d) :After 7 it must be 6 not 3
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1, 2, 4, 5, 7, 3, 6, 8, 9, 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+A binary search tree contains the numbers 1, 2, 3, 4, 5, 6, 7, 8. When the tree is traversed in pre-order and the values in each node printed out, the sequence of values obtained is 5, 3, 1, 2, 4, 6, 8, 7. If the tree is traversed in post-order, the sequence obtained would be<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 8, 7, 6, 5, 4, 3, 2, 1</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1, 2, 3, 4, 8, 7, 6, 5</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 2, 1, 4, 3, 6, 7, 8, 5</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 2, 1, 4, 3, 7, 8, 6, 5<br><span class="explanation">Explanation:</span><br>In post order traversal we have to traverse in Left Right Root recursively, <br><br>Method 1:         <br>Step 1 : The first element in the pre-order traversal is the root of the tree. Elements less than the root form the left sub-tree. Elements greater than the root form the right sub-tree.<br><br>Step 2: Find the structure of the left and right sub-trees using step 1 with a pre-order traversal that consists of the elements we worked out to be in that sub-tree placed in the order they appear in the original pre-order traversal.<br><br>Step 3: Traverse the resulting tree in post-order to get the post-order traversal associated with the given pre-order traversal.<br><br>Method 2:<br>As it is a binary search tree, we can easily construct tree using preorder I.e., Root Left Right using 5, 3, 1, 2, 4, 6, 8, 7<br> <br>1. 5 is the root element, 3 (&lt;5) so it will be left child<br>2. Next is 1(&lt;3), so it will be left child to 3<br>3. Next is 2(&gt;1), so it will be right child to 1<br>4. Next is 4(&gt;3), so it will be right child to 3<br>5. Next is 6(&gt;5), so it will be right child to 5<br>6. Next is 8(&gt;6), so it will be right child to 6<br>7. Next is 7(&lt;8), so it will be left child to 8<br><img src="./Test Results99_files/E27a.PNG" alt="image:P&amp;DSS1/E27a.PNG" width="198" height="185" class="tcecode"><br>In post order traversal method, first we traverse left subtree, then right subtree and finally root<br>so 2 1 4 3 7 8 6 5 will be printed.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the C program below<br><img src="./Test Results99_files/Q26a.PNG" alt="image:P&amp;DSS1/Q26a.PNG" width="342" height="393" class="tcecode"><br>What is the output of the above program? _________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 35</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 38<br><span class="explanation">Explanation:</span><br>The code is inserting 35, 15  and 18 into the array B and then evaluating the expression<br><br>Initially array is empty<br><br>1. fun (-1, 30);<br> 	case -1: size = val; break; and static size= 30 here size memory declare one time only and control comes out of switch block of break<br><br>2. fun (0, 35); <br>	case 0: if (s &lt; size ) <br>	A[s++]=val; break;  <br>here s is static value so memory declare at compile time only now check if condition 0&lt; 30 true then A[s++]== A[0+1]= val= 35  i.e. insert 35 into array and breaks.<br>Now s = 1<br>3.fun (0, 15); <br>	case 0: if (s &lt; size ) <br>	A[s++]=val; break; <br>same as above make A[s++]= 15 i,e. insert 15 into array and breaks. <br><br>4. fun (0, 18); <br>	case 0: if (s &lt; size ) <br>	A[s++]=val; break; <br>same as above make A[s++]= 18 i,e. insert 18 into array and breaks. <br><br>Now, printf ("%d\n", fun(1, 0)-fun(1, 0)+ fun(1, 0)); will execute<br><br>fun(1, 0) this will run, default: if (s) return A[--s] returns 18 <br>fun(1, 0) this will run  default: if (s) return A[--s] returns 15<br>fun(1, 0) this will run  default: if (s) return A[--s] returns 35<br>printf ("%d\n", fun(1, 0) -fun(1, 0)+ fun(1, 0));= 35 – 15 + 18 = 38 will be printed
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 40</li>
+</ol>
+<br><br>
+</li>
+<li>
+The height of a tree is the length of the longest root-to-leaf path in it, root is at height 0. The sum of the maximum and minimum number of nodes in a binary tree of height 9 is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 520</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 1032</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 521</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 1033<br><span class="explanation">Explanation:</span><br>The maximum number of nodes in the binary tree of height h = 2^(h+1) – 1 <br>So, the maximum number of nodes in the given binary tree of height 9 = 2^10 – 1 = 1023 <br>and for minimum number of nodes, there can be only one node at each level. So, the minimum number of nodes is 10<br>The sum of the maximum and minimum number of nodes in a binary tree of height 9 is 1023+10 = 1033.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program<br># include&lt;stdio.h&gt;<br># define fun(i, j)    i * j<br># define gun(q)   q * q<br>int main( )<br>{<br>	int i = 4;<br>	int j = 3;<br>	printf(“%d”, fun(fun(i + 2, j), gun(j + 2)));<br>	return 0;<br>}<br>The output of the program is _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 30<br><span class="explanation">Explanation:</span><br>fun(fun(i + 2, j), gun(j + 2))<br>	fun([i + 2 * j], j + 2 * j + 2)<br>	i + 2 * j * j + 2 * j +2<br>substitute<br>	i = 4, j = 3<br>	⇒ 4 + 2 * 3 + 2 * 3 + 2<br>	⇒ 4 + 6 * 3 + 6 * 2<br>	⇒ 4 + 18 + 6 + 2<br>	⇒ 22 + 8<br>	⇒ 30
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 62</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following will represent correct postfix expression for the given tree?<br><img src="./Test Results99_files/Q23a.PNG" alt="image:P&amp;DSS1/Q23a.PNG" width="436" height="310" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 9 8 + + 7 6 * 5 4 * +</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 9 8 7 + + 6 5 4 + * *</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 9 8 + 6 7 + 4 5 * + *</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 9 8 + 7 6 + 5 4 + * *<br><span class="explanation">Explanation:</span><br>From the above picture the correct infix we can derive <br>			(9 + 8) * ((7 + 6) * (5 + 4)),<br>		This infix can be easily changed into postfix<br>			9 8 + 7 6 + 5 4 + * *
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program<br># include&lt;stdio.h&gt;<br>main( )<br>{<br>	static char *m[ ] = {“children”, “letter”, “book”, “oracle”}<br>	char **p[ ] = {m+3, m+2, m+1, m}, ***n;<br>	n = p;<br>	++n;	<br>	printf(“%s”, *--*++n + 3)<br>}<br>What will be the output printed?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> tter</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> cle</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> ldren<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E22a.PNG" alt="image:P&amp;DSS1/E22a.PNG" width="620" height="175" class="tcecode"><br>printf(“%s”, *- - * ++n+3); the expression *++p evaluated because gets value (m+1) now pre decrement is executed, and we get (m+1) – 1 = m. the pointer now gets the value from the array of m, and add 3 to starting address.<br>		So output is ‘ldren’
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> book</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following C program<br># include&lt;stdio.h&gt;<br>int main( )<br>{<br>	static int p[ ] = {10, 20, 30, 40, 50, 60};<br>	static int *q[ ] = {p+2, p+1, p, p+3, p+4, p+5};<br>	static int **r = {q+4, q+5, q+1, q, q+2, q+3}<br>	int ***pt;<br>	pt = r + 2;<br>	printf(“%d”, ***(pt+3) - **(q+1));<br>}<br>The output of the above program is ____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 20<br><span class="explanation">Explanation:</span><br>Let<br><img src="./Test Results99_files/E21a.PNG" alt="image:P&amp;DSS1/E21a.PNG" width="404" height="312" class="tcecode"><br>	Now, <br>			***(pt+3) - **(q+1)<br>			= ***(pt+3) - **(q+1)<br>			= (* (* (*(r + 3 + 3)))) – (*(*(q+1)))<br>			= (*(*(q+3))) – (*(p+1))<br>			= 40 – 20 <br>		= 20
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 30</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 40</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the output of the following code segment<br><img src="./Test Results99_files/Q20a.PNG" alt="image:P&amp;DSS1/Q20a.PNG" width="198" height="343" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> EXAMEXAM</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> GATEEXAM</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> EXAMGATE</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> Compilation error<br><span class="explanation">Explanation:</span><br>The program will give compiler errors because structure should be defined before the main() and the function where it is called, fun().
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the function given below<br><img src="./Test Results99_files/Q19a.PNG" alt="image:P&amp;DSS1/Q19a.PNG" width="192" height="245" class="tcecode"><br>The final value returned as a result of the function fun( ) is _____.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>i = 0, if((i % 3) = = 1) 	false, value = value + 1 = 0 + 1 = 1<br>		i = 1, if((i % 3) = = 1) 	false, value = value + 1 = 1 + 1 = 2<br>		i = 2, if((i % 3) = = 1) 	false, value = value + 1 = 2 + 1 = 3<br>		i = 3, if((i % 3) = = 1) 	false, value = value + 1 = 3 + 1 = 4<br>		i = 4, if((i % 3) = = 1) 	false, value = value + 1 = 4 + 4 = 8<br>		i = 5, if((i % 3) = = 1) 	false, value = value + 1 = 8 + 1 = 9<br>		i = 6, return 9.
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function<br>int fun1(int p)<br>{<br>	if(p &lt;= 2)<br>		return 1;<br>	else<br>		return fun1(p – 1) + fun1(p – 2);<br>}<br><br>The sum of value of fun1(fun1(3)) and fun1(8) is ____________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> 22<br><span class="explanation">Explanation:</span><br><img src="./Test Results99_files/E18a.PNG" alt="image:P&amp;DSS1/E18a.PNG" width="195" height="236" class="tcecode"><br>The value of fun1(fun(3)) is  1<br><img src="./Test Results99_files/E18b.PNG" alt="image:P&amp;DSS1/E18b.PNG" width="423" height="332" class="tcecode"><br>The value of fun1(8) is  21<br>The value of fun1(fun(3)) is 1<br>The sum of value of fun1(fun(3)) and fun1(8) is = 1 + 21 =22
+</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> 23</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements <br>I: The height of any binary search tree with n nodes is O(log n).<br>II : Inserting into an AVL tree with n nodes requires Θ(log n) rotations. <br>Which of the following statements is/are true ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> I only</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> II only</li>
+<li>&nbsp;<img src="./Test Results99_files/wrong.png" width="16"> Both I and II</li>
+<li>&nbsp;<img src="./Test Results99_files/correct.png" width="18"> Neither I nor II<br><span class="explanation">Explanation:</span><br><strong class="tcecode">case I</strong> : In the best case, the height of a BST is Ω(log n) if it is balanced. In the worst        <br>            case, however, it can be O(n), hence false<br><strong class="tcecode">Case II</strong> : There are cases where inserting into an AVL tree requires no rotations, hence <br>             false
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results99_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

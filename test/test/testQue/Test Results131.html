@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4203&test_id=41 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results131_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results131_files/calclayout.css">
+<script src="./Test Results131_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results131_files/jquery-ui.js.download"></script>
+<script src="./Test Results131_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results131_files/custom.js.download"></script>
+<script src="./Test Results131_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results131_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results131_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921406, 'I\'m sorry, the time available to complete the test is over!', false, 1486921406298);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4203&amp;test_id=41#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Subject Test 1</strong><br>
+TOC Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-10 17:41:28&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-10 19:09:05&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:27:37&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+10.050 / 50.000 (20%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+12 / 33 (36%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider an ambiguous grammar G: S → 1 | S + S. The number of parse trees for the string 1+1+1+1 is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>There are 5 parse trees for the string 1+1+1+1. <br><img src="./Test Results131_files/Q7_exp.png" alt="image:TOC Subject Text - 1/Q7_exp.png" width="521" height="126" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are TRUE?<br>S<sub class="tcecode">1</sub>: If a language “A” is not regular, then the complement of A is also not regular.<br>S<sub class="tcecode">2</sub>: There is a set that is accepted by an NFA but could not be accepted by any DFA.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Both are TRUE</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> S1 is TRUE, S2 is FALSE<br><span class="explanation">Explanation:</span><br>S<sub class="tcecode">1</sub>: We know that regular languages are closed under complementation. <br>So, suppose that L is non-regular. If its complement, L’ were regular, then (L')'=L would also have to be regular. <br>∴It is contradiction ⟹ statement is TRUE.<br>S<sub class="tcecode">2</sub>:  False,<br>We know that every NFA can be converted into its equivalent DFA and vice versa.<br>∴ There is no such NFA exists.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> S1 is FALSE, S2 is TRUE</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Both are FALSE</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following regular expression generates set of all binary strings that does not contain “100” as a substring?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 0*1010*</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 0* 1* 01</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 0* (1* 0)*</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 0* (10+1)*<br><span class="explanation">Explanation:</span><br><strong class="tcecode">0* 1* 01</strong> :- 0* 1* 01does not generate ϵ,1,0 which does not contain 100 as a substring.<br><br><strong class="tcecode">0* (1* 0)*</strong> &amp; <strong class="tcecode">0* 1010*</strong> :- can generate strings containing 100 as a substring.<br><br><strong class="tcecode">0* (10+1)*</strong> :- 0* (10+1)* = {ϵ,0,1,00,01,10,11,………} doesn’t contain strings with 100 as substring.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following languages represent the regular expression <br>0+1(0+1)* 00 over ∑ = {0,1}<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Set of all binary strings either string 0 or strings starting with 1 and ending with 0.</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Set of all binary strings which when interpreted as integers divisible by 4 and with no redundant leading zeros.<br><span class="explanation">Explanation:</span><br>The regular expression 0+1(0+1)* 00 generates strings L = {0,100,1000,1100,10000,10100,11000,11100,…}. We can observe that the strings in this language when interpreted as integers are divisible by 4 and there are no redundant leading zeros.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Set of all binary strings which when interpreted as integers divisible by 3 and with no redundant leading zeros.</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Set of all binary strings with even number of 0’s and odd number of 1’s.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following context free languages L<sub class="tcecode">2</sub> can ensure L<sub class="tcecode">1</sub>∩L<sub class="tcecode">2</sub> as not context free where L<sub class="tcecode">1</sub>={a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup>c<sup class="tcecode">m</sup>/m,n&gt;0}?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Both (b)&amp; (c)</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> L<sub class="tcecode">2</sub>={a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">2m</sup>/n&gt;0,m&gt;0}<br><span class="explanation">Explanation:</span><br>(a) &amp; (b) are not context free languages.<br>(c) In L<sub class="tcecode">1</sub> number of b’s = number of c’s, in L<sub class="tcecode">2</sub> number of a’s = number of b’s. <br>Hence, in L<sub class="tcecode">1</sub>∩L<sub class="tcecode">2</sub>, number of a’s = number of b’s = number of c’s, which is not context free.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L<sub class="tcecode">2</sub>={a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">n</sup>/n&gt;0}</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L<sub class="tcecode">2</sub>={a<sup class="tcecode">n</sup>b<sup class="tcecode">m</sup>c<sup class="tcecode">p</sup>/n&gt;m and m&gt;p }</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of accepting states in the minimum DFA corresponding to the following grammar.<br>S→0S/1A<br>A→1A/0B<br>B→0B/1C/ϵ<br>C→1C/0A/ϵ<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>The DFA corresponding to the given grammar is<br>[Only B and C generates ϵ. So, these two are accepting states.]<br><img src="./Test Results131_files/Q14_Exp.PNG" alt="image:TOC Subject Text - 1/Q14_Exp.PNG" width="250" height="160" class="tcecode"> <br>The DFA cannot be minimized anymore. Hence no. of accepting states is 2.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let L<sub class="tcecode">1</sub>  be 10*1 and L<sub class="tcecode">2</sub>=0*1 . Define L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  ={x|xy∈L<sub class="tcecode">1</sub> for some y∈L<sub class="tcecode">2</sub>}, then L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> ϕ</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 10*<br><span class="explanation">Explanation:</span><br>L<sub class="tcecode">1</sub>={11,101,1001,10001,…}<br>L<sub class="tcecode">2</sub>={1,01,001,0001,…}<br>Consider all strings in L<sub class="tcecode">1</sub>  and string 1 in L<sub class="tcecode">2</sub><br>{11/1,101/1,1001/1,10001/1,…}={1,10,100,1000,…}<br>We can do this with every string in L<sub class="tcecode">2</sub><br>∴L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>={1,10,100,1000,…}<br>The regular expression representing L<sub class="tcecode">1</sub>/L<sub class="tcecode">2</sub>  is 10*
+</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 10*1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let ∑ = {a,b},  and Δ = {0,1}.  Consider the homomorphism function h : ∑* → Δ*, defined by h(a) = 01, h(b) = 0. Let L = {w ∈ {0,1}* |  n<sub class="tcecode">0</sub> (w)=n<small class="tcecode">1</small> (w)}. Find h<sup class="tcecode">-1</sup> (L).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> h<sup class="tcecode">-1</sup> (L)  cannot be found</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> (a+ab)*</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> ϕ</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> a<sup class="tcecode">+</sup><br><span class="explanation">Explanation:</span><br>Given L = {w ∈ {0,1}* |  n<sub class="tcecode">0</sub> (w)=n<sub class="tcecode">1</sub> (w)}<br>∴L = {ϵ,10,01,0101,0110,1001,1010,1100,…}<br>The homomorphism function h:∑* → Δ*  is defined by h(a) = 01,h(b) = 0. <br>Though the given language L is not regular, we can find the inverse homomorphism of L. <br>We cannot map ϵ,10,0110,1001,1010,1100,… but can map only strings of the form 01,0101,010101,01010101,…<br>It is clear that we can only map strings of the form (01)<sup class="tcecode">+</sup>  in L to be an image of h<sup class="tcecode">-1</sup> (L).<br>∴h<sup class="tcecode">-1</sup> (L) = a<sup class="tcecode">+</sup>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If L={a<sup class="tcecode">m</sup>b<sup class="tcecode">n</sup> | m,n≥1 &amp; gcd(m,n)=1}, then L is<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Context-free Language</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> None of the above</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Regular Language</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Context sensitive Language<br><span class="explanation">Explanation:</span><br>For computing gcd of (m,n) we require more than one stack or tape header which can move in both the directions(left and right).Therefore, it is neither regular nor context-free.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Identify the regular expressions that generate all the strings over alphabet {a,b} that end in b.  (The '?' operator represents a single symbol from the given alphabet).<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> (?)*(a*+b*)*b<br><span class="explanation">Explanation:</span><br>Given‘?’ is an operator which selects single symbol from given alphabet ⟹?≡(a+b)<br><br>(?)*(a*+b*)*b ⟹(a+b)*(a*+b*)*b<br>⟹(a+b)*(a+b)*b<br>⟹(a+b)*b(generates)<br><br>(a*b)?b⟹(a*b)(a+b)b<br>String 'babab' is not generated by above regular expression, which needs to be generated according to the language constraint.(does not generate)<br><br>a<sup class="tcecode">+</sup>(a+b)*b⟹<br>This Regular expression cannot generate string which is starting with b.(does not generate)<br><br>(a?+b<sup class="tcecode">+</sup>)*b<br>⟹(a(a+b)+b<sup class="tcecode">+</sup>)*b<br>This cannot generate the string ab.(does not generate)
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> (a*b)?b</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> a<sup class="tcecode">+</sup>(a+b)*b</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> (a?+b<sup class="tcecode">+</sup>)*b</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the number of states in the minimal DFA for the language:<br>L={w<sub class="tcecode">1</sub> a<sup class="tcecode">2</sup> b<sup class="tcecode">2</sup> w<sup class="tcecode">2</sup>│w<sub class="tcecode">1</sub> ∈ {a,b}*,w<sub class="tcecode">2</sub> ∈ {a,b}* }<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 3</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>L={w<sub class="tcecode">1</sub> a<sup class="tcecode">2</sup> b<sup class="tcecode">2</sup> w<sup class="tcecode">2</sup>│w<sub class="tcecode">1</sub> ∈ {a,b}*,w<sub class="tcecode">2</sub> ∈ {a,b}* }<br>The language contains all the strings having aabb as a substring.<br>The DFA for the language is:<br><img src="./Test Results131_files/Q1_exp.png" alt="image:TOC Subject Text - 1/Q1_exp.png" width="405" height="101" class="tcecode"><br>∴There are 5 states in the DFA.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the language L whose strings have length which is a multiple of 4 or are such that number of a's plus number of b's on the string is even. Then L is<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> context-free</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> recursive</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Regular<br><span class="explanation">Explanation:</span><br>Let L<sub class="tcecode">1</sub> is such that its strings have length which is a multiple of 4.<br>Let L<sub class="tcecode">2</sub> is such that all the strings have number of a's and number of b's even.<br>L=L<sub class="tcecode">1</sub>UL<sub class="tcecode">2</sub><br>We know that L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are regular.<br>Therefore L is regular because regular languages are      <br>closed under union.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> context sensitive</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following NFA <br><img src="./Test Results131_files/Q11.png" alt="image:TOC Subject Text - 1/Q11.png" width="424" height="139" class="tcecode"><br>Length of the shortest string which is not accepted by the NFA is<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 6</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>ϵ-accepted because initial state is Final state<br>a-accepted because  X→Y <br>b-accepted because X→X<br>aa-accepted because X→Y→Y<br>ab-accepted because X→Z→Z<br>ba-accepted because X→X→Y<br>bb-accepted because X→X→X<br>aaa-accepted because X→Y→Y→Y<br>aab-rejected becauseX→Y→Y<br>		X→Z→Y<br>So, the shortest string which is not accepted by the NFA is aab, which is of length 3.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the finite state machine described by the following state transition diagram.  Σ = {0,1},∆ = {00,01,10,11}	<br><img src="./Test Results131_files/Q6_new_1.png" alt="image:TOC Subject Test - 1/Q6_new_1.png" width="315" height="117" class="tcecode"><br>M=({A,B,C},{0,1},{00,01,10,11},δ,λ,A)<br>(Note: Assume that there is an extra 0 attached at the left most end of the string. For example, if the string is 100, we consider it as 0100.)<br>Identify the correct statement.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Outputs 10 whenever the input sequence contains 01.</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> None of the above.</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Outputs the concatenation of present and previous bits in the input string.<br><span class="explanation">Explanation:</span><br>If w=110, the machine outputs 01<br><img src="./Test Results131_files/Q6_exp1.png" alt="image:TOC Subject Text - 1/Q6_exp1.png" width="70" height="45" class="tcecode"><br>If w=111, the machine outputs 11<br><img src="./Test Results131_files/Q6_exp2.png" alt="image:TOC Subject Text - 1/Q6_exp2.png" width="70" height="47" class="tcecode"><br>It outputs the sum of present and previous bits in the input string.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Outputs 00 whenever the input sequence contains 10.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the DFA given below. <br><img src="./Test Results131_files/Q2.png" alt="image:TOC Subject Text - 1/Q2.png" width="438" height="275" class="tcecode"><br>Find the number of states in the minimal DFA over Σ={a,b}<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 7</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>Minimization:<br>q<sub class="tcecode">0</sub>-equi∶ [q<sub class="tcecode">0</sub> q<sub class="tcecode">2</sub> q<sub class="tcecode">3</sub> q<sub class="tcecode">4</sub> ][q<sub class="tcecode">1</sub> q<sub class="tcecode">5</sub> q<sub class="tcecode">0</sub> ]<br>q<sub class="tcecode">1</sub>-equi∶ [q<sub class="tcecode">0</sub> q<sub class="tcecode">2</sub> q<sub class="tcecode">3</sub> q<sub class="tcecode">4</sub> ][q<sub class="tcecode">1</sub> q<sub class="tcecode">5</sub> ][q<sub class="tcecode">0</sub> ]<br>q<sub class="tcecode">2</sub>-equi∶ [q<sub class="tcecode">0</sub> q<sub class="tcecode">2</sub> q<sub class="tcecode">3</sub> q<sub class="tcecode">4</sub> ][q<sub class="tcecode">1</sub> ][q<sub class="tcecode">5</sub> ][q<sub class="tcecode">0</sub> ]<br>q<sub class="tcecode">3</sub>-equi∶ [q<sub class="tcecode">0</sub> q<sub class="tcecode">3</sub> ][q<sub class="tcecode">2</sub> q<sub class="tcecode">4</sub> ][q<sub class="tcecode">1</sub> ][q<sub class="tcecode">5</sub> ][q<sub class="tcecode">0</sub> ]<br>Let:- <em class="tcecode">A</em> = [q<sub class="tcecode">0</sub> q<sub class="tcecode">3</sub> ], <em class="tcecode">B</em> = [q<sub class="tcecode">2</sub> q<sub class="tcecode">4</sub> ], <em class="tcecode">C</em> = [q<sub class="tcecode">1</sub> ], <em class="tcecode">D</em> = [q<sub class="tcecode">5</sub> ], <em class="tcecode">E</em> = [q<sub class="tcecode">0</sub> ]<br><img src="./Test Results131_files/Q2_exp.png" alt="image:TOC Subject Text - 1/Q2_exp.png" width="411" height="179" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>S1] Empty set for the ϵ-closure (q) is possible, where q is any state.<br>S2] Let L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> be the languages over alphabet {0,1}<br>L<sub class="tcecode">3</sub>=L<sub class="tcecode">1</sub>-L<sub class="tcecode">2</sub>  is possible that it is regular.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> S1 is True, S2 is false</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Neither of the statements is True</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> S1 is False, S2 is True<br><span class="explanation">Explanation:</span><br>S1) ϵ-closure(q) = {q} closure q is itself.. so S1 is FALSE<br> S2)  Let L be L<sub class="tcecode">1</sub>  and L<sub class="tcecode">2</sub> be complement(L) then<br>         L<sub class="tcecode">3</sub> = L<sub class="tcecode">1</sub>- L<sub class="tcecode">2</sub> → L<sub class="tcecode">3</sub> = {} which is a regular language.<br>         So, S2 is TRUE
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Both are True</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider Q = {q0, q1, q2, q3, q4}<br>    F = {q4}<br>    Σ = {a, b}<br>    Γ = {a, b, x, y, B}<br>	and transactions are<br>		δ(q0, a) = (q1, x, R)<br>		δ(q1, a) = (q1, a, R)<br>		δ(q1, y) = (q1, y, R)<br>		δ(q1, b) = (q2, y, L)<br>		δ(q2, y) = (q2, y, L)<br>		δ(q2, a) = (q2, a, L)<br>		δ(q2, x) = (q0, x, R)<br>		δ(q0, y) = (q3, y, R)<br>		δ(q3, y) = (q3, y, R)<br>		δ(q3, B) = (qf, B, R)<br>	which of the following cannot be a possible instantaneous description for input string aabb?<br>NOTE:<br>Instantaneous description for the input aabb can be described as follows:<br>For q0aabb → <br>Current state is q0 <br>Current input tape symbol a<br>For xq1abb →<br>Current state is q1 <br>Current input tape symbol a<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> xq2ayb</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> xxyyBq4B</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>By observation, we can say that<br>Each ‘a’ is overwritten with single ‘x’<br>Each ‘b’ is overwritten with single ‘y’<br>Now consider option → xq0ayb<br>From the instantaneous description, we can say that first ‘a’ and first ‘b’ are overwritten by x &amp; y, respectively. After writing y it came back to first ‘x’(i.e. moving left)<br>Check preceding symbol before the state and succeeding symbol after the state.<br>It may be possible tape is moving left or right<br>So there are totally 4 transitions to check out for whether exists or not.<br>Consider option → x x q0 y y<br>On y moving left<br>Which is not possible as per given transitions<br>On x moving right<br>Which is possible but also check out for from previous symbol it should arrive to given state.<br>∴ There should exist transition on x, tape should move right and arrive at state q0 as δ(q2, x) = (q0, x, R)<br>∴ It is TRUE<br><br>Consider option → x x y y B q4 B<br>Check whether it is possible to move left on B. No, it is not possible<br>Check whether it is possible to move right on B. δ(q3, y) = (q2, y, L)<br>		∴ It is possible ID.<br>Consider option → x q2 a y b<br>Check whether it is possible to move left y <br>δ(q2, y) = (q2, y, L)<br>		∴ It is possible ID
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> xxq0yy</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of states in the minimal DFA for the language of all the non-empty strings that has 1 in every odd position over ∑ ={0,1} is<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 6</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>∑={0,1}<br>L= {w| w ≠ ∅ and every odd position of w is 1}<br><img src="./Test Results131_files/Q17_Exp.PNG" alt="image:TOC Subject Text - 1/Q17_Exp.PNG" width="547" height="371" class="tcecode"><br>Here, q<sub class="tcecode">1</sub> is an accepting state or final state because the string read by DFA so far has odd length and has 1 on every odd position.<br><br>q<sub class="tcecode">2</sub> is a final state because the string read by the DFA so far has even length and has 1 on   every odd position.<br><br>q<sub class="tcecode">3</sub> is dead state or kill state because the string read by the DFA so far has 0 on some odd position.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Most of the programming languages are described as an extended form of CFG, where there is an optional construct defined with in []. <br><br>For example, the production A → B[C]D says that an A can be replaced by a B and a D, in that order, with an optional C between them. This notation does not allow us to describe anything but context-free languages, since an extended production can always be replaced by several conventional productions.<br><br>Suppose a grammar has the extended productions:<br>	A → B[aC]bD | Ba[Cb]D<br>Identify the equivalent conventional grammar for the given extended grammar.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> A → BA<sub class="tcecode">1</sub>D<br>A<sub class="tcecode">1</sub> → aC | Cb | ε</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> A → BA<sub class="tcecode">1</sub>bD | BaA<sub class="tcecode">2</sub>D<br>A<sub class="tcecode">1</sub> → aC<br>A<sub class="tcecode">2</sub> → Cb</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> A → BA<sub class="tcecode">1</sub>bD | BaA<sub class="tcecode">2</sub>D<br>A<sub class="tcecode">1</sub> → aC | ε<br>A<sub class="tcecode">2</sub> → Cb | ε<br><span class="explanation">Explanation:</span><br>The grammar G<sub class="tcecode">1</sub>: A → B[aC]bD | Ba[Cb]D generates the strings {BbD, BaD, BaCbD}.<br><br>A → BA<sub class="tcecode">1</sub>bD | BaA<sub class="tcecode">2</sub>D<br>A<sub class="tcecode">1</sub> → aC<br>A<sub class="tcecode">2</sub> → Cb<br>The grammar does not really make the optional portions [aC] and [Cb] optional. This grammar generates the string {BaCbD}. Therefore this is grammar is not equivalent to G<sub class="tcecode">1</sub>.<br><br>A → BA<sub class="tcecode">1</sub>D<br>A<sub class="tcecode">1</sub> → aC | Cb | ε<br>This grammar generates strings {BaCD, BCbD, BD} which are not same as strings generated by G<sub class="tcecode">1</sub>. <br><br>A → BaCbD | BbD. <br>This grammar generates strings {BaCbD, BbD} which are different from the strings generated by G<sub class="tcecode">1</sub>.<br><br>A → BA<sub class="tcecode">1</sub>bD | BaA<sub class="tcecode">2</sub>D<br>A<sub class="tcecode">1</sub> → aC | ε<br>A<sub class="tcecode">2</sub> → Cb | ε<br>This grammar actually defines the same language as the language defined by the grammar G<sub class="tcecode">1</sub>. The strings generated by the grammar are {BbD, BaD, BaCbD}.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> A → BaCbD | BbD</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the number of states in minimal DFA for the language<br>	L={x<sup class="tcecode">n</sup>y<sup class="tcecode">m</sup>│x=Σ-y,n≥1,m≥1} over the alphabet Σ = {a, b}.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>Σ={a,b}<br>L={x<sup class="tcecode">n</sup>y<sup class="tcecode">m</sup>│x=Σ-y,n≥1,m≥1}<br>Given x=Σ-y<br>If y=a,then x={a,b}-{a}⇒x=b<br>If y=b,then x={a,b}-{b}⇒x=a<br>∴It represent the strings of the form a<sup class="tcecode">+</sup>b<sup class="tcecode">+</sup>+b<sup class="tcecode">+</sup>a<sup class="tcecode">+</sup><br><img src="./Test Results131_files/Q19_Exp.PNG" alt="image:TOC Subject Text - 1/Q19_Exp.PNG" width="505" height="290" class="tcecode"><br>This is the minimal FA and it has 6 states
+</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Convert the Moore machine into its equivalent Mealy machine <br>Σ={a,b},∆={0,1,2}<br><img src="./Test Results131_files/Q22.PNG" alt="image:TOC Subject Text - 1/Q22.PNG" width="302" height="257" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> <img src="./Test Results131_files/Q22_Option1.PNG" alt="image:TOC Subject Text - 1/Q22_Option1.PNG" width="299" height="254" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> <img src="./Test Results131_files/Q22_Option4.PNG" alt="image:TOC Subject Text - 1/Q22_Option4.PNG" width="316" height="256" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> <img src="./Test Results131_files/Q22_Option3.PNG" alt="image:TOC Subject Text - 1/Q22_Option3.PNG" width="301" height="260" class="tcecode"></li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> <img src="./Test Results131_files/Q22_Option2.PNG" alt="image:TOC Subject Text - 1/Q22_Option2.PNG" width="306" height="254" class="tcecode"><br><span class="explanation">Explanation:</span><br>The state transition table for<br><img src="./Test Results131_files/Q22_Exp1.PNG" alt="image:TOC Subject Text - 1/Q22_Exp1.PNG" width="651" height="258" class="tcecode"><br>The corresponding Mealy machine is<br><img src="./Test Results131_files/Q22_Exp2.PNG" alt="image:TOC Subject Text - 1/Q22_Exp2.PNG" width="300" height="260" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the two transition tables:<br><img src="./Test Results131_files/Q31.png" alt="image:TOC Subject Text - 1/Q31.png" width="406" height="193" class="tcecode"><br>Let the language accepted by T<sub class="tcecode">1</sub> is L<sub class="tcecode">1</sub> and T<sub class="tcecode">2</sub> is L<sub class="tcecode">2</sub><br>No. of states in minimal DFA for L<sub class="tcecode">1</sub> ∪ L<sub class="tcecode">2</sub><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 6</li>
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Given Table T<sub class="tcecode">1</sub><br>If we observe the table T<sub class="tcecode">1</sub>,<br>(1) State 5 is not reachable from initial state<br><img src="./Test Results131_files/Q31_exp1.png" alt="image:TOC Subject Text - 1/Q31_exp1.png" width="140" height="114" class="tcecode"><br> (2) Check whether any states are equivalent<br>0-equivalent class=(1,3),(2,4)<br>⟹ 1 and 3 goes to Final on a and non-final on b and same (2, 4)<br>∴1≡3 &amp; 2≡4<br><br>T<sub class="tcecode">1</sub>New: ⟹<br><img src="./Test Results131_files/Q31_exp2.png" alt="image:TOC Subject Text - 1/Q31_exp2.png" width="129" height="72" class="tcecode"><br>x={1,3}<br>y={2,4}<br><br>Now, Table T<sub class="tcecode">2</sub><br><img src="./Test Results131_files/Q31_exp3.png" alt="image:TOC Subject Text - 1/Q31_exp3.png" width="136" height="75" class="tcecode"><br>p≠q  because p is Final &amp;q is non-final.<br><img src="./Test Results131_files/Q31_exp4.png" alt="image:TOC Subject Text - 1/Q31_exp4.png" width="237" height="112" class="tcecode"><br>Transition diagram for T<sub class="tcecode">1</sub>New :<br><img src="./Test Results131_files/Q31_exp5.png" alt="image:TOC Subject Text - 1/Q31_exp5.png" width="239" height="113" class="tcecode"><br>(I) L<sub class="tcecode">1</sub>∪L<sub class="tcecode">2</sub><br><img src="./Test Results131_files/Q31_exp6.png" alt="image:TOC Subject Text - 1/Q31_exp6.png" width="272" height="229" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the PDA for the language L = {a<sup class="tcecode">2n</sup> b<sup class="tcecode">3n</sup> |n≥0}.<br><img src="./Test Results131_files/Q26_new1.png" alt="image:TOC Subject Text - 1/Q26_new1.png" width="456" height="226" class="tcecode"><br>What should be the transitions missing from the PDA given<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub>)<br>2.(a,x,xx)<br>3.(a,x,xxx)</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub> )<br>2.(a,x,xxx)<br>3.(a,x,xx)</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub> )<br>2.(a,x,xx)<br>3.(a,x,xxxx)</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> 1.(a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)<br>2.(a,x,x)<br>3.(a,x,xxxx)<br><span class="explanation">Explanation:</span><br>By the observation of PDA when we see  'b' on tape header we have to POP out X from the stack.<br>And the algorithm is we need to PUSH 3 x’s into the stack for every 2 a's and POP out single  'x' from stack for every 'b'seen.<br><span style="text-decoration:underline;">Now consider options</span>:<br>1. (a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)→ Push 3 x's<br>2. (a,x,x)→ Skip operation<br>3. (a,x,xxxx)→Push 3 x's<br>For every 2 a's it is pushing 3 'x's to the stack when b is seen it pops out single x from stack. These are missing transitions for  the accepting language.<br>----------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub> )→Push 'x'<br>2. (a,x,xx)→Push 'x'<br>3. (a,x,xxx)→Push 2 x's<br>It accepts aab also which is not a string in given language.<br>-------------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub>)→Push x<br>2. (a,x,xxx)→Push 2 x's<br>3. (a,x,xx)→Push x<br>It accepts aab also which is not a string in given language.<br>-------------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)→ Skip<br>2. (a,x,xx)→Push x<br>3. (a,x,xxxx)→Push 3 x's<br>it does not accept aaaabbbbbb which is in given language
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the language represented by the regular expression (0+10)*, over the alphabet ∑={0,1}. The regular expression describing the language complement of the L((0+10)*).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> (0+10)*11(0+10)*</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> 0*11(0+1)*+(0+1)*1</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> (0+10)*11(0+1)*+(0+10)*1<br><span class="explanation">Explanation:</span><br>Given ∑= {0,1}  and the regular expression (0+10)*<br>We need to find the regular expression of language complement to the language expressed by (0+10)*.<br>Construct a DFA that accepts strings of the form (0+10)*, complement it and find the regular expression of the complemented DFA. <br><img src="./Test Results131_files/Q21_Exp1.PNG" alt="image:TOC Subject Text - 1/Q21_Exp1.PNG" width="561" height="287" class="tcecode"><br>Find Regular expression of D2.<br><img src="./Test Results131_files/Q21_Exp2.PNG" alt="image:TOC Subject Text - 1/Q21_Exp2.PNG" width="458" height="237" class="tcecode"><br><span style="text-decoration:underline;">Eliminate B</span>:<br><img src="./Test Results131_files/Q21_Exp3.jpg" alt="image:TOC Subject Text - 1/Q21_Exp3.jpg" width="315" height="221" class="tcecode"><br><span style="text-decoration:underline;">Eliminate C</span>:<br><img src="./Test Results131_files/Q21_Exp4.jpg" alt="image:TOC Subject Text - 1/Q21_Exp4.jpg" width="606" height="127" class="tcecode"><br><span style="text-decoration:underline;">Eliminate A</span>:<br><img src="./Test Results131_files/Q21_Exp5.PNG" alt="image:TOC Subject Text - 1/Q21_Exp5.PNG" width="387" height="92" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> (0+1)*11(0+1)*+(0+10)*1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages over Σ∈{0,1}<br>1] L<sub class="tcecode">1</sub>={w ∈ Σ* |n<sub class="tcecode">1</sub> (w) &lt; n<sub class="tcecode">0</sub> (w) }<br>2] L<sub class="tcecode">2</sub>={w ∈ Σ* |n<sub class="tcecode">0</sub> (w) &lt; 2017}<br>3] L<sub class="tcecode">3</sub>=L<sub class="tcecode">1</sub> ∩ L<sub class="tcecode">2</sub><br>where, n<sub class="tcecode">0</sub> (w) = no. of occurrences of 0 in w and n<sub class="tcecode">1</sub> (w) = no. of occurrences of 1 in w<br>Which of the following is true?<br>[Note: Select the most suitable option]<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is DCFL, L<sub class="tcecode">2</sub> is DCFL, L<sub class="tcecode">3</sub> is CFL</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> L<sub class="tcecode">1</sub> is DCFL, L<sub class="tcecode">2</sub> is Regular, L<sub class="tcecode">3</sub> is Regular<br><span class="explanation">Explanation:</span><br>(I) L<sub class="tcecode">1</sub> = {w ∈ Σ* | n<sub class="tcecode">1</sub> (w) &lt; n<sub class="tcecode">0</sub> (w) }<br>i.e. Number of 1’s in w should be less than number of 0’s in w.<br>We need a stack atleast for the comparison of 1’s and 0’s.<br>(II) L<sub class="tcecode">2</sub> = {w ∈ Σ* | n<sub class="tcecode">0</sub> (w) &lt; 2017}<br>0’s have boundary atmost 2016 and 1’s can be any number of times.<br>[This same as atmost 3 0’s and any number of 1’s]<br>So, L<sub class="tcecode">2</sub> is regular.<br>(III) L<sub class="tcecode">3</sub> = L<sub class="tcecode">1</sub> ∩ L<sub class="tcecode">2</sub><br>⟹L<sub class="tcecode">3</sub> = {w ∈ Σ* | n<sub class="tcecode">1</sub> (w) &lt; n<sub class="tcecode">0</sub> (w) &lt; 2017}<br>This is finite language because number of 1’s and 0’s can be atmost 2016.<br>∴This is regular language.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is Regular, L<sub class="tcecode">2</sub> is Regular, L<sub class="tcecode">3</sub> is Regular</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is DCFL, L<sub class="tcecode">2</sub> is Regular, L<sub class="tcecode">3</sub> is CFL</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammars and identify the equivalent grammars.<br>G<sub class="tcecode">1</sub>: S → SaS | aa | a<br>G<sub class="tcecode">2</sub>: S → SS | a<br>G<sub class="tcecode">3</sub>: S → SS | aa<br>G<sub class="tcecode">4</sub>: S → Sa | a<br>G<sub class="tcecode">5</sub>: S → aSa | aa | a<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results131_files/wrong.png" width="16">&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Only G<sub class="tcecode">2</sub> and G<sub class="tcecode">4</sub> are equivalent</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Only G<sub class="tcecode">1</sub>, G<sub class="tcecode">3</sub>, G<sub class="tcecode">4</sub> and G<sub class="tcecode">5</sub> are equivalent</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> All are equivalent</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Only G<sub class="tcecode">1</sub>, G<sub class="tcecode">2</sub>, G<sub class="tcecode">4</sub> and G<sub class="tcecode">5</sub> are equivalent<br><span class="explanation">Explanation:</span><br>G<sub class="tcecode">1</sub> ∶S→SaS|aa|a<br>L(G<sub class="tcecode">1</sub>)={a,aa,aaa,aaaa,aaaaa,aaaaaa,………}=a<sup class="tcecode">+</sup><br><br>G<sub class="tcecode">2</sub>: S → SS | a<br>L(G<sub class="tcecode">2</sub>)={a,aa,aaa,aaaa,aaaaa,………}=a<sup class="tcecode">+</sup><br><br>G<sub class="tcecode">3</sub> ∶S⟶SS|aa<br>L(G<sub class="tcecode">3</sub>)={aa,aaaa,aaaaaa,………}=(aa)<sup class="tcecode">+</sup><br><br>G<sub class="tcecode">4</sub> ∶S→Sa|a<br>L(G<sub class="tcecode">4</sub> )={a,aa,aaa,………}=a<sup class="tcecode">+</sup><br><br>G<sub class="tcecode">5</sub> ∶S→aSa|aa|a<br>L(G<sub class="tcecode">5</sub>)={a,aa,aaa,aaaa,aaaaa,………}=a<sup class="tcecode">+</sup><br><br>∴G<sub class="tcecode">1</sub>,G<sub class="tcecode">2</sub>,G<sub class="tcecode">4</sub>  and G<sub class="tcecode">5</sub>  are equivalent
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the DFA with the following transition table for <br>M = ({ A, B, C, D, E, F, G}, {0, 1}, δ, A, {A, C, E, F})<br><img src="./Test Results131_files/Q18.PNG" alt="image:TOC Subject Text - 1/Q18.PNG" width="258" height="202" class="tcecode"><br>Which one of the following languages is accepted by the given DFA.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L = {w|w  contains even number of 0’s and exactly two 1’s}</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> L = {w|w contains even number of 0’s or atmost two 1’s}<br><span class="explanation">Explanation:</span><br>The DFA corresponding to the given transition table is:<br><img src="./Test Results131_files/Q18_Exp.PNG" alt="image:TOC Subject Text - 1/Q18_Exp.PNG" width="569" height="234" class="tcecode"><br>L = {∈, 00, 1, 11, 100, 1001, 110, 010, 011, …}<br>→We can see that the DFA rejects strings having more than two 1’s. G is the dead state. <br>→At final states A and C, if there is 0, there will be a transition to the non-final states B and D respectively. By looking at the state transition between A↔B and C↔D we can say that it accepts strings with even number of 0’s.<br>→F can be reached only looking at exactly two 1’s, no matter how many 0’s. <br>∴L = {w|w contains even number of 0’s or exactly two 1’s}
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L = {w|w contains even number of 0’s and at least two 1’s}</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L = {w|w contains even number of 0’s and even number of 1’s}</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the below grammar, where (V,T,P,S) = ({S, A, B, C, D}, {a, d}, P, {S})<br>P: {<br>S → AB | CD<br>A → BC | a<br>B → AC | C<br>C → AB | CD<br>D → AC | d<br>}<br>Recall, a grammar symbol is generating if there is a derivation of at least one terminal string, starting with that symbol.<br>Which of the following is FALSE?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> C is not generating</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> S is reachable</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> C → AB is useless</li>
+<li><img src="./Test Results131_files/correct.png" width="18">&nbsp;<img src="./Test Results131_files/correct.png" width="18"> A → BC is not useless<br><span class="explanation">Explanation:</span><br>The productions C → AB and A → BC does not derive any terminal string, starting with C and A, respectively. <br>C is not generating because it does not derive at least one terminal string, starting with that symbol. So, C is not generating.  <br>S is initial state and it is always reachable.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following languages is equivalent to each other?<br>(i)ϵ+0(0+1)*+1(0+1)*<br>(ii)(0+1)*<br>(iii)0*+0*1(0+1)*<br>(iv)0*(10*)*<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> All are equivalent<br><span class="explanation">Explanation:</span><br>All the regular expressions generate strings {ϵ,0,1,00,01,10,11,…} and all are equivalent to (0+1)*.
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Only (iii) and (ii) are equivalent</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Only (ii) and (iv) are equivalent</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Only (i), (iii) and (iv) are equivalent</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Common Data Questions (Q30 &amp; Q31)</span></strong><br>Consider the following Turing machine over the alphabet ∑ = {a,b}. The reject state q<sub class="tcecode">rej </sub>is not shown, if from a state there is no transition on some symbol then, we assume it goes to the reject state. <br>The Turing Machine is M=(Q,∑,Γ,δ,q<sub class="tcecode">0</sub>,q<sub class="tcecode">f</sub>,q<sub class="tcecode">rej</sub>} where <br>Q = {q<sub class="tcecode">0</sub>,q<sub class="tcecode">1</sub>,q<sub class="tcecode">2</sub>,q<sub class="tcecode">3</sub>,q<sub class="tcecode">4</sub>,q<sub class="tcecode">f</sub>,q<sub class="tcecode">rej</sub> }<br> ∑ = {a,b}<br>Γ={a,b,B,X,Y}<br>δ is described in the following Turing Machine. <br><img src="./Test Results131_files/Q29.png" alt="image:TOC Subject Text - 1/Q29.png" width="597" height="370" class="tcecode"><br>	What is the language recognized by the given TM?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L={w ┤|w∈{a,b}  and n<sub class="tcecode">a</sub> (w)≥n<sub class="tcecode">b</sub> (w)}</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L={a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> |n≥0}</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> L={ww<sup class="tcecode">R</sup> | w ∈ {a,b}}</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> L={w |w∈{a,b}  and n<sub class="tcecode">a</sub> (w)=n<sub class="tcecode">b</sub> (w)}<br><span class="explanation">Explanation:</span><br>The machine first marks the leftmost unmarked a (or b) as X and then scans right to find the left most unmarked b (or a). This matching b (or a) is marked as Y, and the machine scans back left to move to the rightmost X, and repeats the entire process.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Common Data Questions (Q30 &amp; Q31)</span><br>Consi</strong>der the following Turing machine over the alphabet ∑ = {a,b}. The reject state q<sub class="tcecode">rej </sub>is not shown, if from a state there is no transition on some symbol then, we assume it goes to the reject state. <br>The Turing Machine is M=(Q,∑,Γ,δ,q<sub class="tcecode">0</sub>,q<sub class="tcecode">f</sub>,q<sub class="tcecode">rej</sub>} where <br>Q = {q<sub class="tcecode">0</sub>,q<sub class="tcecode">1</sub>,q<sub class="tcecode">2</sub>,q<sub class="tcecode">3</sub>,q<sub class="tcecode">4</sub>,q<sub class="tcecode">f</sub>,q<sub class="tcecode">rej</sub> }<br> ∑ = {a,b}<br>Γ={a,b,B,X,Y}<br>δ is described in the following Turing Machine. <br><img src="./Test Results131_files/Q29.png" alt="image:TOC Subject Text - 1/Q29.png" width="597" height="370" class="tcecode"><br>	Given the instantaneous description of M after reaching q<sub class="tcecode">f</sub> over the input string baabab.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> XYXYYXBq<sub class="tcecode">f</sub> B</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> XYXYYYBq<sub class="tcecode">f</sub> B</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> YXXYXYBq<sub class="tcecode">f</sub> B</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> XYXYXYBq<sub class="tcecode">f</sub> B<br><span class="explanation">Explanation:</span><br>Explanation:<br>We append two blanks BB to the given string just because the output on the tape will also have blanks. <br><br>q<sub class="tcecode">0</sub> baabab<br>⇒Xq<sub class="tcecode">4</sub> aababBB<br>⇒q<sub class="tcecode">3</sub> XYababBB<br>⇒Xq<sub class="tcecode">2</sub> YababBB<br>⇒XYq<sub class="tcecode">2</sub> ababBB<br>⇒XYXq<sub class="tcecode">1</sub> babBB<br>⇒XYq<sub class="tcecode">3</sub> XYabBB<br>⇒XYXq<sub class="tcecode">2</sub> YabBB<br>⇒XYXYq<sub class="tcecode">2</sub> abBB<br>⇒XYXYXq<sub class="tcecode">1</sub> bBB<br>⇒XYXYq<sub class="tcecode">3</sub> XYBB<br>⇒XYXYXq<sub class="tcecode">2</sub> YBB<br>⇒XYXYXYq<sub class="tcecode">2</sub> BB<br>⇒XYXYXYBq<sub class="tcecode">f</sub> B
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Linked Answer Questions (Q32 &amp; Q33)</span></strong><br>Consider the language of all arithmetic expressions (E) built out of integers (I), using only + and *.<br>G<sub class="tcecode">exp</sub>=({E,I},∑ ,P,E)  where ∑= {a,b,0,1,(,),+,*}  and P is<br>E → I | E+E | E*E | (E)<br>I → a | b | Ia | Ib | I0 | I1<br><br>Let L(G<sub class="tcecode">exp</sub>) be a the language of all correct expressions, with matching paranthesis. <br>Consider the homomorphism function h:∑*→ Δ*, Δ={0,1}. Suppose h maps all numbers and identifiers to ϵ, and opening paranthesis to 0 and closing paranthesis to 1. This means h(L)⊆{0,1}*. <br>The language h(L(G<sub class="tcecode">exp</sub>)) is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Not even recursively enumerable</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Regular</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Context free<br><span class="explanation">Explanation:</span><br>The homomorphism function h:∑*→ Δ*, Δ={0,1}, maps all numbers and identifiers to ϵ, and opening paranthesis ‘(’ to 0 and closing paranthesis ‘)’ to 1. This means we are dissolving all the numbers and identifiers to ϵ and are left with opening (0’s) and closing paranthesis (1’s) in h(L(G<sub class="tcecode">exp</sub>)). <br>From the production in G<sub class="tcecode">exp</sub>, E → (E), we can see that G generates all the expressions with balanced paranthesis. <br>The grammar for generating balanced paranthesis is <br>G<sub class="tcecode">bal</sub>:B→BB | (B)  |  ϵ<br>Thus h(L(G<sub class="tcecode">exp</sub>))  is the language generated by the grammar G<sub class="tcecode">bal</sub>, in which ( should be substituted with 0 and ) should be substituted with 1. This language is CFL because we need one stack to keep track of opening and closing paranthesis. <br>This grammar is ambiguous, it has more than one parse tree for {ϵ,( ),…}
+</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Unambiguous</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="font-size:large">Linked Answer Questions (Q32 &amp; Q33)</span></strong><br>Consider the language of all arithmetic expressions (E) built out of integers (I), using only + and *.<br>G<sub class="tcecode">exp</sub>=({E,I},∑ ,P,E)  where ∑= {a,b,0,1,(,),+,*}  and P is<br>E → I | E+E | E*E | (E)<br>I → a | b | Ia | Ib | I0 | I1<br><br>Let L(G<sub class="tcecode">exp</sub>) be a the language of all correct expressions, with matching paranthesis. <br>Consider the homomorphism function h:∑*→ Δ*, Δ={0,1}. Suppose h maps all numbers and identifiers to ϵ, and opening paranthesis to 0 and closing paranthesis to 1. This means h(L)⊆{0,1}*. <br>The language h(L(G<sub class="tcecode">exp</sub>))∩0*1* is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Regular</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Context free</li>
+<li>&nbsp;<img src="./Test Results131_files/wrong.png" width="16"> Recursive but not context free</li>
+<li>&nbsp;<img src="./Test Results131_files/correct.png" width="18"> Deterministic context free language<br><span class="explanation">Explanation:</span><br>We know that h(L(G<sub class="tcecode">exp</sub>)) is context free and 0*1*  is regular. From the closure properties, intersection of a context free language and a regular language is CFL. <br>In this case, we need to check whether h(L(G<sub class="tcecode">exp</sub>))∩0*1* is DCFL or not. <br>h(L(G<sub class="tcecode">exp</sub>))={ϵ,01,0011,0101,001011,…}<br>h(L(G<sub class="tcecode">exp</sub>))∩0*1*={0<sup class="tcecode">n</sup>1<sup class="tcecode">n</sup> |n≥0}<br>This is clearly a deterministic context free language.
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results131_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

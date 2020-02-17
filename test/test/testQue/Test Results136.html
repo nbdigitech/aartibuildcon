@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4151&test_id=24 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results136_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results136_files/calclayout.css">
+<script src="./Test Results136_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results136_files/jquery-ui.js.download"></script>
+<script src="./Test Results136_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results136_files/custom.js.download"></script>
+<script src="./Test Results136_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results136_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results136_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921414, 'I\'m sorry, the time available to complete the test is over!', false, 1486921414778);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=4151&amp;test_id=24#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Topic Test 2</strong><br>
+NFA, Conversion of NFA to DFA, Moore and Mealey machines &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-09-10 11:50:01&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-09-10 12:32:32&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:42:31&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+1.040 / 25.000 (4%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+3 / 15 (20%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following NFA over Σ={0,1}.<br><img src="./Test Results136_files/Q1-question.png" alt="image:TOC Topic Test 2/Q1-question.png" width="385" height="203" class="tcecode"><br>The language accepted by the NFA is:<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It accepts all strings that contain two 0’s separated by three 0’s or 1’s.</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It accepts all strings that contain at least two 0’s.</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> It accepts set of all strings that contain two 0’s separated by a substring whose length is a multiple of 3.<br><span class="explanation">Explanation:</span><br>Given ∑ = {0,1}. The strings accepted by the above NFA are:<br><img src="./Test Results136_files/Q1-exp1.png" alt="image:TOC Topic Test 2/Q1-exp1.png" width="432" height="32" class="tcecode"><br>The given NFA accepts set of all strings over {0, 1}, where each string contain two 0’s separated by a substring whose length is a multiple of 3.
+</li>
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It accepts set of all strings that contain at least two 0’s and recursively end with a 0.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the state transition table of a Moore machine <br>M = (Q,Σ,∆,λ,δ,q<sub class="tcecode">0</sub>)  <br>where Q = {A,B}, Σ = {a,b}, ∆ = {0,1}, λ:Q→∆, δ:Q×Σ→Q and q<sub class="tcecode">0</sub>={A}.<br><img src="./Test Results136_files/Q2-question.png" alt="image:TOC Topic Test 2/Q2-question.png" width="190" height="71" class="tcecode"><br>The output generated by the machine if the input string is aabbaa, λ(aabbaa)=__________.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 000100</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 001000</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 0001100</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> 0001000<br><span class="explanation">Explanation:</span><br>The transition diagram for the given state transition table is<br><img src="./Test Results136_files/Q2-exp1.png" alt="image:TOC Topic Test 2/Q2-exp1.png" width="186" height="112" class="tcecode"><br>Input string w = aabbaa<br><img src="./Test Results136_files/Q2-exp2.png" alt="image:TOC Topic Test 2/Q2-exp2.png" width="241" height="70" class="tcecode"><br>∴ λ(aabbaa)=0001000
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Mealy machine given below. Σ = {a,b}  and ∆ = {0,1}. Find the output generated by the machine if the input string is bbaaba.<br><img src="./Test Results136_files/Q3-question1.png" alt="image:TOC Topic Test 2/Q3-question1.png" width="325" height="149" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 001100</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 001000</li>
+<li><img src="./Test Results136_files/correct.png" width="18">&nbsp;<img src="./Test Results136_files/correct.png" width="18"> 000100<br><span class="explanation">Explanation:</span><br>Σ = {a,b}, ∆ = {0,1}<br>Input string w = bbaaba<br><img src="./Test Results136_files/Q3-exp.png" alt="image:TOC Topic Test 2/Q3-exp.png" width="534" height="56" class="tcecode"><br>∴ λ(bbaaba) = 000100
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 000110</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following NFA<br><img src="./Test Results136_files/Q4-question.jpg" alt="image:TOC Topic Test 2/Q4-question.jpg" width="295" height="128" class="tcecode"><br>Which of the following sets of states of NFA is not a state of DFA?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> {B,C}<br><span class="explanation">Explanation:</span><br>Construct the transition table of DFA for the given NFA. <br><img src="./Test Results136_files/Q4-exp.png" alt="image:TOC Topic Test 2/Q4-exp.png" width="200" height="130" class="tcecode"><br>From the above transition table, it is clear that state {B, C} is not a state in DFA.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {A,B}</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {B}</li>
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> ϕ</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of states in the minimal DFA of the following NFA is<br><img src="./Test Results136_files/Q5-question.png" alt="image:TOC Topic Test 2/Q5-question.png" width="279" height="117" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>The minimal finite automate for the above NFA is <br><img src="./Test Results136_files/Q5-exp.png" alt="image:TOC Topic Test 2/Q5-exp.png" width="302" height="182" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the ϵ-NFA given below and over Σ = {0,1}.<br><img src="./Test Results136_files/Q6-question.png" alt="image:Q6-question.png" width="229" height="196" class="tcecode"><br>The minimal DFA for the ϵ-NFA is<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q6-ans1-.jpg" alt="image:TOC Topic Test 2/Q6-ans1-.jpg" width="228" height="228" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> <img src="./Test Results136_files/Q6-ans4-.jpg" alt="image:TOC Topic Test 2/Q6-ans4-.jpg" width="228" height="228" class="tcecode"><br><span class="explanation">Explanation:</span><br>Σ={a,b}<br><img src="./Test Results136_files/Q6-exp.jpg" alt="image:TOC Topic Test 2/Q6-exp.jpg" width="221" height="178" class="tcecode"><br>Constructing transition table for NFA:<br><img src="./Test Results136_files/Q6-exp2.jpg" alt="image:TOC Topic Test 2/Q6-exp2.jpg" width="333" height="298" class="tcecode"><br>The transition table for NFA is:<br><img src="./Test Results136_files/Q6-exp3.jpg" alt="image:TOC Topic Test 2/Q6-exp3.jpg" width="156" height="78" class="tcecode"><br>∴ The NFA is<br><img src="./Test Results136_files/Q6-exp4.jpg" alt="image:TOC Topic Test 2/Q6-exp4.jpg" width="323" height="138" class="tcecode"><br>The final states are ϵ-closure ({1} )={1,2}<br>DFA:<br><img src="./Test Results136_files/Q6-exp5.jpg" alt="image:TOC Topic Test 2/Q6-exp5.jpg" width="201" height="126" class="tcecode"><br>States 1 &amp; {1, 2} are equivalent.<br>∴We merge them.<br><img src="./Test Results136_files/Q6-exp6.jpg" alt="image:TOC Topic Test 2/Q6-exp6.jpg" width="195" height="109" class="tcecode"><br>The corresponding Minimal DFA:<br><img src="./Test Results136_files/Q6-exp7.jpg" alt="image:TOC Topic Test 2/Q6-exp7.jpg" width="203" height="275" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q6-ans3-.jpg" alt="image:TOC Topic Test 2/Q6-ans3-.jpg" width="224" height="238" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q6-ans2-.jpg" alt="image:TOC Topic Test 2/Q6-ans2-.jpg" width="179" height="231" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Given below is the Moore machine with missing output symbols associated with the states and some missing transitions. If the Moore machine M prints the residue modulo 3 as output for a given input string which when interpreted as integer, find the missing output symbols and missing transitions.<br>M=({A,B,C}, Σ = {0,1,2}, ∆ = {0,1,2}, λ, δ, A)<br>where Σ is a set of ternary numbers (base 3) and λ∶Q→∆, δ∶Q×Σ→Q<br><img src="./Test Results136_files/Q7-question11.png" alt="image:TOC Topic Test 2/Q7-question11.png" width="282" height="105" class="tcecode"><br>The corresponding state transition table is<br><img src="./Test Results136_files/Q7-question2.png" alt="image:TOC Topic Test 2/Q7-question2.png" width="228" height="89" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> δ(A,2)=C; λ(A)=1<br>δ(B,0)=A; λ(B)=2<br>δ(C,0)=B; λ(C)=0</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> δ(A,2)=B; λ(A)=0<br>δ(B,0)=C; λ(B)=2<br>δ(C,0)=A; λ(C)=1</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> δ(A,2)=B; λ(A)=1<br>δ(B,0)=A; λ(B)=0<br>δ(C,0)=C; λ(C)=2</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> δ(A,2)=C; λ(A)=0<br>δ(B,0)=A; λ(B)=1<br>δ(C,0)=A; λ(C)=2<br><span class="explanation">Explanation:</span><br>The Moore machine taking the ternary numbers as input and prints the residue modulo 3 as output is<br><img src="./Test Results136_files/Q7-exp.png" alt="image:Q7-exp.png" width="281" height="147" class="tcecode"><br>The output associated with each state is the residue modulo 3 for the input string seen so far.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Convert the following Moore machine into its equivalent Mealy machine. Given Σ = {0,1}, ∆ = {0,1,2}<br><img src="./Test Results136_files/Q8-question.png" alt="image:TOC Topic Test 2/Q8-question.png" width="287" height="249" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/correct.png" width="18">&nbsp;<img src="./Test Results136_files/correct.png" width="18"> <img src="./Test Results136_files/Q8-option3-.png" alt="image:TOC Topic Test 2/Q8-option3-.png" width="205" height="184" class="tcecode"><br><span class="explanation">Explanation:</span><br>The state transition table for <br><img src="./Test Results136_files/Q8-exp1.png" alt="image:TOC Topic Test 2/Q8-exp1.png" width="501" height="165" class="tcecode"><br>∴ The Mealy machine constructed from its state transition table is<br><img src="./Test Results136_files/Q8-option3-.png" alt="image:TOC Topic Test 2/Q8-option3-.png" width="257" height="215" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q8-option1-.png" alt="image:TOC Topic Test 2/Q8-option1-.png" width="205" height="184" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q8-option4.png" alt="image:TOC Topic Test 2/Q8-option4.png" width="209" height="181" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> <img src="./Test Results136_files/Q8-option2.png" alt="image:TOC Topic Test 2/Q8-option2.png" width="211" height="184" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following strings is/are accepted by the NFA below?<br><img src="./Test Results136_files/Q9-question.png" alt="image:TOC Topic Test 2/Q9-question.png" width="295" height="128" class="tcecode"><br><ol class="tcecode"><li class="tcecode">010110</li><li class="tcecode">0010010</li><li class="tcecode">0110110</li><li class="tcecode">1010110</li></ol><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> Only 1, 2 and 4 are accepted<br><span class="explanation">Explanation:</span><br><ol class="tcecode"><li class="tcecode">The sequence of states visited for accepting the string 010110 is<br><img src="./Test Results136_files/Q9-exp1.png" alt="image:TOC Topic Test 2/Q9-exp1.png" width="243" height="43" class="tcecode"><br>It is accepted.</li><li class="tcecode">The sequence of states visited for accepting the string 0010010 is<br><img src="./Test Results136_files/Q9-exp2.png" alt="image:TOC Topic Test 2/Q9-exp2.png" width="272" height="41" class="tcecode"><br>It is accepted.</li><li class="tcecode">The sequence of states visited for accepting the string 0110110 is<br><img src="./Test Results136_files/Q9-exp3.png" alt="image:TOC Topic Test 2/Q9-exp3.png" width="129" height="43" class="tcecode"><br>It cannot be accepted.</li><li class="tcecode">The sequence of states visited for accepting the string 1010110 is<br><img src="./Test Results136_files/Q9-exp4.png" alt="image:TOC Topic Test 2/Q9-exp4.png" width="271" height="46" class="tcecode"><br>It is accepted.</li></ol><br>∴ 1, 2 &amp; 4 are accepted.
+</li>
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> Only 2, 3 and 4 are accepted</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> All are accepted</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> Only 1 and 2 are accepted</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following NFA. <br><img src="./Test Results136_files/Q10-question1.png" alt="image:TOC Topic Test 2/Q10-question1.png" width="435" height="172" class="tcecode"><br>Which of the following sets of states of NFA becomes a state of the DFA constructed using the subset construction?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/correct.png" width="18">&nbsp;<img src="./Test Results136_files/correct.png" width="18"> {q<sub class="tcecode">2</sub>,q<sub class="tcecode">3</sub>}<br><span class="explanation">Explanation:</span><br>To convert the given NFA to DFA using subset construction, we find the transition table of DFA as follows: <br><img src="./Test Results136_files/Q10-exp.png" alt="image:TOC Topic Test 2/Q10-exp.png" width="295" height="170" class="tcecode"><br>From the above transition table, we can see that {q<sub class="tcecode">2</sub>,q<sub class="tcecode">3</sub>} is one of the states in the corresponding DFA.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {q<sub class="tcecode">0</sub>,q<sub class="tcecode">1</sub>,q<sub class="tcecode">2</sub>,q<sub class="tcecode">3</sub>}</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> ϕ</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {q<sub class="tcecode">0</sub>,q<sub class="tcecode">1</sub>,q<sub class="tcecode">2</sub>}</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following state transition table of a Mealy machine over the input alphabet,Σ = {0,1}, and output alphabet ∆ = {0,1}.<br>M = ({A, B, C, D, E}, Σ, ∆, δ, λ, A)<br><br><img src="./Test Results136_files/Q11-question.png" alt="image:TOC Topic Test 2/Q11-question.png" width="231" height="127" class="tcecode"><br>Find the number of states in the Moore machine equivalent to the above Mealy machine.<br><br>NOTE: Consider all states, Irrespective of their behavior.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results136_files/Q11-exp.png" alt="image:TOC Topic Test 2/Q11-exp.png" width="501" height="249" class="tcecode"><br>∴ 8 states in Moore machine.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 7</li>
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+The language accepted by the following NFA over Σ={0,1}.<br><img src="./Test Results136_files/Q12-question.png" alt="image:TOC Topic Test 2/Q12-question.png" width="332" height="179" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results136_files/wrong.png" width="16">&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> L={w∈Σ* | w contains exactly two 0's or exactly two 1's}</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> L={w∈Σ*  | w contains at least two 0's or exactly two 1's}<br><span class="explanation">Explanation:</span><br>Σ = {0,1}<br>The NFA accepts strings containing at least two 0’s or exactly two 1’s. <br>L = {00,000,11,011,01010,…}<br>If a string in the language does not contain at least two 0’s then it will definitely contain exactly two 1’s. If the string in the language does not contain exactly two 1’s, then it will definitely contain at least two 0’s. The strings may contain at least two 0’s and exactly two 1’s.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> L={w∈Σ*  | w contains at least two 0's and at least two 1's}</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> L={w∈Σ*  | w contains two 0's or two 1's}</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the Moore machine given below:<br><img src="./Test Results136_files/Q13-question.png" alt="image:TOC Topic Test 2/Q13-question.png" width="279" height="121" class="tcecode"><br>M = ⟨{A,B,C}, {a,b}, {0,1}, λ, δ, A⟩<br>Identify the correct statement about M.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It counts the number of occurrences of a’s in the given input string.</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> It counts the number of occurrences of two consecutive a’s in the given input string.<br><span class="explanation">Explanation:</span><br>If w = b, λ(b) = 00<br>If w = ba, λ(ba) = 000<br>If w = aa, λ(aa) = 001 ⟹ One occurence of two consecutive a's.<br><br>If w = aaa,<img src="./Test Results136_files/Q13-exp1.png" alt="image:TOC Topic Test 2/Q13-exp1.png" width="40" height="23" class="tcecode"> =0011⟹Two occurences of two consecutive a's.<br><br>If w = aabaaaa, <img src="./Test Results136_files/Q13-exp2.png" alt="image:TOC Topic Test 2/Q13-exp2.png" width="75" height="23" class="tcecode"> = 00100111 ⟹ 4 occurrences of two consecutive a’s.<br><br>It counts the number of occurrences of two consecutive a’s in the given input string.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It counts the number of occurrences of substring baa in the given input string.</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> It counts the number of occurrences of ba followed by an ‘a’ in the given input string.</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions (Q14 and Q15):</strong><br></span><br>Consider the following ϵ-NFA over Σ = {a, b}.<br><img src="./Test Results136_files/Q14-question.png" alt="image:TOC Topic Test 2/Q14-question.png" width="188" height="201" class="tcecode"><br>Construct the NFA corresponding to the given ϵ-NFA. Which one of the following sets of states is a possible transition from any state over symbol ‘a’ in the NFA constructed?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> {1,3}<br><span class="explanation">Explanation:</span><br>Construct the transition table of NFA for the given ϵ-NFA.<br>The ϵ- closure of each state over each symbol is computed as below.<br><img src="./Test Results136_files/Q14-exp1.png" alt="image:TOC Topic Test 2/Q14-exp1.png" width="499" height="164" class="tcecode"><br>∴The transition table of NFA is<br><img src="./Test Results136_files/Q14-exp2.png" alt="image:TOC Topic Test 2/Q14-exp2.png" width="174" height="110" class="tcecode"><br>The NFA corresponding to the above state transition table is<br><img src="./Test Results136_files/Q14-exp3.png" alt="image:TOC Topic Test 2/Q14-exp3.png" width="295" height="139" class="tcecode"><br>∴There is a transition from states 1 to state 1 and state 3 over the symbol ‘a’.
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {3}</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {1,2,3}</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> {1}</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions (Q14 and Q15):</strong><br></span><br>The number of states in the minimal finite automata of the NFA obtained in the above question is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results136_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>The NFA obtained is <br><img src="./Test Results136_files/Q15-exp1.png" alt="image:TOC Topic Test 2/Q15-exp1.png" width="295" height="139" class="tcecode"><br>The transition table for the DFA constructed from the above NFA is<br><img src="./Test Results136_files/Q15-exp2.png" alt="image:TOC Topic Test 2/Q15-exp2.png" width="190" height="167" class="tcecode"><br>From the above state transition table, we can see that states 1 and {1, 3} are equivalent. So, we merge them. This can also be done using grouping method. <br>We get the following minimal DFA having 6 states. <br><img src="./Test Results136_files/Q15-exp3.png" alt="image:TOC Topic Test 2/Q15-exp3.png" width="411" height="237" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results136_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results136_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

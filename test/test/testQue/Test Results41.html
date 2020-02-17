@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92156&test_id=288 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results41_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results41_files/calclayout.css">
+<script src="./Test Results41_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results41_files/jquery-ui.js.download"></script>
+<script src="./Test Results41_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results41_files/custom.js.download"></script>
+<script src="./Test Results41_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results41_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results41_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837549, 'I\'m sorry, the time available to complete the test is over!', false, 1486837549208);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92156&amp;test_id=288#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 7</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:27&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>Vijay ________ really fast. Last year he was only half this height.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Will grow</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Grew</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Grows</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> Has grown<br><span class="explanation">Explanation:</span><br>For the given sentence, we need a tense that refers to the action beginning at sometime in the past. Let’s try to rule out the options and find out the best fits in.<br>(a)	Will grow → future tense does not fit the sentence because in this context we need a tense that connects the past events to the present.<br>(b)	Grew → past tense would only be possible here if Vijay cannot grow any more. So, this is wrong.<br>(c)	Grows → present simple doesn’t fit the given sentence. But, present continuous tense would be possible here, i.e., Vijay is growing very fast.<br>(d)	Has grown → Vijay is still growing. So, there is a clear connection to the present. That’s why the present perfect tense is needed, i.e., an action beginning at sometime in the past and continuing up to the present moment. So, this is the correct choice.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the word that is opposite in meaning to the underlined word in the given sentence.<br>Her eyes twinkled with <span style="text-decoration:underline;"><strong class="tcecode">mirth.</strong></span><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> Sadness<br><span class="explanation">Explanation:</span><br>Mirth refers to amusement, gladness and merriment (high spirited fun and enjoyment). So, of all the given options gladness and merriment are synonyms for mirth. The word tears is not suitable in the given context. Hence, the word that is opposite in meaning is sadness.
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Gladness</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Merriment</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Tears</li>
+</ol>
+<br><br>
+</li>
+<li>
+Fill in the blank with the most appropriate word.<br>There weren’t many people _______ the meeting.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> In</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> At<br><span class="explanation">Explanation:</span><br>In order to talk about group activities like meetings and shops/ work places, we use the preposition <span style="text-decoration:underline;"><strong class="tcecode">at</strong></span>.
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> For</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> By</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which one of the following is closest in meaning to the word given below?<br><strong class="tcecode">MINION</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> Follower<br><span class="explanation">Explanation:</span><br>Minion refers to a follower (or) dependent. So, of all the given options the word that is closest in meaning to the word minion is follower.
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Harmful</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Mercy</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Generous</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results41_files/5Qa.png" alt="image:APT7/5Qa.png" width="321" height="69" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 1 + 3 log<sub class="tcecode">7</sub> 2</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 1 - 3 log<sub class="tcecode">7</sub> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results41_files/6Ea.png" alt="image:APT7/6Ea.png" width="317" height="429" class="tcecode"><br><img src="./Test Results41_files/6Ec.png" alt="image:APT7/6Ec.png" width="307" height="374" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 1 + 4 log<sub class="tcecode">7</sub> 2</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 1 - 4 log<sub class="tcecode">7</sub> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the missing term in the given series<br>EG, HK, LN, OR, SU, ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> WX</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> XY</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> VW</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> VY<br><span class="explanation">Explanation:</span><br>Pattern for 1st letter:<br>E <sup class="tcecode"> +3</sup> → H <sup class="tcecode">+4 </sup>→  L  <sup class="tcecode">+3</sup> →  O  <sup class="tcecode">+4</sup>  →  S <sup class="tcecode">+3</sup> → (V)<br><br>Pattern for 2nd letter:<br><br>G  <sup class="tcecode">+4</sup> →  K  <sup class="tcecode">+3</sup>→  N  <sup class="tcecode">+4</sup>→  R  <sup class="tcecode">+3</sup>→  U <sup class="tcecode">+4</sup>  → (Y)<br><br>Next term is VY
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assuming everything in the given statement to be true and on the basis of the information given in the statement, decide which of the suggested courses of action logically follow(s):<br><br><strong class="tcecode">Statement:</strong><br>	There has been less than forty percent voters turn out in the recent assembly elections.<br><strong class="tcecode">Courses of Action:</strong><br>I.	The election commission should cancel the entire election process as the votes casted are not adequate to represent people.<br>II.	The election commission should take away the voting rights of those who did not exercise their rights.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> If only I follows</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> If only II follows</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> If either I or II follows</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> If neither I nor II follows<br><span class="explanation">Explanation:</span><br>I – Reelection would demand repeated expenses and it may not ensure the percentage of voters.<br>	II – Cancelling the voting rights may result in reducing the voter base permanently.<br>	So, neither of the action I nor action II follows.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find out the wrong term in the given series<br>3,4,10,32,136,685,4116………<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 32<br><span class="explanation">Explanation:</span><br><img src="./Test Results41_files/13Ea.png" alt="image:APT7/13Ea.png" width="550" height="192" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 136</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 685</li>
+</ol>
+<br><br>
+</li>
+<li>
+If COMPUTERS is written as D4NQ5U2ST, then how will GATE be written?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> HBUF</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> H1U2<br><span class="explanation">Explanation:</span><br><img src="./Test Results41_files/12Ea.png" alt="image:APT7/12Ea.png" width="677" height="440" class="tcecode"><br><img src="./Test Results41_files/12Eb.png" alt="image:APT7/12Eb.png" width="242" height="205" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> FBSF</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> H2U6</li>
+</ol>
+<br><br>
+</li>
+<li>
+A man has divided his total money in such a way that 1/3<sup class="tcecode">rd</sup> of money goes to his wife, 3/4<sup class="tcecode">th</sup> of the remaining among his three sons equally and rest among his four daughters equally. If each daughter gets Rs. 30,000, how much money will each son get?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 100000</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 120000<br><span class="explanation">Explanation:</span><br>Let the total money be Rs x<br>Share of his wife =Rs x/3<br>Remaining money =x-x/3=Rs 2x/3<br>3/4<sup class="tcecode">th</sup> of the remaining money is shared between three sons equally and 1/4<sup class="tcecode">th</sup> of the remaining money goes to 4 daughters equally.<br>Total share of Three sons=3/4 (2x/3)=Rs x/2<br>Total share of Four daughters=1/4 (2x/3)=Rs x/6<br> But, each daughter gets Rs. 30,000<br>∴x/24=30,000<br>x=7,20,000<br>Share of each son= 1/3 (x/2)<br>=x/6<br>=720000/6<br>=Rs.1,20,000
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 150000</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 180000</li>
+</ol>
+<br><br>
+</li>
+<li>
+A bus travels from city A to B at a constant speed. If its speed were increased by 20km/hr, it would have taken one hour lesser to cover the distance, it would have taken further 15 minutes lesser if the speed was further increased by 10km/hr. what is the distance between the two cities A and B?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 72Km</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 73KM</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 74KM</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 75KM<br><span class="explanation">Explanation:</span><br>Let the distance between A and B = x km<br>	Usual speed of bus = y kmph.<br>Then,<br>  The actual time taken from city A to B is <br>	T = (x/y)  hours ---------------(1)<br>If the speed of the bus increased by 20kmph<br>Then it would have taken 1 hour lesser.<br>	T – T<sub class="tcecode">1</sub> = 1 hour<br><img src="./Test Results41_files/61.JPG" alt="image:APT7/61.JPG" width="208" height="144" class="tcecode"><br><img src="./Test Results41_files/10Ec.png" alt="image:APT7/10Ec.png" width="576" height="233" class="tcecode"><br><img src="./Test Results41_files/010Eb.png" alt="image:APT7/010Eb.png" width="372" height="311" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+When working alone A, B and C can complete a piece of work in 10, 15 and 20 days respectively. At the most only two people can work on each day and nobody works more than two consecutive days. What is the minimum number of days that they will take to finish the work?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 6 days</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 6(2/3) days</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 6(4/5)days<br><span class="explanation">Explanation:</span><br>A can complete a piece of work in 10 days<br>B can complete the same work in 15 days<br>C can complete the same work in 20 days<br>Let he total work = LCM (A, B, C) units<br>		    = 60 units<br><img src="./Test Results41_files/8Ea.png" alt="image:APT7/8Ea.png" width="278" height="99" class="tcecode"><br>At the most two people can work on each day and nobody works more than two consecutive days. That means A and B on first day, B and C on second day, C and A on third day, A and B on fourth day and so on.<br><br>In the three days, the total work done = (A+B) + (B+C) + (C+A)<br>					= 2(A+B+C)<br>					= 26 units<br>In 6 days 52 units of work be completed on 7th day A and B can finish 10 units but the remaining work is 60 – 52 = 8 units<br><br>10 units can complete in 1 day<br>8 units can complete in -----?<br>=(8/10) days = (4/5)days<br>So, minimum number of days that will take to finish the work =6(4/5)days
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 7 days</li>
+</ol>
+<br><br>
+</li>
+<li>
+A milk vendor sells 5 liters of milk from a can containing 50 liters of pure milk to the 1st customer. He then adds 5 liters of water to the milk can. He again sells 5 liters of mixture to the 2nd customer and then adds 5 liters of water to the can. Again he sells 5 liters of mixture to 3rd customer and then adds 5 liters of water to the can. How much milk is now contained by the can?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 33.45 liters</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 34.65 liters</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> 36.45 liters<br><span class="explanation">Explanation:</span><br><img src="./Test Results41_files/9Ea.png" alt="image:APT7/9Ea.png" width="578" height="500" class="tcecode"><br><img src="./Test Results41_files/9Eb.png" alt="image:APT7/9Eb.png" width="665" height="504" class="tcecode"><br><img src="./Test Results41_files/9Ec.png" alt="image:APT7/9Ec.png" width="641" height="410" class="tcecode"><br><img src="./Test Results41_files/9Ed.png" alt="image:APT7/9Ed.png" width="683" height="426" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> 37.35 liters</li>
+</ol>
+<br><br>
+</li>
+<li>
+P is Father of G, A is Sister of C, His Uncle of A, Cis Brother of G and G is Father of B. Who is Uncle of B?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> A</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> C<br><span class="explanation">Explanation:</span><br><img src="./Test Results41_files/7Ea.png" alt="image:APT7/7Ea.png" width="313" height="510" class="tcecode"><br><img src="./Test Results41_files/7Eb.png" alt="image:APT7/7Eb.png" width="297" height="260" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> H</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair.<br><strong class="tcecode">BAFFLING: CONFUSING</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Chef : Hungry</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Petulant : Calm</li>
+<li>&nbsp;<img src="./Test Results41_files/wrong.png" width="16"> Zest : Boredom</li>
+<li>&nbsp;<img src="./Test Results41_files/correct.png" width="18"> Excruciating : Painful<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair</strong>:SYNONYM VARIANT<br>Bafflingis to confuse or perplex, especially so as to frustrate or prevent from taking action. <br><strong class="tcecode">Option (a):</strong><br>A chef is a cook; especially the principal cook in a restaurant who prepares food for the diners (may not be specifically hungry).<br><strong class="tcecode">Option (b):</strong><br>	Petulant refers to a person who is unreasonably irritable or ill-tempered; peevish.<br><strong class="tcecode">Option (c):</strong><br>Zest means keen excitement or enjoyment. Thus, boredom is opposite in meaning to zest.<br><strong class="tcecode">Option (d):</strong><br>The word excruciating means intensely painful.<br> The pair that best expresses the relationship similar to that expressed in Baffling: Confusing is <strong class="tcecode">Excruciating: Painful.</strong>
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results41_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

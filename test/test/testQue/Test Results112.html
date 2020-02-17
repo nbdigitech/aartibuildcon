@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92293&test_id=139 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results112_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results112_files/calclayout.css">
+<script src="./Test Results112_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results112_files/jquery-ui.js.download"></script>
+<script src="./Test Results112_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results112_files/custom.js.download"></script>
+<script src="./Test Results112_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results112_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results112_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921223, 'I\'m sorry, the time available to complete the test is over!', false, 1486921223565);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92293&amp;test_id=139#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>OS Topic Test - 2</strong><br>
+Process Synchronization - Race Conditions, Critical Sections, Peterson's Solution, Test and Set Locks, Semaphores&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:37:49&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Identify the correct statement with respect to test set lock solution?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> Deadlock free<br><span class="explanation">Explanation:</span><br>Deadlock free → If a process P1 is executing TSL instruction and entered into critical section and another process P2 with higher priority came then P1 is preempted and moved to ready queue, but lock is set. So, P2 is unable to enter the critical section, and P2 will move to ready queue and P1 comes to running state. Since P2 has higher priority again P1 is preempted and P2 starts executing. This cycle goes on and this condition is called livelock. But this condition is different from deadlock. In deadlock the processes involved will be in blocked state, but here the processes are in either ready state or running state but not doing any useful work.<br><br>We cannot guarantee the processes to enter in FCFS order, because there is no fixed order to enter critical section. A process can enter critical section if it sees the lock is free or FALSE. <br> <br>→Starvation can occur → There is a chance that a process with lower priority may not get chance to acquire lock to enter into critical section.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Starvation free</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Process enter critical section in FCFS order.</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+.Consider the following pseudo code:<br>for(i=1;i&lt;=3;i++)<br>{<br>fork();<br>}<br>How many total processes is created?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>For n fork( ) calls<br>We will get 2<sup class="tcecode">n</sup> processes created.<br>∴ From the given data n = 3<br>∴ 8 processes created.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+Counting semaphore value is 10 in a specific time,later 15 down operations and P up operations were completed on this semaphore. If the new value of semaphore is 35, Find the value of P will be<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 50</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 40<br><span class="explanation">Explanation:</span><br>From the given data<br>10 – 15 + P = 35<br>                   P = 40
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 35</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 60</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that an operating system provides two functions, block_queue() which puts the calling process on the blocked queue, and wakeup_queue(P)which moves process P to the runnable queue if it is currently on the blocked queue (otherwise, its behaviour is unpredictable). Consider two processes P0 and  P1 running the code given below. <br><br><br>void P0()<br>{  while(1) {<br>1.block_queue();<br>2.printf("P0");<br>3.wakeup_queue(P1);<br>}<br>}<br><br>void P1()<br>{ while(1) {<br>1.printf("P1");<br>2.wakeup_queue(P0);<br>3.block_queue();<br>}<br>}<br>Which of the Following statement is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> it prints P0P1 alternatively always.</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> It prints P1P0 alternatively always</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> Deadlock possible<br><span class="explanation">Explanation:</span><br><img src="./Test Results112_files/E4a.PNG" alt="image:OS2/E4a.PNG" width="485" height="47" class="tcecode"><br>	Consider a scenario process P1 arrives and it executes till the 2 instructions after this step P1 is preempted. Now process P0 arrives, its get block as it execute first instruction. Now after that process P1 returns and it execute instruction 3 and blocked. So now process P1 is waiting for process P0 &amp; process P0 is waiting for process P1 to wake up. So clearly deadlock.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement is true with respect to semaphore?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> synchronize critical resources to prevent deadlock</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> synchronize critical resources to prevent contention<br><span class="explanation">Explanation:</span><br>A semaphore is a way to lock a resource, so that it is guaranteed that while a piece of code has access to that resource, the semaphore keeps two threads from concurrently accessing the resource.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> are used to do I/O</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> are used for memory management</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following 3 concurrent processes.<br><strong class="tcecode">P0:</strong><br>while(true){<br>down(S0)<br>Printf(“GATE-@Ravindra”)<br>Up(S1)<br>Up(S2)<br>}<br><strong class="tcecode">P1:</strong><br>Down(S1);<br>Up(S0);<br><strong class="tcecode">P2:</strong><br>Down(S2)<br>Up(S1)<br>Where S0,S1 and S2 are binary semaphores.What are the possible values of S0,S1 and S2 to print GATE-@Ravindra at least twice?<br>a)S0=0,S1=0,S2=1<br>b)S0=0,S1=1,S2=0<br>c)S0=1,S1=0,S2=0<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Both  a,b</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Both c,a</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> Only C<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Case :</strong><br>S0 = 1		S1 = 0		S2 = 0<br>	Initially P0 first prints then after releasing S1 and S2, P2 will execute and release S0 and prints again.Here also atleast twice will happen.<br>So Option C will give correct output.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement is true with respect to  dining philosophers’ problem:<br><strong class="tcecode">Case 1:</strong>First a philosopher has to enter a room with the table that restricts the number of philosophers to four.<br><strong class="tcecode">Case 2:</strong>No limitation  on the number of philosophers entering the room.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Deadlock is possible in both case 1 and case 2</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Deadlock is possible in only case 1.</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> Starvation is possible in case 1<br><span class="explanation">Explanation:</span><br>In Dining Philosopher two things are definitely going to happen:<br>1. Starvation, as one philosopher always has to wait for every other philosophers to finish.<br>2. No deadlock, since resource/s of the waiting philosopher is/are always available.<br>From the above two statements we can conclude from the given options.So the correct answer is Starvation is possible in case 1.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Starvation is not possible in case 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> The Operations P(S) &amp; V(S) needs to be atomic.</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> A process exiting the CS will call V(S)</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> ‘Busy-Wait’ solutions to the Critical Section are typically implemented using machine instructions that execute in the Kernel mode</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> All of the above<br><span class="explanation">Explanation:</span><br>All the given statements are Basic definitions of Synchronization constraints.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A: down(S), down(Q), Print(“GATE”), up(Q), up(S)<br>     B: down(Q), down(S), Print(“2017”), up(Q), up(S)<br><br>Where S &amp; Q are two semaphores initialized to 1. In the above situation:<br>(a) Deadlock may occur<br><br>(b) prints GATE 2017<br><br>(c) Deadlock never occurs<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Only a</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Only b</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> Both a,b<br><span class="explanation">Explanation:</span><br>Case 1: Execute process A first next process B it prints GATE 2017<br><br><img src="./Test Results112_files/E7a.PNG" alt="image:OS2/E7a.PNG" width="293" height="79" class="tcecode"><br>Here 1, 2 represent statements in A, B.<br>         ∴  Deadlock occur
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+consider 2 processes P0 and P1 :<br><strong class="tcecode">P0:</strong><br>while (1)<br>{<br>down (mutex);<br>print '$';<br>up (mutex);<br>}<br><strong class="tcecode">P1:</strong><br>while(1){<br>{<br>down (mutex);<br>print '#';<br>Up (mutex);<br>}<br>}<br>Which of the following is possible pattern?<br>a) $#*  b)#*$*  c)(#/$)*<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> only a</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> Both a,b</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> All a,b and c<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Case 1:</strong><br>For example P0 starts execution, it prints the ‘$’ and it wakes up the process ‘P1’ and it prints the “#” and it wakes up the process P1 again and it prints “#” again, this process continues<br>$ #* → Possible<br>	<br>	<strong class="tcecode">Case 2:</strong><br>For example P1 starts execution, it prints the ‘#’ and it wakes up the process ‘P0’ it prints the ‘$’ this wakes up the process “P1”, this continues<br>#* $* → Possible<br>	<strong class="tcecode">Case 3:</strong><br>Take the case when both the processes fall in loop in any order, thus ($ / #)* → possible.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a schedule with 3 processes A,B and C, binary semaphores are S =1 , T=0 , Z=0 initially ;<br>Process A<br>{<br>    while(1)<br>    {   <br>        P(S)<br>        printf("*");<br>        V(T)<br>    }<br>}<br><br>Process B<br>{<br>    P(T)<br>    V(Z)<br>}<br><br>Process C<br>{<br>    P(Z)<br>    V(S)<br>}<br>What is the maximum number of times * is printed?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>S is initialized to 1. So process A enters into critical section by setting S to 0, prints *, increments T to 1. Since there is a while loop in process A, it will wait for S to become 1. As soon as T becomes 1, process B enters its critical section by setting T to 0 and exits the critical section incrementing Z to 1. Now process C enters its critical section by setting Z to 0, and exits the critical section incrementing S to 1.<br>Process A having while loop so it will print * one more time. Now there is no process to increment the value of S. So process A will keep on waiting for S to become 1. <br>∴ Answer is 2
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> &gt;2</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+consider the following 6 concurrent processes where semaphore  s initialized to zero. <br>A: down(s); cs; up (s);<br>B: down(s); cs; up (s);<br>C: down (s); cs; up(s);<br>D: up( s); cs; down(s);<br>E: up(s); cs; down(s);<br>F: up(s); cs;down(s);<br>What is the possible Maximum value of s is ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>Processes D, E and F can do signal(Up) operation without any intermediate down operation and thus S can go up to value 3.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code:<br>const int n = 5;<br>int count = 0;<br>void GATE(){<br>    for i = 1 to n<br>    count += 3;<br>}<br>main()   {<br>    Par begin <br>        GATE();<br>        GATE();<br>        GATE();<br>    Par end   <br>}<br>Find the maximum and minimum values of count, respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 30,15</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 45,10</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 45,6<br><span class="explanation">Explanation:</span><br>All three GATE( ) inside par begin and par end means these functions executes concurrently if all three GATE()  run serially we will get max count is 45.<br>For Min Value:<br>Step1:Execute First GATE() one time Preempt after incrementing without storing count  =0 at this stage.<br>Step2:Execute Second GATE() completely now count =15<br>Step3:Execute Third  GATE() 4 times now count becomes=27<br>Step4:Execute First GATE(), it overwrites the count by 3(first iteration )<br>Step5:Now Execute Third GATE last iteration, it reads count as 3 and increments and then preempt without storing.<br>Step6:Now execute First GATE() remaining 4 iterations, at this stage count =15.<br>Step 7:Now execute third GATE(),it overwrites the count by 6.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the pseudo code<br><strong class="tcecode">Process A:</strong><br>while(1)<br>{<br>P:print a;print a;Q<br>}<br><br><strong class="tcecode">Process B:</strong><br>while(1)<br>{<br>R:print b;print b;S<br>}<br>Synchronization statements are placed at P,Q,R and S. X and Y are binary semaphores then<br>Which of the following synchronization mechanism will lead to generate following string “aabbaabbaabb”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> P(X) at P,V(X) at Q,P(Y) at R,V(Y) at S,where X =1,Y=1</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> P(X) at P,V(Y) at Q,P(Y) at R,V(X) at S,where X =1,Y=0<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Case 1:</strong>  X = 1	Y = 1<br>Since y = 1 there is a chance of getting b initially by executing process B.<br>	∴  option P(X) at P,V(X) at Q,P(Y) at R,V(Y) at S,where X =1,Y=1, Option P(X) at P,V(Y) at Q,P(Y) at R,V(Y) at S,where X =0,Y=1 not possible.<br>      <br>          <strong class="tcecode">Case 2:</strong> P(X) at P,V(Y) at Q,P(Y) at R,V(X) at S,where X =1,Y=0<br>	X = 1	Y = 0<br>	Since Y = 0 process B can’t be started initially. So process A starts and prints aa then increments Y to 1. Later process B executes and prints bb like this alternatively aabb will print.<br><br>             <strong class="tcecode">Case 3:</strong> P(X) at P,V(Y) at Q,P(Y) at R,V(Y) at S,where X =1,Y=0<br>	Since Y = 0 process B can’t be started initially. So process A started and prints aa. Later increments Y to 1. After there is a chance execute process B continuously so aa bb bb . . possible.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> P(X) at P,V(Y) at Q,P(Y) at R,V(Y) at S,where X =0,Y=1</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> P(X) at P,V(Y) at Q,P(Y) at R,V(Y) at S,where X =1,Y=0</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code snippet:<br>if(fork()&amp;&amp; fork()){<br>fork();}<br>if(fork()||fork()){<br>fork();<br>fork();}<br>printf("GATE 2017");<br>What is the maximum number of times GATE 2017 can be printed ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results112_files/correct.png" width="18"> 36<br><span class="explanation">Explanation:</span><br>// 1 initial process (P1)<br><br>if(fork() &amp;&amp; fork())  //  creates 2 more children here(P2, P3). After first fork() only intial process(P1) will execute 2nd fork(). <br>{ <br>fork();    // P1 will get here and creates one more process(P4). <br>}<br><br>//Total 4 processes by now. Each of these 4 processes execute the below code<br><br>if(fork() || fork())    // creates 2 more processes (P5, P6 ) by each of the 4 processes. Here only new child by first fork() (that is P5) will execute 2nd fork. <br>{<br><br>// 2 processes reach here (P1 and its P5)  or (P2 and its P5) or (P3 and its P5) or (P4 and its P5)<br>fork();<br>fork();<br><br>// here total = 8 process inside this "if" body. <br>}<br><br>But P6 is also there, which is also a child of all the previous processes.<br><br>So, total 9 processes will be executed by the intial 4 processes.<br><br><br>4*9 = 36, so a maximum of 36 times this statement can be printed.
+</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> 17</li>
+<li>&nbsp;<img src="./Test Results112_files/wrong.png" width="16"> none</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results112_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

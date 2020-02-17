@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=39250&test_id=276 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results50_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results50_files/calclayout.css">
+<script src="./Test Results50_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results50_files/jquery-ui.js.download"></script>
+<script src="./Test Results50_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results50_files/custom.js.download"></script>
+<script src="./Test Results50_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results50_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results50_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837831, 'I\'m sorry, the time available to complete the test is over!', false, 1486837831789);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=39250&amp;test_id=276#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Subject Test - 1</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-12 07:44:50&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-12 09:13:37&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:28:47&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+10.030 / 50.000 (20%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+8 / 33 (24%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following two statements:<br>S<sub class="tcecode">1</sub>:The upperbound of [P(A); ⊆]  is A<br>S<sub class="tcecode">2</sub>:The lowerbound of [P(A); ⊆]  is ɸ<br>Which of the following is true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Only  S<sub class="tcecode">1</sub> is true</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Only S<sub class="tcecode">2</sub> is true</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> Both S<sub class="tcecode">1</sub> and S<sub class="tcecode">2</sub> are true<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/E5a.png" alt="image:EM7/E5a.png" width="545" height="350" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Neither S<sub class="tcecode">1</sub> nor S<sub class="tcecode">2</sub> is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many parallelograms are formed when a set of 5 parallel lines intersects a set of 4 parallel lines?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 45</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 60<br><span class="explanation">Explanation:</span><br>The number of parallelograms are, 4C<sub class="tcecode">2</sub> * 5C<sub class="tcecode">2</sub> = 6 *10 =60<br>Choosing two lines out of 5 and two lines out of 5
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+The maximum number of edges that a graph on 11 vertices can have without being connected _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 11<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/30Ea.png" alt="image:EM7/30Ea.png" width="628" height="204" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 45</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 55</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+which of the following statements is incorrect<br>i)	In a graph G with number of vertices n, n ≥ 2, there are two vertices that have exactly the same degree<br>ii)	Let G be a K-regular bipartite graph with k ≥ 2. Then G has no cut edge<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> i</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ii</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> both</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> none<br><span class="explanation">Explanation:</span><br>1.Suppose that the n vertices all have different degrees, and look at the set of degrees. Since the degree of a vertex is atmost n-1, the set of degrees must be <br>{0, 1, …, n-2, n-1}<br>But this is not possible, because the vertex with degree n-1 would have to be adjacent to all other vertices, whereas the one with degree 0 is not adjacent to any vertex	<br>2.Suppose that it has a cut edge. Then removalof that edge will divide the graph into two connected components C1and C2. Each of these components is a bipartite graph itself. Takingany of these two components, say C1, one partite set has all verticeswith degree k, and the other partite set has one vertex of degree k -1and all other vertices of degree k (since only one edge is removed).Counting the number of edges incident on each partite set will thenshow a mismatch between the two partite sets, which is a contradiction.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/27Qa.png" alt="image:EM7/27Qa.png" width="555" height="159" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 3,4</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 4,3</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 4,4<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/29Ea.png" alt="image:EM7/29Ea.png" width="357" height="232" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 3,3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A full moon occurs every 29 nights. If you choose a night at random and then observe the night sky for 11 successive nights, what is the probability you will see a full moon?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.03</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.11</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 0.38<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/23Ea.png" alt="image:EM7/23Ea.png" width="542" height="463" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.33</li>
+</ol>
+<br><br>
+</li>
+<li>
+A gambler has a fair coin and a two-headed coin. He selects one of the coins at random. He flipped the same coin thrice. In the first time, it showed head, in the second time also head and in the third time it showed tails. The probability that the coin selected is fair coin is ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/8</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>The given sequence of outcomes is HHT.<br>It is given that there is a tail in the outcomes which means it is not a two-head coin we can say it is fair coin.<br>∴ Answer = 1
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/23Qa.png" alt="image:EM3/23Qa.png" width="351" height="50" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/23Sa.png" alt="image:EM7/23Sa.png" width="428" height="355" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/17Qa.png" alt="image:EM7/17Qa.png" width="189" height="55" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/17Ea.png" alt="image:EM7/17Ea.png" width="447" height="416" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+What should be the value of k such that the function defined below is continuous at x=π?<br><img src="./Test Results50_files/15Qa.png" alt="image:EM7/15Qa.png" width="265" height="93" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> -1<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/15Ea.png" alt="image:EM7/15Ea.png" width="476" height="337" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> π/2</li>
+</ol>
+<br><br>
+</li>
+<li>
+If 0&lt;y&lt;x, then Lt(n→∞)⁡〖(x<sup class="tcecode">n</sup>+y<sup class="tcecode">n</sup> )<sup class="tcecode">(1/n)</sup> 〗 is equal to<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> x<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/14Eq.png" alt="image:EM7/14Eq.png" width="382" height="264" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> y</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> e</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/Q12a.png" alt="image:EM7/Q12a.png" width="182" height="45" class="tcecode">is equal to<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> -1/3<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/E13a.png" alt="image:EM7/E13a.png" width="584" height="421" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not logical implication?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> P⋀Q⟹P↔Q</li>
+<li><img src="./Test Results50_files/wrong.png" width="16">&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> P↔Q⟹Q→P</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> P↔Q⟹P→~Q<br><span class="explanation">Explanation:</span><br>If P⟹Q means P→Q is a tautology<br>If P→Q is not a tautology that means it is not a logical implication<br>Option (a):<br>■(P⋀Q@LHS)⟹■(P↔Q@RHS)<br>Whenever P and Q is True, the LHS is true and RHS is also true.<br>(If LHS is True for some P and Q then RHS must be True for the same P and Q)<br>So, P⋀Q⟹P↔Q is a logical implication.<br>Option (b):<br>Whenever bi-conditional is True, conditional is also True.<br>P↔Q⟹Q→P<br>Option (c):<br>If P and Q is True then P↔Q is true. But P→~Q is False. So P↔Q⟹P→~Q is not a Tautology.<br>∴P↔Q⟹P→~Q is not a logical implication.<br>Option (d):<br>If P is True and Q is False. Then ~(P→Q) is true. If Q is false then ~Q true.<br>So, ~(P→Q)⟹~Q is a logical implication.
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ~(P→Q)⟹~Q</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the premises<br>{(P→(Q⋁R) )⋀(~Q)⋀(P) }<br>Which of the following is a logical consequence of the above premises?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> R<br><span class="explanation">Explanation:</span><br>The given premises areP→(Q⋁R)<br>2.~Q<br>3.P<br>4.Q⋁R from (1) and (2)  [Modus Ponens]<br>5.Rfrom (2) and (4)  [Disjunction syllogism]
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> P</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Q</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ~R</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the logical translation of the following statement?<br>“Not everyone is perfect”<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ~∃<sub class="tcecode">x</sub> (P(x) )</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (~P(x) )</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> ∃<sub class="tcecode">x</sub> (~P(x) )<br><span class="explanation">Explanation:</span><br>Option A:<br>Let x is a domain which consists set of all people.<br>P(x):  x is perfect<br>∃<sub class="tcecode">x</sub> P(x)means at least one person is perfect.<br>〖~∃〗<sub class="tcecode">x</sub> (P(x) )means “It is not the case that atleast one person is perfect”.<br>〖~∃〗<sub class="tcecode">x</sub> (P(x) )means “No one is perfect”.<br>Option B:<br>~P(x):x is not a Perfect<br>∀<sub class="tcecode">x</sub> (P(x) ): No one is perfect<br>Option C:<br>“Everyone is perfect” translated to ∀<sub class="tcecode">x</sub> (P(x) )<br>“Not everyone is perfect” is the negation of∀<sub class="tcecode">x</sub> (P(x) )<br>⟺〖~∀〗<sub class="tcecode">x</sub> (P(x) )<br>⟺∃<sub class="tcecode">x</sub> (~P(x) )<br>Option D:<br>All are perfect i.e. ∀<sub class="tcecode">x</sub> (P(x) )
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (P(x) )</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/32Qa.png" alt="image:EM7/32Qa.png" width="387" height="64" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 2187<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/32Ea.png" alt="image:EM7/32Ea.png" width="403" height="511" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2188</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2186</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2189</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a classroom containing 28 people, there are 18 people who speak German, 15 people who speak French and 22 people who speak English, 9 people speak both French and German, while 2 people speak both German and English. Further 13 persons speak both French and English. How many people speak all three languages (Assume that every person can speak at least one of the three languages).<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/E3a.png" alt="image:EM7/E3a.png" width="551" height="463" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results50_files/wrong.png" width="16">&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Alice invited seven of her friends to a party. At the party, several pairs of people shock hands, although no one shook hands with themselves or shook hands with same person more than once.<br>After the party, Alice asked each of her seven friends how many people they shook hands with during party and was surprised when they responded with seven distinct positive integers.<br>Given that her friends were truthful, how many hands did Alice shake?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 5</li>
+<li><img src="./Test Results50_files/wrong.png" width="16">&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/26Ea.png" alt="image:EM7/26Ea.png" width="644" height="520" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A math contest made up of 52 multiple choice questions each worth either 0 (if wrong or no answer) or 1 (if right). How many students must write the test to be sure that at least 39 have the same final score? _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2016</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 2015<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/25Ea.png" alt="image:EM7/25Ea.png" width="622" height="192" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2017</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2014</li>
+</ol>
+<br><br>
+</li>
+<li>
+An examination is often regarded as being good (in the sense of determining a valid grade spread for those taking it). If the test scores of those taking the examination can be approximate by a normal density function. The instruction often uses the test scores to estimate the normal parameters μ and σ^2 and then assigns the letter grade A to those whose test score is greater than μ+σ, B to those whose score is between μ and μ+σ, C to those whose score is between μ-σ and, D to those score is between μ-2σ and μ-σ and F to those getting a score below μ-2σ . What % of the class will receive D grade ________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 0.1359<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/24Ea.png" alt="image:EM3/24Ea.png" width="571" height="384" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.1593</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.0015</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0.01359</li>
+</ol>
+<br><br>
+</li>
+<li>
+Hermione is taking her potions exam. Suppose the probability that she will finish the exam is less than h hours ish/2, for all 0≤h≤1. Given th-at she is still waiting after 0.75 hours, what is the conditional probability that full hour is used?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 3/4</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 4/5<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/20Sa.png" alt="image:EM7/20Sa.png" width="517" height="358" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 6/7</li>
+</ol>
+<br><br>
+</li>
+<li>
+. A point (x,y) is chosen from the circular region D={(x,y)│x^2+y^2≤1} in such a way that the probability that the point is chosen from any region in D is proportional to its area.<br>The conditional probability that y≤0 given that x≥1⁄2<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/19Ea.png" alt="image:EM7/19Ea.png" width="590" height="392" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 3/4</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1/4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/21Qa.png" alt="image:EM7/21Qa.png" width="637" height="143" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/21Sa.png" alt="image:EM7/21Sa.png" width="121" height="71" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/21Sb.png" alt="image:EM7/21Sb.png" width="117" height="71" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/21Sc.png" alt="image:EM7/21Sc.png" width="134" height="71" class="tcecode"></li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> <img src="./Test Results50_files/21Sd.png" alt="image:EM7/21Sd.png" width="120" height="61" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/21Ea.png" alt="image:EM7/21Ea.png" width="442" height="444" class="tcecode"><br><img src="./Test Results50_files/21Eb.png" alt="image:EM7/21Eb.png" width="637" height="233" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results50_files/19Qa.png" alt="image:EM7/19Qa.png" width="317" height="181" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Linear system is inconsistent and has no solution</li>
+<li><img src="./Test Results50_files/wrong.png" width="16">&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Linear system is consistent and has many solutions</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> Linear system is consistent and has unique solution<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/20Ea.png" alt="image:EM7/20Ea.png" width="673" height="487" class="tcecode"><br><img src="./Test Results50_files/20Eb.png" alt="image:EM7/20Eb.png" width="551" height="421" class="tcecode"><br><img src="./Test Results50_files/20Ec.png" alt="image:EM7/20Ec.png" width="440" height="108" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Linear system is consistent and has three solutions</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements:<br>S<sub class="tcecode">1</sub>: Suppose A is a 3×3 matrix whose third row elements are the sum of first two row elements. Then A is invertible.<br>S<sub class="tcecode">2</sub>: Let A_n denote n×n matrx whose diagonal entries are equal to 3 and all other entries are equal to 1. Then A_n is invertible for each n≥1.<br>Which of the following is true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Only S<sub class="tcecode">1</sub> is true</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> Only S<sub class="tcecode">2</sub> is true<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/18Ea.png" alt="image:EM7/18Ea.png" width="610" height="517" class="tcecode"><br><img src="./Test Results50_files/18Eb.png" alt="image:EM7/18Eb.png" width="444" height="324" class="tcecode"><br><img src="./Test Results50_files/18Ec.png" alt="image:EM7/18Ec.png" width="488" height="373" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Both S<sub class="tcecode">1</sub> and S<sub class="tcecode">2</sub> are true</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Neither S<sub class="tcecode">1</sub> nor S<sub class="tcecode">2</sub> is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+A point on a curve is said to be an extremum if it is a local minimum or a local maximum. The number of distinct extrema for the curve (x<sup class="tcecode">2</sup>-4)<sup class="tcecode">2</sup> is  (Note: where x is real number)<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results50_files/wrong.png" width="16">&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/16Ea.png" alt="image:EM7/16Ea.png" width="531" height="419" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If P<sub class="tcecode">1</sub>,P<sub class="tcecode">2</sub> are premises and C is the conclusion then consider following arguments.<br>I	P<sub class="tcecode">1</sub>:  A→(B→C)<br>	P<sub class="tcecode">2</sub>:  A⋀B<br>	C:   C<br>II	P<sub class="tcecode">1</sub>:   ~Q<br>	P<sub class="tcecode">2</sub>:   P→Q<br>	C:   ~P<br>Which of the following is correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> I is valid, II is not valid</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> I is not valid, II is valid</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> Both I and II are valid<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/e7A.png" alt="image:EM7/e7A.png" width="480" height="375" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> Both I and II are invalid</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let P(x) be the statement “x can speak Hindi” and let Q(x) be the statement “x knows the computer language Java”. The domain for quantifiers consists of all students of your school. What is the correct translation of the following statement into mathematical logic?<br>“No student at your school can speak Hindi or knows Java”.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (P(x)⋀Q(x) )</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (P(x)⋁Q(x) )</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> ((~P(x)⋀(~Q(x) )</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> ∀<sub class="tcecode">x</sub> ((~P(x) )⋀(~Q(x) )<br><span class="explanation">Explanation:</span><br>Let us consider the following statement <br>“There is a student at your school can speak Hindi or knows Java”. This statement is represented as <br>∃<sub class="tcecode">x</sub> (P(x)⋁Q(x) )<br>(we introduce a variable x whose domain consists of all students at school) <br>∃_x (P(x)⋁Q(x) )epresents atleast one student who can speak Hindi (or) who knows Java (or) who have both talents.<br>The negation of the expression ∃<sub class="tcecode">x</sub> (P(x)⋁Q(x) )<br>“It is not the case that there is a student at your school can speak Hindi or Java.”<br>The above sentence can be modified as<br>“No student at your school can speak Hindi or knows Java.”<br>The mathematical logic for the statement is<br>“No student at your school can speak Hindi or knows Java” is<br>~∃_x (P(x)⋁Q(x) )<br>⟺∀_x~(P(x)⋁Q(x) )<br>⟺∀<sub class="tcecode">x</sub> (~P(x)⋀(~Q(x) ) )    (∵ By De Morgan’s Law) <br>Meaning of option A:<br>There is a student at your school who can speak Hindi and who knows Java.<br>Meaning of option B:<br>Every student at your school either can speak Hindi or knows Java.<br>Meaning of option C:<br>There is a student at your school who cannot speak Hindi and who doesn’t know Java.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let R be the set of all real numbers and * is a binary operation defined by x*y=x+y+xy and (R,*) be a group.<br>What is the inverse of x is __________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> x/(1+x)</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> x/(1-x)</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> (-x)/(1+x)<br><span class="explanation">Explanation:</span><br>Given x*y=x+y+xy<br>Let ‘e’ be the identity.<br>x*e=x+e+xe<br>By putting e=0<br>x*e=x+0+x(0)=x<br>⇒x*e=x<br>∴"0" is the identity of R.<br>Let ‘y’ is the inverse of ‘x’.<br>Then x*y=e<br>x*y=0<br>x+y+xy=0<br>x+y(1+x)=0<br>y(1+x)=-x<br>y= (-x)/(1+x)<br>The inverse of x= (-x)/(1+x)
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> (-x)/(1-x)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the inverse function of the following=<br>f(x)=2∙3*+9*<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> log<sub class="tcecode">3</sub>⁡((√(x+1))+1)</li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> log<sub class="tcecode">3</sub>⁡((√(x+1))-1)<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/E4a.png" alt="image:EM7/E4a.png" width="297" height="512" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> log<sub class="tcecode">3</sub>⁡((√(x-1))+1)</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> log<sub class="tcecode">3</sub>⁡((√(x+1))-2)</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the probability that the graph with n vertices is a planar graph<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/28Oa.png" alt="image:EM7/28Oa.png" width="181" height="67" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/28Ob.png" alt="image:EM7/28Ob.png" width="174" height="59" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results50_files/correct.png" width="18"> <img src="./Test Results50_files/28Oc.png" alt="image:EM7/28Oc.png" width="166" height="66" class="tcecode"><br><span class="explanation">Explanation:</span><br>a random graph on n vertices is graph which has each of the (n/2) edges independently with probability ½ each. The probability of at most 3n-6 edges (that’s a necessary condition for planarity) is<br><img src="./Test Results50_files/28Oc.png" alt="image:EM7/28Oc.png" width="166" height="66" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> <img src="./Test Results50_files/28Od.png" alt="image:EM7/28Od.png" width="158" height="62" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Question: Q32 &amp; Q33</strong><br>What is the number of relations which are either symmetric or irreflexive relations in a set with 4 elements?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 4096</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 5120</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 5056<br><span class="explanation">Explanation:</span><br><img src="./Test Results50_files/E1a.png" alt="image:EMS1/E1a.png" width="667" height="504" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 5060</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Linked Question: Q32 &amp; Q33</strong><br>What is the number of relations which are neither symmetric nor irreflexive on a set with 4 elements?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 60490</li>
+<li><img src="./Test Results50_files/correct.png" width="18">&nbsp;<img src="./Test Results50_files/correct.png" width="18"> 60480<br><span class="explanation">Explanation:</span><br>The total number of relations possible on a set with 4 elements =2(2<sup class="tcecode">4</sup>)=2<sup class="tcecode">16</sup>=65536<br>The total number of relations which are either Symmetric or Irreflexive=n(S∪I)=5056<br>The total number of relations which are neither Symmetric nor Irreflexive<br>=total number of relations-n(S∪I)<br>=65536-5056<br>=60480
+</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 60485</li>
+<li>&nbsp;<img src="./Test Results50_files/wrong.png" width="16"> 60492</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results50_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

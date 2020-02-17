@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92314&test_id=174 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results98_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results98_files/calclayout.css">
+<script src="./Test Results98_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results98_files/jquery-ui.js.download"></script>
+<script src="./Test Results98_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results98_files/custom.js.download"></script>
+<script src="./Test Results98_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results98_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results98_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920981, 'I\'m sorry, the time available to complete the test is over!', false, 1486920981525);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92314&amp;test_id=174#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>P&amp;DS Subject Test - 3</strong><br>
+Complete syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:38:49&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the following program<br><br>#include&lt;stdio.h&gt;<br><br>int main( )<br><br>        {<br><br>                int p = 5;<br><br>                if(p++ &lt; 5)<br><br>                {<br><br>                        printf("%d", p);<br><br>                        printf("GATE");<br><br>                }<br><br>                else if(++p &lt; 7)<br><br>                {<br><br>                        printf("%d", p);<br><br>                        printf("CSE");<br><br>                }<br><br>                else<br><br>                {<br><br>                        if(p = 5)<br><br>                                printf("%d", p);<br><br>                }<br><br>        return 0;<br><br>        }<br><br>What will be the output of the above C code<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 5 GATE</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>Initially the value of p is 5, so, the condition if(p++ &lt; 5) fails, but p value becomes 6<br>else if (++p &lt; 7), here 7&lt;7 is false, control goes to else part<br>In the else part, 5 is assigned to p in the if() condition. Since the assignment operation always returns TRUE, printf() statement executes. So, 5 is printed.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 7 CSE</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code<br> <br>int fun(int p, int q)<br>{<br>if(q==0) {<br>return 1;<br>}<br>else if(q%2 ==0){<br>return(fun(p,q/2)*fun(p,q/2));<br>}<br>else {<br>return(p* fun(p, q/2)*fun(2,q/2));<br>}<br>}<br>what is the return value of fun(2,10)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1010</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1020</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 1024<br><span class="explanation">Explanation:</span><br>fun(2,10) returns value 1024<br> <br>fun(2,10) = fun(2,5) * fun(2+5)<br> <br>now, fun(2,5) = 2*fun(2,2)*fun(2,2)<br> <br>now fun(2,2) = fun(2,1)*fun(2,1)<br> <br>fun(2,1) = 2*1*1 = 2 <br>so fun(2,2) = fun(2,1)*fun(2,1) = 2*2 = 4<br> <br>so finally f(2,10) = f(2,5)*f(2,5)<br>  =  2*fun(2,2)*fun(2,2) * 2*fun(2,2)*fun(2,2)<br>  = 2^10
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1034</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let q be a queue and s be a stack. Assume that q and s are initially empty, what is the last integer printed by the following code ?<br>enqueue(q,8);<br>enqueue(q,3);<br>PUSH(S,7);<br>PUSH(S,9);<br>for(i=0;i&lt;5;i++)<br>{<br>printf(“%d”, dequeue((q)));;<br>printf(“%d”, POP(S));<br>enqueue(q,i);<br>PUSH(S,i+5);<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>the output sequence provided by the given code is 8,9,3,5,0,6,1,7,2,8<br> <br>last output is 8
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+The minimum number of swaps required to build a min heap tree is _____________.  Assume that array of n elements is provided<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>If the given array is already is min heap then no swap will be performed to build a min heap<br> <br>Therefore zero minimum swaps required
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> n/2</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> n</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> n+1</li>
+</ol>
+<br><br>
+</li>
+<li>
+If the expression ((A + B) * C + D * (E + F) * G) + H is evaluated, the value obtained is the same as the value of which of the following prefix expressions<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> + * + + A B C * * D + E F G H</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> + + * + A B C * * D + E F G H<br><span class="explanation">Explanation:</span><br>1. Given expression is ((A + B) * C + D * (E + F) * G) + H<br>2. Evaluation (A+B) results (+ A B * C + D * (E + F) * G) + H<br>3. Evaluation of (E+F) results (+ A B * C + D * + E F * G) + H<br>4. Evaluation of  D * + EF results in *D+EF so it becomes (+ A B * C + * D + E F * G) + H<br>5. Evaluation of +AB * C results in *+AB C so it becomes (* + A B C + * D + E F * G) + H<br>6. Evaluation of *D+EF  * G results ** D+EFH so it becomes (* + A B C + * * D + E F G) + H<br>7. Evaluation of *+ABC+ **D+EFG becomes + *+ABC**D+EFG + H<br>8. Finally Evaluation of +*+ABC**D+EFG + H becomes + + * + A B C * * D + E F G H
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> + * + * A B C + + D * E F G H</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> * + + + A B C * * D + E F G H</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following numbers are inserted into an empty binary search tree in the given order 20, 11, 13, 15, 25, 22, 26, 30. What is the height of the binary search tree. Assume the height is the maximum distance of  a leaf node from the root. Consider root at level 0.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E11a.PNG" alt="image:P&amp;DSS3/E11a.PNG" width="349" height="213" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c program, find the output<br>#include&lt;stdio.h&gt;<br>int val()<br>{<br>static int i = 16;<br>return i--;<br>}<br>int main()<br>{<br>for(val(); val(); val())<br>printf("%d ", val());<br>return 0;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Infinite loop</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 13 10 7 4 1</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 14 11 8 5 2<br><span class="explanation">Explanation:</span><br>Since i is static in val(), the old value of i is preserved for subsequent functions calls. Also, since the statement return i-- is postfix, it returns the old value of i, and updates the value for next function call.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 14 12 8 5 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+The value printed by the following program is _____<br>void fun(int *a, int *b)<br>{<br>*b = *b + 10;<br>*a = *a + *b;<br>return;<br>}<br>void main( )<br>{<br>int p = 15, q = 20;<br>fun(&amp;p, &amp;q);<br>printf(“%d”, p + q);<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 63</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 65</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 73</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 75<br><span class="explanation">Explanation:</span><br>option (d)<br>*b = *b + 10;<br>          ⇒  = 20 + 10<br>   = 30<br>*a = *a + *b<br>     = 15 + 30<br>*a = 45 (p = 20)<br>Now p + q = 45 + 30 = 75
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following tree, it is violating in the max property, perform max heap and  which of the following are the leaf nodes from left to right in the max heap obtained?<br><img src="./Test Results98_files/Q8a.PNG" alt="image:P&amp;DSS3/Q8a.PNG" width="327" height="251" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3, 15, 12, 11 , 22, 37</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 3, 6, 12, 11, 22, 37<br><span class="explanation">Explanation:</span><br>Will swap 6 with its larger child until 6 reaches a position where it satisfies the max-heap property. The correct heap is:<br><img src="./Test Results98_files/Q8a.PNG" alt="image:P&amp;DSS3/Q8a.PNG" width="327" height="251" class="tcecode"><br>he following are the leaf nodes from left to right is 3, 6, 12, 11, 22, 37
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3, 15, 12, 14, 22, 37</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3, 6, 11, 12, 22, 37</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code fragment<br>int fun(int p, int q)<br><br>{<br><br>if(p &lt; q)<br><br>return 0;<br><br>else if(p = = q)<br><br>return p + fun(p – 1, q);<br><br>else<br><br>return q + fun(p – 2, q);<br><br>}<br><br>int main( )<br><br>{<br><br>printf(“%d”, fun(7, 5);<br><br>return 0;<br><br>}<br><br>The output of the above code fragment is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>fun(7, 5); p &gt; q<br>5 + fun(5, 5); p &gt; q<br>5 +  fun(4, 5); p = q<br>                   ⇒ 5 + 5 + 0<br>                   ⇒ 10
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true about linked list implementation of stack?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> In push operation, if new nodes are inserted at the beginning of linked list, then in<br>      pop operation, nodes must be removed from end.</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> In push operation, if new nodes are inserted at the end, then in pop operation, nodes<br>      must be removed from the beginning.</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Both of the above.</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> None of the above.<br><span class="explanation">Explanation:</span><br>To keep the Last In First Out order, a stack can be implemented using linked list in two ways:<br>a) In push operation, if new nodes are inserted at the beginning of linked list, then in pop operation, nodes must be removed from beginning.<br>b) In push operation, if new nodes are inserted at the end of linked list, then in pop operation, nodes must be removed from end.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program<br> <br>int main()<br>{<br>int i = 20;<br>int * const p = &amp;i;<br>++(*p);<br>printf("%d", i);<br>return 0;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 21<br><span class="explanation">Explanation:</span><br>See following declarations to know the difference between constant pointer and a pointer to a constant.<br>int * const p—&gt; p is constant pointer. You can change the value at the location pointed by pointer p, but you cannot change p to point to other location.<br>int const * p—&gt; p is a pointer to a constant. You can change p to point other variable. But you cannot change the value pointed by p.<br>Therefore above program works well because we have a constant pointer and we are not changing p to point to any other location. We are only incrementing value pointed by p, so 21 will be printed.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Runtime Error</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Compiler Error</li>
+</ol>
+<br><br>
+</li>
+<li>
+The height of a binary tree is the maximum number of edges in the path from root to any leaf. The maximum number of nodes in a binary tree of height i is: (Consider root is at level 0).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2<sup class="tcecode">i</sup>-1</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 2<sup class="tcecode">i+1</sup>-1<br><span class="explanation">Explanation:</span><br>Check for small values for n,<br>                  For n=2<br><img src="./Test Results98_files/E4a.PNG" alt="image:P&amp;DSS3/E4a.PNG" width="227" height="155" class="tcecode"><br> We get Option (b) 2<sup class="tcecode">2+1</sup> – 1= 2<sup class="tcecode">3</sup>-1 = 7
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2<sup class="tcecode">i-1</sup>-1</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2<sup class="tcecode">i+1</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+The following sequence are inserted into a binary search tree:<br><br>16   20   35   32   14   17   25   18   43<br><br>Which of the traversals can produce the following output?<br><br>16   14   20   17   35   18   32   43   25<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Preorder</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Inorder</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Post order</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> Level order<br><span class="explanation">Explanation:</span><br>From the above sequence, we can construct a binary search tree.<br><img src="./Test Results98_files/E3a.PNG" alt="image:P&amp;DSS3/E3a.PNG" width="347" height="286" class="tcecode"><br>We can observe, level order traversal of above tree results the sequence<br>16   14   20   17   35   18   32   43   25
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If the elements 8, 7, 5, 6, 9, 2 are inserted into the queue in that order and if an element can be deleted at any time from the queue, which of the following permutation can be obtained as output of queue?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 7 6 5 2 9 8</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 8 7 5 6 9 2<br><span class="explanation">Explanation:</span><br>The permutations 7 6 5 2 9 8 and 9 7 2 5 6 8 are not possible as the first element that will be deleted from the queue is 8 and similarly the permutation 8 9 7 6 5 2 is also not possible since the second element that will be deleted from the queue is 7.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 8 9 7 6 5 2</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 9 7 2 5 6 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Find the number of trees that are possible, if we construct a binary search tree by successively inserting 4 distinct items into an initially empty binary tree<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 14<br><span class="explanation">Explanation:</span><br>No.of distinct binary search trees is given by 2nCn / (n+1) = 8C4 / (4+1)  = 14
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 18</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following function<br><br>int x(int n)<br>{<br>if(n&lt;3)<br>return 1;<br>else <br>	return x(n-1)+x(n-3)+1;<br>}<br><br>How many invocations for calculating x(x(5))<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 17<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E17a.PNG" alt="image:P&amp;DSS3/E17a.PNG" width="442" height="208" class="tcecode"><br>We will get x(5) = 7, and x(x(5)) =&gt; x(7),<br>we also calculated x(7) = 17.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 13</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be the output printed by the following C program?<br>void main ( )<br>{<br>	int x = 1, i, y = 2;<br>	for (i = 0; i &lt; 5; i++)<br>	{<br>		x &lt;&lt; 1;<br>		y = x + i;<br>	}<br>	printf(“%d, %d”, x, y);<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 1, 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E32a.PNG" alt="image:P&amp;DSS3/E32a.PNG" width="481" height="142" class="tcecode"><br>x = 1, y = 5<br>Here you should know x &lt;&lt; 1 will not change the value of x, but x = x &lt;&lt; 1 will changes the value of x
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 32, 5</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1, 72</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 32, 72</li>
+</ol>
+<br><br>
+</li>
+<li>
+In delete operation of binary search tree, we need inorder successor (or predecessor) of a node when a node to be deleted where it has both left and right child. Which of the following is true about inorder successor needed in delete operation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> Inorder successor is always either leaf node or a node with empty left child.<br><span class="explanation">Explanation:</span><br>Successor of Root element is always the smallest element of the Right subtree. Because it will be the next largest element after the element to be deleted.<br><img src="./Test Results98_files/E31a.PNG" alt="image:P&amp;DSS3/E31a.PNG" width="462" height="218" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Inorder successor maybe an ancestor of the node.</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Inorder successor is always a leaf node.</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Inorder successor is always either a leaf node or a node with empty right child.</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of leaves (nodes with no children) in each left sub tree is within one of the number of leaves in the corresponding right sub tree. What is the worst case height of the tree ? Assume root node at level 0<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> O(log n)</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> n+1</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> n<br><span class="explanation">Explanation:</span><br>Consider a tree of n nodes, where node 1 is the root and node i &gt; 1 is the child of node i – 1. For each node, the left sub tree has one leaf, whereas the right sub tree has zero. This meets the “balancing” condition. The height of the tree is n.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> n-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose you have an array A[1...n] of n elements in arbitrary order, the following alternate implementation of build max-heap.<br><img src="./Test Results98_files/Q29a.PNG" alt="image:P&amp;DSS3/Q29a.PNG" width="234" height="76" class="tcecode"><br>This algorithm calls heapify starting at the root and working its way down the tree, instead of the other way around. <br>For the given input A[1,2,3,4] what will be the output ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1, 2, 3, 4</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 4, 3, 2, 1</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 2, 4, 3 ,1<br><span class="explanation">Explanation:</span><br>The algorithm does not builds max heap, Starting with [1, 2, 3, 4] we would get [2, 4, 3, 1] which is not a max-heap.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2, 1, 4 ,3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following c code to delete a node in a linked list :<br>pnode is the node to be deleted<br><img src="./Test Results98_files/Q28a.PNG" alt="image:P&amp;DSS3/Q28a.PNG" width="404" height="428" class="tcecode"><br>which of the following is true with respect to the above code ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> the code works correctly in deleting a node</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> if pnode==head then the code does not work properly<br><span class="explanation">Explanation:</span><br>For an example take 10→20→30→40→NULL <br>for the first node head pointer is pointing, and it performs struct node* p=NULL,                   struct node* q=NULL.<br>Then if p==pnode, pnode is the node to be deleted then it enters for loop, in the for loop head and p are pointing to the same element i.e., 10 and  performs q→next = p→next, now free(p), we are deleting p node, so head pointer is also deleted and code does not work properly
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> if we assume that pnode!=head then also code does not work properly</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A linked list of length at most n is maintained in circular array C[0:n-1], clockwise or anticlock wise; two variables head and last are used to point to first and last element of the list respectively, for instance if linked list is of size x and if it is maintained in clock wise manner and head =p, then last = (p+x)mod n, then the best way for<br>I: deleting kth element in the linked list<br>II: reversing the elements of linked list can be done in<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> O(1), O(1) time</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> O(1), O(n) time</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> O(n), O(1) time<br><span class="explanation">Explanation:</span><br>Deleting needs O(n) time because we need to shift the elements. Reversing the circular list can be done by just interchanging head and last variables to maintain the circular array anticlockwise, which will be O(1)
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> O(n), O(n) time</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following code which is used to detect the loop in the linked list. Find the missing statement I ? Here head is pointing to the first node of the linked list. <br>i=head;<br>j=head→next;<br>while ( I )<br>{<br>	if(i==j)<br>	exit(0);<br>	i=i→next;<br>	j=(j→next)?(j→next→next):j→next;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> I:  (i!=NULL) || (j!=NULL)</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> I:  (i!=NULL) &amp;&amp; (j!=NULL)<br><span class="explanation">Explanation:</span><br>Both i and j are not NULL then there is a loop in the linked list and it will be detected by slow pointer(i) and fast pointer j. There for, I: (i!=NULL) &amp;&amp; (j!=NULL)
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> I:  i!=NULL</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> I:  j!=NULL</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the function:<br><img src="./Test Results98_files/Q25a.PNG" alt="image:P&amp;DSS3/Q25a.PNG" width="219" height="64" class="tcecode"><br>starting form n=7, down to n=2, enqueue F(n) in a queue q1, i.e., F(7) enters first in q1, then enters F(6), F(5), F(4), F(3) and at last F(2) enters last in q1.<br>What will be the sequence of the elements in q1 in the order form rear to front ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1	3	6	10	15	21</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 21	15	10	6	3	1</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 22	16	11	7	4	2</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 2	4	7	11	16	22<br><span class="explanation">Explanation:</span><br>F(1) = 1,<br> F(2) = F(1) + 1 = 2<br>F(3) = F(2) + 2 = 2 + 2 = 4<br>F(4) = F(3) + 3 = 4+ 3 = 7<br>F(5) = F(5) + 5 + 11 + 5 = 16<br>F(7) = F(6) + 6 = 16 + 6 = 22<br>The elements are inserted into the queue in the order 22, 16, 11, 7, 4, 2<br>After the insertion, queue is : 22, 16, 11, 7, 4, 2. When they are read form rear to front the elements are  : 2	4	7	11	16	22
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following max-heap<br><img src="./Test Results98_files/Q24a.PNG" alt="image:P&amp;DSS3/Q24a.PNG" width="197" height="155" class="tcecode"><br>The number of swaps required to convert the given max heap into a min heap is __________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E24a.PNG" alt="image:P&amp;DSS3/E24a.PNG" width="457" height="335" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> none</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many distinct binary trees can be constructed with three distinct keys ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3*5!</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 3!</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 5*3!<br><span class="explanation">Explanation:</span><br>possible structures of binary tree are as follows<br><img src="./Test Results98_files/E23a.PNG" alt="image:P&amp;DSS3/E23a.PNG" width="595" height="158" class="tcecode"><br>In all the above structures keys can be placed in 3! ways. Hence total binary trees are 5*3!
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that p and q are pointers. What will be the output after performing following sets of operations on a given linked list ?<br><img src="./Test Results98_files/Q22a.PNG" alt="image:P&amp;DSS3/Q22a.PNG" width="559" height="302" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> e<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E22a.PNG" alt="image:P&amp;DSS3/E22a.PNG" width="295" height="85" class="tcecode"><br>It will prints ‘e’
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> d</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> b</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> c</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following keys are inserted in an empty binary search tree and height of the root of the tree is 1.<br>Keys : 11, 10, 1,9,7,4,3,2,6,8,5,12;<br>The height of constructed BST is _____________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results98_files/E21a.PNG" alt="image:P&amp;DSS3/E21a.PNG" width="241" height="292" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 9</li>
+</ol>
+<br><br>
+</li>
+<li>
+An array M[12][10] is stored in column major order, with each element occupies 4 bytes, and the address of M[7][8] is stored at the location 1020. Find out the address of M[10][10]. Assume array index start with ‘0’.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1116</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 1128<br><span class="explanation">Explanation:</span><br>As we know that if M = Total rows, N = Total columns<br>Address A[p][q] = Base + W * [p + M * q], <br>Array M[12][10], words per element = 4 bytes<br>	Given M[7][8] address = 1020<br>		                    ⇒	1020 = Base + 4 * [(7 – 0) + 12(8 – 0)]<br>				1020 = Base + 4 * [7 + 96]<br>				1020 = Base + 4 * 103<br>				Base = 1020 – 412 = 608<br>		Now, to find M[10][10] <br>			       ⇒	608 + 4 * [(10 – 0) + 12(10 – 0)]<br>				608 + 4 * [10 + 120]<br>				608 + 4 * 130<br>				608 + 520<br>		M[10][10] = 1128
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1126</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 1118</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program:<br><img src="./Test Results98_files/Q19a.PNG" alt="image:P&amp;DSS3/Q19a.PNG" width="173" height="371" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Compilation error</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> No output</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> GATE<br><span class="explanation">Explanation:</span><br>int p, is of the integer type, int fun( );, this prototype tells the compiler that the function does not accepts any arguments and it returns an integer value.<br>while(p) ,the value p is not initialized and because it's a global variable, its default value is zero, so this while condition fails. So, it does not execute the while block. So, it does not execute the while loop.<br>printf(“GATE”), it prints “GATE”
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> CSE</li>
+</ol>
+<br><br>
+</li>
+<li>
+What will be output of the following C code<br>void main( )<br>{<br>	static int main;<br>	int a;<br>	a = value(main);<br>	printf(“%d”, a);<br>}<br>int value(int val2)<br>{<br>	val2++;<br>	return val2;<br>}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br>In any program, main is not keyword of c, but it is a special type of function. Word main can be name variable in the main and other functions. So while initialized with static, default it will be ‘0’ and is passed in value function, and is incremented, returned and finally 1 will be printed.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Compiler error</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> Garbage value</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following program.<br>void val(struct Node *node)<br>{<br>	struct Node *ptr, *q;<br>	if (node = = NULL) return;<br>	val(node → left);<br>	val(node → right);<br>	ptr = node → left;<br>	node → left = newNode (node → data);<br>	node → left → left = ptr;<br>}<br>If the root of following tree is passed to the above function, what is the level order traversal of output tree produced by above function? (newNode is a function which creates new node)<br><img src="./Test Results98_files/Q33a.PNG" alt="image:P&amp;DSS3/Q33a.PNG" width="131" height="87" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2 2 3 3 1 1</li>
+<li>&nbsp;<img src="./Test Results98_files/correct.png" width="18"> 2 2 3 1 3 1<br><span class="explanation">Explanation:</span><br>Tree after execution of above code<br><img src="./Test Results98_files/E33a.PNG" alt="image:P&amp;DSS3/E33a.PNG" width="122" height="112" class="tcecode"><br>Level order traversal is 2 2 3 1 3 1.
+</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2 3 2 3 1 1</li>
+<li>&nbsp;<img src="./Test Results98_files/wrong.png" width="16"> 2 3 2 3 2 1</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results98_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

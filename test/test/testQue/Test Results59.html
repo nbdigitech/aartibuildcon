@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=26217&test_id=257 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results59_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results59_files/calclayout.css">
+<script src="./Test Results59_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results59_files/jquery-ui.js.download"></script>
+<script src="./Test Results59_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results59_files/custom.js.download"></script>
+<script src="./Test Results59_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results59_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results59_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837851, 'I\'m sorry, the time available to complete the test is over!', false, 1486837851350);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=26217&amp;test_id=257#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Topic Test - 1</strong><br>
+Propositional and First Order Logics&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-20 11:56:53&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-20 12:06:17&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:09:24&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+2.670 / 25.000 (11%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+2 / 15 (13%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Let p and q be the propositions “Swimming at the New Jersey shore is allowed” and “Sharks have been spotted near the shore” respectively. How can this English sentence be translated into a logical expression.<br>“If sharks have not been spotted near the shore, then the swimming at the New Jersey shore is allowed”.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> p→~q</li>
+<li><img src="./Test Results59_files/correct.png" width="18">&nbsp;<img src="./Test Results59_files/correct.png" width="18"> ~q→p<br><span class="explanation">Explanation:</span><br>Let p represents “Swimming at the New Jersey shore is allowed”.<br>Let q represents “Sharks have been spotted near the shore”.<br>~qrepresents “It is not the case that sharks have been spotted near the shore”.<br>This ~q can be more simply expressed by “Sharks have not been spotted near the shore”.<br>Then the sentence can be translated to<br><strong class="tcecode">(~q→p)</strong>
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~q→~p</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> p↔q</li>
+</ol>
+<br><br>
+</li>
+<li>
+The binary operation ⎕ is defined as follows:<br><img src="./Test Results59_files/Q3a.PNG" alt="image:EM1/Q3a.PNG" width="180" height="103" class="tcecode"><br>Let ~ be the unary negation operator, with higher precedence than ⎕. Which one of the following is equivalent to P→Q?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (~P⎕Q)</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> ~(P⎕~Q)<br><span class="explanation">Explanation:</span><br>From the truth table, we can conclude that the binary operation is "⋀".<br>P→Q⟺~P⋁Q<br>⟺~(~(~P⋁Q) )<br>⟺~(P⋀~Q) <br>⟺~(P⎕~Q)<br>(Demorgan's laws: ~(P⋁Q)=(~P⋀~Q) )
+</li>
+<li><img src="./Test Results59_files/wrong.png" width="16">&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~(~P⎕~Q)</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~(~P⎕Q)</li>
+</ol>
+<br><br>
+</li>
+<li>
+The statement formula<br>((P⋁Q)⋁~Q)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> is a contradiction</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> is a contingency</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> is a tautology<br><span class="explanation">Explanation:</span><br>The given statement is formula<br>⟺((P⋁Q)⋁~Q)  <br>⟺P⋁(Q⋁~Q) <br>⟺P⋁T<br>⟺ T<br>So, the statement formula is a tautology.<br>Note 1: The statement formula is false then it is contradiction.<br>Note 2: A compound statement which is neither a tautology nor a contradiction is called a contingency.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> is equivalent to P</li>
+</ol>
+<br><br>
+</li>
+<li>
+The logical expression (p⋁(q→r) )→(~p→r) is _________.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> valid</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> satisfiable but not valid<br><span class="explanation">Explanation:</span><br>The truth table for the expression<br>(p⋁(q→r) )→(~p→r)is<br><img src="./Test Results59_files/E9a.PNG" alt="image:EM1/E9a.PNG" width="563" height="184" class="tcecode"><br><span style="text-decoration:underline;">Valid:</span> A compound statement which is always true called Valid and valid also called as tautology.<br><span style="text-decoration:underline;">Satisfiable:</span> A compound statement which is not a contradiction is said to be satisfiable. It may be a tautology.<br><span style="text-decoration:underline;">Contradiction:</span><br>A compound statement which is always false.<br>From the above truth table we can conclude that (p⋁(q→r) )→(~p→r) is satisfiable but not valid.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> a contradiction</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the premises<br>{P,(P→(Q⋁R) ),(Q→~P) }<br>Which of the following is a logical consequence of the above premises?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Q</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~P</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~R</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> R<br><span class="explanation">Explanation:</span><br>The premises are<br>(1) P<br>(2) P→(Q⋁R)<br>(3) Q→~P<br>(4) ~Q (from 1 &amp; 3) (Modus tollens)<br>(5) Q⋁R (from 1 &amp; 2) (Modus Ponens)<br>(6) R (from 4 and 5) (Disjunctive syllogism)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let p,q and r be the propositions.<br>p: You get an A on the final exam.<br>q: You do every exercise in this book.<br>r: You get an A in this class.<br>How can this English sentence are translated into a logical expression.<br>“Getting an A on the final and doing every exercise in this book is sufficient for getting an A in this class”.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> p→(q⋀r)</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p⋀q)→~r</li>
+<li><img src="./Test Results59_files/correct.png" width="18">&nbsp;<img src="./Test Results59_files/correct.png" width="18"> (p⋀q)→r<br><span class="explanation">Explanation:</span><br>The logical expression for the “Getting on A on the final and doing every exercise in this book” is p⋀q.<br>r: You get an A in this class.<br>If (p⋀q) is true then 'r'  is true. <br>If (p⋀q) is false then 'r'  may be true or may not be true.<br>So, the logical expression for the sentence is : ( p⋀q)→r.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p⋁q)→r</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of premises<br>H1:P→(Q→R),S→(Q⋀~R),P⋀S<br>H2: ~A⋁B,~B,A<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Only H1 is inconsistent</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Only H2 is inconsistent</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> Both H1 and H2 are inconsistent<br><span class="explanation">Explanation:</span><br>If the false conclusion is derived from the given premises then the premises are inconsistent.<br>H1: The given premises are<br>(1) P→(Q→R)<br>(2) S→(Q⋀~R)<br>(3) P⋀S<br>From (3), by simplification rule we have<br>(4) P<br>(5) S<br>(6) Q→Rfrom(1), (4)    [Modus Ponens]<br>(7) Q⋀~Rfrom(2), (5)    [Modus Ponens]<br>(8) ~(~Q⋁R)from(7)            [De morgan’s law]<br>(9) ~(Q→R)from(8)  <br>(10) (Q→R)⋀~(Q→R)from(6), (9)   [Conjunction]<br>(11) F	from(10)<br>∴H1 is inconsistent.<br>H2: The given premises are<br>(1) ~A⋁B<br>(2) ~B<br>(3) A<br>From (1), (2) Disjunction syllogism<br>(4) ~A<br>(5) A⋀~A       (3), (4) Conjunction<br>(6) F<br>∴H2 is inconsistent
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are valid arguments?<br>A1:[P→(Q→R),Q]⟹(P→R)	<br>A2:[(P→Q),(~Q→R),~R]⟹P<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> A1 is valid and A2 is not valid<br><span class="explanation">Explanation:</span><br>From CP rule, the given premises in A1 are<br>A1:  1. P→(Q→R)<br>        2. Q<br>        3. P<br>        4. Q→Rfrom(1) and (3)   [Modus Ponens]<br>        5. R	from (2) and (4)  [Modus Ponens]<br>∴P→Ris the conclusion derived from the given premises. So, A1 is valid.<br>A2:  1. P→Q<br>        2. ~Q→R<br>        3. ~R<br>        4. Qfrom (2), (3) Modus Ponens<br>We cannot combine (1) and (4) by any rule to get the conclusion.<br>So, the argument A2 is not valid.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> A1 is invalid and A2 is valid</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Both A1 and A2 are valid</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Both A1 and A2 are invalid</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following argument is invalid?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p→q,p)  ⊢q</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p→q,~q)  ⊢~p</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p→q,q→r)  ⊢(p→r)</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> (p→q,q)  ⊢p<br><span class="explanation">Explanation:</span><br>Assume that every premise is true. If the conclusion is derived from the premises then the argument is valid.<br><img src="./Test Results59_files/E11a.PNG" alt="image:EM1/E11a.PNG" width="570" height="512" class="tcecode"><br><img src="./Test Results59_files/E11b.PNG" alt="image:EM1/E11b.PNG" width="494" height="185" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is invalid?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> (p→(q⋁r) )⟺((p⋀~q)→r)</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ((p→r)⋀(q→r)⟺((p⋁q)→r)</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> p→(q→r)⟺q→(p→r)</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> (p↔q)⟺(p⋁q)⋁(p⋀q)<br><span class="explanation">Explanation:</span><br>“⟺” mean equal.<br>ifA⟺B means A is equal to B.<br><span style="text-decoration:underline;">Option (a);</span><br>(p→(q⋁r) )⟺(~p⋁(q⋁r) )<br>	⟺((~p⋁q)⋁r)<br>	⟺(~(p⋀~q)⋁r)  [∵De morgan’s law]<br>	⟺(p⋀~q)→r<br>∴(p→(q⋁r) )⟺((p⋀~q)→r)<br><span style="text-decoration:underline;">Option (b);</span><br>(p→r)⋀(q→r)⟺(~p⋁r)⋀(~q⋁r)<br>		⟺(~p⋀~q)⋁r  [∵ De morgan’s law]<br>		⟺~(p⋁q)⋁r<br>		⟺(p⋁q)→r<br>∴(p→r)⋀(q→r)⟺(p⋁q)→r<br><span style="text-decoration:underline;">Option (c):</span><br>p→(q→r)⟺~p⋁(q→r)<br>	⟺ ~p⋁(~q⋁r)<br>	⟺~q⋁(~p⋁r)<br>⟺~q⋁(p→r)<br>⟺q→(p→r)<br><span style="text-decoration:underline;">Option (d):</span><br>(p↔q)⟺(p→q)⋀(q→p)<br>⟺(~p⋁q)⋀(~q⋁p)<br>	⟺(~p⋁q)⋀(p⋁~q)<br>	⟺(~p⋀~q)⋁(p⋀q)<br>	⟺ ~(p⋁q)⋁(p⋀q)<br>	(p↔q)⟺(p⋁q)⋁(p⋀q)is wrong.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let I(x) be the statement “x has an Internet connection” where the domain for the variable x consists of all students in your class. Which one of the following statements is (are) true?<br>Statement I: The logical translation of the statement “Someone in your class does not have internet connection” is ∃<sub class="tcecode">x</sub> (~I(x) ).<br>Statement II: The logical translation of the statement “Not everyone in your class has an internet connection” is ~∀<sub class="tcecode">x</sub> I(x).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Statement I is true</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Statement II is true</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> Both I and II are true<br><span class="explanation">Explanation:</span><br>Given (x) : x has an internet connection<br>~I(x) : x doesn’t have an internet connection<br>So, the meaning of ∃<sub class="tcecode">x</sub>~ (I(x) ) is “There is a person who does not have an internet connection”.<br>The above sentence can be written as “Someone in your class does not have an internet connection”.<br>⟹The given statement is “Not everyone in your class has an internet connection”.<br>The logical translation of the statement “everyone in your class has an internet connection” is ∀<sub class="tcecode">x</sub> I(x).<br>The negation of  ∀<sub class="tcecode">x</sub> I(x) is “It is not the case that everyone in your class has an internet connection”.<br><br>~∀<sub class="tcecode">x</sub> I(x)is “Not everyone in your class has an internet connection”.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> Both I and II are false</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose the predicate F(x,y) is used to represent the statement that person x can fool person y. Which one of the following statements below expresses the best meaning of the formula ~∃<sub class="tcecode">x</sub> ∀<sub class="tcecode">y</sub>  F(x,y)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> everyone can fool somebody</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> no one can fool everyone<br><span class="explanation">Explanation:</span><br>Given F(x,y):x can fool y <br>(a) every person x can fool at least one person y. So, the mathematical logic is <br>∀<sub class="tcecode">x</sub> ∃<sub class="tcecode">y</sub>  F(x,y)<br>(b) The negation of “at least one” is “no one”.<br>∴ The new statement is the negation of “No one can fool everyone” .<br>So the new statement is “at least one person can fool everyone”. <br>The mathematical logic for the statement “at least one person can fool everyone” is<br>∃<sub class="tcecode">x</sub> ∀<sub class="tcecode">y</sub>  F(x,y)<br>∴The negation of ∃<sub class="tcecode">x</sub> ∀<sub class="tcecode">y</sub>  F(x,y) is “No one can fool everyone”.<br>i.e. ~∃<sub class="tcecode">x</sub> ∀<sub class="tcecode">y</sub>  F(x,y)<br>(c) The mathematical statement for<br>“everyone can fool somebody” is ∀<sub class="tcecode">x</sub> ∃<sub class="tcecode">y</sub>  F(x,y)<br>But the meaning of ∀<sub class="tcecode">y</sub> ∃<sub class="tcecode">x</sub>  F(x,y) is everyone can be fooled by somebody.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> everyone can be fooled by somebody</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the logical translation of the following statement?<br>“There are some people who are not software engineers but are developers”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~∃<sub class="tcecode">x</sub> (S(x)⋀D(x) )</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (S(x)→D(x) )</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> ∃<sub class="tcecode">x</sub> (~(S(x))⋀D(x) )<br><span class="explanation">Explanation:</span><br>Let the Domain for the variable ‘x’ consists of all people<br>S(x): x is a software engineer<br>D(x): x is a Developer<br><strong class="tcecode">Option A:</strong> <br>The meaning of  ∃<sub class="tcecode">x</sub> (S(x)⋀D(x) ) is atleast one person is a software engineer and a developer.<br>The negation of ∃<sub class="tcecode">x</sub> (S(x)⋀D(x) )⟺~∃<sub class="tcecode">x</sub> (S(x)⋀D(x) )⟺∀<sub class="tcecode">x</sub> (~S(x)⋁~D(x) )<br>Every person is not a software engineer or not a developer.<br><strong class="tcecode">Option B:</strong><br>The meaning of S(x)→D(x) is<br>“If x is a software engineer then x is a Developer”.<br>∀<sub class="tcecode">x</sub> (S(x)→D(x) ) :  all software engineers are developers.<br><strong class="tcecode">Option C:</strong><br>“but” means “and”<br>~S(x):x is not a software engineer<br>~S(x)⋀D(x):x is not a software engineer and x is a developer<br>The meaning of ∃<sub class="tcecode">x</sub> (~S(x)⋀D(x) ) is<br>“There exists at least one person who is not a software engineer but a developer”.<br>This means, “There are some people who are not software engineers but are developers”.<br><strong class="tcecode">Option D:</strong><br>~D(x):x is not a developer<br>S(x)⋀~D(x):x is a software engineer and x is not a developer<br>The meaning of ∃<sub class="tcecode">x</sub> (S(x)⋀~D(x) ) is<br>“There are some software engineers who doesn’t know development”.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (S(x)⋀~D(x) )</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the correct translation of the following statement into mathematical logic?<br>“Some reel heroes are real heroes”.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (real(x)→reel(x) )</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (reel(x)⋁real(x) )</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (reel(x)→real(x) )</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> ∃<sub class="tcecode">x</sub> (reel(x)⋀real(x) )<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Meaning of Choice A:</strong><br>There exists a person x such that if he is a real hero then he is a reel hero.<br><strong class="tcecode">Meaning of Choice B:</strong><br>There exists a person x who is either reel hero or real hero.<br><strong class="tcecode">Meaning of Choice C:</strong><br>All reel heroes are real heroes.<br><strong class="tcecode">Meaning of Choice D:</strong><br>Given statement “Some reel heroes are real heroes”.<br>We modify the given statement as<br>“There exists at least one person who is both reel and real hero”.<br>Now we introduce a variable x whose domain consists of all persons.<br>reel(x) represent “x is a reel hero”.<br>real(x) represent “x is a real hero”.<br>∴The modifies statement can be represented as<br>∃<sub class="tcecode">x</sub> (reel(x)⋀real(x) )
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not logical implication?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> P⋀Q⟹P↔Q</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> P↔Q⟹Q→P</li>
+<li>&nbsp;<img src="./Test Results59_files/correct.png" width="18"> P↔Q⟹P→~Q<br><span class="explanation">Explanation:</span><br>If P⟹Q means P→Q is a tautology<br>If P→Q is not a tautology that means it is not a logical implication<br><strong class="tcecode">Option (a):</strong><br>P⋀Q(LHS)⟹P↔Q(RHS)<br>Whenever P and Q is True, the LHS is true and RHS is also true.<br>(If LHS is True for some P and Q then RHS must be True for the same P and Q)<br>So, P⋀Q⟹P↔Q is a logical implication.<br><strong class="tcecode">Option (b):</strong><br>Whenever bi-conditional is True, conditional is also True.<br>P↔Q⟹Q→P<br><strong class="tcecode">Option (c):</strong><br>If P and Q is True then P↔Q is true. But P→~Q is False. So P↔Q⟹P→~Q is not a Tautology.<br>∴P↔Q⟹P→~Q is not a logical implication.<br><strong class="tcecode">Option (d):</strong><br>If P is True and Q is False. Then ~(P→Q) is true. If Q is false then ~Q true.<br>So, ~(P→Q)⟹~Q is a logical implication.
+</li>
+<li>&nbsp;<img src="./Test Results59_files/wrong.png" width="16"> ~(P→Q)⟹~Q</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results59_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

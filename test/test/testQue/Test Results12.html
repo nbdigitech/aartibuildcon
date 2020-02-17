@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91769&test_id=326 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results12_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results12_files/calclayout.css">
+<script src="./Test Results12_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results12_files/jquery-ui.js.download"></script>
+<script src="./Test Results12_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results12_files/custom.js.download"></script>
+<script src="./Test Results12_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results12_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results12_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837019, 'I\'m sorry, the time available to complete the test is over!', false, 1486837019712);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91769&amp;test_id=326#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 15</strong><br>
+Engineering Mathematics, General Aptitude&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:10:43&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results12_files/15.png" alt="image:MST15/15.png" width="165" height="51" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> e</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> e<sup class="tcecode">2</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/16.png" alt="image:MST15/16.png" width="293" height="274" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> e<sup class="tcecode">3</sup></li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/e</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/17.png" alt="image:MST15/17.png" width="396" height="89" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/18.png" alt="image:MST15/18.png" width="356" height="423" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/20.png" alt="image:MST15/20.png" width="172" height="51" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/21.png" alt="image:MST15/21.png" width="434" height="318" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> π/2</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> π</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 2π</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/22.png" alt="image:MST15/22.png" width="654" height="79" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 2×4</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 3×3<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/23.png" alt="image:MST15/23.png" width="376" height="327" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 4×4</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 5×3</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/27.png" alt="image:MST15/27.png" width="633" height="68" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> -6<br><span class="explanation">Explanation:</span><br>f(2)=f(1+1)=f(1)+f(1)-1-1<br>=1+1-1-1<br>=0<br>f(3)=f(2+1)=f(2)+f(1)-2-1<br>=0+1-2-1<br>=-2<br>f(4)=f(3+1)=f(3)+f(1)-3-1<br>=-2+1-3-1<br>=-5<br><img src="./Test Results12_files/28.png" alt="image:MST15/28.png" width="474" height="117" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> -5</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/6.png" alt="image:MST15/6.png" width="621" height="48" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> x&gt;y&gt;z</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> x&lt;y&lt;z</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> x&lt;z&lt;y</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> x&gt;z&gt;y<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/7.png" alt="image:MST15/7.png" width="361" height="211" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A dishonest shopkeeper sells his goods at the cost price and still earns a profit 11 1/9% by underweighing. What weight does he use for a kilogram?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 850gm</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 900gm<br><span class="explanation">Explanation:</span><br>Let,<br>             Weight used by shopkeeper =’x’ gms<br>            Profit =11 1/9% = 100/9%<br>            Profit=S.P-C.P<br>                  S.P=Profit+C.P<br>                  =&gt; 1000=100/9×1/100×x+x<br>                =&gt;10x/9=1000<br>∴ x = 900gms
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 925gm</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 950gm</li>
+</ol>
+<br><br>
+</li>
+<li>
+A, B and C complete a work separately in 18, 36 and 54 days respectively. They started together but C left after 2 days of start and B left 3 days after start. In how many days will the work be completed?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 15days</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 15 5/6 days<br><span class="explanation">Explanation:</span><br>Let, <br>Total work to be done=LCM(18,36,54)=108 units<br>⇒A^' s 1 day work=108/15=6 units<br>⇒B^' s 1 day work=108/36=3 units<br>⇒C^' s 1 day work=108/54=2 units<br>Given,<br>C left after 2 days<br>Work done till 2 days=2(6+3+2)=22 units<br>Bleft after 3 days<br>Work done on 3^rd  day=6+3=9 units<br>From now,only A works<br>Work left=108-22-9=77 units<br>∴Time taken=77/6=125/6 days<br>∴Total Time taken=2+1+125/6=155/6 days
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 16 1/3 days</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 17 2/3 days</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the grammatically INCORRECT sentence:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> The book you want is out for print</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> He saw the doctor</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> She is a honest girl<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong><br>In the given sentence, we are referring to a particular book and when we talk about a<span style="text-decoration:underline;"> particular thing</span> or one already referred to (that is, when it is clear from the context which one we mean), the definite article <span style="text-decoration:underline;">‘the’</span> is used.<br>		 This option is correct<br><strong class="tcecode">Option (b):</strong><br>In the given sentence, since we are pointing out to a particular doctor, definite article <span style="text-decoration:underline;">‘the’</span> should be used.<br>	 This option is correct<br><strong class="tcecode">Option (c):</strong><br>In the given sentence, the article <span style="text-decoration:underline;">‘a’</span> is being used before <span style="text-decoration:underline;">honest </span>and the choice between ‘a’ and ‘an’ is determined by sound. Before a word honest begins with a vowel sound ‘an’ is used. The word honest begins with a vowel sound, as the initial consonant ‘h’ is not pronounced.<br>		 This option is not correct<br><strong class="tcecode">Option (d)</strong>:<br>Based on the above explanation, since the word <span style="text-decoration:underline;">easy </span>begins with a vowel sound, the article ‘<span style="text-decoration:underline;">an</span>’ is being used.<br> This option is correct
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> French is an easy language</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br>My uncle _____ tomorrow.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Arrives</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Will arrive</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Is arriving<br><span class="explanation">Explanation:</span><br>In the given sentence we are referring to an action that has already been arranged to take place in the near future, i.e., tomorrow and to represent such actions present continuous tense is used.<br>		 My uncle <strong class="tcecode">is arriving</strong> tomorrow.
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Arrive</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Choose the word that is nearest in meaning to the underlined part of the sentence:</strong><br>Because of the <span style="text-decoration:underline;">amity</span> in our sub division, everyone looks out for each other.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Friendship<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word amity refers to peaceful and friendly relations i.e., friendship. So, of all the given options the word that is closest in meaning to amity is friendship.
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Painful</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Mysterious</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Contention</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the word that is opposite in meaning to the word<br><strong class="tcecode">ADHERE</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> To stick fast</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Attached</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Prompt</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Loosen<br><span class="explanation">Explanation:</span><br>Adhere means to stick fast to something; stay attached. So, of all the given options the word that is opposite in meaning to adhere is <strong class="tcecode">loosen.</strong>
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the lattice D<sub class="tcecode">12</sub>={1,2,3,4,6,12}, the divisors of 12 ordered by divisibility as shown in below figure.<br><img src="./Test Results12_files/33.png" alt="image:MST15/33.png" width="154" height="218" class="tcecode"><br>S<sub class="tcecode">1</sub>: The upper bound for A={2,3} is {6}<br>S<sub class="tcecode">2</sub>: The complement of 3 is 4<br>Which of the following is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> S<sub class="tcecode">1</sub>  only</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> S<sub class="tcecode">2</sub>  only</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Both S<sub class="tcecode">1</sub>  and S<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br>The upperbound for the set A={2,3}  is {6,12}<br>The complement of 3 is 4<br>3∧4=1<br>3∧4=12
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If you are negotiating, bargaining with someone and they say “the ball is in your court” it means they think<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> The negotiation is over</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> You are demanding too much</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> They agree to your demands</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> It is up to you to make the next decision.<br><span class="explanation">Explanation:</span><br>In the given context “the ball is in your court” refers to an idiom which means “It’s your responsibility now; It is up to you to make the next decision or step”.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The average weight of all the male and female employees of a company is 72Kg. The average weight of all female employees is 58Kg. What is the average weight of all the male employees if the number of male and female are in the ratio 7:5?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 94 Kg</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 91 Kg</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 85 Kg</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 82 Kg<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/11.png" alt="image:MST15/11.png" width="490" height="472" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The set S={1,5,7,11} is a group with respect to multiplication modulo 12. The inverse of 5 and 7 respectively are<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 5 and 7<br><span class="explanation">Explanation:</span><br>The composition table of ‘S’ with respect to multiplication modulo 12 is<br><img src="./Test Results12_files/29.png" alt="image:MST15/29.png" width="626" height="344" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 7 and 5</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 5 and 11</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 7 and 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/12.png" alt="image:MST15/12.png" width="306" height="47" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> π/2</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 2/π<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/13.png" alt="image:MST15/13.png" width="357" height="356" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results12_files/25.png" alt="image:MST15/25.png" width="668" height="138" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> S<sub class="tcecode">1</sub>  only</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> S<sub class="tcecode">2</sub>  only</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> both S<sub class="tcecode">1</sub>  and S<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/26.png" alt="image:MST15/26.png" width="465" height="399" class="tcecode"><br>The given eigen values are 5 and-1<br>Trace ofthe matrix=1+3=4<br>Sum of the eigen values=5-1=4<br>Determinant of the matrix=3-8=-5<br>Product of eigen values=-5<br>(Trace of matrix=Sum of eigen values and <br>Determinant of the matrix=Product of eigen values)  <br>So,S<sub class="tcecode">2</sub>  is true.
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> neither S<sub class="tcecode">1</sub>  nor S<sub class="tcecode">2</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+A letter is known to have come either from LONDON or from CLIFTON; on the postmark on the two consecutive letters ON are legible. The probability that it come from LONDON is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 5/17</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 12/17<br><span class="explanation">Explanation:</span><br>P(LONDON)=1/2<br>P(CLIFTON)=1/2<br>We need to find<br><img src="./Test Results12_files/32.png" alt="image:MST15/32.png" width="647" height="414" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 17/30</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 3/5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Based on the given statements, select the most appropriate option to solve the given question.<br> Three friends P, Q and R calculated their savings. It was found that the savings of P and Q were in the ratio 1:2. What was the saving of P?<br>Statement I: If R lends one-third of his savings to P and one-third of the remaining to Q, he will be left with the same amount of savings as P will have after receiving one-third of the savings of R.<br>Statement II: If R lends one-fourth of his saving to Q, and one-fourth of remaining to P, then the savings left with him is 17,000 more than the initial savings of Q.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Statement I alone is sufficient, but statement II alone is not sufficient</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Statement II alone is sufficient, but statement I alone is not sufficient</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Both statements together are sufficient but neither statement alone is sufficient<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/9.png" alt="image:MST15/9.png" width="639" height="330" class="tcecode"><br><img src="./Test Results12_files/10.png" alt="image:MST15/10.png" width="701" height="444" class="tcecode"><br>=(17,000×16)/49<br>∴ Question can be answer using both the statements together.
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Statement I and II together are not sufficient</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a simple graph G with three componentsC<sub class="tcecode">1</sub>, C<sub class="tcecode">2</sub> and C<sub class="tcecode">3</sub> respectively. If C<sub class="tcecode">1</sub> has 4 vertices, C<sub class="tcecode">2</sub> has 3 vertices and C<sub class="tcecode">3</sub> has 5 vertices then maximum number of edges possible in G is ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 18</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 19<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/34.png" alt="image:MST15/34.png" width="634" height="214" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following set of premises<br>H<sub class="tcecode">1</sub>:A→B,B→C,C→~D,A→D,A<br>H<sub class="tcecode">2</sub>:P→Q,~(Q∧~R),~R,P<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Only H<sub class="tcecode">1</sub> is inconsistent</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Only H<sub class="tcecode">2</sub> is inconsistent</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Both H<sub class="tcecode">1</sub>and H<sub class="tcecode">2</sub>are inconsistent<br><span class="explanation">Explanation:</span><br>H_1:The given premises are<br>(1)  A→B<br>(2)  B→C<br>(3)  C→~D<br>(4)  A→D<br>(5)  A<br>Proof:<br>(6)  D			from (4),(5)  Modus Ponens<br>(7)  A→C		from (1),(2)  Transitivity<br>(8)  A→~D		from (7),(3)  Transitivity<br>(9)  ~D		from (8),(5)  Modus Ponens<br>(10)  F			from (6),(9)  Conjunction<br>∴H_1  is inconsistent<br>H_2:The premises are<br>(1)  P→Q<br>(2)  ~(Q∧~R)<br>(3)  ~R<br>(4)  P<br>Proof:<br>(5)  Q→R	from (2)<br>(6)  P→R	from (10),(5)  Transitivity<br>(7)  R		from (4),(6)  Modus Ponens<br>(8)  F		from (3),(7)  Conjunction<br>∴H<sub class="tcecode">2</sub>  is inconsistent
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+For the given set S={1,2,3,4,5}. The relations R<sub class="tcecode">1</sub> and R<sub class="tcecode">2</sub> over the given set S as given as<br>R<sub class="tcecode">1</sub>={(x,y)│x∈S and y∈S;|x-y|%2=0}<br>R<sub class="tcecode">2</sub>={(x,y)│x∈S and y∈S;(x+y)%3=0}<br>Find the number of elements in R<sub class="tcecode">1</sub>∩R<sub class="tcecode">2</sub>.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br>Given set S={1,2,3,4,5}<br>R<sub class="tcecode">1</sub>={(1,1),(1,3),(1,5),(2,2),(2,4),(3,1),(3,3),(3,5),(4,2),(4,4),(5,1),(5,3),(5,5) }<br>R<sub class="tcecode">2</sub>={(1,2),(1,3),(2,1),(2,4),(3,3),(4,2),(4,5),(5,1),(5,4) }<br>R<sub class="tcecode">1</sub>∩R<sub class="tcecode">2</sub>={(1,5),(2,4),(3,3),(4,2),(5,1) }<br>|R<sub class="tcecode">1</sub>∩R<sub class="tcecode">2</sub> |=5
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a factory there are 100 units of certain product, 5 of which are defective. We pick three units from the 100 units at random what is the probability that none of them are defective? _______ [Enter up to 3 decimal digits]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 0.8650<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/31.png" alt="image:MST15/31.png" width="612" height="319" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 0.8750</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 0.8550</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 0.8850</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the figure below, ABCD is an isosceles trapezoidal such that AD = BC. PandQ are the points on the side AD and BC respectively such that PQ||AB and AP:PD=DC:AB=2:1. What is the value of PQ:AB?<br><img src="./Test Results12_files/3.png" alt="image:MST15/3.png" width="365" height="182" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 4:3</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 2:3</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 3:5</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 5:3<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/4.png" alt="image:MST15/4.png" width="556" height="477" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Murali and Ravi are playing a game with two six-sided dice, each number 1 to 6, they each toss a dice at the same time. If the product of two numbers on the two dice is bigger than or equal to 25 then Ravi wins the game<br>What is the probability that Ravi wins the game?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 1/9<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/30.png" alt="image:MST15/30.png" width="675" height="358" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/8</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/12</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Nagesh starting from A goes 2.8 Km Northeast, then turns right and walks 8Km, then turns right and walks 5Km. From there he walks 2.8Km North-West and stops. What is the distance between A and his end point? (approx.) (√2=1.4Km)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 5Km</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 8.8 Km</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 7.2 Km</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 6.4 Km<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/35.png" alt="image:MST15/35.png" width="489" height="509" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Testing the reasoning abilities of illiterate people has proven to be particularly challenging to Psychologists. When illiterate people are given tasks that are designed to require them to reason to a conclusion, they are relatively successful when the mechanical devices used in the test are familiar ones. But if the devices used in the test are unfamiliar to the illiterate persons, they are relatively unsuccessful at performing analogous tasks. <br>Which of the following conclusions can be reasonably drawn from the information above?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> Reasoning abilities of illiterate people should not be tested using tasks that do not involve<br>familiar devices.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong><br>This statement can be directly inferred from this sentence in the passage, <strong class="tcecode">“if the devices used in the test are unfamiliar to the illiterate persons, they are relatively unsuccessful at performing analogous tasks”.<br></strong><br><strong class="tcecode">Option (b):</strong><br>The passage talks about testing reasoning abilities of illiterate people but not what is required to test. Hence, this statement cannot be inferred.<br><br><strong class="tcecode">Option (c):</strong><br>This statement cannot be inferred from the passage as nothing is mentioned about the success of the tests.<br><br><strong class="tcecode">Option (d):</strong><br>This statement can be considered as a random statement with no relation to the passage.<br><br>Therefore, Option (a) is the correct answer.
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Literacy is required in order to test the reasoning abilities of people through the use of mechanical devices.</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Testing illiterate people for reasoning abilities is relatively unsuccessful.</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> Mechanical devices are a poor substitute for words in reasoning to a conclusion.</li>
+</ol>
+<br><br>
+</li>
+<li>
+The mean value ‘c’ for the function x<sup class="tcecode">3</sup>-x<sup class="tcecode">2</sup>+1 in the interval [-1,1] is__<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> -(1/3)<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/19.png" alt="image:MST15/19.png" width="299" height="358" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+There are two boxes A and B. Box contained 1000 balls, consecutively numbered from 1 to 1000 such that there was only one number printed on each ball. Box B was initially empty. All the balls on which the number printed was a multiple of 7 were transferred to the box B by Ajay. After that all balls on which the number printed was a multiple of 27 were transferred to box B by Bhaskar. Finally, all the balls in the box B on which the number printed is a multiple of 37 were transferred back to the box A by Karun. The final count of the balls in box B was<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 171</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 174</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 170<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/2.png" alt="image:MST15/2.png" width="684" height="339" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 175</li>
+</ol>
+<br><br>
+</li>
+<li>
+Two pipes P<sub class="tcecode">1</sub> and P<sub class="tcecode">2</sub> are used to fill the wells W<sub class="tcecode">1</sub>and W<sub class="tcecode">2</sub>. When operating alone, P<sub class="tcecode">1</sub> takes 18 hours more to fill W<sub class="tcecode">1</sub> than to fill W<sub class="tcecode">2</sub>, but P<sub class="tcecode">2</sub> takes 36 hours more to fill W<sub class="tcecode">1</sub> than to fill W<sub class="tcecode">2</sub>. When operating together how many hours, will they take to fill W<sub class="tcecode">1</sub> than to fill W<sub class="tcecode">2</sub>?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 6 hrs</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 8 hrs</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 10 hrs</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 12 hrs<br><span class="explanation">Explanation:</span><br><img src="./Test Results12_files/8.png" alt="image:MST15/8.png" width="470" height="339" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Study the following pie charts carefully and answer the questions below it.<br>The entire fund that an orphanage gets from different source is equal to 500 lakhs.<br><img src="./Test Results12_files/1.png" alt="image:MST15/1.png" width="726" height="265" class="tcecode"><br>If salary has to be paid out of the donation fund, then what is the approximate percent of donation fund used for this purpose?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 37%</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 43%</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 42.85%<br><span class="explanation">Explanation:</span><br>Donation from Funds=35%= (35×500 L)/100=175L<br>Salary=15% of 500L=(15/100)×500=75L<br>Required percentage=(75L/175L)×100<br>≈42.85% (approx)
+</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 53%</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Study the following pie charts carefully and answer the questions below it.<br>The entire fund that an orphanage gets from different source is equal to 500 lakhs.<br><img src="./Test Results12_files/1.png" alt="image:MST15/1.png" width="726" height="265" class="tcecode"><br>If the orphanage managed ‘SchoolMaintenance’ from the ‘govt. agencies’ fund only, then how much fund from govt. agencies would still be left for other use?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 95L</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 110L</li>
+<li>&nbsp;<img src="./Test Results12_files/wrong.png" width="16"> 115L</li>
+<li>&nbsp;<img src="./Test Results12_files/correct.png" width="18"> 125L<br><span class="explanation">Explanation:</span><br>Funds required for School Maintenance=20%= (20×500)/100=100L<br>Govt.Agencies from Funds=45%=(45×500)/100=225L<br>∴Amount that would be left after managing <br>'Orphanage Maintainance' from 'Govt.Agencies' fund<br>=225L-100L=125L
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results12_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

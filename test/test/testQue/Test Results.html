@@ -1,0 +1,1020 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=90844&test_id=375 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results_files/calclayout.css">
+<script src="./Test Results_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results_files/jquery-ui.js.download"></script>
+<script src="./Test Results_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results_files/custom.js.download"></script>
+<script src="./Test Results_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486836701, 'I\'m sorry, the time available to complete the test is over!', false, 1486836701997);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=90844&amp;test_id=375#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Mock Gate Test-5</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 22:19:41&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+03:00:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 100.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 65 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+______ is the greatest 5 digit number which when divided by 6, 16, 20 and 25 leaves no remainder.<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br>First we have to take LCM of 6, 16, 20 and 25.<br>LCM of 6, 16, 20 and 25 = 1200<br>The greatest 5 digit number = 99999<br> <br>∴ When 99999 is divided by 1200, remainder = 399<br>⇒ The largest 5 digit number which leaves no remainder when divided by 6, 16, 20 and 25 is<br>= 99999 – 399<br>= 99600
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Choose the appropriate tense to fill the blank making the sentence meaningful:</strong><br>When Mr. Kapoor came to school in 2012, Mr. Anand _______ there for five years.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Has already been teaching</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Has been teaching</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Had already been teaching<br><span class="explanation">Explanation:</span><br>In the given sentence, we are referring to Mr. Anand’s teaching which was an ongoing action that started in the past and continued for five years in the past. To represent such actions we use ‘past perfect continuous tense’. Therefore, we say<br>When Mr. Kapoor came to school in 2012, Mr. Anand <strong class="tcecode">had already been teaching</strong> there for five years.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Were teaching</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Choose the word that is opposite in meaning to the underlined word in the given sentence:</strong><br>When we approached the frightened dog, it gave us a <span style="text-decoration:underline;">baleful</span> growl.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Harmful</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Friendly<br><span class="explanation">Explanation:</span><br>•	In the given sentence, the underlined word baleful refers to “threatening harm or danger”.<br>•	The word malignant means “evil in nature, disposed to cause harm”.<br>•	Therefore, of all the given options, the word that is opposite to in meaning to the underlined word baleful is <span style="text-decoration:underline;">friendly</span>.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Malignant</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Dangerous</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the statement where underlined word is used correctly.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Don’t <span style="text-decoration:underline;">pick</span> at your food.</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> She is our <span style="text-decoration:underline;">pick</span> for Class President.</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> I am going to <span style="text-decoration:underline;">pick</span> apart feathers from a chicken.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a)</strong> uses the word approximately. ‘To pick at’ means to eat sparingly or in a limited quantity. Therefore, when someone is advised not to pick at their food, it is suggested that they try to eat properly.<br><strong class="tcecode">Option (b)</strong> uses the word approximately. ‘Pick’ in the form of a noun means a choice. The given sentence declares that a girl has been chosen for the post of Class President.<br><strong class="tcecode">Option (c)</strong> is the correct option because the word ‘pick’ has not been used appropriately. One cannot ‘pick apart’ feathers from a chicken. ‘Pick apart’means to refute or find flaws in by close examination.<br><strong class="tcecode">Option (d)</strong> uses the word appropriately. Someone who likes ‘to pick a fight’, likes to provoke others or finds such occasions that could possibly turn into a fight. The given sentence pertains to someone who enjoys provoking boys who are twice his size.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> He likes to <span style="text-decoration:underline;">pick</span> a fight with boys who are twice his size</li>
+</ol>
+<br><br>
+</li>
+<li>
+Ratio of speed downstream to the speed upstream is 5:3. Find the ratio of speed in still water to the speed of current.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2:3</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 4:1<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/2a.JPG" alt="image:MGT5/2a.JPG" width="292" height="382" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 3:5</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 5:7</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/15.png" alt="image:MGT5/15.png" width="343" height="214" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(n<sup class="tcecode">3</sup>)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(nlog n)</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> O(n)<br><span class="explanation">Explanation:</span><br>‘j’ is initialized just once.<br>So, the outer loop runs for O(n) time and the inner loop runs at most O(n) time as total. So, the total time complexity is O(n).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/29.png" alt="image:MGT5/29.png" width="624" height="64" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/30.png" alt="image:MGT5/30.png" width="501" height="162" class="tcecode">
+<br><br>
+</li>
+<li>
+Assume that process of sorting uses flash memory where every write lessens the lifespan of the memory. Which of the following sorting algorithm is best choice in such situation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Selection sort<br><span class="explanation">Explanation:</span><br>Among the above sorting algorithms only selection sort requires minimum number of writes (O(n)) compared to other sorting algorithms. So answer is [A].
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Insertion sort</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Quick sort</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Merge sort</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 6 processes A, B, C, D, E and F are sharing the CPU in a round robin fashion. Assume each process switch takes 10 seconds. What is the maximum quantum size ‘q’ possible such that each process is guaranteed to get its turn at CPU at least every 80 seconds?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>For every process next turn will get after (N – 1) process executions [(N – 1)q], N context switches.<br><br><img src="./Test Results_files/err.JPG" alt="image:MGT5/err.JPG" width="307" height="150" class="tcecode"><br> <br>Since there are 6 processes, N = 6. <br>t = 80 seconds <br>S = 10 seconds <br><br>6*10 + 5*q &lt;= 80<br>60+5*q &lt;= 80<br>5*q &lt;= 20<br>q &lt;= 4
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with frame size of 1024 bytes. If P1 of 40 KB and P2 of 20 KB are only 2 processes running in a system with total 72 free frames. The ratio of number of allocated frames to P1 in equal allocation to that of proportional allocation is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1:2</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4:3</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 3:4<br><span class="explanation">Explanation:</span><br>In equal allocation  both P1 and P2 get allocated 36 frames each. <br>In proportional allocation: P1 is allocated with (40 / 60) * 72 = (⅔) * 72 = 48  frames and P2 is allocated with (20/ 60)*70  = (⅓)*70 = 24 frames. <br><br>The ratio of frames allocated to P1 in equal allocation and proportional allocation = 36 : 48 = 3 : 4
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4:5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following order S of transactions.<br>T<sub class="tcecode">2</sub>:W(x);T<sub class="tcecode">3</sub>:R(x);T<sub class="tcecode">3</sub>:Commit;T<sub class="tcecode">1</sub>:R(x);T<sub class="tcecode">1</sub>:Commit;<br>T<sub class="tcecode">2</sub>:W(y);T<sub class="tcecode">2</sub>:Commit;T<sub class="tcecode">4</sub>:W(x);T<sub class="tcecode">4</sub>:W(y);T<sub class="tcecode">4</sub>:Commit<br>Which of the following is True?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> S is conflict serializable and hence is serializable<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/24.png" alt="image:MGT5/24.png" width="352" height="428" class="tcecode"><br><img src="./Test Results_files/25.png" alt="image:MGT5/25.png" width="654" height="302" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> S is not conflict serializable but is serializable</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> We cannot say</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> S is neither serializable not conflict serializable</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br><br>S1: A system call needs to be made when creating a kernel level thread whereas a system call is not made when creating a user level thread.<br><br>S2: Both kernel level threads and user level threads face the problem of unfair scheduling. <br><br>Choose the correct option:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Only S1 is true<br><span class="explanation">Explanation:</span><br>S1: System call is made when creating kernel level threads and system call is not made when creating user level threads within a task. S1 is true.<br><br>S2: Only user level threads face the problem of unfair scheduling(Even when there are several user level threads within a task, they appear as single unit to the kernel and only a single CPU time slot is assigned to all of them). Kernel level threads don’t face the problem of unfair scheduling. S2 is false.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Only S2 is true</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Both S1 and S2 are false</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements about the functions f(x)=|x| and g(x)=|x|/x<br>S<sub class="tcecode">1</sub>:f(x)is continuous for all real values of x.<br>S<sub class="tcecode">2</sub>:g(x)is continuous at x=0.<br>Which of the following is CORRECT?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Only S<sub class="tcecode">1</sub><br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/27.png" alt="image:MGT5/27.png" width="670" height="535" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Only S<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Both S<sub class="tcecode">1</sub> and S<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Neither S<sub class="tcecode">1</sub> nor S<sub class="tcecode">2</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+For the functionf(x)=2x<sup class="tcecode">3</sup>-3x<sup class="tcecode">2</sup>-36x+2, the minimum occurs when x is equal to_____<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/28.png" alt="image:MGT5/28.png" width="591" height="239" class="tcecode">
+<br><br>
+</li>
+<li>
+How many IP addresses can a machine with a single DNS name have?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Multiple</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Depends on NIC<br><span class="explanation">Explanation:</span><br>If a machine has two or more NIC cards, then multiple  IP addresses are possible.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many memory accesses required by the following instructions? <br><br>SUB r1, r2, r3<br>ADD r1, r2, (r3)<br>DIV r1, r2, @(r4) <br><br>Suppose every instruction is one word long, as well as every address.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>SUB r1, r2, r3 require only one memory access, reading the instruction. ADD r1, r2, (r3) requires two memory accesses, the first to read the instruction and the other one to read the value from memory location, whose address is in r3. DIV r1, r2, @(r4) three memory accesses are made in this case, the first to read the instruction, the second to get M[r4], and the third one to get M[M[r4]]. So total  memory accesses required are = 1 + 2 + 3 = 6.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 9</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let a relation be R(ABCDE)  FD={AB→C, C→D, D→E, E→B}. Then which normal form it satisfies?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1 NF</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2 NF</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 3 NF<br><span class="explanation">Explanation:</span><br>Given FDs:<br>AB→C  →①<br>C→D    →②<br>D→E    →③<br>E→B    →④<br>A is not present in RHS of any FD. So find (A)+ in given FDs.<br>(A)<sup class="tcecode">+</sup>=A<br>So, we can say that A is necessary but not sufficient to be Candidate key.<br>So, try combination of 2 attributes with A, say AB, AC, AD &amp; AE.<br>(AB)<sup class="tcecode">+</sup>=ABCDE<br>(AC)<sup class="tcecode">+</sup>=ACDEB<br>(AE)<sup class="tcecode">+</sup>=ABECD<br>(AD)<sup class="tcecode">+</sup>=ADEBC<br>∴ Keys for the above relation R are { AB, AC, AE, AD} <br><span style="text-decoration:underline;">Check whether R is in BCNF:</span><br>We can say that R is in BCNF if for every FD x→y in R, x is superkey.<br>FD ② violates BCNF since LHS of FD ② i.e., C is not superkey.<br><span style="text-decoration:underline;">Check whether R is in 3NF:<br></span>We say that R is in 3NF if for every FD x→y in R, either y should be a key or y is prime attribute.<br>Prime attributes: {A, B, C, D, E}<br>Here, FD ①, ②, ③&amp;④ satisfy 3NF.<br>∴ Answer is option (c).
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> BCNF</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let Employee(eno,ename, dno) and Department(dno, dname) be two relations in which Dno is a foreign key in Employee relation referring to Dno(primary key) of the Department relation. Consider the following four operations Employee and Department <br>1.Insert into Employee<br>2.Insert into Department<br>3.Delete from Employee<br>4.Delete from Department<br>Which of the following is true about the referential integrity constraint above?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of 1, 2, 3 or 4 can cause its violation</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> All of 1, 2, 3, and 4 can cause its violation</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Both 1 and 4 can cause its violation<br><span class="explanation">Explanation:</span><br>For a referential integrity to hold in a relational database, any field in a table that is declared a foreign key can contain either a NULL value or only values from a parent table’s primary key is the parent table.<br>Here (2) &amp; (3) can cause violation since if we are trying to insert any value in foreign key (dno in Employee) that is not present in primary key, then referential integrity constraint violates.<br>In the same way if we delete any row from Department and that primary key value is being referenced by some foreign key in other relation then that also may course referential integrity constraint violation.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Both 2 and 3 can cause its violation</li>
+</ol>
+<br><br>
+</li>
+<li>
+Message_____ means that the data must arrive at the receiver exactly as sent.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> confidentiality</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> integrity<br><span class="explanation">Explanation:</span><br>Message confidentiality means that the sender and the receiver expect privacy.<br>Message authentication means that the receiver is ensured that the message is coming from the intended sender, not an imposter.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> authentication</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> none of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+The grammar S→aSa|bSb|a|b is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> LR(1)</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Not LR(1)<br><span class="explanation">Explanation:</span><br>The given grammar<br>S→aSa|bSb|a|b<br>We shall construct the LR(1) machine<br><img src="./Test Results_files/1.png" alt="image:MGT5/1.png" width="715" height="472" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Can not be determined</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+The logical expression ((p∧q)→r)→((p∨q)→r) is ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> valid</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> a contradiction</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> satisfiable but not valid<br><span class="explanation">Explanation:</span><br>Let S=((p∧q)→r)→((p∨q)→r)<br>The truth table for the expression ((p∧q)→r)→((p∨q)→r) is<br><img src="./Test Results_files/31.png" alt="image:MGT5/31.png" width="650" height="399" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+The minimum number of swaps required to build a min heap tree for an array containing n elements is_____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br>If the given array is already in min heap then no swap will be performed to build a min heap. So, minimum number of swaps required is zero.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> n/2</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> n</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> n-1</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of onto functions (Surjective functions) from set A={1,2,3,4,5,6} to set B={x,y,z } is _________<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/33.png" alt="image:MGT5/33.png" width="627" height="208" class="tcecode">
+<br><br>
+</li>
+<li>
+The number of relations which are either Antisymmetric or Asymmetric on a set with ‘3’ elements is ________<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/32.png" alt="image:MGT5/32.png" width="689" height="443" class="tcecode"><br>n(A)=216	<br>∴The number of relations which are either Asymmetric or antisymmetric are<br>n(A∪Anti)=216
+<br><br>
+</li>
+<li>
+The RE denoting all the strings such that every even position is occupied by ‘a’ over the alphabet ={a, b}is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> (a+ba)*(a+b)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> (ba)*a*+aaa*</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> ba(b)*+aa(b)*</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>L = {all strings having an ‘a’ at every even position}<br>   = {ϵ, a, b, aa, ba, aaa, aab, baa, bab, aaaa, aaba, baaa, baba, aaaaa, baaaa, aabaa, aaaab, babaa, baaab, aabab, babab, …} <br>(⋇) RE: (a+ba)*(a+b)<br>The above regular expression can generate strings like “ab” where there is no ‘a’ in even position. <br>(⋇) RE:(ba)*a*+aaa*<br>This RE cannot generate strings like aabaa etc.<br>(⋇) RE:ba(b)*+aa(b)*<br>The above RE can produce strings like aabb where ‘b’ is present in even position.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+To prove set A = L(G)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> It is enough to prove that an arbitrary number of A can be generated by grammar G.</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> It is enough to prove that an arbitrary string generated by G, belongs to set A.</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Both the above comments (a) or (b) is to be proved.<br><span class="explanation">Explanation:</span><br>The set A=L(G)<br>A⊆L(G)andL(G)⊆A to conclude that A=L(G)
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Either of the above comments (a) or (b) is to be proved.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Using Huffman’s algorithm to construct an optimal binary prefix code for the following letters in the table:<br><img src="./Test Results_files/18.png" alt="image:MGT5/18.png" width="488" height="69" class="tcecode"><br>The encoding of the word “text” using the above data is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 00101101110</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 11001101110<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/19.png" alt="image:MGT5/19.png" width="715" height="351" class="tcecode"><br>e:01 <br>x:101  <br>t:110<br>total code:11001101110
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 11010101110</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the maximum number of keys in a B-tree of order 8 &amp; depth 3 (root at depth 0)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2095</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 4095<br><span class="explanation">Explanation:</span><br>The formula for calculating the maximum number of keys in a B-tree of order n of depth h is <br>m<sup class="tcecode">h+1</sup>-1<br>Here, m=8 and h=3. So the formula becomes <br>84-1 which is 4096-1=4095 and therefore B is the correct option.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8095</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+What shall be the equivalent grammar for the following grammar?		<br>S→aSSbS|aSaSb|abb|b<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> S→aX|b      X→SY|bb     Y→SbS|aSb</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> S→aX|b     X→SbS|aSb|bb</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Both of them<br><span class="explanation">Explanation:</span><br>We are left factoring the grammar.<br>Both the grammars are equivalent to the grammar in the question. The grammar obtained in the end is fully left factored.<br>Left factor the grammar:<br>S→aSSbS|aSaSb|abb|b<br>We get:<br>S→a[SSbS|SaSb|bb] |b <br>Or S→aX|b<br>Or<br>S→aX|b<br>X→SY|bb<br>Y→SbS|aSb
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+What shall be the three address code for the expression?<br>-a+b/×↑d↑e*f/g<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> t<sub class="tcecode">1</sub>=-a; t<sub class="tcecode">2</sub>=d↑e; t<sub class="tcecode">3</sub>=×↑t<sub class="tcecode">2</sub>; t<sub class="tcecode">4</sub>=b/t<sub class="tcecode">3</sub>; t<sub class="tcecode">5</sub>=t<sub class="tcecode">4</sub>*f; t<sub class="tcecode">6</sub>=t<sub class="tcecode">5</sub>/g; t<sub class="tcecode">7</sub>=t<sub class="tcecode">1</sub>+t<sub class="tcecode">6</sub>;<br><span class="explanation">Explanation:</span><br>Whatever the high level programming language is when we want to convert into 3 address <br>code we have only the following 7 types of instructions available.<br>1) x = y opz x = y =z → binary operation<br>2) x = opz x = -z → unary operation<br>3) x = y assignment<br>4) if x (rel op) y goto L rel op → relational operator<br>Conditional goto<br>5) goto L Unconditional goto<br>6) A[i] = x Array indexing<br>y = A[i]<br>7) y = * P P is a pointer<br>y = x; Address of x assigned to y.<br>Going by all these conventions we find that the three address code is:<br>t<sub class="tcecode">1</sub>=-a; t<sub class="tcecode">2</sub>=d↑e; t<sub class="tcecode">3</sub>=×↑t<sub class="tcecode">2</sub>; t<sub class="tcecode">4</sub>=b/t<sub class="tcecode">3</sub>; t<sub class="tcecode">5</sub>=t<sub class="tcecode">4</sub>*f; t<sub class="tcecode">6</sub>=t<sub class="tcecode">5</sub>/g; t<sub class="tcecode">7</sub>=t<sub class="tcecode">1</sub>+t<sub class="tcecode">6</sub>;
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> t<sub class="tcecode">1</sub>=-a; t<sub class="tcecode">2</sub>=×↑d; t<sub class="tcecode">3</sub>=e↑t<sub class="tcecode">2</sub>; t<sub class="tcecode">4</sub>=b/t<sub class="tcecode">3</sub>; t<sub class="tcecode">5</sub>=f/g; t<sub class="tcecode">6</sub>=t<sub class="tcecode">4</sub>*t<sub class="tcecode">5</sub>; t<sub class="tcecode">7</sub>=t<sub class="tcecode">1</sub>+t<sub class="tcecode">6</sub>;</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> t<sub class="tcecode">1</sub>=-a; t<sub class="tcecode">2</sub>=d↑e↑×; t<sub class="tcecode">3</sub>=b/t<sub class="tcecode">2</sub>;  t<sub class="tcecode">4</sub>=t<sub class="tcecode">3</sub>*f; t<sub class="tcecode">5</sub>=t<sub class="tcecode">4</sub>/g; t<sub class="tcecode">7</sub>=t<sub class="tcecode">1</sub>+t<sub class="tcecode">5</sub>;</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+______ is the remainder when 4<sup class="tcecode">250</sup> is divided by 14.<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br>⇒4<sup class="tcecode">250</sup>/14<br>⇒(4<sup class="tcecode">2</sup> )<sup class="tcecode">125</sup>/14<br>⇒(14+2)<sup class="tcecode">125</sup>/14 <br><img src="./Test Results_files/apti_img.JPG" alt="image:MGT5/apti_img.JPG" width="475" height="156" class="tcecode"><br>⇒2<sup class="tcecode">125</sup>/14<br>⇒((2<sup class="tcecode">4</sup> )<sup class="tcecode">31</sup>∙2)/14<br>⇒((14+2)<sup class="tcecode">31</sup>∙2)/14<br>⇒(2<sup class="tcecode">31</sup>∙2)/14<br>⇒2<sup class="tcecode">32</sup>/14<br>⇒(2<sup class="tcecode">4</sup> )<sup class="tcecode">8</sup>/14<br>⇒2<sup class="tcecode">8</sup>/14<br>⇒(2<sup class="tcecode">4</sup> )<sup class="tcecode">2</sup>/14<br>⇒(14+2)<sup class="tcecode">2</sup>/14<br>⇒2<sup class="tcecode">2</sup>/14<br>⇒4
+<br><br>
+</li>
+<li>
+Find the sum to n terms of the series<br>9+67+515+.....<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/5a.JPG" alt="image:MGT5/5a.JPG" width="83" height="51" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/5b.JPG" alt="image:MGT5/5b.JPG" width="84" height="41" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/5c.JPG" alt="image:MGT5/5c.JPG" width="88" height="39" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> <img src="./Test Results_files/5d.JPG" alt="image:MGT5/5d.JPG" width="89" height="46" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/5e.JPG" alt="image:MGT5/5e.JPG" width="451" height="273" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In the seventeenth-century, women were employed primarily in low-paying, low-skill jobs. To explain this segregation of labor by gender, economists have relied on the useful theory of human capital. According to this theory, the acquisition of difficult job-related skills through training, generally benefits individuals by making them eligible to engage in well-paid occupations. Women’s role as child bearers, however, results in interruptions in their participation in the job market (as compared with men’s) and thus reduces their opportunities to acquire training for highly skilled work. In addition, the human capital theory explains why there was a high concentration of women workers in certain low-skill jobs, such as weaving, but not in others, such as combing or carding, by positing that because of their primary responsibility in child rearing women took occupations (low-skill jobs) that could be carried out at home.<br>Which of the following can be inferred from the above passage?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Women were employed in low-skill and high paying jobs that can be performed at home.</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Women’s role in child rearing is the major reason behind the high concentration of women workers in weaving.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong><br>From the first sentence of the passage, it is evident that, ‘women were employed primarily in <strong class="tcecode">low-paying, low-skill jobs</strong>’. So, this statement is incorrect and cannot be inferred from the passage.<br><br><strong class="tcecode">Option (b):</strong><br>This statement can be directly inferred as it is mentioned in the passage that, <strong class="tcecode">because of their primary responsibility in child rearing women took occupations that could be carried out at home and so there was a high concentration of women workers in certain low-skill jobs, such as weaving’. </strong> <br><br><strong class="tcecode">Option (c):</strong><br>This statement contradicts to what is give in the passage, i.e., ‘<strong class="tcecode">women took occupations (low-skill jobs) that could be carried out at home</strong>’ and so it can be inferred.<br><br><strong class="tcecode">Option (d):</strong><br>From the given passage, it can only be inferred that the primary responsibility of women was child rearing (bringing up their child/ children) ,but nothing is mentioned about their responsibility towards low-skill jobs and so this statement cannot be inferred .
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Women prefer to do high-skill jobs that were performed only at home.</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> The primary responsibility of women is not only bringing up their children, but also in performing low-skill jobs.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Murali can do a work in 25 days and Prasad can do the same work in 32 days. If they work at 25% and 40% of their efficiencies respectively, how many days will they both working together take to complete a work that is thrice as big as the initial work?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 120 days</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 126 days</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 134 days<br><span class="explanation">Explanation:</span><br>Total initial work = 800 units (multiple of 25 &amp; 32)<br>⇒ Murali’s 1 day work = 32 units<br>     Prasad’s 1 day work = 25 units<br>But, they work with 25% and 40% of their efficiencies respectively.<br>∴ Murali’s 1 day work =25/100×32=8 units<br>    Prasad’s 1 day work =40/100×25=10 units<br>∴ Both together can do 18 units of work in 1 day.<br>∴ New work =3×800=2400 units<br>No.of days taken=2400/18≅134 days
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 143 days</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following bar graph gives the production, exports and per capita consumption of wheat in country X, for the five years 2010 to 2014. <br><img src="./Test Results_files/apt_di.JPG" alt="image:MGT5/apt_di.JPG" width="493" height="441" class="tcecode"> <br>Consumption=Production-Exports <br>Per Capita Consumption=Consumption/Population<br>What is the ratio of population in 2013 and 2014?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 11:12</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 12:11<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/apt_di2.JPG" alt="image:MGT5/apt_di2.JPG" width="341" height="368" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8:14</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 6:11</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/26.png" alt="image:MGT5/26.png" width="479" height="141" class="tcecode"><br>Which of the following SQL queries, retrieves the names of the supplier who supply all the items manufactured in Hyderabad?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> SELECT S1.Sname <br>FROM Suppliers S1 <br>WHERE EXISTS<br>(SELECT item_id FROM Items WHERE manf_city='Hyderabad')<br>	EXCEPT ALL<br>(SELECT S2.item_id FROM Suppliers S2 <br>	WHERE S1.Sid=S2.Sid));</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> SELECT S1.Sname <br>FROM Suppliers S1 <br>WHERE NOT EXISTS<br>(SELECT item_id FROM items WHERE manf_city='Hyderabad')<br>	INTERSECT<br>(SELECT S2.item_id FROM Suppliers S2  WHERE S2.Sid=S1.Sid));</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> SELECT S1.Sname <br>FROM Suppliers S1 <br>WHERE NOT EXISTS<br>(SELECT item_id FROM items WHERE manf_city='Hyderabad')<br>	EXCEPT<br>(SELECT S2.item_id FROM Suppliers S2 <br>	WHERE S1.Sid=S2.Sid));<br><span class="explanation">Explanation:</span><br>SELECT S1.Sname<br>FROM Suppliers S1 <br>WHERE NOT EXISTS<br>(SELECT item_id FROM items WHERE manf_city='Hyderabad')⟶①<br>	EXCEPT<br>(SELECT S2.item_id FROM Suppliers S2 WHERE S1.Sid=S2.Sid));⟶②<br>Let us assume, the items that are manufactured in Hyderabad are {1, 2, 3}<br>Supplier 1 supplies the items {1, 2, 5}<br>Supplier 2 supplies the items {1, 2, 3, 6} <br>Query ① retrieves all the id’s of the items that are manufactured in Hyderabad, i.e., {1, 2, 3}<br>Query ② retrieves all the id’s of the items that are supplied by each supplier<br><br>For Supplier 1:<br>Query① - Query②⇒ {1, 2, 3} EXCEPT {1, 2, 5}.<br>The result will be {3}. Therefore, NOT EXISTS will return FALSE and this supplier name will not be returned.<br><br>For Supplier 2:<br>Query① - Query②⇒ {1, 2, 3} EXCEPT {1, 2, 3, 6}.<br>The result will be an empty set. Therefore, NOT EXISTS will return TRUE and this specific supplier name will be returned, which clearly depicts that this supplier supplies all the items that are manufactured in Hyderabad.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> SELECT S1.Sname <br>FROM Suppliers S1 <br>WHERE EXISTS<br>(SELECT item_id FROM items WHERE manf_city='Hyderabad')<br>	UNION<br>(SELECT S2.item_id FROM Suppliers S2 <br>	WHERE S1.Sid=S2.Sid));</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/3da.JPG" alt="image:MGT5/3da.JPG" width="579" height="113" class="tcecode"><br>Consider the circuit above. Which one of the following option represents f(A,B)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/d3a.JPG" alt="image:MGT5/d3a.JPG" width="27" height="31" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/d3b.JPG" alt="image:MGT5/d3b.JPG" width="52" height="31" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> <img src="./Test Results_files/d3c.JPG" alt="image:MGT5/d3c.JPG" width="28" height="25" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/3db.JPG" alt="image:MGT5/3db.JPG" width="626" height="287" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> <img src="./Test Results_files/d3d.JPG" alt="image:MGT5/d3d.JPG" width="50" height="37" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/9.png" alt="image:MGT5/9.png" width="444" height="250" class="tcecode"><br>What should be the transitions missing from the PDA given:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub> )<br>2.(a,x,xxx)<br>3.(a,x,xx)</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 1.(a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)<br>2.(a,x,x)<br>3.(a,x,xxxx)<br><span class="explanation">Explanation:</span><br>By the observation of PDA when we see 'b' on tape header we have to POP out X from the stack.<br>And the algorithm is we need to PUSH 3 x’s into the stack for every 2 a's and POP out single 'x' from stack for every 'b'seen.<br>Now consider options:<br>1. (a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)→ Push 3 x's<br>2. (a,x,x)→ Skip operation<br>3. (a,x,xxxx)→Push 3 x's<br>For every 2 a's it is pushing 3 'x's to the stack when b is seen it pops out single x from stack. These are missing transitions for the accepting language.<br>----------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub> )→Push 'x'<br>2. (a,x,xx)→Push 'x'<br>3. (a,x,xxx)→Push 2 x's<br>It accepts aab also which is not a string in given language.<br>-------------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub>)→Push x<br>2. (a,x,xxx)→Push 2 x's<br>3. (a,x,xx)→Push x<br>It accepts aab also which is not a string in given language.<br>-------------------------------------------------------<br>1. (a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0</sub>)→ Skip<br>2. (a,x,xx)→Push x<br>3. (a,x,xxxx)→Push 3 x's<br>it does not accept aaaabbbbbb which is in given language.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xz<sub class="tcecode">0</sub>)<br>2.(a,x,xx)<br>3.(a,x,xxx)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1.(a,z<sub class="tcecode">0</sub>,xxxz<sub class="tcecode">0 </sub>)<br>2.(a,x,xx)<br>3.(a,x,xxxx)</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/mg5-os.png" alt="image:mg5-os.png" width="555" height="332" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+</ol>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/mg5-os-ss2.png" alt="image:mg5-os-ss2.png" width="582" height="549" class="tcecode">
+<br><br>
+</li>
+<li>
+<img src="./Test Results_files/prog.JPG" alt="image:MGT5/prog.JPG" width="594" height="261" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 28<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/prog2.JPG" alt="image:MGT5/prog2.JPG" width="555" height="63" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A binary search tree contains the numbers 1, 2, 3, 4, 5, 6, 7, 8. When the tree is traversed in pre-order and the values in each node printed out, the sequence of values obtained is 5, 3, 1, 2, 4, 6, 8, 7. If the tree is traversed in post-order, the sequence obtained would be<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8, 7, 6, 5, 4, 3, 2, 1</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1, 2, 3, 4, 8, 7, 6, 5</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2, 1, 4, 3, 6, 7, 8, 5</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 2, 1, 4, 3, 7, 8, 6, 5<br><span class="explanation">Explanation:</span><br>As it is a binary search tree, we can easily construct tree using preorder I.e., Root Left Right using 5, 3, 1, 2, 4, 6, 8, 7<br> <br>1. 5 is the root element, 3 (&lt;5) so it will be left child<br>2. Next is 1(&lt;3), so it will be left child to 3<br>3. Next is 2(&gt;1), so it will be right child to 1<br>4. Next is 4(&gt;3), so it will be right child to 3<br>5. Next is 6(&gt;5), so it will be right child to 5<br>6. Next is 8(&gt;6), so it will be right child to 6<br>7. Next is 7(&lt;8), so it will be left child to 8<br><br><img src="./Test Results_files/tree.JPG" alt="image:MGT5/tree.JPG" width="220" height="204" class="tcecode"><br><br>In post order traversal method, first we traverse left subtree, then right subtree and finally root<br>so 2 1 4 3 7 8 6 5 will be printed.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A hard disk has 256 sectors/ track, 20 platters, each with 2 recording surface and 1200 cylinders. The address of a sector is given as &lt;c,h,s&gt; where c → cylinder number, h → surface number, s → sector number. 0th sector is addressed as &lt;0, 0, 0&gt;. <br>The address &lt;500, 12, 64&gt; corresponds to sector number is ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 5473364</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4573264</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 2673364</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 5123136<br><span class="explanation">Explanation:</span><br>c⇒cylinder number<br>h⇒surface number<br>s⇒sector number<br>Hard disk has 256 sectors/track, 20 platters and each with 2 recording surfaces &lt;500,12,64&gt; means we need to cross the 500 cylinders, 12 surfaces in a particular cylinder and 64 sectors in a particular track to find the desired sector. So we need to find the how many sectors we are crossing to get the sector address &lt;500,12,64&gt;.<br>Number of sectors we need to cross = 500 cylinders(20 platters/cylinder * 2 surfaces/platter *1 tracks/surface *256 sectors/track) + 12 surfaces(1 track/surface * 256 sectors/track) + 64 sectors ⇒ 5123136 sectors
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A packet switch receives a packet and determines the outbound link to which the packet should be forwarded. When the packet arrives, one other packet is halfway done being transmitted on this outbound link and four other packets are waiting to be transmitted. Packets are transmitted in order of arrival. Suppose all packets are 1,500 bytes and the link rate is 2 Mbps. What is the queuing delay for the packet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 6ms</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 30ms</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8ms</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 27ms<br><span class="explanation">Explanation:</span><br>The arriving packet must first wait for the link to transmit 6,750B(4*1500+ 750 for half packet). <br>the queuing delay for the arriving packet = Tt for the previous packets= 27 msec.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A total of 38% of the voters in a certain city classify themselves as Independents, where as 34% classify themselves as Liberals and 28% say they are Conservatives. In s recent local election, 58% of the Independents, 56% of the Liberals and 44% of the Conservatives voted. A voter is chosen at random. Given that this person voted in the local election, the probability that he or she is a Conservativeis _________ [enter up to 3 decimal points]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 0.312</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 0.292</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 0.231<br><span class="explanation">Explanation:</span><br>Given that<br>P(I) = 38%	Independents<br>P(L) = 34%	Liberals<br>P(C) = 28%	Conservatives <br>Also given that 28% of the Independents, 56% of the Liberals and 48% of the Conservatives voted.<br>P(V/I) = 58%<br>P(V/L) = 56%<br>P(V/C) = 44%<br>∴We have to find P(C/V).<br>According to the Bays theorem,<br><img src="./Test Results_files/34.png" alt="image:MGT5/34.png" width="587" height="224" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 0.199</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a block that can hold either 4 records (or) 12 (key, pointer) pairs. If “n” is the total number of records and “Sparse” indexing is used then how many blocks do we need together to hold a data file and to index that file?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 11n/48</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 13n/48<br><span class="explanation">Explanation:</span><br>In sparse index, number of index entries = Number of data blocks<br>One block can hold 4 records.<br>Number of data blocks required to hold n records = "n4"<br>Number of index entries = "n/4"<br>One block can hold 12 index entries.<br>n   4 index entries requires n/48 blocks<br>∴ Total no. of blocks =n/4+n/48<br>=12n+n/48<br>=13n/48
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> n/3</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a memory system that uses a 32-bit address to address at the byte level, plus a cache that uses a 64-byte line size. Assume a direct mapped cache with a tag field in the address of 18 bits. The tag directory size (in bytes) is ______?<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br>No. of tag bits = 18<br>Line size = Block size = 64-Bytes =26Bytes<br>Block offset = 6 bits<br><br>Since the total address is 32 bits, no. of bits remaining for the line number = 32 - 18 - 6 = 8<br><img src="./Test Results_files/CO_img.JPG" alt="image:MGT5/CO_img.JPG" width="617" height="43" class="tcecode"><br>No. of cache lines = 28 = 256<br>Size of the tag memory = Size of tag * no. of lines in the cache = 18 * 256 = 4608 bits = 576 Bytes
+<br><br>
+</li>
+<li>
+Consider a system using multilevel feedback queue, CPU bound process P1 requires 240 time units to execute. If the first queue uses time quantum of 10 units and at each level the time quantum increases by double the time units of the previous level. How many times the process P1 is interrupted?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>In Level 1 ----&gt;10 units  <br>At context switch 1, P1 requires 240-10 = 230 more time units to complete execution<br>Level 2-----&gt;20 units<br>At context switch 2, , P1 requires 230-20 = 210 more time units to complete execution<br>Level 3------&gt;40 units<br>At context switch 3, P1 requires 210-40 = 170 more time units to complete execution<br>Level 4 -----&gt;80, <br>At context switch 4, P1 requires 170-80 = 90 more time units to complete execution<br><br>Level 5 -----&gt;160, <br>In level 5, P1 can execute completely without any interruptions as the time quantum at level 5 is 160 units and P1 only needs 90 more time units. So, there are 4 interruptions.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with logical address space of 4GB and page size is 8KB, physical address space is 256MB. How many bits required to access an entry in single level page table and in inverted page table respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 19, 15<br><span class="explanation">Explanation:</span><br>Logical Address Space is 4GB = 2<sup class="tcecode">32</sup> Bytes<br>Number of bits in logical address = 32<br>Page size 8KB<br><br>∴ No. of pages = (2<sup class="tcecode">32</sup>) / (2<sup class="tcecode">13</sup>) = 2<sup class="tcecode">19</sup><br><br>∴ Physical address space = (2<sup class="tcecode">28</sup>)<br><br>∴ No. of entries in inverted page table = (2<sup class="tcecode">28</sup>) / (2<sup class="tcecode">13</sup>) = (2<sup class="tcecode">15</sup>)<br><br>No. of bits required to access the entry in the single level page table = 19<br>No. of bits required to access the entry in the inverted page table = 15
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 15, 15</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 15, 19</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 19, 19</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider sending real-time voice from Host A to Host B. Host A converts analog voice to a digital 64 kbps bit stream on the fly. Host A then groups the bits into 56-byte packets. There is one link between Host A and B; its transmission rate is 2 Mbps and its propagation delay is 10 msec. As soon as Host A gathers a packet, it sends it to Host B. As soon as Host B receives an entire packet, it converts the packet's bits to an analog signal. How much time elapses from the time a bit is created (from the original analog signal at Host A) until the bit is decoded (as part of the analog signal at Host B)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 10ms</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 17.2ms<br><span class="explanation">Explanation:</span><br>Consider the first bit in a packet. Before this bit can be transmitted, all of the bits in the packet must be generated. <br> 1. The time required to make analog- to digital conversion 56*8/(64*10^3)sec=7msec.<br>2. The time required to transmit the packet is 56*8/(2*10^6)sec=224μsec. <br>3. Propagation delay = 10 msec. <br>The delay until decoding is 7msec +224 μsec + 10msec = 17.224msec
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8ms</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 14ms</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following Entity-Relationship (E-R) diagram and four possible relationship sets (I, II, III) for this ER diagram:<br><img src="./Test Results_files/20.png" alt="image:MGT5/20.png" width="317" height="261" class="tcecode"><br><img src="./Test Results_files/23.png" alt="image:MGT5/23.png" width="392" height="474" class="tcecode"><br>If different symbols stand for different values (eg. d1 is definitely not equal to d1) then which of the above could not be in the relationship set for the ER diagram?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> I only</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> I &amp; II only</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> II only<br><span class="explanation">Explanation:</span><br>From the ER diagram,<br>A:B=1:N, A:C=1:1, A:D=1:M<br>B:C=N:1, B:D=N:M<br>C:D=1:M<br>I is True since it is satisfying above relationships.<br>II is not True since A:D=1:M<br>but a2 and a3 has same value of D i.e., d2violating 1:M relationship.<br>III is True since it is satisfying above relationships.<br>So, II cannot be in relationship set R.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> I, II &amp; III</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following finite automata	<br><img src="./Test Results_files/10.png" alt="image:MGT5/10.png" width="443" height="321" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 36</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 20<br><span class="explanation">Explanation:</span><br>It takes 6 steps to reach from initial state to final state. Within these 6 steps we have only 3a' s+3b's to cover because a's are counted horizontally + b' s are counted vertically.<br>Once you reach a state of transition, we cannot go back to the previous column if we go in horizontal direction same as in vertical transition we cannot go back to previous rows.<br>Therefore in 6 transitions, we need to select 3 transitions over a’s and 3 transitions over b’s. <br><img src="./Test Results_files/11.png" alt="image:MGT5/11.png" width="518" height="64" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 32</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar is:						<br>S→SS|a|ϵ<br>The above grammar is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Only LR(0)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> LR(0), SLR(1) but not LALR(1) or CLR(1)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> LALR(1) and CLR(1)</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/2.png" alt="image:MGT5/2.png" width="526" height="378" class="tcecode"><br><img src="./Test Results_files/3.png" alt="image:MGT5/3.png" width="683" height="413" class="tcecode"><br>It is not clear whether to use S→a or S→ϵ as the look ahead symbols are the same.<br>The grammar is neither LR(1) nor LALR(1).<br>The grammar is ambiguous &amp; no ambiguous grammar can be LR.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following graph G:<br><img src="./Test Results_files/12.png" alt="image:MGT5/12.png" width="268" height="156" class="tcecode">Find the number of minimum cost spanning tree using Kruskal’s or Prim’s algorithm. ___<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/13.png" alt="image:MGT5/13.png" width="706" height="257" class="tcecode"><br><img src="./Test Results_files/14.png" alt="image:MGT5/14.png" width="690" height="335" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages:					<br>L1={〈M, q〉| TM M visits state q on some input} <br>L2={〈M, q〉| TM M visits state q on some input within 1000 steps} <br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> L1 is RE while L2 is R<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/6.png" alt="image:MGT5/6.png" width="673" height="288" class="tcecode"><br><img src="./Test Results_files/7.png" alt="image:MGT5/7.png" width="718" height="281" class="tcecode"><br><img src="./Test Results_files/8.png" alt="image:MGT5/8.png" width="702" height="334" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Both L1 &amp; L2 are R</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Only L1 is R while L2 is RE</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> L1 and L2 are both RE but not R</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar given below:<br>S→AB|CA<br>B→BC|AB<br>A→a<br>C→aB|b<br>The language generated by the above grammar is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> empty</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> finite<br><span class="explanation">Explanation:</span><br>On eliminating useless symbols we get following productions<br>S→CA, A→a, C→b<br>As there are no ϵ-productions and no unit productions, this is the reduced grammar.<br>1. As the grammar doesn’t vanish, the given grammar doesn’t generate empty language.<br>2. Now draw the graph as shown below<br><img src="./Test Results_files/5.png" alt="image:MGT5/5.png" width="630" height="182" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> infinite</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> none of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the program which was made to run on two different machines the machine 2 results 20% speeder however the CPI is increased by 30%. If the clock frequency of the machine 1 is 4 MHZ what is the clock frequency of machine 2?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 3.56 MHZ</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 8 MHZ</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 6.5 MHZ<br><span class="explanation">Explanation:</span><br>Let X is the time for program on machine 1<br>      Y is the time for program on machine 2<br>Given that Y=X-20%(X)<br>Y = 0.8(X)<br>X = number of instructions * CPI1 * Tclock1<br>Y = number of instructions * CPI2 * Tclock2<br><br>Given that CPI2=CPI1 + 30%(CPI1)<br>CPI2 ⇒ 1.3(CPI1)<br>X/Y = 1/0.8<br>(number of instructions * CPI1 * Tclock1)/(number of instructions * CPI2 * Tclock2) = 1/0.8<br><br>⇒ (CPI1*(1/frequency 1)) / (1.3 CPI1 * (1/frequency 2)) = 1/0.8<br>⇒ (frequency 2) / (frequency 1) = (1/0.8) *(1.3) = 1.625<br>⇒ frequency 2=1.625 * frequency 1<br>⇒ frequency 2 = 1.625 * 4 MHZ<br>⇒ frequency 2 = 6.5 MHZ
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 4.5 MHZ</li>
+</ol>
+<br><br>
+</li>
+<li>
+Four matrices A, B, C and D of dimensions a×b, b×c, c×d and d×e respectively can be multiplied in several ways with different number of total scalar multiplications. If a=5, b=50, c=10, d=5 and e=20, then the minimum number of scalar multiplications needed is _______.<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br><img src="./Test Results_files/16.png" alt="image:MGT5/16.png" width="653" height="439" class="tcecode"><br><img src="./Test Results_files/17.png" alt="image:MGT5/17.png" width="737" height="241" class="tcecode"><br>=(1, 3)(4, 4)<br>=(1, 2)(3, 3)(4, 4)<br>=((AB)C)D<br>Minimum number of scalar multiplications = 1000
+<br><br>
+</li>
+<li>
+Let G be an simple undirected graph. The vertex set of G is {(i,j):1≤i≤3,1≤j≤3}.<br>There is an edge between vertex (a,b) and vertex (c,d) if (a-c)mod 2=0and<br>(b-d)mod 2=0.The number of connected components in this graph G is ______<span style="float:right">( Marks: 0.00 )</span>
+<ul class="answer"><li>
+<img src="./Test Results_files/wrong.png" width="16">&nbsp;</li></ul>
+<br><span class="explanation">Explanation:</span><br><br>The vertex set of G is =((1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3) }<br>There is an edge between (a,b) and (c,d) if (a-c)mod 2=0and (b-d)mod 2=0.<br>ex: Vertex pair (1,1) and (1,3) satisfy the above condition. So, there is an edge between (1,1)and (3,3).<br><br><img src="./Test Results_files/35.png" alt="image:MGT5/35.png" width="646" height="244" class="tcecode">
+<br><br>
+</li>
+<li>
+Using the RSA public key cryptosystem, with a = 1, b = 2, ... z = 26, which of the following is a valid value for e if p = 5 and q = 13.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br>phi(n) = p-1 * q-1= 48<br>The relation between e and phi() is that e is co-prime to phi(n) and less than phi(n). Possible values are: 5, 7, 11, 13, and 17.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 19</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> can’t find with the given information</li>
+</ol>
+<br><br>
+</li>
+<li>
+What are the values of XY, to have XY flip-flop state transition from 0⟶1 respectively?  <br><img src="./Test Results_files/d1a.JPG" alt="image:MGT5/d1a.JPG" width="527" height="300" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> ϕ, 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/d1b.JPG" alt="image:MGT5/d1b.JPG" width="430" height="475" class="tcecode"><br><img src="./Test Results_files/d1c.JPG" alt="image:MGT5/d1c.JPG" width="247" height="402" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 1, 1</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 0, 1</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> 0, ϕ</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the  time taken for  finding the transitive closure of a binary relation on a set  X that contains n elements ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(nlog n)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(n)</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> O(n<sup class="tcecode">3/2</sup>)</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> O(n<sup class="tcecode">3</sup>)<br><span class="explanation">Explanation:</span><br>In mathematics, the transitive closure of a binary relation R on a set X is the smallest transitive relation on X that contains R. If the original relation is transitive, the transitive closure will be that same relation; otherwise, the transitive closure will be a different relation.<br>In computer science the concept of transitive closure can be thought of as constructing a data structure that makes it possible to answer reachability questions. That is, can one get from node a to node other node b in one or more hops? A binary relation tells you only that node a is connected to node b, and that node b is connected to node c, etc. After the transitive closure is constructed in an O(1) operation one may determine that node c is reachable from node a.<br>Warshall’s algorithm can be used to construct the Transitive closure of directed graphs (). In Warshall’s original formulation of the algorithm, the graph is unweighted and represented by a Boolean adjacency matrix. Then the addition operation is replaced by logical conjunction (AND) and the minimum operation by logical disjunction (OR).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following greedy approach always yields an optimal solution for fractional knapsack problem?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> From the remaining objects, select the object that has minimum weight and also fits into knapsack.</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> From the remaining objects, select the object that has maximum profit that fit into the knapsack.</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> From the remaining objects, select the object with maximum p<sub class="tcecode">i</sub>/w<sub class="tcecode">i</sub> that fits into the knapsack, where p<sub class="tcecode">i</sub> is profit of an item i and w<sub class="tcecode">i</sub> is weight of the item i.<br><span class="explanation">Explanation:</span><br>Option (a) and (b) may not produce optimal solution, but option (c) always gives an optimal solution.
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is TRUE?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Set S={1,2,3,6,8} is a group with respect to multiplication modulo 9.</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> Set S={1,5,7,11} is a group with respect tomultiplication modulo 12.<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/36.png" alt="image:MGT5/36.png" width="657" height="164" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Set S={1,5,6} is a group with respect tomultiplication modulo 8.</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> Set S={1,2,4,5} is a group with respect tomultiplication modulo 7.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true?<br>a. The header length field is eliminated in IPv6 because the length of the header is fixed in this version.<br>b. The option fields in IPv4 are implemented as extension headers in IPv6. <br>c. The record route option is not implemented in IPv6 because it was not used.<br>d.All the above<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> a,b</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> c</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> b,c</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> d</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which pair of terms can’t be part of same minimal expression of the function f<sub class="tcecode">1</sub>⨁f<sub class="tcecode">2</sub> (a,b,c,d), where<br>f<sub class="tcecode">1</sub>(a,b,c,d)=Σ(0,1,3,5,12,14),f<sub class="tcecode">2</sub> (a,b,c,d)=Σ(2,4,6,11,12,15)?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> b'cd,abc</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> bcd',acd</li>
+<li>&nbsp;<img src="./Test Results_files/wrong.png" width="16"> a'c',a'd'</li>
+<li>&nbsp;<img src="./Test Results_files/correct.png" width="18"> a'b',a'd'<br><span class="explanation">Explanation:</span><br><img src="./Test Results_files/d2a.JPG" alt="image:MGT5/d2a.JPG" width="269" height="457" class="tcecode"><br><img src="./Test Results_files/d2b.JPG" alt="image:MGT5/d2b.JPG" width="282" height="452" class="tcecode"><br><img src="./Test Results_files/d2c.JPG" alt="image:MGT5/d2c.JPG" width="373" height="493" class="tcecode"><br><img src="./Test Results_files/d2d.JPG" alt="image:MGT5/d2d.JPG" width="643" height="395" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

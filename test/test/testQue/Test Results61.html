@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92195&test_id=254 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results61_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results61_files/calclayout.css">
+<script src="./Test Results61_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results61_files/jquery-ui.js.download"></script>
+<script src="./Test Results61_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results61_files/custom.js.download"></script>
+<script src="./Test Results61_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results61_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results61_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837856, 'I\'m sorry, the time available to complete the test is over!', false, 1486837856073);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92195&amp;test_id=254#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CO Subject Test - 2</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:33:58&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The reference string for a certain process is <br>    1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3. <br>      Assume memory has 4 frames. What is the number of page faults if the MRU used?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>MRU:<br><br><br>1, 2, 3, 4, 3, 4, 2, 5, 6, 2, 3, 1, 2, 6, 7, 2, 1, 3<br><img src="./Test Results61_files/E1a.PNG" alt="image:CNS2/E1a.PNG" width="314" height="210" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 13</li>
+</ol>
+<br><br>
+</li>
+<li>
+A pipeline system overlap all kind of instructions except branch instructions. Branch instructions introduces 4 stall cycles. If there exist 60% branch instructions, what will be the CPI?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4.4</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 2.4</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 3.4<br><span class="explanation">Explanation:</span><br>New CPI = (1+stall frequency * stall cycles) clock cycles / instruction<br>              ⇒ (1+0.6 * 4)<br>              ⇒ 3.4 clock cycles / instruction
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 5.6</li>
+</ol>
+<br><br>
+</li>
+<li>
+A CPU has a five-stage pipeline and runs at 2 GHz frequency. A conditional branch instruction computes the target address and evaluates the condition in the third stage of the pipeline. The processor stops fetching new instructions following a conditional branch until the branch outcome is known. A program executes 10<sup class="tcecode">7</sup>  instructions out of which 40% are conditional branches. If each instruction takes one cycle to complete on average, the total execution time of the program is ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 18 million clocks<br><span class="explanation">Explanation:</span><br>5-stage pipeline<br>Frequency = 2 GHz<br>Total instructions = 10<sup class="tcecode">7</sup><br>Stall frequency = 40%<br><img src="./Test Results61_files/E14a.PNG" alt="image:COS2/E14a.PNG" width="307" height="120" class="tcecode"><br>CPI=(1+stall freq * stall cycles) clocks/instruction<br>CPI = (1 + 0.4 * 2) = 1.8 clocks / instruction<br>Number of clock cycles for 10<sup class="tcecode">7</sup> instructions = 1.8 clocks / instruction * 10<sup class="tcecode">7</sup> instructions<br>					           = 18 million clocks
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 16 million clocks</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 15 million clocks</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 17 million clocks</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 4-stage pipelined processor has Instruction Fetch(IF),Instruction Decode(ID), Execute (IE) and Write Operand (WO) stages.The IF, ID and WO stages take 1 clock cycle each for any instruction.The IE stage takes 2 clock cycle for ADD and SUB instructions and 6 clock cycles for MUL instruction respectively. What is the number of clock cycles needed to execute the following sequence of instructions with reordering of instructions done by compiler and pipeline is incorporated with operand forwarding hardware?<br><div class="tcecodepre">&nbsp;&nbsp;&nbsp;Instruction&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Meaning&nbsp;of&nbsp;instruction<br>&nbsp;	&nbsp;I0&nbsp;:LD&nbsp;R2&nbsp;,&nbsp;(200)R1	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R2&nbsp;¬&nbsp;M[200&nbsp;+&nbsp;R1]<br>&nbsp;	&nbsp;I1&nbsp;:SUB&nbsp;R5&nbsp;,R2&nbsp;,R4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R5&nbsp;¬&nbsp;R3&nbsp;-&nbsp;R4<br>	&nbsp;I2&nbsp;:MUL&nbsp;R2&nbsp;,R5&nbsp;,R2	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R2&nbsp;¬&nbsp;R5*R2<br>	&nbsp;I3&nbsp;:MUL&nbsp;R3&nbsp;,R6&nbsp;,R7	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R3&nbsp;¬&nbsp;R6*R7<br>	&nbsp;I4&nbsp;:ADD&nbsp;R8,&nbsp;R9,&nbsp;R10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R8&nbsp;¬&nbsp;R9&nbsp;+&nbsp;R10&nbsp;</div><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 19 clock cycles<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E11a.PNG" alt="image:COS2/E11a.PNG" width="525" height="424" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 23 clock cycles</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 28 clock cycles</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 30 clock cycles</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the program which was made to run on two different machines the machine 2 results 25% speeder however the CPI is increased by 20%.If the clock frequency of the machine 1 is 1 MHZ what is the clock frequency of machine 2?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 1.6 MHZ<br><span class="explanation">Explanation:</span><br>Let X is the time for program on machine 1<br>And Y is the time for program on machine 2<br>Given that Y=X-25%(X)<br>                  Y  ⇒ ¾(X)<br>X=number of instructions * CPI1 * Tclock1<br>Y=number of instructions * CPI2 * Tclock2<br><br><br>Given that CPI2=CPI1 + 20%(CPI1)<br>                  CPI2 ⇒ 1.2(CPI1)<br>   X/Y=4/3<br>(number of instructions * CPI1 * Tclock1) / ( number of instructions * CPI2 * Tclock2)=4/3<br> <br>        ⇒ (CPI1*(1/frequency 1)) / (1.2 CPI1 * (1/frequency 2)) = 4/3<br><br><br>        ⇒ (frequency 2) / (frequency 1) = (4/3) *(1.2) ⇒ 1.6<br><br><br>        ⇒  frequency 2=1.6 * frequency 1<br>       ⇒ frequency 2 = 1.6 * 1MHZ<br>       ⇒ frequency 2 = 1.6 MHZ
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 2.6 MHZ</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 3.6 MHZ</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4.6 MHZ</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 32 KB cache has a 128 byte block size and is 16-way set-associative. what is the size of tag directory, assuming that the CPU provides 48-bit addresses ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 5678 bits</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4567 bits</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 9472 bits<br><span class="explanation">Explanation:</span><br>Given 32 KB cache                    <br>Size of block = 128 bytes<br>16 – way set Associative<br>Physical Address = 48-bits<br>Number of blocks=32KB/128B ⇒ 256 blocks<br>Number of sets=256/16=16 sets<br><img src="./Test Results61_files/E9a.PNG" alt="image:COS2/E9a.PNG" width="166" height="105" class="tcecode"><br>        Size of the tag directory=Number of bits used for tag * total number of blocks<br>                                             ⇒ 37 bits * 256<br>                                             ⇒ 9472 bits
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 7448 bits</li>
+</ol>
+<br><br>
+</li>
+<li>
+Arrange following in the descending order of their performances<br>    1.Horizontal microprogram<br>    2.Vertical microprogram<br>    3.Hardwired control unit<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 1&gt;2&gt;3</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 3&gt;2&gt;1</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 3&gt;1&gt;2<br><span class="explanation">Explanation:</span><br>Hardwired control unit has the highest performance compare to the microprogramming.Because control unit is implemented with the gates,flip-flops,decoders and other digital circuits.Since it has dedicated piece of hardware it’s performance is superior compare to microprogrammed control unit.<br>Among the horizontal microprogramming and vertical microprogramming horizontal microprogramming has better performance compared to vertical microprogramming.
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> all have equal performance</li>
+</ol>
+<br><br>
+</li>
+<li>
+The addressing mode of the instruction MOV R1,100[R2]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Immediate addressing mode</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Absolute addressing mode</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Register direct addressing mode</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> Displacement addressing mode<br><span class="explanation">Explanation:</span><br>Displacement addressing mode is similar to the register indirect addressing     mode,except that an offset (or displacement) is held in the instruction that is added to the contents of the register specified in the instruction to form the effective address of the operand.<br>For example instruction MOV R1,100[R2] uses displacement addressing mode that is 100 is added to the content of R2,resulting address point to the particular location in the memory and the value is fetched from memory and stored in register R1.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A RAM chip has a capacity of 1024 words of 8 bits each (1K * 8).The number of chips required to construct (16K * 16) RAM from 1K * 8 RAM is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 64</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 32<br><span class="explanation">Explanation:</span><br>Number of chips required = (Target capacity)/(Given capacity)<br>                                         =(16K * 16)/(1K * 8)<br>                                         ⇒ 32 chips
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 128</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with a clock period of 10 ns can perform jumps (1 cycle), branches      (3 cycles), arithmetic instructions (2 cycles), multiply instructions (5 cycles), and memory instructions (4 cycles). A certain program has 10% jumps, 10% branches, 50% arithmetic, 10% multiply, and 20% memory instructions.If the program execute 10^9  instructions, what is its execution time？<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 18s</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 27s<br><span class="explanation">Explanation:</span><br>CPI = 1 × 0.1 + 3 × 0.1 + 2 × 0.5 + 5 × 0.1 + 4 × 0.2 = 2.7 clocks<br>Execution time = 10<sup class="tcecode">9</sup> × 2.7 × 10 ns = 27 s
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 11s</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 16s</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume a memory access to main memory on a cache "miss" takes 30 ns and a memory access to the cache on a cache "hit" takes 3 ns. If 80% of the processor's memory requests result in a cache "hit", what is the average memory access time?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 27 ns<br><span class="explanation">Explanation:</span><br>Cache access time = 3 ns<br>Main memory access time = 30 ns<br>Average memory access  time=t1+(1-h1)t2<br>                                                ⇒ 3 ns+(0.8)(30 ns)<br>                                                ⇒ 27 ns
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 37 ns</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 22 ns</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 30 ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Pipelining  improves the cpu performance due to<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Increased clock speed</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Reduced memory access time</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> Introduction of parallelism<br><span class="explanation">Explanation:</span><br>Pipeline executes the multiple instructions parallelly. So thereby it improves the cpu performance by decreasing the average access time of the program.
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> additional functional units</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which is the fastest cache mapping technique<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Direct mapping</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Set associative mapping</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> Associative mapping<br><span class="explanation">Explanation:</span><br>In associative cache mapping any block of main memory can be placed anywhere in the cache .So there is no conflict problems in the associative cache mapping.Hence it gives faster response compare to direct and set-associative mapping.
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> all have equal speed</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 16 KB direct mapped cache with line size of 64 bytes. When you reduce the line size to 32 bytes, which of following is true ?<br>a.Access time decreases<br>b.Number of blocks decreases<br>c.Access time increases<br>d.Number of blocks increases<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> a,b</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> b,c</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> a,c</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> a,d<br><span class="explanation">Explanation:</span><br>Number of blocks = 16 KB/64 B ⇒ 256 blocks<br>Index field requires 8 bits<br>Offset of the block requires 6 bits<br><br><br>Case 2:<br>Number of blocks = 16 KB/32 B ⇒ 512 blocks<br>Index field requires 9 bits<br>Offset of the block requires 5 bits<br><br><br>If we compare the case-1 and case-2 number of blocks is increased,number of bits required for the offset field is decreased so time for accessing the word from particular block is decreased.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">[Common data question 12 &amp; 13]<br></strong><br>   For all following questions we assume that: <br>            - Pipeline contains 5 stages: IF, ID, EX, M and W; <br>            - Each stage requires one clock cycle; <br>            - All memory references hit in cache; <br>            - Following program segment should be processed:                              <br>                                   <br>                                   LD R1, 0(R2)<br>                                   DADDI R1, R1, #1 <br>                                   SD 0(R2), R1 <br>                                   DADDI R2, R2, #4<br>                                   DSUB R4, R3, R2 <br>                                   BNEZ R4, Loop <br>Calculate how many clock cycles will take execution of this segment on the simple pipeline without forwarding or bypassing ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 18<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E12a.PNG" alt="image:COS2/E12a.PNG" width="639" height="456" class="tcecode"><br>Number of clock cycles required = 18
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+For all following questions we assume that: <br>            - Pipeline contains 5 stages: IF, ID, EX, M and W; <br>            - Each stage requires one clock cycle; <br>            - All memory references hit in cache; <br>            - Following program segment should be processed:                              <br>                                   <br>                                   LD R1, 0(R2)<br>                                   DADDI R1, R1, #1 <br>                                   SD 0(R2), R1 <br>                                   DADDI R2, R2, #4<br>                                   DSUB R4, R3, R2 <br>                                   BNEZ R4, Loop <br><br>Find speed up factor and also how many clock cycles that will take to execute this segment on the simple pipeline with normal forwarding and bypassing<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 13<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E13a.PNG" alt="image:COS2/E13a.PNG" width="650" height="476" class="tcecode"><br>Number of clock cycles required = 13
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 21</li>
+</ol>
+<br><br>
+</li>
+<li>
+One major advantage of direct mapped cache is that the mapping itself is very simple. What is the main disadvantage of this organization?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> It does not allow simultaneous access to the intended data and its tag.</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> It is more expensive than other types of cache organizations.</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> The cache hit ratio is degraded if two or more blocks used alternately map onto the same block frame in the cache.</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Its access time is greater than that of other cache organizations.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 2-way set-associative cache has a block size of four 16-bit words. The cache can accommodate a total of 4096 words. The main memory size that is cacheable is 64K*32 bits. Calculate the size of tag directory assuming memory is 16-bit addressable?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 575 bits</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 576 bits<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E32a.PNG" alt="image:COS2/E32a.PNG" width="375" height="159" class="tcecode"><br>Since each block consist of 4 words offset field requires 2-bits<br>Number of blocks are 64 index field requires 6 bits to find particular block uniquely<br>SInce the main memory size is 64K*32 bits ,physical address is 17 bits<br>Out of 17 bits , 2-bits for offset and 6-bits for index field remaining 9 bits are used for TAG<br>Size of TAG directory = Number of tag bits * total number of blocks = 9 * 64 =576 bits
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 9 bits</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 17 bits</li>
+</ol>
+<br><br>
+</li>
+<li>
+The form of the microprogramming in which control words are made permanent in ROM during hardware production is known as<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> Static microprogramming<br><span class="explanation">Explanation:</span><br>In Static microprogramming , ROM is used as the control memory.The control words in the ROM are made permanent during the hardware production .
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Dynamic microprogramming</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Horizontal microprogramming</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Vertical microprogramming</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the disk pack with the following specifications.<br>                           32 surfaces,<br>                           128 tracks/surface,<br>                           256 sectors/track,<br>                           256 bytes/sector.<br>   What is the capacity of disk pack?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 256MB<br><span class="explanation">Explanation:</span><br>Given	      32 surfaces,<br>                           128 tracks/surface,<br>                           256 sectors/track,<br>                           256 bytes/sector.<br>  Total capacity=(number of surfaces)*(number of tracks/surface)*(number of                                  sectors/track)*(total bytes/sector)<br>        Total capacity	= 32*128*256*256<br>                              	= 256 MB
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 128MB</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 512MB</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 64MB</li>
+</ol>
+<br><br>
+</li>
+<li>
+A Hard disk has an average seek time of 20 ms. The transfer rate is 10 MB/sec. The disk rotates at 15,000 rpm and the controller overhead is 0.1 msec. Find the average time to read or write 2048 bytes ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 22.3<br><span class="explanation">Explanation:</span><br>Given that seek time=20 ms<br>Rotational speed = 15,000 rpm<br>Controller overhead = 0.1 msec<br>Given data transfer rate =10 MB/sec<br>1 sec -------------&gt; 10 MB<br>   ?-----------------&gt;2048 Byte<br>        ⇒ 0.2 msec<br>Data transfer time ⇒ 0.2 msec<br>Rotational latency = ½(rotational time)<br>            15,000 rotations -------------&gt; 60 sec<br>               1 rotation        --------------&gt; ?<br>                                       ⇒ 4 msec<br>Rotational latency = ½(4 msec) = 2 msec<br>Total time = seek time + rotational latency + transfer time + controller overhead<br>                =20 msec + 2 msec + 0.2 msec + 0.1 msec<br>                =22.3 msec
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 23.3</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 24.3</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 21.3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following page reference string<br>1, 2, 3, 4, 1, 2, 6, 5, 2, 1, 3, 7, 6, 2, 3, 2, 3.<br>How many page faults would occur for LRU replacement algorithm with 3 page frames?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 14<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E28a.PNG" alt="image:COS2/E28a.PNG" width="334" height="313" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 16</li>
+</ol>
+<br><br>
+</li>
+<li>
+Computer A has an overall CPI of 1.3 and can be run at a clock rate of 600MHz. Computer B has a CPI of 2.5 and can be run at a clock rate of 750 Mhz. We have a particular program we wish to run. When compiled for computer A, this program has exactly 100,000 instructions. How many instructions would the program need to have when compiled for Computer B, in order for the two computers to have exactly the same execution time for this program?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 64000</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 65000<br><span class="explanation">Explanation:</span><br>clock cycle time = 1/(frequency)<br>(CPUTime)A = (Instruction count)A * (CPI)A * (Clock cycle Time)A = (100,000)*(1.3)/(600*10<sup class="tcecode">6</sup> ) ns<br>(CPUTime)B = (Instruction count)B * (CPI)B * (Clock cycle Time)B = (I)B*(2.5)/(750*10<sup class="tcecode">6</sup>) ns <br>Since (CPUTime)A = (CPUTime)B,<br> we have to solve for (I)B and get 65000
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 66000</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 65500</li>
+</ol>
+<br><br>
+</li>
+<li>
+The cache in the Pentium 4 holds 8MB of data. It too is 8-way set associative and each block holds 128 bytes of data. If physical addresses are 32 bits long, each data word is 32 bits, and entries are word addressable, what bits of the 32 bit physical address comprise the tag, index and offset?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 12,13,7<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E20a.PNG" alt="image:COS2/E20a.PNG" width="391" height="375" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 12,14,6</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 11,14,7</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 14,12,6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a device that is to transfer data at a rate of 1 Mbyte/sec in 16 byte chunks. The overhead of polling is 400 cycles on 500 Mhz processor. Calculate the overhead of polling assuming I/O uses polling mechanism to transfer data?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 5%<br><span class="explanation">Explanation:</span><br>The polling rate is now (1 * 2<sup class="tcecode">20</sup> /16) since service is needed only for every 16 byte chunks. The poll consumes 400 cycles, to transfer (1 * 2<sup class="tcecode">20</sup> /16) chunks polling consumes 400 *2<sup class="tcecode">16</sup> cycles. <br>Since the processor is 500 Mhz, the total number of available cycles is 500 * 10<sup class="tcecode">6</sup>cycles.<br>Overhead (% of cpu cycles consumed) = (cycles consumed for polling) * 100/ (Total CPU cycles)<br>		   	   = (400 *2<sup class="tcecode">16</sup>) * 100/ (500 * 10<sup class="tcecode">6</sup>)<br>		              = 0.05 * 100<br>		      	    = 5%
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 8%</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 6%</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume branch instructions occur 15% of the time and are predicted as not taken, while in practice they are taken 40% of the time with a penalty of 3 cycles. With forwarding, the load delay slot is one cycle and can be filled 60% of the time with useful instructions. 20% of the instructions are loads and 30% of these introduce load delay hazards. What is the New CPI due to load delay slots and branch hazards?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 1.204<br><span class="explanation">Explanation:</span><br>New CPI = 1 + CPI  increase due to branches + CPI increase due to loads <br>        = 1 + 0.15*0.4*3 + 0.2*0.3*0.4*1<br>        = 1.204
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 1.404</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 2.204</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4.404</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements<br>	S1 : LRU page replacement algorithm always produces less number of page faults compared to optimal page replacement algorithm.<br>	S2 : In FIFO replacement algorithm the page fault rate may increase as the allocated frames increases<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> S1</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> S2<br><span class="explanation">Explanation:</span><br>Let us consider the reference string 1 2 3 4 1 2 3 and number of frames available is 3<br>By using optimal replacement algorithm we get 2 hits. By using LRU we get zero hits<br>So statement-1 is not always true<br>In FIFO replacement algorithm if we increase the number of frames page fault rate may increases it is called “belady's anomaly” <br>Only S2 is the true statement.
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question 28 &amp; 29</strong><br>A system is employing with 2-levels of cache.The average access time without level-1 cache  is 150 ns and with level-1 cache is 30 ns. The level-1 cache access time is 20 ns.<br>What is the hit ratio of level-1 cache?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 93%<br><span class="explanation">Explanation:</span><br>Given that average access time without level-1 is 150 ns<br> In the problem given that system consist of only 2-levels<br> Without level-1 means the average access time of level-2 becomes access time of level-2.<br>Therefore T2=150 ns    T1=20 ns<br>                  Tavg=30 ns<br>       30 = 20+(1-h1)(150)<br>       10=(1-h1)(150)<br>       1/15=1-h1<br>       14/15=h1<br>       Hit ratio = 0.93 or 93%
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 83%</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 98%</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 96%</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Question 28 &amp; 29</strong><br>A system is employing with 2-levels of cache.The average access time without level-1 cache  is 150 ns and with level-1 cache is 30 ns. The level-1 cache access time is 20 ns.<br>In the above question if hit ratio is made to 100% what is the access time of L1 &amp; L2 memories in ns?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 150, 20</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 20, 150<br><span class="explanation">Explanation:</span><br>Hit ratio does not influence the individual access times of L1 &amp; L2<br>    But total average access time will be change.<br>    So access times of L1 and L2 not changes
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 32, 190</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 120, 150</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">CommonData Question 30 &amp; 31</strong><br>Consider the following memory organization of a processor. The virtual address is 40 bits, the physical address is 32 bits, the page size is 8 KB. The processor has a 4-way set associative 128-entry TLB i.e. each way has 32 sets. Each page table entry is 32 bits in size. The processor also has a 2-way set associative 32 KB L1 cache with line size of 64 bytes. <br>What is the total size of the page table?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 8MB</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 10MB</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 2MB<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E23a.PNG" alt="image:COS2/E23a.PNG" width="344" height="173" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 4MB</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">CommonData Question 30 &amp; 31</strong><br>Consider the following memory organization of a processor. The virtual address is 40 bits, the physical address is 32 bits, the page size is 8 KB. The processor has a 4-way set associative 128-entry TLB i.e. each way has 32 sets. Each page table entry is 32 bits in size. The processor also has a 2-way set associative 32 KB L1 cache with line size of 64 bytes. <br>What is the number of Tag bits?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 17</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 18<br><span class="explanation">Explanation:</span><br>Given physical address = 32 bits<br>Size of cache          = 32 KB<br><img src="./Test Results61_files/E24a.PNG" alt="image:COS2/E24a.PNG" width="351" height="286" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data questions 32 &amp; 33</strong><br>Consider a processor has a 32-bit word size and a 32KB 8-way set associative cache where each cache line holds four words. If we assume that the machine is byte-addressable.<br>Let main memory address is 32 bits, what is the tag, set and block number bits?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> 20,8,4<br><span class="explanation">Explanation:</span><br>Physical address    : 32-bit<br>Size of cache         : 32 KB<br>8-way set associative<br>Each cache line holds 4 words = 4 * 4 Bytes = 16 B   <br><img src="./Test Results61_files/E25a.PNG" alt="image:COS2/E25a.PNG" width="323" height="238" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 20,7,5</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 19, 9,4</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> 18, 10, 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data questions 32 &amp; 33</strong><br>Consider a processor has a 32-bit word size and a 32KB 8-way set associative cache where each cache line holds four words. If we assume that the machine is byte-addressable.<br>Where in the cache is the word from memory location 3A2C6F0D mapped?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results61_files/correct.png" width="18"> set no-240,block no-13<br><span class="explanation">Explanation:</span><br><img src="./Test Results61_files/E26a.PNG" alt="image:COS2/E26a.PNG" width="531" height="351" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> set no-140,block no-13</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> set no-340,block no-23</li>
+<li>&nbsp;<img src="./Test Results61_files/wrong.png" width="16"> set no-440,block no-13</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results61_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

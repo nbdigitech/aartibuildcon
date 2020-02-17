@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91793&test_id=321 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results16_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results16_files/calclayout.css">
+<script src="./Test Results16_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results16_files/jquery-ui.js.download"></script>
+<script src="./Test Results16_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results16_files/custom.js.download"></script>
+<script src="./Test Results16_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results16_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results16_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837026, 'I\'m sorry, the time available to complete the test is over!', false, 1486837026671);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91793&amp;test_id=321#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 13</strong><br>
+Theory of Computation, Compiler Design&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:11:13&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results16_files/24.png" alt="image:MST13/24.png" width="651" height="181" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only 2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Both (1) and (3)</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> All of them<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/25.png" alt="image:MST13/25.png" width="686" height="297" class="tcecode"><br><img src="./Test Results16_files/26.png" alt="image:MST13/26.png" width="719" height="317" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results16_files/7.png" alt="image:MST13/7.png" width="376" height="282" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> {a<sup class="tcecode">n</sup> b<sup class="tcecode">2n</sup>│n≥0}</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> {a<sup class="tcecode">n</sup> b<sup class="tcecode">(2n+1)</sup>│n≥0}</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> {a<sup class="tcecode">(n+1)</sup> b<sup class="tcecode">2n</sup>│n≥0}</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>It shall be “none of these” since ϵ is not accepted according to the PDA definition, while all of the options accepts ϵ according to their definition.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A shift reduce carries out the actions specified within braces immediately after reducing with the corresponding grammar rule:		<br>S → aaB{print “1”}<br>S → b {print “2”}<br>B → Sc {print “3”}<br>Using above syntax directed translation scheme described by the above rules, what is the translation of “aaaabcc”?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 2 3 2 3 1</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 3 3 2 1 1</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 1 1 2 3 1</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 2 3 1 3 1<br><span class="explanation">Explanation:</span><br>Explanation:<br>The given grammar is:<br>S → aaB {print “1”}<br>S → b {print “2”}<br>B → Sc {print “3”}<br>Shift reduce parsers are bottom up parsers so the parse tree will be evaluated in bottom up fashion.<br><img src="./Test Results16_files/46.png" alt="image:MST13/46.png" width="430" height="315" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar		<br>E → a + F<br>F → (E)<br>F → a<br>If we want to write a recursive descent parser for the above grammar then which one of the following functions will correctly represent production F?<br>(NOTE: The match ( ) is a function which matches the next token in the parsing with the current terminal derived in the grammar and advancing the input pointer to the next token)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/41.png" alt="image:MST13/41.png" width="242" height="167" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> <img src="./Test Results16_files/42.png" alt="image:MST13/42.png" width="251" height="230" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/44.png" alt="image:MST13/44.png" width="547" height="500" class="tcecode"><br><img src="./Test Results16_files/45.png" alt="image:MST13/45.png" width="548" height="514" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/43.png" alt="image:MST13/43.png" width="248" height="153" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following parse tree for the evaluation of the string “real x, y "<br><img src="./Test Results16_files/52.png" alt="image:MST13/52.png" width="516" height="320" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> <img src="./Test Results16_files/53.png" alt="image:MST13/53.png" width="361" height="116" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/56.png" alt="image:MST13/56.png" width="535" height="275" class="tcecode"><br><img src="./Test Results16_files/57.png" alt="image:MST13/57.png" width="463" height="375" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/54.png" alt="image:MST13/54.png" width="284" height="110" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/55.png" alt="image:MST13/55.png" width="330" height="86" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statement in context of LR parser:		<br>I.	LR parser can be constructed to recognize virtually all programming language<br>construct for which context free grammar can be written.<br>II.	LR parser method is most general non backtracking shift reduce parsing method known.<br>III.	The class of grammar that can be parsed using LR method is proper superset of class of grammar that can be parsed with predictive parsers.<br>IV.	LR parser cannot detect syntactic error. <br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> (I) (II) are false but (III) (IV) is correct</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> (I) (II) (III) and (IV) are correct</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> (I) is false but (II) (III) and (IV) is correct</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> (I) (II) and (III) only are correct<br><span class="explanation">Explanation:</span><br>I.	Programming languages which can be written in CFG can be parsed by LR parsers in linear time.<br>II.	LR parsers are non backtracking and they parse on shift and reduce principle. Shift-reduce parsing attempts to construct a parse tree for an input string beginning at the leaves and working up towards the root. In other words, it is a process of “reducing” (opposite of deriving a symbol using a production rule) a string w to the start symbol of a grammar.<br>III.	LR parsing is most general non-back tracking shift reduce parsing. The class of grammars that can be parsed using LR methods is a proper superset of the class of grammars that can be parsed with predictive parsers <br>LL (1) grammars ⊆ LR (1)) grammars<br>IV.	An LR parser can detect a syntactic error as soon as it is possible to do so on a left-to-right scan of the input
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:					<br>S1: If L is a CFL and R is a regular language, then L∩R is a CFL.<br>S2: If L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are two CFL’s then L<sub class="tcecode">1</sub>∩L<sub class="tcecode">2</sub> may or may not be CFL.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/8.png" alt="image:MST13/8.png" width="584" height="369" class="tcecode"><br><img src="./Test Results16_files/9.png" alt="image:MST13/9.png" width="810" height="198" class="tcecode"><br><img src="./Test Results16_files/10.png" alt="image:MST13/10.png" width="771" height="202" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:				<br>S1: L is a CFL, x∈L, and a proper prefix of x is also in L.<br>Claim: L cannot be accepted by a deterministic push-down automaton (DPDA) in empty stack.<br>S2: Every r.e. language over {0, 1} is not reducible to L<sub class="tcecode">HALT</sub>={〈M,w〉:M is a Turing machine that halts on input x}<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/35.png" alt="image:MST13/35.png" width="695" height="349" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:		<br>	S1: In a bottom up evaluation of a syntax directed definition, inherited attributes can be never evaluated.<br>	S2: The two basic operations that are often performed with the symbol table are reset and set.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Only S1<br><span class="explanation">Explanation:</span><br><span style="text-decoration:underline;">Justification for S1:</span><br>The reason for choosing "never be evaluated" shall be because of the following reason:<br>Consider the following SDD:<br>A→BC 	B.i =A.i <br>B→ b		B.s=b.val <br>C→ c 		C.s=c.val<br>The parse tree for "bc" is given below:<br>A<br>/ \<br>B C<br>| |<br>b c<br>When we are traversing bottom up first we'll evaluate B.s then we shall be evaluating B.i .Since i is an inherited attribute so it is dependent on A.i. But we haven't evaluated A.i yet because we are doing a bottom up traversal and we haven't seen A yet . So it cannot be evaluated due to Inherited attribute i.<br>Now consider the following SDD:<br>A→ BC 	A.s=B.s+C.s<br>B→ b 		B.s=b.val <br>C→ c 		C.s=c.val<br>Parse tree for "bc" is given below:<br>A<br>/ \<br>B C<br>| |<br>b c<br>We'll traverse bottom up ,first we shall be evaluating B.s=b.val then C.s=c.val.<br>Then when we will be at A ,we shall have already evaluated all the attributes on which A.s is dependent. So only in this case where SDD has synthesized attributes, then only Bottom up Evaluation can be used.<br>For Inherited attributes we will always need a depth first evaluation.<br><span style="text-decoration:underline;">Justification for S2:</span><br>Insert and lookup are two basic operation performed by symbol table. Insert- adds new entries while lookup- find existing entries. Every time the compiler finds a new identifier in the source code during the lexical analysis phase, it needs to check if that identifier is in the table, if not it needs to store it there. Every insertion operation is always preceded with search operation during lexical analysis phase.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:	<br>S1: If we add a finite set of strings to a regular language the result is a regular language.<br>S2: If we remove a finite set of strings from a regular language the result is a regular language.<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br>S1] <br>Let A be a non-regular language and let B be a finite set of strings.<br>We want to add B to A, so we may assume that none of the strings in B are in A i.e., A∩B=∅.<br>Let C be the language obtained by adding B to A i.e., C=A∪B. Suppose that C is regular and we now show this is impossible since A∩B=∅.<br>We have that A=C-B since C &amp; B are regular. As regular languages are closed under differs A also is a Regular language but we assumed that A is non-regular which is a contradiction. Hence A must be regular.<br>S2]<br>Let A be a non-regular language and let B be a finite set of strings where B≤A. Let C be the language obtained by removing B from A i.e., C=A-B. Suppose that C is regular and we know this is impossible.<br>Since we removed B from A to get C, we must have that C∩B=∅. So, A=C∪B. Now C is regular by assumption and B is regular since it is finite. So, C∪B must be regular but we assumed A is non-regular which is contradiction. Hence A must be regular
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:	<br>S1] All non-regular languages contain infinite number of strings.<br>S2] If A and B both are non-regular languages then the intersection A∩B is also non-regular.<br>Which one of the following is correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> S1: TRUE   S2: TRUE</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> S1: TRUE   S2: FALSE<br><span class="explanation">Explanation:</span><br>S1] Because every finite language is regular.Therefore S1 is true.<br>S2] LetL_1={0<sup class="tcecode">n</sup> 1<sup class="tcecode">n</sup> |n≥0}  and L<sub class="tcecode">2</sub>=〖L<sub class="tcecode">1</sub>〗<sup class="tcecode">c</sup><br>L<sub class="tcecode">1</sub>∩L<sub class="tcecode">2</sub>=ϕ ⇒ L<sub class="tcecode">1</sub>∩L<sub class="tcecode">2</sub>  is regular.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> S1: FALSE   S2: TRUE</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> S1: FALSE   S2: FALSE</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many two state FA can be drawn over alphabet {0, 1}, which accepts empty language?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 20<br><span class="explanation">Explanation:</span><br>Note that we assume a designated start state for the two state FA. Consider how many transition tables can be constructed.<br>The start state cannot be a final state otherwise 'ϵ' will be accepted by the finite automata.<br><img src="./Test Results16_files/34.png" alt="image:MST13/34.png" width="497" height="409" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A → β<sub class="tcecode">1</sub> . β<sub class="tcecode">2</sub> be a valid item for the viable prefix α β<sub class="tcecode">1</sub>.  <br>Let w = α β<sub class="tcecode">1</sub> β<sub class="tcecode">2</sub> x <br>Let the current state be {A -&gt; β<sub class="tcecode">1</sub> . β<sub class="tcecode">2</sub> , A -&gt; β<sub class="tcecode">1</sub> . } <br>Consider the configuration:<br><img src="./Test Results16_files/123456.PNG" alt="image:MST13/123456.PNG" width="150" height="42" class="tcecode"> <br>What action should we take, given the above information?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Either shift or reduce depending on value of β<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br>Explanation:<br>Case 1: β<sub class="tcecode">2</sub> ≠ ϵ Action: shift. Since the dot is in the middle, we know that we must shift. <br>Case 2: β<sub class="tcecode">2</sub> = ϵ Action: reduce A → β<sub class="tcecode">1</sub> When the dot reaches the end, we know that we should try to reduce.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only shift depending on value of β<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only reduce depending on value of β<sub class="tcecode">2</sub> and β<sub class="tcecode">1</sub></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Read the following statements:					<br>I. For every NFA with an arbitrary number of final states there is an equivalent NFA with only one final state<br>II. Regular sets are closed under infinite union<br>III. Regular sets are closed under inverse substitution<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> I and III are the only correct statements</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> I, II and IIII are correct statements</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> I is the only correct statement<br><span class="explanation">Explanation:</span><br>Regular sets are not closed under inverse substitution. They are only closed under inverse regular substitution. So III is false statement.<br>Regular sets are not closed under infinite union. Since the infinite union of finite sets yields any set, infinite union of sets is not even r.e. So II is a false statement.<br>Given a NFA with multiple final states, create a new final state. Put an edge labeled 'ϵ' from each of the multiple final states to the new final state. The new NFA is still an NFA and accepts the same set as the original NFA and has one final state. So I is a true.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> none of the above is correct</li>
+</ol>
+<br><br>
+</li>
+<li>
+S → Aa | b<br>A → Ac | Sd | ∈<br>The equivalent production rules corresponding to the above  production rules:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> S → A’aS’ |  bS’<br>S’ → dA’aS’ | ∈</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> S → A’aS’ |  bS’<br>S’ → dA’aS’ | ∈<br>A’ → cA’ | ∈</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> S → A’aS’ | bS’<br>S’ → dA’aS’ | ∈<br>A → SdA’ | A’<br>A’ → cA’ | ∈<br><span class="explanation">Explanation:</span><br>The given grammar is left recursive.<br>A grammar is said to be left recursive if it is of the form:<br>A → A α | β<br>The grammar after left recursion is: <br>A → β A'<br>A' → ∈ | α A'<br>So for the given grammar the productions after removal of immediate left recursion is :<br>S → A’aS’ |  bS’<br>S’ → dA’aS’ | ∈<br>The above grammar is not free of all left recursion. The resulting grammar is: <br>S → A’aS’ | bS’<br>S’ → dA’aS’ | ∈<br>A → SdA’ | A’<br>A’ → cA’ | ∈
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+For some phase of compiler the following input is given:<br>Input:<br>t<sub class="tcecode">1</sub> := int to float(120)<br>t<sub class="tcecode">2</sub> := id<sub class="tcecode">3</sub> / t<sub class="tcecode">1</sub><br>t<sub class="tcecode">3</sub> := id<sub class="tcecode">2</sub> + t<sub class="tcecode">2</sub><br>id<sub class="tcecode">1</sub> := t<sub class="tcecode">3</sub><br>We get the following output:<br>t<sub class="tcecode">1</sub> := id<sub class="tcecode">3</sub> / 120<br>id<sub class="tcecode">1</sub> := id<sub class="tcecode">2</sub> + t<sub class="tcecode">1</sub><br>Where t<sub class="tcecode">1</sub>, t<sub class="tcecode">2</sub>, t<sub class="tcecode">3</sub> are temporary storage and id<sub class="tcecode">1</sub>, id<sub class="tcecode">2</sub>, id<sub class="tcecode">3</sub> are identifiers, “int to float” is converting 60 to real number. The above phase is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Code generator</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Code optimizer<br><span class="explanation">Explanation:</span><br>The parse tree from semantic analysis phase is converted to intermediate code in ICG phase of compiler which is the input in the question. These codes are then optimized by reducing the number of lines of code. This work is done by the code optimizer.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Intermediate code generator</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results16_files/11.png" alt="image:MST13/11.png" width="727" height="432" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> <img src="./Test Results16_files/12.png" alt="image:MST13/12.png" width="277" height="181" class="tcecode"><br><span class="explanation">Explanation:</span><br>The machine M can be constructed as follows:<br><img src="./Test Results16_files/15.png" alt="image:MST13/15.png" width="514" height="458" class="tcecode"><br> <br>We will use the method of elimination.<br>Try input ‘00’.<br>Given machine input ‘00’ ⇒ output 00<br>Machine (a) input ‘00’ ⇒ output 00<br>Machine (b) input ‘00’ ⇒ output 01<br>Machine (c) input ‘00’ ⇒ output 00<br><br>So with input 00 we can eliminate the choice (b). So the answer is (a) or (c).<br><br>Try input ‘01’.<br>Given machine input ‘01’ ⇒ output = 01<br>Machine (a) input ‘01’ ⇒ output = 01<br>Machine (c) input ‘01’ ⇒ output 01<br>We cannot choose as yet between (a) and (c).<br><br>Try input ‘10’.<br>Given machine input ‘10’ ⇒ output = 11<br>Machine (a) input ‘10’ ⇒ output = 11<br>Machine (c) input ‘10’ ⇒ output 11<br>We cannot choose as yet.<br><br>Try input ‘11’.<br>Given machine input ‘11’ ⇒ output = 11<br>Machine (a) input ‘11’ ⇒ output = 11<br>Machine (c) input ‘11’ ⇒ output 11<br>We cannot choose.<br><br>Try input ‘000’.<br>Given machine input ‘000’ ⇒ output = 000<br>Machine (a) input ‘000’ ⇒ output = 000<br>Machine (c) input ‘000’ ⇒ output 000<br>Machine (a):<br><img src="./Test Results16_files/16.png" alt="image:MST13/16.png" width="320" height="289" class="tcecode"><br>From A 0100, leads to Output 0110.<br><img src="./Test Results16_files/17.png" alt="image:MST13/17.png" width="313" height="326" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/13.png" alt="image:MST13/13.png" width="304" height="190" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> <img src="./Test Results16_files/14.png" alt="image:MST13/14.png" width="280" height="151" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results16_files/29.png" alt="image:MST13/29.png" width="604" height="340" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/30.png" alt="image:MST13/30.png" width="688" height="496" class="tcecode"><br><img src="./Test Results16_files/31.png" alt="image:MST13/31.png" width="691" height="246" class="tcecode"><br><img src="./Test Results16_files/32.png" alt="image:MST13/32.png" width="663" height="230" class="tcecode"><br><img src="./Test Results16_files/33.png" alt="image:MST13/33.png" width="608" height="380" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results16_files/5.png" alt="image:MST13/5.png" width="454" height="141" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>and L<sub class="tcecode">2</sub> are not context free</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>and L<sub class="tcecode">2</sub> both are context free</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> L<sub class="tcecode">1</sub> is context free; L<sub class="tcecode">2</sub> is not context free<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/6.png" alt="image:MST13/6.png" width="681" height="498" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is not context free; L<sub class="tcecode">2</sub> is context free</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the correct statement:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> For any CFL L, there exist a DPDA M such that L = L(M)</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> For any CFL L, there exist a NPDA M such that L = L(M)<br><span class="explanation">Explanation:</span><br>Choice (a):<br>FALSE. The language of all palindromes is not accepted by any DPDA but accepted by a NPDA.<br>Choice (b):<br>TRUE. There exists a construction from any CFG to a PDA such that the language generated by the CFG is the same as the language accepted by the PDA.<br>Choice (c):<br>FALSE. The language {a<sup class="tcecode">n</sup> b<sup class="tcecode">n</sup> c<sup class="tcecode">n</sup> |n≥1} is a CSL that is not a CFL. So no NPDA can accept it.<br>Choice (d):<br>FALSE. Add a pushdown store to a FA and do not use it. It becomes a DPDA.
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> For any non-regular language L, there exist an NPDA M such that L = L(M)</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> For any regular language L, there does not exist an DPDA M such that L = L(M)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br>P → ( op C<br>C → ) | EC<br>E → ( op C | id<br>The corresponding partially completed canonical collection of LR(0) items is shown below:<br><img src="./Test Results16_files/50.png" alt="image:MST13/50.png" width="563" height="444" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> q<sub class="tcecode">0</sub>:S→ .P,P→ .( op C     ;     <br>q<sub class="tcecode">7</sub>:    E →  ( op . C<br>          C → .)<br>C → .EC<br>E → .( op C<br>E → . id<br><span class="explanation">Explanation:</span><br>The complete canonical collection is shown below:<br><img src="./Test Results16_files/51.png" alt="image:MST13/51.png" width="593" height="399" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> q<sub class="tcecode">0</sub>:      S→ .P     <br>P→ .( op C<br>C → . ) |  . EC<br>E →  . ( op C | . id<br>q<sub class="tcecode">7</sub>:    E →  ( op . C<br>          C → .)<br>C → .EC<br>E → .( op C<br>E → . id</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> q<sub class="tcecode">0</sub>:      S→ .P     <br>P→ .( op C<br>C → . ) |  . EC<br>E →  . ( op C | . id<br>q<sub class="tcecode">7</sub>:    E →  ( op . C<br>          C → .)<br>C → .EC</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:  <br>S → A <br>A → -- A B | ++ A B | id B <br>B → -- B | ++ B | €<br>Which of the following is false?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> The grammar is SLR(1)<br><span class="explanation">Explanation:</span><br>The grammar is LL(1) since none of the FIRST set of the same production intersect.<br>The grammar is not ambiguous as none of the strings has more than one LMD or RMD.<br>The grammar is neither LR(0)  nor SLR(1)<br><img src="./Test Results16_files/48.png" alt="image:MST13/48.png" width="461" height="363" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is not LR(0)</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is not ambiguous.</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is LL(1)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:		<br>S1:The language L is not CFL<br>L={a<sup class="tcecode">n</sup> b<sup class="tcecode">m</sup>│2m≤n≤3m}<br>S2:The minimal DFA for Σ={a,b}  for the language where all strings contain ""aa\" " but not ""aaa\" " has 6 states. <br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Only S2<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/3.png" alt="image:MST13/3.png" width="800" height="388" class="tcecode"><br><img src="./Test Results16_files/4.png" alt="image:MST13/4.png" width="563" height="288" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements:<br>S1: A<sub class="tcecode">ϵTM</sub>={〈M〉|M is a TM that accepts ϵ}  is undecidable<br>S2:〖USELESS〗<sub class="tcecode">TM</sub>={〈M,q〉|q is a useless state in TM M }  is undecidable<br>Which one of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2 is true</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br>Justification for S1:<br><img src="./Test Results16_files/20.png" alt="image:MST13/20.png" width="733" height="510" class="tcecode"><br>Justification for S2:<br><img src="./Test Results16_files/21.png" alt="image:MST13/21.png" width="708" height="314" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Neither S1 nor S2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements:				<br>S1: Given two Turing machines, whether one semi-decides the complement of the language semi decided by other is not solvable.<br>S2: Given a CFG G. {ϵ}=L(G) is not solvable.<br>Which one of the following option is correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S1</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Both S1 and S2</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Neither S1 nor S2<br><span class="explanation">Explanation:</span><br>Justification for S1:<br><img src="./Test Results16_files/18.png" alt="image:MST13/18.png" width="733" height="476" class="tcecode"><br>Justification for S2:<br><img src="./Test Results16_files/19.png" alt="image:MST13/19.png" width="720" height="340" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the given grammar G and let L be the language generated by the grammar G. What is the regular expression that represents L?	<br>S→aA<br>A→aA|B<br>B→abB|aB|ϵ<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 〖aa〗* 〖(ab)〗*</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> (aa* (ab+a)*)<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/2.png" alt="image:MST13/2.png" width="694" height="367" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> a* 〖(ab)〗*</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> a〖(ab)〗* a*</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of nodes present in the DAG representation of the following code segment:<br>1.	t1= 4*i<br>2.	t2= a[t1]<br>3.	t3= 4*i;<br>4.	t4= b[t3]<br>5.	t5= t2 * t4<br>6.	t6 = prod + t5<br>7.	prod = t6<br>8.	t7 = i + 1<br>9.	i = t7<br>10.	if i &lt;= 20 goto (1)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/49.png" alt="image:MST13/49.png" width="500" height="490" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 12</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of states in the minimal DFA accepting the language:<br>L={ab<sup class="tcecode">n</sup> a<sup class="tcecode">m</sup>│n≥1,m≥3}<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/1.png" alt="image:MST13/1.png" width="691" height="365" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is regular?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Strings of 0’s whose length is a perfect square</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Set of all palindromes made up of 0’s and 1’s</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> Strings of 0’s, whose length is a prime number</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> Strings of odd number of zeros<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/27.png" alt="image:MST13/27.png" width="708" height="386" class="tcecode"><br><img src="./Test Results16_files/28.png" alt="image:MST13/28.png" width="478" height="496" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Consider the following grammar:		<br>S → AaAb | BbBa<br>A → ∈<br>B → ∈<br>Which one of the following is correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> SLR(1): Yes, CLR(1): Yes, LALR(1): Yes</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> SLR(1): No, CLR(1): Yes, LALR(1): Yes<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/37.png" alt="image:MST13/37.png" width="491" height="330" class="tcecode"><br><img src="./Test Results16_files/38.png" alt="image:MST13/38.png" width="516" height="405" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> SLR(1): No, CLR(1): No, LALR(1): No</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br>Consider the following grammar:		<br>S → AaAb | BbBa<br>A → ∈<br>B → ∈<br>Which one of the following option is correct?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> The grammar is LL(1) but not LR(0)<br><span class="explanation">Explanation:</span><br><img src="./Test Results16_files/36.png" alt="image:MST13/36.png" width="518" height="496" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is LL(1) as well as LR(0)</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is neither LL(1) nor LR(0)</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> The grammar is not LL(1) but is LR(0)</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br><img src="./Test Results16_files/39.png" alt="image:MST13/39.png" width="418" height="313" class="tcecode"><br>How many different tokens are there for the above  program?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 34</li>
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 21<br><span class="explanation">Explanation:</span><br>Explanation:<br>We Have: <br>main, printf → identifier<br>{, },(, ) → delimiter<br>int,float, if,else → keyword<br>a,b,c → identifier<br>10.0, 20.0 → numeric constants<br>“Value of c= %d\n"→literal<br>, ; → separators<br>+ , =, != → operators<br><br>Here we have been asked to find all the different kinds of token that is present so we shall consider only one occurrence of a same kind of token. So, the different tokens <br>main,  printf,  {,  },  (,   ),   int,  float,   if,  else,   a,  b,  c,  10.0,  20.0,   “Value of c= %d\n",   “ ; ”  ,   “,”   ,   =,  + ,  !=<br>The number is = 21
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 18</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions</strong><br><img src="./Test Results16_files/39.png" alt="image:MST13/39.png" width="418" height="313" class="tcecode"><br>How many lexemes are there in the above program.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results16_files/correct.png" width="18"> 43<br><span class="explanation">Explanation:</span><br>The number of lexemes are:<br><img src="./Test Results16_files/40.png" alt="image:MST13/40.png" width="380" height="443" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 26</li>
+<li>&nbsp;<img src="./Test Results16_files/wrong.png" width="16"> 22</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results16_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

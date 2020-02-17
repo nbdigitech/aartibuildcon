@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91798&test_id=319 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results17_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results17_files/calclayout.css">
+<script src="./Test Results17_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results17_files/jquery-ui.js.download"></script>
+<script src="./Test Results17_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results17_files/custom.js.download"></script>
+<script src="./Test Results17_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results17_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results17_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837028, 'I\'m sorry, the time available to complete the test is over!', false, 1486837028416);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=91798&amp;test_id=319#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Multi Subject Test - 12</strong><br>
+Engineering Mathematics, General Aptitude&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:11:19&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results17_files/34.png" alt="image:MST12/34.png" width="437" height="57" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> (n(n+1)(2n+1))/12</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> n(n+1)</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> (n(n+1))/2</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> (n(n+1))/4<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/12.png" alt="image:MST12/12.png" width="377" height="422" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/14.png" alt="image:MST12/14.png" width="454" height="74" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> A<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/15.png" alt="image:MST12/15.png" width="524" height="326" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2A</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 6A</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 8A</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/17.png" alt="image:MST12/17.png" width="445" height="82" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> sin2x</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> (cos)<sup class="tcecode">2</sup> x</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/18.png" alt="image:MST12/18.png" width="471" height="178" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/23.png" alt="image:MST12/23.png" width="199" height="54" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> λ</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> λ/2</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> λ/4<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/24.png" alt="image:MST12/24.png" width="572" height="452" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2λ</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/31.png" alt="image:MST12/31.png" width="675" height="138" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Only S<sub class="tcecode">1</sub> is true<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/19.png" alt="image:MST12/19.png" width="680" height="382" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Only S<sub class="tcecode">2</sub> is true</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Both S<sub class="tcecode">1</sub> and S<sub class="tcecode">2</sub> true</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Neither S<sub class="tcecode">1</sub> nor S<sub class="tcecode">2</sub> is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/5.png" alt="image:MST12/5.png" width="454" height="115" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/6.png" alt="image:MST12/6.png" width="559" height="187" class="tcecode"><br><img src="./Test Results17_files/7.png" alt="image:MST12/7.png" width="547" height="445" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A point on a curve is said to be an extremum if it is a local minimum or a local maximum. The number of distinct extrema for the curve x<sup class="tcecode">3</sup>-3(x)<sup class="tcecode">2</sup>+6 is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/25.png" alt="image:MST12/25.png" width="379" height="421" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A salesman makes 15% profit on a book selling it at the usual marked price. One day, he quadrupled the marked price of the book and offered a discount of 40%. Find the percentage profit he made on the book that day.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 80%</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 100%</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 140%<br><span class="explanation">Explanation:</span><br>Let,<br>The usual marked price =Rs.100<br>Profit earned =Rs.15<br>New marked price =4×100=Rs.400<br>Discount offered =40% of 400=160<br>∴New selling price =400-160=Rs.240<br>Profit =240-100=Rs.140<br>Profit % =(240-100)/100=140/100=140%
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 160%</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many liters of pure milk should be added to a 180 liter mixture of milk and water in the ratio 7:13 such that the resultant mixture has 64% milk in it?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1201</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1351</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1401</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 1451<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/1.png" alt="image:MST12/1.png" width="688" height="485" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+I like your car. How long ______ it?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> did you have</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> are you having</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> have you had<br><span class="explanation">Explanation:</span><br>In the given context, a question is being asked regarding the car which was bought at some time in the past. So, we need a tense that denotes an action beginning at some time in the past and continuing up to the present moment, i.e., the present perfect tense.<br> I like your car. How long <span style="text-decoration:underline;">have you had</span> it?
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> you have</li>
+</ol>
+<br><br>
+</li>
+<li>
+If each of the alphabets of the word ENGLISH is arranged in alphabetical order from left to right and then each vowel in the new was thus formed is changed to previous letter in the English alphabetical series and each consonant is changed to the next letter in English alphabetical series. Which of the following will be fourth from the right?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> P</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> H<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/10.png" alt="image:MST12/10.png" width="370" height="204" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> L</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> I</li>
+</ol>
+<br><br>
+</li>
+<li>
+The range of the function sin<sup class="tcecode">2</sup> x-5sinx-6 is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> [-10,0]<br><span class="explanation">Explanation:</span><br>The given f(x)= sin<sup class="tcecode">2</sup> x-5sinx-6<br>=(sinx-5sinx+25/4)-6- 25/4<br>	=(sinx-5/2)<sup class="tcecode">2</sup>-49/4  ⟶①<br>The range of the sinx is [-1,1]<br>⇒-1≤sinx≤1<br>⇒-1-5/2≤sinx-5/2≤1-5/2<br>⇒-7/2≤sinx-5/2≤-3/2<br>⇒The range of (sinx-5/2)<sup class="tcecode">2</sup>  is[9/4,49/4]<br>⇒9/4≤(sinx-5/2)<sup class="tcecode">2</sup>≤49/4  ⟶②<br>From equations ① &amp; ②,<br>9/4-49/4≤f(x)≤49/4-49/4<br>⇒-10≤f(x)≤0<br>∴Range of f(x)∈[-10,0]
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> [-1,1]</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> [0,10]</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> [-49/4,0]</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is closest in meaning to the word given below<br><strong class="tcecode">TRIVIAL</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Insignificant<br><span class="explanation">Explanation:</span><br>The given word, Trivial refers to “Of a little significance or value” i.e., unimportant or insignificance.<br>		 The word that is closest in meaning to trivial is insignificant.
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Genuine</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Solution</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Identify</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following options is opposite in meaning to the word underlined in the sentence.<br>We are discussing the <span style="text-decoration:underline;">salient </span>features of the new policy.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Unimportant<br><span class="explanation">Explanation:</span><br>In the given sentence, the underlined word salient refers to most noticeable, principal or important features. So, of all the given options the word that is opposite in meaning to the word <em class="tcecode">salient </em>is <strong class="tcecode">unimportant</strong>.
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Principal</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Defective</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Gentle</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which term should replace the question mark in the following series?       <br>7, 28, 63, 112, 175, ?, 343<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 252<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/3.png" alt="image:MST12/3.png" width="414" height="115" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 196</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 210</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 324</li>
+</ol>
+<br><br>
+</li>
+<li>
+Your neighbor has two children, you know that he has a son Ravi. What is the probability that Ravi’s sibling is a brother?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1//2</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 1/3<br><span class="explanation">Explanation:</span><br>Let E be the Event that the neighbor has a son.<br>P(E)=3/4  [E={(b,g)(g,b)(b,b) ]<br>P(F)=P(Ravi has a brother)=1/4 [E={(b,b) } ]<br>P(F⁄E)=P(F∩E)/P(E) <br>=P(F)/P(E) <br>=(1/4)/(3/4)<br>=1/3
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1/4</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 3/4</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/13.png" alt="image:MST12/13.png" width="638" height="238" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> P- V, Q-IV, R-I, S-III</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> P-II, Q-V, R-III, S-I</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> P-II, Q-IV, R-I, S-III<br><span class="explanation">Explanation:</span><br>Given,|A|=n=5<br>The number of reflexive relations on A=2<sup class="tcecode">n</sup><sup class="tcecode">(n-1)</sup> <br>=2<sup class="tcecode">5</sup><sup class="tcecode">(5-1) </sup><br>=2<sup class="tcecode">20</sup><br>The number of symmetric relations on A=2<sup class="tcecode">(n(n+1)/2)</sup><br>=2<sup class="tcecode">15</sup><br>The number of antisymmetric relations on A=2<sup class="tcecode">n</sup>∙3(<sup class="tcecode">(n2-n)/2</sup>)<br>=2<sup class="tcecode">5</sup>∙3<sup class="tcecode">10</sup><br>The number of asymmetric relations on A=3((<sup class="tcecode">n2-n)/2</sup>)<br>=3<sup class="tcecode">10</sup>
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> P-V, Q-III, R-IV, S-I</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results17_files/20.png" alt="image:MST12/20.png" width="420" height="54" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 50e</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 25</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 25e</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 50<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/21.png" alt="image:MST12/21.png" width="311" height="405" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A can do a work in 25 days and B can do the same work in 15 days. If they work at 40% and 60% of their efficiencies respectively, how many days will they both working together take to complete the work?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 15 days</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 18 days<br><span class="explanation">Explanation:</span><br>Let,<br>Total work =750 units<br>⇒ A’s 1 day work =30 units<br>     B’s 1 day work =50 units<br>But, their efficiencies are 40 % and 60% respectively.<br>∴ A’s 1 day work =40/100×30=12 units<br>   B’s 1 day work =60/100×50=30 units<br>∴(A + B)’s 1 day work =42 units<br>∴ No. of days =750/42≈17.8=18 days
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 20 days</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 24 days</li>
+</ol>
+<br><br>
+</li>
+<li>
+A man takes 11 hrs in driving to a certain place and walking back. He would have taken 7hrs more if he walks two ways. How long would he take to drive both ways?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2 hrs</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 4 hrs<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/2.png" alt="image:MST12/2.png" width="412" height="508" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 6 hrs</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 8 hrs</li>
+</ol>
+<br><br>
+</li>
+<li>
+Box 1 contains 1 red ball and 2 white balls. Box 2 contains 2 red balls and 1 white ball. One ball is drawn randomly from box 1 and transferred to box 2.Then a ball is drawn randomly from box 2 and it is red. What is the probability that the transferred ball was white?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 7/12</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 3/4</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 4/7<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/32.png" alt="image:MST12/32.png" width="483" height="374" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 1/2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Dhruv standing at A starts walking. He walks 3Km North-East to C, then starts moving South. He walks 16Km South, then turns towards right and walks 7Km. He then turns left and walks 8Km to point B. What is the distance between C and B?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 19 Km</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 22 Km</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 25 Km<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/4.png" alt="image:MST12/4.png" width="555" height="345" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 28 Km</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many four digit numbers can be formed using the digits 1, 2, 4, 6, 7 and 9 such that each number is divisible by 3 but not by 9? (Repetition of digits is not allowed)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 84</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 48</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 72<br><span class="explanation">Explanation:</span><br>For a number to be divisible by 3 but not by 9, the sum of the digits of number should be 6 or 12 or 15 or 21 or 24(in simple words the sum of digits should not be a multiple of 9).<br>We exclude the cases – where sum of the digits will be 9 and 18.<br>Maximum possible sum of the given digits is<br>9 + 7 + 6 + 4 = 26<br>As repetition is not allowed, we must be one digit only once.<br>The favorable cases are<br>9, 7, 4, 1 – 4!<br>9, 6, 4, 2 – 4!<br>9, 7, 6, 2 – 4!<br>∴ The number of such 4-digit numbers = 4! × 3 = 72<br>(Note: No such number can be formed where the sum of the digits is 6, 12 or 15)
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 120</li>
+</ol>
+<br><br>
+</li>
+<li>
+If ‘m’ is one of the roots of x<sup class="tcecode">5</sup>-1=0and m≠1, then what is the value of <br>m<sup class="tcecode">15</sup>+m<sup class="tcecode">16</sup>+m<sup class="tcecode">17</sup>+ …+m<sup class="tcecode">55</sup><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/8.png" alt="image:MST12/8.png" width="565" height="353" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 5a</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+If a<sub class="tcecode">n</sub>= No. of n-digit ternary sequences with even no. of zeros (Ternary sequence uses 3 digits 0, 1, 2), then recurrence relation for a<sub class="tcecode">n</sub> is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> a<sub class="tcecode">n</sub>=a<sub class="tcecode">n-1</sub>-3<sup class="tcecode">(n-1)</sup></li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> a<sub class="tcecode">n</sub>=2a<sub class="tcecode">n-1</sub>+3<sup class="tcecode">(n-1)</sup></li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> a<sub class="tcecode">n</sub>=2a<sub class="tcecode">n-1</sub> + 3<sup class="tcecode">(n-2)</sup></li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> a<sub class="tcecode">n</sub>=a<sub class="tcecode">n-1</sub> + 3<sup class="tcecode">(n-1)</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/28.png" alt="image:MST12/28.png" width="691" height="506" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a matrix A satisfiesA<sup class="tcecode">2</sup>-5A+7I=0.<br>If A<sup class="tcecode">5</sup>=aA+bI, then the value of 10a-5b must be _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2350</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2780</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 3115</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 3415<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/16.png" alt="image:MST12/16.png" width="503" height="425" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The art of story-telling is not dead, and it will not be allowed to die. The invention of printing, literacy and the average man’s increasing enslavement to the visual media in recent decades threaten to stamp out the art altogether. It faces a threat now even in Indian homes, at least in urban areas, where it has been kept alive for centuries by indulgent grandmothers using the tales of princes, princesses and flying horses for lullaby.<br>According to the passage, the threat to story-telling is the result of<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Invention of printing, literacy and man’s enslavement to visual media<br><span class="explanation">Explanation:</span><br><strong class="tcecode">“The invention of printing, literacy and the average man’s increasing enslavement to the visual media in recent decades threaten to stamp out the art altogether”,</strong>this statement supports Option (a).<br>There are no statements in the passage to support or justify remaining three options.<br>Hence, Option (a) is the correct answer.
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Invention of new methods of entertainment</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Lack of interest in telling stories and listening to the stories</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Unwillingness of urban people to tell stories.</li>
+</ol>
+<br><br>
+</li>
+<li>
+The mean value ‘c’ for the function<br>f(x)=x<sup class="tcecode">3</sup>-5x<sup class="tcecode">2</sup>+8x  in [1,2]is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 4/3<br><span class="explanation">Explanation:</span><br><img src="./Test Results17_files/26.png" alt="image:MST12/26.png" width="647" height="398" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 5/3</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+The question below consists of a pair of related words followed by four pairs of words. Select the pair that best expresses the relation in the original pair. <br><strong class="tcecode">INFANT : NASCENT</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Crude : Refined</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Indolent : Active</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Corpse : Deceased<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair: </strong><br> An Infant is a very young baby and Nascent refers to just coming into existence and beginning to display signs of future potential. Thus, the characteristic of an infant is to be nascent.<br><strong class="tcecode">Option (a):</strong><br>	Crude refers to being in an unrefined or natural state. so, refined is an antonym for crude.<br><strong class="tcecode">Option (b):</strong><br>	The word indolent refers to being habitually lazy and thus active is an antonym for indolent.<br><strong class="tcecode">Option (c):</strong><br>	A corpse is a dead body and deceased refers to the recently dead or no longer living. Thus, a characteristic of a corpse is to be deceased or dead.<br><strong class="tcecode">Option (d):</strong><br>	Swift refers to happening quickly or quick to act or react.<br>	 From the given explanation the pair that best expresses the relation in <br><strong class="tcecode">Infant: Nascent is Corpse: Deceased.        </strong>
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Swift : Slowly</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following degree sequences of all vertices will represent a simple non-directed graph?<br>I.2,2,2,5,5,5<br>II.2,3,3,4,4,6<br>III.1,3,4,4,6,6<br>IV.2,3,3,3,3<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> I and II</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> II and III</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> IV only<br><span class="explanation">Explanation:</span><br>I.  2,2,2,5,5,5<br>Sum of degrees = 21<br>In simple graph, sum of degrees of all vertices is even.<br>(or)<br>Number of vertices of odd degree should be even, but in this sequence 3 vertices of odd degree.<br>So, sequence I cannot represent a simple graph.<br>II.  2,3,3,4,4,6<br>Here the number of vertices are 6. <br>With 6 vertices, degree of any vertex cannot be 6.<br>Sequence II cannot represent a simple graph.<br>III.  1,3,4,4,6,6<br>In a simple graph with 7 vertices if we have two vertices of degree 6 then a vertex with degree 1 is not possible.Sequence III cannot represent a simple graph<br>IV.2,3,3,3,3<br>It represents a simple non-directed graph.<br><img src="./Test Results17_files/27.png" alt="image:MST12/27.png" width="97" height="98" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> III and IV</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is/are valid arguments?  <br>A<sub class="tcecode">1</sub>: [p→r,r→s,t∨~s,~t∨u,~u]⇒~p<br>A<sub class="tcecode">2</sub>: [p→q,q→r,s→~r,p]⇒~s<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Only A<sub class="tcecode">1</sub></li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Only A<sub class="tcecode">2</sub></li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> Both A<sub class="tcecode">1</sub> and A<sub class="tcecode">2</sub><br><span class="explanation">Explanation:</span><br>The given premises are<br>(1)  p→r<br>(2)  r→s<br>(3)  t∨~s<br>(4)  ~t∨u<br>(5)  ~u<br>(6)  s→t          (from ③)<br>(7)  t→u          (from ④)<br>(8)  p→s          (from ① and ② using transitive)<br>(9)  s→u          (from ⑥,⑦ using transitive)<br>(10)  p→u       (from ⑧ and ⑨ using transitive)<br>(11)  ~p             (from ⑤ and ⑩ using Modus tollens)<br>The conclusion ~p is derived from the given premises. So, A<sub class="tcecode">1</sub> is valid.<br>A<sub class="tcecode">2</sub>: The given premises are<br>(1)  p→q<br>(2)  q→r<br>(3)  s→~r<br>(4)  p<br>(5)  p→r(from ①,② using transitive)<br>(6)  r          (from ④,⑤ using Modus Ponens)<br>(7)  ~s          (from ③,④ using Modus tollens)<br>The conclusion ~s is derived from the given premises. So, A<sub class="tcecode">2</sub> is valid.
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> Neither A<sub class="tcecode">1</sub> nor A<sub class="tcecode">2</sub></li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Study the following graph and answer the questions that follows:<br>Number of Appeared Candidates and Passed Candidates (in hundreds) in a Test from Seven Different Centers.<br><img src="./Test Results17_files/9.png" alt="image:MST12/9.png" width="621" height="400" class="tcecode"><br>From which center the difference between the appeared candidates and passed candidates is maximum?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> B</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> G</li>
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> D<br><span class="explanation">Explanation:</span><br>As none of these is not one of the options, you need to calculate the value only for the options.<br>B=1400-100=400<br>G=1200-500=600<br>D=1200-400=800<br>Clearly, D has the maximum.
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> F</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common Data Questions:</strong><br>Study the following graph and answer the questions that follows:<br>Number of Appeared Candidates and Passed Candidates (in hundreds) in a Test from Seven Different Centers.<br><img src="./Test Results17_files/9.png" alt="image:MST12/9.png" width="621" height="400" class="tcecode"><br>What is the average number of candidates passed from all the centers together?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results17_files/correct.png" width="18"> 700<br><span class="explanation">Explanation:</span><br>Average number of candidates passed from all the centers together =(1200+1000+400+1200+400+200+500)/7<br>								=4900/7<br>=700
+</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 470</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 350</li>
+<li>&nbsp;<img src="./Test Results17_files/wrong.png" width="16"> 540</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results17_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=41098&test_id=54 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results124_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results124_files/calclayout.css">
+<script src="./Test Results124_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results124_files/jquery-ui.js.download"></script>
+<script src="./Test Results124_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results124_files/custom.js.download"></script>
+<script src="./Test Results124_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results124_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results124_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921381, 'I\'m sorry, the time available to complete the test is over!', false, 1486921381255);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=41098&amp;test_id=54#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CD Subject Test 1</strong><br>
+Compiler Design Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-14 21:55:50&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-14 23:12:34&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:16:44&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+15.030 / 50.000 (30%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+11 / 33 (33%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results124_files/Q9.PNG" alt="image:CD Subject Test - 1/Q9.PNG" width="594" height="148" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> A * bc +</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Both of the above</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> abc * +</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> ab * c+<br><span class="explanation">Explanation:</span><br><img src="./Test Results124_files/Q10_exp1.PNG" alt="image:CD Subject Test - 1/Q10_exp1.PNG" width="248" height="104" class="tcecode"><br><img src="./Test Results124_files/Q10_exp2.PNG" alt="image:CD Subject Test - 1/Q10_exp2.PNG" width="452" height="430" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following class of statement usually produces no executable codes when compiled?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Input and output statement</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Structural statements</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Assignment</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Declaration<br><span class="explanation">Explanation:</span><br>Executable codes are computing instructions for a computer in a form the computer can directly use/execute. It is derived from source code by compiling or assembling and linking. <br>Apart from declaration all other statements which are assignment, input and output statement and structural statements are converted to executable codes. <br>Structural statements are code segments that define the structure of subroutine, loops, if/else etc. Eg: The structure of for loop is: <br> for ( ; ; ) { } <br>Even these structural statements are converted to jump instructions when it is converted to executable codes, so only declaration statements are not converted to executable codes.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The number of tokens in the following expression is?<br> + * * * &lt; = &amp; &gt; { - + + + } ( &gt;&gt; ) + &amp; &amp;<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 18</li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> 16<br><span class="explanation">Explanation:</span><br>The number of tokens in the expression is = 16. <br>  <img src="./Test Results124_files/q3_exp1.PNG" alt="image:CD Subject Test - 1/q3_exp1.PNG" width="422" height="161" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The equivalent unambiguous grammar for the following grammar is: R → R + R | RR | R* | a | b<br>Note: The equivalent grammar can contain other symbols but the language generated by both the grammars should not change<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> E → E + T | TF | E* | F <br>F → a | b</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> E → E + T | T <br>T → TF | F<br>F → F* |a | b<br><span class="explanation">Explanation:</span><br>This is the grammar that defines regular expressions with basic operations union, concatenation, and Kleene closure. Here, precedence of operators is the highest for closure, next highest for concatenation, and least for union. <br>To remove the ambiguity from the grammar we need to resolve the associativity and precedence. <br>To resolve precedence we divide the grammar into levels keeping the most precedent operator farthest away from start symbol. <br>To resolve associativity we restrict the growth of the parse tree in a particular direction. If a grammar is left associative, then it must grow in left direction. Similarly if a production in the grammar is right associative then it must grow in right direction. <br>So defining a grammar keeping in mind the above points: <br> E → E + T | T <br>T → TF | F <br>F → F*| a | b <br>  The above grammar matches with this option
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> F → F*| a | b<br> T → TF | F <br>E → E + T | T</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given the following grammar:<br> E → p E q | p R t <br>R → d R U | ∊ <br>U → m <br>Convert the above grammar to a left factored grammar also note that while conversion extra symbols can get added. Consider the following statements on left factored grammar <br> (E′ is a non-terminal added after left factoring the grammar). <br>   S1: FIRST(E) = {p} and FOLLOW(R) = {q,t} <br>  S1: FIRST(E) = {p} and FOLLOW(R) = {q, t} <br>  S2: FIRST(R) = {d, ∊} and FOLLOW(U) = {t, m} <br>  S3: FIRST(E′) = {p, d, t} and FOLLOW(E′) = {$, q} <br>  S4: FOLLOW(U) = {m} and FIRST(R) = {d, ∊} <br> Which of the following option is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S3 and S4 are true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> All are true</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Only S2 and S3 are true<br><span class="explanation">Explanation:</span><br>(*)Analyzing statement S1:  <br>  FIRST(E) = {p} and FOLLOW(R) = {q, t} <br>   FIRST(E) is correct but FOLLOW(R) is not correct as it will be {m, t} <br> (*)Analyzing statement S2: <br>  FIRST(R) = {d, ∊} and FOLLOW(U) = {t, m} <br>   Both FIRST(R) and FOLLOW(U) given is correct <br> (*)Analyzing statement S3: <br>  FIRST(E′) = {p, d, t} and FOLLOW(E′) = {$, q} <br>   FIRST(E′) = {p, d, t} <br>   FOLLOW(E′) = {$, q} <br>  Both are true <br> (*)Analyzing statement S4: <br>  FOLLOW(U) = {m} this is not correct since FOLLOW(U) = {t, m} <br>  FIRST(R) = {d, ∊} this is true <br>  So, options S2 and S3 are correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements:<br> S1: A grammar is ambiguous if it generates more than two parse trees for a string<br> S2: A grammar is ambiguous if it generates more than two parse trees for a string derived from different derivations (i.e., leftmost derivation or right most derivation) <br>Which of the following statements are true?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S2 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Both S1 ans S2 is true<br><span class="explanation">Explanation:</span><br>If a grammar can satisfy either of the conditions then a grammar is said to be an ambiguous grammar.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements: <br>S1: An LALR(1) parser for a grammar G can have shift reduce (S-R) conflicts if and only if the LR(1) parser for G has SR  conflicts<br> S2: An LALR(1) parser for a grammar G can have shift-reduce (S-R) conflicts if and only if the LALR(1) parser for G has reduce conflicts.<br> Which of the above statement/s is/are true?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Both S1 and S2 are true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of them</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S2 is true</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> S1 is true<br><span class="explanation">Explanation:</span><br>Both LALR(1) and LR(1) parser uses LR(1) set of items to form their parsing tables. And LALR(1) states can be found by merging LR(1) states of LR(1) parser that have the same set of first components of their items, i.e. if LR(1) parser has 2 states I and J with items <br> A → a . bP, x and <br> A → a . bP, y respectively <br>Where x and y are lookaheads, then as these items are same with respect to their first component, they can be merged together and form one single state, let's say K. <br>Here we have to take union of lookahead symbols. After merging state K will have one single item as A → a . bP, x, y <br>This way LALR(1) states are formed (i.e. after merging the states of LR(1)). <br>Now S-R conflict in LR(1) items can be there whenever a state has items of the <br>form: <br> A → a . bB, p and <br> A → d ., b <br>i.e., it is getting both shift and reduce at symbol b. this shows it has a conflict. <br>Now, as LALR(1) have items similar to LR(1) in terms of their first component, shift-reduce will only take place if it is already there in LR(1) states. If there is no S-R conflict in LR(1) state it will never be reflected in the LALR(1) state obtained by combining LR(1) states. <br> But if the process of merging introduce R-R conflict then the grammar won't be LALR(1)
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements: <br> S1: LL(K) grammars are easier to parse directly <br> S2: LL(1) grammars are easily parsed <br>Which of the above statements are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S1 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Both of these</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> S2 is true<br><span class="explanation">Explanation:</span><br>In general, the LL(K) grammars are quite difficult to parse directly. This is due to the fact that the left context of the parse must be remembered somehow. Each parsing decision is based both on what is to come as well as on what has already been seen of the input. <br>But LL(1) grammars are so easily parsed because the class of LL(1) grammar is <br>strong. <br>The strong LL(1) grammars are a subset of the LL(K) grammars that can be parsed without knowledge of the left-context of the parse. That is each parsing decision is based only on the next K tokens of the input for the current non-terminal that is being expanded. <br> Definition of strong LL(K) grammar: <br> A grammar G = (N, T, P, S) is said to be strong LL(K) for some fixed natural number K if for all non-terminals A, and for any two distinct A-productions in the grammar. <br>  A → α <br>  A → β <br>FIRST<sub class="tcecode">K</sub>(α FOLLOW<sub class="tcecode">K</sub>(A)) ∩ FIRST<sub class="tcecode">K</sub>(β FOLLOW<sub class="tcecode">K</sub>(A)) = ϕ
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages: <br>L1: A<sup class="tcecode">n</sup> B2<sup class="tcecode">n</sup>, n &gt;0 <br>L2: A<sup class="tcecode">n</sup> B2<sup class="tcecode">n</sup> C<sup class="tcecode">n</sup>, n&gt;0 <br> Then which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Both of the languages L1 and L2 can be parsed by LR(K) parsers</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of the languages L1 and L2 can be parsed by LR(K) parsers</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Language L2 can be parsed by LR(K) parser but not L1</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Language L1 can be parsed by LR(K) parser but not L2<br><span class="explanation">Explanation:</span><br>A LR(K) parser is said to parse a string successfully when it completes scanning the entire input buffer, and the stack is empty.<br> Language L1 which is An B^2n can be recognized by a deterministic PDA first all the A's will be pushed and then for every 2B's an A will be popped off. So if a string belongs to the language then its acceptance shall be marked by end of string and an empty stack at the same. <br>However for L2 it is not possible to implement in a stack.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar G= (V,T,P,S) where<br>V={life,session}; T={play,rest}; S={life}<br><br>P: <br>&lt;life&gt; → &lt;session&gt; &lt;session&gt; <br>&lt;session&gt; → play &lt;session&gt; | rest <br><br> In the LR(0) machine for the grammar consider the items:<br> <br>&lt;life&gt; → &lt;session&gt; . &lt;session&gt; , &lt;session&gt; → play . &lt;session&gt; , &lt;session&gt; → play &lt;session&gt; . <br><br>Choose the correct statement:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> No two of the items occur in the same state<br><span class="explanation">Explanation:</span><br>The given grammar is: <br>  &lt;life&gt; → &lt;session&gt; &lt;session&gt;<br> &lt;session&gt; → play &lt;session&gt; | rest <br>  For simplicity let us re-write the above grammar as follows: <br>   L → SS <br>   S → pS | r <br>  Where L, S are non-terminals while p, r are terminals <br>  The augmented grammar is: <br>   L′ → L <br>   L → SS <br>   S → pS <br>   S → r <br> <img src="./Test Results124_files/Extra_2.png" alt="image:CD Subject Test - 1/Extra_2.png" width="375" height="411" class="tcecode"><br> We can see the items given in the question: <br>   L → S . S belongs to state I<sub class="tcecode">2 </sub><br>  While S → p . S belongs to state I<sub class="tcecode">3</sub> <br>  While S → pS . belongs to state i<sub class="tcecode">6</sub> <br>  From the above it is clear that the three items belongs to different states.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of above.</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> All three of the items occur in same state</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> At least two of them occur in multiple states</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar<br> E → E + E<br> E → E * E <br>E → id <br> What we can say about precedence of operator + and *?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Both have same precedence<br><span class="explanation">Explanation:</span><br>Given grammar: <br>E → E + E<br>E → E * E <br>E → id <br>  Suppose we want to generate the string id + id * id <br> We can derive it as: <br>  <br> <img src="./Test Results124_files/Q11_exp.PNG" alt="image:CD Subject Test - 1/Q11_exp.PNG" width="311" height="359" class="tcecode"><br> Since we can derive it in both the ways i.e., taking + having higher precedence than * and also by considering * having higher precedence than +, so the precedence can‟t be compared and both operators have same precedence.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> + is having higher precedence</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> * is having higher precedence over +</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following CFG with a start symbol S: <br>S → ABC | s | ∊ <br>A → BC | a | ∊ <br>B → b | ∊ <br>C → c | ∊ <br> How many derivation trees exists to derive the string "bc"?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br><img src="./Test Results124_files/Q8_exp.PNG" alt="image:CD Subject Test - 1/Q8_exp.PNG" width="604" height="370" class="tcecode">
+</li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following CFG <br>S → AB <br>A → CA | ∊ <br>C → 011 | 1 <br>B → DB | ∊ <br>D → 0 1 <br>Which of the following RE or language does the above CFG represent?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> {L(G) = 0<sup class="tcecode">n</sup>12<sup class="tcecode">n</sup> | n &gt; 1}</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> RE:O* (011 + 1)*</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> RE: (011 +1)* (01)*</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> RE: {L(G) = 0<sup class="tcecode">n</sup> 12<sup class="tcecode">n</sup> (01)<sup class="tcecode">n</sup> | n &gt; 1}</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following identities are correct?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> (a + ba + b*)* = (b + a)*<br><span class="explanation">Explanation:</span><br>To prove that two regular expression are same or nor then we shall prove it by contraction. <br> Analyzing other options<br>  (b + a)* can generate the string "a‟ while ba* cannot. <br> <br>  (b* a*) cannot generate the string "ab‟ while (b + a)* <br><br>  ∊ is a part of (b + a)* but it is not a part of (b + a)+ <br><br> While for this option all the strings generated by (a + ba + b*)* is also a part of (b + a)
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> ba* = (b + a)*</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (b* a*) = (b + a)<sup class="tcecode">+</sup></li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (b* a*) = (b + a)*</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Question 14&amp;15</strong></span><br>P → SR | S<br>		R → bSR | bS<br>		S → WbS | W<br>		W → L * W | L<br>		L → id<br><img src="./Test Results124_files/Q14_exp_2.PNG" alt="image:CD Subject Test - 1/Q14_exp_2.PNG" width="624" height="214" class="tcecode"><br>The above grammar is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Not an operator precedence grammar but can be converted to operator precedence grammar<br><span class="explanation">Explanation:</span><br><img src="./Test Results124_files/Q14_exp_1.PNG" alt="image:CD Subject Test - 1/Q14_exp_1.PNG" width="270" height="356" class="tcecode"><br>As we know for a grammar to be an operator precedence grammar:<br>			(*) There must not be two adjacent non-terminals<br>			(*) There must not be any ∊ productions<br>The given grammar violates the first point since the production (1) contains two adjacent non-terminals i.e., P → SR.<br>But the grammar can be converted to an operator grammar.<br>To reduce it to an operator grammar first we have to understand what the grammar actually represents.<br><br><img src="./Test Results124_files/Q14_exp_2.PNG" alt="image:CD Subject Test - 1/Q14_exp_2.PNG" width="624" height="214" class="tcecode"><br><br>Consider the production:<br>P → SR | S<br>		R → bSR | bS<br>which can be written as (using production (3) in (1))<br>		P → SbSR | S<br>Hence we can replace SR with P because<br>		Paragraph → sentence blank followed by paragraph<br>		‘SR’ stands for recursive number of sentences which is a paragraph.<br>	So we get<br>		P →Sbp | SbS | S<br>		And we eliminate variable R and the corresponding productions.<br>So, the resulting operator grammar is:<br>		P → sbP | SbS | S<br>		S → WbS | W<br>		W → L * W | L<br>		L → id
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Not an operator precedence grammar and cannot be converted to operator precedence grammar.</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of the above</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> An operator precedence grammar.</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Linked Question 14&amp;15</strong></span><br>P → SR | S<br>		R → bSR | bS<br>		S → WbS | W<br>		W → L * W | L<br>		L → id<br><img src="./Test Results124_files/Q14_exp_2.PNG" alt="image:CD Subject Test - 1/Q14_exp_2.PNG" width="624" height="214" class="tcecode"><br>The operator precedence table is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q15_Opt_A.PNG" alt="image:CD Subject Test - 1/Q15_Opt_A.PNG" width="244" height="197" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q15_Opt_D.PNG" alt="image:CD Subject Test - 1/Q15_Opt_D.PNG" width="206" height="168" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q15_Opt_C.PNG" alt="image:CD Subject Test - 1/Q15_Opt_C.PNG" width="232" height="185" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> <img src="./Test Results124_files/Q15_Opt_B.PNG" alt="image:CD Subject Test - 1/Q15_Opt_B.PNG" width="204" height="174" class="tcecode"><br><span class="explanation">Explanation:</span><br>The given grammar can be converted to an equivalent operator precedence grammar which is<br>		P → sbP | SbS | S<br>		S → WbS | W<br>		W → L * W | L<br>		L → id <br>	In order to determine the precedence first we have to see at which level all the operators are.<br>For eg: Since ‘id’ is in a lower level compared to ‘b’ hence ‘id’ has a greater precedence than ‘b’<br>	The farthest apart an operator be placed from the start symbol, the more precedence it has.<br>	Also when two same operations are compared it depends upon their associativity to determine which shall have more precedence.<br>For eg: Since * is defined as right associative as we can be seen in the following production:<br>	W → L * W | L<br>    So, <br>	*     &lt;∙     *<br>	Similarly for ‘b’ also we will analyze in the same way as it is defined as right associative in the production:<br>        S → WbS | W<br>      <br>    So, <br>	b     &lt;∙     b<br>‘id’ will always have non-precedence than other operators and ‘$’ will have least precedence.<br>	So, the precedence table is:-<br><img src="./Test Results124_files/Q15_Opt_B.PNG" alt="image:CD Subject Test - 1/Q15_Opt_B.PNG" width="204" height="174" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results124_files/Q26_1.PNG" alt="image:CD Subject Test - 1/Q26_1.PNG" width="434" height="455" class="tcecode"><br><img src="./Test Results124_files/Q26_2.PNG" alt="image:CD Subject Test - 1/Q26_2.PNG" width="337" height="279" class="tcecode"><br>The above recursive descent parser is for which grammar?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> S → aBCd | dCBe <br>B → bB | ∊<br>C → ca | ac | ∊<br><span class="explanation">Explanation:</span><br>Recursive descent parsing is writing recursive procedures for each non-terminal. This is a top-down parser process in which the parser attempts to verify whether the syntax of the input string is correct as it is read from left to right.<br>The given recursive descent parser is:<br><img src="./Test Results124_files/Q26_exp_1.PNG" alt="image:CD Subject Test - 1/Q26_exp_1.PNG" width="711" height="519" class="tcecode"><br><img src="./Test Results124_files/Q26_exp_2.PNG" alt="image:CD Subject Test - 1/Q26_exp_2.PNG" width="582" height="415" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S → aBCd | dCBe | b | c | e <br>B → bB | a | c | d | e<br>C → ca | ac | b | d | e</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S → BC |CB | b | c | e<br>B → B | a | c | d | e<br>C → ca | ac</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which language necessarily need help allocation in the Run Time Environment?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Those that use global variables.</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Those that allow dynamic data structure<br><span class="explanation">Explanation:</span><br>Runtime environment means we deal with dynamic memory allocation and heap is a dynamic data structure. <br>So it is clear that those languages that allow dynamic data structure necessarily need heap allocation in the runtime environment.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Those that support recursion</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Those that use dynamic scoping</li>
+</ol>
+<br><br>
+</li>
+<li>
+What kind of error will the following program give: main( )<br> {  int *p; <br> p = dangle( );  /* dangling reference*/ <br>} <br>int *dangle( ); <br>{<br>  int i = 23; <br>  /* code for deallocating i*/<br> return &amp;i;<br> }<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Logical error<br><span class="explanation">Explanation:</span><br>Dangling reference means referring to location which have been de-allocated. <br>  A dangling reference occurs when there is a reference to storage, that has been de-allocated. It is a logical error to use dangling reference, since the value of deallocated storage is undefined according to semantics of most languages. Since there is a possibility that storage may later be allocated to another datum so bugs can appear in the programs with dangling reference.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Syntax error</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Semantic error</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Lexical error</li>
+</ol>
+<br><br>
+</li>
+<li>
+The operator precedence parsing, precedence relations are defined<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> To delimit the handle</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> For all pair of terminals<br><span class="explanation">Explanation:</span><br>An operator precedence grammar is a context free grammar that has the property that no production has either an empty right-hand side or two adjacent non-terminals in its right hand side. These properties allow precedence relations to be defined between the terminals of the grammar.<br>For eg: <br>	E → E + T | T<br>	T → T * F | F<br>	F →d<br>The above grammar is an operator precedence grammar.<br>Here ‘+’ and ‘*’ are terminals and precedence between them is determined.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> For all pair of non-terminals</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+The following program structure is given: int max_fun(int arr[ ]); <br>main ( ) <br>{  <br>int val[20]; <br> int max; <br> max = max_fun(val);<br> } <br> int max_fun(int arr[ ]) { <br>  int x, y, z; <br>  /* max finding technique*/ <br> } <br>What can be said about the local variables when in main module max_fun( ) function is called 5 times sequentially?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Local variable storage will remain when the activation record is popped.</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Each call of max_fun will allocate a fresh storage in each activation<br><span class="explanation">Explanation:</span><br>Each time a function is called, a new storage area is allocated for local variables.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these.</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Each call of max_fun will allocate same storage local variables.</li>
+</ol>
+<br><br>
+</li>
+<li>
+In doubly linked data structure of symbol table the search for a name proceeds<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Forward from the beginning of the array to end</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Any arbitrary direction</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Using binary search techniques</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Backwards from the end of the array to the beginning<br><span class="explanation">Explanation:</span><br>A doubly linked list of the records is a simple method to implement a symbol table. Each record is a symbol table entry containing among other things, an array for storing name. New names are added to the end of the list by the insert operation. The "lookup‟ operation proceeds backwards from the end of the list to the start, searching for required identifier.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the SDT(using synthesized attributes) for control flow structure:<br>S → A1 while E A2   (S)  A3   {gen(NOP)}  <br>A1 → ∊  {A1.value = codeptr}<br>A2 → ∊  {A1.value = codeptr; gen(IF J, E.value, -)}<br>A3 → ∊  {gen(UJ, A1.value); backpatch(A1.value)}<br>E → id   {E.value = id.name}<br>S → ∊ { }<br>	The code generated for the input “while a( )” is:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (1) IF J a, (2)<br>(2) UJ (3)<br>(3) NOP</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (1) IF Ja, (1)<br>(2) UJ (2)<br>(3) NOP</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> (1) IF J a , (3)<br>(2) UJ (1)<br>(3) NOP<br><span class="explanation">Explanation:</span><br>We have to derive the string “while a( )” (where ‘a’ is an identifier)<br><img src="./Test Results124_files/Q33_exp_1.PNG" alt="image:CD Subject Test - 1/Q33_exp_1.PNG" width="347" height="245" class="tcecode"><br>			 <br>We have numbered A1 as (1), A2 as (2) and A3 as (3).<br>The semantic actions are described below:<br><img src="./Test Results124_files/Q33_exp_2.PNG" alt="image:CD Subject Test - 1/Q33_exp_2.PNG" width="659" height="585" class="tcecode"><br><br>O/P: (1) IF J a, (3)<br>     (2) UJ (1)<br>     (3) NOP
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the SDT (using synthesized attributes) for control flow structure<br>S → if EA, then S A<sub class="tcecode">2</sub> {gen (NOP)}<br>A1 → ∊ {gen (IF J, E.value, _); M1.value = varptr;}<br>A2 → ∊ {backpatch (A1.value)}<br>E → id { E.value = id.name}<br>s → ∊ { }<br>Only gen{} prints whatever attributes are present within it. <br>varptr points to the next instruction to be evaluated <br>backpatch acts as a label to return the control to the position specified<br>The output for the input “if a then” (where ‘a’ is an identifier):<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (1) NOP</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (1) IF J a, (2)<br>(2) a: = 0</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> (1) NOP<br>(2) IF J a, (1)</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> (1) IF J a, (2)<br>(2) NOP<br><span class="explanation">Explanation:</span><br>We have to derive the string “if a then”<br><img src="./Test Results124_files/Q32_exp_1.PNG" alt="image:CD Subject Test - 1/Q32_exp_1.PNG" width="328" height="238" class="tcecode"><br>			 <br>		We have numbered A1 as (1) and A2 as (2) which are acting as labels.<br>		The semantic actions are described below:<br><img src="./Test Results124_files/Q32_exp_2.PNG" alt="image:CD Subject Test - 1/Q32_exp_2.PNG" width="658" height="338" class="tcecode"><br>O/P: (1) IF J a, (2)<br>        (2) NOP
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the program given below in a block-structured pseudo language with lexical scoping and nesting of procedures permitted.<br><img src="./Test Results124_files/Extra_4.png" alt="image:CD Subject Test - 1/Extra_4.png" width="356" height="486" class="tcecode"><br>Consider the calling chain:<br>                        main → A1 → A2 → A21 → A1<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q23_Opt_B.PNG" alt="image:CD Subject Test - 1/Q23_Opt_B.PNG" width="255" height="245" class="tcecode"></li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q23_Opt_A.PNG" alt="image:CD Subject Test - 1/Q23_Opt_A.PNG" width="252" height="231" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> <img src="./Test Results124_files/Q23_Opt_D.PNG" alt="image:CD Subject Test - 1/Q23_Opt_D.PNG" width="300" height="243" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results124_files/Q23_exp.PNG" alt="image:CD Subject Test - 1/Q23_exp.PNG" width="329" height="251" class="tcecode"><br>Since, activation records are created at procedure entry time and destroyed at procedure exit time. <br>	Here calling sequence is given as:<br>		main → A1 → A2 → A3 → A1<br>	Now A1, A2 are defined under main, so for A1 &amp; A2 the access links are pointed to main.<br>	A21 is defined under A2 hence its access link will point to A2.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q23_Opt_C.PNG" alt="image:CD Subject Test - 1/Q23_Opt_C.PNG" width="254" height="224" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the grammar and the statements regarding the grammar:<br><img src="./Test Results124_files/Q28.PNG" alt="image:CD Subject Test - 1/Q28.PNG" width="342" height="257" class="tcecode"><br>S1: The above grammar uses only synthesized attributes<br>S2: The above grammar is an L-attributed<br>	Which of the statement/s is/are true?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S2 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Both S1 and S2 are true<br><span class="explanation">Explanation:</span><br>The value of an inherited attribute is computed from the values of attributes at the strings and parent of that node.<br>While for synthesized attribute the value is computed from the values of attributes at the children of that node in the parse tree.<br>For this grammar start symbol does not have any inherited attribute.<br>Terminals are assumed to have only synthesized attribute values which are supplied by lexical analyzer.<br>But since every S-attributed syntax-directed definition is also L-attributed. So both the statements are correct.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following statements: <br> S1: Compared to array data structure implementation of symbol table, hashing scheme has better performance.  <br>S2: Chained tables require a fixed array of pointers and separate Linked List of the inserted records.<br><br>Which of the following statements is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S1 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Neither S1 nor S2 is true</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> S1, S2 is true<br><span class="explanation">Explanation:</span><br>In case of array implementation of symbol table <br><br> For order array: <br><br>   Time(insert) = O(n)<br> <br>   Time(lookup) = O(n) <br>  If binary search is used for lookup then = O(log n) <br><br> For unordered array: <br>   Time(insert) = O(1) <br>   Time(lookup) = O(n) <br><br>  While for hash table the time required is: <br>   Time(insert) = O(1) <br>   Time(lookup) = O(1), assuming no collision <br><br>If collision occurs let us assume we use chaining method for resolving it having a chain depth of "b‟ then the time complexity for lookup is:  <br> Time(lookup) = O(b) <br>So we can see that hash table implementation of symbol table is definitely better. <br> Justifying statement S2: <br>In the simplest chained hash table technique, each slot in the array references a linked list of inserted records. Insertion requires finding the correct slot and appending to either end of the list in that slot; deletion requires searching the list and removal.  <br><img src="./Test Results124_files/Q21_exp.PNG" alt="image:CD Subject Test - 1/Q21_exp.PNG" width="624" height="333" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S2 is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following sentences:<br>S1: While representing intermediate code in the form of triples statements cannot be moves.<br>S2: identifying whether it is a for-loop or a while statement from a 3-address code is difficult.<br>	Which of the above statement/s is/are true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Both S1 and S2<br><span class="explanation">Explanation:</span><br>Justifying statement S1:<br>		Consider the following example . The intermediate code in the form of triples for the expression:<br>-(a + b) * ( c + d) + (a + b + c)<br><img src="./Test Results124_files/Q31_exp_1.PNG" alt="image:CD Subject Test - 1/Q31_exp_1.PNG" width="365" height="347" class="tcecode"><br>So as we can see from the above representation that it shall be difficult to move the statements.<br>Once all the instructions are returned and the instruction number are used in some other instruction so if we change the order of instruction then the instruction have to be changed.<br>	Justifying statement S2:<br>		Consider the following for loop construct:<br>			for(i = 0; i &lt; 10; i + +)<br>				a = b + c;<br>The above segment when converted to 3 – address code:<br><img src="./Test Results124_files/Q31_exp_2.PNG" alt="image:CD Subject Test - 1/Q31_exp_2.PNG" width="185" height="299" class="tcecode"><br>Now if we look at this 3-address code then it will be very hard to understand what kind of loop it is whether a while loop or a for-loop.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Neither S1 nor S2</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S2</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Only S1</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following SDT<br>E1 → E2 + E3		[E1.value = E2.value + E3.value]<br>E4 → E5 * E6		[E4.value = E5.value * E6.value]	<br>E → id			[E.value = 1]<br>	The output for the expression a + b + c * d + e is:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 3</li>
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>The given expression is a + b + c * d + e:<br>	<br><img src="./Test Results124_files/Extra_5.png" alt="image:CD Subject Test - 1/Extra_5.png" width="521" height="454" class="tcecode"><br>			Sol = 4
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following grammar:<br>S → ScB | B<br>B → e | efg | efCg<br>C → SdC |S<br>	An LL(1) grammar that generates the same language:<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results124_files/correct.png" width="18">&nbsp;<img src="./Test Results124_files/correct.png" width="18"> S → BS'<br>S' → cBS | ∊<br>B → e B'<br>B' → ∊ | f B''<br>B" → g | Cg<br>C → S C'<br>C' → dC | ∊<br><span class="explanation">Explanation:</span><br>The given grammar is:<br>	S → ScB | B<br>B → e | efg | efCg<br>C → SdC |S<br>		First we have to eliminate left recursion from the grammar:<br>		S → BS'<br>                  S' → cBS | ∊<br>B → e | efg | efCg<br>C → SdC | S<br>		Then we have to eliminate common prefixes by left factoring:<br>		<br>S → BS'<br>S' → cBS | ∊<br>B → e B'<br>B' → ∊ | f B''<br>B" → g | Cg<br>C → S C'<br>C' → dC | ∊
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Cannot be converted to an LL(1) grammar.</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Already an LL(1) grammar</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> S → BS^'<br>S^' → CBS | ∊<br>B → e | efg | efCg<br>C → SdC | S</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume that there is an SDT for a simple type checker. This type checker recognizes only three types- int, bool and err. Here "int" type is for integers. "bool" type is for Boolean value true/false and "err" type is for error.<br><br>The grammar is given below:<br>E → E + E<br>E → E and E<br>E → E = = E<br>E → true<br>E → false<br>E → num<br>E → (E)<br><br>What shall be the annotated parse tree for the expression  “(8 + 8) = 8” considering it has to check type compatibility and after evaluation the final result that it should give is true / false which is bool<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q30_Opt_C.PNG" alt="image:CD Subject Test - 1/Q30_Opt_C.PNG" width="433" height="305" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> None of these</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> <img src="./Test Results124_files/Q30_Opt_A.PNG" alt="image:CD Subject Test - 1/Q30_Opt_A.PNG" width="339" height="272" class="tcecode"><br><span class="explanation">Explanation:</span><br>Grammar is as follows:<br>	E → E + E<br>E → E and E<br>E → E = = E<br>E → true<br>E → false<br>E → num<br>E → (E)<br>		Take the input string and draw a parse tree for string “(8 + 8)=8” as in figure.<br>	<br><img src="./Test Results124_files/Q30_exp_1.PNG" alt="image:CD Subject Test - 1/Q30_exp_1.PNG" width="293" height="333" class="tcecode"><br><br>Now let us attach semantic actions. First the parser reads”(“and then “8”. Here we are not interested with value; what we are writing is a type checker. A type checker first should collect type information, and then should verify type compatibility of operands. Here when “8” is read, we need to collect and store type information. For storing type information, we assume that there is an attribute “type” with each grammar symbol. So when token num is reduced to E after reading “8”, we define semantic rule as         {E.type = int;} because “8” is integer type. Similarly for true/false, assign the type as bool.<br>	Now the parser reads “+”, then “8”, and reduces “8” to E. Now the next reduction is E + E to E. Here type checker should verify types. To distinguish between left hand side non-terminal E and operands on right hand side E’s we take them as E1, E2 and E3 respectively. When expression with arithmetic addition is reduced, typr check could be checking if both operands are integer type. If they are integers, it returns, or else it returns an error type. The above semantics can be implemented by attaching the semantic action as follows:<br><br>E1 → E2 + E3 { if(E2.type = int and E3.type = = int)<br>			   then E1.type = int else E1.type = error;}<br><br>	Similarly, if an expression with Boolean operator is reduced, type check could be checking if both operands are integer type or boolean type. If they are int/bool, return bool, else return error type. The above semantics can be implemented by attaching the semantic action as follws:<br>	E1 → E2 and E3 { if(E2.type = = E3.type) &amp;&amp; (E2.type = = int/bool)<br>			   then E1.type = bool else E1.type = error;}<br><br>	Similarly, if an expression with relational operator is reduced, type check could be checking if both operands are integer type or Boolean type. If they are int/bool, return bool, else return error type. The above semantics can be implemented by attaching the semantic action as follows:<br>	E1 → E2 = = E3 { if(E2.type = = E3.type) <br>			   then E1.type = bool else E1.type = error;}<br>The SDT can be defined as follows:<br>		SDT for simple type checking<br><img src="./Test Results124_files/Q30_exp_2.PNG" alt="image:CD Subject Test - 1/Q30_exp_2.PNG" width="518" height="361" class="tcecode"><br><br>The annotated parse tree for the string (8 + *) = = 8 is as follows:<br>	Now let us see how to understand given SDT<br><img src="./Test Results124_files/Q30_exp_3.PNG" alt="image:CD Subject Test - 1/Q30_exp_3.PNG" width="356" height="311" class="tcecode">
+</li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> <img src="./Test Results124_files/Q30_Opt_B.PNG" alt="image:CD Subject Test - 1/Q30_Opt_B.PNG" width="357" height="226" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+A non relocatable program is one which<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> All of these</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Can itself perform the relocation of its address sensitive portions.</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> Cannot be made to execute in any area of storage other than one designed.<br><span class="explanation">Explanation:</span><br>A non relocatable program is one which cannot be made to execute in any area of storage other than the one designed for it, at the time of its coding or translation. Non-relocatability results due to address sensitivity of code and lack of information about the parts of program which are address sensitive and in what manner they are sensitive.<br>A program that does not have relevant information regarding address sensitivity is non-relocatable.
+</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> Consists of a program and relevant information for its relocation.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true(T) or false(F) for grammar G? <br>1. E → F ↑ <br>2. F → A 1 B <br>3. F → 2<br> 4. A → 2 <br>5. B → A <br>(A) The grammar is not LL(0)<br>(B) The grammar is LL(1) <br>(C) The grammar is not LR(0) <br>(D) The grammar is LR(1)<br>(E) The grammar is SLR(1) <br>(F) The grammar is LALR(1)<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> A – T, B – F, C – T, D – T, E – F, F – F</li>
+<li>&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> A – F, B – F, C – T, D – T, E – F, F – T</li>
+<li><img src="./Test Results124_files/wrong.png" width="16">&nbsp;<img src="./Test Results124_files/wrong.png" width="16"> A – T, B – F, C – T, D – T, E – T, F – T</li>
+<li>&nbsp;<img src="./Test Results124_files/correct.png" width="18"> A – T, B – F, C – T, D – T, E – F, F – T<br><span class="explanation">Explanation:</span><br>Given grammar is: <br>1. E → F ↑<br>2. F → A 1 B <br>3. F → 2 <br>4. A → 2 <br>5. B → A <br>(A)  Not LL(0) since more than one string can be generated. LL(0) parser do look at the tokens, but they don‟t decide which production to apply upon them. They just determine if the sequence belongs to the language or not. This means that every non-terminal symbol must have a single RHS &amp; that there may be no recursion.<br>(B) Consider production 2 and 3 <br>  F → A 1 B<br>  F → 2 <br>  FIRST(A 1 B) = 2 <br>   FIRST(2)= 2 <br>   ∴ There is an intersection in the FIRSTs of A1B and 2. So it is not LL(1) <br>(C)  Cannonical collection of LR(0) items <br><img src="./Test Results124_files/Q17_exp1.PNG" alt="image:CD Subject Test - 1/Q17_exp1.PNG" width="412" height="262" class="tcecode"><br>(D)<br><img src="./Test Results124_files/Extra_3.png" alt="image:CD Subject Test - 1/Extra_3.png" width="534" height="369" class="tcecode"><br><br>(E) In cannonical collection of LR(0) items, consider state I4  <br><br>    FOLLOW(X) = {↑} <br>    FOLLOW(A) = {1, ↑} <br>   ∴ FOLLOW(X) ∩ FOLLOW(A) ≠ ϕ <br>       Here we can see we still have RR conflict and that FOLLOW sets do not    resolve ambiguity. So not SLR(1). <br>(F) In cannonical collection of LR(1) items (i.e., in D) we saw all the items are different and so there is no need to merge any two items. By default, the grammar is LALR(1).
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results124_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

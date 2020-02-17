@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92213&test_id=243 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results68_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results68_files/calclayout.css">
+<script src="./Test Results68_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results68_files/jquery-ui.js.download"></script>
+<script src="./Test Results68_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results68_files/custom.js.download"></script>
+<script src="./Test Results68_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results68_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results68_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838105, 'I\'m sorry, the time available to complete the test is over!', false, 1486838105202);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92213&amp;test_id=243#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Subject Test - 3</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:34:39&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+TCP has an end-to-end checksum that covers part of IP header and TCP header and data. When receiver receives packet whose checksum is not matching, it can do following things.<br>Discard the segment and send ACK to sender with cumulative ACK set to next in sequence bytes its expect to receiver. <br>Discard the segment and do nothing.<br>Which one of above actions is preferable?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>The packet is corrupted means, the TCP header and IP header which contains source and destination IPs and ports might also be corrupted. <br>So receiver is not sure about the sender’s address. So better to discard and do nothing.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> based on implementation</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the effect of using slow start on a line with a 10-msec round-trip time and no congestion. The threshold is 24 KB and the maximum segment size is 2 KB.How long does it take before the first full window can be sent?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 40 msec<br><span class="explanation">Explanation:</span><br>The first bursts contain 2K, 4K, 8K, and 16K bytes, respectively. The next one is 24 KB and occurs after 40 msec.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 80 msec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 50 msec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 30 msec</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider an IPv4 packet arriving with an offset value 80 and HLEN value 5. What will be the<br>number of first byte of the packet? How many bytes of options field in the header are being<br>carried by this packet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 80 and 0 respectively</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 80 and 5 respectively</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 640 and 0 respectively<br><span class="explanation">Explanation:</span><br>he first byte number will be 80x8=640 and the header length is 5x4=20 B which is the minimum value for header length. So, no options field. Since fragment offset is in units of 8 bytes.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 320 and 20 respectively</li>
+</ol>
+<br><br>
+</li>
+<li>
+A router has just received the following new IP addresses: 67.8.96.0/21, 67.8.104.0/21, 67.8.112.0/21, and 67.8.120.0/21. If all of them use the same outgoing line, What is the aggregation ID if these subnets can be aggregated?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 67.8.96.0/18</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 67.8.96.0/19<br><span class="explanation">Explanation:</span><br>For each set we have to check all the 3 rules.<br>	1st Rule: contiguous <br>2nd Rule: all network’s size should be same <br>3rd Rule: 1st IP should be divisible by total size <br>The above 3 rules are satisfied with all subnets. Then the supernetID is the first subnet ID.<br>In all subnets 3 bits are changing. So mask will be 21-3 = 19.<br>67.8.96.0/19
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Aggregation is not possible</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there are three routers between a source and destination. Ignore fragmentation. An IP datagram sent from the source to the destination will travel over how many interfaces? How many forwarding tables will be indexed to move the datagram from the source to destination?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 8, 4</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 6, 3</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 8, 3<br><span class="explanation">Explanation:</span><br>Total 8 interfaces and 3 forwarding tables<br><br>each router has 2 interfaces so total 6 interfaces,source and destination has 2 interfaces so total 8 interfaces<br><br>each router have its own forwarding table.(so 3 forwarding tables)
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 6, 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there is a 10 Mbps microwave link between a geostationary satellite and its base station on Earth, separated by a distance of 36000kms. Every minute the satellite takes a digital photo and sends it to the base station. Assume a propagation speed of 2.4 * 10<sup class="tcecode">8 </sup>meters/sec. What is the bandwidth delay product of the link?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1.5Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 3 Mbps<br><span class="explanation">Explanation:</span><br>Distance between earth and satellite is 36000km<br>Propagation delay = 150ms<br>bandwidth delay product = Bandwidth * 2*Propagation delay.<br> 			     = 10Mbps * 300ms = 3Mbps
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2 Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 5 Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose users share a 3 Mbps link. Also suppose each user requires 150 kbps when transmitting, but each user transmits only 10 percent of the time. When a circuit switching is used, how many users can be supported?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 20<br><span class="explanation">Explanation:</span><br>Given that BW=3 Mbps<br>each user requires 150 Kbps<br>number of users supported=<br>3 Mbps/150 Kbps<br>=20
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 50</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 10-Mbps Ethernet LAN that has stations attached to a 205 km long coaxial cable. Given that the transmission speed is 2.3×10<sup class="tcecode">8</sup> m/s in a coaxial cable, then find out the throughput of system and taking packet size as 128 bytes.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2.1Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1.1Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 0.19Mbps<br><span class="explanation">Explanation:</span><br>In ethernet lan<br>efficiency=1/(1+6.44a)<br>a=propagation time/transmission time<br>propagation time=distance/velocity<br>=205km/(2.3*10<sup class="tcecode">8</sup>m/sec)<br>=8*10<sup class="tcecode">-3</sup>sec<br><br>Transmission time=L/B<br>=128 bytes/10Mbps<br>=1*10<sup class="tcecode">-3</sup>sec<br><br>efficiency=<br>1/(1+6.44(8*10<sup class="tcecode">-3</sup>/1*10<sup class="tcecode">-3</sup>))<br>=0.019<br><br>Throughput=efficiency*BW<br>=0.019*10Mbps<br>=0.19Mbps
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1.20Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+A large population of ALOHA users manages to generate 50 requests/sec, including both originals and retransmissions. Time is slotted in units of 40 msec. What is the chance of success on the first attempt?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1.35</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 0.13<br><span class="explanation">Explanation:</span><br>Transmission time(X)=40 msec<br>Total load is 50 req/sec<br>Total arrival rate G in frames/X seconds = 50 requests/sec × X = 50 × (40 × 10−3) = 2 requests/X seconds. <br><br><br>Prob of successful transmission on the 1st attempt = P[0 frames arriving in the data link layer in X seconds].<br><br>=e<sup class="tcecode">(−λX)</sup> (λX)<sup class="tcecode">k</sup>/ k!<br>with k = 0<br>=e<sup class="tcecode">(−λX)</sup> or e<sup class="tcecode">(-G)</sup><br>=e<sup class="tcecode">(-2)</sup><br>=1/e<sup class="tcecode">2</sup><br>=0.1353
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 0.25</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1.24</li>
+</ol>
+<br><br>
+</li>
+<li>
+A channel has a data rate of 4 kbps and a propagation delay of 20 ms. What should be the frame size for stop-and-wait protocol to give an efficiency of at least 50%?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 20 bytes<br><span class="explanation">Explanation:</span><br>Bw=4 kbps,tp=20ms,efficiency=50%<br>efficiency=1/(1+2a)<br>0.5=1/1+2a<br>a=0.5<br>Tp/Tt=0.5<br>10ms=0.5*L/B<br>10ms*4kpbs=0.5L<br>L=20 bytes
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10 bytes</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 120 bytes</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 40 bytes</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimum size of an IPv4 packet that carries an ICMPv4 packet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 28 bytes<br><span class="explanation">Explanation:</span><br>The minimum size of an ICMP packet is 8 bytes (router solicitation packet). The<br>largest of the ICMP packets is the router advertisement packet with up to 255 listings.<br>The maximum size is then:<br>255 listings × 8 bytes/listing + 8 bytes for the ICMP header = 2048 bytes<br><br><br>	The minimum size of an IP packet that carries an ICMP packet would be 28 bytes<br>(a 20 byte IP header + an 8 byte router solicitation packet). The maximum size<br>would be 2068 bytes (a 20 byte IP header + a 2048 byte router advertisement<br>packet).
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 8 bytes</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 20 bytes</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let A be a router with neighbors B, C and D in a network that uses RIP. The table shows the routing table at A, including the hop count information used by RIP. Assume that the network has been stable for a long time. Let h be the hop count for the path from router D to a host in subnet 1.2.6.*. Is it possible that h=2? <br><img src="./Test Results68_files/Q5a.PNG" alt="image:CNS3/Q5a.PNG" width="298" height="227" class="tcecode"><br><img src="./Test Results68_files/Q5b.PNG" alt="image:CNS3/Q5b.PNG" width="303" height="114" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Can not say</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Yes</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> No<br><span class="explanation">Explanation:</span><br>No. If D could reach a host in 1.2.6.* in 2 hops, then A could reach it in 3 hops by going through D. But the table shows that the best path from A has length 4 and goes through C.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose a movie studio wants to distribute a new movie as a digital file to 1,000 movie theaters across country using peer-to-peer file distribution. Assume that the studio and all the theaters have DSL connections with a 4 Mb/s upstream rate and that the file is 10 GB long. Approximately, how much time is needed to distribute the file to all the theaters under ideal conditions?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 5 hr</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 6 hr<br><span class="explanation">Explanation:</span><br>The total upstream bandwidth is about 4 Gb/s. <br>The file must be delivered to 1,000 studios. So total data will be 10 TB to be delivered. Time required  to send 10TB of data at 4 Gb/s = 10*10<sup class="tcecode">12</sup>*8/4*10<sup class="tcecode">9 </sup>=  20,000 seconds, nearly 6 hr.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 7 hr</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 8 hr</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 100 Mbps ethernet with a maximum distance of 400 meters. What is the smallest packet length for which you can achieve an efficiency of 80%? Assume velocity is equal to speed of light.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2022 bits</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 1066 bits<br><span class="explanation">Explanation:</span><br>Given B = 100Mbps, <br>           D = 400 meters<br>V = 3 * 108 m/s<br><br>⇒ efficiency = 1/(1+2a) = 80/100, where a = T<sub class="tcecode">propagation</sub>/ T<sub class="tcecode">transmission</sub><br>⇒ T<sub class="tcecode">propagation</sub> = D/V = (4/3)*10<sup class="tcecode">-6</sup> sec<br>⇒ T<sub class="tcecode">transmission </sub>= L/B = L/10<sup class="tcecode">8</sup> sec<br>⇒ L / (L +800) = ⅘<br>⇒ L = 1066.7
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 522 bits</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+A user in Ireland, connected to the internet via a 100 Mbps connection retrieves a 250 KB web page from a server in London, where the page references three images of 500 KB each. Assume that the one way propagation delay is 75 ms and that the user’s access link is the bandwidth bottleneck for this connection. Then approximately how long does it take for the page (including images) to appear on the user’s screen.( (for this part, you should ignore queueing delay and transmission delays at other links in the network))<br>Assume all the objects requested in a single request.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 150 ms</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 290 ms</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 140 ms</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 215 ms<br><span class="explanation">Explanation:</span><br>Explanation : Total data = 250 + 500 + 500 + 500 = 1750 KB<br><br>Total time = response transmission time(Tres) + propagation time(Tp).<br><br>Ttres = L/B = 1750*8*10<sup class="tcecode">3</sup>/100*10<sup class="tcecode">6</sup> = 140*10<sup class="tcecode">-3</sup> sec<br>Tp = 75 * 10<sup class="tcecode">3</sup>. Sec<br><br>⇒ 140*10<sup class="tcecode">-3</sup> sec + 75 * 10<sup class="tcecode">-3</sup>. Sec = 215 ms
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In error reporting of ICMP messages, which one of following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Includes IPV4 header and TCP header</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> Includes IPV4  header and 8 bytes of datagram data.<br><span class="explanation">Explanation:</span><br>The IP header is included because it contains the IP address of the original source.<br>The first 8 bytes of the data are included because they contain the first section of<br>the TCP or UDP header which contains information about the port numbers (TCP<br>and UDP) and sequence number (TCP). This information allows the source to<br>direct the ICMP message to the correct application.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Includes IPV4 header and 8 bytes of TCP segment data.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Includes only IPV4 header</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that you are measuring the time to receive a segment. When an interrupt occurs, you read out the system clock in milliseconds. When the segment is fully pro-cessed, you read out the clock again. You measure 0 msec 270,000 times and 1 msec        <br>730,000 times. How long does it take to receive a segment?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 730 μsec<br><span class="explanation">Explanation:</span><br>Compute the average: (270,000 × 0 + 730,000 × 1 msec)/1,000,000. It takes 730 μsec.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 720 μsec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 740 μsec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 760 μsec</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a network having 4 routers A, B, C and D with initial Distance vectors as<br>A-  [0 ∞ 1 2]<br>B-  [∞ 0 3 2]<br>C-  [1 3 0 ∞]<br>D-  [2 2  ∞ 0]<br>what will be distance vector of A after 1 iteration. ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> [0 1 1 2]</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> [0 2 1 2]</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> any one of a and b</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> [0 4 1 2]<br><span class="explanation">Explanation:</span><br>Construct the graph by DVR’s<br><img src="./Test Results68_files/E32a.PNG" alt="image:CNS3/E32a.PNG" width="203" height="137" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The set of IP addresses from 29.18.0.0 to 19.18.128.255 has been aggregated to<br>29.18.0.0/17. However, there is a gap of 1024 unassigned addresses from 29.18.60.0<br>to 29.18.63.255 that are now suddenly assigned to a host using a different outgoing<br>line. What should be happend now to make this happened?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> reaggregation should be done</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> necessary to split up the aggregate address into its constituent blocks</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> sufficient to add one new table entry<br><span class="explanation">Explanation:</span><br>It is sufficient to add one new table entry: 29.18.0.0/22 for the new block. If<br>an incoming packet matches both 29.18.0.0/17 and 29.18.0.0./22, the longest<br>one wins. This rule makes it possible to assign a large block to one outgoing<br>line but make an exception for one or more small blocks within its range.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+For a 1-Gbps network operating over 4000 km, the delay is the limiting factor, not the<br>bandwidth. Consider a MAN with the average source and destination 20 km apart. At<br>what data rate does the round-trip delay due to the speed of light equal the transmission<br>delay for a 1-KB packet?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 40 Mbps<br><span class="explanation">Explanation:</span><br>The speed of light in fiber and copper is about 200 km/msec. For a 20-km<br>line, the delay is 100 μsec one way and 200 μsec round trip. A 1-KB packet<br>has 8192 bits. If the time to send 8192 bits and get the acknowledgement is<br>200 μsec, the transmission and propagation delays are equal. If B is the bit<br>time, then we have 8192B = 2 × 10−4 sec. The data rate, 1/B, is then about<br>40 Mbps.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 60 Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 80 Mbps</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 20 Mbps</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the wrong statement given below?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> A host can not send a packet directly to another host via tunnel mode of IP-Sec protocol.</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> Only the packets from Transport layer will be encapsulated by IP-Sec header in Transport mode of IP-Sec protocol<br><span class="explanation">Explanation:</span><br>a.Yes. In tunnel mode, tunnels will be established between 2 routers or 2 gateways or host to router or router to host only.<br>b.No. In transport mode, even ICMP packets also encapsulated by IP-Sec header.<br>c.Yes. In tunnel mode, transport layer packets gets attached to IP header(IPV4 / IPV6) and then IP-Sec header and tail will be added to this packet, there after we add one more Ip header (IPV4 / IPV6) to the packet.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Two IP headers are attached to packet in Tunnel mode of IP-Sec protocol.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the generator, G=10011, and suppose that data in binary is 1010101010. What is the data ready to be sent after CRC calculation?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10101010101100</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10101010100101</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 10101010100100<br><span class="explanation">Explanation:</span><br>To calculate CRC we need to add 4 0’s at the end of data(because generator has the degree of 4 i.e 5 bits)<br>	If we divide 10011 into 1010101010 0000, we get the remainder of R=0100. So data is 10101010100100
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10101010101000</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose datagrams are limited to 1,500 bytes (including header) between  source A and destination B. Assuming a 20-byte IP header, how many datagrams would be required to send an MP3 consisting of 5 million bytes?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2432</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 4225</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1580</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 3425<br><span class="explanation">Explanation:</span><br>MP3 file size = 5 million bytes. <br>Assume the data is carried in TCP segments, with each TCP segment also having 20 bytes of header. <br>Then each datagram can carry 1500-40=1460 bytes of the MP3 file<br>Number of datagrams = (5 * 10<sup class="tcecode">6</sup>) / 1460 = 3425
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider sending a 2400-byte datagram into a link that has an MTU of 700 bytes. Suppose the original datagram is stamped with the identification number 520. How many fragments are generated? What are the offset value of 3rd packet.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 4, 170<br><span class="explanation">Explanation:</span><br>The maximum size of data field in each fragment = 680 (because there are 20 bytes IP<br>header). <br>So the number of required fragments = ceil((2400 - 20)/680) = 4<br>Each fragment will have Identification number 520. Each fragment except the last one will be of size 700 bytes (including IP header). The last datagram will be of size 360<br>bytes (including IP header). The offsets of the 4 fragments will be 0, 85, 170, 255.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 4, 255</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 5, 170</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 5, 165</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose you are designing a sliding window protocol for a 1-Mbps point-to-point link to the moon, which has a one-way  latency of 1.25 seconds. Assuming that each frame carries 1 KB of <br>data, has is the minimum number of bits you need for the  sequence number?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 420</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 520</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 650</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 625<br><span class="explanation">Explanation:</span><br>Propagation delay = 2.5 sec<br>Band with = 2 mbps<br>Packet size  2 KB<br>Routing time  RTT = 2 * propagation delay<br>2 * 2.5 sec  = 5sec<br>1sec  2  10<sup class="tcecode"> 6</sup> bits<br>5sec  ?<br>W =  2 * 10<sup class="tcecode">6</sup> * 5  = 10<sup class="tcecode">7</sup> bits = 10<sup class="tcecode">7</sup> / (16 * 10<sup class="tcecode">3</sup>) packets = 625.<br>The min number of sequence number need is 625
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose there is exactly one packet switch between a sending host and a receiving host. The transmission rates between the sending host and the switch and between the switch and the receiving host are R1 and R2, respectively. Assuming that the switch uses store-and-forward packet switching, what is the total end-to-end delay to send a packet of length L? (Ignore queuing, propagation delay, and processing delay.)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2L/(R<sub class="tcecode">1</sub> + R<sub class="tcecode">2</sub>).</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> L/R<sub class="tcecode">1</sub> + L/R<sub class="tcecode">2</sub>.<br><span class="explanation">Explanation:</span><br>At time t<sub class="tcecode">0</sub> the sending host begins to transmit. At time t<sub class="tcecode">1</sub> = L/R<sub class="tcecode">1</sub>, the sending host completes transmission and the entire packet is received at the router (no propagation delay). Because the router has the entire packet at time t<sub class="tcecode">1</sub>, it can begin to transmit the packet to the receiving host at time t<sub class="tcecode">1</sub>. At time t<sub class="tcecode">2</sub> = t<sub class="tcecode">1</sub> + L/R<sub class="tcecode">2</sub>, the router completes transmission and the entire packet is received at the receiving host (again, no propagation delay). Thus, the end-to-end delay is L/R<sub class="tcecode">1</sub> + L/R<sub class="tcecode">2</sub>.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2L/R<sub class="tcecode">1</sub>*R<sub class="tcecode">2</sub>.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> L*R<sub class="tcecode">1</sub> + L*R<sub class="tcecode">2</sub>.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of bits used to represent the frame sequence is 7. Say the maximum sizes of sender<br>window using go back n ARQ and selective repeat are W1 and W2 respectively. The<br>maximum sizes of the receiving window using selective repeat and go back n ARQ are W 3<br>and W 4 respectively. What will be the value of (W 1 -W 2 ) and (W 3 -W 4 ) respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 63, 0</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 0, 63</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 63, 63<br><span class="explanation">Explanation:</span><br>The maximum sending window size using go back n ARQ is 2<sup class="tcecode">n</sup> - 1 and receiving window is1. So, W1 = 127, W4 = 1 <br>The maximum sending window size using selective repeat is 2<sup class="tcecode">n - 1</sup> and receiving window is<br>also2<sup class="tcecode">n-1</sup> . Here n=7.<br>So, W2 = 64, W3 = 64
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 0, 0</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true when describing a link-local address?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Packets addressed to a unicast address are delivered to a single interface.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> These are your typical publicly routable addresses, just like a regular publicly routable address in IPv4.</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> These are like private addresses in IPv4 in that they are not meant to be routed.<br><span class="explanation">Explanation:</span><br>Link-local addresses are meant for throwing together a temporary LAN for meetings or a small LAN that is not going to be routed but needs to share and access files and services locally.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> These addresses are meant for non-routing purposes, but they are almost globally unique so it is unlikely they will have an address overlap.</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is true when describing a unique local address?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Packets addressed to a unicast address are delivered to a single interface.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> These are your typical publicly routable addresses, just like a regular publicly routable address in IPv4.</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> These are like private addresses in IPv4 in that they are not meant to be routed.</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> These addresses are meant for non-routing purposes, but they are almost globally unique so it is unlikely they will have an address overlap.<br><span class="explanation">Explanation:</span><br>These addresses are meant for non-routing purposes like link-local, but they are almost globally unique so it is unlikely they will have an address overlap. Unique local addresses were designed as a replacement for site-local addresses.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which statement(s) about IPv6 addresses are true?<br>1.Leading zeros are required.<br>2.Two colons (::) are used to represent successive hexadecimal fields of zeros.<br>3.Two colons (::) are used to separate fields.<br>4.A single interface will have multiple IPv6 addresses of different types.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1 and 3</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 2 and 4<br><span class="explanation">Explanation:</span><br>In order to shorten the written length of an IPv6 address, successive fields of zeros may be replaced by double colons. In trying to shorten the address further, leading zeros may also be removed. Just as with IPv4, a single device's interface can have more than one address; with IPv6 there are more types of addresses and the same rule applies. There can be link-local, global unicast, and multicast addresses all assigned to the same interface.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1, 3 and 4</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> all the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+A router receives an IPv4 packet with source IP address 130.45.3.3 and destination IP address 201.23.4.6. The router cannot find the destination IP address in its routing table. Which ICMPv4 message should be sent?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Forbidden error</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Not found</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> Destination unreachable<br><span class="explanation">Explanation:</span><br>The appropriate ICMP message is destination unreachable message. This type of<br>message has different types of codes to declare what is unreachable. In this case,<br>the code is 0, which means the network is unreachable
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> Access denied</li>
+</ol>
+<br><br>
+</li>
+<li>
+Calculate the transmission delay for a  1500 KByte file, The bandwidth is 1 Mbps, the packet size including the header is 1 KB of which the header is 40 bytes, and the data packets are sent continuously and never lost.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 12.78 sec<br><span class="explanation">Explanation:</span><br>Given that the maximum size of the packet is 2<sup class="tcecode">10</sup> bytes. <br>We can only fit 2<sup class="tcecode">10</sup> − 40 bytes in the payload. <br>Then we need to send [1500∗2<sup class="tcecode">10</sup> / 2<sup class="tcecode">10</sup>−40 ] packets =  1,561 packets. <br>(Note, the last packet is less than 1 KB in size.) <br>We then have the following: <br>TotalFullPacket = 1560 ∗ 2<sup class="tcecode">10</sup><br>LastPacket  = 40 + 960 <br>Then total data = 1,598,440 bytes = 12,787,520 bits. <br>Bandwidth = 106 bits/sec, <br>The transmission time of the data is: 12787520/10<sup class="tcecode">6</sup> = 12.78752 sec.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 12.52 sec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 10.27 sec</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 11.92 sec</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are true regarding the distance-vector and link-state routing protocols?<br>1.Link state sends its complete routing table out all active interfaces on periodic time intervals.<br>2.Distance vector sends its complete routing table out all active interfaces on periodic time intervals.<br>3.Link state sends updates containing the state of its own links to all routers in the internetwork.<br>4.Distance vector sends updates containing the state of its own links to all routers in the internetwork.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 1 only</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> 2 only</li>
+<li>&nbsp;<img src="./Test Results68_files/correct.png" width="18"> 2, 3<br><span class="explanation">Explanation:</span><br>The distance-vector routing protocol sends its complete routing table out all active neighboring interfaces at periodic time intervals. Link-state routing protocols send updates containing the state of its own links to all routers in the internetwork.
+</li>
+<li>&nbsp;<img src="./Test Results68_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results68_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

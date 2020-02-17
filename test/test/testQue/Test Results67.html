@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92211&test_id=245 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results67_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results67_files/calclayout.css">
+<script src="./Test Results67_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results67_files/jquery-ui.js.download"></script>
+<script src="./Test Results67_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results67_files/custom.js.download"></script>
+<script src="./Test Results67_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results67_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results67_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838103, 'I\'m sorry, the time available to complete the test is over!', false, 1486838103563);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92211&amp;test_id=245#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CO Topic Test - 1</strong><br>
+Memory Interfacing, Hierarchy, Cache block replacement policies&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:34:33&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+A computer’s memory is composed of 8K words of 32 bits each. How many bits are required for memory address if the smallest addressable memory unit is a word____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 14</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 13<br><span class="explanation">Explanation:</span><br>Number of words  = 8 K<br>Size of each word = 32 bits<br>8 K words can be addressed with (2<sup class="tcecode">13</sup>)<br>So we need 13 bits to address 8K words.
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 11</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many 128k*8 Ram chips are needed to construct 2MB RAM?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 15</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 16<br><span class="explanation">Explanation:</span><br>Target capacity : 2 MB RAM<br>    Given capacity : 128 ⨯ 8 RAM chips <br><img src="./Test Results67_files/E5a.PNG" alt="image:CO1/E5a.PNG" width="445" height="75" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results67_files/Q6a.PNG" alt="image:CO1/Q6a.PNG" width="417" height="150" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 1-a,2-c,3-d,4-b</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 1-c,2-b,3-d,4-a</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 1-a,2-c,3-b,4-d<br><span class="explanation">Explanation:</span><br><img src="./Test Results67_files/E6a.PNG" alt="image:CO1/E6a.PNG" width="414" height="153" class="tcecode"><br><div class="tcecodepre">&nbsp;─&nbsp;Main&nbsp;memory&nbsp;is&nbsp;cache&nbsp;for&nbsp;DISK<br>─&nbsp;L2&nbsp;cache&nbsp;is&nbsp;cache&nbsp;for&nbsp;Main&nbsp;memory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From&nbsp;the&nbsp;above&nbsp;organization<br>─&nbsp;L1&nbsp;cache&nbsp;is&nbsp;cache&nbsp;for&nbsp;L2&nbsp;cache<br></div>
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 1-d,2-a, 3-b, 4-c</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a 4-way set associative cache that has 8-lines, with perfect LRU cache replacement and supports a block size of 16-bytes. For the following memory access pattern (shown as byte addresses), find the hit ratio?<br> 3, 5, 6, 21, 32, 14, 5, 10, 11, 12<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 12%</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 10%<br><span class="explanation">Explanation:</span><br><img src="./Test Results67_files/E11a.PNG" alt="image:CO1/E11a.PNG" width="453" height="194" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 17%</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 17.18%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a processor has access to two levels of memory. Level 1 contains 100 words and has an access time of 10 ns; level 2 contains 5,000 words and has an access time of 100ns. Assume that if a word to be accessed is in level 1, then the processor accesses it directly. If it is in level 2, then the word is first transferred to level 1 and then accessed by the processor. Suppose 95% of the memory accesses are found in the Level 1 cache. Then the average time to access a word is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 260 ns</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 15ns<br><span class="explanation">Explanation:</span><br><img src="./Test Results67_files/E15a.PNG" alt="image:CO1/E15a.PNG" width="301" height="151" class="tcecode"><br>AMAT =  (10ns) + ((1 – 0.95) (100))<br>	= 10 + 0.05 (100) = 10 + 5 <br>			  = 15 ns
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 250ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 230ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a program that can execute with no stalls and a CPI of 1. The Cache hit takes 1 clock cycle. In this system 10% of all load instructions and 50% of all other instructions suffer from cache miss. Every cache misses results in a 30-cycle stall for load instruction and 10 cycle stall for other instructions. What is the CPI for this program if 20% of the program's instructions are load instructions?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 6.26</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 5.18<br><span class="explanation">Explanation:</span><br><img src="./Test Results67_files/E21a.png" alt="image:CO1/E21a.png" width="819" height="460" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a computer system in which cache memory write hit takes 10ns and and miss takes 100ns. Cache memory read hit takes 5ns and miss takes 55ns. The cache is having 90% hit. The system received 1000 fetch instructions out of which, 500 operand fetch operations and  500 operand write operations. The average time taken to execute above 1000 instructions is___________?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 25750ns<br><span class="explanation">Explanation:</span><br>Given <br>cache memory write hit takes(t<sub class="tcecode">wh</sub>) 10 ns,<br>cache memory write miss takes  (t<sub class="tcecode">wm</sub>) 100 ns,<br>cache memory read hit takes (t<sub class="tcecode">rh</sub>) 5 ns,<br>cache memory read miss takes (t<sub class="tcecode">rm</sub>) 55 ns <br>and  90% hit rate<br>Average access time for write operation(T<sub class="tcecode">write</sub>) = t<sub class="tcecode">wh</sub>+(1-h1) t<sub class="tcecode">wm</sub><br>      		              = 10+(0.1)100<br>        		      = 20 ns<br><br><br>Average access time for read operation(T<sub class="tcecode">read</sub>) =   t<sub class="tcecode">rh</sub>+(1-h1) t<sub class="tcecode">rm</sub><br>                            = 5+(0.1)55<br>                            = 10.5<br>Out of 1000 fetch operations 500 are operand fetch(read instructions) instructions and 500 are operand write instructions.<br><br><br>Total time taken to execute 1000 instructions = 1500(10.5) + 500(20)<br>     					       = 25750 ns.
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 15250ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 25250ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 15050ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with Level-1 cache with a line size of 16 bytes and  an access time of 2ns. The probability that requested word present in cache is 25%. Main memory uses a block transfer capability that has a first word (Each word of size 4 bytes) access time of 40 ns and an access time of 5 ns for each word thereafter. Data bus between main memory and cache is 16 bytes width. Calculate average memory access time ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 40.35ns</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 43.25ns<br><span class="explanation">Explanation:</span><br>Access time of cache = 2 ns<br><br>Line size = 16 bytes<br><br>Miss ratio = 0.75<br><img src="./Test Results67_files/E12a.PNG" alt="image:CO1/E12a.PNG" width="642" height="292" class="tcecode"><br><img src="./Test Results67_files/E12b.PNG" alt="image:CO1/E12b.PNG" width="311" height="132" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 44.35ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 41.44ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+A cache line is 128 bytes. The main memory has latency 18ns and data bus between cache and main memory has bandwidth 1G.Bytes/s. The time required to fetch the entire cache line from the main memory is___________?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 146ns<br><span class="explanation">Explanation:</span><br>Cache line : 128 Bytes<br> Main memory latency : 18 ns<br>Data bus between Main memory and Cache : 1 G bytes/sec<br>Time required to fetch entire cache line = ?<br><img src="./Test Results67_files/E10a.PNG" alt="image:CO1/E10a.PNG" width="519" height="376" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 152ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 160ns</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 138ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+A memory system contains the cache, main memory, and virtual memory.  Assume the access time of the cache is 5 ns and cache hit rate is 80%. The access time of the main memory is 100 ns and hit rate is 99.5 percent. Calculate the average memory access time assuming virtual memory access time 1000ns? [Assume memory system follows strict hierarchy]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 26<br><span class="explanation">Explanation:</span><br>Access time for Cache is 5 ns<br>Cache hit rate = 80%<br>Access time of Main memory = 100 ns<br>Bit rate of Main memory = 99.5%<br>Virtual Memory access time = 1000 ns<br>Avg Memory Access time<br><img src="./Test Results67_files/E19a.PNG" alt="image:CO1/E19a.PNG" width="314" height="234" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 29</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 27.01</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 24.01</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let's assume a computer has a 64-byte cache block, a cache that takes 7 clock cycles to get the critical 8 bytes, and then 1 clock cycle per 8 bytes and 1 extra clock cycle to fetch the rest of the information in the block. Calculate the average miss penalty for critical word first, assuming that there will be no other accesses to the rest of the block until it is completely fetched?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br>Given that Size of the block=64-bytes<br>       7 Clock cycles to get critical 8-bytes<br>1 Clock cycles per 8 bytes and 1 extra clock <br>for the rest of the information in the block<br>⟹ This information valid when there is “Critical word” First in the block.<br>Question asked that Average Miss Penalty when there is a Critical word First:<br><br><img src="./Test Results67_files/E8a.PNG" alt="image:CO1/E8a.PNG" width="466" height="160" class="tcecode"><br>∴ Number of Clock cycles = 15<br>∴ Avg. Miss Penalty = 15 clock cycles
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 17</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 16</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 18</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system, the average memory access time of a processor with one level (L1) cache is 2.4. If the required data present in L1-cache it can be accessed in 1 clock cycle otherwise it needs 80 clock cycles to get it from memory. Designers in order to improve the average memory access time, they are considering adding second level(L2) cache. The access time of L2-cache is 6 clock cycles. Even after adding L2-cache,  memory access still takes same. What is the hit rate of L2-cache such that average memory access improved by 65%?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 65%</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 75%<br><span class="explanation">Explanation:</span><br>Average memory access time for microprocessor with 1-level cache = 2.4 clock cycles.<br><div class="tcecodepre">Cache&nbsp;Hit&nbsp;takes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;1&nbsp;clock&nbsp;cycle&nbsp;[data&nbsp;found]<br>data&nbsp;not&nbsp;found&nbsp;		&nbsp;=&nbsp;80&nbsp;clock&nbsp;cycles&nbsp;required<br>AMAT&nbsp;&nbsp;(Average&nbsp;memory&nbsp;access&nbsp;time)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;hit_time&nbsp;+&nbsp;miss_rate&nbsp;*&nbsp;Main&nbsp;memory&nbsp;access&nbsp;time<br>Let&nbsp;‘x’&nbsp;be&nbsp;the&nbsp;miss&nbsp;rate<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4&nbsp;=&nbsp;1&nbsp;+&nbsp;x&nbsp;*&nbsp;80<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4&nbsp;=&nbsp;x&nbsp;*&nbsp;80<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;0.0175<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Miss&nbsp;rate&nbsp;=&nbsp;1.75%<br>Given&nbsp;average&nbsp;memory&nbsp;access&nbsp;time&nbsp;&nbsp;is&nbsp;improved&nbsp;65%&nbsp;by&nbsp;adding&nbsp;L2&nbsp;cache<br></div><br><img src="./Test Results67_files/E7a.PNG" alt="image:CO1/E7a.PNG" width="238" height="162" class="tcecode"><br>AMAT with 2 level cache is<br>AMAT = 1 + 0.0175(6 + miss rate (80))<br>1.4545 = 1 + 0.0175(6 + miss rate (80))<br>∴ Miss rate ≈ 24.6%<br>   Hit rate   ≈ 75%  <br>Data found in 2nd level cache = 75%
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 55%</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 60%</li>
+</ol>
+<br><br>
+</li>
+<li>
+How many 2*4 decoders are needed to construct a 64K x 16 RAM using 1K x 8 RAM chips?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 21<br><span class="explanation">Explanation:</span><br>Target capacity=64k×16RAM<br>   	Given capacity=1k×8<br><img src="./Test Results67_files/E4a.PNG" alt="image:CO1/E4a.PNG" width="406" height="197" class="tcecode"><br><img src="./Test Results67_files/E4b.PNG" alt="image:CO1/E4b.PNG" width="525" height="376" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 22</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 31</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a directed mapped cache that has 4-lines and supports a block size of 16 bytes. Calculate the hit ratio for the  following memory block access pattern?                <br>           0, 8, 16, 24, 32, 40, 48, 48, 48, 256, 24, 32, 40,  40<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 22%</li>
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 21.42%<br><span class="explanation">Explanation:</span><br>Let ‘X’ be the memory block number.<br>      Block number ‘X’ mapped to  [X mod 4 ] cache block<br><img src="./Test Results67_files/E2a.PNG" alt="image:CO1/E2a.PNG" width="626" height="41" class="tcecode"><br>[Note : Block number in square represents the hit]<br><br>See the below diagram to have clear idea how the memory blocks are mapped.<br><img src="./Test Results67_files/E2b.PNG" alt="image:CO1/E2b.PNG" width="395" height="193" class="tcecode"><br><br>So Number of hits = 3<br>Out of 14 memory block references 3 are hits<br>Therefore Hit ratio = 3* 100 /14<br>	 	       = 21.42%
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 20%</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 34%</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a system with CPI of 1.0 on a 5 GHz machine with a 2% miss rate and memory access time of 100ns. To reduce miss penalty designers decided to add a L2 cache with 5ns access time and decrease of overall main memory miss rate to 0.5%, How many clock cycles miss penalty reduced?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results67_files/correct.png" width="18"> 472.5<br><span class="explanation">Explanation:</span><br><div class="tcecodepre">Given&nbsp;that&nbsp;CPI&nbsp;is&nbsp;1.0<br>5GHz&nbsp;machine,&nbsp;miss&nbsp;rate=2%&nbsp;<br>memory&nbsp;access&nbsp;time&nbsp;=&nbsp;100&nbsp;ns<br>memory&nbsp;access&nbsp;time&nbsp;in&nbsp;cycles&nbsp;=&nbsp;100ns/(1/5GHz)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;100ns/(0.2ns/clock&nbsp;cycle)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;500&nbsp;clock&nbsp;cycles.<br>Without&nbsp;L2&nbsp;Cache:<br>Miss&nbsp;penalty	=&nbsp;500&nbsp;clock&nbsp;cycles.<br><br>With&nbsp;L2&nbsp;cache:<br>L2&nbsp;access&nbsp;time&nbsp;in&nbsp;clocks&nbsp;=&nbsp;5ns/(1/5GHz)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;25&nbsp;clock&nbsp;cycles.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;miss&nbsp;penalty&nbsp;=&nbsp;&nbsp;25&nbsp;+&nbsp;0.5%(500)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;27.5&nbsp;clock&nbsp;cycles.<br>miss&nbsp;penalty&nbsp;reduced&nbsp;=&nbsp;500&nbsp;-&nbsp;27.5&nbsp;=&nbsp;472.5&nbsp;clock&nbsp;cycles.<br></div>
+</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 473.5</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 372.5</li>
+<li>&nbsp;<img src="./Test Results67_files/wrong.png" width="16"> 442.5</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results67_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

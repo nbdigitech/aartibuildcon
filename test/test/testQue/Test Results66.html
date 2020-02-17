@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92210&test_id=246 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results66_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results66_files/calclayout.css">
+<script src="./Test Results66_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results66_files/jquery-ui.js.download"></script>
+<script src="./Test Results66_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results66_files/custom.js.download"></script>
+<script src="./Test Results66_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results66_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results66_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838101, 'I\'m sorry, the time available to complete the test is over!', false, 1486838101606);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92210&amp;test_id=246#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CO Topic Test - 2</strong><br>
+Cache Mapping techniques - Direct mapping, associative, and set associative mapping&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:34:26&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+onsider a 12 bit physical address and a direct-mapped cache with 64 blocks and each block has a size of 16 bytes. To which block number does the byte address 1200 map?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 32</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 11<br><span class="explanation">Explanation:</span><br>Given Direct mapped cache  of size  :  64 blocks<br> 		                               Block size : 16 Bytes<br><br>In Order to find the block number for address 1200 maps to,  we need to find the index bits of it.  See the below diagram, how physical address is ‘X’ divided into different fields :<br><img src="./Test Results66_files/E1a.PNG" alt="image:CO2/E1a.PNG" width="349" height="144" class="tcecode"><br>From the question, cache size is 64 blocks, so we need 6 bits to address a block and 4 bits  to address a word within a block. The binary representation of the address 1200 is 010010110000. <br>Now we map the binary representation of the address 1200 with respect to tag, index and offset<br><img src="./Test Results66_files/E1b.PNG" alt="image:CO2/E1b.PNG" width="553" height="280" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 26</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is not true in the context of directed mapped cache?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Directed mapped cache needs one n-bit comparator to map n-tag bits</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Every main memory block mapped to exactly one cache block</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> Directed mapped cache needs single n x 1 multiplexer to retrieve n-tag bits<br><span class="explanation">Explanation:</span><br>See the below diagram,  to check 20 bit tag directed mapped hardware needs 20 bit comparator. <br><img src="./Test Results66_files/E2a.PNG" alt="image:CO2/E2a.PNG" width="771" height="736" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Directed mapped cache needs less number comparators compared to associative mapped cache</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 64 KB direct mapped cache with 64-byte block size. CPU generates 28 bits physical address. While a k bit comparator has a latency of k/2 ns. The hit latency of the cache organization is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 10ns</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 6ns<br><span class="explanation">Explanation:</span><br><img src="./Test Results66_files/E3a.PNG" alt="image:CO2/E3a.PNG" width="611" height="520" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 5ns</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 12ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">CommonData Question Q4&amp;Q5:</strong><br>Consider a memory system that uses a 32-bit address to address at the byte level, plus a cache that uses a 64-byte line size.<br>Assume a direct mapped cache with a tag field in the address of 20 bits. Calculate the tag directory size?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 1280<br><span class="explanation">Explanation:</span><br>Given tag field     : 20 bits<br>For direct mapped cache<br><img src="./Test Results66_files/E4a.PNG" alt="image:CO2/E4a.PNG" width="299" height="181" class="tcecode"><br>Size of Tag                           : 20 bits<br>Number of cache lines          : 2<sup class="tcecode">6</sup> = 64<br>Size of the tag memory=Size of Tag*Number of blocks in the cache = 20 bits*64=1280 bits
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 1380</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 1480</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 1286</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">CommonData Question Q4&amp;Q5:</strong><br>Consider a memory system that uses a 32-bit address to address at the byte level, plus a cache that uses a 64-byte line size.<br>Assume cache is associative then calculate the number of bits in tag ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 26<br><span class="explanation">Explanation:</span><br>Associative cache consist of<br><img src="./Test Results66_files/E5a.PNG" alt="image:CO2/E5a.PNG" width="214" height="153" class="tcecode"><br>Size of Tag                       : 26 bits<br>Number of lines in cache : Undetermined
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 24</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 30</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a machine with a byte addressable main memory of 216 bytes and block size of 8 bytes. Assume that a direct mapped cache consisting of 32 lines is used with this machine. a. How is a 16-bit memory address divided into tag, line number, and byte number?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 5,8,3</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 8,5,3<br><span class="explanation">Explanation:</span><br><img src="./Test Results66_files/E6a.PNG" alt="image:CO2/E6a.PNG" width="471" height="359" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 3,5,8</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 8,3,5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 32 KB 4-way set associative cache with 32-byte block size. CPU generates 32 bits physical address. What is the number and size of the comparator required for tag matching, respectively?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> (4, 19)<br><span class="explanation">Explanation:</span><br>Size of the cache: 32 KB<br>4-way set associative cache<br>Physical address: 32 bits<br>Size of the block: 32 byte<br><br><img src="./Test Results66_files/E14a.PNG" alt="image:CO2/E14a.PNG" width="328" height="204" class="tcecode"><br>For K-way set associative cache, number of comparators required = K<br>∴For 4-way set associative cache number of comparators = 4<br>Size of each comparator = (number of tag bits)<br>∴ 19 bit comparator<br><img src="./Test Results66_files/E14b.PNG" alt="image:CO2/E14b.PNG" width="220" height="134" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> (4, 17)</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> (19, 4)</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> (4, 20)</li>
+</ol>
+<br><br>
+</li>
+<li>
+If an 8-way set-associative cache is made up of 32 bit words, 4 words per line and 4096 sets, how big is the cache in bytes?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 2<sup class="tcecode">19</sup> bytes<br><span class="explanation">Explanation:</span><br>Given 8-way set associative cache<br>Size of each word             = 32 bits<br>Number of words per line = 4<br>Number of sets                  = 4096<br><img src="./Test Results66_files/E13a.PNG" alt="image:CO2/E13a.PNG" width="383" height="134" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 2<sup class="tcecode">18 </sup>bytes</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 2<sup class="tcecode">20 </sup>bytes</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 2<sup class="tcecode">15</sup> bytes</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is true in the context of Associative memory mapped cache organization?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Associative memory mapping always produces better hit ratio than direct	memory mapping</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Associative memory mapping always produces better hit ratio than set associative memory mapping</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> Associative mapping needs the complex circuitry required to examine the tags of all cache lines in parallel.<br><span class="explanation">Explanation:</span><br><img src="./Test Results66_files/E12a.PNG" alt="image:CO2/E12a.PNG" width="400" height="249" class="tcecode"><br>Number of comparators required in associative cache is equal to as many as tag bits.<br>So the circuitry of full associative cache is more complex compare to other.
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+A two-way set-associative cache has lines of 16 bytes and a total size of 8 kbytes. The 64-Mbyte main memory is byte addressable and k bit comparator has latency of k/20ns. Calculate the hit latency of cache ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 0.4ns</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 0.7ns<br><span class="explanation">Explanation:</span><br><img src="./Test Results66_files/E9a.PNG" alt="image:CO2/E9a.PNG" width="621" height="636" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 2ns</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 1.5ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider 32 KB 4-way set associative cache with 32-byte block size. CPU generates 32 bits physical address . A 4-to-1 multiplexer has a latency of 1 ns while a k bit comparator has a latency of 2k ns. The hit latency of the cache organization is?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 38ns</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 39ns<br><span class="explanation">Explanation:</span><br><img src="./Test Results66_files/E11a.PNG" alt="image:CO2/E11a.PNG" width="296" height="270" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 37ns</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 40ns</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the memory system in which the block size in cache and main memory are equal. Cache consists of 512 blocks and main memory consists of 8192 blocks. Cache is 4-way set associative ,calculate the number of tag bits in cache?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>Cache consist of 512 blocks<br>    Main memory consist of 8192 blocks<br>    Cache is 4-way set associative<br>    Number of bits required to address a block in main memory = 13 bits<br>    Number of sets in cache<br>   So, we need 7 bits to address 128 sets. So the remaining 6 bits are used for tag.<br><img src="./Test Results66_files/E8a.PNG" alt="image:CO2/E8a.PNG" width="233" height="169" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is/are true in the context of associative mapped cache memory ?<br>	[1] Associative mapped cache needs more number of comparators to match tag bits compared to direct mapped cache. <br>	[2] Set associative mapped cache needs less number of comparators to match tag bits compared to associative mapped cache.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> Only 1 true</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> only 2 true</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> Both 1 and 2 true<br><span class="explanation">Explanation:</span><br>For full associative cache, we need to compare all tags in parallel. So we will need as much comparators as number of tags. Same can be applied to k-way associative cache. We will require k comparators. And for direct mapping we will require single comparator. So number of comparators required in full associative cache is more compare to set associative cache.
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 32 KB cache has a 128 byte block size and is 16-way set-associative. what is the size of tag directory, assuming that the CPU provides 48-bit addresses ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 5678 bits</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 4567 bits</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 9472 bits<br><span class="explanation">Explanation:</span><br>Size of the cache: 32KB<br>    Size of the block: 128 Byte<br>    16-way set associative <br>    Physical address: 48-bit<br><img src="./Test Results66_files/E7a.PNG" alt="image:CO2/E7a.PNG" width="557" height="340" class="tcecode"><br>Tag directory size  bits = 37*256 = 9472 bits
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 7448 bits</li>
+</ol>
+<br><br>
+</li>
+<li>
+A computer’s memory is composed of 8K words of 32 bits each, and the smallest addressable memory unit is an 8 bit byte. How many bits will be required for the memory address?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results66_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br>Number of words  = 8 K<br>Size of each word = 32 bits<br>Number of bits in memory    = 8K x 32 bits<br>			          <br><img src="./Test Results66_files/E15a.PNG" alt="image:CO2/E15a.PNG" width="340" height="91" class="tcecode"><br>Number of bits required to address memory = 15
+</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 13</li>
+<li>&nbsp;<img src="./Test Results66_files/wrong.png" width="16"> 10</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results66_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

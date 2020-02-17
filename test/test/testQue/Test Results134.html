@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0086)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=1294&test_id=32 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results134_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results134_files/calclayout.css">
+<script src="./Test Results134_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results134_files/jquery-ui.js.download"></script>
+<script src="./Test Results134_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results134_files/custom.js.download"></script>
+<script src="./Test Results134_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results134_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results134_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921410, 'I\'m sorry, the time available to complete the test is over!', false, 1486921410536);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=1294&amp;test_id=32#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>TOC Topic Test 4</strong><br>
+Grammars and Chomsky hierarchy, CNF and GNF, Context free Languages and Push Down Automata, Pumping Lemma for CFLs &nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-08-29 22:40:17&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-08-29 23:19:53&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:39:36&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+1.370 / 25.000 (5%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+3 / 15 (20%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Consider the grammar G and the language L given below:<br>G: S → AB | a | abC, A → b, C → abC | c <br>L: {w | w ∈{a,b,c}* and n<sub class="tcecode">a</sub>(w) = n<sub class="tcecode">b</sub>(w)}. <br>If the grammar G does not define L, which of the following strings is either produced by G but not contained in L or is contained in L but not produced by G.<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> cabaca</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> cacacab</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> bababab</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> abcabbca<br><span class="explanation">Explanation:</span><br>The strings cabaca, bababab, cacacab are neither produced by G nor contained in L. The string abcabcc is contained in L but not produced by G.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the language L={a}. Which grammar defines L?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">2</sub>:S → AB|a|b, A → b</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">4</sub>:S → d|a, A → c|b|ε</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> G<sub class="tcecode">3</sub>:S → AC|a, A → c|b|ε<br><span class="explanation">Explanation:</span><br>Given language L={a}. <br>	G<sub class="tcecode">1</sub>:S → AC|a|c, A → c|ε<br>Strings generated by G<sub class="tcecode">1</sub>  are L(G<sub class="tcecode">1</sub>)={a,c}<br>	G<sub class="tcecode">2</sub>:S → AB|a|b, A → b<br>Strings generated by G<sub class="tcecode">2</sub>  are L(G<sub class="tcecode">2</sub>)={a,b}<br>	G<sub class="tcecode">3</sub>:S → AC|a, A → c|b|ε<br>Strings generated by G<sub class="tcecode">3</sub>  are L(G<sub class="tcecode">3</sub>)={a}<br>	G<sub class="tcecode">4</sub>:S → d|a, A → c|b|ε<br>Strings generated by G<sub class="tcecode">4</sub>  are L(G<sub class="tcecode">4</sub><sub class="tcecode"></sub>)={a,d}<br>∴G<sub class="tcecode">3</sub> defines the language L.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">1</sub>:S → AC|a|c, A → c|ε</li>
+</ol>
+<br><br>
+</li>
+<li>
+Here is a context-free grammar G:<br>S → AB <br>A → 0A1 | 2 <br>B → 1B | 3A<br>Which of the following strings is in L(G)?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> 002111300211<br><span class="explanation">Explanation:</span><br>The given CFG is<br>S⟶AB<br>A⟶0A1/2<br>B⟶1B/3A<br> <br>∴ S⟶AB<br>⟶0A1B<br>⟶00A11B<br>⟶00211B<br>⟶002111B<br>⟶0021113A<br>⟶00211130A1<br>⟶002111300A11<br>⟶002111300211
+</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> 021131021</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> 0211300021</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> 00211100211</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages.<br>L<sub class="tcecode">1</sub> = {ww<sup class="tcecode">R</sup>|w∈{a,b}* and w<sup class="tcecode">R</sup> is reverse of w}<br>L<sub class="tcecode">2</sub> = {ww<sup class="tcecode">R</sup>x|w,x∈{0,1}*}<br>Which of the following is TRUE?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> Neither L<sub class="tcecode">1</sub> nor L<sub class="tcecode">2</sub> is DCFL</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> Both L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are DCFLs</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> Only L<sub class="tcecode">2</sub> is DCFL<br><span class="explanation">Explanation:</span><br>If we know where the string w ends and where the reverse starts then it is DCFL otherwise not. In L<sub class="tcecode">1</sub>, we do not know this. <br><br>In L<sub class="tcecode">2</sub> as w,x belongs to {a,b}* x eats up evrything making langugae accepts all strings from {a,b}* Therefore it is regular --&gt; DCFL.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> Only L<sub class="tcecode">1</sub> is DCFL</li>
+</ol>
+<br><br>
+</li>
+<li>
+The language L = { wtw<sup class="tcecode">R</sup> | w, t ∊ {0, 1}* &amp; |w| = |t|} is<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> Regular</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> None of these<br><span class="explanation">Explanation:</span><br>Given constraints are,<br>	(i) |w| = |t|<br>	(ii) wtw<sup class="tcecode">R</sup><br>For checking these constraints we require at least two stacks. <br>∴ The language is neither regular nor context free.
+</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> Deterministic context-free</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> context free language</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following languages. <br>L<sub class="tcecode">1</sub> = {a<sup class="tcecode">i</sup>b<sup class="tcecode">j</sup>c<sup class="tcecode">k</sup> | i≠j or j≠k or i≠k}.<br>L<sub class="tcecode">2</sub> = {xyz│x,y,z∈{0,1}*,|x|=|z|  and n<sub class="tcecode">0</sub>(x) ≥ n<sub class="tcecode">0</sub>(z)}.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is CFL but L<sub class="tcecode">2</sub> is not</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are CFL</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> is regular and L<sub class="tcecode">2</sub> is CFL</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> L<sub class="tcecode">1</sub> is CFL and L<sub class="tcecode">2</sub> is regular<br><span class="explanation">Explanation:</span><br>L<sub class="tcecode">1</sub> is context free language as we just need one stack for accepting the strings in the language. <br>L<sub class="tcecode">2</sub> = {xyz│x,y,z∈{0,1}*,|x|=|z|  and n<sub class="tcecode">0</sub>(x) ≥ n<sub class="tcecode">0</sub>(z)}.<br>In this language, y can eat up everything except the first and last character in the string. The first character should always be 0 and z can be either 0 or 1. This language can be represented by a regular expression 0(0+1)*(0+1)+ε+1(0+1)*1. Therefore this is regular.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the two grammars G<sub class="tcecode">1</sub> &amp; G<sub class="tcecode">2</sub> as given below<br><img src="./Test Results134_files/Q9.PNG" alt="image:TOC Topic Test 4/Q9.PNG" width="459" height="84" class="tcecode"><br>where S is the start symbol in each grammar. <br>Let L(G<sub class="tcecode">1</sub>) be L<sub class="tcecode">1</sub>, L(G<sub class="tcecode">2</sub>) be L<sub class="tcecode">2</sub> and L(G<sub class="tcecode">1</sub>) ∩ L(G<sub class="tcecode">2</sub>) = L<sub class="tcecode">3</sub><br>Which of the following is CORRECT?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are regular, L<sub class="tcecode">3</sub> is CFL</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>, L<sub class="tcecode">2</sub> and L<sub class="tcecode">3</sub> are regular</li>
+<li><img src="./Test Results134_files/correct.png" width="18">&nbsp;<img src="./Test Results134_files/correct.png" width="18"> L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are DCFL, L<sub class="tcecode">3</sub> is not CFL<br><span class="explanation">Explanation:</span><br>In G<sub class="tcecode">1</sub><br>T → bTc | ∊ ⇒ L(T) = {b<sup class="tcecode">n</sup>c<sup class="tcecode">n</sup>| n ≥ 0}<br>R → aR | ∊  ⇒  L(R) = {a<sup class="tcecode">m</sup> | m ≥ 0}<br>⇒ S → RT  ⇒ L(S) = L(R) . L(T)<br>	        ⇒ L(S) = {a<sup class="tcecode">m</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">n</sup> | m, n ≥ 0}<br>In G<sub class="tcecode">2</sub><br>T → aTb | ∊ ⇒ L(T) = {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup> | n ≥ 0}<br>R → cR | ∊  ⇒ L(S) = {c<sup class="tcecode">m</sup> | m ≥ 0}<br>⇒ S → TR  ⇒ L(S) = L(T) . L(R)<br>	        ⇒ L(S) = {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">m</sup> | m, n ≥ 0}<br>∴ L(G<sub class="tcecode">1</sub>) ∩ L(G<sub class="tcecode">2</sub>) = {a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup>c<sup class="tcecode">n</sup> | n ≥ 0} is not a context free language.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub> and L<sub class="tcecode">2</sub> are DCFLs, L<sub class="tcecode">3</sub> is CFL</li>
+</ol>
+<br><br>
+</li>
+<li>
+For each of the following languages, determine whether it is (I) regular, (II) not regular but context-free, or (III) not context-free. <br>L<sub class="tcecode">1</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j&lt;k}<br>L<sub class="tcecode">2</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j or k&lt;j}<br>L<sub class="tcecode">3</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j and k&lt;j}<br>L<sub class="tcecode">4</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j ⇒k&lt;j}<br>L<sub class="tcecode">5</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup> |i,j,k≥0}<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>: (II),L<sub class="tcecode">2</sub>: (III),L<sub class="tcecode">3</sub>: (III), L<sub class="tcecode">4</sub>: (III), L<sub class="tcecode">5</sub>: (I)</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> L<sub class="tcecode">1</sub>: (III),L<sub class="tcecode">2</sub>: (II),L<sub class="tcecode">3</sub>: (III), L<sub class="tcecode">4</sub>: (II), L<sub class="tcecode">5</sub>: (I)<br><span class="explanation">Explanation:</span><br>For strings in the language L<sub class="tcecode">1</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j&lt;k}, we need to compare number of a’s, b’s and c’s simultaneously which require more than one stack to recognize. So, it cannot be CFL. So, it is (III)<br>For strings in the language L<sub class="tcecode">2</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j or k&lt;j}, we need to compare either number of a’s and b’s or number of b’s and c’s. This can be done using one stack. So, it is CFL. To be precise, it is non-deterministic CFL as we need to guess initially whether we are comparing a’s and b’s or b’s and c’s. So, it is (II)<br>For strings in the language L<sub class="tcecode">3</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j and k&lt;j}, we need to compare number of a’s, b’s and c’s simultaneously which require more than one stack to recognize. This is same as L<sub class="tcecode">1</sub>  which is not CFL. So, it is (III)<br>For language L<sub class="tcecode">4</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i&lt;j ⇒k&lt;j}, the condition i&lt;j ⇒k&lt;j can be written as (i&lt;j)<sup class="tcecode">'</sup>  or k&lt;j which is equivalent to i≥j or k&lt;j. <br>∴L<sub class="tcecode">4</sub>={a<sup class="tcecode">i</sup> b<sup class="tcecode">j</sup> c<sup class="tcecode">k</sup>│i≥j or k&lt;j}  is similar to L<sub class="tcecode">2</sub>  which require only one stack to recognize the strings in the language. So, L<sub class="tcecode">4</sub>  is (II)<br>L<sub class="tcecode">5</sub>  is regular. (I)
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>: (III),L<sub class="tcecode">2</sub>: (III),L<sub class="tcecode">3</sub>: (III), L<sub class="tcecode">4</sub>: (III), L<sub class="tcecode">5</sub>: (I)</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L<sub class="tcecode">1</sub>: (II),L<sub class="tcecode">2</sub>: (II),L<sub class="tcecode">3</sub>: (II), L<sub class="tcecode">4</sub>: (III), L<sub class="tcecode">5</sub>: (I)</li>
+</ol>
+<br><br>
+</li>
+<li>
+G = (V, T, P, S), where V = {S, W, X, Y, Z}, T = {a, b, c}, S is the start variable, and the productions  P are<br>S →WX|Y<br>W→ cWa|ε<br>X → bX|ε<br>Y → cYb|Z<br>Z → aZ|ε<br><br>Which of the following languages is the correct language generated by the above grammar?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> L = {c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> | i, j, k ≥0, and i = j or i = k}<br><span class="explanation">Explanation:</span><br>The given grammar is<br>S →WX|Y<br>W→ cWa|ε<br>X → bX|ε<br>Y → cYb|Z<br>Z → aZ|ε<br>The start symbol S derives two types of strings. We can see this from the production  S →WX|Y.<br>W derives the strings having equal number of c’s and a’s and a is never followed by c. X derives b*. Whereas, Y derives the strings having equal number of c’s and b’s and b is never followed by c. Z derives a*. <br>Observe that S can derive empty string also. <br>Therefore, S derives strings of the form c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> having either equal number of c’s and a’s or equal number of a’s and b’s, where i, j, k ≥0.<br><br>∴ L = {c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> | i, j, k ≥0, and i = j or i = k}
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L = {c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> | i, j, k ≥0, and i &gt; k or j &lt; i}</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L = {c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> | i, j, k ≥0, and i = j or j = k}</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L = {c<sup class="tcecode">i</sup> a<sup class="tcecode">j</sup> b<sup class="tcecode">k</sup> | i, j, k &gt;0, and i = j and i = k}</li>
+</ol>
+<br><br>
+</li>
+<li>
+The grammar G:<br>S → SS | a | b<br>is ambiguous. That means at least some of the strings in its language have more than one leftmost derivation. However, it may be that some strings in the language have only one derivation. Identify from the list below a string that has exactly TWO leftmost derivations in G.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> aaaa</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> a</li>
+<li><img src="./Test Results134_files/correct.png" width="18">&nbsp;<img src="./Test Results134_files/correct.png" width="18"> aab<br><span class="explanation">Explanation:</span><br>Given that the grammar G is ambiguous.<br>S⟶SS|a|b<br>Now we need to find the string in the given options which has more than one leftmost derivation.<br>The string ‘a’ has only one LMD.<br><br>bbbba<br>We can find more than two Leftmost derivative for the string bbbba.<br><img src="./Test Results134_files/Q6_Exp1.PNG" alt="image:TOC Topic Test 4/Q6_Exp1.PNG" width="425" height="225" class="tcecode">			<br>aaaa<br>We can find more than two leftmost derivations for the string aaaa.<br><img src="./Test Results134_files/Q6_Exp2.PNG" alt="image:TOC Topic Test 4/Q6_Exp2.PNG" width="423" height="189" class="tcecode"><br>aab<br>There are exactly two leftmost derivations for the string aab.<br><img src="./Test Results134_files/Q6_Exp3.PNG" alt="image:TOC Topic Test 4/Q6_Exp3.PNG" width="272" height="153" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> bbbba</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following grammars are equivalent?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">1</sub>: S → XY, X → xXX|ε , Y → yxYY|ε <br>G<sub class="tcecode">2</sub>: S → ZY|Y|ε , Z → xZZ|xZ|x, Y → yxYY|yxY|yx</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">1</sub>: S → XY, X → xXX|ε , Y → yxY|ε<br>G<sub class="tcecode">2</sub>: S → ZY|Z|Y, Z → xZZ|xZ|x, Y → yxYY|yxY|yx</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> G<sub class="tcecode">1</sub>: S → SaSQaS|ε, Q → cS <br>G<sub class="tcecode">2</sub>: S → SaPaS|ε, P → ScS<br><span class="explanation">Explanation:</span><br>G<sub class="tcecode">1</sub>: S → XY, X → xXX|ε , Y → yxY|ε<br>G<sub class="tcecode">2</sub>: S → ZY|Z|Y, Z → xZZ|xZ|x, Y → yxYY|yxY|yx<br>G<sub class="tcecode">1</sub> generates ε but G<sub class="tcecode">2</sub> does not. So, they are not equivalent.<br><br>G<sub class="tcecode">1</sub>: S → XY, X → xXX|ε , Y → yxYY|ε <br>G<sub class="tcecode">2</sub>: S → ZY|Y|ε , Z → xZZ|xZ|x, Y → yxYY|yxY|yx<br>G<sub class="tcecode">1</sub> generates x but G<sub class="tcecode">2</sub> does not. <br><br>G<sub class="tcecode">1</sub>: S → PQ|p, P → q<br>G<sub class="tcecode">2</sub>: S → p|q<br>G<sub class="tcecode">1</sub> generates p but G<sub class="tcecode">2</sub> generates {p, q}<br><br>G<sub class="tcecode">1</sub>: S → SaSQaS|ε, Q → cS <br>Q can be eliminated by substituting Q → cS in S → SaSQaS|ε. This results in the grammar S → SaScSaS|ε<br>G<sub class="tcecode">2</sub>: S → SaPaS|ε, P → ScS<br>P can be eliminated by substituting P → ScS in S → SaPaS|ε. This results in the grammar S → SaScSaS|ε<br>So, both the grammars define the same language.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> G<sub class="tcecode">1</sub>: S → PQ|p, P → q<br>G<sub class="tcecode">2</sub>: S → p|q</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Questions Q12 &amp; Q13</strong></span><br>Let L = {w ∈{a, b}* : w starts and ends with same as the middle symbol and |w| = 2n+1, n ≥1}. Which of the following grammars define the language L?<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> S → A | B<br>A → aDa<br>D → CDC | a<br>B → bEb<br>E → CEC | b<br>C → a | b<br><span class="explanation">Explanation:</span><br>The grammar <br>S → A | B<br>A → aDa<br>D → CDC | a<br>B → bEb<br>E → CEC | b<br>C → a | b<br>generates the given language. <br>A derives all the strings starting and ending with a and having a as middle character. D derives all the strings starting and ending with b and having b as middle character.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> S → T | U<br>T → aWa<br>W → CWC | aa<br>U → bYb<br>Y → CYC | bb<br>C → a | b</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> S → P | Q<br>P → bRa<br>R → CRC | ϵ<br>Q → aQb | aa</li>
+<li><img src="./Test Results134_files/wrong.png" width="16">&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> S →W | Y<br>W→ aWa|ε<br>Y → bYb|Z<br>Z → aZ|ε</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Common Data Questions Q12 &amp; Q13</strong></span><br>Let L = {w ∈{a, b}* : w starts and ends with same as the middle symbol and |w| = 2n+1, n ≥1}.<br>Find which of the following strings is not in the language L.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> abbababba<br><span class="explanation">Explanation:</span><br>The string abbababba starts and ends with a different symbol than the middle character. So, this string is not in the language L.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> aababababaa</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> babaabbbaabab</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> babaabaabab</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions Q14 &amp; Q15</strong></span><br>Here are the transitions of a deterministic pushdown automata. The start state is q<sub class="tcecode">o</sub>, f is the accepting state.<br><img src="./Test Results134_files/linked_q_updated.png" alt="image:TOC Topic Test 4/linked_q_updated.png" width="562" height="209" class="tcecode"><br>Σ = {a, b}<br>τ = {0, 1, z<sub class="tcecode">0</sub>}<br><strong class="tcecode">Note:</strong><br> Where in states column (q<sub class="tcecode">0</sub>-z<sub class="tcecode">0</sub>) represents current state is q<sub class="tcecode">0</sub>, top of the stack is z<sub class="tcecode">0</sub> and goes to state q<sub class="tcecode">1</sub> and pushes two 0's onto the stack.<br><br>Which of the following string is in the language?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> abbaababaaaa</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> babbab<br><span class="explanation">Explanation:</span><br>In the options given, Select the string which has number of b's twice as many as number of a's i.e., babbbab.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> abaaba</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> baabbababa</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="font-size:large"><strong class="tcecode">Linked Answer Questions Q14 &amp; Q15</strong></span><br>Here are the transitions of a deterministic pushdown automata. The start state is q<sub class="tcecode">o</sub>, f is the accepting state.<br><img src="./Test Results134_files/linked_q_updated.png" alt="image:TOC Topic Test 4/linked_q_updated.png" width="562" height="209" class="tcecode"><br>Σ = {a, b}<br>τ = {0, 1, z<sub class="tcecode">0</sub>}<br><strong class="tcecode">Note:</strong><br> Where in states column (q<sub class="tcecode">0</sub>-z<sub class="tcecode">0</sub>) represents current state is q<sub class="tcecode">0</sub>, top of the stack is z<sub class="tcecode">0</sub> and goes to state q<sub class="tcecode">1</sub> and pushes two 0's onto the stack.<br><br>Which of the following language is accepted by the above PDA?<br>(n<sub class="tcecode">a</sub>=number of a's in w, n<sub class="tcecode">b</sub>=number of b's in w)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L={w | w ∈ {a, b}* and n<sub class="tcecode">a</sub>(w) = n<sub class="tcecode">b</sub>(w)}</li>
+<li>&nbsp;<img src="./Test Results134_files/correct.png" width="18"> L={w | w ∈ {a, b}* and 2n<sub class="tcecode">a</sub>(w) = n<sub class="tcecode">b</sub>(w)}<br><span class="explanation">Explanation:</span><br>If we observe column 'a',<br>In most of the cases, for every one 'a' seen on input tape we are pushing two 0's to the stack[i.e.,(q<sub class="tcecode">1</sub>,00z<sub class="tcecode">0</sub>),(q<sub class="tcecode">1</sub>,000)] and for every one 'b' seen on the input tape we are pushing single 1 onto the stack.<br>(NOTE: Those two obsevations are only for push operation)<br>Consider the pop operations now,<br> for 'a' seen on the input tape with current top of stack as 1 we are using pop operation and <br> for 'b' seen on the input tape with current top of stack as 0 we are using pop operation.<br><br>∴ If we see input tape symbol 'a' with top of stack 0 we are pushing to stack or if top of stack is 1, we pop out from the stack.<br> <br>As mentioned above, for 'a' two 0's are pushed onto the stack and for 'b' one 1 is pushed.This says that, Number of b's are twice as number of a's.
+</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L = {w | w ∈ {a,b}* and n<sub class="tcecode">a</sub>(w) = 2n<sub class="tcecode">b</sub>(w)}</li>
+<li>&nbsp;<img src="./Test Results134_files/wrong.png" width="16"> L={a<sup class="tcecode">n</sup>b<sup class="tcecode">n</sup> | n ≥ 0 }</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results134_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92159&test_id=287 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results42_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results42_files/calclayout.css">
+<script src="./Test Results42_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results42_files/jquery-ui.js.download"></script>
+<script src="./Test Results42_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results42_files/custom.js.download"></script>
+<script src="./Test Results42_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results42_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results42_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837551, 'I\'m sorry, the time available to complete the test is over!', false, 1486837551120);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92159&amp;test_id=287#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>GA Topic Test - 6</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:32:33&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Choose the most appropriate word from the options given below to complete the following sentence.<br><strong class="tcecode">At a party:</strong><br><strong class="tcecode">Ravi:</strong> “______ yourself?’<br><strong class="tcecode">Sagar:</strong> “Yes, I am having a great time!”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Are you enjoying<br><span class="explanation">Explanation:</span><br>In the given context we are referring to a question. So, we need an auxiliary verb and here Ravi is asking Sagar about how he is feeling at this moment in the party and to represent such actions <strong class="tcecode">present continuous</strong> tense is used. So, the correct choice would be “Are you enjoying yourself?”.
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> You enjoying</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Do you enjoy</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Enjoying</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following options is the closest in meaning to the underlined word in the sentence.<br>The woman tried to overcome her <span style="text-decoration:underline;">timid</span> nature before her job interview.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Frightened<br><span class="explanation">Explanation:</span><br>Timid means<br>a)	Showing lack of courage (or) confidence; <br>b)	Easily frightened<br>So, of all the given options the word that is closest in meaning to <strong class="tcecode">timid</strong> is <strong class="tcecode">“frightened”.</strong>
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Bold</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Aggressive</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Calm</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose the most appropriate word to fill in the blank from the options given below.<br>The wisest man ______ ever lived made mistakes.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> that<br><span class="explanation">Explanation:</span><br>In the given sentence, we have the superlative form of the adjective <strong class="tcecode">wise</strong> i.e., <strong class="tcecode">‘wisest’</strong> and the pronoun <strong class="tcecode">‘that’</strong> is used in preference to ‘who’ or ‘which’ after adjectives in the superlative degree.
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> which</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> who</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> whom</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results42_files/5Qa.png" alt="image:APT6/5Qa.png" width="438" height="232" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 1 : c, 2 : a, 3 : d, 4 : b</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 1 : b, 2 : c, 3 : a, 4 : d<br><span class="explanation">Explanation:</span><br>1)	Concise refers to giving a lot of information clearly and in a few words, i.e., brief<br>2)	Tedious refers to tiresome by reason of length, slowness or dullness; boring<br>3)	Insane means very foolish; absurd<br>4)	Taunt means to tease; to drive a person by taunting; mocking; provoking; insulting.
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 1 : c, 2 : d, 3 : a, 4 : b</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 1 : a, 2 : c, 3 : d, 4 : b</li>
+</ol>
+<br><br>
+</li>
+<li>
+If x<sup class="tcecode">a</sup> = y<sup class="tcecode">b</sup> = z<sup class="tcecode">c</sup> and y<sup class="tcecode">2</sup> = xz, then b equals:<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> <img src="./Test Results42_files/8Oa.png" alt="image:APT6/8Oa.png" width="59" height="49" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> <img src="./Test Results42_files/8Ob.png" alt="image:APT6/8Ob.png" width="63" height="48" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> <img src="./Test Results42_files/8Oc.png" alt="image:APT6/8Oc.png" width="63" height="45" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> <img src="./Test Results42_files/8Od.png" alt="image:APT6/8Od.png" width="55" height="44" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/8Ea.PNG" alt="image:APT6/8Ea.PNG" width="336" height="360" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Select the pair that best expresses a relationship similar to that expressed in the pair.<br><strong class="tcecode">BLACKSMITH: FORGE</strong><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Abrupt : Slow</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Departure : Arrival</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Mason : Stone<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Relationship between the given pair: </strong><br>Blacksmith is a person who creates objects from iron (or) steel by forging the metal using tools.<br>  	(Forge – To make (or) shape a metal object by treating it in a fire and hammering it)<br>	<strong class="tcecode">Option (a):<br></strong>Abrupt refers to unexpectedly sudden. So, slow is an antonym for abrupt.<br>	<strong class="tcecode">Option (b):</strong><br>Departure refers to the action of leaving, especially to start a journey and arrival is the action or process of arriving. So, departure is an antonym (opposite) for arrival.<br>	<strong class="tcecode">Option (c):</strong><br>		Mason is a person skilled in cutting, dressing and laying stones.<br>	<strong class="tcecode">Option (d):</strong><br>	Erratic refers to inconsistent or changeable in behavior, i.e., unpredictable. Thus, predictable is an antonym for erratic.<br> From the given explanation, the pair that best expresses the relationship similar to that expressed in the pair <strong class="tcecode">Blacksmith: Forge</strong> is <strong class="tcecode">Mason: Stone</strong>.
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Erratic : Predictable</li>
+</ol>
+<br><br>
+</li>
+<li>
+The five villages A, B, C, D and E are situated close to each other. A is to the west of B, C is to the south of A, E is to the North of B and D is to the East of E. Then, C is in which direction with respect to D?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> South – West<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/13Ea.png" alt="image:APT6/13Ea.png" width="511" height="491" class="tcecode"><br><img src="./Test Results42_files/13Eb.png" alt="image:APT6/13Eb.png" width="409" height="239" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> South – East</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> North – West</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> North – East</li>
+</ol>
+<br><br>
+</li>
+<li>
+A man sells two articles for Rs. 9100 each. He gained 30% on the first and lost 30% on the second. Find his overall profit or loss percent in the transaction.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 3% loss</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 3% profit</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 9% loss<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/12Ea.png" alt="image:APT6/12Ea.png" width="398" height="528" class="tcecode"><br><img src="./Test Results42_files/12Eb.png" alt="image:APT6/12Eb.png" width="283" height="247" class="tcecode"><br><img src="./Test Results42_files/12Ec.png" alt="image:APT6/12Ec.png" width="593" height="400" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 9% profit</li>
+</ol>
+<br><br>
+</li>
+<li>
+A, B and C started a business with a total investment of Rs. 80,000. A invests Rs. 10,000 more than C and B invests Rs. 5000 less than C. If the total profit at the end of a year is Rs. 17,920. Find B’s share.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Rs. 5,320</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Rs. 5,600</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Rs 4,480<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/11Ea.PNG" alt="image:APT6/11Ea.PNG" width="271" height="393" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Rs. 4,600</li>
+</ol>
+<br><br>
+</li>
+<li>
+When two dice are thrown simultaneously, what is the probability that the sum of two numbers that turn up is less than or equal to 10?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 7/12</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 5/6</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 1/12</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 11/12<br><span class="explanation">Explanation:</span><br>Find the probability of sum being greater than 10.<br>Combinations of two dice’s whose sum is 12 is (6,6).<br>Combinations whose sum is 11 is (5,6) , (6,5).<br>If you throw two dice’s then there are 36 occurrences. Out of 36 occurrences, 3 occurrences satisfy the condition.<br>Therefore, probability whose sum of two numbers greater than or equal to 10<br>=3/36 =1/12<br>Hence probability that sum of two numbers is less or equal to 10 = 1-(1/12)= 11/12
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a class of 400 students who play Cricket and Football, the number of students who play neither of the games is 26 less than those who play both. The number of students who do not play Cricket is 40 more than those who do not play Football. Find the number of students who play Football.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 167</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 233<br><span class="explanation">Explanation:</span><br>If the number of students not playing Football = x<br>	Number of students not playing Cricket = x+40<br>	Students playing both Cricket and Football = y<br>	Students playing neither = y-26<br><br><img src="./Test Results42_files/T6.JPG" alt="image:APT6/T6.JPG" width="236" height="192" class="tcecode"><br>Part I → number of students playing only Cricket<br>Part II → number of students playing only Football<br>Part III → number of students playing both<br>Part IV → number of students playing neither<br>Total number of students = 400<br>The number of students not playing Football<br>		x = Part I + Part IV<br>The number of students not playing Cricket<br>		x+40 = Part II + Part IV<br>Students playing both Cricket and Football<br>		y = Part III<br>Students playing neither<br>		y-26 = Part IV<br>Total number of students = 400<br>	I + II + III + IV = 400<br>	(I + IV) + (II + IV – IV) + III = 400<br>	x + x+40 - (y-26) + y = 400<br>	2x + 66 = 400<br>	2x = 334<br>x=167<br>The number of students who play Football<br>			= 400 – 167<br>			= 233
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 313</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 165</li>
+</ol>
+<br><br>
+</li>
+<li>
+Ravi walks 30 Kilometers towards North. From there, he walks 15 Kilometers towards South. Then, he walks 20 Kilometers towards East. How far and in which direction is he with reference to his starting point?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 25 Kilometers East</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 22 Kilometers South East</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 22 Kilometers North East</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 25 Kilometers North East<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/9Ea.png" alt="image:APT6/9Ea.png" width="497" height="342" class="tcecode"><br><img src="./Test Results42_files/9Eb.JPG" alt="image:APT6/9Eb.JPG" width="389" height="431" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Pointing towards a girl in the photograph, Sindhu said, “She is the mother of Nishal whose father is my son.” How is Sindhu related to the girl in the photograph?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Mother</li>
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Mother - in - law<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/7Ea.JPG" alt="image:APT6/7Ea.JPG" width="480" height="370" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Cousin</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+The government instituted more frequent inspections of the food served at restaurants and other eateries in the last six months. The amount of bacteria in samples of food decreased by 50 percent, on average, during the period. If the government were to continue such frequent inspections, the incidence of stomach and intestinal infections could be cut by half.<br>Which of the following is an assumption made from the passage?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> Restaurants and eateries maintain hygiene only when forced to do so by the government.<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Option (a):</strong><br>It is given that more frequent inspections in the last six months by government decreased the bacteria in samples of food by 50 percent on average.<br>		From this, we can assume that<br>		⇒ Restaurants and eateries maintain hygiene only when they are forced to do so.<br>		 This assumption is true.<br>	<strong class="tcecode">Option (b):</strong><br>		This can’t be assumed because,<br>	It is given that due to frequent inspections, the incidence of stomach and infections could be cut by half. But nothing is mentioned about their cause.<br>	<strong class="tcecode">Option (c):</strong><br>		This can’t be assumed because,<br>		Reason for the government to undertake inspection is not given. Also, there is no mention of any disease outbreak.<br>	<strong class="tcecode">Option (d):</strong><br>		This can’t be assumed because,<br>	It is not mentioned whether food prepared at home is hygienic or not and its comparison with food prepared in restaurants and eateries.
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Stomach and intestinal infections are caused only by eating at restaurants and eateries.</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> The government undertakes inspection of eateries only when there is an outbreak of a disease</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> Food prepared at home is more hygienic than that prepared in restaurants and eateries</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results42_files/14Qa.png" alt="image:APT6/14Qa.png" width="624" height="292" class="tcecode"><br>By what percent is the number of Employees working in companies A and C more than that of Employees working in companies B and D ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results42_files/correct.png" width="18"> 23.5%<br><span class="explanation">Explanation:</span><br><img src="./Test Results42_files/14Ea.png" alt="image:APT6/14Ea.png" width="389" height="351" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 28.5%</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 31.5%</li>
+<li>&nbsp;<img src="./Test Results42_files/wrong.png" width="16"> 35.5%</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results42_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

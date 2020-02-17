@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=51991&test_id=266 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results54_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results54_files/calclayout.css">
+<script src="./Test Results54_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results54_files/jquery-ui.js.download"></script>
+<script src="./Test Results54_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results54_files/custom.js.download"></script>
+<script src="./Test Results54_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results54_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results54_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837840, 'I\'m sorry, the time available to complete the test is over!', false, 1486837840355);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=51991&amp;test_id=266#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Topic Test - 6</strong><br>
+Calculus: Limits, Continuity and Differentiability, Maxima and Minima&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-26 22:02:59&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-26 22:44:42&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:41:43&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+1.690 / 25.000 (7%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+3 / 15 (20%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+<img src="./Test Results54_files/Q1a.PNG" alt="image:EM6/Q1a.PNG" width="102" height="53" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> ∞</li>
+<li><img src="./Test Results54_files/correct.png" width="18">&nbsp;<img src="./Test Results54_files/correct.png" width="18"> -1<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E1a.PNG" alt="image:EM6/E1a.PNG" width="312" height="181" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q2a.PNG" alt="image:EM6/Q2a.PNG" width="123" height="59" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> ∏<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E2a.PNG" alt="image:EM6/E2a.PNG" width="255" height="535" class="tcecode">
+</li>
+<li><img src="./Test Results54_files/wrong.png" width="16">&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> -∏</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q3a.PNG" alt="image:EM6/Q3a.PNG" width="146" height="69" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results54_files/wrong.png" width="16">&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> e</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> e<sup class="tcecode">-1</sup><br><span class="explanation">Explanation:</span><br>The given limit of the function is in the form of  1<sup class="tcecode">∞</sup><br><img src="./Test Results54_files/E3a.PNG" alt="image:EM6/E3a.PNG" width="263" height="346" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If a function is continuous at a point,<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> The limit of the function may not exist at the point</li>
+<li><img src="./Test Results54_files/wrong.png" width="16">&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> The function must be derivable at the point</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> The limit of the function at the point tends to infinity</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> The limit must exist at the point and the value of limit should be same as the value of the function at that point<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E4a.PNG" alt="image:EM6/E4a.PNG" width="439" height="121" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For 0 ≤ t ≤ ∞, the maximum value of the function f(t)= e<sup class="tcecode">(-t)</sup>-2e<sup class="tcecode">(-2t)</sup> occurs at t=͟<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> log<sub class="tcecode">e</sub>⁡2</li>
+<li><img src="./Test Results54_files/correct.png" width="18">&nbsp;<img src="./Test Results54_files/correct.png" width="18"> log<sub class="tcecode">e</sub>⁡4<br><span class="explanation">Explanation:</span><br>The given function is<br>		f(t)= e<sup class="tcecode">(-t)</sup>-2e<sup class="tcecode">(-2t)</sup><br>                        f' (t)= 0<br>                   ⇒ e<sup class="tcecode">(-t)</sup> (-1)-2e<sup class="tcecode">(-2t)</sup> (-2)=0<br>                        -e<sup class="tcecode">(-t)</sup>+4e<sup class="tcecode">(-2t)</sup>=0<br>                         e<sup class="tcecode">(-t)</sup>=4e<sup class="tcecode">(-2t)</sup><br>	             e<sup class="tcecode">(-t)</sup>=4e<sup class="tcecode">(-t)</sup>.e<sup class="tcecode">(-t)</sup><br>                       4e<sup class="tcecode">(-t)</sup>=1<br>                           e<sup class="tcecode">t</sup>=4<br>                       ⇒  t= ln⁡4 = log<sub class="tcecode">e</sub>⁡4<br>We got the stationary point (ln 4, f(ln 4)). <br>Find  f'' (t) at stationary point to check the function has a maximum or minimum. <br>	i).If  f'' (t) &lt; 0 then f(t) has a maximum at ‘t’<br>	ii).If  f'' (t)&gt;0 then f(t) has minimum at ‘t’<br>	iii).If  f'' (t)=0 then f(t) may or may not have the extremum<br><br>t= ln⁡4 is the only stationary point. So find f'' (t) at t= ln⁡4 .<br>          f'' (t)=e<sup class="tcecode">(-t)</sup>-8e<sup class="tcecode">(-2t)</sup><br>                      f'' (t) at  t= ln⁡4  = log<sub class="tcecode">e</sub>⁡4<br>   = e<sup class="tcecode">(-ln⁡4 )</sup>-8e<sup class="tcecode">(-2 ln⁡4 )</sup><br>                                       = 1/4-(8(1/16)) <br>                                       = -(1/4)&lt;0 <br>  ∴f(t)  has a maximum at t= ln⁡4     =log<sub class="tcecode">e</sub>⁡4
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> log<sub class="tcecode">e</sub>⁡8</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q6a.PNG" alt="image:EM6/Q6a.PNG" width="112" height="59" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results54_files/wrong.png" width="16">&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> 1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E6a.PNG" alt="image:EM6/E6a.PNG" width="298" height="384" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> -1/2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q14a.PNG" alt="image:Q14a.PNG" width="367" height="133" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1/2</li>
+<li><img src="./Test Results54_files/correct.png" width="18">&nbsp;<img src="./Test Results54_files/correct.png" width="18"> -1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E14a.PNG" alt="image:EM6/E14a.PNG" width="632" height="503" class="tcecode"><br><img src="./Test Results54_files/E14b.PNG" alt="image:EM6/E14b.PNG" width="260" height="207" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q13a.PNG" alt="image:EM6/Q13a.PNG" width="291" height="43" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> 1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E13a.PNG" alt="image:EM6/E13a.PNG" width="414" height="465" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results54_files/wrong.png" width="16">&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q12a.PNG" alt="image:EM6/Q12a.PNG" width="209" height="65" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> e<sup class="tcecode">(-1/2)</sup></li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> e</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> e<sup class="tcecode">(1/2)</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E12a.PNG" alt="image:EM6/E12a.PNG" width="355" height="484" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q11a.PNG" alt="image:EM6/Q11a.PNG" width="526" height="56" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 25/7,5/4</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> 25/7,1<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E11a.PNG" alt="image:EM6/E11a.PNG" width="225" height="506" class="tcecode"><br><img src="./Test Results54_files/E11b.PNG" alt="image:EM6/E11b.PNG" width="353" height="241" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1,25/7</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 5/4,1</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q10a.PNG" alt="image:EM6/Q10a.PNG" width="612" height="70" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 197</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> 198<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E10a.PNG" alt="image:EM6/E10a.PNG" width="249" height="511" class="tcecode"><br><img src="./Test Results54_files/E10b.PNG" alt="image:EM2/E10b.PNG" width="278" height="542" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 199</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 200</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results54_files/Q9a.PNG" alt="image:EM6/Q9a.PNG" width="366" height="103" class="tcecode"><br>is differentiable function in [0, 2], find ‘a’ and ‘b’. (Where [.] denotes the greatest integer function).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> a = 1/6 , b = ∏/4-13/6<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E9a.PNG" alt="image:EM6/E9a.PNG" width="339" height="485" class="tcecode"><br><span style="text-decoration:underline;"><strong class="tcecode">LHD :</strong></span><br>	f' (x)= 3ax<sup class="tcecode">2</sup><br>            f' (1)= 3a <br> <br><span style="text-decoration:underline;"><strong class="tcecode">RHD :</strong></span><br><img src="./Test Results54_files/E9b.PNG" alt="image:EM6/E9b.PNG" width="323" height="442" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> a = 1/3 , b = ∏/4-13/6</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> a = 1/6 , b = ∏/4</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> a = 1/3 , b = ∏/4-7/3</li>
+</ol>
+<br><br>
+</li>
+<li>
+The greatest value of the function f(x) = 2sinx + sin2x on the interval<br><br> <img src="./Test Results54_files/Q8a.PNG" alt="image:EM6/Q8a.PNG" width="85" height="60" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> (√3)/2</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> (3√3)/2<br><span class="explanation">Explanation:</span><br>To find the greatest value of a function over the given interval, find all the stationary points in that interval and check at each stationary point whether  f''(x) &lt; 0 or not. <br>If f''(x) &lt; 0 for more than one stationary point, then the greatest point will be the one which has the greatest f(x) value. <br><br>	f(x) = 2sinx + sin2x<br>	f' (x)= 2cosx+2cos2x=0<br>                      = cosx + cos2x = 0<br>                   x = ∏/3  ,∏<br>            f'' (x)= -2sinx-4sin2x <br>             at  x = ∏/3 , f'' (∏/3)= -2sin∏/3-4sin2 ∏/3<br>                                          = -2* (√3)/2-4* (√3)/2<br>                                          = -3√3&lt;0<br>             at x = ∏ , f'' (∏)= -2sin∏-4sin2∏ = 0<br>             at  x = ∏/3 , f(x) has maximum value   <br>	f(∏/3) = 2sin ∏/3+sin(2∏)/3         <br>	       = 2* (√3)/2+(√3)/2           <br>	       = (3√3)/2
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let f'' (x) be continuous at x=0 and f'' (0)=6, the value of <br><img src="./Test Results54_files/Q7a.PNG" alt="image:EM6/Q7a.PNG" width="203" height="67" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> 15<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E7a.PNG" alt="image:EM6/E7a.PNG" width="354" height="427" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 22</li>
+</ol>
+<br><br>
+</li>
+<li>
+If f(x) =  a ln⁡x + bx<sup class="tcecode">2</sup> – x has its extreme values at x = -1 and x = 2 then the values of a, b is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results54_files/correct.png" width="18"> -2, 1/2<br><span class="explanation">Explanation:</span><br><img src="./Test Results54_files/E15a.PNG" alt="image:EM6/E15a.PNG" width="379" height="393" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> -2, -1/2</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 2, 1/2</li>
+<li>&nbsp;<img src="./Test Results54_files/wrong.png" width="16"> 2, -1/2</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results54_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

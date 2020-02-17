@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0088)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=29277&test_id=185 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results92_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results92_files/calclayout.css">
+<script src="./Test Results92_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results92_files/jquery-ui.js.download"></script>
+<script src="./Test Results92_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results92_files/custom.js.download"></script>
+<script src="./Test Results92_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results92_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results92_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486920973, 'I\'m sorry, the time available to complete the test is over!', false, 1486920973175);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=29277&amp;test_id=185#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>Algorithms Topic Test - 5</strong><br>
+Greedy Algorithms&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-27 16:04:28&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-27 16:48:39&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:11&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+9.010 / 25.000 (36%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+6 / 15 (40%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Suppose that Dijkstra’s algorithm is run using a priority queue  data structure for which insert and decrease key operations take O(log log V) time, extra-min operation take O(<img src="./Test Results92_files/Q1a.PNG" alt="image:Algo5/Q1a.PNG" width="27" height="22" class="tcecode">) time then the running time of Dijkstra’s algorithm on a directed weighted graph G = (V, E) containing non-negative edges will be.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O((V+E)log V )</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> <img src="./Test Results92_files/O1b.PNG" alt="image:Algo5/O1b.PNG" width="141" height="29" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> <img src="./Test Results92_files/O1c.PNG" alt="image:Algo5/O1c.PNG" width="140" height="27" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> <img src="./Test Results92_files/O1d.PNG" alt="image:Algo5/O1d.PNG" width="139" height="29" class="tcecode"><br><span class="explanation">Explanation:</span><br>There are V extract-min operations, and E decrease key operations for the Dijkstra’s algorithm using priority queue. So, time complexity is <img src="./Test Results92_files/E1a.PNG" alt="image:Algo5/E1a.PNG" width="170" height="24" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the worst case time complexity of job sequencing with deadlines using greedy algorithm?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O(n log n)</li>
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> O(n<sup class="tcecode">2</sup>)<br><span class="explanation">Explanation:</span><br>Let suppose we have ‘n’ jobs<br>Sort the profits in decreasing order that will take O(nlogn) time.<br>For every job need to search for vacant location before the deadline.<br>Worst case time complexity is O(n<sup class="tcecode">2</sup>) <br>	So overall time complexity is O(n<sup class="tcecode">2</sup>).
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O(n<sup class="tcecode">2</sup>logn)</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statements is TRUE regarding adjacency matrices over<br>          adjacency lists when representing an undirected graph G?<span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> It is often faster to add and remove edges from G when using an adjacency matrix.<br><span class="explanation">Explanation:</span><br>It takes O(1) time to add/remove an edge in an adjacency matrix. In an adjacency list, you need O(δ(v)) time for both operations, where δ(v) is the number of neighbours of node v. δ(v) = O(V)
+</li>
+<li><img src="./Test Results92_files/wrong.png" width="16">&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> With adjacency matrices, iterating over all neighbours incident to a vertex v requires only O(v.δ(v)) time, where δ(v) is the degree of v</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> Any graph G can be represented using fewer bits of space with an adjacency matrix than with adjacency lists.</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> None of these</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose we have 8 sorted lists and each of sizes 10, 7, 29, 13, 2, 11, 45 and 15 respectively, which need to be merged into a combined sorted list, but we can merge only two at a time. What is the minimum total number of comparisons needed when apply optimal merge pattern?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 320</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 340</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 350<br><span class="explanation">Explanation:</span><br>Given lists sizes are<br>		10, 7, 29, 13, 2, 11, 45 and 15<br>	→ Sort the list sizes in increasing order<br>		2, 7, 10, 11, 13, 15, 29, 45<br>	Final optimal merge tree is<br><img src="./Test Results92_files/E4a.PNG" alt="image:Algo5/E4a.PNG" width="479" height="494" class="tcecode"><br>Total comparisons = 33 + 39 + 58 + 45 + 10 + 35 + 40 + 90 = 350
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 370</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the time complexity of Dijkstra’s algorithm if it is implemented using AVL Tree instead of Priority Queue over a graph G = (V, E)?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O(V<sup class="tcecode">2</sup>)</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O(VE)</li>
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> O((V+E)logV)<br><span class="explanation">Explanation:</span><br>Using AVL Trees, both Decrease key and Extract-min operation can implemented in O(log V) time, So over all time complexity is O((V+E)logV)
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> O(VlogE)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the box contains 24 bulbs of the following colors. 12 blue, 8 red, 2 white, 1 yellow, 1 orange. Alice picks a bulb randomly from a box, and messages Bob its color using string of 0’s and 1’s. Alice replaces the bulb in the box, and repeats this experiment, many times. What is the minimum expected length of the message Alice has to convey to Bob per experiment?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 39/12</li>
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 21/12<br><span class="explanation">Explanation:</span><br>Using static Huffman compression you can encode the more common colors in fewer bits than the rare colors, that being the case on can expect that common colors will usually be choosen.<br>	Eg:<br>		Blue	    :  	     1<br>		Red	    :  	   01<br>		White     :  	 001<br>		Yellow	    : 	0001<br>		Orange  :	 0000<br>	The number of bits required for representing each colour <br>		12 blue     =     12<br>		 8 red	      =     16<br>		 2 white     =       6<br>		 1 yellow   =       4<br>		 1 orange   =       4<br>	For total of 42/24 = 21/12
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 23/12</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 37/12</li>
+</ol>
+<br><br>
+</li>
+<li>
+Use Huffman coding to encode the following symbols with the frequencies listed             A : 0.08, B : 0.10, C : 0.12, D : 0.15, E : 0.20, F : 0.35. What is the average number of bits used to encode a character?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 2.45<br><span class="explanation">Explanation:</span><br><img src="./Test Results92_files/E7a.PNG" alt="image:Algo5/E7a.PNG" width="434" height="310" class="tcecode"><br><img src="./Test Results92_files/E7b.PNG" alt="image:Algo5/E7b.PNG" width="474" height="479" class="tcecode"><br><img src="./Test Results92_files/E7c.PNG" alt="image:Algo5/E7c.PNG" width="499" height="300" class="tcecode"><br><img src="./Test Results92_files/E7d.PNG" alt="image:Algo5/E7d.PNG" width="524" height="404" class="tcecode"><br>Average number of bits used to encode a symbol using this encoding is <br>		= 3 * 0.08 + 3 * 0.10 + 2 * 0.20 + 3 * 0.12 + 3 * 0.15 + 2 * 0.35<br><br>		= 2.45
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 3.45</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 3.33</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode"><span style="text-decoration:underline;">Linked Answer Questions Q8 &amp; Q9</span></strong><br>Consider the following graph<br><img src="./Test Results92_files/Q8a.PNG" alt="image:Algo5/Q8a.PNG" width="338" height="180" class="tcecode"><br>Apply single source shortest path algorithm on the given graph using vertex ‘A’ as the source. What is the maximum possible distance between vertex A to vertex G. (Assume exclude infinity).<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 35</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 28<br><span class="explanation">Explanation:</span><br><img src="./Test Results92_files/E8a.PNG" alt="image:Algo5/E8a.PNG" width="567" height="395" class="tcecode"><br>Answer is 28
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 30</li>
+<li><img src="./Test Results92_files/wrong.png" width="16">&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 24</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the order in which vertices get removed from the priority queue for the above graph?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> ABCHFDEG</li>
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> ABCFHDEG<br><span class="explanation">Explanation:</span><br>From above solution<br>	Order is 	A     B     C     F     H     D     E     G
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> ABFCDHEG</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> ABFCHDEG</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question 10&amp;11:</strong></span><br>Consider the following instance of the knapsack problem<br><br>(P<sub class="tcecode">1</sub> – P<sub class="tcecode">8</sub>) = (60, 91, 40, 50, 15, 20, 21, 29)<br><br>(W<sub class="tcecode">1</sub> – W<sub class="tcecode">8</sub>) = (30, 15, 33, 38, 10, 9, 7, 29)<br><br>M = 80<br><br> Which of the following objects are not included at all if the given problem is solved using greedy method.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> (4, 3, 8)</li>
+<li><img src="./Test Results92_files/correct.png" width="18">&nbsp;<img src="./Test Results92_files/correct.png" width="18"> (3, 8)<br><span class="explanation">Explanation:</span><br><img src="./Test Results92_files/E10a.PNG" alt="image:Algo5/E10a.PNG" width="649" height="487" class="tcecode"><br> Objects 3, 8 are not included.
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 8</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> (5, 4, 3, 8)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following instance of the knapsack problem<br><br>(P<sub class="tcecode">1</sub> – P<sub class="tcecode">8</sub>) = (60, 91, 40, 50, 15, 20, 21, 29)<br><br>(W<sub class="tcecode">1</sub> – W<sub class="tcecode">8</sub>) = (30, 15, 33, 38, 10, 9, 7, 29)<br><br>M = 80<br>What is the profit obtained for the above problem is approximately?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 216</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 217</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 219<br><span class="explanation">Explanation:</span><br>Profit = 91 + 21 + 20 + 60 + 15 +<img src="./Test Results92_files/E11a.PNG" alt="image:Algo5/E11a.PNG" width="30" height="38" class="tcecode"> * 50<br>         = 218.84 ≈ 219
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 220</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question 12&amp;13:</strong></span><br>Suppose we have 8 tasks to execute. The execution of each task takes 1 unit of time. The following table contains, each task T<sub class="tcecode">i</sub> has profit P<sub class="tcecode">i</sub> and deadline d<sub class="tcecode">i</sub>. if task T<sub class="tcecode">i</sub> is completed before dith unit of time then we can earn profit P<sub class="tcecode">i</sub>.<br><img src="./Test Results92_files/Q12a.PNG" alt="image:Algo5/Q12a.PNG" width="528" height="117" class="tcecode"><br>What are the tasks are not completed within deadline?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> T1 and  T4</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> T4 and  T8</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> T1 and T8<br><span class="explanation">Explanation:</span><br><img src="./Test Results92_files/E12a.PNG" alt="image:Algo5/E12a.PNG" width="632" height="272" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> Only T8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose we have 8 tasks to execute. The execution of each task takes 1 unit of time. The following table contains, each task T<sub class="tcecode">i</sub> has profit P<sub class="tcecode">i</sub> and deadline d<sub class="tcecode">i</sub>. if task T<sub class="tcecode">i</sub> is completed before dith unit of time then we can earn profit P<sub class="tcecode">i</sub>.<br><img src="./Test Results92_files/Q12a.PNG" alt="image:Algo5/Q12a.PNG" width="528" height="117" class="tcecode"><br>What is maximum profit earned?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 148</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 130</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 126</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 127<br><span class="explanation">Explanation:</span><br>Total profit = 26 + 25 + 23 + 21 + 19 + 13<br>	       = 127
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Question 14&amp;15:</strong></span><br>Consider the following graph<br> <img src="./Test Results92_files/Q14a.PNG" alt="image:Algo5/Q14a.PNG" width="344" height="399" class="tcecode"><br> What is the weight of maximum spanning tree for the given weighted graph, using Kruskal’s algorithm?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 36</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 38</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 40</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 45<br><span class="explanation">Explanation:</span><br>One of the possible maximal spanning tree is<br><img src="./Test Results92_files/E14a.PNG" alt="image:Algo5/E14a.PNG" width="300" height="352" class="tcecode"><br>Total weight = 4 + 4 + 4 + 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3+3 + 2 + 2 + 2<br>		         = 45
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following graph<br> <img src="./Test Results92_files/Q14a.PNG" alt="image:Algo5/Q14a.PNG" width="344" height="399" class="tcecode"><br>Find a spanning tree with minimal total weight containing the edges {e, i} and {g, k} in the given weighted graph.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 27</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 28</li>
+<li>&nbsp;<img src="./Test Results92_files/correct.png" width="18"> 29<br><span class="explanation">Explanation:</span><br>The minimum spanning tree of graph {e, i} and {g, k}<br><img src="./Test Results92_files/E15a.PNG" alt="image:Algo5/E15a.PNG" width="335" height="349" class="tcecode"><br>	Total weight = 1 + 1 + 1 + 1 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 3 + 4		    	       = 29
+</li>
+<li>&nbsp;<img src="./Test Results92_files/wrong.png" width="16"> 30</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results92_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

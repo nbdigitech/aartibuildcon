@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92227&test_id=278 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results48_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results48_files/calclayout.css">
+<script src="./Test Results48_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results48_files/jquery-ui.js.download"></script>
+<script src="./Test Results48_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results48_files/custom.js.download"></script>
+<script src="./Test Results48_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results48_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results48_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486837757, 'I\'m sorry, the time available to complete the test is over!', false, 1486837757602);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92227&amp;test_id=278#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>EM Subject Test - 3</strong><br>
+Complete Syllabus&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:35:20&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+01:30:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 50.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 33 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+The chromatic number of the Petersen graph is<br><img src="./Test Results48_files/1Qa.png" alt="image:EMS3/1Qa.png" width="203" height="130" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/1Ea.png" alt="image:EMS3/1Ea.png" width="331" height="244" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following represent the complement of ‘b’ in the lattice shown below:<br><img src="./Test Results48_files/24Qa.png" alt="image:EMS3/24Qa.png" width="377" height="236" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Complement of ‘b’ = {x, c, d, y}</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Complement of ‘b’ = {x, a, c, d, e}</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> Complement of ‘b’ = {x, c, d, e, y}<br><span class="explanation">Explanation:</span><br>Any element is complement of ‘b’ iff<br>(b⋁s)=1 and (b⋀s)=0,where ‘s’ is any element in the lattice.<br>Here,<br>(b⋁a)=a and (b⋀a)=b<br>∴ ‘a’ is not a complement of b.<br>But,<br>(b⋁x)=1 and (b⋀x)=0<br>(b⋁c)=1 and (b⋀c)=0<br>(b⋁d)=1 and (b⋀d)=0<br>(b⋁e)=1 and (b⋀e)=0<br>(b⋁y)=1 and (b⋀y)=0<br>So, complement of ‘b’ = {x, c, d, e, y}.
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Complement of ‘b’ = {x, c, e, y}</li>
+</ol>
+<br><br>
+</li>
+<li>
+many reflexive and anti-symmetric relations are there on a set with 4 elements?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 243</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 282</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 627</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 729<br><span class="explanation">Explanation:</span><br>The reflexive relation must contain all the diagonal elements.<br>{(1,1),(2,2),(3,3)…(n,n) }<br>Every superset of a reflexive relation is also a reflexive relation.<br>In the anti-symmetric relation, (x, y) is present in the relation and (y, x) is also present in the relation iff and only if x = y.<br>∴The smallest relation which is both reflexive and anti-symmetric is all the diagonal elements of a set.<br>∴ The diagonal elements are compulsory in a relation which is  both reflexive and anti-symmetric relation.<br>The remaining non-diagonal elements are n^2-n.<br>In the non-diagonal element if we have (x, y) in the relation then we don’t have (y, x) in the relation. From the pair (x, y)and (y, x) will have either one (or) none in the relation.<br>Total such pairs are (n<sup class="tcecode">2</sup>-n)/2.<br>Each pair is having 3 possibilities (x, y) or (y, x) or none.<br>So, total number of relations which are both reflexive and anti-symmetric on a set with ‘n’ elements =3(<sup class="tcecode">(n[sup]2</sup>-n)[/sup]/<sup class="tcecode">2</sup>)<br>∴The total number of reflexive and anti-symmetric relations on a set with 4 elements =3<sup class="tcecode">(4(4-1)</sup>/<sup class="tcecode">2</sup>)<br>=3<sup class="tcecode">6</sup><br>=729
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+For what values of α, will the following system of equations in x,y and z have a solution?<br>x+y+z=1;x+2y+4z=α;x+4y+10z=α<sup class="tcecode">2</sup><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1,2<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/23Ea.png" alt="image:EMS3/23Ea.png" width="667" height="512" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1,-2</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> -1,-2</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> -1,2</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/22Qa.png" alt="image:EMS3/22Qa.png" width="588" height="68" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> <img src="./Test Results48_files/22Oa.png" alt="image:EMS3/22Oa.png" width="100" height="53" class="tcecode"><br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/22Ea.png" alt="image:EMS3/22Ea.png" width="405" height="384" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> <img src="./Test Results48_files/22Ob.png" alt="image:EMS3/22Ob.png" width="100" height="84" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> <img src="./Test Results48_files/22Oc.png" alt="image:EMS3/22Oc.png" width="101" height="70" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> <img src="./Test Results48_files/22Od.png" alt="image:EMS3/22Od.png" width="102" height="83" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/21Qa.png" alt="image:EMS3/21Qa.png" width="308" height="118" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> abc&gt;1</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> abc&gt;-8</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> abc&lt;1</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> abc&lt;-8<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/21Ea.png" alt="image:EMS3/21Ea.png" width="492" height="384" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A gambler has in his pocket a fair coin and a two-head coin. He selects one of the coins at random; when he flips it, it shows head. What is the probability that it is the fair coin?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/2</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1/3<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/15Ea.png" alt="image:EMS3/15Ea.png" width="562" height="475" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/4</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/5</li>
+</ol>
+<br><br>
+</li>
+<li>
+Suppose that the probability of being killed in a single flight in P_c=1/(4×〖10〗<sup class="tcecode">6</sup> ) based or available statistics. Assume that different flights are independent if a man takes 5 flights per year the probability that he is killed in a plane crash within the next 4 years is ________ (approximately).<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/10000</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/(5x10<sup class="tcecode">5</sup>)</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/(4×〖10〗<sup class="tcecode">5</sup> )</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1/(2×〖10〗<sup class="tcecode">5</sup> )<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/12Ea.png" alt="image:EMS3/12Ea.png" width="622" height="376" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The time (in hours) required to repair a machine is an exponentially distributed random variable with parameter λ=1/2. What is the conditional probability that a repair takes atleast, 10 hours given that its duration exceeds 9 hours?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 0.6065<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/9Ea.png" alt="image:EMS3/9Ea.png" width="496" height="382" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.6487</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.3935</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.3513</li>
+</ol>
+<br><br>
+</li>
+<li>
+The width of the slot of a duralumin is (in inches) normally distributed with μ=0.900 and σ=0.0030. The specification limits were given as 9000±0.0050.<br>What is the maximum allowable value of σ that will permit no more than 1 in 100 defectives when the widths are normally distributed with μ=0.900 and σ ?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 0.0019<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/8Ea.png" alt="image:EMS3/8Ea.png" width="310" height="450" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.009</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.019</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0.00019</li>
+</ol>
+<br><br>
+</li>
+<li>
+A = 2000<br>B = A – 999<br>C = A + B – 998<br>D = A + B + C – 997<br>	.<br>	.<br>	.<br>2 = A + B + C … + X – 975<br>The value of 2+1/2<sup class="tcecode">25</sup>  = _______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 501<br><span class="explanation">Explanation:</span><br>First, I got that B =1001. And we can see that<br>C=2B+1 =&gt; 2B+(2-1)<br>D=2C+1=4B+3 =&gt;22B+(2<sup class="tcecode">2</sup>-1)<br>E=2D+1 =8B+7 =&gt;23B+(2<sup class="tcecode">3</sup>-1)<br>F= 2E+1 =16B+15 =&gt;24B+(2<sup class="tcecode">4</sup>-1)<br>.<br>.<br>Z=2Y+1 =&gt;2<sup class="tcecode">24</sup>B+(2<sup class="tcecode">24</sup>-1)<br>Now,(Z+1)/2<sup class="tcecode">25</sup>  = ([2<sup class="tcecode">24</sup>(B+1)-1] +1)/2<sup class="tcecode">25</sup>= (B+1)/2<br>=501
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 901</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 801</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2048</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/6Qa.png" alt="image:EMS3/6Qa.png" width="436" height="53" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 0<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/6Ea.png" alt="image:EMS3/6Ea.png" width="615" height="278" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> (-1)(197/3) * (<sup class="tcecode">100</sup>C<sub class="tcecode">197/3</sub>)</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> (-1)(2/3) * (<sup class="tcecode">100</sup>C<sub class="tcecode">(2/3)</sub>)</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a bag, there are some balls of the same size that are colored by 7 colors, and for each color the number of balls is 77. At least how many balls are needed to be picked out to ensure that one can obtain 7 groups of 7 balls each such that in each group the balls are monochromatic?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 469</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 539</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 85<br><span class="explanation">Explanation:</span><br>At first to get a group of 7 balls with same color we need to pick 43 balls atleast. 	<br>Ex:		7	6	6	6	6	6	6<br>	Next after getting the first group, it is sufficient to pick out from the bag another 7 balls for getting 43 balls once again. Then, by the same reason, the second group of 7 homochromatic drawn balls can be obtained. <br>	Repeating this process for 6 times, the 7 groups of 7 homochromatic balls are obtained. <br>	Thus, the least number of drawn balls is 43+ 6*7 = 85
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 468</li>
+</ol>
+<br><br>
+</li>
+<li>
+The maximum size of independent set possible in a connected graph with 20 vertices _____<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 20</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 10<br><span class="explanation">Explanation:</span><br>We will have maximum independent set in P20, choosing alternate vertices forms the independent set.<br>⸫ the size of independent set is 10
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 12</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 15</li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of colors needed to label V(Kn) such that each color class includes a subgraph with maximum degree at most ‘k’ is ____ [each class: set of vertices with same color]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> <img src="./Test Results48_files/2Oa.png" alt="image:EMS3/2Oa.png" width="39" height="55" class="tcecode"><br><span class="explanation">Explanation:</span><br>The number of colors needed to label V(Kn) such that each color class induces a sub graph with maximum degree is ‘k’ at most is <img src="./Test Results48_files/2Oa.png" alt="image:EMS3/2Oa.png" width="39" height="55" class="tcecode">, with these many classes, we can partition the vertices into sets of size at most ‘k’.<br>Ex: for K4 and k=2, we can partition the total 4 vertices into sets of size 4/2, each set of vertices is colored with a color.The maximum degree in this induced subgraph is 1<br>      For K5 and k=2 we can partition the total 5 vertices into sets of size at max ⌈5/2⌉, each set of vertices is colored with a single color. The maximum degree in this induced subgraph is 2
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> <img src="./Test Results48_files/2ob.png" alt="image:EMS3/2ob.png" width="51" height="58" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> n – k</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> n – k + 1</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the logical translation of the following statement?<br>“No person can speak French”<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> ∃<sub class="tcecode">x</sub> (P(x)⋀F(x) )</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> ~∀<sub class="tcecode">x</sub> (P(x)→F(x) )</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> ∀<sub class="tcecode">x</sub> (P(x)→~F(x) )<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/29Eqa.png" alt="image:EMS3/29Eqa.png" width="600" height="439" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> ∀<sub class="tcecode">x</sub> (P(x)→F(x) )</li>
+</ol>
+<br><br>
+</li>
+<li>
+The minimum value of chromatic number and the clique number of C'<sub class="tcecode">2k+1</sub>(k&gt;3) i.e. complement of odd cycle, are respectively ______<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 3,2</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 3,k</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> k,k<br><span class="explanation">Explanation:</span><br>The complement of G has all possible edges not in G. Thus, a clique in the complement of G is a set of vertices among which there are no edges of G, we call this an independent set of G, a set of vertices unrelated by any edge of G.<br>Since G = C<sub class="tcecode">2k+1</sub> the alternate vertices form the independent set in odd cycle. <br>We have k alternate vertices in the C<sub class="tcecode">2k+1</sub>, which form independent set, and which forms clique in its compliment. <br>The clique number is ‘k’<br>¯C<sub class="tcecode">2k+1</sub>is union of cliques formed with alternate vertices. The chromatic number is size of the clique [clique number], which is ‘k’
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> k+1,k</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following propositional functions<br>F<sub class="tcecode">1</sub>:P⋁~(P⋀Q)<br>F<sub class="tcecode">2</sub>:(P⋁Q)⋁(~P⋀~Q)<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> F<sub class="tcecode">1</sub> is tautology, F<sub class="tcecode">2</sub>is contradiction</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> F<sub class="tcecode">1</sub> is contradiction, F<sub class="tcecode">2</sub>is tautology<br><span class="explanation">Explanation:</span><br>F<sub class="tcecode">1</sub>:  P⋁~(P⋀Q)⟺P⋁~P⋁~Q<br>⟺T⋁~Q<br>⟺T<br><br>F<sub class="tcecode">2</sub>:(P⋁Q)⋁(~P⋀~Q)⟺(P⋁Q)⋁~(P⋁Q)<br>		⟺T<br>So, both F<sub class="tcecode">1</sub> and F<sub class="tcecode">2</sub> are tautologies.
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> F<sub class="tcecode">1</sub>andF<sub class="tcecode">2</sub> are tautologies</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> F<sub class="tcecode">1</sub>andF<sub class="tcecode">2</sub> are contradiction</li>
+</ol>
+<br><br>
+</li>
+<li>
+. Let p and q be the propositions.<br>p: It is below freezing.<br>q: It is snowing.<br>How can this English sentence be translated into a logical expression?<br>“It is either below freezing or it is snowing, but it is not snowing if it is below freezing”.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> (p⋁q)⋁(q→p)</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> (p⋁q)⋀(~q→p)</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> (p⋁q)⋀(p→~q)<br><span class="explanation">Explanation:</span><br>The logical expression for the sentence “It is either below freezing or it is snowing” is (p⋁q).<br>The sentence “It is not snowing if it is below freezing” can be more simply expressed as<br>“If it is below freezing, it is not snowing”.<br>The logical expression for the sentence “If it is below freezing, it is not snowing” is (p→~q).<br>In the given statement, there is a conjunction of propositions, both of which are compound.<br>∴(p⋁q)⋀(p→~q)
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> (~p⋁q)⋀(~p→q)</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following two statements:<br>S<sub class="tcecode">1</sub>:The poset [D_12;1]  is lattice.<br>S<sub class="tcecode">2</sub>:The poset [{2,3,5,30,60,120,180,360};1]  is lattice.<br>Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> Only S<sub class="tcecode">1</sub> is true<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/28Ea.png" alt="image:EMS3/28Ea.png" width="584" height="424" class="tcecode"><br><img src="./Test Results48_files/28Eb.png" alt="image:EMS3/28Eb.png" width="532" height="379" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Only S<sub class="tcecode">2</sub> is true</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Both S<sub class="tcecode">1</sub>and S<sub class="tcecode">2</sub> are true</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> Neither S<sub class="tcecode">1</sub> nor S<sub class="tcecode">2</sub> is true</li>
+</ol>
+<br><br>
+</li>
+<li>
+Let f(x)=〖(3x+1)〗<sup class="tcecode">2</sup>. Then f<sup class="tcecode">(-1)</sup> (x)=____________<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> √x-1/3</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> √x+1/3</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/3(√x+1)</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1/3(√x+1)<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/27Ea.png" alt="image:EMS3/27Ea.png" width="260" height="368" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/25Qa.png" alt="image:EMS3/25Qa.png" width="599" height="228" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> A∪B</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> A∩B</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> A<sup class="tcecode">c</sup>∪B<sup class="tcecode">c</sup><br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/26Ea.png" alt="image:EMS3/26Ea.png" width="581" height="470" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> A<sup class="tcecode">c</sup>∩B<sup class="tcecode">c</sup></li>
+</ol>
+<br><br>
+</li>
+<li>
+A relation over the set S={a,b,c} is defined by: {(a,a),(a,b),(b,a),(a,c),(b,c),(b,b),(c,c) } what properties hold for this relation?<br>I. Symmetric<br>II. Reflexive<br>III. Anti-symmetric<br>IV. Irreflexive<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> I and II only</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> II only<br><span class="explanation">Explanation:</span><br>The given set S={a,b,c}<br>The given relation R on set S={(a,a),(a,b),(b,a),(a,c),(b,c),(b,b),(c,c) }<br>The elements:  (a,a),(b,b),(c,c) is present in the relation R. So, R is reflexive. If R is reflexive then R is not irreflexive.<br>The element (a, c) is there in the relation R but (c, a) is not present in the relation. So, the R is not symmetric.<br>Both the elements (a, b) and (b, a) are present in the relation. So, the R is not anti-symmetric.
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> I and III only</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> III and IV only</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given set S={x│x is a student in your class} and relation xRy↔x sits in the same row as y. Which of the following is True?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> R is reflexive but not symmetric</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> R is reflexive and symmetric but not transitive</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> R is reflexive, symmetric and Anti-symmetric</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> R is reflexive, symmetric and transitive<br><span class="explanation">Explanation:</span><br>The given set S={students of a class}<br>The relation R is "Sits in the same row".<br>Reflexive:<br>Let ‘x’ is a student in set ‘S’.<br>This is reflexive because we can find every x in S such that (x,x)∈R.<br>Symmetric:<br>If two students x and y are sitting in a row then the students y and x also sits in the same row.<br>If (x,y)∈R then (y,x)∈R,∀x,y∈A<br>Transitive:<br>If x and y are sitting in a row and y and z are sitting in a row then x and z is also sits in the same row.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/20Qa.png" alt="image:EMS3/20Qa.png" width="261" height="62" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 70</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 75<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/20Ea.png" alt="image:EMS3/20Ea.png" width="428" height="273" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 90</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 95</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/19Qa.png" alt="image:EM8_1/19Qa.png" width="338" height="48" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2500</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1250</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1275<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/19Ea.png" alt="image:EMS3/19Ea.png" width="440" height="327" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2525</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/118Qa.png" alt="image:EMS3/118Qa.png" width="490" height="32" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> a=- 3/4,b=1/8</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> a=- 3/4,b=-1/8<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/18Ea.png" alt="image:EM8_1/18Ea.png" width="363" height="511" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> a= 3/4,b=-1/8</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> a= 3/4,b=1/8</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/17Qa.png" alt="image:EMS3/17Qa.png" width="275" height="44" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 0</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> π/2</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> π<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/17Ea.png" alt="image:EMS3/17Ea.png" width="372" height="464" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2π</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results48_files/16Qa.png" alt="image:EMS3/16Qa.png" width="484" height="166" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/16Ea.png" alt="image:EMS3/16Ea.png" width="433" height="482" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> -1</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> -2</li>
+</ol>
+<br><br>
+</li>
+<li>
+Emma’s coin box contains 8 fair, standard coins (head and tails) and 1 coin which has head on both sides. He selects a coin randomly and flips it 4 times, getting all heads. If he flips the coin again, what is the probability it will be heads?<img src="./Test Results48_files/14Qa.png" alt="image:EMS3/14Qa.png" width="165" height="112" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/6</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 5/6<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/14Ea.png" alt="image:EMS3/14Ea.png" width="577" height="378" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 2/3</li>
+</ol>
+<br><br>
+</li>
+<li>
+A bag contains a blue ball, some red balls and some green balls, you reach into bag and pulls out three balls at random. The probability you pull out one of each color is exactly 3%. How many balls were initially in the bag, if the product of number of red balls and green balls given = 598.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 49</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 50<br><span class="explanation">Explanation:</span><br><img src="./Test Results48_files/11Ea.png" alt="image:EMS3/11Ea.png" width="665" height="430" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 51</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 52</li>
+</ol>
+<br><br>
+</li>
+<li>
+One green ball, one blue ball and two red balls are placed in a bowl, one draw two simultaneously from the bowl and announce that atleast one of them is red. What is the chance that the other ball one have drawn out is also red?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/3</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/6</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> 1/5<br><span class="explanation">Explanation:</span><br>There are 6 possible pairings of the two balls draw [4C2]<br>R_1,R_2,R_1,B,R_1,G<br>B,R_2,B_1,G  ⨉[It is given that one ball is Red]<br>G,R_2<br>∴ Now only 5 possible combinations remaining<br>∴ Therefore, the chance that the Red1 &amp; Red 2 pairing has been drawn are 1 in 5 = 1/5<br>Method 2:<br>P(A)= P(drawing one red ball)=5/6 [R_1 R_2 R_1 B_1 R_2 B_1 R_1 G_1 R_2 G_1   BG]<br>P(A∩B)=P(drawing both red balls)=1/6<br>P(B/A)=P(drawing 2^nd  red ball given one ball is red)<br>=P(both red balls)/P(one red ball) <br>=P(A∩B)/P(A) <br>=(1/6)/(5/6)<br>=1/5
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> 1/4</li>
+</ol>
+<br><br>
+</li>
+<li>
+The simplest form of<br>[(~p⋀(p⋁~q)⋁(q⋀(p⋁~q)⋁(p⋀~q)]<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> p⋁q</li>
+<li>&nbsp;<img src="./Test Results48_files/correct.png" width="18"> q→p<br><span class="explanation">Explanation:</span><br>Distributive law is<br>P⋀(Q⋁R)⟺(P⋀Q)⋀(P⋁R)<br>(~p⋀(p⋁~q)) ⋁(q⋀(p⋁~q))⋁(p⋀~q) <br>⇔((~p⋀p)⋁(~p⋀~q))⋁((q⋀p)⋁(q⋀~q))⋁(p⋀~q)<br>⇔(F⋁(~p⋀~q))⋁((q⋀p)⋁F)⋁(p⋀~q)<br>⇔(~p⋀~q)⋁(p⋀q)⋁(p⋀~q)<br>⇔(~p⋀~q)⋁(p⋀(q⋁~q))<br>⇔((~p⋀~q)⋁(p⋀T))<br>⇔((~p⋀~q)⋁(p))<br>⇔((~p⋁q)⋀(~q⋁p))<br>⇔(T⋀(~q⋁p))<br>⇔~q⋁p<br>⇔q→p
+</li>
+<li>&nbsp;<img src="./Test Results48_files/wrong.png" width="16"> p→q</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results48_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

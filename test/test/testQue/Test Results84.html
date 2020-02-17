@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=25669&test_id=201 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results84_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results84_files/calclayout.css">
+<script src="./Test Results84_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results84_files/jquery-ui.js.download"></script>
+<script src="./Test Results84_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results84_files/custom.js.download"></script>
+<script src="./Test Results84_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results84_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results84_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838400, 'I\'m sorry, the time available to complete the test is over!', false, 1486838400623);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=25669&amp;test_id=201#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DLD Topic Test - 3</strong><br>
+Design and Synthesis of Combinational Circuits&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2016-12-19 12:38:42&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2016-12-19 13:23:35&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:44:53&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+9.690 / 25.000 (39%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+8 / 15 (53%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+What is the SOP form of the function represented by the below circuit.<br><img src="./Test Results84_files/Q1a.PNG" alt="image:DLD3/Q1a.PNG" width="440" height="223" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AB' C'+BC'</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> ABC+B'C'</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> AB' C'+A' BC+ABC<br><span class="explanation">Explanation:</span><br>MUX 1⟹AC'+BC<br>MUX 2⟹B' (AC'+BC)+BC<br>	 ⟹AB' C'+B' BC+BC<br>	 ⟹AB' C'+BC<br>	 ⟹AB' C'+A' BC+ABC
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AB' C'+A' B' C'+ABC</li>
+</ol>
+<br><br>
+</li>
+<li>
+Minimum number of N×1 MUXes needed to construct an M×1 MUX are _________. Given that M&gt;N, k is number of levels.<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> <img src="./Test Results84_files/O2a.PNG" alt="image:DLD3/O2a.PNG" width="112" height="45" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O2b.PNG" alt="image:DLD3/O2b.PNG" width="130" height="45" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O2c.PNG" alt="image:DLD3/O2c.PNG" width="127" height="39" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O2d.PNG" alt="image:DLD3/O2d.PNG" width="124" height="48" class="tcecode"></li>
+</ol>
+<br><br>
+</li>
+<li>
+Number of 4×1 MUXes used in level 3 to construct a 128×1 MUX is ________, where the number of MUXes used gets reduced from level 1 to level k<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 2<br><span class="explanation">Explanation:</span><br>Number of MUXes in level  k=M/N<sup class="tcecode">k</sup> <br>⟹in level 3=128/4<sup class="tcecode">3</sup> <br>=128/64=2
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 4</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+Function represented by the below given circuit which is constructed with 1×8 active high demux is __________.<br><img src="./Test Results84_files/Q4a.PNG" alt="image:DLD3/Q4a.PNG" width="386" height="231" class="tcecode"><span style="float:right">( Marks: -0.33 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AC+AB'+A'B'C</li>
+<li><img src="./Test Results84_files/wrong.png" width="16">&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> A' C'+A' B+AB'C</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AB+AC'+AB'C</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> AB+AC'+A'B'C<br><span class="explanation">Explanation:</span><br><img src="./Test Results84_files/E4a.PNG" alt="image:DLD3/E4a.PNG" width="358" height="435" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which device the address 110011 is mapped to<br><img src="./Test Results84_files/Q5a.PNG" alt="image:DLD3/Q5a.PNG" width="443" height="402" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 1</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>A<sub class="tcecode">5</sub> A<sub class="tcecode">4</sub> A<sub class="tcecode">3</sub> A<sub class="tcecode">2</sub> A<sub class="tcecode">1</sub> A<sub class="tcecode">0</sub>=110011<br>⟹ A<sub class="tcecode">5</sub> A<sub class="tcecode">4</sub> A<sub class="tcecode">3</sub>=110<br>Device 4 gets enabled.
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Minimum number of NOR gates required to realize the function<br><img src="./Test Results84_files/Q6a.PNG" alt="image:DLD3/Q6a.PNG" width="82" height="29" class="tcecode"><br>by using only NOR gates with a Fan-in of 2.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 5<br><span class="explanation">Explanation:</span><br><img src="./Test Results84_files/E6a.PNG" alt="image:DLD3/E6a.PNG" width="796" height="383" class="tcecode"><br><img src="./Test Results84_files/E6b.PNG" alt="image:DLD3/E6b.PNG" width="633" height="298" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Minimum number of 2 Fan-in NAND gates required to realize Half adder and Half subtractor, which would do one operation at a time<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 6<br><span class="explanation">Explanation:</span><br>The half adder adds two single binary digits P and Q. It has two outputs, sum (S) and carry (C). Sum is incorporated by P⨁Q and carry is incorporated by PQ.<br>The half subtractor performs subtraction of two bits of binary digits P and Q. It has two outputs the difference (D) and borrow B. Difference is incorporated by P⨁Q and borrow is incorporated by ¯P Q<br>P⨁Q is common<br><br><img src="./Test Results84_files/E7a.PNG" alt="image:DLD3/E7a.PNG" width="510" height="255" class="tcecode"><br>(6 NAND gates)<br>To use it as a half adder, take output from F1&amp; F3.<br>To use it as a half subtractor, take output from F1&amp; F2.
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> None of the options</li>
+</ol>
+<br><br>
+</li>
+<li>
+<img src="./Test Results84_files/Q8a.PNG" alt="image:DLD3/Q8a.PNG" width="794" height="246" class="tcecode"><span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> Q,0,Q,Q,P,R</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> Q,0,1,Q,P,R<br><span class="explanation">Explanation:</span><br><img src="./Test Results84_files/E8a.PNG" alt="image:DLD3/E8a.PNG" width="593" height="266" class="tcecode"><br><img src="./Test Results84_files/E8b.PNG" alt="image:DLD3/E8b.PNG" width="343" height="210" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> P,1,P,0,R,Q</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 1,P,0,P,Q,R</li>
+</ol>
+<br><br>
+</li>
+<li>
+If 5×32 decoder, which realizes one function, is replaced with a 3×8 decoder along with a 4×1 MUX, then which of the following options is true.<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li><img src="./Test Results84_files/wrong.png" width="16">&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> Number of links decreases</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> Number of links increases</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> Number of connections decreases<br><span class="explanation">Explanation:</span><br>⟶5×32 decoder with one function<br> <img src="./Test Results84_files/E9a.PNG" alt="image:DLD3/E9a.PNG" width="244" height="226" class="tcecode"><br>Number of links = 32×1=32 links<br>Number of connections = 32+1=33  connections<br>For the combination of 3×8 decoder and 4×1 MUX<br><img src="./Test Results84_files/E9b.PNG" alt="image:DLD3/E9b.PNG" width="354" height="341" class="tcecode"><br>Number of links = 8×4=32 links<br>Number of connections = 8+4=12  connections
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> Number of connections increases</li>
+</ol>
+<br><br>
+</li>
+<li>
+A 8×256 decoder needs to be constructed with 3×8 decoders. To have full utilization of decoders, only one instance of some other decoder can be used. So, which of the given options suits the job?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 1×2 decoder</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 2×4 decoder<br><span class="explanation">Explanation:</span><br>8×256 using 3×8 decoder.<br>⟹⌈8/3⌉  levels=3<br>At level 1 ⟹256/8 decoders = 32 decoders <br>At level 2 ⟹32/8 decoders = 4 decoders <br>At level 3 ⟹4/8 decoders = 1 decoder<br>⟶ But using a 3×8 decoder to map 4 lines in level 3 is under-utilization.<br>⟶ To map to 4 decoders of level 2, one 2×4 decoder at level 3 is enough.
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 3×8 decoder</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 4×16 decoder</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given three bits, namely x, y, z, are added a carry gets generated. Then which of the given options does not represent the generated carry?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> y(x⨁z)+xz</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> xy+yz+xz</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> xyz'+x'yz+xy'z+xyz</li>
+<li><img src="./Test Results84_files/correct.png" width="18">&nbsp;<img src="./Test Results84_files/correct.png" width="18"> xyz'+xy'z+x'yz+x'y'z'<br><span class="explanation">Explanation:</span><br>x + y + z generates carry when (x, y, z) = (0, 1, 1), (1, 0, 1), (1, 1, 0), (1, 1, 1)<br>⟹x'yz+xy'z+xyz'+xyz (option C)<br>=y(x'z+xz')+xy'z+xyz<br>=y(x⨁z)+xz(y'+y)<br>    =y(x⨁z)+xz (option a)<br>⟹x'yz+xy'z+xyz'+xyz (option C)<br>⟹yz(x'+x)+xz(y'+y)+xy(z'+z)<br>=xy+yz+xz (option b)<br>Hence option ‘d’ is answer.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+The given circuit is reset to 0 at all inputs of all the gates, after that an input clock C is provided, then what is output waveform, if clock period is 2 ns and NOT gate, AND gate have 1ns delay each?<br><img src="./Test Results84_files/Q12a.PNG" alt="image:DLD3/Q12a.PNG" width="603" height="121" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O12a.PNG" alt="image:DLD3/O12a.PNG" width="317" height="88" class="tcecode"></li>
+<li><img src="./Test Results84_files/wrong.png" width="16">&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O12b.PNG" alt="image:DLD3/O12b.PNG" width="321" height="77" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> <img src="./Test Results84_files/O12c.PNG" alt="image:DLD3/O12c.PNG" width="314" height="76" class="tcecode"></li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> <img src="./Test Results84_files/O12d.PNG" alt="image:DLD3/O12d.PNG" width="313" height="91" class="tcecode"><br><span class="explanation">Explanation:</span><br>Let the beginning of the clock is 0 ns.<br><img src="./Test Results84_files/E12a.PNG" alt="image:DLD3/E12a.PNG" width="242" height="191" class="tcecode"><br><img src="./Test Results84_files/E12b.PNG" alt="image:DLD3/E12b.PNG" width="371" height="437" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Given circuit is constructed using binary adder, to convert it as a binary subtractor. What is gate G and the values C<sub class="tcecode">0</sub> and x, respectively?<br><img src="./Test Results84_files/Q13a.PNG" alt="image:DLD3/Q13a.PNG" width="384" height="211" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AND,0,0</li>
+<li><img src="./Test Results84_files/wrong.png" width="16">&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> AND,0,1</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> ExOR,1,0</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> ExOR,1,1<br><span class="explanation">Explanation:</span><br><img src="./Test Results84_files/E13a.PNG" alt="image:DLD3/E13a.PNG" width="572" height="181" class="tcecode">
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions:14 &amp; 15</strong></span><br>Given circuit needs to be tested whether it has stuck-at-0 problem or not at pointed place in the diagram.<br><img src="./Test Results84_files/Q14a.PNG" alt="image:DLD3/Q14a.PNG" width="252" height="160" class="tcecode"><br>How many number of test vectors can confirm the problem exists or not?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 3</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 9<br><span class="explanation">Explanation:</span><br>⟶ Input to the AND gate is the place need to test.<br>⟶ To confirm it is not stuck-at-0, other input of AND should be 1.<br>⟶ As it is stuck-at-0, we have pass 1 through it.<br><img src="./Test Results84_files/E14a.PNG" alt="image:DLD3/E14a.PNG" width="289" height="152" class="tcecode"><br>⟹A+B=1,C+D=1<br>(0,1)(0,1)<br>(1,0)(1,0)<br>(1,1)(1,1)<br>3×3=9  test vectors
+</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 8</li>
+</ol>
+<br><br>
+</li>
+<li>
+<span style="text-decoration:underline;"><strong class="tcecode">Common Data Questions:14 &amp; 15</strong></span><br>Given circuit needs to be tested whether it has stuck-at-0 problem or not at pointed place in the diagram.<br><img src="./Test Results84_files/Q14a.PNG" alt="image:DLD3/Q14a.PNG" width="252" height="160" class="tcecode"><br>Which of the given options is a proper test vector, if values are arranged as ABCD?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 0011</li>
+<li>&nbsp;<img src="./Test Results84_files/wrong.png" width="16"> 1000</li>
+<li>&nbsp;<img src="./Test Results84_files/correct.png" width="18"> 0101<br><span class="explanation">Explanation:</span><br>⟶ Input to the AND gate is the place need to test.<br>⟶To confirm it is not stuck-at-0, other input of AND should be 1.<br>⟶As it is stuck-at-0, we have pass 1 through it.<br> <img src="./Test Results84_files/E14a.PNG" alt="image:DLD3/E14a.PNG" width="289" height="152" class="tcecode"><br>⟹A+B=1,C+D=1<br>(0,1)(0,1)<br>(1,0)(1,0)<br>(1,1)(1,1)<br>3×3=9  test vectors	<br>Anyone of the above 9 vectors can be used for testing. From the options given, we can choose 0101 as one of the valid test vector.
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results84_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

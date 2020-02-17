@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0092)http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=32933&test_id=236 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results72_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results72_files/calclayout.css">
+<script src="./Test Results72_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results72_files/jquery-ui.js.download"></script>
+<script src="./Test Results72_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results72_files/custom.js.download"></script>
+<script src="./Test Results72_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results72_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://www.gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://www.gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results72_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486838112, 'I\'m sorry, the time available to complete the test is over!', false, 1486838112456);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://www.gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=32933&amp;test_id=236#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://www.gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>CN Topic Test - 6</strong><br>
+Routing Algorithms, Application layer protocols - DNS, HTTP, FTP, SMTP, POP&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-01-03 15:57:50&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+2017-01-03 16:32:13&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:34:23&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+14.680 / 25.000 (59%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+10 / 15 (67%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+Which of the following statements is not true regarding ICMP?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> ICMP is used to test the connectivity</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> Each ICMP message type is encapsulated in an IP packet.</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> When something unexpected occurs in routers these events are reported by ICMP.</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> ICMP and BOOTP protocols are equivalent in their usage.<br><span class="explanation">Explanation:</span><br>Options (a), (b) and (c) are true. These are the functions provided by ICMP.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the network shown below, what would be the distance vector at Z when  all the routers converge?<br><br><img src="./Test Results72_files/Q4a.PNG" alt="image:CN6/Q4a.PNG" width="239" height="151" class="tcecode"><span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> u v x y z<br> 6 5 2 4 0</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> u v x y z<br>6 4 2 5 0</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> u v x y z<br>    6 4 2 4 0</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> u v x y z<br>    6 5 2 5 0<br><span class="explanation">Explanation:</span><br>Check each node distance to Z by applying shortest path algorithm.<br>Then the distances from Z are,  z -&gt; u = min [(zv + vu), (zx + xv + vu), (zx + xy + yu), (zv, + vx + xy + yu)] = 6<br>Do this procedure for all the nodes. Then answer will be 6, 5, 2, 5, 0
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+If a network have 50-routers and propagation delay between 2 routers is represented as 8 bit binary number, Assume that distance vectors information is exchanged between the routers  for every 0.5 sec. What should be the minimum bandwidth to exchange the routing tables?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 0.1 KBps<br><span class="explanation">Explanation:</span><br>Each routing table has entries for all the routers(50). Each entry is 8 bits. So the total size of a routing table is 400 bits. <br>Given that distance vector information is exchanged between the routers for every 0.5 sec. So, each routing table is written twice onto the line,, so 800 bps are needed on each line in each direction, which is equal to 800/8 Bps = 0.1 KBPS.
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 0.8 KBps</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 1.1 KBps</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> None</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data Q4&amp;Q5:</strong><br>Suppose a network with 4 routers are connected as shown below. All the routers uses Distance Vector routing algorithm . If the distance vector reaches the value 8 or above, consider it as reaching infinity. Let the link C-D is down after exchanging all the distance vectors, <br><img src="./Test Results72_files/Q2b.PNG" alt="image:CN6/Q2b.PNG" width="324" height="62" class="tcecode"><br>What is the number of exchanges would it require for each of them to conclude that D is unreachable after initial stabilization happened?<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 6</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 8</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results72_files/E2a.PNG" alt="image:CN6/E2a.PNG" width="490" height="228" class="tcecode"><br>After the 8th exchange, all the nodes distances from D will become &gt;= 8 which is the notation of unreachability.<br><br>The initial exchange is not countable due to question asks after the stabilization.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+<strong class="tcecode">Common data Q4&amp;Q5:</strong><br>Suppose a network with 4 routers are connected as shown below. All the routers uses Distance Vector routing algorithm . If the distance vector reaches the value 8 or above, consider it as reaching infinity. Let the link C-D is down after exchanging all the distance vectors, <br><img src="./Test Results72_files/Q2b.PNG" alt="image:CN6/Q2b.PNG" width="324" height="62" class="tcecode"><br> Assume that routers follow split horizon. Then the number of exchanges would it require for each of them to conclude that D is unreachable _________________<span style="float:right">( Marks: 1.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 4</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 3<br><span class="explanation">Explanation:</span><br>The main point in split horizon is while sending a DV to its neighbours, if the node is depending on its neighbors then change the DV value to  and send it. <br>	Apply split horizon method.
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 6</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following are the connectionless protocols?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> IP, ICMP, UDP<br><span class="explanation">Explanation:</span><br><strong class="tcecode">Connectionless</strong> : These protocols do not establish a connection between devices. It is manually achieved by transmitting information in one direction, from source to destination without checking to see if the destination is still there or if it is prepared to receive the information.  Ex : IP, ICMP, UDP<br><strong class="tcecode">IP</strong>: IP is internet Protocol. It is unreliable protocol because it does not provide any error control and flow control. Packets in IP are called “Datagram” <br><strong class="tcecode">ICMP</strong>: It is internet control message protocol. It reports error and sends control messages. Error reporting messages include – destination unreachable, source quench , time exceed, parameter problem, redirection etc. Query message includes –echo request and reply, time stamp request and reply, router solicitation and advertisement. Etc<br><strong class="tcecode">UDP</strong>: UDP is user datagram protocol. It is connectionless protocol because data is sent without establishing a connection between sender and receiver before sending the data. UDP is unreliable because data is delivered without acknowledgement. UDP does not perform Auto retransmission. UDP does not use flow control. UDP has high transmission speed.<br><strong class="tcecode">Connection Oriented</strong> : It means that when devices communication they perform hand sharing to set up on end to end connection. Usually one device begins by sending a request to open a connection, and the other responds. Ex: TCP, SLIP, PPP, SMTP<br><strong class="tcecode">TCP</strong>: TCP is transmission control protocol. It is connection oriented protocol because connection must be established prior to transmission of data. TCP is reliable protocol because data is delivered with acknowledgement. TCP perform Auto Retransmission if the data is lost. TCP use flow control. TCP has low speed of transmission. <br><strong class="tcecode">SMTP</strong>: SMTP is simple mail transfer protocol. It is connection oriented text based protocol in which sender communicates with receiver using a command and supplying data over reliable TCP connection. SMTP is standard application layer protocol for delivery of email over TCP/IP network. SMTP establish a TCP connection between Sender And port number 25 of receiver
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> TCP,SMTP</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> IP, UDP, TCP</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> UDP, ICMP, SMTP</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the given options shows correct mapping<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> ARP: Broadcast; SMTP: Unicast; HTTP: Unicast; Video live streaming:Unicast</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> ARP: Broadcast; SMTP: Unicast; HTTP: Unicast; Video live streaming:Multicast<br><span class="explanation">Explanation:</span><br>ARP: It is used to get the MAC address using the IP. So we need to broadcast the packet.<br>SMTP: It is a mail transfer protocol which can be sent to a particular user, so Unicast<br>HTTP: It is also Unicast because for each request of a user, there will be a different response which can directly send to the user.<br>Video live stream: If we take an example of cricket live streaming, those data will be broadcasted.
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> ARP: Unicast; SMTP: Broadcast; HTTP: Unicast; Video live streaming:Multicast</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> ARP: Multicast; SMTP: Unicast; HTTP: Unicast; Video live streaming:Broadcast</li>
+</ol>
+<br><br>
+</li>
+<li>
+In given network scenario, number of unusable links after the Dijkstra Algorithm successfully implemented?<br><img src="./Test Results72_files/Q15a.PNG" alt="image:CN6/Q15a.PNG" width="261" height="207" class="tcecode"><span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 7</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 5</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 8</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 4<br><span class="explanation">Explanation:</span><br>Apply DVR on node1:<br>1 → 2 ⇒ 1(1, 2)<br>1 → 3 ⇒ 1(1, 2, 5, 3)<br>1 → 4 ⇒ 1(1, 2, 5, 3, 4)<br>1 → 5 ⇒ 1(1, 2, 5)<br>1 → 6 ⇒ 1(1, 2, 5, 6)<br>In the same way we have to apply DVR on remaining nodes. Finally we will get 4 unused links. They are (1,3) ,(2,3) ,(5,4) (5,2).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following pairs (application and protocol) is correct?<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> HTTP-TCP, DNS-UDP, DHCP-TCP, FTP TCP, SMTP-TCP, Telnet-TCP</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> HTTP-TCP, DNS-UDP, DHCP-UDP, FTP TCP, SMTP-TCP, Telnet-TCP</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> HTTP-TCP, DNS-TCP, DHCP-UDP, FTP TCP, SMTP-TCP, Telnet-TCP</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> HTTP-TCP, DNS-UDP, DHCP-UDP, FTP TCP, SMTP-UDP, Telnet-TCP</li>
+</ol>
+<br><br>
+</li>
+<li>
+What is the minimum size of ICMP packets?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 16B</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 32B</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 24B</li>
+<li>&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 8B<br><span class="explanation">Explanation:</span><br>The minimum size of an ICMP packet is 8 bytes (router solicitation packet).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider a network with hierarchical routing with 5760 routers, r region and c cluster sizes should be chosen to minimize the size of the routing table for a three-layer hierarchy? What is the minimum size of table?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 21</li>
+<li>&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 36<br><span class="explanation">Explanation:</span><br>Hierarchical routing means routers are connected in a tree structure and three-layer hierarchy means tree with height 3.<br>A good starting place is the hypothesis that a solution with k clusters of k regions of k routers is close to optimal, which means that k is about the cube root of 5800 (around 18).<br>Use trial and error to check out combinations where all three parameters are in the general vicinity of 18.<br>The minimum occurs at 17 clusters, each with 18 regions, each region having 19 routers, or one of the equivalent forms. In all cases the table size is 17 + 18 + 19 = 36.
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 37</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 27</li>
+</ol>
+<br><br>
+</li>
+<li>
+Identify the correct order in which the following actions take place in an interaction between a web browser and a web server.<br>1. The web browser requests a webpage using HTTP.<br>2. The web browser establishes a TCP connection with the web server.<br>3. The web server sends the requested webpage using HTTP.<br>4. The web browser resolves the domain name<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 4,2,1,3<br><span class="explanation">Explanation:</span><br>The web browser first need to figure out IP address of site from url using DNS, then establishes a TCP connection, typically at port 80. Once the TCP connection is established, the browser sends a HTTP request using GET. Finally web server responds with HTTP response.
+</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 1,2,3,4</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 4,1,2,3</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 2,4,1,3</li>
+</ol>
+<br><br>
+</li>
+<li>
+Choose which of the following is FALSE<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> SMTP is not used for transferring e-mail messages from the recipient’s mail server to the recipient’s personal computer</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> DNS uses UDP, instead of TCP, for its query and response messages.</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> MIME allows non-ASCII data to be sent through SMTP.</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> The maximum size of data that the application layer can pass on to the TCP layer is 216 bytes - size of TCP header<br><span class="explanation">Explanation:</span><br>a.Whereas SMTP is a push protocol; the task of transferring e-mail messages from the recipient’s mail server to the recipient’s personal computer is a pull operation. <br>b.TCP involves a connection establishment phase while UDP does not. Using TCP for DNS may end up involving several TCP connections to be established since several name servers may have to be contacted to translate a name into an IP address. This imposes a high overhead in delay that is acceptable for larger transfers but not acceptable for very short messages such as DNS queries and responses. In addition, UDP affords a smaller packet size and also imposes a smaller load on name servers due to its simplicity in comparison to TCP.<br>c.Multipurpose Internet Mail Extensions (MIME) is an Internet standard that extends the format of email to support:<br>Text in character sets other than ASCII<br>Non-text attachments: audio, video, images, application programs etc.<br>Message bodies with multiple parts<br>Header information in non-ASCII character sets<br>d.Application layer can send any size of data to TCP layer. the maximum segment size is specified as a TCP option
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following is stateless protocol(s)?<br>1.HTTP<br>2.FTP<br>3.POP3<br>4.TCP<br>5.IP<span style="float:right">( Marks: -0.66 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/correct.png" width="18"> 1, 5<br><span class="explanation">Explanation:</span><br>A stateless protocol is a communications protocol that treats each request as an independent transaction that is unrelated to any previous request so that the communication consists of independent pairs of request and response.<br>	A stateless protocol does not require the server to retain session information or status about each communications partner for the duration of multiple requests. <br>	<br>HTTP - stateless, FTP - stateful, TCP - stateful, POP3 - stateful, IP = stateless.
+</li>
+<li><img src="./Test Results72_files/wrong.png" width="16">&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 1, 2 and 3</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 1, 3 and 5</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> 2, 4</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the network shown below which has 8 hosts H1 through H8 and 7 routers R1 through R7 each of which is much faster than any of the links.<br><img src="./Test Results72_files/cntopic7q1.png" alt="image:cntopic7q1.png" width="383" height="198" class="tcecode"><br>All links are shown as a, b and c. All links are full duplex and bandwidth of a is 1Mbps, that of b is 2Mbps and that of c is 4Mbps. Find the routers which can never be congested.<span style="float:right">( Marks: 2.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> Only R1, R2</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> Only R7, R6</li>
+<li>&nbsp;<img src="./Test Results72_files/wrong.png" width="16"> Only R3, R5</li>
+<li><img src="./Test Results72_files/correct.png" width="18">&nbsp;<img src="./Test Results72_files/correct.png" width="18"> Only R4<br><span class="explanation">Explanation:</span><br>R4 can never be congested.<br>In the worst case, all 4 hosts H1 - H4 sends to either to H5 to H8 or vice versa.<br>In this case there is enough link capacity on both sides. But all other links can be congested.
+</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://www.gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" aria-labelledby="ui-id-1" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results72_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0087)http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92323&test_id=70 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results</title>
+
+<meta name="language" content="en">
+<meta name="tcexam_level" content="1">
+<meta name="description" content="[TCExam] TCExam by Tecnick.com [Raudra Exam (c) 2019]">
+<meta name="author" content="nick">
+<meta name="reply-to" content="">
+<meta name="keywords" content="TCExam, eExam, e-exam, web, exam">
+<link rel="stylesheet" href="./Test Results116_files/jquery-ui.css">
+<link rel="stylesheet" href="./Test Results116_files/calclayout.css">
+<script src="./Test Results116_files/jquery-1.12.4.js.download"></script>
+<script src="./Test Results116_files/jquery-ui.js.download"></script>
+<script src="./Test Results116_files/jquery.dialogextend.min.js.download"></script>
+<script src="./Test Results116_files/custom.js.download"></script>
+<script src="./Test Results116_files/oscZenoedited.js.download"></script>
+<link rel="stylesheet" href="./Test Results116_files/default.css" type="text/css">
+<link rel="shortcut icon" href="http://gatexcel.co.in/favicon.ico">
+</head>
+<body>
+<div class="header">
+<div class="left"></div>
+<div class="right">
+<a name="timersection" id="timersection"></a>
+<form action="http://gatexcel.co.in/public/code/tce_show_result_user.php" id="timerform">
+<div>
+<input type="text" name="timer" id="timer" value="" size="29" maxlength="29" title="Clock / Timer" readonly="readonly">
+&nbsp;</div>
+</form>
+<script src="./Test Results116_files/timer.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+FJ_start_timer(false, 1486921366, 'I\'m sorry, the time available to complete the test is over!', false, 1486921366200);
+//]]>
+</script>
+</div>
+</div>
+<div id="scrollayer" class="scrollmenu">
+<!--[if lte IE 7]>
+<style type="text/css">
+ul.menu li {text-align:left;behavior:url("../../shared/jscripts/IEmen.htc");}
+ul.menu ul {background-color:#003399;margin:0;padding:0;display:none;position:absolute;top:20px;left:0px;}
+ul.menu ul li {width:200px;text-align:left;margin:0;}
+ul.menu ul ul {display:none;position:absolute;top:0px;left:190px;}
+</style>
+<![endif]-->
+<a name="menusection" id="menusection"></a>
+<div class="hidden"><a href="http://gatexcel.co.in/public/code/tce_show_result_user.php?testuser_id=92323&amp;test_id=70#topofdoc" accesskey="2" title="[2] skip navigation menu">skip navigation menu</a></div>
+<ul class="menu">
+<li><a href="http://gatexcel.co.in/public/code/index.php" title="Main Page" id="Main Page" accesskey="i">Home</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_page_user.php" title="User" id="User" accesskey="u">User</a>
+<!--[if lte IE 6]><iframe class="menu"></iframe><![endif]-->
+<ul>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_email.php" title="Change Email" id="Change Email">Change Email</a></li>
+<li><a href="http://gatexcel.co.in/public/code/tce_user_change_password.php" title="Change Password" id="Change Password">Change Password</a></li>
+</ul>
+</li>
+<li><a href="http://gatexcel.co.in/public/code/tce_logout.php" title="click on this link to exit the system (session end)" id="click on this link to exit the system (session end)" accesskey="q">Logout</a></li>
+</ul>
+</div>
+<div class="body">
+<a name="topofdoc" id="topofdoc"></a>
+<script>
+    $(document).ready(function(){
+   
+       // $('#numBox').click(function(){
+        $('#keypad').fadeToggle('fast');
+        event.stopPropagation();
+  //  });
+    
+    
+  
+    $('.key').click(function(){
+        var numBox = document.getElementById('answertext');
+//        if(this.innerHTML == '0'){
+//            if (numBox.value.length > 0 && numBox.value.length<11)
+//                numBox.value = numBox.value + this.innerHTML;
+//        }
+//        else 
+      if(numBox.value.length<11){
+        if(this.innerHTML == '-'){
+            if (numBox.value.length == 0)
+                numBox.value = numBox.value + this.innerHTML;
+        }
+        else if(this.innerHTML == '.'){
+            console.log(numBox.value.indexOf('-'));
+            if(numBox.value.length == 1){                
+            }else{
+                if(numBox.value.indexOf('.') == -1)
+                 numBox.value = numBox.value + this.innerHTML;
+            }
+        }
+        else{
+        
+            numBox.value = numBox.value + this.innerHTML;
+        }
+    }
+        event.stopPropagation();
+    });
+    
+    $('.btn').click(function(){
+          var numBox = document.getElementById('answertext');
+        if(this.innerHTML == 'Backspace'){           
+            if(numBox.value.length > 0){
+                numBox.value = numBox.value.substring(0, numBox.value.length - 1);
+            }
+        }
+        else if(this.innerHTML == '←'){
+          var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+          if(current_position != 0){
+              numBox.setSelectionRange(current_position-1,current_position-1);
+          }
+           numBox.focus();
+        }
+        else if(this.innerHTML == '→'){
+           var current_position = numBox.value.slice(0, numBox.selectionStart).length;
+           
+           if(current_position != numBox.value.length){
+              numBox.setSelectionRange(current_position+1,current_position+1);
+          }
+           numBox.focus();
+        }
+        else{
+            document.getElementById('answertext').value = '';
+        }
+        
+        event.stopPropagation();
+    });
+    });
+    
+    function validateNumeric(e) {        
+    if (!e) var e = window.event;
+    if (!e.which) keyPressed = e.keyCode;
+    else keyPressed = e.which;
+   
+    if ((keyPressed >= 48 && keyPressed <= 57) ||keyPressed == 45 || keyPressed == 46 || keyPressed == 8 || keyPressed == 9 || (keyPressed > 37 && keyPressed <= 40)) {
+      keyPressed = keyPressed;
+      var text = $("#answertext").val();
+      if(keyPressed ==  46){
+         if(text.indexOf(".") > -1){
+              return false;
+          }
+      }
+    
+       if(keyPressed ==  45){             
+             if(text.length == 0){
+              return true;
+            }else{
+                return false;
+            }
+        }
+        if(keyPressed ==  46){             
+             if(text.length == 0){
+              return true;
+            }else{
+             if(text.length==1){
+                if(text.indexOf("-") == "0"){
+                        return false;
+                  }
+                 }
+                return true;
+            }
+        }
+      return true;
+    } else {
+      keyPressed = 0;
+      return false;
+    }
+  }
+  
+</script><div class="container">
+<div class="tceformbox">
+<div class="row">
+<span class="label">
+<span title="User">User:</span>
+</span>
+<span class="formw">
+ abhi.sinu.1 - abhi.sinu.1&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test">Test:</span>
+</span>
+<span class="formw">
+<strong>DB Topic Test - 5</strong><br>
+Transactions, Serializability, Locking - 2PL, Timestamp protocol, Thomas write rule, Graph based protocol&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test starting date and time [yyyy-mm-dd hh:mm:ss]">Start Time:</span>
+</span>
+<span class="formw">
+2017-02-11 23:39:19&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="test ending date and time [yyyy-mm-dd hh:mm:ss]">End Time:</span>
+</span>
+<span class="formw">
+&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Test Time">Test Time:</span>
+</span>
+<span class="formw">
+00:45:00&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Final Score">Points:</span>
+</span>
+<span class="formw">
+0.000 / 25.000 (0%)&nbsp;
+</span>
+</div>
+<div class="row">
+<span class="label">
+<span title="Correct Answers">Correct:</span>
+</span>
+<span class="formw">
+0 / 15 (0%)&nbsp;
+</span>
+</div>
+<div class="rowl">
+<ol class="question">
+<li>
+________, _____, and ______ are the sql statements used for transaction control.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Insert, update, delete</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> COMMIT, ROLLBACK, SAVEPOINT<br><span class="explanation">Explanation:</span><br>COMMIT, ROLLBACK and SAVEPOINT are the statements used for transaction control.<br>	COMMIT → Make changes done in transaction permanent<br>	ROLLBACK → Rollbacks the state of database to the last commit point<br>	SAVE POINT → Use to specify a point in transaction to which later you can rollback
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> INSERT, ALTER, DROP</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Blind write appears in<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Conflict serializable schedule</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> View serializable schedule</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Both of the above</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> None of the above<br><span class="explanation">Explanation:</span><br>Actually the question "Blind write appears in" means "Blind write always appears in". So, here the answer is option (d). Because in both conflict and view serializable schedules blind write may not appear every time. So, the answer is option(d).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a schedule S, two transactions T1 and T2 are executing concurrently. The execution order of those transactions is given below. Are there any problems with the concurrency<img src="./Test Results116_files/Q4.PNG" alt="image:Databases Topic Test - 5/Q4.PNG" width="253" height="291" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Phantom problem</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Unrepeatable problem</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Lost update problem<br><span class="explanation">Explanation:</span><br>Given schedule<br><img src="./Test Results116_files/Q4_exp.PNG" alt="image:Databases Topic Test - 5/Q4_exp.PNG" width="242" height="274" class="tcecode"><br>⇒ This update( made by T2 Read(B);B=B+ 500) was lost, since the transaction T<sub class="tcecode">1</sub> wrote B value and transaction T<sub class="tcecode">2</sub> also wrote the same B value. So, the updation of ‘B’ by transaction T<sub class="tcecode">2</sub> was lost. So, the problem encountered here is lost update problem.
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> None of the above<br>R – read	W – write</li>
+</ol>
+<br><br>
+</li>
+<li>
+Under the 2-phase locking protocol, which is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Once a transaction has released a lock it cannot acquire any more locks</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> A transaction can release all its locks when it commits</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> A transaction can acquire all the locks it needs when it begins</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> All these above<br><span class="explanation">Explanation:</span><br>Regarding 2-phase locking protocol all the statements are true.
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following violation is possible if an application program uses isolation “Read uncommitted”?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Dirty read problem</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Non repeatable read problem</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Phantom phenomenon</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> All the above<br><span class="explanation">Explanation:</span><br>They are 4 levels of isolation:<br>i)	Read uncommitted<br>ii)	Read committed<br>iii)	Repeated read<br>iv)	Serializable  <br>In Isolation level “Read uncommitted”, dirty read, Non-repeatable read, phantom phenomenon all are possible. So answer is "D"
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+A schedule S: R1(A); W2(A); R1(A); W1 (A) ;commit1; Rollback2. <br>The above schedule is<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Recoverable schedule</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Cascading roll back schedule</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Non recoverable schedule<br><span class="explanation">Explanation:</span><br>Given schedule is<br><img src="./Test Results116_files/Q7_exp.PNG" alt="image:Databases Topic Test - 5/Q7_exp.PNG" width="256" height="190" class="tcecode"><br>	The above schedule is not recoverable since transaction T1 read uncommitted data and wrote the value of A and also committed but after that transaction T2 rolled back. Here the transaction T1 cannot be roll backed so given schedule is non-recoverable. So answer is (C).
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Strict schedule</li>
+</ol>
+<br><br>
+</li>
+<li>
+Assume basic time stamp ordering protocol and that time starts from 1, each operation takes unit amount of time and start of transaction Ti is denoted as Si. The table of time stamp is given below:<img src="./Test Results116_files/Q14.PNG" alt="image:Databases Topic Test - 5/Q14.PNG" width="333" height="246" class="tcecode"><br>Find rts(a), wts(a), rts(b) and wts(b) at the end<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> 1, 7, 3, 7<br><span class="explanation">Explanation:</span><br><img src="./Test Results116_files/Q14_exp.PNG" alt="image:Databases Topic Test - 5/Q14_exp.PNG" width="672" height="261" class="tcecode"><br>∴ rts (a)  = 1			<br>	   wts (a) = 7<br>	   rts (a)  = 3<br>	   wts (a) = 7
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 1, 5, 2, 5</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 1, 7, 3, 3</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 3, 7, 3, 7</li>
+</ol>
+<br><br>
+</li>
+<li>
+For a given schedule S, find out the conflict equivalent serial schedule derived through topological ordering of precedence <br>S: r1(x); r2(z); r1(z); r3(x); r3(y); W<sub class="tcecode">1</sub>(y); W<sub class="tcecode">3</sub>(y); r2(y); W<sub class="tcecode">2</sub>(z); W<sub class="tcecode">2</sub>(y);<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> T1, T2, T3</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> T3, T2, T1</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> T1, T3, T2</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Not conflict serializable<br><span class="explanation">Explanation:</span><br>Given schedule<br><img src="./Test Results116_files/Q8_exp.PNG" alt="image:Databases Topic Test - 5/Q8_exp.PNG" width="354" height="286" class="tcecode"><br>The precedence graph for the above schedule is<br><img src="./Test Results116_files/DBMS_Topic_5.JPG" alt="image:Databases Topic Test - 5/DBMS_Topic_5.JPG" width="186" height="161" class="tcecode"><br>In the above precedence graph, cycle is present. So, the given schedule is not conflict serializable. So, the answer is (D).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a schedule S having 4 transactions executed concurrently the order of their operations is given below. Find out whether the given schedule is serializable or not<br><img src="./Test Results116_files/Q12.PNG" alt="image:Databases Topic Test - 5/Q12.PNG" width="386" height="335" class="tcecode"><span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Conflict serializable</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> View serializable</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Both (a) and (b)</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Not serializable<br><span class="explanation">Explanation:</span><br>The precedence graph for the given schedule is<br><img src="./Test Results116_files/Q12_exp1.PNG" alt="image:Databases Topic Test - 5/Q12_exp1.PNG" width="186" height="155" class="tcecode"><br>The above precedence graph contains cycle, so the given schedule is not conflict serializable.<br>	As given schedule is not conflict serializable and blind writes are present (Blind writes means writing the value of data item into database without reading it). We will check whether it is view serializable or not.<br><span style="text-decoration:underline;">Poly graph for the given schedule:</span><br><img src="./Test Results116_files/Q12_exp2.PNG" alt="image:Databases Topic Test - 5/Q12_exp2.PNG" width="459" height="197" class="tcecode"><br>Since cycle is there in polygraph, the given schedule is not view serializable. So the given schedule is not serializable. So, the answer is (D).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+In a schedule S, 5 transactions are executing concurrently, each transaction is reading two data items and updating the both and data items are not common between any two transactions. The schedule is equivalent to _____ number of serial schedules<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> 120<br><span class="explanation">Explanation:</span><br>Given, 5 transactions each contains two read operations of two data items and two write operations of same two data items and since they are no common data items between these 5 transactions, these 5 transactions executed concurrently is equivalent to any of serial schedule possible with these 5 transactions<br> ∴ Number of serial schedules possible with 5 transactions is 5! = 120<br> ∴ Answer is 120
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 100</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 117</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 115</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement(s) is/are true about tree locking protocol/ graph based protocol?<br>	I. All the schedules that are legal under Tree locking protocol are conflict serializable.<br>	II. Tree locking protocol may not always ensure deadlock free<br>	III. Tree locking protocol always ensure recoverable and cascading schedules.<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Only I is correct<br><span class="explanation">Explanation:</span><br>If our schedule follows all tree based locking protocol rules then our schedule is conflict serializable.<br>In tree based locking protocol, we allow every transaction to follow the same order while locking dada items, so there is no chance of deadlock.<br>In tree based locking protocol, there is chance of dirty read to happen as unlocking of data items can happen in anytime. So, it does not always ensure recoverable and cascade less schedules.
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Only II is correct</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Both I &amp; II are correct</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> All are correct</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which of the following statement(s) is/are true?<br>I.	Every strict schedule is cascade less and recoverable <br>II.	Every cascade less schedule is recoverable <br>III.	Every cascading roll back schedule is recoverable <br>IV.	Every cascading roll back is  strict schedule<br>V.	Every recoverable schedule is cascading roll back<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> All the above</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> I, II and IV only</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> II, III , IV &amp; V only</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> I, II and III only<br><span class="explanation">Explanation:</span><br>From the below diagram<br><img src="./Test Results116_files/Q9_exp.PNG" alt="image:Databases Topic Test - 5/Q9_exp.PNG" width="195" height="263" class="tcecode"><br>We can say that only I, II &amp; III statements are correct. So, the answer is (D).
+</li>
+</ol>
+<br><br>
+</li>
+<li>
+Which protocol is satisfied by following transaction:<br>LOCK – X(A)<br>LOCK – S(B)<br>R(A)<br>R(B)<br>W(A)<br>UNLOCK(A)<br>COMMIT<br>UNLOCK(B)<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Strict 2PL</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> Rigorous 2PL</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> Conservative 2PL<br><span class="explanation">Explanation:</span><br>The given transaction follows conservative 2PL as before stating the transaction, we obtained all the locks that we require and then we released all the locks after we used. It does not follow strict 2PL, as in strict 2PL we release all exclusive locks after committing transaction. But here ‘A” which is exclusive lock is unlocked after we commit the transaction. As it does not follow strict 2PL, it does not follow rigorous 2PL also.
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> None of the above</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following order S of transactions:<br>T<sub class="tcecode">2</sub>: R(x); T<sub class="tcecode">3</sub>:W(x); T<sub class="tcecode">3</sub>: commit; T<sub class="tcecode">1</sub>: W(x); T<sub class="tcecode">1</sub>: commit; T<sub class="tcecode">2</sub>: R(y); T<sub class="tcecode">2</sub>: W(z); T<sub class="tcecode">2</sub>: commit; T<sub class="tcecode">4</sub>: R(x);T<sub class="tcecode">4</sub>: R(y);    T<sub class="tcecode">4</sub>: commit.<br>	Which of the following is true?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> S is conflict serializable and hence is serializable<br><span class="explanation">Explanation:</span><br>Given schedule<br><img src="./Test Results116_files/Q10_exp.PNG" alt="image:Databases Topic Test - 5/Q10_exp.PNG" width="456" height="305" class="tcecode"><br>Precedence graph for the above schedule is<br><img src="./Test Results116_files/Q10_exp2.PNG" alt="image:Databases Topic Test - 5/Q10_exp2.PNG" width="196" height="173" class="tcecode"><br>are no cycles in the above precedence graph, so, the given schedule is conflict serializable, hence it is serializable. So, the answer is (A).
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> S is not conflict serializable but is serializable</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> S is serializable but not conflict serializable</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> S is neither serializable nor conflict serializable</li>
+</ol>
+<br><br>
+</li>
+<li>
+Consider the following order S of transactions:<br>T<sub class="tcecode">2</sub>: R(x); T<sub class="tcecode">3</sub>:W(x); T<sub class="tcecode">3</sub>: commit; T<sub class="tcecode">1</sub>: W(x); T<sub class="tcecode">1</sub>: commit; T<sub class="tcecode">2</sub>: R(y); T<sub class="tcecode">2</sub>: W(z); T<sub class="tcecode">2</sub>: commit; T<sub class="tcecode">4</sub>: R(x);T<sub class="tcecode">4</sub>: R(y);    T<sub class="tcecode">4</sub>: commit.<br>	<br>If S is serializable, then how many conflict serial orderings of S is possible?<span style="float:right">( Marks: 0.00 )</span>
+<ol class="answer">
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 10</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 11</li>
+<li>&nbsp;<img src="./Test Results116_files/correct.png" width="18"> 8<br><span class="explanation">Explanation:</span><br>Total number of topological orderings possible for the above graph are as below:<br><img src="./Test Results116_files/Q11_exp1.PNG" alt="image:Databases Topic Test - 5/Q11_exp1.PNG" width="115" height="314" class="tcecode">
+</li>
+<li>&nbsp;<img src="./Test Results116_files/wrong.png" width="16"> 13</li>
+</ol>
+<br><br>
+</li>
+</ol>
+</div>
+</div>
+<a href="http://gatexcel.co.in/public/code/index.php" title="Main Page"><strong>&lt; Back To Home</strong></a>
+</div>
+
+</div>
+
+<div class="userbar">
+<span class="copyright">© 2017 - Raudra</span></div>
+
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="data-dialog" style="display: none;" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">Data</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="data-dialog" class="ui-dialog-content ui-widget-content">
+    <div>
+    <img src="./Test Results116_files/usefulDataFile_1.jpg">
+    </div>
+<!--    <table border="1" class="data-table">
+        <tr>
+            <th>Constant</th>
+            <th>Symbol</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>speed of light in vacuum</td>
+            <td>c</td>
+            <td>3.00 X 10<sup>8</sup> ms<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>gravitational constant</td>
+            <td>G</td>
+            <td>6.673 X 10<sup>-11</sup> Nm<sup>2</sup>kg<sup>-2</sup> </td>
+        </tr>
+        <tr>
+            <td>orbital Constant</td>
+            <td>G M<sub>E</sub></td>
+            <td>3.986 X 10<sup>14</sup> m<sup>3</sup>s<sup>-2</sup></td>
+        </tr>
+        <tr>
+            <td>standard gravitational acceleration</td>
+            <td>g</td>
+            <td>9.81 m s<sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>Planck's constant</td>
+            <td>h</td>
+            <td>6.626 X 10<sup>-34</sup> J s</td>
+        </tr>
+        <tr>
+            <td>Boltzmann's constant</td>
+            <td>k</td>
+            <td>1.381 X 10 <sup>-23</sup> J K  <sup>-1</sup></td>
+        </tr>
+        <tr>
+            <td>first radiation constant</td>
+            <td>c<sub>1</sub></td>
+            <td>1.191 X 10<sup>-16</sup> W m<sup>2</sup>sr<sup>-1</sup></td>
+        </tr>
+        <tr>
+             <td>second radiation constant</td>
+            <td>c<sub>2</sub></td>
+            <td>1.439 X 10<sup>-2</sup>mK</td>
+        </tr>
+        <tr>
+             <td>Stefan-Boltzmann constant</td>
+            <td></td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+         <tr>
+            <td></td>
+            <td>none</td>
+            <td>5.670 X 10<sup>-8</sup> W m<sup>-2</sup> K <sup>-4</sup></td>
+        </tr>
+    </table>-->
+</div></div><div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable" aria-describedby="dialog" aria-labelledby="ui-id-2" style="display: none;"><div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span id="ui-id-2" class="ui-dialog-title">Instructions</span><button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span class="ui-button-icon-space"> </span>Close</button></div><div id="dialog" class="ui-dialog-content ui-widget-content">
+    <div class="instruction-heading"><b>Please read the instruction carefully</b></div>
+    <b><u>General Instructions during the Examination</u></b>
+    <ol>
+        <li>Total duration of the examination is 45 minutes.
+        </li>
+        <li>The Question Palette displayed on the right side of screen will show the status of each question using one of the following coloured boxes:
+            <ul class="instruction-tips">
+                <li>
+                    <span class="white">15</span> You have not visited the question yet.
+                </li>
+                <li>
+                    <span class="grey">45</span> You are reading current question.
+                </li>
+                <li>
+                    <span class="red">40</span> You have visited the question but you have not the answered the question.
+                </li>
+                <li>
+                    <span class="green">10</span> You have answered the question.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <b><u>Navigating to Questions</u></b>
+    <ol>
+        <li>You can navigate to any answer by clicking on the number in question panel on the right side.</li>
+        <li>To go to next question click <b>Next</b> button and to go to previous question click <b>Previous</b> button. These buttons are located at the bottom of each question</li>
+    </ol>
+    <b><u>Answering a Question</u></b>
+    <ol>
+        <li>To answer the question select any of the option and then select <b>Confirm</b> button to confirm answer.</li>
+        <li>To terminate the exam write the comment in the comment box and click <b>Terminate the exam</b> button.</li>
+    </ol>
+    <ol>Multiple choice type questions will have four choices against A, B, C, D, out of which only ONE is the correct answer. The candidate has to choose the correct answer by clicking on the
+        bubble (⃝) placed before the choice.</ol>
+    <ol> In this paper a candidate can answer a total of 15 questions carrying 25 marks. Out of which, 5 questions carrying 1 mark each and 10 questions carrying 2 marks each. All questions are
+        Multiple Choice Questions (MCQ).</ol>
+    <ol>All questions that are not attempted will result in zero marks. However, wrong answers will result in NEGATIVE marks. For all questions a wrong answer will result in deduction of 0.33 marks for a 1 mark question and 0.66 for a 2 mark question.</ol>
+    <ol>You can click on Terminate the exam to submit your responses and end the examination.</ol>
+    <strong>ALL THE BEST!!!</strong>
+</div></div></body></html>
